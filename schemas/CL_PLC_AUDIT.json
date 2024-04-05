@@ -1,0 +1,169 @@
+{
+  "name": "CL_PLC_AUDIT",
+  "description": "This table extracts the audit data from a Patient Location (PLC) record.",
+  "primaryKey": [
+    {
+      "columnName": "LOCATION_EVNT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "LOCATION_EVNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the location event."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "USER_EDIT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Item stores the user who made a specific modification to a patient location record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "USER_EDIT_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "INST_OF_CHNG_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Item tracks the instant a change was made to the patient location record."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ITM_CHANGED",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Item that holds which patient location item was modified."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "OLD_VALUE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Old value of item to be modified.  This is raw data, to get external data look at OLD_PLF_VALUE, OLD_STATUS_VALUE, OLD_EVENT_TYPE_VALUE, AND OLD_TIME_VALUE columns."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "NEW_VALUE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "New value of item that was modified.  This is raw data, to get external data look at NEW_PLF_VALUE, NEW_STATUS_VALUE, NEW_EVENT_TYPE_VALUE, AND NEW_TIME_VALUE columns."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CHANGE_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Action that describes how a patient location record was changed.",
+      "entries": [
+        "Manual",
+        "Event Management",
+        "Admission",
+        "Transfer",
+        "Discharge",
+        "HOV",
+        "Update",
+        "Sign In",
+        "Check In",
+        "Check Out",
+        "Cancel Check In",
+        "Cancel Sign In",
+        "Interface",
+        "Undo Transfer",
+        "Undo Admission",
+        "Undo Discharge",
+        "Undo Manual Update",
+        "Undo HOV",
+        "Patient Merge",
+        "Patient Unmerge",
+        "Room Patient",
+        "Removed from Room",
+        "Patient Transport",
+        "Leave of Absence",
+        "Return from Leave of Absence",
+        "Undo Leave of Absence",
+        "Undo Return from Leave of Absence",
+        "RTLS Update",
+        "ED Waiting",
+        "Undo ED Arrival",
+        "Dismiss ED Encounter",
+        "Surrounding Event Edit"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "OLD_PLF_VALUE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If ITM_CHANGED is 215, then this column stores the old value of the patient location that was changed."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "NEW_PLF_VALUE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If ITM_CHANGED is 215, then this column stores the new value of the patient location that was changed."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "OLD_STATUS_VALUE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "If ITM_CHANGED is 50, then this column stores the old value of the status that was changed."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "NEW_STATUS_VALUE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "If ITM_CHANGED is 50, then this column stores the new value of the status that was changed."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "OLD_EVENT_TYPE_VALUE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "If ITM_CHANGED is 70, then this column stores the old value of the event type that was changed."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "NEW_EVENT_TYPE_VALUE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "If ITM_CHANGED is 70, then this column stores the new value of the event type that was changed."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "OLD_TIME_VALUE",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "If ITM_CHANGED is 221, 222, or 223, then this column stores the old value of the time that was changed."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "NEW_TIME_VALUE",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "If ITM_CHANGED is 221, 222, or 223, then this column stores the new value of the time that was changed."
+    }
+  ]
+}

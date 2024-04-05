@@ -1,0 +1,620 @@
+{
+  "$meta": {
+    "schemas": {
+      "CL_RMT_CLM_ENTITY": {
+        "name": "CL_RMT_CLM_ENTITY",
+        "description": "Contains identifying information for entities (persons or organizations) from an electronic remittance payment. This information is sent in the NM1 segment of an ANSI 835 Health Care Claim Payment/Advice file. This information is stored in the remittance image record.",
+        "primaryKey": [
+          {
+            "columnName": "IMAGE_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "IMAGE_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "ID for the remittance image record containing the claim related entity information."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "ID_CODE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The entity identifier code for the claim related entity. This is a standard code that indicates what type of individual or organization is being identified.",
+            "entries": [
+              "Patient",
+              "Insured or subscriber",
+              "Corrected insured",
+              "Rendering provider",
+              "Transfer to",
+              "Payer",
+              "Other Insured"
+            ]
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "ENT_QUAL_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Code indicating whether this information is for a person or a non-person entity.",
+            "entries": [
+              "Person",
+              "Non-Person entity"
+            ]
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "LAST_NAME_ORG_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This is the individual last name or organization name."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "FIRST_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The individual first name."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "MIDDLE_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The individual middle name or initial."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "IDEN_CODE_QUALF_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The identification code qualifier. This is a standard code that indicates what type of ID is used to identify the specific individual or organization.",
+            "entries": [
+              "Social security number",
+              "Health insurance claim number",
+              "United states national individual identifer",
+              "Member identification number",
+              "Medicaid recipient identification number",
+              "Insured's changed unique identification number",
+              "Blue cross provider number",
+              "Blue shield provider number",
+              "Federal taxpayer's identification number",
+              "Medicaid provider number",
+              "Provider commercial number",
+              "State license number",
+              "Unique physician identification number",
+              "Health care financing administration national provider identifier",
+              "Blue cross blue shield association plan code",
+              "National association of insurance commissioners (NAIC) identification",
+              "Payor Identification",
+              "Pharmacy processor number",
+              "Health care financing administration national planID"
+            ]
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "IDEN_CODE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The ID associated with the specific individual or organization."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "CL_RMT_CLM_ENTITY",
+            "target": "CL_REMIT",
+            "joinKeys": [
+              {
+                "source": "IMAGE_ID",
+                "target": "IMAGE_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "CL_RMT_CLM_ENTITY": [
+    {
+      "IMAGE_ID": "103811458",
+      "LINE": 1,
+      "ID_CODE_C_NAME": "Patient",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "MANDEL",
+      "FIRST_NAME": "JOSHUA",
+      "MIDDLE_NAME": "C",
+      "IDEN_CODE_QUALF_C_NAME": "Member identification number",
+      "IDEN_CODE": "MSJ602496879",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "163701585",
+      "LINE": 1,
+      "ID_CODE_C_NAME": "Patient",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "MANDEL",
+      "FIRST_NAME": "JOSHUA",
+      "MIDDLE_NAME": "C",
+      "IDEN_CODE_QUALF_C_NAME": "Member identification number",
+      "IDEN_CODE": "MSJ60249687901",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "182080752",
+      "LINE": 1,
+      "ID_CODE_C_NAME": "Patient",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "MANDEL",
+      "FIRST_NAME": "JOSHUA",
+      "MIDDLE_NAME": "C",
+      "IDEN_CODE_QUALF_C_NAME": "Member identification number",
+      "IDEN_CODE": "MSJ60249687901",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "182080857",
+      "LINE": 1,
+      "ID_CODE_C_NAME": "Patient",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "MANDEL",
+      "FIRST_NAME": "JOSHUA",
+      "MIDDLE_NAME": "C",
+      "IDEN_CODE_QUALF_C_NAME": "Member identification number",
+      "IDEN_CODE": "MSJ60249687901",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "192950267",
+      "LINE": 1,
+      "ID_CODE_C_NAME": "Patient",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "MANDEL",
+      "FIRST_NAME": "JOSHUA",
+      "MIDDLE_NAME": "C",
+      "IDEN_CODE_QUALF_C_NAME": "Member identification number",
+      "IDEN_CODE": "MSJ60249687901",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "195454935",
+      "LINE": 1,
+      "ID_CODE_C_NAME": "Patient",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "MANDEL",
+      "FIRST_NAME": "JOSHUA",
+      "MIDDLE_NAME": "C",
+      "IDEN_CODE_QUALF_C_NAME": "Member identification number",
+      "IDEN_CODE": "602496879",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "195454936",
+      "LINE": 1,
+      "ID_CODE_C_NAME": "Patient",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "MANDEL",
+      "FIRST_NAME": "JOSHUA",
+      "MIDDLE_NAME": "C",
+      "IDEN_CODE_QUALF_C_NAME": "Member identification number",
+      "IDEN_CODE": "602496879",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "204543235",
+      "LINE": 1,
+      "ID_CODE_C_NAME": "Patient",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "MANDEL",
+      "FIRST_NAME": "JOSHUA",
+      "MIDDLE_NAME": "C",
+      "IDEN_CODE_QUALF_C_NAME": "Member identification number",
+      "IDEN_CODE": "MSJ60249687901",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "228893273",
+      "LINE": 1,
+      "ID_CODE_C_NAME": "Patient",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "MANDEL",
+      "FIRST_NAME": "JOSHUA",
+      "MIDDLE_NAME": "C",
+      "IDEN_CODE_QUALF_C_NAME": "Member identification number",
+      "IDEN_CODE": "MSJ60249687901",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "228893430",
+      "LINE": 1,
+      "ID_CODE_C_NAME": "Patient",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "MANDEL",
+      "FIRST_NAME": "JOSHUA",
+      "MIDDLE_NAME": "C",
+      "IDEN_CODE_QUALF_C_NAME": "Member identification number",
+      "IDEN_CODE": "MSJ60249687901",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "229308484",
+      "LINE": 1,
+      "ID_CODE_C_NAME": "Patient",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "MANDEL",
+      "FIRST_NAME": "JOSHUA",
+      "MIDDLE_NAME": "C",
+      "IDEN_CODE_QUALF_C_NAME": "Member identification number",
+      "IDEN_CODE": "MSJ60249687901",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "61020663",
+      "LINE": 1,
+      "ID_CODE_C_NAME": "Patient",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "MANDEL",
+      "FIRST_NAME": "JOSHUA",
+      "MIDDLE_NAME": "C",
+      "IDEN_CODE_QUALF_C_NAME": "Member identification number",
+      "IDEN_CODE": "MSJ602496879",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "61020664",
+      "LINE": 1,
+      "ID_CODE_C_NAME": "Patient",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "MANDEL",
+      "FIRST_NAME": "JOSHUA",
+      "MIDDLE_NAME": "C",
+      "IDEN_CODE_QUALF_C_NAME": "Member identification number",
+      "IDEN_CODE": "MSJ602496879",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "85777291",
+      "LINE": 1,
+      "ID_CODE_C_NAME": "Patient",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "MANDEL",
+      "FIRST_NAME": "JOSHUA",
+      "MIDDLE_NAME": "C",
+      "IDEN_CODE_QUALF_C_NAME": "Member identification number",
+      "IDEN_CODE": "602496879",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "163701585",
+      "LINE": 2,
+      "ID_CODE_C_NAME": "Corrected insured",
+      "ENT_QUAL_C_NAME": "Person",
+      "IDEN_CODE_QUALF_C_NAME": "Insured's changed unique identification number",
+      "IDEN_CODE": "MSJ602496879",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "182080752",
+      "LINE": 2,
+      "ID_CODE_C_NAME": "Corrected insured",
+      "ENT_QUAL_C_NAME": "Person",
+      "IDEN_CODE_QUALF_C_NAME": "Insured's changed unique identification number",
+      "IDEN_CODE": "MSJ602496879",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "182080857",
+      "LINE": 2,
+      "ID_CODE_C_NAME": "Corrected insured",
+      "ENT_QUAL_C_NAME": "Person",
+      "IDEN_CODE_QUALF_C_NAME": "Insured's changed unique identification number",
+      "IDEN_CODE": "MSJ602496879",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "192950267",
+      "LINE": 2,
+      "ID_CODE_C_NAME": "Corrected insured",
+      "ENT_QUAL_C_NAME": "Person",
+      "IDEN_CODE_QUALF_C_NAME": "Insured's changed unique identification number",
+      "IDEN_CODE": "MSJ602496879",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "195454935",
+      "LINE": 2,
+      "ID_CODE_C_NAME": "Corrected insured",
+      "ENT_QUAL_C_NAME": "Person",
+      "IDEN_CODE_QUALF_C_NAME": "Insured's changed unique identification number",
+      "IDEN_CODE": "MSJ602496879",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "195454936",
+      "LINE": 2,
+      "ID_CODE_C_NAME": "Corrected insured",
+      "ENT_QUAL_C_NAME": "Person",
+      "IDEN_CODE_QUALF_C_NAME": "Insured's changed unique identification number",
+      "IDEN_CODE": "MSJ602496879",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "204543235",
+      "LINE": 2,
+      "ID_CODE_C_NAME": "Corrected insured",
+      "ENT_QUAL_C_NAME": "Person",
+      "IDEN_CODE_QUALF_C_NAME": "Insured's changed unique identification number",
+      "IDEN_CODE": "MSJ602496879",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "228893273",
+      "LINE": 2,
+      "ID_CODE_C_NAME": "Corrected insured",
+      "ENT_QUAL_C_NAME": "Person",
+      "IDEN_CODE_QUALF_C_NAME": "Insured's changed unique identification number",
+      "IDEN_CODE": "MSJ602496879",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "228893430",
+      "LINE": 2,
+      "ID_CODE_C_NAME": "Corrected insured",
+      "ENT_QUAL_C_NAME": "Person",
+      "IDEN_CODE_QUALF_C_NAME": "Insured's changed unique identification number",
+      "IDEN_CODE": "MSJ602496879",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "229308484",
+      "LINE": 2,
+      "ID_CODE_C_NAME": "Corrected insured",
+      "ENT_QUAL_C_NAME": "Person",
+      "IDEN_CODE_QUALF_C_NAME": "Insured's changed unique identification number",
+      "IDEN_CODE": "MSJ602496879",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "85777291",
+      "LINE": 2,
+      "ID_CODE_C_NAME": "Corrected insured",
+      "ENT_QUAL_C_NAME": "Person",
+      "IDEN_CODE_QUALF_C_NAME": "Insured's changed unique identification number",
+      "IDEN_CODE": "MSJ602496879",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "103811458",
+      "LINE": 2,
+      "ID_CODE_C_NAME": "Rendering provider",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "PICONE",
+      "FIRST_NAME": "MARY",
+      "IDEN_CODE_QUALF_C_NAME": "Health care financing administration national provider identifier",
+      "IDEN_CODE": "1730357849",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "182080752",
+      "LINE": 3,
+      "ID_CODE_C_NAME": "Rendering provider",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "RAMMELKAMP",
+      "FIRST_NAME": "ZOE",
+      "IDEN_CODE_QUALF_C_NAME": "Health care financing administration national provider identifier",
+      "IDEN_CODE": "1205323193",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "182080857",
+      "LINE": 3,
+      "ID_CODE_C_NAME": "Rendering provider",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "RAMMELKAMP",
+      "FIRST_NAME": "ZOE",
+      "IDEN_CODE_QUALF_C_NAME": "Health care financing administration national provider identifier",
+      "IDEN_CODE": "1205323193",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "192950267",
+      "LINE": 3,
+      "ID_CODE_C_NAME": "Rendering provider",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "RAMMELKAMP",
+      "FIRST_NAME": "ZOE",
+      "IDEN_CODE_QUALF_C_NAME": "Health care financing administration national provider identifier",
+      "IDEN_CODE": "1205323193",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "195454935",
+      "LINE": 3,
+      "ID_CODE_C_NAME": "Rendering provider",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "RAMMELKAMP",
+      "FIRST_NAME": "ZOE",
+      "IDEN_CODE_QUALF_C_NAME": "Health care financing administration national provider identifier",
+      "IDEN_CODE": "1205323193",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "195454936",
+      "LINE": 3,
+      "ID_CODE_C_NAME": "Rendering provider",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "RAMMELKAMP",
+      "FIRST_NAME": "ZOE",
+      "IDEN_CODE_QUALF_C_NAME": "Health care financing administration national provider identifier",
+      "IDEN_CODE": "1205323193",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "204543235",
+      "LINE": 3,
+      "ID_CODE_C_NAME": "Rendering provider",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "RAMMELKAMP",
+      "FIRST_NAME": "ZOE",
+      "IDEN_CODE_QUALF_C_NAME": "Health care financing administration national provider identifier",
+      "IDEN_CODE": "1205323193",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "228893273",
+      "LINE": 3,
+      "ID_CODE_C_NAME": "Rendering provider",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "RAMMELKAMP",
+      "FIRST_NAME": "ZOE",
+      "IDEN_CODE_QUALF_C_NAME": "Health care financing administration national provider identifier",
+      "IDEN_CODE": "1205323193",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "228893430",
+      "LINE": 3,
+      "ID_CODE_C_NAME": "Rendering provider",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "RAMMELKAMP",
+      "FIRST_NAME": "ZOE",
+      "IDEN_CODE_QUALF_C_NAME": "Health care financing administration national provider identifier",
+      "IDEN_CODE": "1205323193",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "229308484",
+      "LINE": 3,
+      "ID_CODE_C_NAME": "Rendering provider",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "RAMMELKAMP",
+      "FIRST_NAME": "ZOE",
+      "IDEN_CODE_QUALF_C_NAME": "Health care financing administration national provider identifier",
+      "IDEN_CODE": "1205323193",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "61020663",
+      "LINE": 2,
+      "ID_CODE_C_NAME": "Rendering provider",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "DHILLON",
+      "FIRST_NAME": "PUNEET",
+      "IDEN_CODE_QUALF_C_NAME": "Health care financing administration national provider identifier",
+      "IDEN_CODE": "1073855474",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "61020664",
+      "LINE": 2,
+      "ID_CODE_C_NAME": "Rendering provider",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "DHILLON",
+      "FIRST_NAME": "PUNEET",
+      "IDEN_CODE_QUALF_C_NAME": "Health care financing administration national provider identifier",
+      "IDEN_CODE": "1073855474",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    },
+    {
+      "IMAGE_ID": "85777291",
+      "LINE": 3,
+      "ID_CODE_C_NAME": "Rendering provider",
+      "ENT_QUAL_C_NAME": "Person",
+      "LAST_NAME_ORG_NAME": "DHILLON",
+      "FIRST_NAME": "PUNEET",
+      "IDEN_CODE_QUALF_C_NAME": "Health care financing administration national provider identifier",
+      "IDEN_CODE": "1073855474",
+      "$meta": {
+        "type": "CL_RMT_CLM_ENTITY"
+      }
+    }
+  ]
+}

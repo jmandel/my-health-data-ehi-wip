@@ -1,0 +1,70 @@
+{
+  "name": "ORD_SPECIMEN_INFO",
+  "description": "This table contains information on the associated specimen for the order including active status and the accessioning lab system.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "SPECIMEN_LAB_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The lab (LLB) record ID responsible for filing the specimen information through the interface."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SPECIMEN_LAB_ID_LLB_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Interface laboratory name."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SPECIMEN_ACTIVE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A compiled item used to generate an index of which specimens have not been deactivated on the order. (Eg. have no deactivated instant filed)",
+      "entries": [
+        "Active"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SPECIMEN_ACTIVE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant at which the specimen was first filed from the lab interface system."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SPECIMEN_INACTIVE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant at which the specimen was rendered inactive in response to a laboratory information system (LIS) message or linked order status change."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "SPECIMEN_INACTIVE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Interface or order status event which resulted in the specimen being marked unavailable for collection.",
+      "entries": [
+        "Resulted",
+        "Cancelled",
+        "Complete",
+        "Reissued by LIS"
+      ]
+    }
+  ]
+}

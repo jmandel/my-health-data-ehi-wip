@@ -1,0 +1,169 @@
+{
+  "name": "RECONCILE_CLAIM_STATUS",
+  "description": "This table contains claim-level status code information for claims reconciliation.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_RECON_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_RECON_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the claim reconciliation record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CLM_STAT_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Claim level status code received in a reconciliation file if value matches codes in the current claim status code category.",
+      "entries": [
+        "Unmapped code received"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CLM_STAT_DATA",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Claim level status code received in a reconciliation file. Set only if the value does not match a category abbreviation in the current claim status code category."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CLM_CAT_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Claim level category code received in a reconciliation file if value matches codes in the claim status category code category.",
+      "entries": [
+        "Unmapped code received"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CLM_CAT_CODE_DATA",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Claim level category code received in a reconciliation file. Set only if the value does not match a category abbreviation in the claim status category code category."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CLM_MAPPED_ACT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Mapped action for the status code.",
+      "entries": [
+        "No Action",
+        "Accept Claim",
+        "Send to WQ"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "CLM_ACT_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Claim level action code received in a reconciliation file if value matches codes in the claim action category.",
+      "entries": [
+        "Accept",
+        "Reject",
+        "<invalid>"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "CLM_ACT_CODE_DATA",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The claim level action code received in a reconciliation file. It is set when the value received in the file does not match any category abbreviation in the claim action category."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "CLM_ENTITY_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Claim level entity code received in a reconciliation file. Set only if the received value matches a category abbreviation in the claim entity code category.",
+      "entries": [
+        "Unmapped code received"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "CLM_ENTITY_DATA",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Claim level entity code received in a reconciliation file. Set only if the value does not match a category abbreviation in the claim entity code category."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "CLM_INFO_REQ_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Code that defines additional information being requested."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "CLM_STATUS_MSG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Claim level status message received in a reconciliation file."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "ACK_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Implementation acknowledgment code received in a Healthcare Acknowledgment (999) file.",
+      "entries": [
+        "A-Accepted (Transaction Set)",
+        "E-Accepted With Errors (Transaction Set)",
+        "R-Rejected (Transaction Set)",
+        "M-Rejected, MAC Failed (Transaction Set)",
+        "W-Rejected, Assurance Failed Validity Tests (Transaction Set)",
+        "X-Rejected, Decryption Failed (Transaction Set)",
+        "A-Accepted (Functional Group)",
+        "E-Accepted With Errors (Functional Group)",
+        "R-Rejected (Functional Group)",
+        "M-Rejected, MAC Failed (Functional Group)",
+        "P-Partially Accepted (Functional Group)",
+        "W-Rejected, Assurance Failed Validity Tests (Functional Group)",
+        "X-Rejected, Decryption Failed (Functional Group)",
+        "A-Accepted (Interchange)",
+        "E-Accepted With Errors (Interchange)",
+        "R-Rejected (Interchange)"
+      ]
+    }
+  ]
+}

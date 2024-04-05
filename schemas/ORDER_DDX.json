@@ -1,0 +1,82 @@
+{
+  "name": "ORDER_DDX",
+  "description": "This table will allow reporting on the associated differential diagnosis entries for each medication on an encounter. Note that this is different than ORDER_DX_MED which contains the encounter diagnosis associations.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_MED_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_MED_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the medication order (prescription) record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ASSOC_DDX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the diagnosis record associated with the medication order."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ASSOC_DDX_DESC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the free text description for the associated differential diagnosis."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ASSOC_DDX_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the associated differential diagnosis comment."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ASSOC_DDX_QUAL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the ID of the qualifier associated with the diagnosis."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ASSOC_DDX_CHRONI_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the associated diagnosis is chronic.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ASSOC_DDX_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the status of the associated differential diagnosis (e.g. In Progress, Final, etc.)",
+      "entries": [
+        "Final",
+        "In Progress",
+        "Ruled Out",
+        "Inconclusive"
+      ]
+    }
+  ]
+}

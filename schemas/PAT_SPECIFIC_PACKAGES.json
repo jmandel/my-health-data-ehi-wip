@@ -1,0 +1,94 @@
+{
+  "name": "PAT_SPECIFIC_PACKAGES",
+  "description": "The PAT_SPECIFIC_PACKAGES table contains information about Patient-Specific Packages. These include the Package ID, Linked Barcode, Linking User, and Link Instant of a Package-Specific Package.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PSP_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the Patient-Specific Package."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PSP_LINKED_PACKAGE_NDC_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the NDC record of the package linked to this Patient-Specific Package."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PSP_LINKED_PACKAGE_NDC_ID_NDC_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The external code for the National Drug Code (NDC). An NDC represents packages of medications."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "LINKING_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the EMP record of the user who linked the Patient-Specific Package to this patient."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "LINKING_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "LINK_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant the Patient-Specific Package was linked to this patient."
+    }
+  ]
+}

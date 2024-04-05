@@ -1,0 +1,1038 @@
+{
+  "name": "AP_CLAIM",
+  "description": "The AP_CLAIM table contains one record for each claim in the managed care system's AP Claims module.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the accounts payable claim record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "ORIG_CLAIM_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the original claim number after it is changed."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the unique category identifier of the claims processing status, such as whether it is pending, clean, denied, or void.",
+      "entries": [
+        "New",
+        "Pending",
+        "Denied",
+        "Clean",
+        "Void"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "AP_STS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the unique category identifier of the claim's AP status or NULL if the claim has not been sent to AP.",
+      "entries": [
+        "Released to Accounts Payable",
+        "Batched for Payment",
+        "EOB Generated"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "DATE_RECEIVED",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the accounts payable claim was received."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ADMISSION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which the member was admitted to the place of service."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ADMISSION_HOUR",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The hour at which the member was admitted to the place of service."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ENTRY_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the accounts payable claim was entered into Epic."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "SERV_AREA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID number of the service area associated with this accounts payable claim."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "NUM_PROC",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of procedures on the accounts payable claim record."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "TOT_BILLED_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total billed amount on the claim."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "TOT_PAT_PORTION",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total patient portion on the claim."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "TOT_NET_PAYABLE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total net payable amount on the claim."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the identifier of the coverage used to process the claim."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "SERV_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the service start date for the first service line on the claim."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "ASSOC_SPEC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the specialty associated with the accounts payable claim record."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PAT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value representing the member's discharge disposition/status as of the service end date."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the unique identifier of the provider associated with the claim. This provider can be set through manual workflows or is matched to during claim load/processing."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "ADMISSION_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value representing the origin or source of admission."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "EXTERNAL_CLAIM_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The external claim identification number. Note: This is not used for linking purposes."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "PAY_BY_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date by which the accounts payable claim should be paid."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "NETWORK_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the network associated with this accounts payable claim record."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "NETWORK_ID_NETWORK_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the network."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "METH_TO_PAY_CLM_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the category identifier of the method used to pay the claim, such as whether it was paid as primary or secondary.",
+      "entries": [
+        "Primary Coverage",
+        "Coordination of Benefits",
+        "Maintenance of Benefits",
+        "COB Savings",
+        "Preservation of Benefits",
+        "Claim-Level Coordination of Benefits",
+        "Claim-Level Maintenance of Benefits"
+      ]
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "TOT_PRIM_INS_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount already paid towards the billed amount on the claim by primary payors. This is applicable only if the claim has been submitted to your facility as the secondary payor."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "TOT_PRIM_PAT_PORT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Displays the amount the primary payors adjudicated as the patient portion. This is applicable only if the claim has been submitted to your facility as the secondary payor."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "TOT_ADJUSTMENT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total adjustment amount associated with the accounts payable claims record."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "ADMISSION_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value representing the type of admission."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "TOT_INSURANCE_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total insurance amount associated with the accounts payable claim record."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "ADMISSION_DX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID number of the admitting diagnosis on the claim."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "TOT_NET_INSURANCE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total net insurance amount remaining after deducting all applicable adjustments and other payments from the total insurance amount."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "E_CODE_ID",
+      "type": "NUMERIC",
+      "discontinued": true,
+      "description": "The ID number representing the external cause of the injury treated by procedures on the claim. This column will be deprecated in the May 2025 release. It is being replaced by column CODE_DX_ID in table EXTERNAL_CAUSES_OF_INJURY."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "TYPE_OF_BILL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of bill associated with the accounts payable claim record."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "RCVD_BY_CARRIER_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the accounts payable claim was received by the carrier."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "HCFA_UNCLEAN_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "An indication of whether the CMS claim contained errors.",
+      "entries": [
+        "Clean",
+        "Unclean"
+      ]
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "ORIG_REV_CLM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID number of the original claim related to a reversed claim."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "ADJST_CLM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID number of an adjustment claim."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "ORIG_ADJST_CLM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If a claim is an adjustment claim, this represents the ID number of the original claim being adjusted."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "REF_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the unique identifier of the referring provider for the claim, if supplied."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "TOT_U_AND_C_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total usual and customary amount for the claim."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "TOT_DISALLOW_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total disallowed amount for the claim."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "TOT_NOT_COVD_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total not covered amount for the claim."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "TOT_DEDUCTIBLE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total deductible for the claim."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "TOT_COPAY",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total copay for the claim."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "TOT_COINS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total coinsurance amount for the claim."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "TOT_PAT_TOTAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total patient portion for the claim."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "TOT_BBEN_PNLTY",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total before benefit penalty amount for the claim."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "TOT_EXD_BEN_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total exceeded benefit amount for the claim."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "TOT_ACUTE_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total acute medication amount for the claim."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "TOT_CHRONIC_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total chronic medication amount for the claim."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "TOT_PAT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total patient medication amount for the claim."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "IN_OUT_NET_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates the network level of the claim, as computed during adjudication.",
+      "entries": [
+        "In Network",
+        "Out of Network",
+        "N/A"
+      ]
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "RKP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the risk panel associated with the claim."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "RKP_ID_RISK_PANEL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the risk panel."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "CLM_LOB_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the unique identifier of the line of business associated with the claim. This is the LOB determined at adjudication."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "CLM_LOB_ID_LOB_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the line of business record."
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "WORKFLOW_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the unique category identifier of the workflow this claim was created as part of. Standard AP Claims processed through Tapestry will store 0 or NULL in this column.",
+      "entries": [
+        "AP claims",
+        "Reprice claims",
+        "Export only",
+        "Shadow claims",
+        "Externally paid claims",
+        "Externally paid claims with bucket update",
+        "Pre-adjudicated external claims",
+        "Estimate claims",
+        "Adjudicated external claims"
+      ]
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "SENSITIVITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the unique category identifier of the sensitivity applied to the claim, if any. This value is used to restrict access within Hyperspace. The values in AP_CLAIM_ANALYTICS_SENS are distinct and intended for use with reporting."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "SERVICE_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The earliest service start date among all services on the claim."
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "SERVICE_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The service end date for the claim."
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "TOT_COB_SAVING",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total Coordination of Benefits (COB) savings amount for the claim."
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "TOT_PAT_OUT_PCKT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total patient out-of-pocket amount for the claim."
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "SHADOW_RECON_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The shadow reconciliation threshold amount for the claim."
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "DRG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the Diagnosis Related Group (DRG) associated with the claim."
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "DRG_ID_DRG_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the Diagnoses Related Group name."
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "TIF_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The tax increment financing (TIF) number for the claim."
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "LIFEMAX_AMT_IN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount applied to the patient's in-network lifetime maximum buckets for this claim."
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "LIFEMAX_AMT_OUT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount applied to the patient's out-of-network lifetime maximum buckets for this claim."
+    },
+    {
+      "ordinalPosition": 69,
+      "name": "CLAIM_FORMAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates the format of the claim (CMS, UB, Rx).",
+      "entries": [
+        "CMS",
+        "UB",
+        "Rx"
+      ]
+    },
+    {
+      "ordinalPosition": 70,
+      "name": "OTHER_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the unique identifier of the other provider on the claim, if supplied."
+    },
+    {
+      "ordinalPosition": 71,
+      "name": "OPERATING_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the unique identifier of the operating provider on the claim, if supplied."
+    },
+    {
+      "ordinalPosition": 72,
+      "name": "ADJ_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The adjudication date and time of the claim."
+    },
+    {
+      "ordinalPosition": 73,
+      "name": "ATTEND_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the attending provider on the claim, if supplied."
+    },
+    {
+      "ordinalPosition": 74,
+      "name": "TOT_COB_SV_PAYOUT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total amount of Coordination of Benefits (COB) savings member payout."
+    },
+    {
+      "ordinalPosition": 75,
+      "name": "LOC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores unique identifier of the place of service associated with the claim."
+    },
+    {
+      "ordinalPosition": 76,
+      "name": "TOT_SEC_DIS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total amount of secondary discount from all the services added up."
+    },
+    {
+      "ordinalPosition": 77,
+      "name": "TOT_PRIM_FAC",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total primary factor amounts from all the services added up."
+    },
+    {
+      "ordinalPosition": 78,
+      "name": "TOT_CODE_EDIT_SAV",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total amount of code edit savings for this claim."
+    },
+    {
+      "ordinalPosition": 79,
+      "name": "INTEREST_AMT_OVRD",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This stores the override interest amount for the claim."
+    },
+    {
+      "ordinalPosition": 80,
+      "name": "RTF_EOB_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the most recently generated rich text explanation of benefits report."
+    },
+    {
+      "ordinalPosition": 81,
+      "name": "INFO_CVG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the additional coverage record associated with the accounts payable claim record for informational and reporting purposes."
+    },
+    {
+      "ordinalPosition": 82,
+      "name": "CLM_PRIM_INS_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Claim-level primary insurance amount to allocate between procedures"
+    },
+    {
+      "ordinalPosition": 83,
+      "name": "CLM_PRIM_PAT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Claim-level primary patient amount to allocate between procedures"
+    },
+    {
+      "ordinalPosition": 84,
+      "name": "STATUS_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The status date of the claim."
+    },
+    {
+      "ordinalPosition": 85,
+      "name": "PEND_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value of the pend type for this claim",
+      "entries": [
+        "External",
+        "Open",
+        "Internal"
+      ]
+    },
+    {
+      "ordinalPosition": 86,
+      "name": "CL_DEN_PEND_EXAM_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the claims examiner who applied a status of clean, deny, or pend to this claim."
+    },
+    {
+      "ordinalPosition": 87,
+      "name": "CL_DEN_PEND_EXAM_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 88,
+      "name": "CL_DEN_PEND_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date that a status of clean, deny, or pend was applied to this claim."
+    },
+    {
+      "ordinalPosition": 89,
+      "name": "VOID_EXAMINER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the user who voided this claim."
+    },
+    {
+      "ordinalPosition": 90,
+      "name": "VOID_EXAMINER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 91,
+      "name": "VOID_CHNG_DATETIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date the claim was voided."
+    },
+    {
+      "ordinalPosition": 92,
+      "name": "ACCIDENT_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of accident associated with the claim."
+    },
+    {
+      "ordinalPosition": 93,
+      "name": "ER_ENTRY_DATETIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time of entry to emergency room."
+    },
+    {
+      "ordinalPosition": 94,
+      "name": "IN_NET_ADJUD_OVRD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Category value corresponding to the in network adjudication override reason."
+    },
+    {
+      "ordinalPosition": 95,
+      "name": "DRG_PRICING_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether Diagnosis Related Groups (DRG) were used to price this claim. 'Y' indicates that DRG pricing was used, 'N' indicates that it was not.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 96,
+      "name": "WORKFLOW_PAYOR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the workflow payor ID associated with this claim."
+    },
+    {
+      "ordinalPosition": 97,
+      "name": "TOT_BILLED_ENT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total billed entered for this claim."
+    },
+    {
+      "ordinalPosition": 98,
+      "name": "TOT_ALLOWED_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total allowed amount for this claim."
+    },
+    {
+      "ordinalPosition": 99,
+      "name": "TOT_WITHHOLDING",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total withholding for this claim."
+    },
+    {
+      "ordinalPosition": 100,
+      "name": "TOT_DISCOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Total discount amount for this claim."
+    },
+    {
+      "ordinalPosition": 101,
+      "name": "ADJ_NET_PAID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Adjusted net paid for this claim."
+    },
+    {
+      "ordinalPosition": 102,
+      "name": "ADJ_PAT_PORTION",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Adjusted patient portion for this claim."
+    },
+    {
+      "ordinalPosition": 103,
+      "name": "MEM_PRIMARY_NET_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the member's primary network."
+    },
+    {
+      "ordinalPosition": 104,
+      "name": "MEM_PRIMARY_NET_ID_NETWORK_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the network."
+    },
+    {
+      "ordinalPosition": 105,
+      "name": "LIFEMAX_ETR_DATA",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The lifetime max transactions data for this claim."
+    },
+    {
+      "ordinalPosition": 106,
+      "name": "INBASKET_MESSAGE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the in basket message associated with this claim."
+    },
+    {
+      "ordinalPosition": 107,
+      "name": "STMT_COV_FROM_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Start date for statement covers."
+    },
+    {
+      "ordinalPosition": 108,
+      "name": "STMT_COV_TO_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "End date for statement covers."
+    },
+    {
+      "ordinalPosition": 109,
+      "name": "MSP_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether Medicare is listed as a secondary payor on the claim record. 'Y' indicates that Medicare is a secondary payor, 'N' indicates that it is not.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 110,
+      "name": "CLM_REPRICER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the 3rd party claim pricer"
+    },
+    {
+      "ordinalPosition": 111,
+      "name": "CLM_REPRICER_ID_RUL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the third-party pricing entity, grouper, or rule."
+    },
+    {
+      "ordinalPosition": 112,
+      "name": "COVERED_DAYS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The number of covered days on the claim."
+    },
+    {
+      "ordinalPosition": 113,
+      "name": "NONCOVERED_DAYS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The number of noncovered days on the claim."
+    },
+    {
+      "ordinalPosition": 114,
+      "name": "COINS_DAYS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The number of coinsurance days on the claim."
+    },
+    {
+      "ordinalPosition": 115,
+      "name": "LIFETIME_RESRV_DAYS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The number of lifetime reserve days for inpatient claims."
+    },
+    {
+      "ordinalPosition": 116,
+      "name": "ILL_INJ_LMP_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date of injury/illness."
+    },
+    {
+      "ordinalPosition": 117,
+      "name": "INTEREST_TO_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The to date for interest calculation for the claim. Used when the associated check which was returned is voided."
+    },
+    {
+      "ordinalPosition": 118,
+      "name": "DISCHRG_HR_UB92_FMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The discharge hour listed on UB claims."
+    },
+    {
+      "ordinalPosition": 119,
+      "name": "ADJUSTMENT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the user who created the adjustment for this claim."
+    },
+    {
+      "ordinalPosition": 120,
+      "name": "ADJUSTMENT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 121,
+      "name": "ADJST_CREATE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the adjustment claim was created."
+    },
+    {
+      "ordinalPosition": 122,
+      "name": "REFUNDED_FLAG_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Flag indicating if the claim has been refunded.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 123,
+      "name": "EMPY_RELATED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether patient's condition is related to employment.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 124,
+      "name": "AUTO_ACDNT_STATE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Specifies the state where the auto accident occurred."
+    },
+    {
+      "ordinalPosition": 125,
+      "name": "DISABILITY_FROM_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the disability started."
+    },
+    {
+      "ordinalPosition": 126,
+      "name": "DISABILITY_TO_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the disability ended."
+    },
+    {
+      "ordinalPosition": 127,
+      "name": "DISCHARGE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date patient was discharged."
+    },
+    {
+      "ordinalPosition": 128,
+      "name": "OUTSIDE_LAB_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicate if lab services outside the provider's office are involved."
+    },
+    {
+      "ordinalPosition": 129,
+      "name": "OUTSIDE_LAB_CHARGE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The cost of services performed at the outside lab."
+    },
+    {
+      "ordinalPosition": 130,
+      "name": "RELATED_CONDITION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Information regarding related condition.",
+      "entries": [
+        "Auto",
+        "Other Party Liability",
+        "Other Accident Related Injury",
+        "Patient Employment",
+        "Crime Victim"
+      ]
+    },
+    {
+      "ordinalPosition": 131,
+      "name": "WGT_BED_DAYS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Total weight of bed days."
+    },
+    {
+      "ordinalPosition": 132,
+      "name": "TOT_CONV_DAYS_RFL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "To store the total converted bed days on the only attached referral with bed days information in it."
+    },
+    {
+      "ordinalPosition": 133,
+      "name": "BENEFIT_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the benefit plan used to adjudicate the claim."
+    },
+    {
+      "ordinalPosition": 134,
+      "name": "PLAN_GROUP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the unique identifier of the plan group for the coverage used to pay the claim, as of adjudication."
+    },
+    {
+      "ordinalPosition": 135,
+      "name": "PLAN_GROUP_ID_PLAN_GRP_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the employer group record"
+    },
+    {
+      "ordinalPosition": 136,
+      "name": "ENTRY_INSTANT_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant when the accounts payable claim record was created."
+    }
+  ]
+}

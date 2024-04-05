@@ -1,0 +1,134 @@
+{
+  "name": "ORD_NLP_STATUS",
+  "description": "This table contains the NLP status of the order for the corresponding model.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "NLP_MODEL_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the NLP model type used as an index for items in this table.",
+      "entries": [
+        "AFM Recommendations Model",
+        "AFM Findings Model",
+        "Lung Recommendations Model",
+        "Lung-RADS Model"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RIS_NLP_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the NLP evaluation status of the order for the corresponding model.",
+      "entries": [
+        "Processing",
+        "Evaluated - No Results",
+        "Results Need Verification",
+        "Results Verified",
+        "Addended - Needs Confirmation",
+        "Error",
+        "Results Verified (Modified)"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "NLP_VERIFYING_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user (EMP) that most recently verified this order's NLP-extracted results for this row's NLP model."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "NLP_VERIFYING_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "NLP_VERIFIED_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant that the user (EMP) in I ORD 52387 for this row performed the verifying action."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "SLOWEST_NLP_MODIFY_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the way that an NLP model was modified. If it was modified multiple ways the slowest method is stored.",
+      "entries": [
+        "Quick Button",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "NLP_OUTCOME_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The outcome of a model generated result. Used to measure overall accuracy of NLP models.",
+      "entries": [
+        "True Positive",
+        "Positive With Modification",
+        "False Positive",
+        "True Negative",
+        "False Negative",
+        "Error"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "NLP_MODEL_VERSION",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The version of the NLP model that processed the order."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "NLP_MODEL_REVISION",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The Nebula code revision of the NLP model that processed the order."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "NLP_SERVER_REVISION",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The server code revision of the NLP model that processed the order."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "NLP_VERIFIED_LOC_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The local instant that the user (EMP) in I ORD 52387 for this row performed the verifying action."
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "IMG_COMP_STDY_CHNG",
+  "description": "This stores comparison study change amounts. It is related to table IMG_COMP_STUDIES and can be joined to using the ORDER_ID and the LINE columns.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "STUDY_CHNG_AMT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the amount of change from a comparison study. The comparison order record can be obtained by joining this table to IMG_COMP_STUDIES using the ORDER_ID and LINE columns.",
+      "entries": [
+        "No Comparison",
+        "No Significant Change",
+        "Significant Change",
+        "Not Otherwise Specified"
+      ]
+    }
+  ]
+}

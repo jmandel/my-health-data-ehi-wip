@@ -1,0 +1,62 @@
+{
+  "name": "INFERTILITY_CYCLE_LINKS",
+  "description": "The INFERTILITY_CYCLE_LINKS table contains information about patients participating in a fertility treatment cycle. \n\n\n\n\n\nThe INFERTILITY_CYCLE_LINKS table is not able to safely export all of its columns without potentially compromising the other patients that are attached to the infertility treatment cycle. We created the view V_EHI_ICF_CYCLE_PATIENTS_DATA to filter the INFERTILITY_CYCLE_LINKS data based on the extracted patient's roles (e.g., sperm donor, intended parent) on the infertility treatment cycle. See view on more information on how data is filtered.",
+  "primaryKey": [
+    {
+      "columnName": "CYCLE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CYCLE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the fertility treatment cycle record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ROLE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The role of the patient in the fertility treatment cycle.",
+      "entries": [
+        "Intended Parent",
+        "Egg Provider",
+        "Sperm Provider",
+        "Pregnancy Carrier",
+        "Mitochondrial DNA Provider"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_ANON_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient should be anonymous from other patients in this fertility treatment cycle (ex. egg donor).",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "LINKED_PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient ID of a patient involved in a fertility treatment cycle."
+    }
+  ]
+}

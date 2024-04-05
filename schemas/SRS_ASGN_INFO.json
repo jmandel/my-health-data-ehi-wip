@@ -1,0 +1,160 @@
+{
+  "name": "SRS_ASGN_INFO",
+  "description": "Table that stores series assignment related information as well as information on series answer record status.",
+  "primaryKey": [
+    {
+      "columnName": "SERIES_ANS_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SERIES_ANS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the series answer record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "RECORD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the status of the series answer record if it is not active.",
+      "entries": [
+        "Soft Deleted",
+        "Hidden",
+        "Hidden and Soft Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SERIES_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the ID of the series answer record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SERIES_ID_SERIES_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name for the questionnaire series record."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SERIES_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the contact date (DAT) for the series answer record."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SERIES_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the questionnaire series type.",
+      "entries": [
+        "Patient Entered Questionnaire Series"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "SERIES_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the status of the series answer record if it is active.",
+      "entries": [
+        "Active",
+        "Completed",
+        "Disabled - Provider",
+        "Disabled - Patient Opted Out",
+        "Disabled - Found New Treatment",
+        "Disabled - Batch Job",
+        "Disabled - Patient Merge",
+        "Disabled - Contact Mover",
+        "Disabled - Procedure Pass",
+        "Disabled - Patient Expired",
+        "Disabled - Research Activity Retraction",
+        "Pending Enable"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ORDERED_BY_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If a series is ordered through Order Entry or through a BestPractice Advisory, this column stores who ordered it for future message routing purposes."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ORDERED_BY_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "SERIES_PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "To store ID (EPT id) of the patient who is answering this questionnaire series."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "HQW_CREATION_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column stores the date the series answer record was created."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "INIT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the contact serial number (CSN) of the encounter where this series is assigned to the user. This item will be empty if the series was assigned from Reporting Workbench."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PARENT_SRS_ANS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the ID of the parent questionnaire series answer record."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "PREV_SRS_ANS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the ID of the previous anchor event questionnaire series answer record."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "LINKED_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the encounter this questionnaire series is linked to. If the series is linked to an encounter, then the contact date (DAT) of the encounter will be used for evaluating anchor event rules and extensions."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "LINKED_PROC_PASS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the ID of the Procedure Pass linked to this series. This will only be populated if the series is assigned using the Procedure Pass workflow."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "ASSIGNING_ORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the order that assigned this questionnaire series."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "ENROLL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the ID of the linked patient-study association if it is linked to an association."
+    }
+  ]
+}

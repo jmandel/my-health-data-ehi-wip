@@ -1,0 +1,86 @@
+{
+  "name": "PAT_PREF_SERVICE_PROV",
+  "description": "This table includes information about the service providers that are marked as patient preferred in Clinical Case Management's Continued Care and Services Coordination (CCSC) tool.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the service provider the patient has indicated they prefer for an encounter for the coordination type specified (in I EPT 97204). This item is populated for provider type (SER) service providers."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PROV_ADDR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The address ID of the service provider the patient has indicated they prefer for an encounter for the coordination type specified (in I EPT 97204). This item is populated for provider type (SER) service providers."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "LOC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the service provider the patient has indicated they prefer for an encounter for the coordination type specified (in I EPT 97204). This item is populated for location (EAF) type service providers."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Department ID of service provider the patient has indicated they prefer for an encounter, for the coordination type specified in the Pat Preferred Service Provider - Coordination Type (I EPT 97204)."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "DP_COORD_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Coordination type of the service provider referenced in Pat Preferred Service Provider - SER ID (I EPT 97200), Pat Preferred Service Provider - EAF ID (I EPT 97202), or Pat Preferred Service Provider - EAF ID (I EPT 97203) that patient has indicated they prefer for an encounter.",
+      "entries": [
+        "Destination",
+        "Durable Medical Equipment",
+        "Dialysis/Infusion",
+        "Home Medical Care",
+        "Community Resources"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "name": "V_EHI_FLO_MEAS_VALUE",
+  "description": "This view converts the MEAS_VALUE column in IP_FLWSHT_MEAS into an external-facing format for EHI Export. This table should be used in tandem with IP_FLWSHT_MEAS, using the FSD_ID and LINE columns to join the two together.",
+  "primaryKey": [
+    {
+      "columnName": "FSD_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "FSD_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID for the flowsheet data record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line count for the item."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "MEAS_VALUE_EXTERNAL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The actual value of the flowsheet reading. This value is converted to an external format, depending on the value type (I FLO 825). For category values, this column will contain the category title. For date values, this column will contain a date string in Mon D YYYY HH:MMAM/PM format (e.g., Jan 1 2015 12:01AM). For time values, this column will contain a timestamp string in HH24:MM:SS format (e.g., 15:05:31 for 3:05 PM). For all other value types, the value matches what is stored in IP_FLWSHT_MEAS__MEAS_VALUE."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "UNITS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The units associated with the flowsheet value. For temperature flowsheet rows, this column contains '�F'. For height flowsheet rows, this column contains 'inches'. For weight flowsheet rows, this column contains 'ounces'. Otherwise, this column contains the unit value (I FLO 835) for the associated flowsheet row."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "VALUE_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of data in the record (i.e. numeric, string, temperature, etc.).",
+      "entries": [
+        "Numeric Type",
+        "String Type",
+        "Category Type",
+        "Blood Pressure",
+        "Patient Weight",
+        "Patient Height",
+        "Temperature",
+        "Custom List",
+        "Date",
+        "Time",
+        "Weight",
+        "Height",
+        "Dose",
+        "Rate",
+        "Concentration",
+        "Line/Drain/Airway Link",
+        "MAR Action",
+        "Dosing Parameter",
+        "Networked",
+        "Image"
+      ]
+    }
+  ]
+}

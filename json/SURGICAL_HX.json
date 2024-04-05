@@ -1,0 +1,164 @@
+{
+  "$meta": {
+    "schemas": {
+      "SURGICAL_HX": {
+        "name": "SURGICAL_HX",
+        "description": "The SURGICAL_HX table contains data from medical history contacts entered in clinical system patient encounters. Since one patient encounter may contain multiple medical history contacts, each contact is uniquely identified by a combination of the patient encounter serial number and a line number.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ENC_CSN_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ENC_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "This is a numeric representation of the date of this encounter in your system. The integer portion of the number specifies the date of the encounter. The digits after the decimal point indicate multiple visits on one day."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number of the surgical history contact within the encounter."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PROC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the procedure record associated with the surgical history contact. Note: This is NOT the CPT(R) code. It is an internal identifier that is typically not visible to a user."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The contact date of the encounter associated with this surgical history contact. Note: There may be multiple encounters on the same calendar date."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "A unique serial number for this encounter. This number is unique across all patients and encounters in the system."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "SURGICAL_HX_SRC_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This category number represents the source of entry, the person providing the information, for the surgical history data.",
+            "entries": [
+              "Provider",
+              "Patient",
+              "Parent",
+              "Legal Guardian",
+              "Proxy User"
+            ]
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "HX_LNK_ENC_CSN",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The Contact Serial Number of the encounter in which the history was created/edited. If the history was created/edited outside of the context of an encounter, then this column will be blank."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "SURGICAL_HX",
+            "target": "PAT_ENC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "SURGICAL_HX",
+            "target": "SOCIAL_HX",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "SURGICAL_HX": [
+    {
+      "PAT_ENC_DATE_REAL": 66350.01,
+      "LINE": 1,
+      "PROC_ID": 42500,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "PAT_ENC_CSN_ID": 958134730,
+      "SURGICAL_HX_SRC_C_NAME": "Provider",
+      "HX_LNK_ENC_CSN": 948004323,
+      "$meta": {
+        "type": "SURGICAL_HX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 64869.02,
+      "LINE": 1,
+      "PROC_ID": 42500,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "PAT_ENC_CSN_ID": 724623985,
+      "SURGICAL_HX_SRC_C_NAME": "Provider",
+      "HX_LNK_ENC_CSN": 720803470,
+      "$meta": {
+        "type": "SURGICAL_HX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66745.01,
+      "LINE": 1,
+      "PROC_ID": 42500,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "PAT_ENC_CSN_ID": 1028739468,
+      "SURGICAL_HX_SRC_C_NAME": "Provider",
+      "HX_LNK_ENC_CSN": 991225117,
+      "$meta": {
+        "type": "SURGICAL_HX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66535.02,
+      "LINE": 1,
+      "PROC_ID": 42500,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "PAT_ENC_CSN_ID": 991221485,
+      "SURGICAL_HX_SRC_C_NAME": "Provider",
+      "HX_LNK_ENC_CSN": 958148810,
+      "$meta": {
+        "type": "SURGICAL_HX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 65387.01,
+      "LINE": 1,
+      "PROC_ID": 42500,
+      "CONTACT_DATE": "2020-01-09 00:00:00",
+      "PAT_ENC_CSN_ID": 802802103,
+      "SURGICAL_HX_SRC_C_NAME": "Provider",
+      "HX_LNK_ENC_CSN": 799951565,
+      "$meta": {
+        "type": "SURGICAL_HX"
+      }
+    }
+  ]
+}

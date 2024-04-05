@@ -1,0 +1,72 @@
+{
+  "name": "HSP_CLAIM_APC_GRP_DISP",
+  "description": "Table that holds the display data for each grouping and claim line tuple when Ambulatory Payment Classification (APC) grouping is run through Epic for a claim.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_PRINT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_PRINT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the claim print record associated with a single hospital account/bucket."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "APC_DISP_CLAIM_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column stores the claim line number this display line for ambulatory payment classification (APC) grouping is aimed at."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "APC_DISP_TEXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The display text for the current display line in the detail display for APC grouping by Epic."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "APC_DISP_VALUE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The dollar amount (or other value) for the current display line in the detail display for APC grouping by Epic."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "APC_DISP_FORMULA",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The formula text for the current display line in the detail display for APC grouping by Epic."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "APC_DISP_PMT_CLASS_GRP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the grouping classification this display line is in reference to. Used to handle multiple sets of grouping results.",
+      "entries": [
+        "Medicare PPS",
+        "Tricare PPS",
+        "NY Medicaid EPS",
+        "Medicare SNF PPS PDPM",
+        "External System"
+      ]
+    }
+  ]
+}

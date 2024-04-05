@@ -1,0 +1,100 @@
+{
+  "name": "DEMOG_AUTH_INFO",
+  "description": "Demographic authentication tokens associated with specific patients. Active tokens allow users to login to MyChart without a normal account through unique URLs.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "TOKEN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique token associating a demographic authentication URL with a patient."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "GENERATION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date a specific token was created."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EXPIRATION_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant a specific token will expire."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ASSOCIATED_MYPT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the MyChart account ID intended to log in with a specific token."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "FAILED_LOGIN_CNT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the count of failed consecutive logins for a specific token. If this exceeds the max allowed failed logins, the token will no longer be valid."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DEMOG_AUTH_WKFLW_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the type of workflow a specific token was created for.",
+      "entries": [
+        "eCheck-In",
+        "Scheduling Ticket Without Account",
+        "Appt Cancel Without Account",
+        "Quick Pay",
+        "Billing Details",
+        "Auto Pay",
+        "Bill Pay",
+        "Scheduling Ticket",
+        "Financial Assistance",
+        "Communication Preferences for Guarantors",
+        "Billing Customer Service",
+        "Prepayment",
+        "Communication Preferences for Patients",
+        "E-Sign Documents",
+        "Appointment Details and Updates Without Account",
+        "Appointment Details and Updates",
+        "Estimate Details",
+        "Guest eCheck-In",
+        "Locationless Self Arrival",
+        "Guest Self Arrival",
+        "Video Visit",
+        "Research Recruitment",
+        "Visits List",
+        "Messaging",
+        "Unverified Proxy Video Visit"
+      ]
+    }
+  ]
+}

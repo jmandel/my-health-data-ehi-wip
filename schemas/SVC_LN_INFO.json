@@ -1,0 +1,632 @@
+{
+  "name": "SVC_LN_INFO",
+  "description": "All values associated with a claim are stored in the Claim External Value record.  The SVC_LN_INFO table holds information about the service lines on the claim.",
+  "primaryKey": [
+    {
+      "columnName": "RECORD_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the claim record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LN_FROM_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item holds the earliest service date represented on the line."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "LN_TO_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item holds the latest service date represented on the line. It will not be populated if the line only represents a single date."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "LN_PROC_QUAL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds a code identifying the type of procedure code reported on the line."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "LN_PROC_CD",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the procedure code for the line."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "LN_PROC_DESC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds a procedure specific description for the line."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "LN_PROC_MOD",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds a comma delimited list of modifiers for the procedure on the line."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "LN_QTY_QUAL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds a code identifying the unit in which the quantity is reported."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "LN_QTY",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item holds the quantity for the service line."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "LN_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item holds the billed amount for the line.  For Uniform Billing (UB) claims, this amount will include both covered and non-covered amounts."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "LN_REV_CD",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the revenue code for the service line."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "LN_REV_CD_DESC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds a revenue code specific description for the line."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "LN_RATE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item holds the daily rate for accommodation revenue code lines."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "LN_NON_CVD_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item holds the non-covered amount for the line."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "LN_POS_CD",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the place of service code identifying where the service on the line was performed."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "LN_DX_PTR",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds a comma delimited list of diagnosis pointers. Each piece of the string is a line number from the claim diagnosis table."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "LN_EMERG_IND",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item identifies the service on the line as an emergency service."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "LN_EPSDT_IND",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item identifies the service on the line as an Early & Periodic Screening, Diagnosis, and Treatment (EPSDT) service."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "LN_FAM_PLAN_IND",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item identifies the service on the line as a family planning service."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "LN_COPAY_STAT_CD",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item identifies when the patient was exempt from a copay for the service on the line."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "LN_AMB_PAT_CNT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item holds the number of patients transported in the ambulance when the line represents an ambulance service."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "LN_MAMM_CERT_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the mammography certification number for the line."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "LN_CLIA_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the Clinical Laboratory Improvement Amendment (CLIA) number for the line."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "LN_ORAL_CAV_CD",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds a comma delimited list of oral cavity codes for the line."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "LN_DENT_PROSTHESIS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds a code to indicate the initial placement or replacement of a dental prosthesis, crown, or inlay."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "LN_DME_CMN_CD",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds a code describing how the certificate of medical necessity (CMN) for the line was transmitted to the DMERC."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "LN_DME_CERT_TYP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item identifies the type of certification (initial, renewal, or revised) applies to the line."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "LN_DME_DURATION",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item holds the number of months the durable medical equipment (DME) supplies will be needed."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "LN_DME_RECERT_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item holds the new durable medical equipment (DME) certification date when the certification type is renewed or revised."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "LN_CME_BEG_THRPY_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item holds the date that therapy requiring the durable medical equipment (DME) began."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "LN_DME_COND_IND",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds a comma delimited list of durable medical equipment (DME) condition codes for the service line."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "LN_CNTRCT_TYP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds a code representing the type of contract between the provider and the payer used for the service line."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "LN_CNTRCT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item holds the contract amount for the line."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "LN_CNTRCT_PCT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item holds the contract percentage for the line."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "LN_CNTRCT_CD",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds a code representing the line."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "LN_CNTRCT_DISCNT_P",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item holds the discount percentage for the line."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "LN_CNTRCT_VERS_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item identifies the version of the contract used for the line."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "LN_NDC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the National Drug Code (NDC) for the service line."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "LN_NDC_UNIT_QTY",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item holds the quantity associated with the National Drug Code (NDC), in terms of the units reported with the NDC."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "LN_NDC_UNIT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the units associated with the National Drug Code (NDC)."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "LN_RX_NUM_QUAL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds a code distinguishing prescription numbers from sequence numbers used to represent compound drugs."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "LN_RX_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the prescription number for the line."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "LN_NOTE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds a line level note."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "LN_REND_PROV_TYP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates whether the rendering provider on the line is a person or a non-person."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "LN_REND_NAM_LAST",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the rendering provider's last name (if a person) or the organization name (if a non-person)."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "LN_REND_NAM_FIRST",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the rendering provider's first name. It is only populated when the provider is a person."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "LN_REND_NAM_MID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the rendering provider's middle name. It is only populated when the provider is a person."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "LN_REND_NAM_SUF",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the suffix to the rendering provider's name (Jr, III, etc). It is only populated when the provider is a person."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "LN_REND_NPI",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the rendering provider's National Provider Identifier (NPI)."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "LN_REND_TAXONOMY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the rendering provider's taxonomy code."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "LN_SVC_FAC_NAM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the name of the external location where the services were performed."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "LN_SVC_FAC_NPI",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the National Provider Identifier (NPI) of the external location where the services were performed."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "LN_SVC_FAC_ADDR_1",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the first line of the external location street address."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "LN_SVC_FAC_ADDR_2",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the second line of the external location street address."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "LN_SVC_FAC_CITY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the external location's city."
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "LN_SVC_FAC_STATE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the external location's state."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "LN_SVC_FAC_ZIP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the external location's ZIP code."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "LN_SVC_FAC_CNTRY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the external location's country. It is only populated if the address is outside the United States."
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "LN_SVC_FAC_CNTRY_SU",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the external location's country subdivision (state, province, etc). It is only populated if the address is outside the United States."
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "LN_SUP_NAM_LAST",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the supervising provider's last name."
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "LN_SUP_NAM_FIRST",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the supervising provider's first name."
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "LN_SUP_NAM_MID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the supervising provider's middle name."
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "LN_SUP_NAM_SUF",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the suffix to the supervising provider's name (Jr, III, etc)."
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "LN_SUP_NPI",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the supervising provider's National Provider Identifier (NPI)."
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "LN_ORD_NAM_LAST",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the ordering provider's last name."
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "LN_ORD_NAM_FIRST",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the ordering provider's first name."
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "LN_ORD_NAM_MID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the ordering provider's middle name."
+    },
+    {
+      "ordinalPosition": 69,
+      "name": "LN_ORD_NAM_SUF",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the suffix to the ordering provider's name (Jr, III, etc)."
+    },
+    {
+      "ordinalPosition": 70,
+      "name": "LN_ORD_NPI",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the ordering provider's National Provider Identifier (NPI)."
+    },
+    {
+      "ordinalPosition": 71,
+      "name": "LN_ORD_ADDR_1",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the first line of the ordering provider's street address."
+    },
+    {
+      "ordinalPosition": 72,
+      "name": "LN_ORD_ADDR_2",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the second line of the ordering provider's street address."
+    },
+    {
+      "ordinalPosition": 73,
+      "name": "LN_ORD_CITY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the ordering provider's city."
+    },
+    {
+      "ordinalPosition": 74,
+      "name": "LN_ORD_STATE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the ordering provider's state."
+    },
+    {
+      "ordinalPosition": 75,
+      "name": "LN_ORD_ZIP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the ordering provider's ZIP code."
+    },
+    {
+      "ordinalPosition": 76,
+      "name": "LN_ORD_CNTRY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the ordering provider's country. It is only populated if the address is outside the United States."
+    },
+    {
+      "ordinalPosition": 77,
+      "name": "LN_ORD_CNTRY_SUB",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the ordering provider's country subdivision (state, province, etc). It is only populated if the address is outside the United States."
+    },
+    {
+      "ordinalPosition": 78,
+      "name": "LN_PURCH_PROV_TYP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates whether the purchased service provider on the line is a person or a non-person."
+    },
+    {
+      "ordinalPosition": 79,
+      "name": "LN_PURCH_NPI",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the purchased service provider's National Provider Identifier (NPI)."
+    },
+    {
+      "ordinalPosition": 80,
+      "name": "LN_ASST_TYP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates whether the assistant dental surgeon on the line is a person or a non-person."
+    },
+    {
+      "ordinalPosition": 81,
+      "name": "LN_ASST_NAM_LAST",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the assistant dental surgeon's last name (if a person) or the organization name (if a non-person)."
+    },
+    {
+      "ordinalPosition": 82,
+      "name": "LN_ASST_NAM_FIRST",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the assistant dental surgeon's first name. It is only populated when the provider is a person."
+    },
+    {
+      "ordinalPosition": 83,
+      "name": "LN_ASST_NAM_MID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the assistant dental surgeon's middle name. It is only populated when the provider is a person."
+    },
+    {
+      "ordinalPosition": 84,
+      "name": "LN_ASST_NAM_SUF",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the suffix to the assistant dental surgeon's name (Jr, III, etc). It is only populated when the provider is a person."
+    },
+    {
+      "ordinalPosition": 85,
+      "name": "LN_ASST_NPI",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the assistant dental surgeon's National Provider Identifier (NPI)."
+    },
+    {
+      "ordinalPosition": 86,
+      "name": "LN_ASST_TAXONOMY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the assistant dental surgeon's taxonomy code."
+    },
+    {
+      "ordinalPosition": 87,
+      "name": "LN_DOC_TYP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds a code indicating the type of supporting document included with the service line."
+    },
+    {
+      "ordinalPosition": 88,
+      "name": "LN_DOC_FORM_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item identifies the specific document. For example, this can identify the version number of a questionnaire so that the payer can correctly interpret the responses."
+    }
+  ]
+}

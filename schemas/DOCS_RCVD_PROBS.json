@@ -1,0 +1,394 @@
+{
+  "name": "DOCS_RCVD_PROBS",
+  "description": "This table stores problems received from outside sources.",
+  "primaryKey": [
+    {
+      "columnName": "DOCUMENT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "DOCUMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the Received Document record ID."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PROB_REF_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the unique reference identifier associated with the problem."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PROB_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the problem name sent by the external source."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PROB_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the Diagnosis record identifier that maps to the problem."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PROB_DAT_NOT_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item stores the problem noted date."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PROB_DAT_RSLV_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item stores the problem resolved date."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PROB_PRIORITY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the priority of the problem."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PROB_PRIORITY_ID_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the mapped problem priority category ID."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PROB_IS_CHRONIC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is set if the problem is chronic.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PROB_STATUS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the problem status."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "PROB_STATUS_ID_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the mapped problem status category value.",
+      "entries": [
+        "Active",
+        "Resolved",
+        "Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "PROB_SRC_LPL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the ID of the source problem."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "PROB_TYP_OF_CHNG_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the type of change associated with the problem.",
+      "entries": [
+        "Receive",
+        "Edit",
+        "Delete"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PROB_SRC_DXR_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item will store the contact serial number of the received document record that owns the instance of this problem."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "PROB_OVRD_LPL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the record identifier of the local problem that this external problem should be grouped with."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PROB_COMMENTS_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the identifier of the Notes (HNO) record that stores problem comments."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "PROB_LAST_UPD_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item stores the date and time when the problem was last updated by the external system."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "PROB_PT_SRC_APP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If this problem is a patient-entered problem (i.e. Received Documents type = 25), this item stores the application which was used to edit the problem for the contact (e.g. MyChart or Welcome). If blank, this is assumed to be MyChart.",
+      "entries": [
+        "MyChart",
+        "Welcome"
+      ]
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "PROB_DT_NOTED_NF_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the nullFlavor value from the effectiveTime low node in a received CDA document.",
+      "entries": [
+        "No Information",
+        "Invalid",
+        "Derived",
+        "Other",
+        "Negative infinity",
+        "Positive infinity",
+        "Un-encoded",
+        "Masked",
+        "Not applicable",
+        "Unknown",
+        "Asked but unknown",
+        "Temporarily unavailable",
+        "Not asked",
+        "Sufficient quantity",
+        "Trace",
+        "Not present",
+        "User Selected"
+      ]
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "PROB_DT_RESOLV_NF_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the nullFlavor value from the effectiveTime high node in a received CDA document."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "PROB_STATE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the value from the statusCode node for a problem entry in a received CDA document.",
+      "entries": [
+        "Other",
+        "Normal",
+        "Aborted",
+        "Active",
+        "Cancelled",
+        "Completed",
+        "Held",
+        "New",
+        "Suspended",
+        "Nullified",
+        "Obsolete"
+      ]
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "PROB_STATUS_ENTRY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the value from the status entryRelationship node in a received CDA document. This item itself is not the status of the problem.",
+      "entries": [
+        "Active",
+        "Inactive",
+        "Resolved"
+      ]
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "PROB_HIST_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The item indicates whether the problem is current or historic.",
+      "entries": [
+        "Current",
+        "Historical",
+        "Inactive",
+        "Discontinued",
+        "Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "PROB_HIST_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item stores the date that the historical status for this problem is valid through. After this date, the historical status needs to be rechecked."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "PROB_SRC_WPR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the ID of the MyChart user who edited the problem for the contact."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "PROB_EVENT_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the ID of the event that is associated with a problem. In cases where there are multiple encounters that link to a problem, the earliest encounter is represented here."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "PROB_DUP_LPL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the Problem List ID of an internal problem that is a duplicate of this row in the Received Document."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "PROB_PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the contact serial number of the encounter that the problem was added on"
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "PROB_DX_LATERALITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The laterality category ID for the problem.",
+      "entries": [
+        "Side unknown",
+        "Left",
+        "Right",
+        "Bilateral",
+        "Never",
+        "Possible",
+        "Always",
+        "Not determined"
+      ]
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "PROB_ANATOMICAL_LOC_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The anatomical location code of the problem."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "PROB_ANATOMICAL_LOC_DISP_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The anatomical location display name of the problem."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "PROB_OVERVIEW_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the Note for the overview note of this problem."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "PROB_COMMENTS_CHECKSUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the checksum of the Overview note and most recent Assessment and Plan Note along with the creation instant of the most recent Assessment and Plan Note in UTC and the Author's first and last name of the Assessment and Plan note. The format of the data is \"checksum C127 instant C127 first C127 last\". C127 is character 127. There are no spaces between the data elements."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "PROB_FILTER_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the reason why an external problem should be filtered from the composite record",
+      "entries": [
+        "Claim Derivation: Procedure Code Inclusion/Exclusion List",
+        "Claim Derivation: Missing Provider",
+        "Claim Derivation: Sensitive Diagnosis",
+        "Claim Derivation: Missing Procedure Start Date",
+        "Claim Derivation: Excluded Procedure Modifier",
+        "Source Organization Unknown",
+        "Source Organization Mismatch",
+        "Source Organization Is Self",
+        "Clinical Note Type Exclusion List",
+        "Clinical Note Missing Service Instant",
+        "Clinical Note Missing Last Filed Instant",
+        "Clinical Note Missing Author Name",
+        "Dispense Cancellation",
+        "Same Day as Internal Encounter",
+        "Missing or Invalid Binary URL",
+        "Filtered or Missing Source Note",
+        "DocumentReference Status not Current",
+        "Claim Derivation: Excluded Linked Diagnoses",
+        "Claim Derivation: Missing Encounter Start Date",
+        "Entered In Error",
+        "FHIR resource contained an invalid category",
+        "Condition verification status is no longer confirmed",
+        "Condition is no longer valid for this patient due to age or sex",
+        "FHIR resource has an invalid start date",
+        "Encounter FHIR resource is missing the type element",
+        "FHIR resource is missing the status element",
+        "Encounter FHIR resource is missing the class element",
+        "Encounter FHIR resource contained an unrecognized status code",
+        "Encounter FHIR resource contained a status code for a future encounter",
+        "Encounter FHIR resource contained a class code for a future encounter",
+        "FHIR resource has a future start date",
+        "FHIR resource does not have a status of completed",
+        "FHIR resource is missing the code element",
+        "Diagnosis is missing a link to an encounter",
+        "FHIR resource contains a reference to encounter not in the system",
+        "FHIR resource contained a patient reference not matching the searched for patient",
+        "Immunization FHIR Resource is missing the vaccineCode element or did not contain a CVX code",
+        "FHIR Resource is missing an effective date/time",
+        "FHIR resource contained an invalid status",
+        "Observation FHIR resource is linked to a filtered Condition FHIR resource",
+        "SDOH Assessment contains no questions"
+      ]
+    }
+  ]
+}

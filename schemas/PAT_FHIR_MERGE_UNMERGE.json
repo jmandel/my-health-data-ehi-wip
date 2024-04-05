@@ -1,0 +1,70 @@
+{
+  "name": "PAT_FHIR_MERGE_UNMERGE",
+  "description": "This table contains merge/unmerge info received via FHIR from another organization.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ORG_IDENTIFIER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for an organization that sent merge/unmerge information for the patient."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SRC_PAT_FHIR_IDENTIFIER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Other organization's original source patient FHIR ID."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "MERGE_UNMERGE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Other organization's merge/unmerge event instant for this patient."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "MERGE_ACTION_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Other organization's merge/unmerge action type for this patient.",
+      "entries": [
+        "Merge",
+        "Unmerge"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "MERGE_UNMERGE_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Other organization's merge/unmerge event instant for this patient in local time."
+    }
+  ]
+}

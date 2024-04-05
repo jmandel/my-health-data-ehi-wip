@@ -1,0 +1,188 @@
+{
+  "name": "CL_BEV_ALL",
+  "description": "This table holds the no-add, single-response items from the Bed Events (BEV) master file.",
+  "primaryKey": [
+    {
+      "columnName": "RECORD_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the bed event record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "EVENT_TYPE_C",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The bed event type category number for this bed event.",
+      "entries": [
+        "Environmental Services",
+        "Bed Blocking",
+        "Bed Ahead",
+        "Bed Type"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "EVENT_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The bed event source category number for this bed event.",
+      "entries": [
+        "Discharge",
+        "Transfer",
+        "Ad-Hoc Request",
+        "Maintenance Cleaning",
+        "Leave of Absence",
+        "Auto Creation by Scheduling Non-Bed Clean"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "BED_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the bed that this bed event pertains to."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "BED_ID_BED_LABEL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the bed."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EAF_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the location containing the bed that this bed event pertains to."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PRIORITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The priority category number for the bed event.",
+      "entries": [
+        "Stat",
+        "Next",
+        "Normal"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DEP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the department containing the bed that this bed event pertains to."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "EPT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient that was associated with this bed event."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "EPT_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number of the patient encounter that was associated with this bed event."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "REASN_BED_NT_ASGN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason not assigned category number for the bed event (if applicable). This item is cleared when the bed is assigned for cleaning.",
+      "entries": [
+        "CMJ test"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "RECORD_CREATION_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when this record was created."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "CANCEL_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user record for the user who canceled this bed event. This column is only populated for events that have been canceled."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "CANCEL_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "CANCEL_EVENT_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant when the bed event was canceled. This column is only populated for events that have been canceled."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "ADHOC_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user record for the user who created this bed event. This column is only populated for cleaning requests that weren't created automatically."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "ADHOC_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "LINKED_EVENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the Admission, Transfer, Discharge, or Leave of Absence (ADT) event that is associated with this bed event."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "BED_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item tracks the bed type for the bed associated with the bed event record.",
+      "entries": [
+        "Empty",
+        "Standard",
+        "Crib",
+        "Telemetry",
+        "Bariatric"
+      ]
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "PREV_OUT_EVENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the previous outgoing event of type Discharge, Transfer Out or LOA Out. If the previous event on the bed is of type incoming (Admission, Transfer In, LOA Return) instead of an outgoing type, then this item will be empty."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "NEXT_IN_EVENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the next incoming event of type Admission, Transfer In, or LOA Return. If the next event on the bed is of type outgoing (Discharge, Transfer Out, LOA Out) instead of an incoming type, then this item will be empty."
+    }
+  ]
+}

@@ -1,0 +1,554 @@
+{
+  "name": "ORDER_PROC_3",
+  "description": "The ORDER_PROC_3 table enables you to report on the procedures ordered in the clinical system. This procedure table has the same basic structure as ORDER_PROC, but was created as a third table to prevent ORDER_PROC_2 from getting any larger.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "MAMMO_OUTCOME_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the outcome (e.g. FP/FN/TP/FN/etc) for a mammography study. This column is used to link to the ZC_MAMMO_OUTCOME table.",
+      "linksTo": "ZC_MAMMO_OUTCOME",
+      "entries": [
+        "True Negative",
+        "False Negative",
+        "True Positive",
+        "False Positive 1",
+        "False Positive 2",
+        "False Positive 1 & 2",
+        "False Positive 2 & 3",
+        "False Positive 1 & 2 & 3",
+        "N/A"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "OLD_RAD_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This stores the category ID for the imaging study status (e.g. technician ended the exam, reading physician finalized the exam) before the order was canceled. This will only be populated for canceled imaging orders. This column is used to link to the ZC_RADIOLOGY_STS table.",
+      "linksTo": "ZC_RADIOLOGY_STS",
+      "entries": [
+        "Ordered",
+        "No Show",
+        "Scheduled",
+        "Arrived",
+        "Exam Begun",
+        "Procedure Started",
+        "Discontinued",
+        "Procedure Finished",
+        "Exam Ended",
+        "----- BEGIN READING PALETTE STATUSES -----",
+        "Tech Complete",
+        "Tech Revise",
+        "Resident Revise",
+        "Saved",
+        "Queued In Trans",
+        "In Transcription",
+        "Incomplete Transcription",
+        "Transcribed",
+        "Wet Read",
+        "Queued Prelim",
+        "Preliminary",
+        "Queued Needs Review",
+        "Needs Review",
+        "Revised",
+        "Queued Final",
+        "Final",
+        "Cadence Non-Imaging Order"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "TRANSCRIPTIONIST",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The transcriptionist of an external order result coming through the transcription interface."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ORDERING_MODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This indicates whether an order is an inpatient or outpatient order. Note that Outpatient orders can be placed from an Inpatient encounter as discharge orders. This column might be blank for Outpatient orders placed prior to the creation of the IP module. This column is used to link to the ZC_ORDERING_MODE table.",
+      "linksTo": "ZC_ORDERING_MODE",
+      "entries": [
+        "Outpatient",
+        "Inpatient"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PROV_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The provider status category number for the order at the time of the extract. This item reflects the providers' viewed status of the order result message.  The amount, frequency and type of data stored in this item depends on the programming point records entered into the results message type definition in use at each facility. This column is used to link to the ZC_PROV_STATUS table.",
+      "linksTo": "ZC_PROV_STATUS",
+      "entries": [
+        "Ordered",
+        "Open",
+        "Reviewed",
+        "Accepted w/o review"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "RESULT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The result type category number for the order, if noted. A null value indicates that it is normal order results. This column is used to link to the ZC_ORD_RESULT_TYPE table.",
+      "linksTo": "ZC_ORD_RESULT_TYPE",
+      "entries": [
+        "Table",
+        "Text",
+        "Scan",
+        "Voice"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "RFL_PRIORITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The priority level category number of a referral order, which is used to specify whether a referral order is routine, urgent, emergency or elective. This column is used to link to the ZC_RFL_PRIORITY table.",
+      "linksTo": "ZC_RFL_PRIORITY",
+      "entries": [
+        "Routine",
+        "Urgent",
+        "Emergency",
+        "Elective",
+        "Two Week Wait",
+        "See Details"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "REFLEX_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The order ID from which this reflex order was created."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ORD_TRANS_METHOD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the method of transmission for a given order.  It should only be set from a property within an order transmittal rule.",
+      "entries": [
+        "Printed",
+        "Faxed",
+        "E-Prescribed",
+        "Mail Ordered",
+        "Phoned In",
+        "OTC",
+        "Vended",
+        "Internal Pharmacy"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "NUM_SIG_REQ",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of physician signatures required to move the study status to final within the procedural applications."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "DURATION",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Duration for this procedure."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "INTERVENTION",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Intervention for this procedure."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "SIGN_ACTION_PEND_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Sign action for pended order.",
+      "entries": [
+        "Sign",
+        "Sign & Hold"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "STAT_COMP_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the user who marked an inpatient procedure as 'Complete'"
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "STAT_COMP_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "STAT_COMP_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The time and date that an inpatient procedure was marked as 'Complete'"
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "IS_EXT_READ_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates whether this order is for an external read of an imaging study. A null value should be assumed to be No.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PENDDC_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Status of an order if the order is pending discontinue.",
+      "entries": [
+        "D/C Accepted",
+        "Pending D/C",
+        "D/C Rejected"
+      ]
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "AUTOINTK_COMPL_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains whether an auto-intake has been completed for the order."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "RESULT_LOCATION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates which order item the result is stored.",
+      "entries": [
+        "Normal result entry",
+        "Entered in narrative"
+      ]
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "STAND_EOW_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the ID number of the Standing Status In Basket message associated with this Order.  The In Basket message informs the user that a standing order exists."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "INPAT_DISC_INTER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the interval at which a standing order should be released for inpatient orders."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "INPAT_DISC_INTER_ID_FREQ_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the frequency record."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "INPAT_AUTO_RLSE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates whether child instances of a standing order should be automatically released for inpatient orders.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "LAB_CRT_CNCT_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for the contact that was created from this order. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "LAST_OVERALL_ASMT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The most recent overall mammography assessment for the order. This should be the same as the most recent value for ORDER_RAD_ASMT.ASSESSMENT_C. This column is used to link to the ZC_ASSESSMENT table.",
+      "linksTo": "ZC_ASSESSMENT",
+      "entries": [
+        "Need Additional Imaging Evaluation",
+        "Negative",
+        "Benign",
+        "Probably Benign",
+        "Suspicious",
+        "Highly Suggestive of Malignancy",
+        "Known Biopsy-Proven Malignancy",
+        "Low Suspicion for Malignancy",
+        "Moderate Suspicion for Malignancy",
+        "High Suspicion for Malignancy"
+      ]
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "REVENUE_CODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The revenue code associated with the service."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "REVENUE_CODE_ID_REVENUE_CODE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the revenue code."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "UNITS_REQUESTED",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of units requested for the service."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "UNITS_APPROVED",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of units approved for the service."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "TOTAL_PRICE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total price of the service."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "PATIENT_PORTION",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount or portion the patient will have to pay for the service they are being referred for."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "AUTH_REQUIRED",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores whether or not authorization is required for the service."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "NET_PAYABLE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The net payable of the service."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "NOT_COVERED",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates whether or not the service is covered."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "PROVIDING_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The provider on the service."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "COMMENT_WITH_CANCEL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Comment entered while cancelling an order."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "SOFT_DEL_FLAG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Soft deletion flag for order records associated with order-based transcriptions, which were deleted by the transcription soft-deletion utility."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "RESULT_TRACK_STS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This stores whether follow-up with recipients is required, in progress, or completed. This status is the per-order, see RESULT_TRACK_RECIP for individual recipient result tracking statuses.",
+      "entries": [
+        "Required",
+        "In Progress",
+        "Completed"
+      ]
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "ORD_PHASE_OF_CARE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item will store the phase of care for which this order was created. Example: Pre-Op, Intra-Op, PACU."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "REQUESTED_DATETIME",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The requested date and time. The items extracted to this column are populated by the Cadence Orders Interface."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "ORX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Contains an ID from Order Lookup Index. This may be populated if an order originates from an Order Panel."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "ORX_ID_ORDER_LOOKUP_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name (.2 item) for the order panel record."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "RELEASED_INSTA_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the scheduled instant of the child order."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "LAST_SCHE_INST_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item stores the inpatient order's last scheduled instant."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "INTERACT_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Interaction override comment."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "COPY_POINTER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This object tracks order record links created when using the inpatient or ambulatory order mover utilities to move an order record. This item is populated on the source order record and points to the target order record(s) created."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "AFTER_ORDER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the After Order ID for an order after Order Transmittal."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "BEFORE_ORDER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the Before Order ID for an order before Order Transmittal."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "DIET_COMMENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the Diet Comments entered for an order."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "ORD_CONDITION_FLAG",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column contains the a Condition Flag if this is an order created from certain condition."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "COR_AFTR_FINAL_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time when the study was corrected and finalized."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "IS_HELD_ORDER_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores 1 if the order is signed and held and active",
+      "entries": [
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "NOCHRG_EXT_RSLT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column returns whether the order is an external result that should not drop charges. A value of 1 returns Y. A value of 0 returns N. A null value will return null but is treated the same as 0 when dropping charges."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "PROTOCOL_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the current status of the order's protocols. Will be used to determine how to populate the protocol work list.",
+      "entries": [
+        "Protocol Needed",
+        "Protocol Routed",
+        "Protocol Completed",
+        "Automatically Routed",
+        "Automatically Completed"
+      ]
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "PROTCL_ASGN_POOL_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If an order's protocol has been assigned to a pool, this item contains the pool ID of the assigned pool."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "PROTCL_ASGN_POOL_ID_POOL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the scheduling pool used when searching for available providers for an appointment."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "PROTCL_ASGN_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If an order's protocol has been assigned to a provider, this item contains the provider ID of the assigned provider."
+    }
+  ]
+}

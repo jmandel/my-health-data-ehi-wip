@@ -1,0 +1,68 @@
+{
+  "name": "OVC_DB_MAIN",
+  "description": "This table contains information about specimen containers. This includes information about what specimen it belongs to and its current location.\n\n\n\n\n\nThis table was originally used to store submitter information. When looking at the SQL for this table you will see some columns still have \"submitter\" in their name even though this table now holds container information.",
+  "primaryKey": [
+    {
+      "columnName": "CONTAINER_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CONTAINER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the container record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PAT_LINK_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient (EPT) who is associated with the container record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CTNR_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status category ID for the container.",
+      "entries": [
+        "Test Mode Only",
+        "Active",
+        "Inactive",
+        "Inactive (old)",
+        "Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "LINKED_RQG_RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the requisition grouper that is associated with the container record."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "NETWORK_EXT_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID for a container received over the Orders and Results Anywhere network, if a non-unique container ID was sent."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "NET_EXT_IDEN_ORG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the organization who sent a container received over the Orders and Results Anywhere network, if a non-unique container ID was sent."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "NET_EXT_IDEN_ORG_ID_EXTERNAL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Organization's external name used as the display name on forms and user interfaces."
+    }
+  ]
+}

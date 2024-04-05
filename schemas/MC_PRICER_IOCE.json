@@ -1,0 +1,185 @@
+{
+  "name": "MC_PRICER_IOCE",
+  "description": "Data returned from IOCE Editor.",
+  "primaryKey": [
+    {
+      "columnName": "PRICER_MSG_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PRICER_MSG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the Epic Pricer message record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "IOCE_RTN_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "IOCE return code.",
+      "entries": [
+        "Claim processed",
+        "Memory allocation error",
+        "Run-time environment initialization failed",
+        "Could not open read-only table file",
+        "Could not determine read-only table size",
+        "No memory for read-only table",
+        "Could not read read-only table file",
+        "Read-only table file corrupted",
+        "Read-only tables file wrong version",
+        "Could not link tables to base object",
+        "OCEInit not called before call to OCECLM",
+        "Invalid number of line items",
+        "Invalid \"From\" date",
+        "Invalid \"Through\" date",
+        "Invalid date sequence",
+        "Invalid line date",
+        "\"From\" date outside version range",
+        "Invalid type of bill",
+        "Claim not processed, bill type 12x or 14x present with CC 41",
+        "Contractor bypass edit is not able to be bypassed",
+        "Invalid format used for contractor bypass input values",
+        "Input format is incorrect for value code amount field",
+        "Invalid claims processing receipt date"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "IOCE_PROCESSD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "IOCE processed flag.",
+      "entries": [
+        "Claim processed",
+        "Claim not processed: invalid date (edits 23, 24, 119); inappropriate bill type/condition code combination (edit 46); invalid bill type (118)",
+        "Claim not processed: no line items present",
+        "Claim could not be processed (Reserved)",
+        "Fatal error; Contractor bypass issue, claim could not be processed; exit immediately",
+        "A fatal error has been detected during initialization; processing should be terminated immediately"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "IOCE_CLM_DISP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "IOCE claim disposition.",
+      "entries": [
+        "No edits are present on the claim",
+        "The only edits present are for line item denial or rejection",
+        "Claim is for multiple days with one or more days denied or rejected",
+        "Claim is denied, rejected, suspended or returned to provider, or single day claim with all line items denied or rejected, with only post-payment edits",
+        "Claim is denied, rejected, suspended or returned to provider, or single day claim with all line items denied or rejected, with only pre-payment edits",
+        "Claim is denied, rejected, suspended or returned to provider, or single day claim with all line items denied or rejected, with both post- and pre- payment edits"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "IOCE_PAY_APC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "IOCE payment APC."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "IOCE_STATUS_IND_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "IOCE status indicator.",
+      "entries": [
+        "Services not paid under OPPS; paid under fee schedule or other payment system",
+        "Non-allowed item or service for OPPS",
+        "Inpatient procedure",
+        "Non-allowed item or services",
+        "Non-allowed item or service",
+        "Items and services for which pricing information and claims data are not available",
+        "Corneal tissue acquisition; certain CRNA services",
+        "Drug/biological pass-through",
+        "Pass-through device categories",
+        "Outpatient department services paid through a comprehensive APC",
+        "Hospital Part B services that may be paid through a comprehensive APC",
+        "Non pass-through drugs and non-implantable biologicals, including therapeutic radiopharmaceuticals",
+        "Influenza Vaccine; Pneumococcal Pneumonia Vaccine; Hepatitis B Vaccines; Covid-19 Vaccine; Monoclonal Antibody Therapy Product",
+        "Service not billable to the MAC",
+        "Items and services packaged into APC rates",
+        "Partial Hospitalization or Intensive Outpatient Program",
+        "STV-packaged codes",
+        "T-packaged codes",
+        "Codes that may be paid through a composite APC",
+        "Conditionally packaged laboratory services",
+        "Blood and blood products",
+        "Significant procedure not subject to multiple procedure discounting",
+        "Significant procedure subject to multiple procedure discounting",
+        "Brachytherapy sources",
+        "Clinic or emergency department visit",
+        "Invalid HCPCS or invalid revenue code with blank HCPCS",
+        "Non-implantable DME",
+        "Valid revenue code with blank HCPCS and no other SI assigned",
+        "Unknown Value"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "IOCE_PAYMENT_IND_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "IOCE payment indicator.",
+      "entries": [
+        "Paid standard hospital OPPS amount",
+        "Services not paid by OPPS Pricer; paid under fee schedule or other payment system",
+        "Not paid, or not paid under OPPS",
+        "Paid at reasonable cost",
+        "Paid standard amount for pass-through drug or biological",
+        "Payment based on charge adjusted to cost",
+        "Additional payment for new drug or new biological",
+        "Paid partial hospitalization per diem",
+        "No additional payment; payment included in line items with APCs",
+        "Paid FQHC encounter payment",
+        "Not paid or not included under FQHC encounter payment",
+        "No additional payment, included in payment for FQHC encounter",
+        "Paid FQHC encounter payment for new patient or IPPE/AWV",
+        "Grandfathered tribal FQHC encounter payment",
+        "FQHC IOP encounter payment",
+        "Wrap-around payment for FQHCs that contract with Medicare Advantage (MA) organizations",
+        "Unknown Value"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "IOCE_DISC_FLAG_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "IOCE discount flag.",
+      "entries": [
+        "1.0",
+        "(1.0 + D(U-1))/U",
+        "T/U",
+        "(1 + D)/U",
+        "D",
+        "TD/U (Discontinued 1/1/2008, v9.0)",
+        "D(1 + D)/U (Discontinued 1/1/2008, v9.0)",
+        "2.0",
+        "2D",
+        "Unknown Value"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "IOCE_DENY_REJECT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "IOCE Deny or Reject flag.",
+      "entries": [
+        "Line item not denied or rejected",
+        "Line item denied or rejected",
+        "The line is not denied or rejected, but occurs on a day that has been denied or rejected",
+        "Line item not denied or rejected; identified for informational alert only",
+        "Unknown Value"
+      ]
+    }
+  ]
+}

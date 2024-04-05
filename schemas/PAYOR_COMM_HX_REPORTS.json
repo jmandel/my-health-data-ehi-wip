@@ -1,0 +1,77 @@
+{
+  "name": "PAYOR_COMM_HX_REPORTS",
+  "description": "A list of reports sent with the payer communication.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the associated payer communication. Together with the PAT_ENC_CSN_ID column, this forms the foreign key to the PAYOR_COMM_HX table."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the attachments sent a communication associated with the patient encounter and communication from the PAYOR_COMM_HX table."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "REPORT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the report that was sent to the payor. This column should only be used as a fallback if no Release of Information (ROI) is available in ROI_ID (such as in an IntraConnect scenario)."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "REPORT_ID_REPORT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the report"
+    }
+  ]
+}

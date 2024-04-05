@@ -1,0 +1,234 @@
+{
+  "name": "DOCS_RCVD_PROC",
+  "description": "This table stores procedure information received from outside sources.",
+  "primaryKey": [
+    {
+      "columnName": "DOCUMENT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "DOCUMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the document record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PROC_REF_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the unique reference ID."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PROC_TYPE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the mapped procedure record ID for the external procedure."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PROC_TYPE_TXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the free text name for the external procedure."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PROC_PERF_AT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the facility record mapped location where the external procedure was performed."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PROC_PERF_AT_TXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the free text location where the external procedure was performed."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PROC_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item stores the start date of the external procedure."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PROC_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item stores the end date of the external procedure."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PROC_EVENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the event identifier of the event information for the procedure."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PROC_MASTER_REF_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item will be used to indicate duplicate procedure data."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "PROC_LST_UPD_INST_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the last update instant of the procedure in Coordinated Universal Time (UTC)."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "PROC_UNSUCCESSFUL_FLG_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether a procedure was an unsuccessful attempt",
+      "entries": [
+        "Unsuccessful Attempt",
+        "Documented on Wrong Patient"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "PROC_UNSUCCESS_INST_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Instant the procedure unsuccessful flag was set"
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PROC_STATE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the status code of a procedure when received from a document.",
+      "entries": [
+        "Other",
+        "Normal",
+        "Aborted",
+        "Active",
+        "Cancelled",
+        "Completed",
+        "Held",
+        "New",
+        "Suspended",
+        "Nullified",
+        "Obsolete"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "PROC_DUP_INT_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the ID of the Order record of an internal charge that is a duplicate of this row in an external document record."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PROC_DUP_INT_UCL_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the ID of the Universal Charge Lines record of an internal charge that is a duplicate of this row in an external document record."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "PROC_DUP_INT_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the ID of the Accounts Receivable Transaction record of an internal charge that is a duplicate of this row in an external document record."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "PROC_DUP_INT_HOSP_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the ID of the Hospital Permanent Transaction record of an internal charge that is a duplicate of this row in an external document record."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "PROC_FILTER_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the reason why an external procedure should be filtered from the composite record",
+      "entries": [
+        "Claim Derivation: Procedure Code Inclusion/Exclusion List",
+        "Claim Derivation: Missing Provider",
+        "Claim Derivation: Sensitive Diagnosis",
+        "Claim Derivation: Missing Procedure Start Date",
+        "Claim Derivation: Excluded Procedure Modifier",
+        "Source Organization Unknown",
+        "Source Organization Mismatch",
+        "Source Organization Is Self",
+        "Clinical Note Type Exclusion List",
+        "Clinical Note Missing Service Instant",
+        "Clinical Note Missing Last Filed Instant",
+        "Clinical Note Missing Author Name",
+        "Dispense Cancellation",
+        "Same Day as Internal Encounter",
+        "Missing or Invalid Binary URL",
+        "Filtered or Missing Source Note",
+        "DocumentReference Status not Current",
+        "Claim Derivation: Excluded Linked Diagnoses",
+        "Claim Derivation: Missing Encounter Start Date",
+        "Entered In Error",
+        "FHIR resource contained an invalid category",
+        "Condition verification status is no longer confirmed",
+        "Condition is no longer valid for this patient due to age or sex",
+        "FHIR resource has an invalid start date",
+        "Encounter FHIR resource is missing the type element",
+        "FHIR resource is missing the status element",
+        "Encounter FHIR resource is missing the class element",
+        "Encounter FHIR resource contained an unrecognized status code",
+        "Encounter FHIR resource contained a status code for a future encounter",
+        "Encounter FHIR resource contained a class code for a future encounter",
+        "FHIR resource has a future start date",
+        "FHIR resource does not have a status of completed",
+        "FHIR resource is missing the code element",
+        "Diagnosis is missing a link to an encounter",
+        "FHIR resource contains a reference to encounter not in the system",
+        "FHIR resource contained a patient reference not matching the searched for patient",
+        "Immunization FHIR Resource is missing the vaccineCode element or did not contain a CVX code",
+        "FHIR Resource is missing an effective date/time",
+        "FHIR resource contained an invalid status",
+        "Observation FHIR resource is linked to a filtered Condition FHIR resource",
+        "SDOH Assessment contains no questions"
+      ]
+    }
+  ]
+}

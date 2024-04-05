@@ -1,0 +1,56 @@
+{
+  "name": "HH_MED_INCL_POC_CSN_INFO",
+  "description": "This table stores information about which plans of care this medication order is included in.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "INCL_POC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "For home health patients, this item stores the Plan of Care record CSNs that include this medication."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "WHICH_SIGS_ON_POC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores which medication sigs to show on the plan of care referred to in column INCL_POC_CSN_ID. This indicates whether the plan of care shows the prescribed sig, a taking differently sig, or both.",
+      "entries": [
+        "Prescribed Sig",
+        "Taking Differently Or Not Taking",
+        "Both"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "WHICH_PTD_LINE_ON_POC",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the taking differently sig that is displayed for this medication on a plan of care. This column refers to the LINE column"
+    }
+  ]
+}

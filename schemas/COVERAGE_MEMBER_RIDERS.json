@@ -1,0 +1,59 @@
+{
+  "name": "COVERAGE_MEMBER_RIDERS",
+  "description": "This table stores member-level riders and their effective period. Members will only have riders in this table if there are riders with a selection mode of 4-Member-Specific (PLAN_GRP_RIDER.RIDER_SEL_MODE_C = 4) for the employer group on their coverage (COVERAGE.PLAN_GRP_ID) and the rider been assigned to the member.",
+  "primaryKey": [
+    {
+      "columnName": "COVERAGE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the coverage record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for the rider. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "BENEFIT_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the benefit plan record for the rider."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EFF_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the rider becomes effective for the patient. This date should never be NULL. The period of time between this date and the term date represents a period during which the specified patient is eligible for the specified rider. This date range will not overlap any other date range for the same rider and patient."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "TERM_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date after which the rider is no longer effective for the patient. If this date is NULL, the rider is assumed to always be effective from the effective date onward."
+    }
+  ]
+}

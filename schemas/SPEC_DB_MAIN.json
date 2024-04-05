@@ -1,0 +1,266 @@
+{
+  "name": "SPEC_DB_MAIN",
+  "description": "The SPEC_DB_MAIN table contains basic information about your specimen records. These include clinical pathology, anatomic pathology, and quality control specimens. One row in this table represents one specimen.",
+  "primaryKey": [
+    {
+      "columnName": "SPECIMEN_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SPECIMEN_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the specimen record"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "SPEC_NUMBER_LN1",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The main external identifier of the specimen"
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SPEC_DTM_COLLECTED",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time when the specimen was collected."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SPEC_DTM_RECEIVED",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time when the specimen was received."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SPEC_CONTAINER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the container associated with this specimen"
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SPEC_CONTAINER_ID_CONTAINER_TYPE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the container type record."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "SPEC_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The specimen source category for the specimen."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "SPEC_EPT_PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the patient whom this specimen belongs to."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "SPEC_SUB_SPEC_NO",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The submitter's specimen number."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "SPEC_DRAW_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The draw type category number for the specimen"
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "SPEC_REQ_GRP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the requisition grouper associated with this specimen if this is a non-EPT patient"
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "REQ_SMT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the submitter of the requisition that this specimen is attached to. This is only populated for reference lab specimens."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "REQ_SMT_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the submitter record."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "REQ_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the requisition this specimen is attached to. This is only populated for reference lab specimens."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "ACUTE_CONVAL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The acute/convalescent category number for the specimen record.",
+      "entries": [
+        "Acute",
+        "Convalescent"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "CASE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the case this specimen is attached to. This is only populated for anatomic pathology specimens."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "RECV_QUEUE_COMM_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the internal receiving comment that is associated with this specimen."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "SPEC_COLL_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time when the specimen was collected in the UTC time zone."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "SPEC_RCVD_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time when the specimen was received in the UTC time zone."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "SPEC_FROZEN_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether this specimen is a frozen specimen.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "SPECIMEN_COL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the specimen collection record which is associated with this specimen."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "AP_RECEIVE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time when the anatomic pathology specimen was received in the UTC time zone. This is only populated for anatomic pathology specimens."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "DRAW_SESS_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time when the draw session this specimen belongs to was started. It is stored in the UTC time zone."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "SPECIMEN_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The specimen type category ID for the specimen. This is calculated from the specimen type for the first order on the specimen that has a specimen type set and has not been redrawn or removed. If all orders on the specimen have been redrawn or removed, it is calculated from the specimen type for the first removed order that has a specimen type set."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "SPEC_FROM_DSL_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores whether a specimen was created from the Specimen Linking activity. The default value is No."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "ONSET_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The onset date that symptoms began for the associated specimen. This is a legacy item and this data is no longer populated in Chronicles."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "BIOHAZARD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The biohazard category ID for the specimen. This is legacy data that is no longer populated.",
+      "entries": [
+        "*"
+      ]
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "DRAW_CHGS_TRGRD_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether draw charges have been triggered for the specimen. 'Y' indicates that a draw charge has been triggered. 'N' or NULL indicate that a draw charge has not been triggered."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "SPEC_SOURCE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The specimen source for the specimen. This is legacy data that is no longer populated."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "SPEC_ORIGIN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The special specimen origin category ID for the specimen.",
+      "entries": [
+        "Import Specs",
+        "Interface",
+        "Auto-Import"
+      ]
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "IMPORT_RUN_BATCH_NUMBER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The batch ID associated to an imported specimen"
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "CREATION_DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": true,
+      "description": "The unique ID of the department that the specimen was created in."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "COLL_PPID_OVRIDE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether PPID was overridden during collection for this specimen."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "COLL_PSID_OVRIDE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether PSID was overridden during collection for this specimen."
+    }
+  ]
+}

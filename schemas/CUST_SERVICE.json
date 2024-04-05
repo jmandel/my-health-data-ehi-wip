@@ -1,0 +1,757 @@
+{
+  "name": "CUST_SERVICE",
+  "description": "The CUST_SERVICE table stores information entered into system's Customer Service module. This can be used to report on communication between medical facility staff and patients.",
+  "primaryKey": [
+    {
+      "columnName": "COMM_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "COMM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the customer service communication."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "ENTRY_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who created the customer service communication."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ENTRY_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ENTRY_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the customer service communication was entered."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SOURCE_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value representing the source type of the customer service communication. Refers to the person or entity contacting your facility's customer service representative.",
+      "entries": [
+        "Patient",
+        "Provider",
+        "Employer Group",
+        "Carrier",
+        "Guarantor Account",
+        "Network",
+        "Vendor",
+        "Payer",
+        "Premium Billing Account",
+        "Employee",
+        "Pool",
+        "Ad Hoc",
+        "Pharmacy",
+        "Worker",
+        "Department",
+        "Prospective Patient",
+        "Submitter",
+        "Authorized Representative",
+        "Responsible Party",
+        "Facility"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SOURCE_MEMBER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the source of the customer service communication is a person who receives care at your facility or is a member of your health plan, this column contains the Patient (EPT) ID of that member."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "TOPIC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value of the topic of the customer service communication record."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "SUBJECT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value representing the subject type of the customer service communication. Refers to the person or entity the customer service communication is about.",
+      "entries": [
+        "Provider",
+        "Employer Group",
+        "Vendor",
+        "Carrier",
+        "Referral",
+        "AP Claim",
+        "Network",
+        "Patient",
+        "Location",
+        "Place of Service",
+        "Department",
+        "Premium Billing Account",
+        "Guarantor Account",
+        "Requisition Grouper",
+        "Hospital Account",
+        "Bank Reconciliation",
+        "AP Check",
+        "Prospective Patient",
+        "Order",
+        "Campaign",
+        "Estimate",
+        "Employee",
+        "Decision",
+        "Responsible Party",
+        "Analytics Project",
+        "Authorization Request",
+        "Rejected Claim",
+        "Research Study",
+        "Cosmos Teleport"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "RES_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The resolution reason category value for the customer service communication."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "RES_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who resolved the customer service communication."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "RES_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "RES_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the customer service communication was resolved."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "RES_SATISFACTION",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The recorded satisfaction of the customer service communication."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "PRIORITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value associated with the priority of the customer service communication.",
+      "entries": [
+        "High",
+        "Routine",
+        "Low"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "SUMMARY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The summary of the customer service communication."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "SOURCE_STAFF_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the source of the customer service communication is an employee of your facility, this column contains the Provider (SER) ID of that employee."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "SOURCE_PLAN_GRP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the source of the customer service communication is a plan group, this column contains the Payor Plan Group (PPG) ID of that plan group."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "SOURCE_PLAN_GRP_ID_PLAN_GRP_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the employer group record"
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "SOURCE_CARRIER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the source of the customer service communication is a carrier, this column contains the Carrier (MCR) ID of that carrier."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "SOURCE_CARRIER_ID_CARRIER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the carrier record."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "SOURCE_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If the source of the customer service communication is a guarantor account, this column contains the Accounts Receivable (EAR) ID of that guarantor account."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "SOURCE_NETWORK_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the source of the customer service communication is a provider network, this column contains the Network Database (NET) ID of that provider network."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "SOURCE_NETWORK_ID_NETWORK_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the network."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "SUBJ_MEMBER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the subject of the customer service communication is a person who receives care at your facility or is a member of your health plan, this column contains the Patient (EPT) ID of that member."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "SUBJ_STAFF_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the subject of the customer service communication is an employee of your facility, this column contains the Provider (SER) ID of that employee."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "SUBJ_PLAN_GRP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the subject of the customer service communication is a plan group, this column contains the Payor Plan Group (PPG) ID of that plan group."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "SUBJ_PLAN_GRP_ID_PLAN_GRP_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the employer group record"
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "SUBJ_CARRIER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the subject of the customer service communication is a carrier, this column contains the Carrier (MCR) ID of that carrier."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "SUBJ_CARRIER_ID_CARRIER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the carrier record."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "SUBJ_NETWORK_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the subject of the customer service communication is a provider network, this column contains the Network Database (NET) ID of that provider network."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "SUBJ_NETWORK_ID_NETWORK_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the network."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "SUBJ_VENDOR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the subject of the customer service communication is a vendor, this column contains the Vendor (VEN) ID of that vendor."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "SUBJ_VENDOR_ID_VENDOR_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the vendor."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "SUBJ_REFERRAL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If the subject of the customer service communication is a referral, this column contains the Referral Database (RFL) ID of that referral."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "SUBJ_CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If the subject of the customer service communication is a claim, this column contains the Claims System (CLM) ID of that claim."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the patient encounter related to the customer service communication."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "RKP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the risk panel for the customer service communication."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "RKP_ID_RISK_PANEL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the risk panel."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "LOB_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The line of business for the customer service communication."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "LOB_ID_LOB_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the line of business record."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "REC_SENSITIVITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value for the sensitivity type of the customer service communication."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "REC_COMM_ORIGIN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value of the application which initiated the customer service communication.",
+      "entries": [
+        "Resolute",
+        "Cadence",
+        "Tapestry",
+        "EpicCare",
+        "ADT",
+        "Hyperspace",
+        "Prelude",
+        "EpicWeb",
+        "Registration",
+        "MyChart",
+        "Lab",
+        "Import",
+        "External",
+        "Transfer Center",
+        "Transfer Destination",
+        "Live Chat",
+        "Prospects Web Form",
+        "Campaign",
+        "EpicLink",
+        "Leader Round Concern",
+        "Leader Round Praise",
+        "Leader Round Ticket"
+      ]
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "SRC_CUSTOMER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the source type of the customer service communication is a custom value, this column contains the free text source. For example, the name of the person who called your facility's customer service representative."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "SRC_VENDOR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the source of the customer service communication is a vendor, this column contains the Vendor (VEN) ID of that vendor."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "SRC_VENDOR_ID_VENDOR_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the vendor."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "SRC_PAYOR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If the source of the customer service communication is a payor, this column contains the Payor Master (EPM) ID of that payor."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "RECORD_ENTRY_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The time the customer service communication was entered."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "SUB_CUSTOMER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the subject type of the customer service communication is a custom value, this column contains the free text subject. For example, the name of the person the customer service communication is about."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "SUB_LOCATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If the subject of the customer service communication is a location, this column contains the Facility Profile (EAF) ID of that location."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "SUB_POS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If the subject of the customer service communication is a place of service, this column contains the Facility Profile (EAF) ID of that place of service."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "SUB_DEPT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If the subject of the customer service communication is a department, this column contains the Department (DEP) ID of that department."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "REC_RES_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The time the customer service communication was resolved."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "LAB_SPECIMEN_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Laboratory specimen associated with this laboratory communication log."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "SUBJ_REQ_GRP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the requisition grouper associated with the laboratory communication log."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "LAB_LOG_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Lab Comm Log Status category value for the laboratory communication log.",
+      "entries": [
+        "Open",
+        "Completed"
+      ]
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "EXTERNAL_ID_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The external ID for the customer service communication."
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "SUBJECT_EAR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If the subject of the customer service communication is a guarantor account, this column contains the Accounts Receivable (EAR) ID of that guarantor account."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "VALID_CRM_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the customer service communication is valid. 'Y' or NULL indicates the communication is valid. 'N' indicates the communication is invalid.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "RES_1ST_ATTEMPT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the customer service communication was resolved on the first attempt. 'Y' indicates it was resolved on first attempt. 'N' indicates it was resolved after first attempt or is still unresolved. A null value indicates the customer service communication was created but never opened or required values were not entered.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "OWN_BUS_SEG_EAF_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Owning business segment, for use in business segmentation. Only populated if the customer service communication is created in a payor business segment. Not populated when the record is created in a service area."
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "CREATION_SA_PBS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the service area or payer business segment where the customer service communication was created."
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "SUB_TOPIC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value of the subtopic of the customer service communication record. Used in combination with TOPIC_C to further categorize the topic of the customer service communication."
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "HAR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If the subject of the customer service communication is a hospital account, this column contains the Hospital Account (HAR) ID."
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "ROUT_HX_HTH_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The routing history thread for the customer service communication."
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "SOURCE_PBA_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the source of the customer service communication is a premium billing account, this column contains the PB Account (PBA) ID."
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "SUBJECT_PBA_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the subject of the customer service communication is a premium billing account, this column contains the PB Account (PBA) ID."
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "LAB_REQ_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Laboratory requisition associated with this laboratory communication log."
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "LAB_CASE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the laboratory case associated with the laboratory communication log."
+    },
+    {
+      "ordinalPosition": 69,
+      "name": "BANK_RECON_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If the subject of the customer service communication is a bank reconciliation, this column contains the Cash (CSH) ID of that bank reconciliation."
+    },
+    {
+      "ordinalPosition": 70,
+      "name": "SOURCE_PROSPECT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If the source of the customer service communication is a prospective patient, this column contains the Requisition Grouper (RQG) ID of that prospective patient."
+    },
+    {
+      "ordinalPosition": 71,
+      "name": "SUBJECT_PROSPECT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If the subject of the customer service communication is a prospective patient, this column contains the Requisition Grouper (RQG) ID of that prospective patient."
+    },
+    {
+      "ordinalPosition": 72,
+      "name": "SOURCE_SUBMITTER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If the source of the customer service communication is a submitter, this column contains the Submitter (SMT) ID of that submitter."
+    },
+    {
+      "ordinalPosition": 73,
+      "name": "SOURCE_SUBMITTER_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the submitter record."
+    },
+    {
+      "ordinalPosition": 74,
+      "name": "SUBJECT_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If the subject of the customer service communication is an order, this column contains the Order (ORD) ID."
+    },
+    {
+      "ordinalPosition": 75,
+      "name": "SUBJECT_CAMPAIGN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If the subject of the customer service communication is a campaign, this column contains the Campaign (CCT) ID of that campaign."
+    },
+    {
+      "ordinalPosition": 76,
+      "name": "SUBJECT_CAMPAIGN_ID_CAMPAIGN_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the campaign record."
+    },
+    {
+      "ordinalPosition": 77,
+      "name": "SUBJECT_DECISION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If the subject of the customer service communication is a decision, this column contains the Financial Assistance Tracker (FNT) ID of that decision."
+    },
+    {
+      "ordinalPosition": 78,
+      "name": "SUBJECT_ESTIMATE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If the subject of the customer service communication is an estimate, this column contains the Estimate (PES) ID of that estimate."
+    },
+    {
+      "ordinalPosition": 79,
+      "name": "ENTRY_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time when the customer service communication was entered, in UTC format."
+    },
+    {
+      "ordinalPosition": 80,
+      "name": "RESOLUTION_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time when the customer service communication was resolved, in UTC format."
+    },
+    {
+      "ordinalPosition": 81,
+      "name": "SOURCE_RESP_PRTY_GUID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the source of the customer service communication is a responsible party for a patient, this column contains the GUID of that responsible party."
+    },
+    {
+      "ordinalPosition": 82,
+      "name": "SUBJECT_RESP_PRTY_GUID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the subject of the customer service communication is a responsible party for a patient, this column contains the GUID of that responsible party."
+    },
+    {
+      "ordinalPosition": 83,
+      "name": "SOURCE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the source of the customer service communication is an employee, this column contains the ID of that user record."
+    },
+    {
+      "ordinalPosition": 84,
+      "name": "SOURCE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 85,
+      "name": "VOID_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who voided this NCS"
+    },
+    {
+      "ordinalPosition": 86,
+      "name": "VOID_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 87,
+      "name": "VOID_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Instant at which this NCS was voided."
+    },
+    {
+      "ordinalPosition": 88,
+      "name": "APPEAL_DECISION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the appeal's outcome was decided."
+    },
+    {
+      "ordinalPosition": 89,
+      "name": "APPEAL_SENT_TO_IRE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the appeal case was sent to the Independent Review Entity."
+    },
+    {
+      "ordinalPosition": 90,
+      "name": "SUBJECT_AUTH_REQUEST_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Auth Request (AUG) that this CRM is about."
+    },
+    {
+      "ordinalPosition": 91,
+      "name": "APPEAL_GRIEVANCE_NOTIF_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the appeal or grievance's notification was sent out."
+    },
+    {
+      "ordinalPosition": 92,
+      "name": "SUBJECT_CLAIM_RECON_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the subject of the customer service communication is a rejected claim, this column contains the rejected claim (CRD) ID of that rejected claim."
+    },
+    {
+      "ordinalPosition": 93,
+      "name": "SUBJECT_RESEARCH_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the source of the customer service communication is a research study, this column contains the ID of that research study."
+    }
+  ]
+}

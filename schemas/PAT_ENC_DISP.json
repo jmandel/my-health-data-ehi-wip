@@ -1,0 +1,159 @@
+{
+  "name": "PAT_ENC_DISP",
+  "description": "The PAT_ENC_DISP table contains information from the Follow-up action on the Visit Navigator tab for the ambulatory clinical system. This information specifies how and when a patient and provider should follow up with each other after an encounter. This table also contains information about the level of service (LOS) associated with the encounter.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique, internal contact date in decimal format. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "DX_FOLLOWUP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column typically stores special instructions that the lab should follow when processing this patient's lab orders. However, some organizations choose to store other information in this column."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ORDER_INSTR_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column typically stores the method of follow-up used to communicate order results with the patient. However, some organizations choose to store other information in this column."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "LOS_DROPPED_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number that indicates whether the Level of Service was dropped for this encounter. The category value will be equal to \"pending\" only while it is in the orders queue.",
+      "entries": [
+        "Yes",
+        "No",
+        "Pending"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "LOS_AUTH_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The authorizing provider as entered from the Level of Service option in the Visit Navigator"
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "LOS_TRIG_ERR_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether or not there was an LOS trigger error when dropping the charge.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "LOS_NEW_OR_EST_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number that indicates whether the patient is a new (first time being seen) or established patient.",
+      "entries": [
+        "New",
+        "Established"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "LOS_HX_LEVEL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for how extensively the patient's history was discussed as entered in the Level of Service calculator.",
+      "entries": [
+        "Problem Focused",
+        "Expanded Problem Focused",
+        "Detailed",
+        "Comprehensive"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "LOS_EXAM_LEVEL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the extent of the exam as entered in the Level of Service calculator.",
+      "entries": [
+        "Problem Focused",
+        "Expanded Problem Focused",
+        "Detailed",
+        "Comprehensive"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "LOS_MDM_LEVEL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the complexity of the medical decision-making in this encounter as entered in the Level of Service calculator.",
+      "entries": [
+        "Straightforward",
+        "Low Complexity",
+        "Moderate Complexity",
+        "High Complexity"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "LOS_NO_CHG_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason that a charge was not triggered for a level of service. This item being populated does not imply any issues with system integrity or system build; it will be set both for legitimate reasons that a charge was not triggered as well as non-legitimate reasons.",
+      "entries": [
+        "Unspecified reason",
+        "Charge Ready to Trigger flag not set",
+        "Order Instructions set to not trigger charges",
+        "Procedure not specified",
+        "Order class set to not trigger charges",
+        "Charge triggering disabled at resulting lab",
+        "Charge filtered through discrimination programming point",
+        "No charge triggering method specified",
+        "Order is canceled",
+        "Holding until close encounter",
+        "Patient not specified",
+        "Visit not specified",
+        "Invalid LCM build",
+        "Charge trigger failed to execute",
+        "Non-chargeable external result",
+        "Orders in transmittal"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "LOS_SERV_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Servicing Provider for Physician LOS Charge"
+    }
+  ]
+}

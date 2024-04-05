@@ -1,0 +1,93 @@
+{
+  "$meta": {
+    "schemas": {
+      "COMM_PREF_ADDL_ITEMS": {
+        "name": "COMM_PREF_ADDL_ITEMS",
+        "description": "This table contains items related to Patient Communication Preferences.",
+        "primaryKey": [
+          {
+            "columnName": "PREFERENCES_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PREFERENCES_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier (.1 item) for the subject name record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "APPT_NOTIF_SCHEDULED_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item stores a Yes No category value indicating whether the patient accepts Cadence Scheduled Appointment Notifications.",
+            "entries": [
+              "Yes",
+              "No"
+            ]
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "APPT_NOTIF_CHANGED_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item stores a Yes No category value indicating whether the patient accepts Cadence Changed Appointment Notifications."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "APPT_NOTIF_CANCELED_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item stores a Yes No category value indicating whether the patient accepts Cadence Cancelled Appointment Notifications."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "APPT_NOTIF_MISSED_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item stores a Yes No category value indicating whether or not a patient accepts Cadence Missed Appointment Notifications."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "COMM_PREF_ADDL_ITEMS",
+            "target": "COMM_PREFERENCES_APRV",
+            "joinKeys": [
+              {
+                "source": "PREFERENCES_ID",
+                "target": "PREFERENCES_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "COMM_PREF_ADDL_ITEMS",
+            "target": "COMMUNICATION_PREFERENCES",
+            "joinKeys": [
+              {
+                "source": "PREFERENCES_ID",
+                "target": "PREFERENCES_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "COMM_PREF_ADDL_ITEMS": [
+    {
+      "PREFERENCES_ID": 1079221,
+      "APPT_NOTIF_SCHEDULED_YN": "N",
+      "APPT_NOTIF_CHANGED_YN": "N",
+      "APPT_NOTIF_CANCELED_YN": "N",
+      "APPT_NOTIF_MISSED_YN": "N",
+      "$meta": {
+        "type": "COMM_PREF_ADDL_ITEMS"
+      }
+    }
+  ]
+}

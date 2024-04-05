@@ -1,0 +1,206 @@
+{
+  "name": "INVOICE_CLM_LN",
+  "description": "This table contains line-level information for the claim generated from this INV record. This information is common to all claims for the INV; use INVOICE_CLM_LN_ADDL for invoice-specific information or line-level overrides.",
+  "primaryKey": [
+    {
+      "columnName": "INVOICE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "INVOICE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the invoice record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the transaction ID item."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "FROM_DATE_OF_SVC",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The earliest date of service that appears on the transaction."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "TO_DATE_OF_SVC",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The latest (most recent) date of service that appears on the transaction."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The procedure ID that appears on the transaction."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "MODIFIER_ONE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The first modifier on the transaction. This is the external modifier, as it would be printed on the claim."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "MODIFIER_TWO",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The second modifier on the transaction. This is the external modifier, as it would be printed on the claim."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "MODIFIER_THREE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The third modifier on the transaction. This is the external modifier, as it would be printed on the claim."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "MODIFIER_FOUR",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The fourth modifier on the transaction. This is the external modifier, as it would be printed on the claim."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "QUANTITY",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The quantity that appears on the transaction."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "CHARGE_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The dollar amount that appears on the transaction."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "NON_COVERED_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount not covered on the transaction."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "TYPE_OF_SERVICE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of service performed for the charge.",
+      "entries": [
+        "Medical Care",
+        "Surgery",
+        "Consultation",
+        "Diagnostic Radiology",
+        "Diagnostic Laboratory",
+        "Therapeutic Radiology",
+        "Anesthesia",
+        "Assistant at Surgery",
+        "Other Medical Items or Services",
+        "Whole Blood",
+        "Used Durable Medical Equipment (DME)",
+        "Ambulatory Surgical Center (Facility usage for Surgical Services)",
+        "Hospice (Obsolete, Discontinued 1/95)",
+        "ESRD Supplies",
+        "Monthly Capitation Payment for Dialysis",
+        "Kidney Donor",
+        "Pneumococcal/Flu Vaccine",
+        "Second Opinion on Elective Surgery (Obsolete)",
+        "Third Opinion on Elective Surgery (Obsolete)",
+        "Diagnostic Medical (Obsolete)",
+        "Ancillaries, Hospital and Nursing Home (Obsolete)",
+        "Drug Services (Obsolete)",
+        "Accommodations, Hospital and Nursing Home (Obsolete)",
+        "Dental (Obsolete)",
+        "Vision Care and Cataract Lens (Obsolete)",
+        "Nuclear Medicine (Obsolete)",
+        "Diagnostic X-Ray (Professional) (Obsolete)",
+        "Rental of DME",
+        "Radiation Therapy (Professional) (Obsolete)",
+        "Diagnostic Lab (Professional) (Obsolete)",
+        "Diagnostic Medical (Professional) (Obsolete)",
+        "DME Purchase (Obsolete)",
+        "CRD Equipment (Obsolete)",
+        "Pre-Admission Testing (Obsolete)",
+        "EPSDT",
+        "High Risk Screening Mammography",
+        "Low Risk Screening Mammography",
+        "Ambulance",
+        "Enteral/Parenteral Nutrients/Supplies",
+        "Immunosuppressive Drugs",
+        "Diabetic Shoes",
+        "Hearing Items and Services",
+        "Lump Sum Purchase of DME, Prostethics, Orthotics",
+        "Vision Items or Services",
+        "Surgical Dressings or Other Medical Supplies",
+        "Psychological Therapy",
+        "Occupational Therapy",
+        "Physical Therapy",
+        "Medication (Obsolete)",
+        "Chiropractic Care",
+        "DME Prescription"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "SPECIAL_GRP_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the type of grouping for this line in the invoice.",
+      "entries": [
+        "Inpatient Charge Transfer",
+        "Radiation Therapy by Procedure Treatment Level",
+        "Panel Bundling",
+        "Global Billing Setup",
+        "FQHC Bundling",
+        "Medi-Cal Rural Health Bundling",
+        "FQHC Billing",
+        "FPEP Bundling",
+        "Bilateral Bundling",
+        "Bundle Tax With Original Charges",
+        "Bundle Tax Charges Only",
+        "PQRI Bundle Zero Amount",
+        "Claim Complete",
+        "Professional Claim Line Bundling",
+        "Global Payment Setup",
+        "Professional and Technical Component Bundling"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "UB_MIN_SERVICE_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The UB form minimum service date for the invoice."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "UB_MAX_SERVICE_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The UB form maximum service date for the invoice."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "DX_POINTER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Diagnosis pointers. This is a comma-delimited string indicating which diagnosis or diagnoses apply to this line that would appear on the claim. Each pointer corresponds to a line in INV_DX_INFO."
+    }
+  ]
+}

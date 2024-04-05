@@ -1,0 +1,113 @@
+{
+  "name": "AUDIT_ORD_RXNOADD",
+  "description": "This table provides general information on changes to specified no-add items in the order (ORD) master file.  The detail item information is saved in AUDIT_ORD_RXITEMS table.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_MED_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_MED_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the medication order (prescription) record. NOTE: This is an internal unique identifier for ORD master file records in this table and cannot be used to link to CLARITY_MEDICATION."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for each change."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "AUDIT_EMP_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique user ID who made the change."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "AUDIT_EMP_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "AUDIT_UPDATE_INST",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant of change."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "AUDIT_UPD_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comment for the change."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "AUDIT_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The action category to cause the change.",
+      "entries": [
+        "Rx Verify",
+        "Admin Instruction Change",
+        "Rate Change",
+        "Order Duration Change",
+        "Order Modified",
+        "Multistep",
+        "Orders Correction Utility",
+        "Adjust Times for Linked Orders",
+        "Patient Transfer",
+        "Pharmacy Review",
+        "Prescription Transfer",
+        "Prescription Refill",
+        "Deferred",
+        "Signed & Held Modification",
+        "Rx FAM Autoverify",
+        "Order Transmittal",
+        "RIS Change Order",
+        "Automated adjustment due to Inventory",
+        "Adjust Times",
+        "Rx Autoverify",
+        "Notification Requests Modified",
+        "Automatic End Time Adjustment on Administration",
+        "SmartForm Change",
+        "Original Provider Change",
+        "Administration Responsibility Change",
+        "Prescription Transfer Canceled",
+        "Sign Order",
+        "Order Released",
+        "Automatic Adjustment on Prescription Fill",
+        "Provider Hold Action",
+        "Automatic Order Substitution",
+        "Provisional Verify",
+        "Automatic Prescription Expiration Date Update",
+        "Dispensing Verify",
+        "Prevent Dispensing By Pharmacy",
+        "Order Transcribed",
+        "Automatic End Date Adjustment on Scheduling",
+        "Advance Prep Canceled",
+        "Product Change"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "AUDIT_OTX_PASS_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item records the number of the order transmittal pass."
+    }
+  ]
+}

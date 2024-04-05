@@ -1,0 +1,134 @@
+{
+  "name": "CL_PLC",
+  "description": "This table extracts the Patient Location (PLC) event tracking information into Clarity. PLC records record information about where a patient was at a certain time. They contain information about where the patient is, when they arrived there, how they got there, and who put them there.",
+  "primaryKey": [
+    {
+      "columnName": "LOCATION_EVNT_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "LOCATION_EVNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the patient location event."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status of the location event",
+      "entries": [
+        "Pending",
+        "Confirmed",
+        "Canceled",
+        "Completed"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CASE_TRACK_EVENT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Surgical case tracking event"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PRE_CANCEL_STS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the status of the record before it was canceled"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PRIVATE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Flag denoting whether or not the location event is confidential",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SOURCE_ORC_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Source Case ID for the patient location"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "SOURCE_ORL_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Source Log ID for the patient location"
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "LOCATION_RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item links the patient's update event to the corresponding patient location facility (PLF) record that determines where the patient really is."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "START_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Confirmed time that a location event occurred"
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "CANCELED_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The time the event record was canceled."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "END_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Completion time for the location event"
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "COMMENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Free text field for entering comments related to the creation of location event"
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "EVENT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item will log how the patient location (PLC) event was created.",
+      "entries": [
+        "System Event",
+        "Manually Created",
+        "Interface - Untrusted",
+        "Interface - Trusted"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "name": "RX_INTERVENTION",
+  "description": "The interventions table contains one record for each intervention recorded in your system. Items included are: status, significance, time spent, value, response, associated patient and CSN,  associated order, creating user, associated pharmacy, instant created, and instant closed.\n\n\nNot all of these items will be associated with every intervention. The primary key for the interventions table is INTERVENTION_ID.",
+  "primaryKey": [
+    {
+      "columnName": "INTERVENTION_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "INTERVENTION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "A unique ID for the intervention."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The open/closed status of the intervention.  Status values =2 or >=2000 are closed, other status values are open.",
+      "entries": [
+        "Open",
+        "Closed"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SIGNIFICANCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The documented significance of the intervention."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RESPONSE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Response documented by the user in the intervention."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PATIENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient (if any) associated with this intervention. This ID may be encrypted if you have elected to use enterprise reporting�s encryption utility."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PATIENT_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "A unique serial number for this encounter, if this intervention is associated with a patient. This number is unique across all patients and encounters in the system."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CREATED_BY_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user (EMP) ID of the user who created this intervention."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CREATED_BY_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PHARMACY_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the pharmacy (if any) associated with this intervention.  This will be the log-in pharmacy of the department the user who created the intervention was logged into."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PHARMACY_ID_PHARMACY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the pharmacy."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "INSTANT_CREATED",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time that this intervention was created in calendar format."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "INSTANT_CLOSED",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time (if any) that this intervention was closed in calendar format."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The record name for this intervention record. An intervention is a specific task scheduled to be completed by a clinician to relieve a patient's health problem."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "DEFERRAL_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether this intervention is a scoring system deferral. 'Y' indicates that it is a scoring system deferral. 'N' indicates that is not a scoring system deferral. An intervention is a specific task scheduled to be completed by a clinician to relieve a patient's health problem. A scoring system is used in conjunction with rules to assign a value to a particular patient or event. For example, they can be used to assign an acuity score to patient or calculate future charges. Clinicians can defer them, indicating they will fill out the scoring system at a later time.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "MED_RULE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID for the medication rule associated with the deferral."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "MED_RULE_ID_MED_RULE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the alert rule which contains the name of the drug with which the alert is associated with."
+    }
+  ]
+}

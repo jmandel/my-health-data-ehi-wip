@@ -1,0 +1,263 @@
+{
+  "name": "FIN_ASST_CASE",
+  "description": "This table contains basic information about a financial assistance case record.",
+  "primaryKey": [
+    {
+      "columnName": "FIN_ASST_CASE_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "FIN_ASST_CASE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the financial assistance case record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "RECORD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the record status (hidden, soft-deleted, etc...)",
+      "entries": [
+        "Soft Deleted",
+        "Hidden",
+        "Hidden and Soft Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "EXTERNAL_ID",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column stores the external unique identifier for a financial assistance case record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SERV_AREA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the service area in which this financial assistance case record was created."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "APPL_PROVIDED_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date a financial assistance application was provided to the patient."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "APPL_SIGNED_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date a completed and signed financial assistance application was submitted by the patient."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "FAMILY_SIZE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The size of the patient's family when this case was created."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PERCENT_FPL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The percentage of federal poverty level of the patient calculated using income details (stored in FIN_ASST_CASE_INCOME table)."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PERCENT_FPL_AFTER_EXPENSES",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The percentage of federal poverty level of the patient calculated after subtracting expenses (stored in FIN_ASST_CASE_EXPENSE table) from income details (stored in FIN_ASST_CASE_INCOME table)."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "TOTAL_ANNUAL_INCOME_AFTER_EXP",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total income after expenses for the patient's household."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status category ID for the financial assistance case record.",
+      "entries": [
+        "In Progress",
+        "Completed",
+        "Waiting For Patient"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "TOTAL_ANNUAL_INCOME",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Total annual income of the patient's household."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the guarantor record associated with the financial assistance case record."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "PROPENSITY_TO_PAY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The guarantor propensity to pay category ID for the financial assistance case record."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "CREDIT_SCORE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The guarantor's credit score associated with the financial assistance case record."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "FIN_ASST_CASE_CRT_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The way this case record was created.",
+      "entries": [
+        "User created",
+        "MyChart",
+        "Social Care",
+        "Batch",
+        "Background Process"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "MYCHART_USER_ENTERED_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the free-text additional information provided with the financial assistance application by patient/requestor through MyChart."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "CREATED_BY_WPR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the user ID of the MyChart user who created this case. Only populated when the case is created through MyChart."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "CASE_CONTACT_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the guarantor account who is the primary contact for this financial assistance case record."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The case type category ID for the financial assistance case record.",
+      "entries": [
+        "Parent",
+        "Child"
+      ]
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "CASE_WORKFLOW_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID of the workflow the financial assistance case record is created in.",
+      "entries": [
+        "Financial Assistance",
+        "Social Care",
+        "Reconciliation"
+      ]
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "FISCAL_YEAR",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The fiscal year the financial information in the case record belongs to."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "NUMBER_OF_DEPENDENTS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Number of dependents the patient for whom this financial assistance case record is for has."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "FPL_CALCULATION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the federal poverty level stored in PERCENT_FPL and PERCENT_FPL_AFTER_EXPENSES columns was last calculated."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "NO_INCOME_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Flag that indicates that the household doesn't have any source of income",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "REQ_LAST_WORKED_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Last time a patient viewed or edited the financial assistance application in MyChart."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "DECLINE_ASSIST_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant set after a primary contact declines financial assistance online."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "ENTITY_DEC_ASST_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The entity that declined a Waiting for Patient financial assistance request.",
+      "entries": [
+        "Primary Contact",
+        "System"
+      ]
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "FIN_ASST_CASE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Name of the primary patient on the financial assistance case."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "REC_CREATION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date the record was created"
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "SOURCE_FIN_ASST_CASE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If this case was created and copied from an existing case, this contains the source case that the data was taken from."
+    }
+  ]
+}

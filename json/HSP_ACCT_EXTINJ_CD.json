@@ -1,0 +1,88 @@
+{
+  "$meta": {
+    "schemas": {
+      "HSP_ACCT_EXTINJ_CD": {
+        "name": "HSP_ACCT_EXTINJ_CD",
+        "description": "This table contains hospital account external injury codes information from the Hospital Accounts Receivable (HAR) master file.",
+        "primaryKey": [
+          {
+            "columnName": "HSP_ACCOUNT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "HSP_ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the hospital account."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "This column stores the line number in the results of a query. Because multiple external injury codes can be stored in one hospital account, each code will have a unique line number."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "EXT_INJURY_DX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the system identifier of a external injury code stored in the hospital account."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ACCT_EXTINJ_CD",
+            "target": "HAR_ALL",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ACCT_EXTINJ_CD",
+            "target": "HSP_ACCT_CLAIM_HAR",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ACCT_EXTINJ_CD",
+            "target": "HSP_ACCOUNT",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HSP_ACCT_EXTINJ_CD": [
+    {
+      "HSP_ACCOUNT_ID": 376684810,
+      "LINE": 1,
+      "EXT_INJURY_DX_ID": 508452,
+      "$meta": {
+        "type": "HSP_ACCT_EXTINJ_CD"
+      }
+    }
+  ]
+}

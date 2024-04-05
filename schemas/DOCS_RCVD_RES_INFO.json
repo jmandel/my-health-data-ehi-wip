@@ -1,0 +1,116 @@
+{
+  "name": "DOCS_RCVD_RES_INFO",
+  "description": "The DOCS_RCVD_RES_INFO table contains information about compiled received results such as result time, procedure, status and specimen type.",
+  "primaryKey": [
+    {
+      "columnName": "DOCUMENT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "DOCUMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of received documents."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "RESULT_INST_CMP_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant when the result was collected or resulted."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RES_PROC_NAME_CMP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The free text name of the procedure."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RES_PROC_CMP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The internal ID of the procedure to which this result was mapped. This column links to the CLARITY_EAP table.",
+      "linksTo": "CLARITY_EAP"
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RESULT_ENC_ID_CMP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the encounter during which the order took place."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "RESULT_KEY_CMP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique key that links other result information to this order."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "RES_STATUS_CMP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The result status category ID for the received information.",
+      "entries": [
+        "Aborted",
+        "Active",
+        "Cancelled",
+        "Completed",
+        "Held",
+        "New",
+        "Suspended",
+        "Nullified",
+        "Obsolete"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "RES_ABN_CMP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The value that indicates whether this result was flagged as abnormal or normal."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "RSLT_SPECIMEN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Information about the specimen source/type as sent by the outside organization."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "RSLT_UNSUCC_FLG_COMP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether a result was deemed an unsuccessful attempt",
+      "entries": [
+        "Unsuccessful Attempt",
+        "Documented on Wrong Patient"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "RSLT_UNSUCC_INST_COMP_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant the result unsuccessful flag was set"
+    }
+  ]
+}

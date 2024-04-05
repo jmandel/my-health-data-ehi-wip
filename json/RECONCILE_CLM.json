@@ -1,0 +1,538 @@
+{
+  "$meta": {
+    "schemas": {
+      "RECONCILE_CLM": {
+        "name": "RECONCILE_CLM",
+        "description": "This table contains basic information for claim reconciliation records.",
+        "primaryKey": [
+          {
+            "columnName": "CLAIM_REC_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "CLAIM_REC_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the claim reconciliation record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "CLAIM_INVOICE_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The invoice number of the claim."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "CUR_EPIC_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This is the system status of the claim: opened or closed.",
+            "entries": [
+              "Open",
+              "Closed"
+            ]
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "PAYOR_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This is the payer ID for the payer on the claim."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "BENEFIT_PLAN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This is the benefit plan ID for the benefit plan on the claim."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "LOC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This is the location ID for the location of the claim."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "DEPARTMENT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This is the department ID for the department of the claim."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "BUCKET_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The hospital liability bucket ID for the claim. This column is populated only for Hospital Billing claims."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "HSP_ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The hospital account ID for the claim. This column is populated only for Hospital Billing claims."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "SERVICE_AREA_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the service area ID from the claim that created the reconciliation record."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "EPIC_CLM_STS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the status of the claim that created the reconciliation record. This column will indicate whether the claim has been accepted, processed, or rejected in Epic.",
+            "entries": [
+              "Processed",
+              "Errored",
+              "Accepted from Run",
+              "Rejected",
+              "WQ Resubmit",
+              "Accept from WQ"
+            ]
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "CLAIM_RUN_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the claim run ID for the reconciliation record. This column will be populated for records created in the 2010 version and beyond."
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "TOTAL_BILLED",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the billed amount for the reconciliation record."
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "EXT_STS_RCV_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column indicates whether at least one external status update has been received for the reconciliation record.",
+            "entries": [
+              "No",
+              "Yes"
+            ]
+          },
+          {
+            "ordinalPosition": 15,
+            "name": "CROSSOVER_CLAIM_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates whether the associated claim is a crossover claim."
+          },
+          {
+            "ordinalPosition": 16,
+            "name": "RECORD_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item indicates whether the record is Interchange Control Header (ISA), Transaction Set Header (ST), or Claim data.",
+            "entries": [
+              "Interchange",
+              "Transaction Set",
+              "Claim"
+            ]
+          },
+          {
+            "ordinalPosition": 23,
+            "name": "POST_ACK_STATUS_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item indicates whether at least one external status update has been received on or after either four days post claim acceptance or the predicted payment response date if earlier. Claim acknowledgements are generally posted before then."
+          },
+          {
+            "ordinalPosition": 33,
+            "name": "CLAIM_CLOSED_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This item holds the contact date the CRD was marked closed."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "RECONCILE_CLM",
+            "target": "RECONCILE_CLAIM_STATUS",
+            "joinKeys": [
+              {
+                "source": "CLAIM_REC_ID",
+                "target": "CLAIM_RECON_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "RECONCILE_CLM",
+            "target": "RECONCILE_CLM_OT",
+            "joinKeys": [
+              {
+                "source": "CLAIM_REC_ID",
+                "target": "CLAIM_REC_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "RECONCILE_CLM": [
+    {
+      "CLAIM_REC_ID": "42972138",
+      "CLAIM_INVOICE_NUM": "L1002792520",
+      "CUR_EPIC_STATUS_C_NAME": "Open",
+      "PAYOR_ID": 1302,
+      "BENEFIT_PLAN_ID": 130204,
+      "LOC_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "SERVICE_AREA_ID": 18,
+      "EPIC_CLM_STS_C_NAME": "Rejected",
+      "CLAIM_RUN_ID": "1323670",
+      "TOTAL_BILLED": 335,
+      "EXT_STS_RCV_YN": "Y",
+      "CROSSOVER_CLAIM_YN": "N",
+      "RECORD_TYPE_C_NAME": "Claim",
+      "$meta": {
+        "type": "RECONCILE_CLM"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "95305293",
+      "CLAIM_INVOICE_NUM": "L1006942840",
+      "CUR_EPIC_STATUS_C_NAME": "Open",
+      "PAYOR_ID": 1302,
+      "BENEFIT_PLAN_ID": 130204,
+      "LOC_ID": 1700801,
+      "DEPARTMENT_ID": 1700801005,
+      "SERVICE_AREA_ID": 18,
+      "EPIC_CLM_STS_C_NAME": "Accepted from Run",
+      "CLAIM_RUN_ID": "2445112",
+      "TOTAL_BILLED": 173,
+      "EXT_STS_RCV_YN": "Y",
+      "CROSSOVER_CLAIM_YN": "N",
+      "RECORD_TYPE_C_NAME": "Claim",
+      "$meta": {
+        "type": "RECONCILE_CLM"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "42972139",
+      "CLAIM_INVOICE_NUM": "L1002792530",
+      "CUR_EPIC_STATUS_C_NAME": "Open",
+      "PAYOR_ID": 1302,
+      "BENEFIT_PLAN_ID": 130204,
+      "LOC_ID": 1700801,
+      "DEPARTMENT_ID": 1700801005,
+      "SERVICE_AREA_ID": 18,
+      "EPIC_CLM_STS_C_NAME": "Rejected",
+      "CLAIM_RUN_ID": "1323670",
+      "TOTAL_BILLED": 151,
+      "EXT_STS_RCV_YN": "Y",
+      "CROSSOVER_CLAIM_YN": "N",
+      "RECORD_TYPE_C_NAME": "Claim",
+      "$meta": {
+        "type": "RECONCILE_CLM"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98402730",
+      "CLAIM_INVOICE_NUM": "L1007201490",
+      "CUR_EPIC_STATUS_C_NAME": "Open",
+      "PAYOR_ID": 1302,
+      "BENEFIT_PLAN_ID": 130204,
+      "LOC_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "SERVICE_AREA_ID": 18,
+      "EPIC_CLM_STS_C_NAME": "Accepted from Run",
+      "CLAIM_RUN_ID": "2498305",
+      "TOTAL_BILLED": 315,
+      "EXT_STS_RCV_YN": "Y",
+      "CROSSOVER_CLAIM_YN": "N",
+      "RECORD_TYPE_C_NAME": "Claim",
+      "$meta": {
+        "type": "RECONCILE_CLM"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "110203431",
+      "CLAIM_INVOICE_NUM": "L1007990080",
+      "CUR_EPIC_STATUS_C_NAME": "Open",
+      "PAYOR_ID": 1302,
+      "BENEFIT_PLAN_ID": 130204,
+      "LOC_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "SERVICE_AREA_ID": 18,
+      "EPIC_CLM_STS_C_NAME": "Accepted from Run",
+      "CLAIM_RUN_ID": "2722845",
+      "TOTAL_BILLED": 114,
+      "EXT_STS_RCV_YN": "Y",
+      "CROSSOVER_CLAIM_YN": "N",
+      "RECORD_TYPE_C_NAME": "Claim",
+      "POST_ACK_STATUS_YN": "N",
+      "$meta": {
+        "type": "RECONCILE_CLM"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "110539507",
+      "CLAIM_INVOICE_NUM": "L1008016200",
+      "CUR_EPIC_STATUS_C_NAME": "Open",
+      "PAYOR_ID": 1302,
+      "BENEFIT_PLAN_ID": 130204,
+      "LOC_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "SERVICE_AREA_ID": 18,
+      "EPIC_CLM_STS_C_NAME": "Accepted from Run",
+      "CLAIM_RUN_ID": "2729057",
+      "TOTAL_BILLED": 330,
+      "EXT_STS_RCV_YN": "Y",
+      "CROSSOVER_CLAIM_YN": "N",
+      "RECORD_TYPE_C_NAME": "Claim",
+      "POST_ACK_STATUS_YN": "N",
+      "$meta": {
+        "type": "RECONCILE_CLM"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "43461737",
+      "CLAIM_INVOICE_NUM": "L1002834030",
+      "CUR_EPIC_STATUS_C_NAME": "Open",
+      "PAYOR_ID": 1302,
+      "BENEFIT_PLAN_ID": 130204,
+      "LOC_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "SERVICE_AREA_ID": 18,
+      "EPIC_CLM_STS_C_NAME": "Accepted from Run",
+      "CLAIM_RUN_ID": "1338229",
+      "TOTAL_BILLED": 335,
+      "EXT_STS_RCV_YN": "Y",
+      "CROSSOVER_CLAIM_YN": "N",
+      "RECORD_TYPE_C_NAME": "Claim",
+      "$meta": {
+        "type": "RECONCILE_CLM"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "60433254",
+      "CLAIM_INVOICE_NUM": "L1004236460",
+      "CUR_EPIC_STATUS_C_NAME": "Open",
+      "PAYOR_ID": 1302,
+      "BENEFIT_PLAN_ID": 130204,
+      "LOC_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "SERVICE_AREA_ID": 18,
+      "EPIC_CLM_STS_C_NAME": "Accepted from Run",
+      "CLAIM_RUN_ID": "1755223",
+      "TOTAL_BILLED": 165,
+      "EXT_STS_RCV_YN": "Y",
+      "CROSSOVER_CLAIM_YN": "N",
+      "RECORD_TYPE_C_NAME": "Claim",
+      "$meta": {
+        "type": "RECONCILE_CLM"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98976876",
+      "CLAIM_INVOICE_NUM": "L1007233830",
+      "CUR_EPIC_STATUS_C_NAME": "Open",
+      "PAYOR_ID": 1302,
+      "BENEFIT_PLAN_ID": 130204,
+      "LOC_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "SERVICE_AREA_ID": 18,
+      "EPIC_CLM_STS_C_NAME": "Accepted from Run",
+      "CLAIM_RUN_ID": "2508144",
+      "TOTAL_BILLED": 315,
+      "EXT_STS_RCV_YN": "N",
+      "CROSSOVER_CLAIM_YN": "N",
+      "RECORD_TYPE_C_NAME": "Claim",
+      "$meta": {
+        "type": "RECONCILE_CLM"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98990043",
+      "CLAIM_INVOICE_NUM": "L1007233831",
+      "CUR_EPIC_STATUS_C_NAME": "Open",
+      "PAYOR_ID": 1302,
+      "BENEFIT_PLAN_ID": 130204,
+      "LOC_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "SERVICE_AREA_ID": 18,
+      "EPIC_CLM_STS_C_NAME": "Accepted from Run",
+      "CLAIM_RUN_ID": "2508319",
+      "TOTAL_BILLED": 315,
+      "EXT_STS_RCV_YN": "Y",
+      "CROSSOVER_CLAIM_YN": "N",
+      "RECORD_TYPE_C_NAME": "Claim",
+      "$meta": {
+        "type": "RECONCILE_CLM"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98976876",
+      "CLAIM_INVOICE_NUM": "L1007233830",
+      "CUR_EPIC_STATUS_C_NAME": "Open",
+      "PAYOR_ID": 1302,
+      "BENEFIT_PLAN_ID": 130204,
+      "LOC_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "SERVICE_AREA_ID": 18,
+      "EPIC_CLM_STS_C_NAME": "Accepted from Run",
+      "CLAIM_RUN_ID": "2508144",
+      "TOTAL_BILLED": 315,
+      "EXT_STS_RCV_YN": "N",
+      "CROSSOVER_CLAIM_YN": "N",
+      "RECORD_TYPE_C_NAME": "Claim",
+      "$meta": {
+        "type": "RECONCILE_CLM"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98990043",
+      "CLAIM_INVOICE_NUM": "L1007233831",
+      "CUR_EPIC_STATUS_C_NAME": "Open",
+      "PAYOR_ID": 1302,
+      "BENEFIT_PLAN_ID": 130204,
+      "LOC_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "SERVICE_AREA_ID": 18,
+      "EPIC_CLM_STS_C_NAME": "Accepted from Run",
+      "CLAIM_RUN_ID": "2508319",
+      "TOTAL_BILLED": 315,
+      "EXT_STS_RCV_YN": "Y",
+      "CROSSOVER_CLAIM_YN": "N",
+      "RECORD_TYPE_C_NAME": "Claim",
+      "$meta": {
+        "type": "RECONCILE_CLM"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "95212572",
+      "CLAIM_INVOICE_NUM": "L1006928390",
+      "CUR_EPIC_STATUS_C_NAME": "Open",
+      "PAYOR_ID": 1302,
+      "BENEFIT_PLAN_ID": 130204,
+      "LOC_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "SERVICE_AREA_ID": 18,
+      "EPIC_CLM_STS_C_NAME": "Accepted from Run",
+      "CLAIM_RUN_ID": "2442823",
+      "TOTAL_BILLED": 516,
+      "EXT_STS_RCV_YN": "Y",
+      "CROSSOVER_CLAIM_YN": "N",
+      "RECORD_TYPE_C_NAME": "Claim",
+      "$meta": {
+        "type": "RECONCILE_CLM"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "110156845",
+      "CLAIM_INVOICE_NUM": "L1007985430",
+      "CUR_EPIC_STATUS_C_NAME": "Open",
+      "PAYOR_ID": 1302,
+      "BENEFIT_PLAN_ID": 130204,
+      "LOC_ID": 1700801,
+      "DEPARTMENT_ID": 1700801005,
+      "SERVICE_AREA_ID": 18,
+      "EPIC_CLM_STS_C_NAME": "Accepted from Run",
+      "CLAIM_RUN_ID": "2721616",
+      "TOTAL_BILLED": 203,
+      "EXT_STS_RCV_YN": "Y",
+      "CROSSOVER_CLAIM_YN": "N",
+      "RECORD_TYPE_C_NAME": "Claim",
+      "POST_ACK_STATUS_YN": "N",
+      "$meta": {
+        "type": "RECONCILE_CLM"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "43461738",
+      "CLAIM_INVOICE_NUM": "L1002834040",
+      "CUR_EPIC_STATUS_C_NAME": "Open",
+      "PAYOR_ID": 1302,
+      "BENEFIT_PLAN_ID": 130204,
+      "LOC_ID": 1700801,
+      "DEPARTMENT_ID": 1700801005,
+      "SERVICE_AREA_ID": 18,
+      "EPIC_CLM_STS_C_NAME": "Accepted from Run",
+      "CLAIM_RUN_ID": "1338229",
+      "TOTAL_BILLED": 151,
+      "EXT_STS_RCV_YN": "Y",
+      "CROSSOVER_CLAIM_YN": "N",
+      "RECORD_TYPE_C_NAME": "Claim",
+      "$meta": {
+        "type": "RECONCILE_CLM"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "102143190",
+      "CLAIM_INVOICE_NUM": "L1007449820",
+      "CUR_EPIC_STATUS_C_NAME": "Open",
+      "PAYOR_ID": 1302,
+      "BENEFIT_PLAN_ID": 130204,
+      "LOC_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "SERVICE_AREA_ID": 18,
+      "EPIC_CLM_STS_C_NAME": "Accepted from Run",
+      "CLAIM_RUN_ID": "2568477",
+      "TOTAL_BILLED": 226,
+      "EXT_STS_RCV_YN": "Y",
+      "CROSSOVER_CLAIM_YN": "N",
+      "RECORD_TYPE_C_NAME": "Claim",
+      "$meta": {
+        "type": "RECONCILE_CLM"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "66988170",
+      "CLAIM_INVOICE_NUM": "L1004718920",
+      "CUR_EPIC_STATUS_C_NAME": "Open",
+      "PAYOR_ID": 1302,
+      "BENEFIT_PLAN_ID": 130204,
+      "LOC_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "SERVICE_AREA_ID": 18,
+      "EPIC_CLM_STS_C_NAME": "Accepted from Run",
+      "CLAIM_RUN_ID": "1911563",
+      "TOTAL_BILLED": 170,
+      "EXT_STS_RCV_YN": "Y",
+      "CROSSOVER_CLAIM_YN": "N",
+      "RECORD_TYPE_C_NAME": "Claim",
+      "$meta": {
+        "type": "RECONCILE_CLM"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "89293998",
+      "CLAIM_INVOICE_NUM": "37668481002",
+      "CUR_EPIC_STATUS_C_NAME": "Closed",
+      "PAYOR_ID": 1302,
+      "BENEFIT_PLAN_ID": 130204,
+      "LOC_ID": 101401,
+      "BUCKET_ID": 464353002,
+      "HSP_ACCOUNT_ID": 376684810,
+      "SERVICE_AREA_ID": 10,
+      "EPIC_CLM_STS_C_NAME": "Accepted from Run",
+      "CLAIM_RUN_ID": "2332531",
+      "TOTAL_BILLED": 1638.82,
+      "EXT_STS_RCV_YN": "Y",
+      "CROSSOVER_CLAIM_YN": "N",
+      "RECORD_TYPE_C_NAME": "Claim",
+      "CLAIM_CLOSED_DATE": "2022-04-26 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM"
+      }
+    }
+  ]
+}

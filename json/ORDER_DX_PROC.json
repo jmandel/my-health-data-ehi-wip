@@ -1,0 +1,413 @@
+{
+  "$meta": {
+    "schemas": {
+      "ORDER_DX_PROC": {
+        "name": "ORDER_DX_PROC",
+        "description": "The ORDER_DX_PROC table enables you to report on the diagnoses associated with procedures ordered in clinical system. Since one procedure order may be associated with multiple diagnoses, each row in this table is one procedure - diagnosis relation. We have also included patient and contact identification information for each record. Note that system settings may or may not require that procedures be associated with diagnoses.  This table contains only information for those procedures and diagnoses that have been explicitly associated. Check with your clinical system Application Administrator to determine how your organization has this set up.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_PROC_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_PROC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the procedure order record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this procedure record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PAT_ENC_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "DX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the diagnosis record associated with the procedure order."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "DX_CHRONIC_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates whether the diagnosis associated with this order record was marked as chronic during the ordering process. 'Y' indicates that a the diagnosis was marked as chronic. 'N' or NULL indicate that a the diagnosis was not marked as chronic.",
+            "entries": [
+              "No",
+              "Yes"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_DX_PROC",
+            "target": "ORDER_PARENT_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_DX_PROC",
+            "target": "ORDER_PROC",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_DX_PROC",
+            "target": "ORD_PRFLST_TRK",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ORDER_DX_PROC": [
+    {
+      "ORDER_PROC_ID": 763403909,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66149,
+      "PAT_ENC_CSN_ID": 921952141,
+      "DX_ID": 284018,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179264,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66350,
+      "PAT_ENC_CSN_ID": 948004323,
+      "DX_ID": 192858,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179263,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66350,
+      "PAT_ENC_CSN_ID": 948004323,
+      "DX_ID": 108212,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179260,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66350,
+      "PAT_ENC_CSN_ID": 948004323,
+      "DX_ID": 108212,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060606,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 64869.03,
+      "PAT_ENC_CSN_ID": 724628999,
+      "DX_ID": 444804,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 945468369,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66745,
+      "PAT_ENC_CSN_ID": 991225117,
+      "DX_ID": 15362,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 945468369,
+      "LINE": 2,
+      "PAT_ENC_DATE_REAL": 66745,
+      "PAT_ENC_CSN_ID": 991225117,
+      "DX_ID": 192858,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 945468368,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66745,
+      "PAT_ENC_CSN_ID": 991225117,
+      "DX_ID": 187132,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 945468368,
+      "LINE": 2,
+      "PAT_ENC_DATE_REAL": 66745,
+      "PAT_ENC_CSN_ID": 991225117,
+      "DX_ID": 192858,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 945468367,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66745,
+      "PAT_ENC_CSN_ID": 991225117,
+      "DX_ID": 192858,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179262,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66350.02,
+      "PAT_ENC_CSN_ID": 958147754,
+      "DX_ID": 108212,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060605,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 64869,
+      "PAT_ENC_CSN_ID": 720803470,
+      "DX_ID": 1181154,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060605,
+      "LINE": 2,
+      "PAT_ENC_DATE_REAL": 64869,
+      "PAT_ENC_CSN_ID": 720803470,
+      "DX_ID": 94362,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060604,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 64869,
+      "PAT_ENC_CSN_ID": 720803470,
+      "DX_ID": 444804,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060607,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 64878,
+      "PAT_ENC_CSN_ID": 725327197,
+      "DX_ID": 1181154,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060607,
+      "LINE": 2,
+      "PAT_ENC_DATE_REAL": 64878,
+      "PAT_ENC_CSN_ID": 725327197,
+      "DX_ID": 94362,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060613,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 65591,
+      "PAT_ENC_CSN_ID": 832464108,
+      "DX_ID": 1177374,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060609,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 65574,
+      "PAT_ENC_CSN_ID": 829213099,
+      "DX_ID": 1177374,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179267,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66465,
+      "PAT_ENC_CSN_ID": 977858467,
+      "DX_ID": 260690,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179268,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66465,
+      "PAT_ENC_CSN_ID": 977858467,
+      "DX_ID": 260690,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 945468370,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66745.02,
+      "PAT_ENC_CSN_ID": 1028743701,
+      "DX_ID": 15362,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 945468371,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66745.02,
+      "PAT_ENC_CSN_ID": 1028743701,
+      "DX_ID": 187132,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 945468372,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66745.02,
+      "PAT_ENC_CSN_ID": 1028743701,
+      "DX_ID": 192858,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060608,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 65387,
+      "PAT_ENC_CSN_ID": 799951565,
+      "DX_ID": 1181154,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060610,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 65575.02,
+      "PAT_ENC_CSN_ID": 829393933,
+      "DX_ID": 1177374,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060610,
+      "LINE": 2,
+      "PAT_ENC_DATE_REAL": 65575.02,
+      "PAT_ENC_CSN_ID": 829393933,
+      "DX_ID": 442362,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179265,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66444,
+      "PAT_ENC_CSN_ID": 974614965,
+      "DX_ID": 260690,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060612,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 65581,
+      "PAT_ENC_CSN_ID": 829995922,
+      "DX_ID": 1177374,
+      "DX_CHRONIC_YN": "N",
+      "$meta": {
+        "type": "ORDER_DX_PROC"
+      }
+    }
+  ]
+}

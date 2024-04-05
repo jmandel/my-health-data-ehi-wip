@@ -1,0 +1,72 @@
+{
+  "name": "ALT_DRUG_DOSE_RSN",
+  "description": "Stores information as to why a dose alert was triggered.",
+  "primaryKey": [
+    {
+      "columnName": "ALT_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ALT_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "A unique serial number for this contact. This number is unique across all alerts in the system."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line count.  There may be multiple reasons a dose alert was triggered."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "DEVIATION_FRM_DOSE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the percent for a dose alert.  This is rounded to the nearest percent.  How this percent is calculated depends upon the dose alert type, as stored in item 2800.  For single and daily dose alerts, this value stores the percent that a dose is either above the maximum or below the minimum recommended.  For lifetime dose alerts, this value stores the percent of a certain chemical towards the lifetime limit for that chemical.  Currently we do not store a percent for frequency or duration dose alerts."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ALT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique alert ID for each alert.  You could link it to ALERT.ALT_ID to get patient and vendor information in table ALERT."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "DOSE_CHEM_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Store the chemical that triggered a dose alert"
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ADMIN_AMOUNT_AFTER",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total amount that the patient will have received after the administration when the alert is fired. For example, if the patient has received 3.5 g of Acetaminophen within the last 24 hours and the nurse tries to give 650 mg of Acetaminophen to the patient, the alert is fired because we cannot give the patient more than 4 g of Acetaminophen within 24 hours.  3.5 g plus 650 mg will be 4.15 g and 4.15 will be saved in this column and g will be saved in column DOSE_UNIT_C."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DOSE_THRESHOLD_USED",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The percent threshold that triggered a critical or threshold-based hard stop dose warning."
+    }
+  ]
+}

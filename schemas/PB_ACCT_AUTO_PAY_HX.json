@@ -1,0 +1,97 @@
+{
+  "name": "PB_ACCT_AUTO_PAY_HX",
+  "description": "The PB_AUTO_PAY_HX table stores the history of auto pay status for a premium billing account.",
+  "primaryKey": [
+    {
+      "columnName": "PB_ACCT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PB_ACCT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the account record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "AUTO_PAY_HX_ACT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the auto pay action performed.",
+      "entries": [
+        "Enrolled",
+        "Canceled",
+        "Edited"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "AUTO_PAY_HX_ACT_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the source of the auto pay action performed.",
+      "entries": [
+        "Hyperspace",
+        "MyChart",
+        "Batch",
+        "Tapestry Link"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "AUTO_PAY_HX_EDIT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "When a current auto pay setup is edited, this columns stores the thing that changed.",
+      "entries": [
+        "Payment Method",
+        "Payment Day",
+        "Payment Day and Method",
+        "Billing Email"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "AUTO_PAY_HX_MYPT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the MyChart ID of the member if the auto pay action was performed from MyChart"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "AUTO_PAY_HX_ACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date when a particular auto pay workflow was perfomed"
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "AUTO_PAY_HX_TERM_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the reason as to why auto pay was terminated",
+      "entries": [
+        "User Canceled",
+        "Member Canceled",
+        "Payment Failed",
+        "No Current Coverages",
+        "Payment Method Expired",
+        "Employer Canceled"
+      ]
+    }
+  ]
+}

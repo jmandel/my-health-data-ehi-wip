@@ -1,0 +1,571 @@
+{
+  "name": "IB_MESSAGES",
+  "description": "The IB_MESSAGES table contains basic information about In Basket messages.",
+  "primaryKey": [
+    {
+      "columnName": "MSG_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "MSG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the In Basket Message."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CREATE_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The time the message record was created."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "REGARDING_TOPIC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A short description of the message contents."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "The encounter date of the patient associated with this message."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SENDER_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the sender (networked to the User master file)."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "SENDER_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "NAME_OF_CALLER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the caller."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "TRANSCRIPTION_LINE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the ID of the dictation transcription for a transcription created outside of Epic and sent to In Basket through an interface.  It is networked to the Notes (HNO) master file."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ORDER_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the order procedure (networked to the Orders master file)."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "ORDER_MED_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the order procedure (networked to the Orders master file)."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ORD_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "The internal date of the ordered procedure."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PAT_EMAIL_RESP_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if the patient wants an e-mail response to their In Basket message.  Y indicates that the patient does want an e-mail response and N indicates that the patient does not want an e-mail response.",
+      "entries": [
+        "YES",
+        "NO"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "APPT_STATUS_C",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Appointment Notification Email Message Type - The Appointment Status of the specific encounter"
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "CANCEL_REASON_C",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Appointment Notification Email Message Type - If the APPT_STATUS_C column is canceled, this column contains the link to the reason for cancellation"
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "A unique serial number for this encounter. This number is unique across all patients and encounters in the system. This column should be replaced with IB_MESSAGE_PAT_ENCS.PAT_ENC_CSN_ID instead. Historical records will still have this data populated, as well as data moving forward, but it may not contain all of the encounter contact serial numbers (CSNs) as the new column and table would"
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PAT_ORDENC_DT_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "The new orders only encounter associated with this message. This will be used if a reflex action is performed on a result and the original contact is owned elsewhere."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "DICT_HNO_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the ID of the dictation transcription for a dictation transcribed in Epic (not in a third party system).  It is networked to the notes (HNO) master file."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "TASK_ID_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the task ID this message is associated with"
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "REFERRAL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores referral record that is related to the In Basket message"
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores claim record that is related to the In Basket message"
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "ORGANIZATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the Care Everywhere organization related to this message"
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "ORGANIZATION_ID_EXTERNAL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Organization's external name used as the display name on forms and user interfaces."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "QUERY_OUTCOME_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Outcome of the Care Everywhere search.",
+      "entries": [
+        "Successful",
+        "Unsuccessful"
+      ]
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "QUERY_INSTANT",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "Instant the query was performed"
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "QUERY_USER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "User who performed the query"
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "QUERY_ENC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Encounter associated with the query"
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "QUERY_ENC_PROV",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Provider for the encounter associated with the query"
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "QUERY_DEPT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Login department for the user performing the query"
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "QUERY_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Reason for performing the query",
+      "entries": [
+        "Other",
+        "Automatic System Request",
+        "PCP Review",
+        "Emergency Visit",
+        "Referral",
+        "Scheduled Visit",
+        "Urgent Care",
+        "Walk In",
+        "Admission",
+        "Phone / E-mail Encounter",
+        "Care Coordination",
+        "Background Batch Request",
+        "Background Verification Query",
+        "Data Request",
+        "Chart Gateway Batch Query",
+        "Chart Gateway Targeted Query",
+        "Patient Portal Initiated",
+        "Chart Correction",
+        "Chart Gateway Link Forwarded Query",
+        "Switch from Standalone to Gateway",
+        "Orders Anywhere Query",
+        "Prior Authorization",
+        "Payer Platform ADT",
+        "Payer Platform Update Notification",
+        "Payer Platform Scheduled Appointment",
+        "Network Affiliation",
+        "Patient Newly Enabled",
+        "Book Anywhere",
+        "Payer Coverage Finder",
+        "Payer Platform Prep Data",
+        "Automatic Query to Payer Before Appointment",
+        "Reference Claim Link",
+        "Payer Platform Member Estimates",
+        "Life Sciences Study Enrollment",
+        "Patient Coverage Linking",
+        "Payer Coverage Finder - Foreground",
+        "Treatment",
+        "Payment",
+        "Healthcare Operations",
+        "System Administration",
+        "Fraud Detection",
+        "Psychotherapy",
+        "Training",
+        "Legal Disclosure",
+        "Marketing",
+        "Facility Directory",
+        "Family Disclosure",
+        "Individual Present Disclosure",
+        "Emergency",
+        "Disaster Relief",
+        "Public Health",
+        "Abuse Disclosure",
+        "Health Oversight Disclosure",
+        "Judicial Disclosure",
+        "Law Enforcement Disclosure",
+        "Deceased Disclosure",
+        "Organ Donation Disclosure",
+        "Research Disclosure",
+        "Health Safety Threat",
+        "Government Disclosure",
+        "Workers Compensation",
+        "Insurance or Disability Coverage Disclosure",
+        "Request of the Individual"
+      ]
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "QUERY_PAT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Patient name used for the query"
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "QUERY_PAT_STATE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "State used for the patient query"
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "QUERY_PAT_ZIP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Zip code used for the patient query"
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "QUERY_PAT_SEX_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Sex used during the patient query",
+      "entries": [
+        "Female",
+        "Male",
+        "Unknown",
+        "Nonbinary",
+        "X",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "QUERY_PAT_DOB_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date of birth used for the patient query"
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "QUERY_PAT_SSN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "SSN used for the patient query"
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "QUERY_PAT_HOME_PH",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Home phone number used for the patient query"
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "QUERY_PAT_WORK_PH",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Work phone number used during the patient query"
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "QUERY_PAT_CELL_PH",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Cell phone number used during the patient query"
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "MYCHART_HNO_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Note ID for a message that is a result of a 3rd party questionnaire being submitted."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "PEF_MSG_TYP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Type of a patient-entered flowsheet message, either Alert or Notification.",
+      "entries": [
+        "Notification Message",
+        "Alert Message"
+      ]
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "PEF_EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "For patient-entered flowsheet messages, the episode ID that the flowsheet is a part of."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "PEF_LAST_NOTIF_DAT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Last notification date of a patient-entered flowsheet message."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "PEF_INSTANT_SVD_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "For patient-entered flowsheet messages, the date and time the patient entered the data that triggered this message."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "NCS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column extracts the linked Customer Relationship Management record (NCS master file)."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "DENTAL_TRT_PLAN_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores dental treatment plan ID."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "DTP_PMT_PLAN_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores orthodontic payment plan line."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "DEFICIENCY_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The deficiency type category number for the In Basket message.",
+      "entries": [
+        "Surgery Report",
+        "Admission Diagnosis",
+        "Discharge Summary",
+        "Anesthesiology Report",
+        "Transfer Report",
+        "Result",
+        "Image",
+        "Verbal/Cosign Order",
+        "Initial Assessment",
+        "Work List Task",
+        "H&P",
+        "Dictation",
+        "Consult",
+        "HB Final Diagnosis",
+        "Pre-Op Diagnosis",
+        "Discharge Diagnosis",
+        "Medications Not Administered",
+        "DRG Code",
+        "ICD Codes",
+        "CPT/HCPCS Codes",
+        "Post-Op Diagnosis",
+        "OR Nursing Report",
+        "Pre-Op Notes",
+        "Post-Op Notes",
+        "Progress Notes",
+        "Procedures",
+        "ED Notes",
+        "General Notes",
+        "Document",
+        "ED Navigator Data",
+        "ED Disposition",
+        "ED Chief Complaint",
+        "ED Clinical Impression",
+        "Coding/CDI Query",
+        "Processing Needed",
+        "ED Provider Notes",
+        "Scan Signature",
+        "Open Encounter",
+        "Clinic Transcription",
+        "ED Events",
+        "Flowsheet",
+        "ED Allergies Reviewed",
+        "Medications Reviewed",
+        "Medication List Status",
+        "History Reviewed",
+        "Narrator Sign Off",
+        "Problem List - Present on Admission",
+        "Incomplete Note",
+        "Patient Learning Assessment",
+        "Analysis Needed",
+        "Problem List - Additional Dx Data",
+        "Problem List - Specialty Episode Linkage",
+        "Any Note",
+        "ED Triage Notes",
+        "ED DBC Clinical Episode Link",
+        "Verbal Treatment Plan",
+        "Preliminary Cause of Death",
+        "Study Review",
+        "HH Encounter OASIS and POC Integration",
+        "HH Order",
+        "HH Encounter OASIS Integration",
+        "HH Attestation",
+        "HH Encounter No Integration",
+        "Home Care Supervisory Visit",
+        "Home Care Pended Orders",
+        "Hospice Non-Covered Documentation",
+        "HH Specialty Plan of Care - Manually Created",
+        "HH EVV Encounter",
+        "Specialty Plan of Care - Signature",
+        "Specialty Plan of Care - Contribution",
+        "Encounter Cosign",
+        "AN Ready for Procedure",
+        "AN Attestation",
+        "AN Event",
+        "AN Staff",
+        "AN Preprocedure Note",
+        "AN Postprocedure Note",
+        "AN Close Encounter Check Failed",
+        "DBC Info Reviewed",
+        "AN Procedure Note",
+        "ED Course Review Needed",
+        "ED Course SmartLink Missing",
+        "Ready to View"
+      ]
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "TRANSCRIPT_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the note that this In Basket deficiency creation error occurred for."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "LAB_RESULT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the result record of the In Basket message."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "LAB_HOLD_LN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the hold of the specimen associated with this In Basket message."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "LAB_REQ_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores a pointer to a requisition record (REQ). The REQ record may be a requisition, a case, or both."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "LAB_AP_CASE_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The case number is the Anatomic Pathology accession number."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "AN_MSG_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason the message was sent from Anesthesia.",
+      "entries": [
+        "Need Relief"
+      ]
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "FREE_TEXT_SIG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Free text sig received from a pharmacy interface."
+    }
+  ]
+}

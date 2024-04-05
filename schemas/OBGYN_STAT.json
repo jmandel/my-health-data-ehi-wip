@@ -1,0 +1,75 @@
+{
+  "name": "OBGYN_STAT",
+  "description": "Table for the converted OB/Gyn status structure.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "OBGYN_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This value is the OB/Gyn status for a patient which indicates if a patient is pregnant or not, as well as other menstrual statuses like hysterectomy, or having periods.",
+      "entries": [
+        "Premenarcheal",
+        "Postmenopausal",
+        "Hysterectomy",
+        "Pregnant",
+        "Having periods",
+        "Injection",
+        "Implant",
+        "Ablation",
+        "Needs review",
+        "Premenopausal",
+        "Recent pregnancy",
+        "Unknown",
+        "Perimenopausal",
+        "Born without uterus"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "APP_INST_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This instant stores the date the OB/GYN status applies to. It is generated when the OB/GYN status is saved."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "UPDATE_USR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This stores the ID of the user who updated a patient's OB/GYN status."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "UPDATE_USR_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    }
+  ]
+}

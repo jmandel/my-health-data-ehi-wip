@@ -1,0 +1,89 @@
+{
+  "$meta": {
+    "schemas": {
+      "PAT_EMAILADDRESS": {
+        "name": "PAT_EMAILADDRESS",
+        "description": "This table stores the patient's email addresses.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Internal ID of the patient (.1 record ID)"
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The Line Count.  Each line stores one of the patient's e-mail addresses."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "EMAIL_ADDRESS",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Email address for this patient."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "PAT_EMAILADDRESS",
+            "target": "PAT_REL_ADDR",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "PAT_EMAILADDRESS",
+            "target": "PATIENT",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PAT_EMAILADDRESS": [
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 1,
+      "EMAIL_ADDRESS": "jmandel@alum.mit.edu",
+      "$meta": {
+        "type": "PAT_EMAILADDRESS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 2,
+      "EMAIL_ADDRESS": "jmandel@gmail.com",
+      "$meta": {
+        "type": "PAT_EMAILADDRESS"
+      }
+    }
+  ]
+}

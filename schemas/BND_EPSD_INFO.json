@@ -1,0 +1,167 @@
+{
+  "name": "BND_EPSD_INFO",
+  "description": "This table contains information about bundled episodes. A bundled episode is used to link related encounters and services that can be billed together using a pre-defined agreement with a payor or guarantor.",
+  "primaryKey": [
+    {
+      "columnName": "EPISODE_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the bundled episode record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the coverage that will be billed for the bundled episode."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAYOR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the payer responsible for the bundled episode's expected payment."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SELF_PAY_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the guarantor is responsible for the bundled episode's expected payment.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "BPC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the bundled episode terms associated with the bundled episode. The terms are used to define various reimbursement related attributes for a bundled episode."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "BPC_ID_BPC_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the bundled episode terms record."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "BPC_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The contact serial number of the bundled episode terms associated with the bundled episode. The terms are used to define various reimbursement related attributes for a bundled episode."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "BILLING_START_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The start date from which the services are covered in the bundled episode."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "BILLING_END_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The end date until which the services are covered in the bundled episode."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "EXP_TOTAL_PMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of the total expected payment/target price from the responsible party of a bundled episode."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "EXP_HOSP_PMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of the total hospital expected payment from the responsible party of a bundled episode."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "EXP_PROF_PMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of the total professional expected payment from the responsible party of a bundled episode. This will only be used when a separate  professional payment is expected."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "MAIN_EVENT_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The contact serial number of the patient encounter that is the main encounter for this bundled episode."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "MAIN_EVENT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the user who set the main event for this bundled episode."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "MAIN_EVENT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "MAIN_EVENT_SET_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time that the main event was last set for this bundled episode."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "CLOSE_OR_VOID_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The closed or voided date of the bundled episode."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "BND_EPSD_VOID_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID of the reason why a bundled episode is voided.",
+      "entries": [
+        "Created In Error",
+        "Voided By System"
+      ]
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "LAST_LINK_UNLINK_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The most recent date when a record was either linked or unlinked from the bundled episode. This will be updated when a hospital transaction, professional transaction, or hospital billing account is linked or unlinked."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "LAST_ORIG_PMT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The most recent date when a global payment or refund was posted on the anchor hospital account."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "LAST_BILL_LINK_UNLINK_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The most recent date when a record was either linked or unlinked from the bundled episode within the date range of a non-tracking phase. This will be updated when a hospital transaction, professional transaction, or hospital billing account is linked or unlinked."
+    }
+  ]
+}

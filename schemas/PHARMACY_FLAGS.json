@@ -1,0 +1,155 @@
+{
+  "name": "PHARMACY_FLAGS",
+  "description": "Pharmacy flags on the order.  Flags are used by Ambulatory Pharmacy to mark fill requests as needing additional review.  There are various types of flags, and one or more can be added to specific fill request contacts on the order.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the order that has pharmacy flags attached to it."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique, internal contact date in decimal format. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PHARMACY_FLAG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the flag that is attached to this order."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PHARMACY_FLAG_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The flag name."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "INSTANT_ADDED_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant when this flag was added to the order."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ADDED_BY_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the user that added the flag to the order."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ADDED_BY_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "FLAG_BLOCKING_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if the flag is blocking this order from continuing past a certain point in the workflow.  'Y' indicates that the flag is blocking. 'N' or NULL indicate that the flag is not blocking.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ASSOCIATED_CVG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the coverage that is associated with this flag."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "FREE_TXT_DESC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A free text description of what the flag indicates."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "FLAG_COMMENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the notes record that contains the text that the user added to the customer flag."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "FLAGGING_PHR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the pharmacy record that added the flag"
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "FLAGGING_PHR_ID_PHARMACY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the pharmacy."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "RX_FLG_ADD_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The flag added reason category ID for the order.",
+      "entries": [
+        "Copied from Previous Prescription",
+        "Partial Fill Converted to Standard Fill",
+        "Patient Notification"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "FOLLOW_UP_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the flag should be deferred until. For Charging flags, the follow-up date is when the fill should be re-adjudicated."
+    }
+  ]
+}

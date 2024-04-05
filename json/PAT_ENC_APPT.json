@@ -1,0 +1,509 @@
+{
+  "$meta": {
+    "schemas": {
+      "PAT_ENC_APPT": {
+        "name": "PAT_ENC_APPT",
+        "description": "The PAT_ENC_APPT table contains basic information about the appointment records in your system. Since one patient encounter can be an appointment with multiple providers and resources (joint appointment), the primary key of this table comprises PAT_ENC_CSN_ID, and LINE in which LINE is used to identify each provider within the appointment.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ENC_CSN_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique serial number for this encounter. This number is unique across all patients and encounters in the system."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "Used to identify the provider within one appointment."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date on which the encounter took place."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "DEPARTMENT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the department in which the appointment will take place."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "PROV_START_TIME",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The date and time that the appointment is scheduled to begin with this provider, such as 01/10/2000 14:45."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "PAT_ENC_APPT",
+            "target": "EXT_PHARM_TYPE_COVERED",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "PAT_ENC_APPT",
+            "target": "PAT_ENC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PAT_ENC_APPT": [
+    {
+      "PAT_ENC_CSN_ID": 1043034397,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-12-22 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 974452422,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-11-28 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148810,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "PROV_START_TIME": "2023-03-02 14:45:00",
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148226,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-10-11 00:00:00",
+      "DEPARTMENT_ID": 1700801005,
+      "PROV_START_TIME": "2022-10-11 15:30:00",
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958147754,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "DEPARTMENT_ID": 1700801005,
+      "PROV_START_TIME": "2022-08-29 15:50:00",
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 921952141,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-02-09 00:00:00",
+      "DEPARTMENT_ID": 101401088,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 833901305,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-08-14 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829393933,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-07-15 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829385742,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-07-15 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 720803470,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "PROV_START_TIME": "2018-08-09 09:30:00",
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1031703883,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-10-20 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028766353,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028744231,
+      "LINE": 1,
+      "CONTACT_DATE": "2024-11-07 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "PROV_START_TIME": "2024-11-07 08:30:00",
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028743701,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "DEPARTMENT_ID": 1700801005,
+      "PROV_START_TIME": "2023-09-28 11:00:00",
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1020583168,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-08-21 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 996534320,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-03-31 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991225117,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "PROV_START_TIME": "2023-09-28 09:30:00",
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991221485,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 988126821,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-02-19 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 977858467,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-12-22 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 974614965,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "PROV_START_TIME": "2022-12-01 09:30:00",
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 948004323,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "PROV_START_TIME": "2022-08-29 13:30:00",
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 948002801,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-08-11 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "PROV_START_TIME": "2022-08-11 11:45:00",
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 927098738,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "DEPARTMENT_ID": 8,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 922943112,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-03-22 00:00:00",
+      "DEPARTMENT_ID": 101401044,
+      "PROV_START_TIME": "2022-03-22 17:00:00",
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 922942674,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "DEPARTMENT_ID": 101401044,
+      "PROV_START_TIME": "2022-03-11 14:50:00",
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 839256727,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-09-21 00:00:00",
+      "DEPARTMENT_ID": 8,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 837844366,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-09-08 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 832464108,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 830047706,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-07-21 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 830043848,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-07-21 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829995922,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-07-21 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829467718,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-07-16 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829213099,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-07-14 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "PROV_START_TIME": "2020-07-14 14:30:00",
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829212157,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-07-15 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "PROV_START_TIME": "2020-07-15 14:00:00",
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 802802103,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-01-09 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 799951565,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-01-09 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "PROV_START_TIME": "2020-01-09 12:45:00",
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 750474644,
+      "LINE": 1,
+      "CONTACT_DATE": "2019-02-01 00:00:00",
+      "DEPARTMENT_ID": 1084600303,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 727947624,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-28 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 725327197,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-18 00:00:00",
+      "DEPARTMENT_ID": 1700801005,
+      "PROV_START_TIME": "2018-08-18 09:30:00",
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724628999,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "DEPARTMENT_ID": 1700801005,
+      "PROV_START_TIME": "2018-08-09 10:20:00",
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "DEPARTMENT_ID": 1700801002,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724619887,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "DEPARTMENT_ID": 1700801001,
+      "$meta": {
+        "type": "PAT_ENC_APPT"
+      }
+    }
+  ]
+}

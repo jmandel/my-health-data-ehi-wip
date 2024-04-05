@@ -1,0 +1,81 @@
+{
+  "name": "QRY_ADDL_RESPONSE",
+  "description": "This table extracts the response status (examples: whether the query was read, reply type, and timestamp) of the secondary recipients of the query.",
+  "primaryKey": [
+    {
+      "columnName": "QUERY_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "QUERY_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the query record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ADDL_RESP_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the non-primary responding users of the query."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ADDL_RESP_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ADDL_RESPONSE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the non-most recent responses of the query.",
+      "entries": [
+        "Not Read",
+        "Read",
+        "Ask Later",
+        "Agree",
+        "Disagree",
+        "Decline",
+        "Clinically Undetermined"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ADDL_RESP_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the non-most recent response instant of the query in UTC."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "QUERY_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The contact serial number (CSN) of the contact."
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "name": "ALT_HISTORY_2",
+  "description": "This table contains general history information for each type of medication warning or advisory. Since each warning could be triggered in different activities at different times, it contains general warning information for each time the warning was triggered. This table is an extension of ALT_HISTORY table.",
+  "primaryKey": [
+    {
+      "columnName": "ALT_CSN_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ALT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the med alert record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "ALT_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "A unique serial number for this contact. This number is unique across all alerts in the system."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "FILTEROUT_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Save the reason that the medication warning is filtered.",
+      "entries": [
+        "Previously overridden - releasing orders",
+        "User Marked To Be Filtered"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "TPN_VOL_INFUSED",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "It is possible to calculate warnings for total parenteral nutrition (TPN) based on the total volume present in the bag or the volume based upon how much the patient will actually receive. If the volume to be infused to the patient is being calculated, then this item will store the volume to be infused at the time that a TPN alert fired. If the warning is based on the volume in the TPN bag, then this item will not be set."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CRIT_DOSE_POPUP_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether or not a dose warning was saved from the critical dose warning popup.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "HARD_STOP_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether or not a warning is a hard stop."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DRUGSTUDY_SEVERITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the severity of a drug-study warning that is shown in the medication warnings popup.",
+      "entries": [
+        "Investigational med interaction",
+        "Potential study disqualification",
+        "Risk to investigational medication efficacy"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "NBA_ACTION_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant of an next best action event."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "NBA_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user correlated with this next best action event."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "NBA_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "NBA_DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The department correlated with this next best action event."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "NBA_RESULT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The result of this next best action event.",
+      "entries": [
+        "Accepted",
+        "In Progress",
+        "Deferred",
+        "Declined",
+        "Viewed"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "NBA_DFR_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The defer reason correlated with this next best action event."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "NBA_DFR_DAYS_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The defer days correlated with this next best action event."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "NBA_DEC_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The decline reason correlated with this next best action event."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "NBA_COMM_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The contact correlated with this next best action event."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "NBA_BUSINESS_SEG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The next best action was performed in this business segment."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "NBA_ACTION_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant of a next best action event in local time."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "MYC_TICKLER_AUDIT_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The CSN of the RCH record containing the auditing data of the tickler sent for this alert."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "BPA_ADDL_FACTORS_TEXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Snapshot of data relevant to the evaluation of the BPA, in the format of plain text."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "BPA_ADDL_FACTORS_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant that the additional contributing factors text (I ALT 2200) was created."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "ALRGY_FROM_OUTSIDE_SRC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column only applies to ALTs that represent drug-allergy warnings. For all other types of ALTs, this column will be blank. This column indicates whether or not an allergy comes from reconciled data. If the allergy does come from outside data, it will contain the value Yes. If the allergy does not come from outside data, it will contain the value No. Additionally, this column will be blank for any warnings that fired before the system was keeping track of this."
+    }
+  ]
+}

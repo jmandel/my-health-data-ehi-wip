@@ -1,0 +1,98 @@
+{
+  "name": "EXPECTED_DISCHARGE_HX",
+  "description": "This is the expected discharge status history. It will track changes made to the patient's expected discharge throughout the encounter. This table contains data about the expected discharge date (I EPT 10442), approximate expected discharge time (I EPT 10443), exact expected discharge time (I EPT 10444), comments about the expected discharge (I EPT 10445), the date and time that the expected discharge was entered (I EPT 10446), the user that made the change (I EPT 10447), and whether the expected discharge date and time was unknown (I EPT 10454). Each time the information is entered or modified, it will add a line to this table.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EXPECTED_DISCHARGE_APPROX_HX_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Approximate time the patient is expected to be discharged.  Each value in this column denotes a time range (e.g. Morning, Midday, Afternoon, Evening).  If the approximate time is empty, the patient may have an associated exact time (check column EXPECTED_DISCH_DTTM_HX_TIME).",
+      "entries": [
+        "Morning",
+        "Midday",
+        "Afternoon",
+        "Evening"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EXPECTED_DISCH_DTTM_HX_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "This column stores the date and exact time the patient is expected to be discharged (e.g. 10/16/2015 8:00AM).  If an exact time is empty, the patient may have an associated approximate time (check column EXPECTED_DISCHARGE_APPROX_HX_C)."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EXPECTED_DISCHARGE_COMMENT_HX",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the comment entered about the expected discharge."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "EXPECTED_DISCH_UPD_HX_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This column stores the date and time when the expected discharge items were updated."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "EXPECTED_DISCHARGE_UPD_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason the expected discharge date and / or time was updated.",
+      "entries": [
+        "User Entered",
+        "Model Prediction",
+        "Expected Discharge Date Update",
+        "Expected Length of Stay Update",
+        "Admission Planning Reservation Updated",
+        "Discharge Order Filed"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "EXPECTED_DISCHARGE_UNKNOWN_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the expected discharge date is unknown for this patient. 'Y' indicates that the expected discharge date is unknown and documented. 'N' indicates that the expected discharge date is known and documented. NULL should not be stored in the column.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    }
+  ]
+}

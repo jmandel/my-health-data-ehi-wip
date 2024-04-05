@@ -1,0 +1,637 @@
+{
+  "name": "ARPB_TX_MODERATE",
+  "description": "Transaction Information that is used moderately often.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the transaction record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "ORIGINATING_TAR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item holds the originating temporary transaction�ID for this transaction. If the transaction is a charge, then the originating temporary transaction�ID will be the temporary transaction ID of the charge. If transaction is a payment, then the originating temporary transaction ID will be the payment temporary transaction ID unless the payment is from fast payment. In the fast payment case, the originating temporary transaction ID will be the charge temporary transaction ID."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SOURCE_TAR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item holds the source temporary transaction ID for this transaction.  The source temporary transaction ID will always be equal to the temporary transaction ID that generates the transaction."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SRC_TAR_CHG_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Indicates the temporary transaction charge line this transaction originated from."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PAT_AGING_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Aging date used for self-pay aged A/R"
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "INS_AGING_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Aging date used for insurance aged A/R"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "HOSP_ACCT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the hospital account record ID for the transaction."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the order record that triggered this transaction. This item is not always populated if you use the Charge Router."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "EXT_REF_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "External reference number.  This is a customer item that can be populated as they see fit.  Typically, this item is populated with data from an external system via an interface or transaction import."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "REFERENCE_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the reference number (check number) for a payment transaction."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PMT_RECEIPT_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the receipt number for a payment transaction."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PAT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the patient type for the patient on this transaction."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "REFERRAL_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This stores this transaction's referral provider.  Note that this field is linked to the referral source master file and not the provider master file."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "REFERRAL_PROV_ID_REFERRING_PROV_NAM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the referral source."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "INSURANCE_AMT_PAID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the insurance amount that has been paid on a charge transaction."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "WRITEOFF_EXCEPT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Yes-No write-off category number for a charge transaction. The value indicates whether the charge transaction was adjudicated as a write-off in charge entry and thus the insurance portion write-off is suppressed.",
+      "entries": [
+        "Yes",
+        "Yes, No NCC either"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PAT_LOCATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the location associated with the patient for this transaction."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "ORIG_PRICE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the original price of the transaction if the price was changed during charge entry."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "EXP_REIMB_DYNAMIC",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The expected reimbursement will be updated whenever reimbursement is calculated. This amount cannot exceed the charge amount."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "EXPECTED_REIMB",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The expected reimbursement calculated at charge entry. This item is not updated by any change during claims. Also, this amount cannot exceed the charge amount."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "COVERAGE_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Plan (EPP) ID that is associated with this transaction."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "CVG_PLAN_GROUP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the employer group (PPG) ID that is associated with this transaction."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "CVG_PLAN_GROUP_ID_PLAN_GRP_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the employer group record"
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "MED_NEC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the flag that is set in charge entry if medical necessity is needed for a transaction.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "TECHNICAL_CHG_FL_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This flag is set to yes if the transaction is a technical charge.  This is only populated if using the split billing functionality."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "CNTR_DISCOUNT_AMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the pricing contract discount amount for a transaction."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "UNDIST_TX_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This items stores the date that a transaction was undistributed (unmatched)."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "UNDIST_CHG_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the user that unmatched a transaction."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "UNDIST_CHG_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "UNDIST_INSTANT",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "This item stores the instant that a transaction was undistributed (unmatched)."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "ORIGINAL_AMT_COPAY",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the original copay amount for the transaction."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "BAD_DEBT_CHG_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the charges is written off to bad debt.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "AUTO_PAT_WO_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores if a transaction had its self-pay portion automatically written off.",
+      "entries": [
+        "Yes",
+        "yes and new SST"
+      ]
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "TX_USER_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comments entered by users when they perform an action like transfer, retro, void, and undistribute on a transaction in Transaction Inquiry are stored in this item."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "CONTESTED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores a flag to determine if a transaction is contested.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "CONTEST_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the reason that a transaction is contested if the transaction is contested.",
+      "entries": [
+        "Not Contested",
+        "Contested",
+        "Contested at Visit Account Level",
+        "Not Contested at Visit Account Level"
+      ]
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "MEA_IDENTIFIER_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the measurement (MEA) identifiers that are entered in charge entry.",
+      "entries": [
+        "Original/Starting dosage",
+        "Test Results"
+      ]
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "CRC_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the CRC code entered in charge entry.",
+      "entries": [
+        "E1 - Spectacle Lenses",
+        "E2 - Contact Lenses",
+        "E3 - Spectacle Frames"
+      ]
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "REIMB_CONTRACT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the allowed amount as calculated by the reimbursement contract. This amount can exceed the charge amount."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "EXT_CUR_AGENCY_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The current collections agency."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "EXT_CUR_AGENCY_ID_COLL_AGENCY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the collection agency."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "EXT_CURAGNCY_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The current agency status category ID for the transaction.",
+      "entries": [
+        "Sent to Agency",
+        "Returned"
+      ]
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "EXTERNAL_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the external transaction ID"
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "SURGICAL_LOG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the surgical log record for this row. This column is frequently used to link to the OR_LOG table. This item is populated if charge is entered from OpTime.",
+      "linksTo": "OR_LOG"
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "SUPPLY_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the supply record for this row. This column is frequently used to link to the OR_SPLY table.",
+      "linksTo": "OR_SPLY"
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "SUPPLY_ID_SUPPLY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the inventory item."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "IMPLANT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the implant record for this row. This column is frequently used to link to the OR_IMP table.",
+      "linksTo": "OR_IMP"
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "EXT_AGNCY_SENT_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant the charge was sent to its current agency."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "FIRST_SELFPAY_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This items stores the date when a charge first goes to self-pay."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "PROV_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The provider type for the transaction.",
+      "entries": [
+        "Resource",
+        "Physician"
+      ]
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The claim record for the transaction."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "IS_WK_COMP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the transaction is for worker's comp."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "EOB_UPDATED_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date in which the Explanation of�Benefits for this transaction was last updated."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "RAD_THER_COMP_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the ID for radiation therapy component transactions and rollup charges."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "RAD_THER_END_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether Radiation Therapy is at the end of treatment for this transaction.",
+      "entries": [
+        "NO",
+        "YES"
+      ]
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "START_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Start time of a timed procedure."
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "STOP_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stop time of a timed procedure."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "SERVICE_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Time when service is performed."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "PURCHASESERVICE_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This is the amount paid for or to be paid to a third party for performing a service. This field is used to report this amount on claims and statements along with price being charged to the payor or guarantor for the service.  This item should only be used if it is desired this purchased service information be reported on claims and statements."
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "THIRD_PARTY_POS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The third party or reference lab where an individual purchased service was performed. This item is used to reference a Place of Service in order to report the address and National Provider Identifier of the third party on claims and statements. This item should only be used if it is desired this purchased service information be reported on claims and statements."
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "MNL_RETRO_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The retroadjudication reason category ID for the transaction",
+      "entries": [
+        "Other",
+        "Addition/Deletion/Change in Patients",
+        "Change Patient Covered Flag",
+        "Change Patient Effective Date",
+        "Change Coverage Effective Date",
+        "New Coverages",
+        "Add Member",
+        "Change Member Effective Date",
+        "Remove Member",
+        "Add Account",
+        "Change Benefit Plan on Employer Group",
+        "Change Coverage Term Date",
+        "Change Member Term Date",
+        "Change Covered Status",
+        "Change Riders on Employer Group",
+        "Remove Benefit Plan from Employer Group",
+        "Change Activation Date on Employer Group",
+        "Change Termination Date on Employer Group",
+        "Change Effective Date due to Group Term Date",
+        "Change Term Date due to Group Effective Date",
+        "Change Coverages",
+        "Change Visit Coverage"
+      ]
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "TYPE_OF_SERVICE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of service category number associated with the transaction.",
+      "entries": [
+        "Medical Care",
+        "Surgery",
+        "Consultation",
+        "Diagnostic Radiology",
+        "Diagnostic Laboratory",
+        "Therapeutic Radiology",
+        "Anesthesia",
+        "Assistant at Surgery",
+        "Other Medical Items or Services",
+        "Whole Blood",
+        "Used Durable Medical Equipment (DME)",
+        "Ambulatory Surgical Center (Facility usage for Surgical Services)",
+        "Hospice (Obsolete, Discontinued 1/95)",
+        "ESRD Supplies",
+        "Monthly Capitation Payment for Dialysis",
+        "Kidney Donor",
+        "Pneumococcal/Flu Vaccine",
+        "Second Opinion on Elective Surgery (Obsolete)",
+        "Third Opinion on Elective Surgery (Obsolete)",
+        "Diagnostic Medical (Obsolete)",
+        "Ancillaries, Hospital and Nursing Home (Obsolete)",
+        "Drug Services (Obsolete)",
+        "Accommodations, Hospital and Nursing Home (Obsolete)",
+        "Dental (Obsolete)",
+        "Vision Care and Cataract Lens (Obsolete)",
+        "Nuclear Medicine (Obsolete)",
+        "Diagnostic X-Ray (Professional) (Obsolete)",
+        "Rental of DME",
+        "Radiation Therapy (Professional) (Obsolete)",
+        "Diagnostic Lab (Professional) (Obsolete)",
+        "Diagnostic Medical (Professional) (Obsolete)",
+        "DME Purchase (Obsolete)",
+        "CRD Equipment (Obsolete)",
+        "Pre-Admission Testing (Obsolete)",
+        "EPSDT",
+        "High Risk Screening Mammography",
+        "Low Risk Screening Mammography",
+        "Ambulance",
+        "Enteral/Parenteral Nutrients/Supplies",
+        "Immunosuppressive Drugs",
+        "Diabetic Shoes",
+        "Hearing Items and Services",
+        "Lump Sum Purchase of DME, Prostethics, Orthotics",
+        "Vision Items or Services",
+        "Surgical Dressings or Other Medical Supplies",
+        "Psychological Therapy",
+        "Occupational Therapy",
+        "Physical Therapy",
+        "Medication (Obsolete)",
+        "Chiropractic Care",
+        "DME Prescription"
+      ]
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "DX_PRIM_CODESET_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the primary diagnosis codeset for the transaction.",
+      "entries": [
+        "ICD-9-CM",
+        "ICD-10-CM",
+        "ICD-10-CA",
+        "ICD-10-UK",
+        "DBC",
+        "ICD-10 Dutch",
+        "ICD-10-AM",
+        "A&E Diagnoses",
+        "SKS",
+        "ICD-10-THL",
+        "ICPC-2",
+        "ICD-O-3",
+        "ICD-10-GM",
+        "ICD-9-CM Supplemental",
+        "ICD-10-BE",
+        "ICD-10-NO",
+        "Apache",
+        "DSM-5",
+        "KinCor",
+        "ORPHA"
+      ]
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "DX_ALT_CODESET_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the alternate diagnosis codeset for the transaction."
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which a service is started."
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "STOP_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which a service was stopped."
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "PROC_MINUTES",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The length of time in minutes that this procedure took."
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "CRD_CHARGE_SLIP_NO",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The encounter form number associated with copay payments entered during scheduling."
+    }
+  ]
+}

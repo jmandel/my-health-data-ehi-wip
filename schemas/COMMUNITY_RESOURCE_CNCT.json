@@ -1,0 +1,138 @@
+{
+  "name": "COMMUNITY_RESOURCE_CNCT",
+  "description": "This table stores updates made to community resource recommendations for a patient. Each update to a CRC record is represented by a new row in this table with a new contact date.",
+  "primaryKey": [
+    {
+      "columnName": "RECOMMENDATION_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RECOMMENDATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the recommendation record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "DOCUMENTING_INSTANT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant at which this contact was created."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "DOCUMENTING_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The source of creation of this contact.",
+      "entries": [
+        "Hyperspace",
+        "MyChart",
+        "Healthy Planet Link",
+        "External Portal"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "DOCUMENTING_PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The patient encounter from which this contact was created."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "DOCUMENTING_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who was responsible for the creation of this contact."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "DOCUMENTING_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "USAGE_CRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The usage of this community resource recommendation.",
+      "entries": [
+        "Recommended",
+        "In Use",
+        "Won't Be Used",
+        "Completed",
+        "Cancelled"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "NOT_USED_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason that this community resource was not utilized by the patient.",
+      "entries": [
+        "CBO Declined",
+        "Request Forwarded",
+        "Patient Not Eligible",
+        "Patient Declined",
+        "Does not meet patient's needs"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "COMPLETED_OUTCOME_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The outcome of this completed community resource recommendation.",
+      "entries": [
+        "Needs Met",
+        "Needs Not Met",
+        "No Longer Needed",
+        "Can No Longer Use",
+        "Request Forwarded"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "COMMENT_NOTE_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The HNO CSN of the comment associated with this community resource recommendation."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "HISTORIC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether the community resource is historic (Y) or current (N).",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "HIST_LINE_OV_IDENT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The historical line for information associated with the community resource's contact (stored in related group EPT 34000). Use this column, in conjunction with column CREATING_PAT_ENC_CSN_ID in table COMMUNITY_RESOURCE, to join to DP_FACILITY, which contains more information on the community resource's contact."
+    }
+  ]
+}

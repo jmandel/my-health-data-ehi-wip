@@ -1,0 +1,97 @@
+{
+  "name": "ORD_NLP_TEXT_RECOM",
+  "description": "This table contains information about general recommendations that were extracted from radiology reports by a natural language processing model. This table captures the resolved rate of the recommendation before the recommendation was discretely added.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "TEXT_REC_REGION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The region of the recommendation in the text.",
+      "entries": [
+        "Chest",
+        "Abdomen",
+        "Pelvis",
+        "Thyroid",
+        "Head",
+        "Neck"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "TEXT_REC_MODALITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The modality of the recommendation in the text.",
+      "entries": [
+        "Computed Tomography",
+        "Ultrasound",
+        "Magnetic Resonance Imaging",
+        "X-Ray",
+        "PET/CT"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "TEXT_REC_TIMEFR_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The time frame of the recommendation in the text.",
+      "entries": [
+        "1 year",
+        "6 months",
+        "3 months"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "TEXT_REC_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status of the recommendation in the text.",
+      "entries": [
+        "Needs Follow-up",
+        "Closed",
+        "Resolved"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "REC_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The order placed for the recommendation in the text."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "REC_PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The appointment scheduled for the recommendation in the text."
+    }
+  ]
+}

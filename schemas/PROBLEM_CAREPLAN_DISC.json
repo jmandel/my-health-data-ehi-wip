@@ -1,0 +1,88 @@
+{
+  "name": "PROBLEM_CAREPLAN_DISC",
+  "description": "Contains care plan problem discipline priority information.",
+  "primaryKey": [
+    {
+      "columnName": "PROBLEM_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PROBLEM_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the problem record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "DISC_TYPE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The linked discipline record ID. This column is frequently used to link to the DISCIPLINE table.",
+      "linksTo": "DISCIPLINE"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "DISC_TYPE_ID_DISC_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the discipline record."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "DISC_PRIORITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID of the care plan problem discipline priority."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "DISC_RESOLVED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the care plan problem for the discipline is resolved.",
+      "entries": [
+        "YES",
+        "NO"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DISC_RESOLVED_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant at which the care plan problem was resolved."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "HH_PROB_DISC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Home Health and Hospice disciplines linked to the problem."
+    }
+  ]
+}

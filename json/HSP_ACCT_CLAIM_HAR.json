@@ -1,0 +1,209 @@
+{
+  "$meta": {
+    "schemas": {
+      "HSP_ACCT_CLAIM_HAR": {
+        "name": "HSP_ACCT_CLAIM_HAR",
+        "description": "This table contains hospital account claims information extracted from hospital account records.",
+        "primaryKey": [
+          {
+            "columnName": "ACCT_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ACCT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the hospital account."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "ADMISSION_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The admission type category ID for the hospital account."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "ADMISSION_SOURCE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The admission source (e.g., Physician Referral, Transfer from a Hospital, Information Not Available) for the patient encounter associated with this hospital account."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "PATIENT_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The patient status for the patient associated with this hospital account (e.g., Alive, Dead, Unknown, Discharged to Home or Self Care, Admitted as an Inpatient to this Hospital)."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCT_CLAIM_HAR",
+            "target": "CODE_INT_COMB_LN",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCT_CLAIM_HAR",
+            "target": "DOCS_FOR_HOSP_ACCT",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCT_CLAIM_HAR",
+            "target": "HSP_ACCT_ADJ_LIST",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCT_CLAIM_HAR",
+            "target": "HSP_ACCT_ADMIT_DX",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCT_CLAIM_HAR",
+            "target": "HSP_ACCT_ATND_PROV",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCT_CLAIM_HAR",
+            "target": "HSP_ACCT_CHG_LIST",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCT_CLAIM_HAR",
+            "target": "HSP_ACCT_CL_AG_HIS",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCT_CLAIM_HAR",
+            "target": "HSP_ACCT_DX_LIST",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCT_CLAIM_HAR",
+            "target": "HSP_ACCT_EARSTADDR",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCT_CLAIM_HAR",
+            "target": "HSP_ACCT_EXTINJ_CD",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCT_CLAIM_HAR",
+            "target": "HSP_ACCT_OCUR_HAR",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCT_CLAIM_HAR",
+            "target": "HSP_ACCT_PYMT_LIST",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HSP_ACCT_CLAIM_HAR": [
+    {
+      "ACCT_ID": 377811219,
+      "$meta": {
+        "type": "HSP_ACCT_CLAIM_HAR"
+      }
+    },
+    {
+      "ACCT_ID": 376684703,
+      "$meta": {
+        "type": "HSP_ACCT_CLAIM_HAR"
+      }
+    },
+    {
+      "ACCT_ID": 377515141,
+      "$meta": {
+        "type": "HSP_ACCT_CLAIM_HAR"
+      }
+    },
+    {
+      "ACCT_ID": 376684810,
+      "ADMISSION_TYPE_C_NAME": "Elective",
+      "ADMISSION_SOURCE_C_NAME": "Non-Health Care Facility Point of Origin",
+      "PATIENT_STATUS_C_NAME": "Discharged to Home or Self Care (Routine Discharge)",
+      "$meta": {
+        "type": "HSP_ACCT_CLAIM_HAR"
+      }
+    }
+  ]
+}

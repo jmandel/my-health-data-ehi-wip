@@ -1,0 +1,98 @@
+{
+  "name": "RES_VLD_AUDIT",
+  "description": "Result audit information for verification and unverification (result correction).",
+  "primaryKey": [
+    {
+      "columnName": "RESULT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RESULT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the result record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "RES_SPECIMEN_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Internal specimen identifier associated with result"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RES_VLD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The result validation status category number for the audit trail validation status.",
+      "entries": [
+        "Preliminary",
+        "Final",
+        "Prelim Pend",
+        "Final Pend",
+        "Unverified",
+        "Cosign",
+        "Prelim Wait",
+        "Final Wait",
+        "Workflow Step Completed"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RES_UNVLD_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The result correction reason category number for the result correction."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RES_VLD_USER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the user record for this row. This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "RES_VLD_USER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "RES_VLD_INSTANT",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant when the result is validated."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "RES_UNVLD_RSN_COM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Unvalidation reason comment"
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "RES_UNVLD_RESULT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the validation audit result record that is associated with this result record."
+    }
+  ]
+}

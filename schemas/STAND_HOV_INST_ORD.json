@@ -1,0 +1,37 @@
+{
+  "name": "STAND_HOV_INST_ORD",
+  "description": "The records in this table contain child order IDs of standing orders released in an HOV encounter.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the order record. This is the �grandparent� order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "STAND_INS_IP_ORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the instantiated hospital outpatient visit child orders (i.e. the �parent� order in the grandparent/parent/child structure). Note that the order in this column may also be found in ORDER_INSTANTIATED.ORDER_ID (assuming that child orders have been released from this order)."
+    }
+  ]
+}

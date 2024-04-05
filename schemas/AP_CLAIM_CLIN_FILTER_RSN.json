@@ -1,0 +1,53 @@
+{
+  "name": "AP_CLAIM_CLIN_FILTER_RSN",
+  "description": "Reasons why claims are not considered valid for clinical data derivation.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the claim info record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CLIN_FILTER_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Reason this claim is not permitted to be used in clinical data derivation.",
+      "entries": [
+        "Not Clinically Valid",
+        "Sensitive Services",
+        "Excluded Service Area/Business Segment",
+        "Sensitive Provider",
+        "Missing Start Date",
+        "No Patient",
+        "Missing Filled Date",
+        "Dates Overlap Internal Encounter",
+        "Invalid ETR Data",
+        "Failed Demographics Check",
+        "Transplant Patient",
+        "Excluded Claim Source",
+        "Claims Exchange Duplicate Claim",
+        "Claims Exchange Transition Claim"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "name": "ARPB_TX_RETRO_HX",
+  "description": "Lists the retroadjudication review history.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the transaction record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores whether retroadjudication was accepted or rejected for the transaction.",
+      "entries": [
+        "Accepted",
+        "Rejected",
+        "Automatically Accepted",
+        "Automatically Rejected",
+        "Instant Retro"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ACTION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date the charge was accepted or rejected for retroadjudication"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "REJECT_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason retroadjudication was rejected for the transaction.",
+      "entries": [
+        "Not a Charge Transaction",
+        "Voided Transaction",
+        "Out Of Max Days Range",
+        "Already Retroadjudicated",
+        "Retroadjudication Not Needed",
+        "No Open System Batch",
+        "In Accepted Queue",
+        "In Rejected Queue",
+        "Orig Cvg Eff On Svc Dt",
+        "Same Cvg, Same Pln/Pln Grp",
+        "Same Payor",
+        "Supplemental Charge",
+        "CRNA Charge",
+        "Attached Insurance Payment/Adjustment",
+        "Patient Due and Paid Off",
+        "Same Payor, Same Plan",
+        "Retro Extension Error",
+        "Charge Bundled",
+        "Small Balance Due",
+        "Service Date Too Old",
+        "Small Insurance Due",
+        "Insufficient Security for Retro",
+        "Zero Charge",
+        "Matched Credit > 0",
+        "Invalid Acct Type",
+        "Reject All Chg Extension",
+        "Claim Submitted For Orig Payor",
+        "Do Not Bill Insurance Charge",
+        "Same Payor, Subscriber ID",
+        "Invalid Account Status",
+        "Dental Payment Plan Charge",
+        "Ambulatory Pharmacy Charge",
+        "Dental Predetermination Charge",
+        "No Effective Date",
+        "Bad Debt Transaction",
+        "Already Self-Pay",
+        "Charge Paid Off",
+        "Auto Profile Reject",
+        "Tax Charge",
+        "Auto Reject due to VFO Conversion",
+        "Home Infusion Adjudicated Charge"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ACCEPT_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason retroadjudication was automatically accepted for the transaction.",
+      "entries": [
+        "Other",
+        "Charges Not Triggered",
+        "Primary Coverage Unchanged",
+        "Self-Pay to Coverage",
+        "No Claims Sent to Original Payor"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "RETRO_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Free text comment to further describe the retroadjudication event."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "User responsible for accepting or rejecting retroadjudication"
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "TRIGGER_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the charge was identified as candidate for retroadjudication."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "TRIGGER_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores a reference to the last user to make changes that caused the charge to be a candidate for retroadjudication."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "TRIGGER_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "ACTION_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Time the charge was accepted or rejected for retroadjudication."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "MANUAL_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The retroadjudication reason category ID�selected in account maintenance for the transactions.",
+      "entries": [
+        "Other",
+        "Addition/Deletion/Change in Patients",
+        "Change Patient Covered Flag",
+        "Change Patient Effective Date",
+        "Change Coverage Effective Date",
+        "New Coverages",
+        "Add Member",
+        "Change Member Effective Date",
+        "Remove Member",
+        "Add Account",
+        "Change Benefit Plan on Employer Group",
+        "Change Coverage Term Date",
+        "Change Member Term Date",
+        "Change Covered Status",
+        "Change Riders on Employer Group",
+        "Remove Benefit Plan from Employer Group",
+        "Change Activation Date on Employer Group",
+        "Change Termination Date on Employer Group",
+        "Change Effective Date due to Group Term Date",
+        "Change Term Date due to Group Effective Date",
+        "Change Coverages",
+        "Change Visit Coverage"
+      ]
+    }
+  ]
+}

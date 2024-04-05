@@ -1,0 +1,349 @@
+{
+  "$meta": {
+    "schemas": {
+      "HAR_ALL": {
+        "name": "HAR_ALL",
+        "description": "Generic table that contains every hospital account record regardless of its type. It also contains the patient record that is associated with the hospital account.",
+        "primaryKey": [
+          {
+            "columnName": "ACCT_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ACCT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the hospital account."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the patient associated with this hospital account."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PRIM_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The contact serial number associated with the primary patient contact."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "HAR_ALL",
+            "target": "CODE_INT_COMB_LN",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HAR_ALL",
+            "target": "DOCS_FOR_HOSP_ACCT",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HAR_ALL",
+            "target": "HSP_ACCT_ADJ_LIST",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HAR_ALL",
+            "target": "HSP_ACCT_ADMIT_DX",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HAR_ALL",
+            "target": "HSP_ACCT_ATND_PROV",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HAR_ALL",
+            "target": "HSP_ACCT_CHG_LIST",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HAR_ALL",
+            "target": "HSP_ACCT_CL_AG_HIS",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HAR_ALL",
+            "target": "HSP_ACCT_CVG_LIST",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HAR_ALL",
+            "target": "HSP_ACCT_DX_LIST",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HAR_ALL",
+            "target": "HSP_ACCT_EARSTADDR",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HAR_ALL",
+            "target": "HSP_ACCT_EXTINJ_CD",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HAR_ALL",
+            "target": "HSP_ACCT_OCUR_HAR",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HAR_ALL",
+            "target": "HSP_ACCT_OTHR_PROV",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HAR_ALL",
+            "target": "HSP_ACCT_PRORATION",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HAR_ALL",
+            "target": "HSP_ACCT_PYMT_LIST",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HAR_ALL": [
+    {
+      "ACCT_ID": 377811219,
+      "PAT_ID": "Z7004242",
+      "PRIM_ENC_CSN_ID": 922943112,
+      "$meta": {
+        "type": "HAR_ALL"
+      }
+    },
+    {
+      "ACCT_ID": 9587009,
+      "PAT_ID": "Z7004242",
+      "PRIM_ENC_CSN_ID": 958147754,
+      "$meta": {
+        "type": "HAR_ALL"
+      }
+    },
+    {
+      "ACCT_ID": 10685743,
+      "PAT_ID": "Z7004242",
+      "PRIM_ENC_CSN_ID": 958148810,
+      "$meta": {
+        "type": "HAR_ALL"
+      }
+    },
+    {
+      "ACCT_ID": 4334321,
+      "PAT_ID": "Z7004242",
+      "PRIM_ENC_CSN_ID": 725327197,
+      "$meta": {
+        "type": "HAR_ALL"
+      }
+    },
+    {
+      "ACCT_ID": 10686227,
+      "PAT_ID": "Z7004242",
+      "PRIM_ENC_CSN_ID": 991225117,
+      "$meta": {
+        "type": "HAR_ALL"
+      }
+    },
+    {
+      "ACCT_ID": 5960354,
+      "PAT_ID": "Z7004242",
+      "PRIM_ENC_CSN_ID": 799951565,
+      "$meta": {
+        "type": "HAR_ALL"
+      }
+    },
+    {
+      "ACCT_ID": 4307813,
+      "PAT_ID": "Z7004242",
+      "PRIM_ENC_CSN_ID": 724628999,
+      "$meta": {
+        "type": "HAR_ALL"
+      }
+    },
+    {
+      "ACCT_ID": 376684703,
+      "PAT_ID": "Z7004242",
+      "$meta": {
+        "type": "HAR_ALL"
+      }
+    },
+    {
+      "ACCT_ID": 6585418,
+      "PAT_ID": "Z7004242",
+      "PRIM_ENC_CSN_ID": 829213099,
+      "$meta": {
+        "type": "HAR_ALL"
+      }
+    },
+    {
+      "ACCT_ID": 377515141,
+      "PAT_ID": "Z7004242",
+      "PRIM_ENC_CSN_ID": 922942674,
+      "$meta": {
+        "type": "HAR_ALL"
+      }
+    },
+    {
+      "ACCT_ID": 9586039,
+      "PAT_ID": "Z7004242",
+      "PRIM_ENC_CSN_ID": 948004323,
+      "$meta": {
+        "type": "HAR_ALL"
+      }
+    },
+    {
+      "ACCT_ID": 11825607,
+      "PAT_ID": "Z7004242",
+      "PRIM_ENC_CSN_ID": 1028744231,
+      "$meta": {
+        "type": "HAR_ALL"
+      }
+    },
+    {
+      "ACCT_ID": 4307370,
+      "PAT_ID": "Z7004242",
+      "PRIM_ENC_CSN_ID": 720803470,
+      "$meta": {
+        "type": "HAR_ALL"
+      }
+    },
+    {
+      "ACCT_ID": 376684810,
+      "PAT_ID": "Z7004242",
+      "PRIM_ENC_CSN_ID": 922942674,
+      "$meta": {
+        "type": "HAR_ALL"
+      }
+    },
+    {
+      "ACCT_ID": 11825589,
+      "PAT_ID": "Z7004242",
+      "PRIM_ENC_CSN_ID": 1028743701,
+      "$meta": {
+        "type": "HAR_ALL"
+      }
+    },
+    {
+      "ACCT_ID": 10141450,
+      "PAT_ID": "Z7004242",
+      "PRIM_ENC_CSN_ID": 974614965,
+      "$meta": {
+        "type": "HAR_ALL"
+      }
+    },
+    {
+      "ACCT_ID": 11393498,
+      "PAT_ID": "Z7004242",
+      "$meta": {
+        "type": "HAR_ALL"
+      }
+    },
+    {
+      "ACCT_ID": 4307315,
+      "PAT_ID": "Z7004242",
+      "$meta": {
+        "type": "HAR_ALL"
+      }
+    }
+  ]
+}

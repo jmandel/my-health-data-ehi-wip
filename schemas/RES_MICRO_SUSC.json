@@ -1,0 +1,131 @@
+{
+  "name": "RES_MICRO_SUSC",
+  "description": "This table contains susceptibility results, including antibiotics and interpretations. RES_MICRO_CULTURE can be linked to this table by linking RES_MICRO_SUSC.CULTURE_ID to RES_MICRO_CULTURE.RESULT_ID and RES_MICRO_SUSC.UNIQUE_ORGANISM_ID to RES_MICRO_CULTURE.LINE.",
+  "primaryKey": [
+    {
+      "columnName": "RESULT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RESULT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the result record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SUSC_ANTIBIOTIC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The component being tested"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SUSC_ANTIBIOTIC_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the component."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SUSC_VALUE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The value for this component"
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SUSC_ANTI_UNITS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the antibiotic unit"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "SUSC_INTERPRETATN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the antibiotic's susceptibility interpretation."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "SUSC_TEST_METH_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The testing method for this component"
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "SUSC_TEST_METH_ID_METHOD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the instrument interface, method, method grouper, or middle tier interface record."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "SUSC_ANTI_CMT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Item to store category-based antibiotic comments. This data is moved to Component multiline user comment pointer (OVR-51202) and Multiline user comment storage (OVR-52202)."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "SUSC_REPORTED_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number that indicates whether the component is reported for this result.",
+      "entries": [
+        "No",
+        "Yes",
+        "Value",
+        "Interpretation"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "UNIQUE_ORGANISM_ID",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "A number used to uniquely identify the organism this susceptibility test is for. To retrieve information about the associated organism, join RES_MICRO_SUSC.UNIQUE_ORGANISM_ID with RES_MICRO_CULTURE.LINE and RES_MICRO_SUSC.CULTURE_ID with RES_MICRO_CULTURE.RESULT_ID."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "CULTURE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the associated culture test's current result record."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "SUSC_MTD_LNC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the LOINC record for the susceptibility method on the result that is reported by the external resulting agency."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "COMP_ACCREDITED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item determines the accreditation status of the corresponding component. If set to Y-Yes, the corresponding component is accredited. If set to N-No, the corresponding component is not accredited. If null, no evaluation was performed on the component to determine if it is accredited or not.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    }
+  ]
+}

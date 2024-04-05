@@ -1,0 +1,78 @@
+{
+  "name": "PR_EST_SVC_LN_RMT_INFO",
+  "description": "Contains the adjudication information for each service line in a member estimate.",
+  "primaryKey": [
+    {
+      "columnName": "ESTIMATE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ESTIMATE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the patient estimate record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ADDL_LINE_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of related group 1000 that stores additional information about the charge line. It is used to map a line in 2000 related group to a procedure line."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "FILE_ORD_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The coverage level associated with the corresponding coverage (I PES 168)."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "REMIT_CODE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This stores any Explanation of Benefits/Remittance Advice codes associated with the service line."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "REMIT_CODE_ID_REMIT_CODE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of each remittance code."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "REMIT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This stores the amount associated with the Explanation of Benefits or remittance advice codes."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "REMIT_CATEGORY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This stores the payment category that the payer has assigned the amount to",
+      "entries": [
+        "Patient",
+        "Not Allowed",
+        "Other Adjustment",
+        "Denied"
+      ]
+    }
+  ]
+}

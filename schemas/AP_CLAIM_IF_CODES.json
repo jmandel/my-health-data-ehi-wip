@@ -1,0 +1,83 @@
+{
+  "name": "AP_CLAIM_IF_CODES",
+  "description": "This table contains the outgoing parameters and incoming edit codes, values, and descriptions for the claim and its services, for adjudications where the claim was submitted to an external PPS pricer via 837.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the claim info record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ADJUDICATION_NUMBER",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the adjudication number that the outgoing parameter or incoming response is associated with. This aligns with LINE for other tables in the interface related group tables (such as AP_CLAIM_IF_INFO*) and GROUP_LINE in the related-multi tables (such as AP_CLAIM_IF_OUT_OCC_CODE)."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the unique identifier of the service line (also known as an AP transaction), if the transaction is at the service-level. If the transaction is claim-level, this column will be NULL."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CODE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The incoming response code received from the external pricer, or the outgoing parameter code sent to the external pricer."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CODE_VALUE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The incoming response value from the external pricer, or the outgoing parameter value sent to the external pricer."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CODE_DESCRIPTION",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The description of the code and value."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DIRECTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the category identifier that indicates if the code and value were an outgoing parameter to the external pricer, or an incoming code edit. This value can be translated using ZC_DIRECTION_2.",
+      "entries": [
+        "Incoming",
+        "Outgoing"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "SERVICE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The service line that the incoming response or outgoing parameter code, value, and description are associated with. This row is not set for for claim level responses from the interface."
+    }
+  ]
+}

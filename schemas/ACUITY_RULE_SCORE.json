@@ -1,0 +1,87 @@
+{
+  "name": "ACUITY_RULE_SCORE",
+  "description": "Extracted table for rule-related data from scoring system data filed to RDI.",
+  "primaryKey": [
+    {
+      "columnName": "REGISTRY_DATA_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "REGISTRY_DATA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the registry data record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RULE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the CER rule used in the scoring system."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RULE_ID_RULE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the rule."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RULE_SCORE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The score from the rule in RULE_ID."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "RULE_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The rule type category ID for the scoring system rule in RULE_ID.",
+      "entries": [
+        "Medications",
+        "Assessments",
+        "Risks",
+        "Admission/Transfer",
+        "Discharge",
+        "Orders",
+        "LDA Care",
+        "Wounds",
+        "ADLs"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "SCORE_CALC_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time when the rule score is filed in UTC."
+    }
+  ]
+}

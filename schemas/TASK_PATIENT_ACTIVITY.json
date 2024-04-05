@@ -1,0 +1,498 @@
+{
+  "name": "TASK_PATIENT_ACTIVITY",
+  "description": "This table contains data about patient tasks assigned by MyChart Care Companion.",
+  "primaryKey": [
+    {
+      "columnName": "ACTIVITY_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ACTIVITY_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the task record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "TASK_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The task type.",
+      "entries": [
+        "Patient Specific",
+        "User Specific",
+        "Patient Event",
+        "Episode Specific",
+        "MyChart Patient Created"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "TASK_CONTEXT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The functional context of a task.",
+      "entries": [
+        "General",
+        "Checklist",
+        "Willow Inventory Shortage",
+        "Staff Activity",
+        "Homecare Patient Encounter"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "DOCMNT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The documentation type for this task.",
+      "entries": [
+        "MAR",
+        "Notes",
+        "COLLECTION",
+        "I/O",
+        "Flowsheet",
+        "Education",
+        "Care Plan",
+        "Order Review",
+        "Order Entry",
+        "Patient Summary",
+        "Procedure Result",
+        "Multistep",
+        "Multistep Collection",
+        "Acknowledge",
+        "Documentation Review",
+        "Screening Form",
+        "Discharge Transport Request",
+        "Discharge Placement",
+        "Approval",
+        "Required Documentation",
+        "Questionnaire",
+        "Appointment",
+        "Review Dialog Message",
+        "Manual Denominator Entry",
+        "Link",
+        "Discharge Milestone (Rule-based)",
+        "General"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "TASK_SCHEDULE_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The scheduling status of a patient-assigned task. When a task is created it may not be scheduled right away.",
+      "entries": [
+        "Scheduled",
+        "Not Scheduled",
+        "Will Be Scheduled"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "IS_PAUSED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether a task is assigned to the patient is paused. When a task is paused, it will not have future instances and will not displayed to the patient until resumed.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "GOAL_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The goal that the task is associated with."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "FREQ_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If you would like this activity to be performed at a different frequency than the ordering frequency, enter it here."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "FREQ_ID_FREQ_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the frequency record."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "CASE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If this task is anchored to an anchor target of type Surgery, then this item stores the surgical case associated with the surgery."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "CARE_INTG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient's care plan associated with the task"
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PROBLEM_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The problem associated with the task."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PREGNANCY_EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If this task is anchored to an anchor target of type Pregnancy, then this item stores the episode associated with the pregnancy."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "ESCALATE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether or not the task should be escalated if not completed."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "ESCL_ELAPSE_TIME_NUM",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of time before the task will be escalated, if escalation is enabled."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "START_INST_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Start instant for a PRN task"
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The end date from the scheduler."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "DISCONTINUE_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Instant a task was discontinued"
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "TASK_START_TIME_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The start time of the task.",
+      "entries": [
+        "Source",
+        "Now",
+        "On a Specific Date",
+        "Pend For Later"
+      ]
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "AUTO_COMPLETE_COND",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Task Auto Complete Condition copied from LTR"
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "NUM_OCCURRENCES",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of times this task will occur."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "PERSONALIZABLE_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Defines the personalization status of the notification times for the task.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "ANCHOR_EVENT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of anchor target this task is configured for.",
+      "entries": [
+        "Surgery",
+        "Pregnancy",
+        "Appointment",
+        "Hospital Discharge",
+        "Rule Defined Date - Encounter Level",
+        "Rule Defined Date - Patient Level"
+      ]
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "ANCHOR_EVENT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The display name of the anchor target this task is configured for. This display name appears within the details of this task in the Patient To Do List activity."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "RESUME_ON_DISCHARGE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether a task paused on hospital admission or added during hospital admission will start after discharge."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "DAYS_AFTER_DISCHARGE_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Indicates the number of days after hospital discharge this reminder will start. Value must be larger than or equal to 0."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "ENSURE_DELIVERY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Determines the scheduling behavior of this anchored task when its start date falls in the past.",
+      "entries": [
+        "Start immediately",
+        "Skip in-between occurrences",
+        "Don't start",
+        "Resolve task as discontinued"
+      ]
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "APPT_SERIAL_NUM",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If this task is anchored to an anchor target of type Procedural Appointment, then this item stores the appointment serial number associated with the procedural appointment."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "ADMISSION_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If this task is anchored to an anchor target of type Hospital Discharge, then this item stores the contact serial number associated with the admission."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "PERSISTENT_QUESR_SERIE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates that the questionnaire series associated with this task is persistent and what type of persistent questionnaire series it is.",
+      "entries": [
+        "General",
+        "Symptom Check-in"
+      ]
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "LINK_TEXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the display text for the associated hyperlink of this task."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "LINK_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the type of content found at the associated link of this task.",
+      "entries": [
+        "Text",
+        "Webpage",
+        "Video File",
+        "Video Stream",
+        "Audio File",
+        "Audio Stream",
+        "PDF Document",
+        "Google Play Link",
+        "FDI Audio",
+        "FDI Video",
+        "FDI Read"
+      ]
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "APPOINTMENT_MODALITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The modality of the appointment the patient will schedule for this task.",
+      "entries": [
+        "Video Visit"
+      ]
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "TELEHEALTH_REASON_FOR_VISIT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The telehealth reason for visit that will be used when the patient schedules the video visit.",
+      "entries": [
+        "General Video Visit",
+        "Cough",
+        "Sinus",
+        "Rash",
+        "Back Pain",
+        "Headache",
+        "Ear Infection",
+        "Muscular Skeletal Injury",
+        "Urinary Tract Infection",
+        "Asthma",
+        "Birth Control Evaluation",
+        "Insect Bite",
+        "Nausea",
+        "Diarrhea",
+        "Lactation Consultation",
+        "Nutrition Consultation",
+        "Chronic Obstructive Pulmonary Disease",
+        "Sore Throat",
+        "Gout",
+        "Pink Eye",
+        "General E-Visit",
+        "Vaginal Discharge / Irritation",
+        "Heartburn",
+        "Fatigue",
+        "Acne",
+        "Constipation",
+        "Sunburn",
+        "Head Lice",
+        "Emergency Contraception",
+        "Poison Ivy",
+        "Cold and Flu",
+        "Anxiety",
+        "Athlete's Foot",
+        "Allergies",
+        "COVID Concern",
+        "Fever",
+        "Tooth Pain",
+        "Quitting Smoking",
+        "Sleep Concerns",
+        "Ear Pain",
+        "Urgent Care Visit",
+        "Urgent Care Visit (Covered)"
+      ]
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "DEF_DISCHRG_BEHAV_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item defines the default behavior for this task when the patient is discharged. By default, the task will remain paused.",
+      "entries": [
+        "Keep Task Paused",
+        "Resume Task"
+      ]
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "SERIES_ANS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The questionnaire series answer associated with the task."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The medication order associated with the task."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "POINT_TEACHING_TTP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The education point associated with the task."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "TOPIC_TEACHING_TTP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The education topic associated with the task."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "TITLE_TEACHING_TTP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The education title associated with the task."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "TOTAL_INST_CNT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The total number of patient-assigned task instances which are no longer actionable or have been acted upon."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "COMPLETED_INST_CNT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The total number of completed patient-assigned task instances."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "LINK_DESCRIPTION_SMARTTEXT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores a smart text record ID that displays a detailed description of a link task to the patient on MyChart. This stores a particular instance of a task."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "LINK_DESCRIPTION_SMARTTEXT_ID_SMARTTEXT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the SmartText record."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "UNANC_BEHAV_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The behavior when this task is unanchored from its anchor target.",
+      "entries": [
+        "Unschedule",
+        "Immediately find new anchor target",
+        "Resolve if no longer actionable",
+        "Always resolve"
+      ]
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "AE_EVENT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant in UTC of the event associated with an anchored task."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "AE_PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The CSN of the encounter associated with this anchored task. Only applies to if the anchor target is of type rule defined date (encounter level)."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "AE_EVENT_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant in local of the event associated with an anchored task."
+    }
+  ]
+}

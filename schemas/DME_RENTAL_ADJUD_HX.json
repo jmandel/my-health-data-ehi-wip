@@ -1,0 +1,58 @@
+{
+  "name": "DME_RENTAL_ADJUD_HX",
+  "description": "This table is intended to track the order in which services were adjudicated against a rental. Services may be removed or added to the rental due to readjudication and retroadjudication, and the adjudication time will represent the last time the claim was adjudicated against the rental.",
+  "primaryKey": [
+    {
+      "columnName": "RECORD_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the rental record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Contains the claim that was adjudicated using this rental."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column contains the procedure that was adjudicated using this rental."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ADJUD_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Contains the instant when a claim procedure was most recently adjudicated and saved using this rental."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ALLOWED_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column contains the allowed amount for the procedure that was adjudicated using this rental. If the allowed amount was overridden, then the override amount will be returned by this column"
+    }
+  ]
+}

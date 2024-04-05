@@ -1,0 +1,48 @@
+{
+  "name": "FIN_ASST_CASE_FLAG_UPD_HX",
+  "description": "This table contains the updates made to case flags of a financial assistance case record.\n\n\nWhenever any of the following columns are changed,  one or more rows are added to this table based on the number of case flags present on the financial assistance case record.\n\n\n1. Case status\n\n\n2. Case flags\n\n\n3. Assigned user\n\n\n4. Follow up date\n\n\n5. Application provided date\n\n\n6. Application signed date",
+  "primaryKey": [
+    {
+      "columnName": "FIN_ASST_CASE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "FIN_ASST_CASE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the financial assistance case record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the associated update made to one of the following columns in financial assistance case record. 1. Case status 2. Case flags 3. Assigned user 4. Follow up date 5. Application provided date 6. Application signed date  Together with FIN_ASST_CASE_ID, this forms the foreign key to table FIN_ASST_CASE_UPDATE_HX."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple case flags associated with a financial assistance case after one of the following have been changed: 1. Case status 2. Case flags 3. Assigned user 4. Follow up date 5. Application provided date 6. Application signed date"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "UPDATE_FLAG_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID of the one of the case flags that were on the financial assistance case when they were added to update history."
+    }
+  ]
+}

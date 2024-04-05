@@ -1,0 +1,63 @@
+{
+  "name": "CHG_REVIEW_MODS",
+  "description": "This table contains multiple response information for modifiers associated with temporary accounts receivable (TAR) transaction procedure lines. This table contains one row for each modifier entered on a TAR line for each TAR that has been in a charge review workqueue. Note: TAR records in Chronicles are purged periodically depending on your system setting. Be aware that old data in this table might be lost if you truncate the table.",
+  "primaryKey": [
+    {
+      "columnName": "TAR_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE_COUNT",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "MOD_LINE_COUNT",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TAR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the temporary transaction record.  This represents an individual charge session."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE_COUNT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the charge in the charge session.  Multiple charges can be associated with this charge session."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "MOD_LINE_COUNT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the modifier on the charge.  Multiple modifiers can be associated with each charge in the charge session."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EXT_MODIFIER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The external ID of the modifier record."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "INT_MODIFIER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the modifier of the charge.  This column is frequently used to link to the CLARITY_MOD table.",
+      "linksTo": "CLARITY_MOD"
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "INT_MODIFIER_ID_MODIFIER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the modifier record."
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "name": "AP_CLAIM_DX",
+  "description": "The AP_CLAIM_DX table contains one record for each diagnosis on an accounts payable claim.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the accounts payable claim record for this diagnosis."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the diagnosis for this claim record. For example, if a claim has two associated diagnoses, two AP_CLAIM_DX records will be generated: one with a line number of 1, the other with a line number of 2."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "DX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the diagnosis associated with this record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "AP_DX_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of the diagnosis associated with this record."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "AP_DX_QUALIFIER_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The qualifier related to the diagnosis associated with this record."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "AP_DX_POA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Present on Admission (POA) for the diagnosis code.",
+      "entries": [
+        "1 - Unreported/Not used",
+        "Y - Yes",
+        "N - No",
+        "U - Unknown",
+        "W - Clinically undetermined"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "AP_DX_RANK",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The rank of this diagnosis compared to the other diagnoses on the claim."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CLAIM_DX_FROM_HEADER_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the diagnosis was received at the header level.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    }
+  ]
+}

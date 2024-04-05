@@ -1,0 +1,72 @@
+{
+  "name": "BED_DAYS_MATCH",
+  "description": "The BED_DAYS_MATCH table contains bed day information for claims. Different bed day types can have different weights which are applied to the quantity of bed day services to get a converted number of bed days for a referral.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the accounts payable claim record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the bed types associated with this claim. Multiple bed types can be associated with this claim."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "BED_DAY_TYPE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the ID of the bed day type"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "BED_DAY_TYPE_ID_BED_DAY_TYPE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the bed day type record (i.e. ICU or non-authorized.)"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "REL_WT_BED_DAY",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the relative weight of the bed day type"
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "BED_DAY_WT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the total weight of the bed day type"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "BED_DAY_QTY",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This is used to store the quantity of the bed day type services"
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "BED_DAY_CONV_RFL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Converted bed days for the bed day type on the referral"
+    }
+  ]
+}

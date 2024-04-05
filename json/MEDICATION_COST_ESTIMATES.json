@@ -1,0 +1,100 @@
+{
+  "$meta": {
+    "schemas": {
+      "MEDICATION_COST_ESTIMATES": {
+        "name": "MEDICATION_COST_ESTIMATES",
+        "description": "The MEDICATION_COST_ESTIMATES table contains information linking an order to medication cost estimate records.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier (.1 item) for the order record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "MEDICATION_ESTIMATE_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for a medication estimate (LME) record, which stores estimated patient cost information for the associated medication order."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "MEDICATION_COST_ESTIMATES",
+            "target": "ORDER_RPTD_SIG_INSTR",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "MEDICATION_COST_ESTIMATES",
+            "target": "ORDER_MED",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_MED_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "MEDICATION_COST_ESTIMATES",
+            "target": "ORD_PRFLST_TRK",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "MEDICATION_COST_ESTIMATES": [
+    {
+      "ORDER_ID": 772179261,
+      "LINE": 1,
+      "MEDICATION_ESTIMATE_ID": 7107673,
+      "$meta": {
+        "type": "MEDICATION_COST_ESTIMATES"
+      }
+    },
+    {
+      "ORDER_ID": 772179266,
+      "LINE": 1,
+      "MEDICATION_ESTIMATE_ID": 8470183,
+      "$meta": {
+        "type": "MEDICATION_COST_ESTIMATES"
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "AP_CLAIM_AUTH_ASGN",
+  "description": "Services that have manually assigned authorizations, which are used to fulfill the services' authorization requirements before other authorizations.\n\n\n\n\n\nPlease refer to the query below for how to associate manually assigned referrals and authorizations to services. Note that REFERRAL_ID will always be set, but AUTH_ID might be NULL if the assignment is at the referral level, rather than the service-level authorization.\n\n\n\n\n\nSELECT AP_CLAIM_AUTH_ASGN.CLAIM_ID,\n\n\n       AP_CLAIM_AUTH_ASGN.TX_ID,\n\n\n       AP_CLAIM_AUTH_ASGN.LINE ASSIGNED_ORDER,\n\n\n       AP_CLAIM_AUTH_ASGN_RFLS.REFERRAL_ID,\n\n\n       AP_CLAIM_AUTH_ASGN_AUTHS.AUTH_ID\n\n\n  FROM AP_CLAIM_AUTH_ASGN\n\n\n    INNER JOIN AP_CLAIM_AUTH_ASGN_RFLS\n\n\n      ON AP_CLAIM_AUTH_ASGN.CLAIM_ID = AP_CLAIM_AUTH_ASGN_RFLS.CLAIM_ID\n\n\n        AND AP_CLAIM_AUTH_ASGN.LINE = AP_CLAIM_AUTH_ASGN_RFLS.GROUP_LINE\n\n\n    LEFT OUTER JOIN AP_CLAIM_AUTH_ASGN_AUTHS\n\n\n      ON AP_CLAIM_AUTH_ASGN.CLAIM_ID = AP_CLAIM_AUTH_ASGN_AUTHS.CLAIM_ID\n\n\n        AND AP_CLAIM_AUTH_ASGN.LINE = AP_CLAIM_AUTH_ASGN_AUTHS.GROUP_LINE\n\n\n        AND AP_CLAIM_AUTH_ASGN_RFLS.VALUE_LINE = AP_CLAIM_AUTH_ASGN_AUTHS.VALUE_LINE",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the claim record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Services that have manually assigned authorizations, which will be used to fulfill the services' authorization requirements before other authorizations."
+    }
+  ]
+}

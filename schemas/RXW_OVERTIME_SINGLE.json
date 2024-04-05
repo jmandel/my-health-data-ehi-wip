@@ -1,0 +1,114 @@
+{
+  "name": "RXW_OVERTIME_SINGLE",
+  "description": "This table tracks overtime single items for RXW records. These records at a basic level represent sets of fills that are processed together in a part of the outpatient pharmacy workflow. For example this record type is used for work requests, shipping containers and dispense transactions.",
+  "primaryKey": [
+    {
+      "columnName": "RECORD_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the work request record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "RX_SUBTOTAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the subtotal amount due for all prescription items in this dispense transaction."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "OTHER_SUBTOTAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the subtotal amount due for all non-prescription items in this dispense transaction."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "TAX_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the amount of sales tax for items in this dispense transaction."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "TOTAL_AMOUNT_PAID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the total amount paid by the patient for this dispense transaction. This excludes any due amount that was written off or deferred to patients account for payment at a later point in time."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PMT_INST_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item contains the instant this payment contact was completed and posted to the dispense transaction record."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CHANGE_GIVEN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the amount of change that was given back to a patient in cash for the dispense transaction."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "BILLING_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the user who owns the contact for billing."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "BILLING_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "CASH_TENDERED",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the amount of cash tendered by the patient for a dispense transaction payment encounter."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "HEALTH_EXPENSE_TOTAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column contains the health expense total for an ambulatory pharmacy POS sale. Health expenses include prescriptions and merchandise which are qualified healthcare expenses. This value includes tax and shipping."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "HEALTH_EXPENSE_SUBTOTAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column contains the health expense subtotal for an ambulatory pharmacy POS sale. Health expenses include prescriptions and merchandise which are qualified healthcare expenses. This value does not include tax or shipping."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "RX_MERCH_PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If Professional Billing integration is enabled, this contains the patient that was selected to own the charges for merchandise products."
+    }
+  ]
+}

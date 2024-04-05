@@ -1,0 +1,52 @@
+{
+  "name": "FMK_DOSAGE_DATE_INFO",
+  "description": "This table holds information related to the dosage start date for FMK.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "FMK_DOSAGE_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Dosage start date that should be considered to send to FMK."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "FMK_DOSAGE_CHNG_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the description of the action that caused the dosage to update.",
+      "entries": [
+        "Order created",
+        "Order released",
+        "Order modified",
+        "Admin instructions updated",
+        "Adjust times",
+        "Calculated from order chain"
+      ]
+    }
+  ]
+}

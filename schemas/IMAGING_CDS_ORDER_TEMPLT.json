@@ -1,0 +1,156 @@
+{
+  "name": "IMAGING_CDS_ORDER_TEMPLT",
+  "description": "This table contains the appropriateness score and associated information for an imaging procedure if using third party decision support software in conjunction with Epic.",
+  "primaryKey": [
+    {
+      "columnName": "OTP_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "OTP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the patient order template record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "DECISION_SUPPORT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Unique ID for the decision support session."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "DS_SCORE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Appropriateness score calculated by a clinical decision support system",
+      "entries": [
+        "\"ERROR\"",
+        "1 - Low Utility",
+        "2 - Low Utility",
+        "3 - Low Utility",
+        "4 - Marginal",
+        "5 - Marginal",
+        "6 - Marginal",
+        "7 - Indicated",
+        "8 - Indicated",
+        "9 - Indicated",
+        "Acceptable",
+        "Appropriate",
+        "Inappropriate",
+        "Indeterminate",
+        "Not Validated",
+        "Moderate"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "DS_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the activity which saved the decision support score for an imaging order.",
+      "entries": [
+        "Ancillary Orders",
+        "Web Service",
+        "HL7",
+        "Order-Specific Questions",
+        "Utility Update",
+        "CDS Hooks"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "DS_CDSM_VENDOR_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the decision support vendor that was consulted as a category value.",
+      "entries": [
+        "No Specified Vendor",
+        "AIM Specialty Health ProviderPortal (G1007)",
+        "Applied Pathways Clinical Decision Support Mechanism (G1000)",
+        "Cranberry Peak ezCDS (G1008)",
+        "eviCore healthcare's Clinical Decision Support Mechanism (G1001)",
+        "MedCurrent OrderWise (G1002)",
+        "Medicalis Clinical Decision Support Mechanism (G1003)",
+        "Change Healthcare CareSelect (G1004)",
+        "National Imaging Associates RadMD (G1005)",
+        "Sage Health Management Solutions Inc. RadWise (G1009)",
+        "Stanson Health's Stanson CDS (G1010)",
+        "Test Appropriate CDSM (G1006)",
+        "Cerner (G1011)",
+        "Optum CDSM (G1011)",
+        "Speed of Care CDSM (G1016)",
+        "INFINX CDSM (G1018)",
+        "LogicNets AUC Solution (G1019)",
+        "OmniScient (G1011)",
+        "Reliant Medical Group CDSM (G1015)",
+        "AgileMD�s Clinical Decision Support Mechanism (G1012)",
+        "EvidenceCare�s ImagingCare (G1013)",
+        "InveniQA's Semantic Answers in Medicine (G1014)",
+        "HealthHelp�s Clinical Decision Support Mechanism (G1017)",
+        "Curbside Clinical Augmented Workflow (G1020)",
+        "E*HealthLine Clinical Decision Support Mechanism (G1021)",
+        "Intermountain Clinical Decision Support Mechanism (G1022)",
+        "Persivia Clinical Decision Support (G1023)",
+        "Radrite (G1024)",
+        "Qualified tool not otherwise specified (G1011)"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "DS_ADHERENCE_IND_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores an adherence indication value (Y/N/NCA) from the Clinical Decision Support Mechanism (CDSM)",
+      "entries": [
+        "Missing Adherence",
+        "Yes (ME)",
+        "No (MF)",
+        "No Criteria Available (MG)"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DS_CONSULT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores an instant in UTC of when the Clinical Decision Support Mechanism (CDSM) was consulted"
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "DS_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores comments by the ordering provider regarding AUC information"
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "DS_EXCEPTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores an exception reason for missing consulting the Clinical Decision Support Mechanism (CDSM)",
+      "entries": [
+        "Emergency Medical Condition (MA)",
+        "Internet Access Issues (MB)",
+        "Technical Issue; EHR or qCDSM (MC)",
+        "Extreme/Uncontrollable Circumstances (aka Disaster) (MD)",
+        "Missing Information; No Compliant Exception Recorded (MH)"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "ACCOUNT_STATUS",
+  "description": "This table contains the account status data for each account. Account Status is a multiple response item, that is, an account in your system can have more than one status, such as Returned Mail, Payment Plan, or Collections. Therefore, one row in this table contains one line of account status information for an account. Each row is uniquely identified by the Account ID and line number combination.",
+  "primaryKey": [
+    {
+      "columnName": "ACCOUNT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the guarantor record. This identifier could be encrypted if you have implemented enterprise reporting�s encryption security function."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Line number to identify the status information within the account."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ACCOUNT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value associated with the status of the account, such as Returned Mail, Collections, and so on.",
+      "entries": [
+        "Returned Mail",
+        "Payment Plan",
+        "Collections",
+        "Contested Accounts"
+      ]
+    }
+  ]
+}

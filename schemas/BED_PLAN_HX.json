@@ -1,0 +1,72 @@
+{
+  "name": "BED_PLAN_HX",
+  "description": "This table contains information about edits that occurred on pending event records.",
+  "primaryKey": [
+    {
+      "columnName": "PEND_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PEND_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the pending action record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "UPDATE_INST",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant when the pending action record was updated."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The linked order ID (I PND 560) at the time that the pending event was updated,"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "LOA_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The leave of absence reason category ID for the bed planning event history."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "HX_BED_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "History item for requested bed type.",
+      "entries": [
+        "Empty",
+        "Standard",
+        "Crib",
+        "Telemetry",
+        "Bariatric"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "UPDATE_INST_LOCAL_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The local instant when the pending event was updated. For UTC, use BED_PLAN_HX.UPDATE_INST."
+    }
+  ]
+}

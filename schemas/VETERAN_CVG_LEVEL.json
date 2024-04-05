@@ -1,0 +1,49 @@
+{
+  "name": "VETERAN_CVG_LEVEL",
+  "description": "This table contains information about a veteran patient's coverage levels. This table stores the medical coverage levels associated with a veteran patient and whether a coverage level is the patient's primary. A veteran patient's medical coverage level determines what level of service a patient can receive prior to being billed.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VETERAN_CVG_IS_PRIMARY_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column denotes whether the related veteran coverage level found in VETERAN_MED_CVG_LEVEL_C on the same LINE is primary.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "VETERAN_MED_CVG_LEVEL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This related group item holds a list of a patient's medical coverage levels."
+    }
+  ]
+}

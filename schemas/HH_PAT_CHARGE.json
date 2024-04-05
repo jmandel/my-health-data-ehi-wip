@@ -1,0 +1,101 @@
+{
+  "name": "HH_PAT_CHARGE",
+  "description": "This table contains information on Home Health Procedure Charges.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "Unique identifier for this contact for this patient."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "HH_CHARGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Record ID of the procedure charge. This column is frequently used to link to the CLARITY_EAP table.",
+      "linksTo": "CLARITY_EAP"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "HH_CHARGE_QUANTITY",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Home Health procedure charge quantity."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "HH_CHARGE_COMMENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Comments added to the Home Health procedure charge."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "HH_CHARGE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "ID of the user who entered the charge.  Links to table CLARITY_EMP."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "HH_CHARGE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "HH_CHARGE_EDT_INST",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant at which the charge was edited."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "HH_CHARGE_UCL_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Universal Charge Line record ID for the change, which is generated after the charge is routed from the clinical system to the billing system."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is populated only if you use IntraConnect."
+    }
+  ]
+}

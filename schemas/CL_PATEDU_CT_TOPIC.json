@@ -1,0 +1,130 @@
+{
+  "name": "CL_PATEDU_CT_TOPIC",
+  "description": "Enterprise reporting table for contact specific topic items in Patient Education (PED) records.",
+  "primaryKey": [
+    {
+      "columnName": "PED_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PED_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Unique ID for the Patient Education Record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "This is a numeric representation of the date of this encounter in your system. The integer portion of the number specifies the date of the encounter. The digits after the decimal point indicate multiple visits on one day."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Line count for the Patient education contact specific topic data."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The contact date in external format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CONTACT_TOPIC_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient education topic that this patient education contact addresses."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CNT_TOPIC_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Category item that specifies the status of the topic.",
+      "entries": [
+        "Active",
+        "N/A",
+        "Done",
+        "Deleted",
+        "Not Started",
+        "In Progress"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CNT_TOPIC_TITLE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the tile under which this topic is listed."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CNT_TOPIC_KEY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The topic key for the contact-specific topic. It is a string in the form of Title^Topic."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CNT_TOPIC_EDU_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the education detail record that contains additional details about this topic for this encounter."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "TOPIC_WAS_SUG_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether this topic was suggested by the EMR. Y indicates that this topic was suggested by the EMR. N or null indicates that this topic was not suggested by the EMR.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "TOPIC_ADDED_FROM_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for how this topic was added to the patient's chart. This is usually the same as the internal ID. If you use IntraConnect, this is the Community ID (CID).",
+      "entries": [
+        "Patient Education",
+        "Care Plan",
+        "Doc Flowsheet",
+        "Order",
+        "Order Set",
+        "Pathway",
+        "Task Template",
+        "Interface",
+        "Patient Assigned Task",
+        "Utility",
+        "Rover Patient Education",
+        "Haiku Patient Education"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "TOPIC_ALT_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If this topic was added to the patient's chart based on a BestPractice Advisory, then this is the unique contact serial number of the alert (ALT) contact that is used to track the firing of that BestPractice Advisory. If this topic was not added based on a BestPractice Advisory, then this is null."
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "name": "PEND_DISCON_ORD_HX",
+  "description": "This table contains history of information about pending discontinued orders.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PEND_DISC_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the pending discontinue action for the order. - 1 means the order is still pending discontinued.",
+      "entries": [
+        "D/C Accepted",
+        "Pending D/C",
+        "D/C Rejected"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PEND_DISCON_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who entered pend discontinue for the order."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PEND_DISCON_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PEND_DISC_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the reason for discontinue entered by the user who pend discontinued the order. This is usually the same as the internal ID. If you use IntraConnect, this is the Community ID (CID)."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PEND_DISC_INST_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Instant at which order was marked as pending discontinued."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PEND_DISC_VERBAL_LN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column stores the line index for the Verbal Order Type Flag item in the order record(SI ORD 34800).  It tells which line of data in the Verbal Order Type Flag corresponds to the lines of data in the Pending Discontinue Action item (SI ORD 34892). (SIGNED_TYPE_C column in tables ORDER_SIGNED_MED and PRDER_SIGNED_PROC)."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PEND_DC_RES_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "User who took action, i.e., verified or rejected the pending discontinued order."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PEND_DC_RES_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PENDDC_RES_INS_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Instant at which an the pending discontinued order was accepted or rejected."
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "name": "ENROLL_INFO",
+  "description": "The ENROLL_INFO table contains information about patient enrollments in research studies, including status, alias, start and end dates, and last modified user and instant.",
+  "primaryKey": [
+    {
+      "columnName": "ENROLL_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ENROLL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the patient-study association record for this row. This column is frequently used to link to the ENROLL_INFO table.",
+      "linksTo": "ENROLL_INFO"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "RECORD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The record status, such as hidden or soft-deleted.",
+      "entries": [
+        "Soft Deleted",
+        "Hidden",
+        "Hidden and Soft Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "RESEARCH_STUDY_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Unique ID of the associated Research Study record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Unique ID of the associated Patient record."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ENROLL_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Status category number of the patient's enrollment in the study."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "STUDY_ALIAS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Patient's alias for the study enrollment."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ENROLL_START_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Start date of the patient's enrollment in the study."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ENROLL_END_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "End date of the patient's enrollment in the study."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ENROLL_CMT_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID number for comments/notes associated with the enrollment."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "LAST_MOD_DTTM",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "Instant the enrollment information was last modified."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "LAST_MOD_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "User who modified the enrollment information last."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "LAST_MOD_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "STUDY_BRANCH_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "For a patient enrolled in a research study that has multiple branches (or arms), this item stores the ID of the specific branch of that study to which the patient is assigned."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "MYC_APPROVING_EMP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Either the user who was asked to approve this MyChart recruitment request if it is still awaiting approval, or the one who did approve or decline the request."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "MYC_APPROVING_EMP_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "ADVERSE_EVENT_REVIEW_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time of last review for the adverse events for this study association."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "ADVERSE_EVENT_REVIEW_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the last reviewing user for the adverse events for this study association."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "ADVERSE_EVENT_REVIEW_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "RECRUITMENT_QUESR_ANSWER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the recruitment questionnaire answers for this study association."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "MYC_RESPONSE_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The MyChart response type category ID for the enrollment.",
+      "entries": [
+        "Positive",
+        "Negative",
+        "Unknown"
+      ]
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "FIRST_INVITATION_SENT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the patient has ever received a research study invitation for this patient-study association. 'Y' indicates that the patient has received a research study invitation for this patient-study association. 'N' or NULL indicate that the patient has not received a research study invitation for this patient-study association.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "FIRST_INVITE_LAST_MOD_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The modification source category ID of the source from which the first research study invitation was sent for this patient-study association.",
+      "entries": [
+        "Research Studies Activity",
+        "Reporting Workbench",
+        "Datalink",
+        "Interface",
+        "Import",
+        "BestPractice Advisory",
+        "Programming Extension",
+        "MyChart",
+        "In Basket",
+        "Conversion",
+        "FHIR",
+        "Research Study Maintenance",
+        "Cosmos Teleport",
+        "Unlink",
+        "Automated Utility"
+      ]
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "FIRST_INVITATION_SENT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The UTC instant at which the first research study invitation was sent for this patient-study invitation."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "LAST_DEMO_AUTH_TOKEN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The last demographic authentication token that was generated for this patient-study association."
+    }
+  ]
+}

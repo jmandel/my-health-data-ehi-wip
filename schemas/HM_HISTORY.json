@@ -1,0 +1,63 @@
+{
+  "name": "HM_HISTORY",
+  "description": "The HM_HISTORY table records information about completed and manually overridden clinical system health maintenance topics that apply to each patient. This information is found in your system by the following path: clinical system Supervisor Menu > Supervisor's menu > Patient Health Maint option, or by clicking the clinical system client Health Maintenance button.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID assigned to the patient record. This ID may be encrypted if you have elected to use enterprise reporting�s encryption utility."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Identifies the health maintenance topic within the patient�s record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "HM_COMP_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the type of Health Maintenance completion",
+      "entries": [
+        "Procedure or Medication Order",
+        "Result Component",
+        "Immunization",
+        "Problem List",
+        "Hospital Diagnosis",
+        "Encounter Diagnosis",
+        "LOS Code",
+        "E/M Code",
+        "Surgical History",
+        "Patient SDE",
+        "Note SDE",
+        "Encounter SDE",
+        "Manual Completion",
+        "External Procedure",
+        "External Immunization",
+        "External LOS",
+        "Registry Metric"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "HM_COMP_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Instant of Health Maintenance completion."
+    }
+  ]
+}

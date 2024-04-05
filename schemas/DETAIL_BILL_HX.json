@@ -1,0 +1,193 @@
+{
+  "name": "DETAIL_BILL_HX",
+  "description": "Hospital account based detail bill history for the guarantor.",
+  "primaryKey": [
+    {
+      "columnName": "ACCT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ACCT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the guarantor record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "HB_PRINT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for this hospital detail bill in detail bill history."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EB_PRINT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for this enterprise detail bill record in detail bill history."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "BILL_RUN_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The run type for this detail bill.",
+      "entries": [
+        "Statement",
+        "Hospital Account Detail Bill",
+        "Guarantor Detail Bill",
+        "Claim Detail Bill",
+        "Client Statement"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "IS_DEMAND_DB_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Flag to indicate whether this detail bill was produced on demand or as part of the batch.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ACCEPT_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the detail bill record was created."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "END_BATCH_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The batch date of the detail bill."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "DB_DVRY_MTHD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores how the detail bill was delivered.",
+      "entries": [
+        "Paper, No Electronic Notification",
+        "Paperless, No Electronic Notification",
+        "Paper and Electronic Notification",
+        "Paperless, Electronic Notification"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who created the detail bill."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "TOTAL_CHG_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The sum of all charges on the detail bill."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "TOTAL_PMT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The sum of all payments on the detail bill."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "TOTAL_ADJ_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The sum of all adjustments on the detail bill."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "CUR_INS_BAL_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total amount of the detail bill that is currently with insurance."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "CUR_PAT_BAL_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total amount of the detail bill that is currently in self-pay."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "TOTAL_AMT_DUE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total amount due for this detail bill."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "DB_IS_MYC_NOTIF_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores if the detail bill notification was sent via MyChart."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "DB_PAPER_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the reason why the detail bill was sent via paper.",
+      "entries": [
+        "Paperless Billing is disabled for the service area",
+        "User specified",
+        "Forced to paper because of self-pay follow-up level",
+        "Forced to paper because of guarantor rule",
+        "Forced to paper because of hospital account rule",
+        "Guarantor declined paperless billing",
+        "Financial Assistance Program Not Allowed In MyChart",
+        "Not self-pay correspondence",
+        "Form is not allowed to be displayed in MyChart",
+        "Guarantor missing associated patient or MyChart account",
+        "Guarantor is not MyChart active",
+        "Guarantor is not available in MyChart",
+        "No access to billing features in MyChart",
+        "MyChart tickler could not be sent",
+        "Professional billing letter not marked as Sent",
+        "Patient is not active on MyChart",
+        "Queued for printing based on estimate rule",
+        "Patient is deceased"
+      ]
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "INVOICE_NUMBER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Invoice number for a detail bill."
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "name": "OR_CASE_ALL_PROC",
+  "description": "The OR_CASE_ALL_PROC table contains OR management system case procedures.",
+  "primaryKey": [
+    {
+      "columnName": "OR_CASE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "OR_CASE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the case record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of the line of the procedure within the case."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "OR_PROC_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the procedure record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "OR_PROC_ID_PROC_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the surgical procedure record."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "POS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value which represents the position in which the patient should be placed when performing the surgery."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "LRB_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value which represents the side of the body the procedure on which the procedure is being performed.",
+      "entries": [
+        "Left",
+        "Right",
+        "Bilateral",
+        "N/A",
+        "Default"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ANES_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value which represents the type of anesthesia used for this procedure."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "OP_REG_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value which indicates the region of the body that will be operated on during the surgery."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "TOTAL_LENGTH",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The total amount of time required for the case. This includes all procedures in all panels as well as the setup and cleanup times for the case."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PANEL",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The procedure panel within which this procedure is contained. This is a numeric value between 1 and 5."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "COMMENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The free text comments for this procedure."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "DEFAULTED_LENGTH",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The length defaulted for this procedure by the system in minutes."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "RESOURCE_PREF_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The procedure or preference card ID used to default the resources in the case for this procedure."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "RESOURCE_PREF_ID_PROC_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the surgical procedure record."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "PICKLIST_PREF_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The procedure or preference card ID used to default the pick list in the case for this procedure."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "PICKLIST_PREF_ID_PROC_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the surgical procedure record."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "LENGTH_MODIFIED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the procedure length was modified by the user. Y indicates that the procedure length was modified. A null value indicates that the length was not modified. An N will not be populated for this column.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "MATCHED_PREF_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the preference card that has been selected to override the defaulted preference card."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "MATCHED_PREF_ID_PROC_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the surgical procedure record."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "POSSIBLE_PROC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the procedure was flagged as a possible procedure. Y indicates that the procedure was flagged as a possible procedure. N or null indicates that the procedure was not flagged as a possible procedure."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "DBC_EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the Diagnose Behandel Combinatie (DBC) episode associated with the current procedure. Used in billing."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "PROC_EAP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the ordered procedure (EAP) associated with the preference card."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "ALL_PROC_AS_ORDERED",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Specify the procedure name as exactly ordered by the surgeon/provider."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "ALL_PROC_CODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the procedure (EAP) linked to the procedure code. This column is only populated for older surgical cases which were created and last modified before upgrading to the Epic Nov 2022 version. For newer surgical cases, codes are in OR_OPE_PROC_CODE.PROC_CODE_ID.  OR_CASE_ALL_PROC joins to OR_OPE_PROC_CODE on column ALL_PANEL_ADDL_OPE_ID."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "ALL_DEF_OR_PROC_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the defaulted preference card."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "ALL_DEF_OR_PROC_ID_PROC_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the surgical procedure record."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "ALL_PANEL_ADDL_OPE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the pointer to the procedure additional data record for all panels."
+    }
+  ]
+}

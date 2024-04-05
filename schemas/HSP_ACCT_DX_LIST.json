@@ -1,0 +1,166 @@
+{
+  "name": "HSP_ACCT_DX_LIST",
+  "description": "This table contains hospital account final diagnosis list information from the Hospital Accounts Receivable (HAR) master file.",
+  "primaryKey": [
+    {
+      "columnName": "HSP_ACCOUNT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID number of a hospital account."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number in the results of a query. Since multiple final ICD diagnoses can be stored in one hospital account, each diagnosis will have a unique line number. The record associated with line 1 represents the principal final coded  diagnosis."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "DX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The system ID number of a final diagnosis code stored in the hospital account."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "DX_AFFECTS_DRG_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Specifies if the diagnosis affects the diagnosis-related group (DRG) associated with the hospital account.  1-yes, 2-no",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "DX_COMORBIDITY_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Specifies if the diagnosis is a non-complication/comorbidity (\"N\"),  complication/comorbidity (\"Y\"), or major complication/comorbidity (\"Y\").   Note that this column is extracted as an explicit \"N\" or \"Y\", where \"Y\" is used for both CC and MCC.  The updated column DX_COMORBIDITY_C can be used to distinguish between CC and MCC diagnoses.",
+      "entries": [
+        "CC",
+        "No",
+        "MCC"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "FINAL_DX_SOI_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the final diagnosis severity of illness",
+      "entries": [
+        "Refinement not possible",
+        "Minor",
+        "Moderate",
+        "Major",
+        "Extreme",
+        "Principal Dx Used for SOI/ROM Calc",
+        "Excluded",
+        "Duplicate Diagnosis",
+        "Excluded Complication of Care"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "FINAL_DX_ROM_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the final diagnosis risk of mortality"
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "FINAL_DX_EXCLD_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores whether the final diagnosis should be excluded from clinical reporting"
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "FNL_DX_AFCT_SOI_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores whether the diagnosis affects severity of illness."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "FNL_DX_AFCT_ROM_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores whether the diagnosis affects risk of mortality."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "FINAL_DX_POA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Specifies whether each diagnosis was present on admission.",
+      "entries": [
+        "Yes",
+        "No",
+        "Unknown",
+        "Clinically Undetermined",
+        "Exempt from POA reporting"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "DX_COMORBIDITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Specifies if complication / comorbidity exists for each diagnosis on the hospital account."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "DX_HAC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Specifies if the diagnosis contributed to a Hospital Acquired Condition.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "DX_COF_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The COF (Condition Onset Flag) for the diagnosis. This item describes whether the diagnosis is onset during the episode (on) or outside of the timeframe of the episode (not).",
+      "entries": [
+        "Onset during the episode",
+        "Not arising during the episode"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "DX_COMPLEXITY_LVL",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The diagnosis complexity level - the complexity weight assigned to the diagnosis in relation to the DRG."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "COMPLEX_DX_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The complex diagnosis indicator for the diagnosis code.",
+      "entries": [
+        "Complex Diagnosis"
+      ]
+    }
+  ]
+}

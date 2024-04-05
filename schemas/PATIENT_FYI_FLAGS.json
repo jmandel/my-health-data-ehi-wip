@@ -1,0 +1,121 @@
+{
+  "name": "PATIENT_FYI_FLAGS",
+  "description": "This table will extract Patient FYI flags from the Notes (HNO) database. These are notes with a Patient Flag Type (I HNO 560) that is not null.",
+  "primaryKey": [
+    {
+      "columnName": "NOTE_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the note (HNO)"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "DELETED_CAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates the Deleted Status of this Note record in Chronicles.",
+      "entries": [
+        "DELETED",
+        "Hidden",
+        "DELETED and Hidden"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ACTIVE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if this Patient FYI Flag will be shown as an Active or Inactive flag.",
+      "entries": [
+        "Active",
+        "Inactive"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ENTRY_PERSON_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the user (EMP) who created this Patient FYI Flag."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ENTRY_PERSON_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ACCT_NOTE_INSTANT",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant at which this FYI flag was created."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ACCT_NOTE_SUMMARY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The brief free text summary statement about the Patient FYI."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PAT_FLAG_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of Patient FYI Flag. This is a customer owned list.",
+      "entries": [
+        "General",
+        "Release Restrictions",
+        "Sedation",
+        "Legal Review",
+        "Externally-Entered Coverage",
+        "Tracked",
+        "Locked",
+        "Restricted Data",
+        "Test Patient",
+        "Deprecated - Drug Seeker",
+        "Deprecated - Research Participant",
+        "Radiation Therapy Patient",
+        "Opt Out of Payer Record Exchange",
+        "PCP Change",
+        "CMS RO Model",
+        "CP-IS: Child Protection Plan",
+        "CP-IS: Looked After Child",
+        "CP-IS: Unborn Child Protection Plan",
+        "Protection Order",
+        "Custody",
+        "Compliance Packager Patient",
+        "NEHR Patient Properties",
+        "Risk of Violence",
+        "History of Violence"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PT_FG_PURGABLE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether a batch can purge this patient flag. A Y indicates the flag can be purged. N indicates the flag cannot be purged.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Patient Encounter this Patient FYI is associated with.  This field may be null, if the FYI is at the patient level rather than contact specific."
+    }
+  ]
+}

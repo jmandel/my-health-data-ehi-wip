@@ -1,0 +1,61 @@
+{
+  "name": "AP_CLM_PX_AMBU_CERT_RM",
+  "description": "This table extracts the ambulance certificate condition code(s) sent at the service level for AP Claim service lines.\n\n\n\n\n\nThis data should be accessed by joining to AP_CLM_PX_AMBU_CERT from AP_CLAIM_PROC_IDS on TX_ID and then to this table on TX_ID and LINE=GROUP_LINE. To report on claim service lines related to Cost Sharing Reduction (CSR), instead join through AP_CLAIM_PROC_IDS_CSR on TX_ID.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the AP Claim procedure transaction."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the associated ambulance certificate condition code(s) in this AP Claim procedure transaction record. Together with TX_ID, this forms the foreign key to the AP_CLM_PX_AMBU_CERT."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple ambulance certificate condition code(s) that are associated with the AP Claim procedure transaction records from the AP_CLM_PX_AMBU_CERT table."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "AMBU_CERT_COND_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores an ambulance certificate condition code category ID.",
+      "entries": [
+        "Patient is confined to a bed or chair",
+        "Transportation was to the Nearest Facility",
+        "Admitted to a Hospital",
+        "Bed Confined Before the Ambulance Service",
+        "Bed Confined After the Ambulance Service",
+        "Moved by Stretcher",
+        "Unconscious or in Shock",
+        "Transported in an Emergency Situation",
+        "Physically Restrained",
+        "Visible Hemorrhaging",
+        "Ambulance Service was Medically Necessary"
+      ]
+    }
+  ]
+}

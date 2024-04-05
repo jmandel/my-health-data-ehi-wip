@@ -1,0 +1,249 @@
+{
+  "name": "PAT_EXTERNAL_CVGS",
+  "description": "The PAT_EXTERNAL_CVGS table contains insurance information imported into Epic from an external system. Each row in the table corresponds to a coverage a patient had in the external system.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "EXT_CVGS_SRC_SYS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The external system that the insurance information was loaded from.",
+      "entries": [
+        "MyChart",
+        "EpicCare Link",
+        "Welcome",
+        "RTE Response",
+        "Roster Management Engine",
+        "MyChart Guest",
+        "Interconnect Network",
+        "Yaqeen Register",
+        "Standalone Webservice",
+        "Payer Platform",
+        "Incoming External Pre-Adjudicated Claims (X12 837) Interface"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EXT_CVGS_PAYOR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The payor ID associated with the external insurance information."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EXT_CVGS_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The benefit plan ID associated with the external insurance information."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EXT_CVGS_INS_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The search string a registrar would enter in the search box when attempting to create a new coverage record. This string typically includes the payor name, plan name, or synonym used to refer to the payor or plan."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "EXT_CVGS_SUBSCR_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The subscriber ID associated with the external insurance information."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "EXT_CVGS_SUBSCR_NAM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the subscriber associated with the external insurance information."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "EXT_CVGS_SUBSCR_BIRTH_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The birth date of the subscriber associated with the external insurance information."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "EXT_CVGS_SUBS_SEX_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The sex of the subscriber associated with the external insurance information.",
+      "entries": [
+        "Female",
+        "Male",
+        "Unknown",
+        "Nonbinary",
+        "X",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "EXT_CVGS_MEM_REL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The relationship between the member and the subscriber associated with the external insurance information.",
+      "entries": [
+        "Self",
+        "Spouse",
+        "Child",
+        "Employee",
+        "Unknown"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "EXT_CVGS_MEM_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The member ID associated with the external insurance information."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "EXT_CVGS_MEM_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The member name override for the patient associated with the external insurance information. This is an override for the patient name when the payor is expecting a different name."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "EXT_CVGS_GROUP_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The group number associated with the external insurance information."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "EXT_CVGS_RESP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The General Use Notes (HNO) ID or response text received from an eligibility query sent to verify the external coverage."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "EXT_CVGS_CVG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the coverage created from the external insurance information."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "EXT_CVGS_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The action taken on the external insurance information.",
+      "entries": [
+        "No Action Taken",
+        "Manually Flagged as Done",
+        "Eligibility Coverage Created",
+        "Eligibility Existing Coverage Used",
+        "Eligibility Response Ignored",
+        "Non-Eligibility Coverage Created"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "EXT_CVGS_CREAT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The UTC instant when this external coverage was stored in Epic."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "EXT_CVGS_EFF_FRM_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date from which the external coverage is effective. This is meant to map to what we store in Effective Date From (I CVG 400)."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "EXT_CVGS_EFF_TO_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date to which the external coverage is effective. This is meant to map to what we store in Effective Date To (I CVG 410)"
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "EXT_CVGS_BIN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Beneficiary Identification Number (BIN) of the external coverage."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "EXT_CVGS_PCN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The processor control number (PCN) of the external coverage."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "EXT_CVGS_PERS_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The person code of the external coverage. This is meant to map to what we store in Member Person Code (I CVG 316)."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "EXT_CVGS_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the contact serial number (CSN) of the encounter that created the coverage, if it was created in an encounter."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "EXT_CVG_SRC_ORGANIZATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Organization (DXO) that provided the information for this coverage."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "EXT_CVG_SRC_ORGANIZATION_ID_EXTERNAL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Organization's external name used as the display name on forms and user interfaces."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "EXT_CVGS_FHIR_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The FHIR Id of a coverage record on an external system that was used to  create this coverage."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "EXT_CVGS_CVG_OID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The OID of a coverage record on an external system that was used to create  this coverage."
+    }
+  ]
+}

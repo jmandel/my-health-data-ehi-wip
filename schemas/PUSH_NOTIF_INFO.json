@@ -1,0 +1,48 @@
+{
+  "name": "PUSH_NOTIF_INFO",
+  "description": "This table contains information about push notifications.\n\n\nTo extract data to PUSH_NOTIF_INFO:\n\n\n1. In Clinical Administration, open EMR System Definitions and select Decision Support, Pop Management.\n\n\n2. Go to the Push Notification Clarity Settings screen.\n\n\n3. In the Types Excluded from Clarity Extracts field, enter the types of push notification you want to exclude from Clarity extraction. \n\n\n4. In the Enable Clarity extraction for push notification field, enter 1-Yes.",
+  "primaryKey": [
+    {
+      "columnName": "NOTIF_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "NOTIF_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the notification record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this notification. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ALERT_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number (CSN) of the alert linked to the notification when a push notification is sent as a follow-up action to a BestPractice Advisory (BPA)."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "NOTIF_SEND_DATE",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date when the initial push notification was sent."
+    }
+  ]
+}

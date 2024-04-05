@@ -1,0 +1,48 @@
+{
+  "name": "SNAPSHOT_ORD_INFO_VALUE",
+  "description": "This table has the values for individual data elements that were stored at the time of discharge or when the patient's After Visit Summary was printed. The keys identifying the elements are in the SNAPSHOT_ORDER_DATA table.",
+  "primaryKey": [
+    {
+      "columnName": "EVENT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "EVENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the discharge reconciliation event record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the associated snapshot data key for this value. Together with EVENT_ID, this forms the foreign key to the SNAPSHOT_ORDER_DATA table."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the parts of the value that was stored in the snapshot."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SNAPSHOT_ORD_VALUE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "One line of the value that was stored in the snapshot. All lines of this data element (that is, all lines with the same EVENT_ID and GROUP_LINE values) should be concatenated to get the full value."
+    }
+  ]
+}

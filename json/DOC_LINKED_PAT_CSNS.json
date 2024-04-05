@@ -1,0 +1,82 @@
+{
+  "$meta": {
+    "schemas": {
+      "DOC_LINKED_PAT_CSNS": {
+        "name": "DOC_LINKED_PAT_CSNS",
+        "description": "Linked patient contact serial numbers for EHI Export.",
+        "primaryKey": [
+          {
+            "columnName": "DOCUMENT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "DOCUMENT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique identifier (.1 item) for the document record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "LINKED_PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The list of patient contact serial numbers that this DCS is associated with for Electronic Health Information (EHI) Export"
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "DOC_LINKED_PAT_CSNS",
+            "target": "DOC_INFO_DICOM",
+            "joinKeys": [
+              {
+                "source": "DOCUMENT_ID",
+                "target": "DOCUMENT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "DOC_LINKED_PAT_CSNS": [
+    {
+      "DOCUMENT_ID": "271960348",
+      "LINE": 1,
+      "LINKED_PAT_ENC_CSN_ID": 921952141,
+      "$meta": {
+        "type": "DOC_LINKED_PAT_CSNS"
+      }
+    },
+    {
+      "DOCUMENT_ID": "279197497",
+      "LINE": 1,
+      "LINKED_PAT_ENC_CSN_ID": 922942674,
+      "$meta": {
+        "type": "DOC_LINKED_PAT_CSNS"
+      }
+    },
+    {
+      "DOCUMENT_ID": "286469708",
+      "LINE": 1,
+      "LINKED_PAT_ENC_CSN_ID": 922942674,
+      "$meta": {
+        "type": "DOC_LINKED_PAT_CSNS"
+      }
+    }
+  ]
+}

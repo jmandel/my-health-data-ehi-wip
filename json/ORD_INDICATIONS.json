@@ -1,0 +1,123 @@
+{
+  "$meta": {
+    "schemas": {
+      "ORD_INDICATIONS": {
+        "name": "ORD_INDICATIONS",
+        "description": "This table stores the indications of use selected for a medication record.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the order record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line count of associated changes in Indication(s) of Use for the order record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "INDICATIONS_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The indications of use selected for a medication order."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "INDICATIONS_ID_MEDICAL_COND_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This contains the name of the medical condition."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ORD_INDICATIONS",
+            "target": "ORDER_PARENT_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORD_INDICATIONS",
+            "target": "ORDER_PROC",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORD_INDICATIONS",
+            "target": "ORD_PRFLST_TRK",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ORD_INDICATIONS": [
+    {
+      "ORDER_ID": 439060612,
+      "LINE": 1,
+      "INDICATIONS_ID": 1051798,
+      "INDICATIONS_ID_MEDICAL_COND_NAME": "Head trauma, minor, normal mental status (Age 19-64y)",
+      "$meta": {
+        "type": "ORD_INDICATIONS"
+      }
+    },
+    {
+      "ORDER_ID": 439060610,
+      "LINE": 1,
+      "INDICATIONS_ID": 1051200,
+      "INDICATIONS_ID_MEDICAL_COND_NAME": "Headache, post traumatic",
+      "$meta": {
+        "type": "ORD_INDICATIONS"
+      }
+    },
+    {
+      "ORDER_ID": 439060609,
+      "LINE": 1,
+      "INDICATIONS_ID": 1051798,
+      "INDICATIONS_ID_MEDICAL_COND_NAME": "Head trauma, minor, normal mental status (Age 19-64y)",
+      "$meta": {
+        "type": "ORD_INDICATIONS"
+      }
+    },
+    {
+      "ORDER_ID": 439060613,
+      "LINE": 1,
+      "INDICATIONS_ID": 1051798,
+      "INDICATIONS_ID_MEDICAL_COND_NAME": "Head trauma, minor, normal mental status (Age 19-64y)",
+      "$meta": {
+        "type": "ORD_INDICATIONS"
+      }
+    }
+  ]
+}

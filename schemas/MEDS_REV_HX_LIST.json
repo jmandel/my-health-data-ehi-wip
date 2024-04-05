@@ -1,0 +1,67 @@
+{
+  "name": "MEDS_REV_HX_LIST",
+  "description": "This table lists the patient's current medications from each time a user reviewed the patient's medications.\n\n\n\n\n\nReviewing user and other information about each instance of medication review is in the MEDS_REV_HX table.\n\n\n\n\n\nThe list of medications at the most recent review instance is in the MEDS_REV_LAST_LIST table.\n\n\n\n\n\nReviewing user and other information about the most recent review of medications is in the PATIENT table in columns MEDS_LAST_REV_TM, MEDS_LST_REV_USR_ID, and MEDS_LAST_REV_CSN.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_SERIAL_NUM",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE_COUNT",
+      "ordinalPosition": 3
+    },
+    {
+      "columnName": "VALUE_COUNT",
+      "ordinalPosition": 4
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_SERIAL_NUM",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE_COUNT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the associated instance of medication review in the patient's record. Together with PAT_ID, this forms the foreign key to the MEDS_REV_HX table."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "VALUE_COUNT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple medication orders that are associated with the patient and the instance of medication review from the MEDS_REV_HX table."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "MEDICATION_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of one of the patient's current medication orders at the time of review."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "TAKING_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the associated medication order was marked as taking at the time of review."
+    }
+  ]
+}

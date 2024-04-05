@@ -1,0 +1,536 @@
+{
+  "$meta": {
+    "schemas": {
+      "FAMILY_HX": {
+        "name": "FAMILY_HX",
+        "description": "The FAMILY_HX table contains data recorded in the family history contacts entered in the patient's chart during a clinical system encounter. Note: This table is designed to hold a patient's history over time; however, it is most typically implemented to only extract the latest patient history contact.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ENC_CSN_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number to identify the family history contact within the patient�s record.  NOTE: Each line of history is stored in enterprise reporting as its own record; a given patient may have multiple records (identified by line number) that reflect multiple lines of history."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "MEDICAL_HX_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value associated with the Problem documented in the patient�s family history."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "COMMENTS",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Free-text comments entered with this problem. This column may be hidden in a public enterprise reporting view."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "A unique serial number for this encounter. This number is unique across all patients and encounters in the system."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "FAM_HX_SRC_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item contains the source of information for a patient's family medical history.",
+            "entries": [
+              "Provider",
+              "Patient",
+              "Parent",
+              "Legal Guardian",
+              "Proxy User"
+            ]
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "RELATION_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This is the category value associated with the family member who has or had this problem. An example might be sister, brother, or mother."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "FAM_MED_REL_ID",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "This item contains the unique ID of the patient's family member relationship for medical history."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "FAMILY_HX",
+            "target": "PAT_ENC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "FAMILY_HX",
+            "target": "SOCIAL_HX",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "FAMILY_HX": [
+    {
+      "LINE": 1,
+      "MEDICAL_HX_C_NAME": "Ovarian cancer",
+      "PAT_ENC_CSN_ID": 991221485,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Mother",
+      "FAM_MED_REL_ID": 2,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 2,
+      "MEDICAL_HX_C_NAME": "Hypertension",
+      "PAT_ENC_CSN_ID": 991221485,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Mother",
+      "FAM_MED_REL_ID": 2,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 3,
+      "MEDICAL_HX_C_NAME": "Thyroid disease",
+      "COMMENTS": "s/p thyroidectomy",
+      "PAT_ENC_CSN_ID": 991221485,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Mother",
+      "FAM_MED_REL_ID": 2,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 4,
+      "MEDICAL_HX_C_NAME": "Hyperlipidemia",
+      "PAT_ENC_CSN_ID": 991221485,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Father",
+      "FAM_MED_REL_ID": 6,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 5,
+      "MEDICAL_HX_C_NAME": "Hypertension",
+      "PAT_ENC_CSN_ID": 991221485,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Brother",
+      "FAM_MED_REL_ID": 5,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 6,
+      "MEDICAL_HX_C_NAME": "Hyperlipidemia",
+      "PAT_ENC_CSN_ID": 991221485,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Brother",
+      "FAM_MED_REL_ID": 5,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 7,
+      "MEDICAL_HX_C_NAME": "Stroke",
+      "PAT_ENC_CSN_ID": 991221485,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Maternal Grandmother",
+      "FAM_MED_REL_ID": 8,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 8,
+      "MEDICAL_HX_C_NAME": "Stroke",
+      "PAT_ENC_CSN_ID": 991221485,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Maternal Grandfather",
+      "FAM_MED_REL_ID": 9,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 9,
+      "MEDICAL_HX_C_NAME": "Prostate cancer",
+      "PAT_ENC_CSN_ID": 991221485,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Maternal Grandfather",
+      "FAM_MED_REL_ID": 9,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 10,
+      "MEDICAL_HX_C_NAME": "Heart attack",
+      "PAT_ENC_CSN_ID": 991221485,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Paternal Grandmother",
+      "FAM_MED_REL_ID": 10,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 11,
+      "MEDICAL_HX_C_NAME": "Heart attack",
+      "PAT_ENC_CSN_ID": 991221485,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Paternal Grandfather",
+      "FAM_MED_REL_ID": 11,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 1,
+      "MEDICAL_HX_C_NAME": "Ovarian cancer",
+      "PAT_ENC_CSN_ID": 958134730,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Mother",
+      "FAM_MED_REL_ID": 2,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 2,
+      "MEDICAL_HX_C_NAME": "Hypertension",
+      "PAT_ENC_CSN_ID": 958134730,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Mother",
+      "FAM_MED_REL_ID": 2,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 3,
+      "MEDICAL_HX_C_NAME": "Thyroid disease",
+      "COMMENTS": "s/p thyroidectomy",
+      "PAT_ENC_CSN_ID": 958134730,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Mother",
+      "FAM_MED_REL_ID": 2,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 4,
+      "MEDICAL_HX_C_NAME": "Hyperlipidemia",
+      "PAT_ENC_CSN_ID": 958134730,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Father",
+      "FAM_MED_REL_ID": 6,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 5,
+      "MEDICAL_HX_C_NAME": "Hypertension",
+      "PAT_ENC_CSN_ID": 958134730,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Brother",
+      "FAM_MED_REL_ID": 5,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 6,
+      "MEDICAL_HX_C_NAME": "Hyperlipidemia",
+      "PAT_ENC_CSN_ID": 958134730,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Brother",
+      "FAM_MED_REL_ID": 5,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 7,
+      "MEDICAL_HX_C_NAME": "Stroke",
+      "PAT_ENC_CSN_ID": 958134730,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Maternal Grandmother",
+      "FAM_MED_REL_ID": 8,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 8,
+      "MEDICAL_HX_C_NAME": "Stroke",
+      "PAT_ENC_CSN_ID": 958134730,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Maternal Grandfather",
+      "FAM_MED_REL_ID": 9,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 9,
+      "MEDICAL_HX_C_NAME": "Prostate cancer",
+      "PAT_ENC_CSN_ID": 958134730,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Maternal Grandfather",
+      "FAM_MED_REL_ID": 9,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 10,
+      "MEDICAL_HX_C_NAME": "Heart attack",
+      "PAT_ENC_CSN_ID": 958134730,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Paternal Grandmother",
+      "FAM_MED_REL_ID": 10,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 11,
+      "MEDICAL_HX_C_NAME": "Heart attack",
+      "PAT_ENC_CSN_ID": 958134730,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Paternal Grandfather",
+      "FAM_MED_REL_ID": 11,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 1,
+      "MEDICAL_HX_C_NAME": "Ovarian cancer",
+      "PAT_ENC_CSN_ID": 802802103,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Mother",
+      "FAM_MED_REL_ID": 2,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 2,
+      "MEDICAL_HX_C_NAME": "Hypertension",
+      "PAT_ENC_CSN_ID": 802802103,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Brother",
+      "FAM_MED_REL_ID": 5,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 3,
+      "MEDICAL_HX_C_NAME": "Hyperlipidemia",
+      "PAT_ENC_CSN_ID": 802802103,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Brother",
+      "FAM_MED_REL_ID": 5,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 1,
+      "MEDICAL_HX_C_NAME": "Ovarian cancer",
+      "PAT_ENC_CSN_ID": 724623985,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Mother",
+      "FAM_MED_REL_ID": 2,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 2,
+      "MEDICAL_HX_C_NAME": "Hypertension",
+      "PAT_ENC_CSN_ID": 724623985,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Brother",
+      "FAM_MED_REL_ID": 5,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 3,
+      "MEDICAL_HX_C_NAME": "Hyperlipidemia",
+      "PAT_ENC_CSN_ID": 724623985,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Brother",
+      "FAM_MED_REL_ID": 5,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 1,
+      "MEDICAL_HX_C_NAME": "Ovarian cancer",
+      "PAT_ENC_CSN_ID": 1028739468,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Mother",
+      "FAM_MED_REL_ID": 2,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 2,
+      "MEDICAL_HX_C_NAME": "Hypertension",
+      "PAT_ENC_CSN_ID": 1028739468,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Mother",
+      "FAM_MED_REL_ID": 2,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 3,
+      "MEDICAL_HX_C_NAME": "Thyroid disease",
+      "COMMENTS": "s/p thyroidectomy",
+      "PAT_ENC_CSN_ID": 1028739468,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Mother",
+      "FAM_MED_REL_ID": 2,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 4,
+      "MEDICAL_HX_C_NAME": "Hyperlipidemia",
+      "PAT_ENC_CSN_ID": 1028739468,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Father",
+      "FAM_MED_REL_ID": 6,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 5,
+      "MEDICAL_HX_C_NAME": "Hypertension",
+      "PAT_ENC_CSN_ID": 1028739468,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Brother",
+      "FAM_MED_REL_ID": 5,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 6,
+      "MEDICAL_HX_C_NAME": "Hyperlipidemia",
+      "PAT_ENC_CSN_ID": 1028739468,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Brother",
+      "FAM_MED_REL_ID": 5,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 7,
+      "MEDICAL_HX_C_NAME": "Stroke",
+      "PAT_ENC_CSN_ID": 1028739468,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Maternal Grandmother",
+      "FAM_MED_REL_ID": 8,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 8,
+      "MEDICAL_HX_C_NAME": "Stroke",
+      "PAT_ENC_CSN_ID": 1028739468,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Maternal Grandfather",
+      "FAM_MED_REL_ID": 9,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 9,
+      "MEDICAL_HX_C_NAME": "Prostate cancer",
+      "PAT_ENC_CSN_ID": 1028739468,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Maternal Grandfather",
+      "FAM_MED_REL_ID": 9,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 10,
+      "MEDICAL_HX_C_NAME": "Heart attack",
+      "PAT_ENC_CSN_ID": 1028739468,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Paternal Grandmother",
+      "FAM_MED_REL_ID": 10,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    },
+    {
+      "LINE": 11,
+      "MEDICAL_HX_C_NAME": "Heart attack",
+      "PAT_ENC_CSN_ID": 1028739468,
+      "FAM_HX_SRC_C_NAME": "Provider",
+      "RELATION_C_NAME": "Paternal Grandfather",
+      "FAM_MED_REL_ID": 11,
+      "$meta": {
+        "type": "FAMILY_HX"
+      }
+    }
+  ]
+}

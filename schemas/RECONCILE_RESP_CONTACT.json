@@ -1,0 +1,70 @@
+{
+  "name": "RECONCILE_RESP_CONTACT",
+  "description": "This table contains contact information used by the payor for routing the requested claim information within their system.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_RECON_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_RECON_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the claim status update record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RESP_CONTACT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Code associated with the contact number. Used to identify the type of communication number.",
+      "entries": [
+        "Electronic Mail",
+        "Telephone Extension",
+        "Facsimile",
+        "Telephone",
+        "Uniform Resource Locator (URL)",
+        "Electronic Data Interchange Access Number"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RESP_CONTACT_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Number of the contact person or department used by the payer for routing the requested information within their system."
+    }
+  ]
+}

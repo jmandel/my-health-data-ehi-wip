@@ -1,0 +1,606 @@
+{
+  "name": "ARPB_TRANSACTIONS",
+  "description": "This table contains information about professional billing transactions.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "A transaction's unique internal identification number. A patient's record can include charges, payments, or adjustments and the patient's account balance will reflect these transactions."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "POST_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when a transaction is entered into the billing system.  This differs from the service date, which is the date when the service was performed."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SERVICE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date a medical service is performed."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "TX_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of this transaction: Charge, payment or adjustment.",
+      "entries": [
+        "Charge",
+        "Payment",
+        "Adjustment",
+        "AP Claim Tx",
+        "AP Claim Refund Tx",
+        "AP Claim DRG Tx",
+        "Pharmacy Claim Tx"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The internal ID of the record that maintains the patient's transactions. A patient may use more than one account and an account may contain more than one patient."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "DEBIT_CREDIT_FLAG_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains a 1 if the transaction is a debit and a -1 if the transaction is a credit. A charge is always a debit, a payment is always a credit, and an adjustment can be either a debit or a credit.",
+      "entries": [
+        "Debit",
+        "Credit"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "SERV_PROVIDER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The internal identifier of the provider who performed the medical services on the patient."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "BILLING_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The billing provider associated with the transaction."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The department ID of the department associated with the transaction."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "POS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The place of service ID of the place of service associated with the transaction"
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "LOC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The location ID of the location associated with the transaction."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "SERVICE_AREA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The service area ID of the service area associated with the transaction."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "MODIFIER_ONE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The first procedure modifier associated with this transaction. This is the external modifier, as it would be printed on the claim."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "MODIFIER_TWO",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The second procedure modifier associated with this transaction. This is the external modifier, as it would be printed on the claim."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "MODIFIER_THREE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The third procedure modifier associated with this transaction. This is the external modifier, as it would be printed on the claim."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "MODIFIER_FOUR",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The fourth procedure modifier associated with this transaction. This is the external modifier, as it would be printed on the claim."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PRIMARY_DX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The primary diagnosis ID associated with the transaction."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "DX_TWO_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The second diagnosis ID associated with the transaction."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "DX_THREE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The third diagnosis ID associated with the transaction."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "DX_FOUR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The fourth diagnosis ID associated with the transaction."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "DX_FIVE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The fifth diagnosis ID associated with the transaction."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "DX_SIX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The sixth diagnosis ID associated with the transaction."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "PROCEDURE_QUANTITY",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The quantity as entered in Charge Entry for the procedure of this transaction (TX_ID). If the row has a DETAIL_TYPE value of 10-13, this column displays a negative value. If the row has a DETAIL_TYPE value of 20-33, 43-45, 50, or 51, this column displays a zero."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The original amount of this transaction."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "OUTSTANDING_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The outstanding amount of the transaction."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "INSURANCE_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The insurance portion of the transaction."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "PATIENT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The patient or self-pay portion of the transaction."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "VOID_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "If this transaction is voided, this column will have the date in which this transaction is voided."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "LAST_ACTION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column contains the most recent date when an action is performed on this transaction."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "PROV_SPECIALTY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the provider specialty of the provider associated with the transaction. The procedure category of the charge on the transaction may affect what specialty is recorded here and in the \"Encounter Specialty\" displayed in Hyperspace."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Procedure ID of the procedure associated with the transaction."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "TOTAL_MATCH_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column contains the total amount matched to the transaction, including adjustments."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "TOTAL_MTCH_INS_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column contains the total insurance amount matched to the transaction, including adjustments."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "TOTAL_MTCH_ADJ",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column contains the total adjustment amount matched to the transaction."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "TOTAL_MTCH_INS_ADJ",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column contains the total insurance adjustment amount matched to the transaction."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "REPOST_ETR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This is the repost source transaction."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "REPOST_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The repost type category ID for the transaction.",
+      "entries": [
+        "Repost",
+        "Correction"
+      ]
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "DISCOUNT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The discount type category ID for the transaction.",
+      "entries": [
+        "None",
+        "Percentage",
+        "Fee Schedule",
+        "Extension"
+      ]
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Contact Serial Number for the patient encounter with which this transaction is associated. This number is unique across all patients and encounters in your system."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "ENC_FORM_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The encounter form number corresponding to the charge transaction. If you are not using encounter forms, a negative number is stored in this item."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "BEN_SELF_PAY_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the adjudicated self-pay amount calculated by the benefits engine"
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "BEN_ADJ_COPAY_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the copay part of the adjudicated self-pay amount calculated by the benefits engine"
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "BEN_ADJ_COINS_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the coinsurance part of the adjudicated self-pay amount calculated by the benefits engine"
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "VISIT_NUMBER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the visit number for this transaction."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "REFERRAL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the Referral (RFL) ID for this transaction."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "ORIGINAL_EPM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the original payor (EPM) ID for this transaction."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "ORIGINAL_FC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the original financial class for this transaction.",
+      "entries": [
+        "Commercial",
+        "Medicare",
+        "Medicaid",
+        "Self-Pay",
+        "Worker's Comp",
+        "Tricare",
+        "Champva",
+        "Group Health Plan",
+        "FECA Black Lung",
+        "Blue Shield",
+        "Medigap",
+        "Other",
+        "DK Regional",
+        "Client",
+        "Received Self-Pay",
+        "Sent to Consolidated Self-Pay Service Area"
+      ]
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "ORIGINAL_CVG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the original coverage (CVG) ID for this transaction."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "PAYOR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the current payor (EPM) ID for this transaction."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the current coverage (CVG) ID for this transaction."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "ASGN_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the assignment flag for a coverage.  This item is set to Yes if the charge is currently assigned to the payor in the PAYOR_ID column.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "FACILITY_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the facility (EAF) ID for this transaction."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "PAYMENT_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the payment source for credit transactions. This is a list of possible sources including Cash, Check, Credit Card, etc.",
+      "entries": [
+        "Cash",
+        "Check",
+        "Credit Card",
+        "EOB",
+        "Voucher",
+        "Bank Account",
+        "Trust Account"
+      ]
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the user who posted the transaction."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "NOT_BILL_INS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the transaction is marked for do not bill insurance.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "CHG_ROUTER_SRC_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the universal charge line (UCL) ID for this transaction."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "RECEIVE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item stores the charge entry batch receive date."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "CE_CODED_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date this�charge session was coded, from charge entry."
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "PANEL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the panel procedure that generated this transaction."
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "BILL_AREA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Networked to BIL: the Bill Area for this transaction."
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "BILL_AREA_ID_BILL_AREA_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The record name of this bill area, financial subdivision, or financial division."
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "CREDIT_SRC_MODULE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The module that creates a payment or credit adjustment",
+      "entries": [
+        "Account Maintenance",
+        "Payment Posting",
+        "Adjustment Posting",
+        "Collection (text)",
+        "Collection Workqueue",
+        "Charge Entry",
+        "Retroadjudication",
+        "Small Balance Write-off in Bills",
+        "Transfer",
+        "Transaction Import",
+        "Claim Processing",
+        "MyChart Web",
+        "Electronic Remittance",
+        "Claim Bundling Utility",
+        "Real Time Charge Interface",
+        "Secondary Write-off",
+        "Dental Treatment Plan",
+        "Transaction Maintenance Utilities",
+        "Follow-up workqueue User",
+        "Check-in/Check-out",
+        "Charge Homing",
+        "Release of Information",
+        "Enterprise Payment Posting",
+        "Reimbursement Recalculation Utility",
+        "Charge Correction",
+        "Charge Repost",
+        "Claim Edit Workqueue",
+        "Patient Refund",
+        "HB Integrity Checks",
+        "Welcome",
+        "PB Extract Framework",
+        "SBO Collection Actions",
+        "Nightly Processing",
+        "Web Service",
+        "Auto Pay Payment Plan",
+        "Pharmacy",
+        "Payment Collection",
+        "Financial Assistance",
+        "Credit Workqueue System",
+        "Credit Workqueue User",
+        "Follow-up Workqueue System",
+        "Self-Pay Discount",
+        "Adjustment Review Workqueue",
+        "Charge Router Void",
+        "Charge Router Repost",
+        "Rescheduling Repost",
+        "Prepay Discount Adjustment",
+        "Bundled Payment Distribution",
+        "Account Workqueue",
+        "Claim run Accept",
+        "Change Guarantor",
+        "MyChart Mobile",
+        "Guest Pay",
+        "Visit Auto Pay",
+        "Dental Upgrade Adjustment",
+        "Promotion Discount",
+        "Discretionary Discount",
+        "Non-Primary Not Allowed Adjustment",
+        "Estimate",
+        "Adjustment Review WQ Decline",
+        "Two-Way SMS",
+        "Shadow Charging",
+        "Reeval Reimbursement (User)",
+        "Override Reimbursement (User)",
+        "Same-Instance Consolidated Balances"
+      ]
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "UPDATE_DATE",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date that this row was last updated."
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "CLAIM_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The most recent date that this transaction has been on an accepted claim run."
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "IPP_INV_NUMBER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the original invoice number that user posts to in GUI payment posting or remittance."
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "IPP_INV_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the original invoice ID that user posts to in�graphical user interface�(GUI) payment posting or remittance."
+    }
+  ]
+}

@@ -1,0 +1,376 @@
+{
+  "name": "EPISODE_2",
+  "description": "This table supplements the EPISODE table. It contains additional information about episodes. When a provider sees a patient several times for an ongoing condition, such as prenatal care, these encounters can be linked to a single Episode of Care.",
+  "primaryKey": [
+    {
+      "columnName": "EPISODE_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the episode of care record. NOTE: This table is filtered to include only non-inpatient episodes. Inpatient episode data can be found in the table IP_EPISODE_LINK (first released with system 2002)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "DEPT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the department primarily responsible for managing the episode."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "RXENROLL_LAST_EDIT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user ID for whoever last updated the pharmacy enrollment."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RXENROLL_LAST_EDIT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RXENROLL_LAST_EDIT_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time the pharmacy enrollment was last updated."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ENROLL_PROG_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The current enrollment program for the pharmacy."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "RXENROLL_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Summary note documented on this episode"
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "RXENROLL_ENROLLMENT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the patient was enrolled in the program"
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "RXENROLL_DISENROLL_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the patient was unenrolled from the program."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "RXENROLL_DECLINE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the patient was declined enrollment (or declined to enroll) in the program"
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "RXENROLL_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The current enrollment status",
+      "entries": [
+        "Under Review",
+        "Enrolled",
+        "Disenrolled",
+        "Declined",
+        "Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "CRT_PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The patient contact serial number that auto created this episode."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "CMGMT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the status of the case episode.  Enrolling - The manager is working to enroll the patient in a case management program. Open - The manager is performing ongoing outreach with the patient. Closed - The patient is no longer enrolled in case management, or they opted out of case management.",
+      "entries": [
+        "Enrolling",
+        "Active",
+        "Closed",
+        "Paused",
+        "Declined"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "CMGMT_SENSITIVITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Store the sensitivity flag for security restricted case episodes. If your organization has implemented break-the-glass, this sensitivity flag can be used to restrict access to the case episode."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "CMGMT_ENROLLMENT_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the reason the patient was enrolled in case management.",
+      "entries": [
+        "Referred by provider",
+        "Identified as high-risk",
+        "Self-enrolled",
+        "Identified using claims or encounter data",
+        "Identified using hospital discharge data",
+        "Identified using pharmacy data",
+        "Identified using UM data",
+        "Identified using referral data"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "CMGMT_ENROLLING_STEP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the enrolling step that specifies the current step of enrollment for the case episode.",
+      "entries": [
+        "Not specified",
+        "Identified"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "CMGMT_CLOSED_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the reason the case episode is closed.",
+      "entries": [
+        "Not specified",
+        "Patient declined case management",
+        "Patient graduated",
+        "Unable to reach patient"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "ENROLL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The research study-patient association (LAR) record ID for this episode."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PREG_CHORIONIC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "For a pregnancy with multiple fetuses, indicates if the fetuses have individual or a shared chorionic and amniotic sacs.",
+      "entries": [
+        "Mono-Mono",
+        "Mono-Di",
+        "Di-Di",
+        "Other",
+        "Mono-Tri",
+        "Di-Tri",
+        "Tri-Tri"
+      ]
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "PLAN_ADOPT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates if the mother plans to give the baby up for adoption and if so, what type of adoption or arrangement is planned.",
+      "entries": [
+        "Open Adoption",
+        "Closed Adoption",
+        "Surrogate",
+        "Safe Surrender",
+        "Gestational Carrier",
+        "Traditional Surrogate",
+        "Hide Mother's Info",
+        "Not Applicable"
+      ]
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "SUSPECTED_FD_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates whether a suspected fetal demise has occurred in the pregnancy.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "PLAN_CIRCUMCISION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is used to indicate whether the parents have requested a circumcision after the baby is born.",
+      "entries": [
+        "No",
+        "Provider Performed",
+        "Ritual"
+      ]
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "PLAN_DELIVER_BY_GA",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item represents the gestational age (in weeks of pregnancy) at when the patient and provider expect the delivery to occur."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "PLAN_DEL_METHOD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item captures the planned method of delivery as documented prior to labor.",
+      "entries": [
+        "Vaginal",
+        "C-Section",
+        "TOLAC"
+      ]
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "CMGMT_DECLINE_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Documents the reason a patient/client refused coordinated case management services."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "HSPC_ADD_DISCUSSED_WITH_PAT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates whether or not a hospice election addendum was discussed with the patient for this episode."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "HSPC_ADD_REQUESTED_WITH_PAT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates whether or not a hospice election addendum was requested for this episode."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "HSPC_ADD_DISCUSSED_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique user record ID that is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "HSPC_ADD_DISCUSSED_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "HSPC_ADD_DISCUSSED_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the addendum was discussed with the patient."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "CMGMT_ENROLL_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Documents the enrollment date, which is the date on which a patient or client's status becomes active and the patient or client starts receiving Coordinated Care Management services. Refer to CMGMT_CALC_ENROLL_DATE for more robust reporting."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "CMGMT_ENROLL_CALC_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This virtual item contains a calculated enrollment date determined from the user- documented enrollment date (CMGMT_ENROLL_DATE, HSB-18030) or the Case Management History related group (I HSB 18400).  If the overall episode status (CMGMT_STATUS_C, I HSB 18010) is 1-Enrolling, the value will be blank.  If the overall status is anything besides 1-Enrolling, the value will be set to the user- documented Enrollment Date, if it exists. Otherwise, the value will be set to the date (ACTION_UTC_DTTM) the status (ASSOC_CMGMT_STATUS_C) originally changed to 2-Active, unless the status was changed to 1-Enrolling more recently."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "CMGMT_TRIGGERING_CLASSIFIER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The classifier (CFR record) that triggered the creation of this case."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "CMGMT_TRIGGERING_CLASSIFIER_ID_CLASSIFIER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The title of the classifier record."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "CMGMT_TRIGGERING_CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The claim that caused the creation of this case."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "PREG_CORD_BLOOD_PLANS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates the patient's plans for umbilical cord blood.",
+      "entries": [
+        "See Overview",
+        "Do Not Collect",
+        "Research Study",
+        "Public Bank",
+        "Private Bank",
+        "Internal Bank",
+        "Internal Lab"
+      ]
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "LINKED_SERVICE_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The service plan associated with this episode."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "MC_TG_RSLV_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the resolve date for this Tapestry bundle."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "BPC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the bundled episode terms id."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "BPC_ID_BPC_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the bundled episode terms record."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "BPC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the bundled episode terms contact serial number."
+    }
+  ]
+}

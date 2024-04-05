@@ -1,0 +1,74 @@
+{
+  "$meta": {
+    "schemas": {
+      "RESULT_FOLLOW_UP": {
+        "name": "RESULT_FOLLOW_UP",
+        "description": "This table contains the list of results that were followed up during this particular encounter, such as a telephone encounter.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ENC_CSN_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "RESULT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier of the result (ORD) that was followed up on during this encounter."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "RESULT_FOLLOW_UP",
+            "target": "PAT_ENC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "RESULT_FOLLOW_UP": [
+    {
+      "PAT_ENC_CSN_ID": 727947624,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-28 00:00:00",
+      "RESULT_ID": 439060607,
+      "$meta": {
+        "type": "RESULT_FOLLOW_UP"
+      }
+    }
+  ]
+}

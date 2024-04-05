@@ -1,0 +1,93 @@
+{
+  "$meta": {
+    "schemas": {
+      "ADDITIONAL_EM_CODE": {
+        "name": "ADDITIONAL_EM_CODE",
+        "description": "This table holds all information related to additional evaluation and management (E/M) codes.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ENC_CSN_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "A unique serial number for this encounter. This number is unique across all patients and encounters in the system."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "EM_CODE_ADDL_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Procedure codes used in addition to the Level of Service (LOS)."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "EM_CODE_BILPROV_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The billing provider for the additional Evaluation and Management (E/M) codes."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "EM_CODE_UNIQUE_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Unique number associated with each additional E/M code. The number is only unique within the contact."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ADDITIONAL_EM_CODE",
+            "target": "PAT_ENC_DISP",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ADDITIONAL_EM_CODE",
+            "target": "PAT_ENC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ADDITIONAL_EM_CODE": [
+    {
+      "PAT_ENC_CSN_ID": 948004323,
+      "LINE": 1,
+      "EM_CODE_ADDL_ID": 23660,
+      "EM_CODE_BILPROV_ID": "144590",
+      "EM_CODE_UNIQUE_NUM": "1",
+      "$meta": {
+        "type": "ADDITIONAL_EM_CODE"
+      }
+    }
+  ]
+}

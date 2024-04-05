@@ -1,0 +1,350 @@
+{
+  "name": "HSP_ACCOUNT_4",
+  "description": "This table contains hospital account information from the Hospital Accounts Receivable (HAR) master file. It excludes Professional Billing HARs created by visit filing order in non-single billing office service areas. This fourth hospital account table has the same basic structure as HSP_ACCOUNT, HSP_ACCOUNT_2 and HSP_ACCOUNT_3.",
+  "primaryKey": [
+    {
+      "columnName": "HSP_ACCOUNT_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the hospital account."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the bundled episode record for this row. This column will only be populated for hospital accounts that have been linked to a bundled episode and is frequently used to link to the BND_EPSD_INFO table. This column is being transitioned to the HSP_ACCT_BND_EPSD_INFO__BND_EPSD_EPISODE_ID column. This column will continue to work in the following manner: 1. Data in Bundled Episode (I HAR 10001) will continue to be extracted by this column.",
+      "linksTo": "BND_EPSD_INFO"
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SRCHG_POSTED",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the surcharge amount posted on the hospital account."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SRCHG_PAID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the surcharge amount paid on the hospital account."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SRCHG_PAID_SELFPAY",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the surcharge amount paid by patient on the hospital account."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SRCHG_PAID_INS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the surcharge amount paid by insurance on the hospital account."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "TRAUMA_ADMISSION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether the admission is a trauma case."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PSYCH_ADMISSION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The nature of psychiatric admission."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "REHAB_ADMISSION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The code for rehabilitation admission class from the Guide for the Uniform Data Set for Medical Rehabilitation."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "REHAB_IMPAIRMENT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The group code for rehabilitation impairment from the Guide for the Uniform Data Set for Medical Rehabilitation."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "RANCHO_LEVEL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the Rancho level used to determine diagnosis-related groups (DRG) for rehabilitation services."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "SVC_SUCCESS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds whether the account was successfully marked \"Coding Complete\" by Simple Visit Coding.",
+      "entries": [
+        "Success",
+        "Fail"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "HH_COVCHG_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The home health coverage change date for the hospital account."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "HH_COVCHG_DC_DISP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the discharge disposition value that should be used in the case of a home health coverage change."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "HAR_EXTRACT_TRIGGER_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date that hospital account information was changed that will cause the extraction of a closed hospital account."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "IRF_PAI_REGISTRY_DATA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the Inpatient Rehabilitation Facility Patient Assessment Instrument (IRF-PAI) record associated with the hospital account. The IRF-PAI record stores the assessment data collected for rehabilitation services."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PB_SPLIT_REF_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column stores the beginning service date of the date range used to split professional billing hospital accounts. Calculated based on the inpatient stay's admission date."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "BILLING_LENGTH_OF_STAY",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column stores the billing length of stay (LOS) for the inpatient portion of the hospital account. The billing LOS is calculated as the number of days between admission and discharge."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "INST_INJURY_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This column stores the Coordinated Universal Time (UTC) instant when the injury happened. Used along with the Injury Codes in Denmark."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "TOT_INS_PMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total amount of insurance payments posted to this account, not including refunds."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "TOT_INS_RFND",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total amount of insurance refunds posted to this account. Includes refunds posted as either payments or adjustments."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "TOT_INS_ADJ",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total amount of insurance adjustments posted to this account, not including refunds."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "TOT_SP_PMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total amount of self-pay payments posted to this account, not including refunds."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "TOT_AR_INS_PMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total amount of active AR insurance payments posted to this account, not including refunds."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "TOT_AR_INS_RFND",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total amount of active AR insurance refunds posted to this account. Includes refunds posted as either payments or adjustments."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "TOT_AR_INS_ALLOWANCES",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total amount of active AR insurance allowance adjustments posted to this account."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "TOT_AR_SP_PMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total amount of active AR self-pay payments posted to this account, not including refunds."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "TOT_AR_SP_RFND",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total amount of active AR self-pay refunds posted to this account. Includes refunds posted as either payments or adjustments."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "TOT_AR_SP_ALLOWANCES",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total amount of active AR self-pay allowance adjustments posted to this account."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "HH_IS_REV_REC_YN_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the hospital account was evaluated by Revenue Recognition based on the Revenue Recognition active dates and the admission date of the hospital account.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "ESTIMATE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the estimate created directly from this account for advance billing. Estimates provided prior to service are only linked to encounters and are not stored here."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "QUALIFIED_CDI_REVIEW_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates whether the account qualified for clinical documentation improvement (CDI) review, regardless of whether a review actually occurred."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "TOT_INS_PMTS_AND_RFNDS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total insurance payment amount posted to the account, less any refunded amount."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "TOT_SP_PMTS_AND_RFNDS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total self-pay payment amount posted to the account, less any refunded amount."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "TOT_PMTS_AND_RFNDS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total payment amount posted to the account, less any refunded amount."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "TOT_ADJ_EXCL_RFNDS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total adjustment amount posted to the account, not including refund adjustments."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "ANCHOR_HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "For an encounter series of accounts, if the system automatically splits a cycle such that it has multiple accounts to span the cycle, one account is maintained to be the anchor for that cycle. The anchor account is intended to always exist for the cycle, so if the split is no longer needed, the other accounts in the cycle will be combined in to the anchor."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "ANCHOR_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "When establishing an anchor account, this is the start date that encapsulates all the accounts in the anchor group. If it's just the anchor account, then it should be that account's start date. If there are multiple accounts anchored to the same account, then it's the earlier date of the group."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "ANCHOR_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "When establishing an anchor account, this is the end date that encapsulates all the accounts in the anchor group. If it's just the anchor account, then it should be that account's end date. If there are multiple accounts anchored to the same account, then it's the latest date of the group."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "COCM_EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the coordinated care management service episode linked to the hospital account."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "MECH_VENT_HOURS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The number of hours used by the mechanical ventilator."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "SP_RESP_AFTER_INS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The balance transferred to self-pay after insurance is taken into account. This does not include any self-pay discount, financial assistance, or pre-payments."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "SP_RESP_LESS_DISCOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The self-pay responsibility after any self-pay or financial assistance discounts are posted on the self-pay bucket."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "TOT_PRESERVICE_PMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the total pre-service payments made by the guarantor for the hospital account."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "BAL_IN_FULL_SELF_PAY_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column indicates whether the balances for this hospital account are entirely in self-pay. 'Y' indicates that all balances are in self-pay. 'N' or NULL indicates that there are some balances not in self-pay or the account has not been billed."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "FIRST_TX_POST_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column is the original post date for the very first transaction that filed to this hospital account, even if that transaction has been reposted, transferred, or reversed."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "SELF_PAY_EXEMPT_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The self-pay charge exemption reason category ID for why self-pay only charges on the hospital account should be billed to insurance."
+    }
+  ]
+}

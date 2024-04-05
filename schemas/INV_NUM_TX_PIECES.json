@@ -1,0 +1,48 @@
+{
+  "name": "INV_NUM_TX_PIECES",
+  "description": "Each line in this table corresponds to a transaction (ETR) composing a line on an invoice from item INV 381. Each line can contain a comma-delimited list of transactions composing a claim line. When a transaction is bundled, data will be split out to its own line via the TX_PIECE column.\n\n\n \n\n\nThis table is used as a bridge between transaction- and invoice- based tables.",
+  "primaryKey": [
+    {
+      "columnName": "INV_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "TX_PIECE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "INV_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column contains the internal invoice ID."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column contains the line number for any multiple-response item."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "TX_PIECE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column contains the position of the transaction ID in the comma-delimited list of ETR ID's for a given line of INV-381. For example, if a certain line of INV-381 has three transactions, then TX_PIECE will contain 1, 2, and 3 for that line."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column contains each individual transaction ID from the list of ETR ID's stored on each line of INV-381. So, if a given line of INV-381 has more than one transaction (separated by a comma-delimited list), then each ETR ID will appear on a separate row of the extract table. In other words, one and only one ETR ID will appear in each row of the TX_ID column."
+    }
+  ]
+}

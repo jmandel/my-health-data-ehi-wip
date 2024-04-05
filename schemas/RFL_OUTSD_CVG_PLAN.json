@@ -1,0 +1,48 @@
+{
+  "name": "RFL_OUTSD_CVG_PLAN",
+  "description": "This table extracts the plan for the coverage stored in RFL_OUTSD_CVG. The corresponding payer, insurance ID, effective and termination date, authorization and precert number and comments can be found in RFL_OUTSD_CVG_PAYER,  RFL_OUTSD_CVG_INS, RFL_OUTSD_CVG_EFF_DT, RFL_OUTSD_CVG_TERM_DT, RFL_OUTSD_CVG_AUTH_NUM, RFL_OUTSD_CVG_PRECERT_NUM and RFL_OUTSD_CVG_CMT tables for matching values of REFERRAL_ID, GROUP_LINE, and VALUE_LINE.",
+  "primaryKey": [
+    {
+      "columnName": "REFERRAL_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "REFERRAL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the referral record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple updates received from an outside organization for a referral. Together with REFERRAL_ID, this forms the foreign key to the RFL_OUTSD_CVG table."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple outside coverages received in a referral update from an outside organization for a referral in the RFL_OUTSD_CVG table."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "OUT_CVG_PLAN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Plan for one of the multiple outside coverages received in a referral update from an outside organization for a referral in the RFL_OUTSD_CVG table."
+    }
+  ]
+}

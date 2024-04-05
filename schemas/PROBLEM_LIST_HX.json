@@ -1,0 +1,208 @@
+{
+  "name": "PROBLEM_LIST_HX",
+  "description": "This table contains data relating to the history of problems from patients' problem lists in the clinical system.",
+  "primaryKey": [
+    {
+      "columnName": "PROBLEM_LIST_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PROBLEM_LIST_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of this Problem List entry."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Used to identify the particular problem within the historical problems"
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "HX_PROBLEM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "ID of the diagnosis associated with this historical problem"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "HX_DESCRIPTION",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The historical display name of the problem. Only contains data if the default display name is changed."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "HX_DATE_NOTED",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Represents the historical value of the first possible date that a problem could have been noted/onset on.    A problem's noted date is documented as a fuzzy date, meaning that it can capture approximate date data (\"2012\", \"1/2012\") or exact data (\"3/5/2012\"). This column captures the earliest date of the effective range. See HX_NOTED_END_DATE for the latest counterpart. For example, if 2012 is documented in hyperspace, then HX_NOTED_DATE will be 1/1/2012 and HX_NOTED_END_DATE will be 12/31/2012."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "HX_DATE_RESOLVED",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which this problem was resolved."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "HX_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The historical preview text (first characters) of all the Overview notes entered for a Problem List entry."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "HX_DATE_OF_ENTRY",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date that the problem was added to or updated on the patient's Problem List in calendar format."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "HX_ENTRY_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the user who edited this problem on the patient's Problem List. This ID may be encrypted."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "HX_ENTRY_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "HX_MYCHART_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates this problem was visible on web based chart system when this historical action was recorded.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "HX_CHRONIC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column indicates whether or not this problem was flagged as chronic as of this historical event.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "HX_PRINCIPAL_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column indicates whether or not this problem was flagged as the principal problem as of this historical event.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "HX_IS_HOSP_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column indicates whether or not this problem was flagged as a hospital problem as of this historical event."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "HX_PROBLEM_EPT_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Contact Serial Number (CSN) of the patient encounter where this historical problem list was documented."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "HX_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value associated with the problem's state: Active, Resolved, or Deleted as of this historical event.",
+      "entries": [
+        "Active",
+        "Resolved",
+        "Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "HX_LEVEL_URGENCY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value associated with the level of urgency of the problem at the time this history event was recorded."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "HX_PRIORITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value associated with the relative severity of the problem. Problems can be given a priority (e.g., \"high, medium, or low\" ).  This field shows the category value associated with the priority level assigned to a problem when this action was taken."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "HX_ENTRY_INST",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time when the problem was updated on the patient's problem list."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "HX_PROBLEM_POA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column has the history of the present on admission indicator, which indicates if a hospital problem was present on admission or not.",
+      "entries": [
+        "Yes",
+        "No",
+        "Unknown",
+        "Clinically Undetermined",
+        "Exempt from POA reporting"
+      ]
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "HX_STAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column holds the history of all stages ever associated with this problem."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "HX_NOTED_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Represents the historical value of the last possible date that a problem could have been noted/onset on.    A problem's noted date is documented as a fuzzy date, meaning that it can capture approximate date data (\"2012\", \"1/2012\") or exact data (\"3/5/2012\"). This column captures the latest date of the effective range. See HX_NOTED_DATE for the latest counterpart. For example, if 2012 is documented in hyperspace, then HX_NOTED_DATE will be 1/1/2012 and HX_NOTED_END_DATE will be 12/31/2012.  Note that the value may be empty, even if HX_NOTED_DATE is populated"
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "HX_DIAG_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Represents the earliest possible date that a problem could have been diagnosed on at a particular edit. The latest possible date is stored in HX_DIAG_END_DATE.  If these values are the same, then the date is exact rather than fuzzy. For a problem or condition affecting a patient, the diagnosis date is defined as the date when a qualified professional first recognized the presence of that condition with sufficient certainty, regardless of whether it was fully characterized at that time. For diseases such as cancer, this may be the earliest date of a clinical diagnosis from before it was histologically confirmed, not the date of confirmation if that occurred later."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "HX_DIAG_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Represents the last possible date that a problem could have been diagnosed on at a particular edit. The earliest possible date is stored in HX_DIAG_START_DATE. If these values are the same, then the date is exact rather than fuzzy. For a problem or condition affecting a patient, the diagnosis date is defined as the date when a qualified professional first recognized the presence of that condition with sufficient certainty, regardless of whether it was fully characterized at that time. For diseases such as cancer, this may be the earliest date of a clinical diagnosis from before it was histologically confirmed, not the date of confirmation if that occurred later."
+    }
+  ]
+}

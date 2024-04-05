@@ -1,0 +1,97 @@
+{
+  "name": "CHAT_MESSAGE_CONTENT",
+  "description": "Table for PHI message contents sent in secure chat.",
+  "primaryKey": [
+    {
+      "columnName": "CONVERSATION_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CONVERSATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the secure chat conversation record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "MSG_TEXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the message text for a single secure chat message. Note: It is stored in a super-item, because the super-item global structure is more efficient. No additional items should be added to its super item."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "MEDIA_DOCUMENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores a link to a media record containing information about the media file sent in a Secure Chat message."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "LINK_CONTENT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of content linked to in this message.",
+      "entries": [
+        "SlicerDicer Session",
+        "Cogito Dashboard",
+        "Signed Order",
+        "Pended Order Session",
+        "Debug"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "LINK_REPORT_INFO_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The SlicerDicer Session ID linked to in this message."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "LINK_REPORT_INFO_ID_REPORT_INFO_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the report."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "LINK_ORDER_SESSION_EVENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Store the pended order session that is linked to this message in the conversation."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "LINK_ORDER_SESSION_EVENT_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Store the event line for the pended order session that is linked to this message in the conversation."
+    }
+  ]
+}

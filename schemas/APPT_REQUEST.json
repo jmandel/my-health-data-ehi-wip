@@ -1,0 +1,63 @@
+{
+  "name": "APPT_REQUEST",
+  "description": "This table stores information about appointment requests.",
+  "primaryKey": [
+    {
+      "columnName": "REQUEST_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "REQUEST_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the appointment request record. If the appointment request is also an order, this column can be joined to the ORDER_PROC_ID column in the ORDER_PROC tables."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "REQ_IS_ACCIDENT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether or not the reason for visit is related to an accident, workers' compensation, or other third party liability guarantor.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "REQ_SPECIAL_BILL_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the research or client record that contains special billing flags for this visit. If you use IntraConnect, this is the Community ID (CID)."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "REQ_FIN_OUTPUT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the Questionnaire Answers record that contains the results from running a Financial Decision Tree."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "REQ_FIN_SCREEN_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant that the financial screening was last run on this order or appointment request."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "APPT_REQ_DECL_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason provided by the patient for why they cancelled the scheduling ticket",
+      "entries": [
+        "Other",
+        "Not interested",
+        "Already completed"
+      ]
+    }
+  ]
+}

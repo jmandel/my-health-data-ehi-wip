@@ -1,0 +1,67 @@
+{
+  "name": "HSP_PMT_ACTION_INFO",
+  "description": "This table will hold the actions that were attempted to be performed for a payment.  There will also be a result and reason if the action was not performed.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the hospital billing transaction."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PMT_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the actions that were attempted to be performed on the payment",
+      "entries": [
+        "Not Allowed Adjustment",
+        "Next Responsible Party",
+        "Claim Denied",
+        "Other Adjustment",
+        "Transfer To Self-Pay",
+        "Remark",
+        "Allowance Discrepancy",
+        "Insurance Debit Adjustment",
+        "Insurance Write-off"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PMT_ACTION_DONE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the result of the action that was attempted.",
+      "entries": [
+        "Skipped",
+        "Performed",
+        "Not Performed"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PMT_ACTION_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the reason why this action was or was not performed."
+    }
+  ]
+}

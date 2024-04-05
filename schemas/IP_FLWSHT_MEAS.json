@@ -1,0 +1,313 @@
+{
+  "name": "IP_FLWSHT_MEAS",
+  "description": "This table contains the patient-specific measurements from flowsheets.",
+  "primaryKey": [
+    {
+      "columnName": "FSD_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "FSD_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID for the flowsheet data record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line count for the item."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "OCCURANCE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "If the flowsheet group/row appears multiple times, this will distinguish the occurrence."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RECORDED_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant the reading was taken."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ENTRY_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant the reading was entered."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "TAKEN_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user taking the flowsheet readings."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "TAKEN_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ENTRY_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user entering the readings."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ENTRY_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "MEAS_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The free text comments associated with the reading."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "EDITED_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the previous value of an edited record."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ISACCEPTED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Determines if this flowsheet record has been accepted.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "IP_SIGNIFICANT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This stores whether the flowsheet data is marked as significant. If a value is not marked as significant, this column returns NULL."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "CAPTURE_DEVICE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores information of the Device ID for the device from which data is captured from."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "CAPTURE_DEVICE_ID_DEVICE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name for this device."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "RECEIVED_INSTANT",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Instant at which value was received at the interface"
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "NEEDS_COSIGN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If this item is blank or 0 (No), then this flowsheet data does not need a cosign.  If this item is 1 (Required Yes), then a cosign is required for this data and can only be pended.  If this item is 2 (Chosen Yes), then a cosign has been requested for this data but it is not required.  If this item is 3 (Required Yes Can File), then a cosign is required for the data and the data can be filed.",
+      "entries": [
+        "No",
+        "Required Yes",
+        "Chosen Yes",
+        "Required Yes Can File"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "FLT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the flowsheet template (FLT) which was used to enter the data in this cell."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "FLT_ID_DISPLAY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The display name associated with this template."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "FLO_DAT_USED",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the contact date (DAT) of the flowsheet row or group that is used to define the data."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "FLO_CNCT_DATE_REAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column converts the contact date (DAT) of the flowsheet group or row to DTE, based on the value in column FLO_DAT_USED."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "USER_PENDED_BY_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "User ID of the user who pended this flowsheet value."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "USER_PENDED_BY_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "INSTANT_PENDED_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Date/time at which a flowsheet value is pended."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "ABNORMAL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores whether or not the value is abnormal",
+      "entries": [
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "THRDPRTY_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Identifies the third-party framework that a Flowsheets value originally came from, if applicable. Intended to be used to track values that are sourced from health/fitness frameworks (e.g. Apple's HealthKit) to provide additional context when examining attached metadata.",
+      "entries": [
+        "Apple HealthKit",
+        "Withings",
+        "Fitbit",
+        "Google Fit",
+        "FHIR",
+        "Health Connect"
+      ]
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "PAT_REPORTED_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if the data was directly entered by the patient or a patient proxy and whether the data has been validated by a clinician",
+      "entries": [
+        "Not Patient Reported",
+        "Patient reported, not clinician validated",
+        "Patient reported, clinician validated"
+      ]
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "MYPT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The MyChart account from which the data was entered."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "IS_FROM_SPEECH_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether a filed flowsheet value was entered using speech entry."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "ABNORMAL_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores metadata for abnormal flowsheet values. It is only populated for data where ABNORMAL_C - Abnormal is set to 1-Yes. It is set to 1-Low for data that is below the minimum warning level and it is set to 2-High for data that is above the maximum warning level for flowsheet data of types: numeric, blood pressure, temperature, height, patient height, weight and patient weight. It is set to 0-Unspecified for data that is abnormal for other reasons. This is the only value that can be set for flowsheet data of type: custom list.",
+      "entries": [
+        "Unspecified",
+        "Low",
+        "High",
+        "Patient-Entered Flowsheet Rule Abnormal"
+      ]
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "FLO_NETWORKED_INI",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The INI to which the value for this row is associated."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "FLO_CATEGORY_INI",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The INI of a category flowsheet value"
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "FLO_CATEGORY_ITEM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The item number of a category flowsheet value"
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "FLO_CATEGORY_VALUE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value of a flowsheet row"
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "DOC_METHOD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates the method the user used to enter the line of flowsheet data.",
+      "entries": [
+        "Value from Macro",
+        "Patient Reported",
+        "Proxy Reported",
+        "Value from Copy Forward"
+      ]
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "MACRO_RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "When the documentation method in FSD-1360 is 1-Value From Macro this is the macro HGM record ID."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "MACRO_RECORD_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the Scripting Template."
+    }
+  ]
+}

@@ -1,0 +1,440 @@
+{
+  "name": "SPEC_TEST_REL",
+  "description": "The SPEC_TEST_REL table contains information stored on each specimen record that relates to the tests performed on the specimen. Each test appears as a distinct row in this table.",
+  "primaryKey": [
+    {
+      "columnName": "SPECIMEN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SPECIMEN_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the specimen record"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SPEC_TEST_PRI_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The test priority category number for the specimen."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SPEC_TST_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the order that is associated with this specimen"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SPEC_TST_CANC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason for cancelation category number for a canceled specimen."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SPEC_TST_CANC_INST",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant when a test on the specimen was cancelled."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "SPEC_TST_ACC_LAB_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the lab where the test was originally supposed to be performed."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "TEST_DEST_LAB_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the lab to which the specimen is being transferred."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "REDRAWN_ORDERS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores an order after a test has been marked as canceled but the order should be redrawn."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ORD_PERF_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the line number of the performable procedure linked to this test in the order record's superitem 51300."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "TIERED_TAT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The amount of time, in minutes, from when a specimen is received that can pass before its tests are considered overdue."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "NOT_REPORT_FLAG_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The not reported flag category number for this test. 1-Yes (or 2-Tmp) indicates that this test is not reported (temporarily) to the submitter. 0-No indicates that this test is reported to the submitter.",
+      "entries": [
+        "No",
+        "Yes",
+        "Tmp"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "LAST_RECV_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time this test was last received into the lab in UTC. This is used to calculate turnaround times if you have configured them to be based on the last receive instant."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "LAB_CHG_TRG_FLG",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Bit flag to track charge triggering. The flag tracks whether different types of charges, such as primary charges and additional billing charges, have been triggered."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "CHG_TRG_LVL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Primary charge trigger level of the test.  It is used to evaluate if void & repost should be performed when the test's billing information is updated.",
+      "entries": [
+        "Test Level",
+        "Order Level"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "SPEC_TST_SEC_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Performing section. This is populated any time results are entered for the test, and represents the actual section that performed the test."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "TEST_VAL_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The validation status of the test.  In the case of multiple tests on a specimen, this column will store the validation status of each test in the corresponding row.  There are two other columns in the SPEC_TEST_REL table that store the user ID and instant associated with the status that is stored in this column.  Those columns are TEST_STATUS_PERSON and TEST_STATUS_DTTM.",
+      "entries": [
+        "Ordered",
+        "Hold (System)",
+        "Hold (User)",
+        "On Test",
+        "On Repeat",
+        "Resulted",
+        "Preliminary",
+        "Edited/Preliminary",
+        "Verified",
+        "Canceled",
+        "Pending Preliminary Verification",
+        "Pending Final Verification"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "TEST_STATUS_PERSON",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user associated with the validation status of the test.  In the case of multiple tests on a specimen, this column will store the validation status of each test in the corresponding row.  There are two other columns in the SPEC_TEST_REL table that store the status and instant associated with the user ID that is stored in this column.  Those columns are TEST_VAL_STATUS_C and TEST_STATUS_DTTM."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "TEST_STATUS_PERSON_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "TEST_STATUS_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant associated with the validation status of the test. In the case of multiple tests on a specimen, this column will store the validation status of each test in the corresponding row.  There are two other columns in the SPEC_TEST_REL table that store the status and user ID associated with the instant that is stored in this column.  Those columns are TEST_VAL_STATUS_C and TEST_STATUS_PERSON."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "TST_CANCEL_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The UTC date and time when the test was canceled or redrawn."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "TEST_VER_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the verification instant of the test in the UTC format. The item is set/updated when the test is either prelim verified or final verified and is cleared when a result correction is done."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "ORDERED_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This stores the date the test was associated with the specimen in UTC."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "ORDER_INST_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant the order associated with this test was placed or released. If this test is associated with the performable procedure of a panel, the instant is returned from the orderable procedure."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "ORDER_INST_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant the order associated with this test was placed or released in UTC. If this test is associated with the performable procedure of a panel, the instant is returned from the orderable procedure."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "MISSING_REQ_DATA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if any missing required result data was detected for this test at resulting.",
+      "entries": [
+        "No Missing Required Result Data",
+        "Missing Required or Required and Recommended Result Data",
+        "Missing Only Recommended Result Data"
+      ]
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "REPORTABLE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if this test includes any component or isolate that is flagged as reportable.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "LEVEL_INTERACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates the level of automated or manual interaction during the resulting process.",
+      "entries": [
+        "Not tracked, or never verified",
+        "Manual entry",
+        "Automated entry, manual edit before verification",
+        "Automated entry, no edit before verification"
+      ]
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "AUTO_VERIFIED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if this test was ever auto-verified."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "DELTA_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if this test includes a component flagged as a delta."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "INSTRUMENT_ERROR_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if this test includes any component or isolate that is flagged with an instrument error."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "TEST_RESULT_TYPE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the result type that is assigned to this test."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "TEST_RESULT_TYPE_ID_RESULT_TYPE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the name of the Result Type record - item OVG .2."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "CHARGE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the charge associated with the test."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "TST_STAT_ABNORMS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the overall test abnormality. This is usually the same as the internal ID. If you use IntraConnect, this is the Community ID (CID).",
+      "entries": [
+        "Normal"
+      ]
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "GEN_WORKCARD_RESULT_TYPE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the workcard result type which is associated with the test."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "GEN_WORKCARD_RESULT_TYPE_ID_RESULT_TYPE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the name of the Result Type record - item OVG .2."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "LNK_SPEC_TST_TOGETHER_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "May only be populated in legacy records. Indicates whether linked specimens are tested together with this test. 'Y' indicates that a linked specimen should be tested with this test. 'N' or NULL indicate that linked specimens are not tested with this test."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "CHRG_METHOD_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the previous charge method used for this test."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "CHRG_METHOD_ID_CHRG_METHOD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the charge trigger method."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "CHG_UPD_FLAG",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "May only be populated for legacy records. A value in this column means the charges associated with the test require updating."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "EXTRA_RESULT_CNT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of extra results remaining."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "RESULT_CNT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of results needing to be performed for this test."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "BATCH_QUEUE_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The position of this test in the batch queue."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "VALIDATED_RESULT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the finalized result for the test."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "REPEAT_CNT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of repeats required for this test."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "DEL_FROM_BATCH_QUEUE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "May only be populated for legacy records. When a value is present in this column, this test was removed from the Batch Queue."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "ORDER_PRIORITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": true,
+      "description": "The order priority categroy ID for the test."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "SHIPPING_NUMBER",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Represents a unique ID associated with transferring this test to another lab."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "PREV_RSLT_DISP_FLAG_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "May only be populated for legacy records. The previous result display method category ID for the test.",
+      "entries": [
+        "No Previous Test",
+        "Previous Normal Result",
+        "Previous Abnormal Result"
+      ]
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "RR_EXCEPT_LIST",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "May only be populated for legacy records. Contains flags for not reporting or sending result reports for this test to specific recipients."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "CANCEL_RESULT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of a canceled result, if one exists, for each test on the specimen."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "REFLEX_TRIGGERED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether reflex testing has executed on the result for each test on the specimen. 'Y' indicates that reflex testing has executed. 'N' or NULL indicate that reflex testing has not executed."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "SOURCE_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the source order for the test. For tests that have been redrawn or moved, this is the removed order. For tests that have not be redrawn or removed, this is the order that results will file to. This is the culture order for susceptibility tests."
+    }
+  ]
+}

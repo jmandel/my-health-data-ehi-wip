@@ -1,0 +1,768 @@
+{
+  "$meta": {
+    "schemas": {
+      "SOCIAL_ADL_HX": {
+        "name": "SOCIAL_ADL_HX",
+        "description": "This table contains data recorded in the activities of daily living section of social history contacts entered in the patient's chart during a clinical system encounter. Note: This table is designed to hold a patient's history over time; however, it is most typically implemented to only extract the latest patient history contact.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ENC_CSN_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "A unique serial number for this encounter. This number is unique across all patients and encounters in the system."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "HX_ADL_QUESTION_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the link to the unique ID of the ADL question."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "HX_ADL_QUESTION_ID_RECORD_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the Visit Navigator (VN) History Template Definition (LQH) record."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "HX_ADL_RESPONSE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the category value (1, 2 or 3) of the response to ADL questions.",
+            "entries": [
+              "Yes",
+              "No",
+              "Not Asked"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "SOCIAL_ADL_HX",
+            "target": "PAT_HX_REV_TOPIC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "SOCIAL_ADL_HX",
+            "target": "PAT_HX_REV_TYPE",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "SOCIAL_ADL_HX",
+            "target": "PAT_ENC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "SOCIAL_ADL_HX",
+            "target": "SOCIAL_HX",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "SOCIAL_ADL_HX": [
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "LINE": 1,
+      "HX_ADL_QUESTION_ID": "100211",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "ADOPTED",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "LINE": 2,
+      "HX_ADL_QUESTION_ID": "19250",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: MILITARY SERVICE",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "LINE": 3,
+      "HX_ADL_QUESTION_ID": "100322",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "ARE YOU HAVING SEX?",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "LINE": 4,
+      "HX_ADL_QUESTION_ID": "19272",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: BIKE HELMET",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "LINE": 5,
+      "HX_ADL_QUESTION_ID": "100323",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "ARE YOU TRYING TO GET PREGNANT?",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "LINE": 6,
+      "HX_ADL_QUESTION_ID": "19256",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: OCCUPATIONAL EXPOSURE",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "LINE": 7,
+      "HX_ADL_QUESTION_ID": "100205",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "CAFFEINE USE",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "LINE": 8,
+      "HX_ADL_QUESTION_ID": "100213",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "Q UPH OTHER ADL",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "LINE": 9,
+      "HX_ADL_QUESTION_ID": "19270",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: EXERCISE",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "LINE": 10,
+      "HX_ADL_QUESTION_ID": "100210",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SEAT BELT/CAR SEAT",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "LINE": 11,
+      "HX_ADL_QUESTION_ID": "100209",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "HOBBIES",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "LINE": 12,
+      "HX_ADL_QUESTION_ID": "19266",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: SPECIAL DIET",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "LINE": 13,
+      "HX_ADL_QUESTION_ID": "100212",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "LIVING ARRANGEMENT",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991221485,
+      "LINE": 1,
+      "HX_ADL_QUESTION_ID": "100211",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "ADOPTED",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991221485,
+      "LINE": 2,
+      "HX_ADL_QUESTION_ID": "19250",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: MILITARY SERVICE",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991221485,
+      "LINE": 3,
+      "HX_ADL_QUESTION_ID": "100322",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "ARE YOU HAVING SEX?",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991221485,
+      "LINE": 4,
+      "HX_ADL_QUESTION_ID": "19272",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: BIKE HELMET",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991221485,
+      "LINE": 5,
+      "HX_ADL_QUESTION_ID": "100323",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "ARE YOU TRYING TO GET PREGNANT?",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991221485,
+      "LINE": 6,
+      "HX_ADL_QUESTION_ID": "19256",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: OCCUPATIONAL EXPOSURE",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991221485,
+      "LINE": 7,
+      "HX_ADL_QUESTION_ID": "100205",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "CAFFEINE USE",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991221485,
+      "LINE": 8,
+      "HX_ADL_QUESTION_ID": "100213",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "Q UPH OTHER ADL",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991221485,
+      "LINE": 9,
+      "HX_ADL_QUESTION_ID": "19270",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: EXERCISE",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991221485,
+      "LINE": 10,
+      "HX_ADL_QUESTION_ID": "100210",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SEAT BELT/CAR SEAT",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991221485,
+      "LINE": 11,
+      "HX_ADL_QUESTION_ID": "100209",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "HOBBIES",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991221485,
+      "LINE": 12,
+      "HX_ADL_QUESTION_ID": "19266",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: SPECIAL DIET",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991221485,
+      "LINE": 13,
+      "HX_ADL_QUESTION_ID": "100212",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "LIVING ARRANGEMENT",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "LINE": 1,
+      "HX_ADL_QUESTION_ID": "100211",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "ADOPTED",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "LINE": 2,
+      "HX_ADL_QUESTION_ID": "19250",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: MILITARY SERVICE",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "LINE": 3,
+      "HX_ADL_QUESTION_ID": "100322",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "ARE YOU HAVING SEX?",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "LINE": 4,
+      "HX_ADL_QUESTION_ID": "19272",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: BIKE HELMET",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "LINE": 5,
+      "HX_ADL_QUESTION_ID": "100323",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "ARE YOU TRYING TO GET PREGNANT?",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "LINE": 6,
+      "HX_ADL_QUESTION_ID": "19256",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: OCCUPATIONAL EXPOSURE",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "LINE": 7,
+      "HX_ADL_QUESTION_ID": "100205",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "CAFFEINE USE",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "LINE": 8,
+      "HX_ADL_QUESTION_ID": "100213",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "Q UPH OTHER ADL",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "LINE": 9,
+      "HX_ADL_QUESTION_ID": "19270",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: EXERCISE",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "LINE": 10,
+      "HX_ADL_QUESTION_ID": "100210",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SEAT BELT/CAR SEAT",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "LINE": 11,
+      "HX_ADL_QUESTION_ID": "100209",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "HOBBIES",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "LINE": 12,
+      "HX_ADL_QUESTION_ID": "19266",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: SPECIAL DIET",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "LINE": 13,
+      "HX_ADL_QUESTION_ID": "100212",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "LIVING ARRANGEMENT",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 802802103,
+      "LINE": 1,
+      "HX_ADL_QUESTION_ID": "100211",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "ADOPTED",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 802802103,
+      "LINE": 2,
+      "HX_ADL_QUESTION_ID": "19250",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: MILITARY SERVICE",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 802802103,
+      "LINE": 3,
+      "HX_ADL_QUESTION_ID": "100322",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "ARE YOU HAVING SEX?",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 802802103,
+      "LINE": 4,
+      "HX_ADL_QUESTION_ID": "19272",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: BIKE HELMET",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 802802103,
+      "LINE": 5,
+      "HX_ADL_QUESTION_ID": "100323",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "ARE YOU TRYING TO GET PREGNANT?",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 802802103,
+      "LINE": 6,
+      "HX_ADL_QUESTION_ID": "19256",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: OCCUPATIONAL EXPOSURE",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 802802103,
+      "LINE": 7,
+      "HX_ADL_QUESTION_ID": "100205",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "CAFFEINE USE",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 802802103,
+      "LINE": 8,
+      "HX_ADL_QUESTION_ID": "100213",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "Q UPH OTHER ADL",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 802802103,
+      "LINE": 9,
+      "HX_ADL_QUESTION_ID": "19270",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: EXERCISE",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 802802103,
+      "LINE": 10,
+      "HX_ADL_QUESTION_ID": "100210",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SEAT BELT/CAR SEAT",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 802802103,
+      "LINE": 11,
+      "HX_ADL_QUESTION_ID": "100209",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "HOBBIES",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 802802103,
+      "LINE": 12,
+      "HX_ADL_QUESTION_ID": "19266",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: SPECIAL DIET",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 802802103,
+      "LINE": 13,
+      "HX_ADL_QUESTION_ID": "100212",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "LIVING ARRANGEMENT",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "LINE": 1,
+      "HX_ADL_QUESTION_ID": "100211",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "ADOPTED",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "LINE": 2,
+      "HX_ADL_QUESTION_ID": "19250",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: MILITARY SERVICE",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "LINE": 3,
+      "HX_ADL_QUESTION_ID": "100322",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "ARE YOU HAVING SEX?",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "LINE": 4,
+      "HX_ADL_QUESTION_ID": "19272",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: BIKE HELMET",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "LINE": 5,
+      "HX_ADL_QUESTION_ID": "100323",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "ARE YOU TRYING TO GET PREGNANT?",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "LINE": 6,
+      "HX_ADL_QUESTION_ID": "19256",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: OCCUPATIONAL EXPOSURE",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "LINE": 7,
+      "HX_ADL_QUESTION_ID": "100205",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "CAFFEINE USE",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "LINE": 8,
+      "HX_ADL_QUESTION_ID": "100213",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "Q UPH OTHER ADL",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "LINE": 9,
+      "HX_ADL_QUESTION_ID": "19270",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: EXERCISE",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "LINE": 10,
+      "HX_ADL_QUESTION_ID": "100210",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SEAT BELT/CAR SEAT",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "LINE": 11,
+      "HX_ADL_QUESTION_ID": "100209",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "HOBBIES",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "LINE": 12,
+      "HX_ADL_QUESTION_ID": "19266",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "SOCIAL ADL: SPECIAL DIET",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "LINE": 13,
+      "HX_ADL_QUESTION_ID": "100212",
+      "HX_ADL_QUESTION_ID_RECORD_NAME": "LIVING ARRANGEMENT",
+      "HX_ADL_RESPONSE_C_NAME": "Not Asked",
+      "$meta": {
+        "type": "SOCIAL_ADL_HX"
+      }
+    }
+  ]
+}

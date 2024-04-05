@@ -1,0 +1,64 @@
+{
+  "name": "CLARITY_HVR_SDFL",
+  "description": "This table contains the audit history of the Soft delete/Record status (SDFL) flag of the verification records.",
+  "primaryKey": [
+    {
+      "columnName": "VERIFY_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "VERIFY_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the verification record"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column holds the line number corresponding to the line of the edit. Each edit's details (instant, user id and action) associated with the verification record will be stored on a separate line."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SDFL_EDIT_INSTANT",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "The instant the verification record was edited."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SDFL_EDIT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who edited the verification record."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SDFL_EDIT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SDFL_EDIT_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value representing the action which the user performed on the verification record. This value indicated whether the user deleted or hid the record.",
+      "entries": [
+        "Soft Delete",
+        "Undo Delete",
+        "Hide",
+        "Unhide"
+      ]
+    }
+  ]
+}

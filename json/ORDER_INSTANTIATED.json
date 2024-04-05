@@ -1,0 +1,147 @@
+{
+  "$meta": {
+    "schemas": {
+      "ORDER_INSTANTIATED": {
+        "name": "ORDER_INSTANTIATED",
+        "description": "This table contains a list of orders that have been instantiated.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the order record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line count for this table as determined by the number of instantiated orders."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "INSTNTD_ORDER_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID for the instantiated order, the child.  Note: For the case of the grandparent/parent/child scenario (Outpatient Standing order released into an Inpatient/HOV setting), this column will store the child (i.e. �grandchild�) order and the ORDER_ID column will store the parent order.  For the grandparent/parent order relationship, refer to STAND_HOV_INST_ORD.ORDER_ID (�grandparent�) and STAND_HOV_INST_ORD.STAND_INS_IP_ORD_ID (�parent�)."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_INSTANTIATED",
+            "target": "APPT_REQUEST",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "REQUEST_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_INSTANTIATED",
+            "target": "ORDER_PARENT_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_INSTANTIATED",
+            "target": "ORDER_PROC",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_INSTANTIATED",
+            "target": "ORD_PRFLST_TRK",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ORDER_INSTANTIATED": [
+    {
+      "ORDER_ID": 945468369,
+      "LINE": 1,
+      "INSTNTD_ORDER_ID": 945468370,
+      "$meta": {
+        "type": "ORDER_INSTANTIATED"
+      }
+    },
+    {
+      "ORDER_ID": 945468368,
+      "LINE": 1,
+      "INSTNTD_ORDER_ID": 945468371,
+      "$meta": {
+        "type": "ORDER_INSTANTIATED"
+      }
+    },
+    {
+      "ORDER_ID": 772179264,
+      "LINE": 1,
+      "INSTNTD_ORDER_ID": 945468372,
+      "$meta": {
+        "type": "ORDER_INSTANTIATED"
+      }
+    },
+    {
+      "ORDER_ID": 772179260,
+      "LINE": 1,
+      "INSTNTD_ORDER_ID": 772179262,
+      "$meta": {
+        "type": "ORDER_INSTANTIATED"
+      }
+    },
+    {
+      "ORDER_ID": 439060605,
+      "LINE": 1,
+      "INSTNTD_ORDER_ID": 439060607,
+      "$meta": {
+        "type": "ORDER_INSTANTIATED"
+      }
+    },
+    {
+      "ORDER_ID": 439060604,
+      "LINE": 1,
+      "INSTNTD_ORDER_ID": 439060606,
+      "$meta": {
+        "type": "ORDER_INSTANTIATED"
+      }
+    },
+    {
+      "ORDER_ID": 439060612,
+      "LINE": 1,
+      "INSTNTD_ORDER_ID": 439060613,
+      "$meta": {
+        "type": "ORDER_INSTANTIATED"
+      }
+    }
+  ]
+}

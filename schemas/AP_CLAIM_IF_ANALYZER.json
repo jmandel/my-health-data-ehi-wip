@@ -1,0 +1,107 @@
+{
+  "name": "AP_CLAIM_IF_ANALYZER",
+  "description": "The AP_CLAIM_IF_ANALYZER table contains claim-level response data from the code editor interface that was received about a claim when run against an analyzer interface.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the claim info record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "START_VISIT_LEVEL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Visit level submitted on the claim to be processed by the analyzer interface"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "END_VISIT_LEVEL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Final visit level after the analyzer makes any adjustments."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "START_HCPCS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Procedure code submitted on the claim to be processed by the analyzer."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "END_HCPCS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Final procedure code after the analyzer makes any adjustments."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "FINAL_PSCA",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The final PSCA (Proportional Standard Cost Allocation) assigned to this claim taking into consideration all the reason for visit diagnosis codes, age, and gender of the patient."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "VISIT_REASON_PSCA",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The PSCA (Proportional Standard Cost Allocation) assigned to each reason for visit code taking into consideration the age and gender of the patient."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "DIAGNOSTIC_CATEGORY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "An array of the diagnostic test categories on the claim found by the analyzer."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PSCA_WEIGHT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The final PSCA (Proportional Standard Cost Allocation) weight for this claim, based on all of the reason for visit diagnosis codes, as well as the patient's age and sex."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "DIAGNOSTIC_CATEGORY_WEIGHT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The weight for each diagnostic category found on this claim, based on all line-level procedure codes representing the ancillary services ordered for the patient."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "COMPLEXITY_WEIGHT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The final patient complexity weight for this claim, based on the principal diagnosis, all secondary diagnosis codes, and all external cause of injury diagnosis codes."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "TOTAL_WEIGHT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The total weight used to assign the final visit level."
+    }
+  ]
+}

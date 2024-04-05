@@ -1,0 +1,71 @@
+{
+  "name": "PAT_ENC_8",
+  "description": "This table supplements the PAT_ENC, PAT_ENC_2, PAT_ENC_3, PAT_ENC_4, PAT_ENC_5, PAT_ENC_6, and PAT_ENC_7 tables. It contains additional information related to patient encounters or appointments.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EST_PREPAY_CALC_PP_PROPOSED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the patient was offered an estimated payment plan for this visit ('Y'). 'N' or NULL indicates that the patient was not offered an estimated payment plan for this visit.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EST_PREPAY_CALC_ELIG_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The eligibility for remaining balances category ID for the payment plan associated with this visit.",
+      "entries": [
+        "No",
+        "Yes",
+        "Yes, if prepay paid"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PMT_PLAN_AGRMT_SCHED_PMT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the payment plan agreement created from this visit's pre-service sign up."
+    }
+  ]
+}

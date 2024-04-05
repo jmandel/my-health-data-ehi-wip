@@ -1,0 +1,103 @@
+{
+  "$meta": {
+    "schemas": {
+      "CAREPLAN_CNCT_INFO": {
+        "name": "CAREPLAN_CNCT_INFO",
+        "description": "Information on care plan contacts and readings.",
+        "primaryKey": [
+          {
+            "columnName": "CAREPLAN_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "CONTACT_DATE_REAL",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "CAREPLAN_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique identifier for the care plan record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "CONTACT_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "CTCT_SERIAL_NUM",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The contact serial number (CSN) of the contact."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "CONTACT_NUMBER",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The number of the contact"
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "CAREPLAN_CNCT_INFO",
+            "target": "CAREPLAN_INFO",
+            "joinKeys": [
+              {
+                "source": "CAREPLAN_ID",
+                "target": "CARE_INTG_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "CAREPLAN_CNCT_INFO",
+            "target": "CAREPLAN_PT_TASK_INFO",
+            "joinKeys": [
+              {
+                "source": "CAREPLAN_ID",
+                "target": "CAREPLAN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "CAREPLAN_CNCT_INFO": [
+    {
+      "CAREPLAN_ID": "7498035",
+      "CONTACT_DATE_REAL": 66179,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "CTCT_SERIAL_NUM": 7756499,
+      "CONTACT_NUMBER": "1",
+      "$meta": {
+        "type": "CAREPLAN_CNCT_INFO"
+      }
+    },
+    {
+      "CAREPLAN_ID": "7615790",
+      "CONTACT_DATE_REAL": 66190,
+      "CONTACT_DATE": "2022-03-22 00:00:00",
+      "CTCT_SERIAL_NUM": 7889175,
+      "CONTACT_NUMBER": "1",
+      "$meta": {
+        "type": "CAREPLAN_CNCT_INFO"
+      }
+    }
+  ]
+}

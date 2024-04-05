@@ -1,0 +1,80 @@
+{
+  "name": "PAT_SVC_PROV_SEARCH_RSLT",
+  "description": "This table stores service providers on a list of post-discharge service providers that was given to a patient so that they can indicate their preference. The criteria used to generate each list and the user who generated it are in PAT_SVC_PROV_SEARCH_LIST.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SEARCH_LIST_IDENT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "An ID for the list of service providers that the result is a part of. This column is frequently used to link to the PAT_SVC_PROV_SEARCH_LIST table.",
+      "linksTo": "PAT_SVC_PROV_SEARCH_LIST"
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "FACILITY_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the facility record that represents a single service provider on the list sent to the patient."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the provider record that represents a single service provider on the list sent to the patient."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the department record that represents a single service provider on the list sent to the patient."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "DISTANCE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The distance in miles of the service provider in the list from the search location."
+    }
+  ]
+}

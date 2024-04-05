@@ -1,0 +1,105 @@
+{
+  "name": "INFUSION_DOC_AUDIT",
+  "description": "This table contains an audit of infusion documentation.",
+  "primaryKey": [
+    {
+      "columnName": "ALERT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ALERT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the med alert record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "DOC_FILING_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Tracks the user that filed documentation for an infusion"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "DOC_FILING_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "DOC_FILED_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant documentation was saved. If the user is back-charting for 1100 and the current time is 1258, this will be 1258."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "DOC_BASED_ON_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The user setting for the filing user. The instant the intervals are based on."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "DOC_PARTIAL_INTERVAL_SELECT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user setting for the filing user. Last partial Interval Selected or Not Selected.",
+      "entries": [
+        "Selected",
+        "Not Selected"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DOC_DEFAULT_SELECTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user setting for the filing user. Documentation Select All or Select None.",
+      "entries": [
+        "Select All",
+        "Select None"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "DOC_INTER_SEL",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The interval selection for the filing user when filing infusion documentation from Infusion Verify"
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "DOC_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant infusion documentation is saving at. If the user is back-charting for 1100 and the current time is 1258, this will be 1100."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "DOC_USER_EXPAND_ALL_SEL_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the user has chosen to expand all infusion groups by default in Infusion Verify. 'Y' or NULL indicates that all infusion groups are expanded by default. 'N' indicates that only infusion groups with warnings are expanded by default.  NULL indicates that the user's profile is not configured to collapse infusion groups without warnings by default.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    }
+  ]
+}

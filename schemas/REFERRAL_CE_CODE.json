@@ -1,0 +1,76 @@
+{
+  "name": "REFERRAL_CE_CODE",
+  "description": "This audit table stores the Care Everywhere Codes.",
+  "primaryKey": [
+    {
+      "columnName": "REFERRAL_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "REFERRAL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the referral record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "AUDIT_CODE_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the type of the specialty code stored in column AUDIT_CODE. This column is used to audit data from incoming Care Everywhere referrals.",
+      "entries": [
+        "Referred To Provider",
+        "Referred To Department Specialty",
+        "Referring Department Specialty",
+        "Referred To Provider Specialty",
+        "Referring Provider Specialty",
+        "Diagnosis",
+        "Procedure",
+        "Referral Type",
+        "Priority"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "AUDIT_CODE_RFNCID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the reference ID corresponding to the specialty code stored in AUDIT_CODE. This reference ID is used as an index for the Diagnoses or Procedures table. This column is used to audit data from incoming Care Everywhere referrals."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "AUDIT_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the provider or department specialty code received from the referring organization with an external referral. The type of the specialty code is stored in column AUDIT_CODE_TYPE_C. This column is used to audit data from incoming Care Everywhere referrals."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "AUDIT_CODE_SYS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the code system used by the referring organization to send the specialty code in column AUDIT_CODE. This column is used to audit data from incoming Care Everywhere referrals."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "AUDIT_CODE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the name of the specialty code in column AUDIT_CODE. This column is used to audit data from incoming Care Everywhere referrals."
+    }
+  ]
+}

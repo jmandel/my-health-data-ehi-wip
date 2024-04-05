@@ -1,0 +1,49 @@
+{
+  "name": "RES_CMT_PTR_RM",
+  "description": "For a given line this holds all the pointers to the table that stores the multi line comment data.",
+  "primaryKey": [
+    {
+      "columnName": "RESULT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RESULT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the result record for this row. This column is frequently used to link to the RES_COMPONENTS table.",
+      "linksTo": "RES_COMPONENTS"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This is the component line number from the RES_COMPONENTS table. Use the RESULT_ID to link the RES_COMPONENTS table to this table in addition to the GROUP_LINE."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple comments that are associated with the component/organism and the result from the RES_CMT_DATA_RM table.  This column can be ignored - it is here for completeness."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CMP_MLTLN_USER_CMMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores a list of lines in OVR-52202 which store data for this line in the component related group.  To link tables RES_CMT_PTR_RM to RES_CMT_DATA_RM link the following two sets of columns: - RES_CMT_PTR_RM.RESULT_ID to RES_CMT_DATA_RM.RESULT_ID, and - RES_CMT_PTR_RM.CMP_MLTLN_USER_CMMT to RES_CMT_DATA_RM.GROUP_LINE"
+    }
+  ]
+}

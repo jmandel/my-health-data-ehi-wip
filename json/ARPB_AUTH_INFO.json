@@ -1,0 +1,109 @@
+{
+  "$meta": {
+    "schemas": {
+      "ARPB_AUTH_INFO": {
+        "name": "ARPB_AUTH_INFO",
+        "description": "Stores authorization information for a charge transaction.",
+        "primaryKey": [
+          {
+            "columnName": "TX_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "TX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the transaction record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "OVRD_AUTH_CVG_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Lists all the coverages on the guarantor account for this transaction."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "AUTH_UPDATE_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "This stores the last time an authorization was assigned."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ARPB_AUTH_INFO",
+            "target": "ARPB_TX_MODERATE",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ARPB_AUTH_INFO": [
+    {
+      "TX_ID": 354336209,
+      "LINE": 1,
+      "$meta": {
+        "type": "ARPB_AUTH_INFO"
+      }
+    },
+    {
+      "TX_ID": 354336210,
+      "LINE": 1,
+      "$meta": {
+        "type": "ARPB_AUTH_INFO"
+      }
+    },
+    {
+      "TX_ID": 354520701,
+      "LINE": 1,
+      "$meta": {
+        "type": "ARPB_AUTH_INFO"
+      }
+    },
+    {
+      "TX_ID": 302968775,
+      "LINE": 1,
+      "$meta": {
+        "type": "ARPB_AUTH_INFO"
+      }
+    },
+    {
+      "TX_ID": 317236398,
+      "LINE": 1,
+      "OVRD_AUTH_CVG_ID": 5934765,
+      "AUTH_UPDATE_DTTM": "2022-12-20 20:37:45",
+      "$meta": {
+        "type": "ARPB_AUTH_INFO"
+      }
+    },
+    {
+      "TX_ID": 302543307,
+      "LINE": 1,
+      "$meta": {
+        "type": "ARPB_AUTH_INFO"
+      }
+    }
+  ]
+}

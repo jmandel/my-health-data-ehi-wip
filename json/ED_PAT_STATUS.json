@@ -1,0 +1,1090 @@
+{
+  "$meta": {
+    "schemas": {
+      "ED_PAT_STATUS": {
+        "name": "ED_PAT_STATUS",
+        "description": "The ED_PAT_STATUS table contains information about ED patients' \"patient\" status. One row in this table corresponds to one ED \"patient\" status change. If a patient's ED \"patient\" status is changed five times in a single encounter, this table will contain five rows for that encounter.",
+        "primaryKey": [
+          {
+            "columnName": "INPATIENT_DATA_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "INPATIENT_DATA_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID associated with the Inpatient Data Store record for this row. This column is frequently used to link to PAT_ENC_HSP.INPATIENT_DATA_ID."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this patient status. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "ED_PAT_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category number of the ED patient status for the ED encounter.",
+            "entries": [
+              "Expected",
+              "Waiting Room",
+              "Waiting for Nurse",
+              "Waiting for Physician",
+              "Test Results",
+              "Ready for Discharge",
+              "Observation",
+              "Physician In",
+              "Nurse In",
+              "Ready for Admit",
+              "In Process",
+              "Ready for Re-Eval",
+              "Waiting for Triage",
+              "Ready for Transfer",
+              "Ready for Transport",
+              "In Transport",
+              "Waiting for AVS",
+              "Bed Requested",
+              "In Triage",
+              "Waiting",
+              "Waiting for Provider",
+              "With Nurse",
+              "With Provider",
+              "Ready for Disposition",
+              "Waiting for Transport",
+              "Waiting for Room",
+              "At Kiosk",
+              "Kiosk Completed",
+              "Kiosk Timed Out",
+              "Kiosk Redirected",
+              "Checked Out",
+              "Scheduled",
+              "Arrived",
+              "Rooming in Progress",
+              "Visit in Progress",
+              "Visit Complete",
+              "Signed",
+              "Not Seen",
+              "Patient Left",
+              "Present",
+              "Open Addendum",
+              "Cancelled",
+              "Rescheduled",
+              "Resident/Fellow In",
+              "At Diagnostic Testing",
+              "Dilating in Exam Room",
+              "Dilating in Waiting Room",
+              "Exam Complete",
+              "Orthoptist In",
+              "Technician In",
+              "Testing Complete",
+              "Waiting for Orthoptist",
+              "Waiting for Resident/Fellow"
+            ]
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "PAT_STATUS_TIME",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The date and time when the ED patient status was set."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "PAT_STATUS_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the user who is associated with this status change. This column is frequently used to link to the CLARITY_EMP table.",
+            "linksTo": "CLARITY_EMP"
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "PAT_STATUS_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI). This column is frequently used to link to PAT_ENC_HSP.PAT_ENC_CSN_ID."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ED_PAT_STATUS",
+            "target": "IP_DATA_STORE",
+            "joinKeys": [
+              {
+                "source": "INPATIENT_DATA_ID",
+                "target": "INPATIENT_DATA_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ED_PAT_STATUS": [
+    {
+      "INPATIENT_DATA_ID": "123583502",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Arrived",
+      "PAT_STATUS_TIME": "2020-01-09 12:21:00",
+      "PAT_STATUS_USER_ID": "DTB400",
+      "PAT_STATUS_USER_ID_NAME": "BURNS, MALAYSIA",
+      "PAT_ENC_CSN_ID": 799951565,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "123583502",
+      "LINE": 2,
+      "ED_PAT_STATUS_C_NAME": "Rooming in Progress",
+      "PAT_STATUS_TIME": "2020-01-09 12:28:00",
+      "PAT_STATUS_USER_ID": "SMITHAM28",
+      "PAT_STATUS_USER_ID_NAME": "THOMAS, ANGELA M",
+      "PAT_ENC_CSN_ID": 799951565,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "123583502",
+      "LINE": 3,
+      "ED_PAT_STATUS_C_NAME": "Waiting",
+      "PAT_STATUS_TIME": "2020-01-09 12:31:00",
+      "PAT_STATUS_USER_ID": "SMITHAM28",
+      "PAT_STATUS_USER_ID_NAME": "THOMAS, ANGELA M",
+      "PAT_ENC_CSN_ID": 799951565,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "123583502",
+      "LINE": 4,
+      "ED_PAT_STATUS_C_NAME": "Visit in Progress",
+      "PAT_STATUS_TIME": "2020-01-09 12:47:00",
+      "PAT_STATUS_USER_ID": "DHILLOPS",
+      "PAT_STATUS_USER_ID_NAME": "DHILLON, PUNEET S",
+      "PAT_ENC_CSN_ID": 799951565,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "123583502",
+      "LINE": 5,
+      "ED_PAT_STATUS_C_NAME": "Visit Complete",
+      "PAT_STATUS_TIME": "2020-01-09 12:55:00",
+      "PAT_STATUS_USER_ID": "DHILLOPS",
+      "PAT_STATUS_USER_ID_NAME": "DHILLON, PUNEET S",
+      "PAT_ENC_CSN_ID": 799951565,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "123583502",
+      "LINE": 6,
+      "ED_PAT_STATUS_C_NAME": "Checked Out",
+      "PAT_STATUS_TIME": "2020-01-09 12:56:00",
+      "PAT_STATUS_USER_ID": "PAM400",
+      "PAT_STATUS_USER_ID_NAME": "MANIX, PATRICIA A",
+      "PAT_ENC_CSN_ID": 799951565,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "123583502",
+      "LINE": 7,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2020-01-09 13:02:00",
+      "PAT_STATUS_USER_ID": "DHILLOPS",
+      "PAT_STATUS_USER_ID_NAME": "DHILLON, PUNEET S",
+      "PAT_ENC_CSN_ID": 799951565,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "138966497",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Arrived",
+      "PAT_STATUS_TIME": "2020-07-14 14:33:00",
+      "PAT_STATUS_USER_ID": "PICONEMA",
+      "PAT_STATUS_USER_ID_NAME": "PICONE, MARY A",
+      "PAT_ENC_CSN_ID": 829213099,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "138966497",
+      "LINE": 2,
+      "ED_PAT_STATUS_C_NAME": "Rooming in Progress",
+      "PAT_STATUS_TIME": "2020-07-14 14:35:00",
+      "PAT_STATUS_USER_ID": "PICONEMA",
+      "PAT_STATUS_USER_ID_NAME": "PICONE, MARY A",
+      "PAT_ENC_CSN_ID": 829213099,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "138966497",
+      "LINE": 3,
+      "ED_PAT_STATUS_C_NAME": "Waiting",
+      "PAT_STATUS_TIME": "2020-07-14 14:35:00",
+      "PAT_STATUS_USER_ID": "PICONEMA",
+      "PAT_STATUS_USER_ID_NAME": "PICONE, MARY A",
+      "PAT_ENC_CSN_ID": 829213099,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "138966497",
+      "LINE": 4,
+      "ED_PAT_STATUS_C_NAME": "Visit in Progress",
+      "PAT_STATUS_TIME": "2020-07-14 14:35:00",
+      "PAT_STATUS_USER_ID": "PICONEMA",
+      "PAT_STATUS_USER_ID_NAME": "PICONE, MARY A",
+      "PAT_ENC_CSN_ID": 829213099,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "138966497",
+      "LINE": 5,
+      "ED_PAT_STATUS_C_NAME": "Visit Complete",
+      "PAT_STATUS_TIME": "2020-07-14 14:48:00",
+      "PAT_STATUS_USER_ID": "PICONEMA",
+      "PAT_STATUS_USER_ID_NAME": "PICONE, MARY A",
+      "PAT_ENC_CSN_ID": 829213099,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "138966497",
+      "LINE": 6,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2020-07-14 14:48:00",
+      "PAT_STATUS_USER_ID": "PICONEMA",
+      "PAT_STATUS_USER_ID_NAME": "PICONE, MARY A",
+      "PAT_ENC_CSN_ID": 829213099,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "139173146",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2020-07-16 12:10:00",
+      "PAT_STATUS_USER_ID": "BUDZBANL",
+      "PAT_STATUS_USER_ID_NAME": "BUDZBAN, NICOLE L",
+      "PAT_ENC_CSN_ID": 829385742,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "139057851",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2020-07-15 12:22:00",
+      "PAT_STATUS_USER_ID": "PICONEMA",
+      "PAT_STATUS_USER_ID_NAME": "PICONE, MARY A",
+      "PAT_ENC_CSN_ID": 829393933,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "139550385",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2020-08-07 04:55:00",
+      "PAT_STATUS_USER_ID": "224",
+      "PAT_STATUS_USER_ID_NAME": "AMBULATORY, ADMIN",
+      "PAT_ENC_CSN_ID": 829467718,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "139563612",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2020-07-21 12:38:00",
+      "PAT_STATUS_USER_ID": "PICONEMA",
+      "PAT_STATUS_USER_ID_NAME": "PICONE, MARY A",
+      "PAT_ENC_CSN_ID": 829995922,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "139603017",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2020-07-21 16:21:00",
+      "PAT_STATUS_USER_ID": "KLL403",
+      "PAT_STATUS_USER_ID_NAME": "LOUGH, KAREN L",
+      "PAT_ENC_CSN_ID": 830043848,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "139602801",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2020-07-21 16:19:00",
+      "PAT_STATUS_USER_ID": "PICONEMA",
+      "PAT_STATUS_USER_ID_NAME": "PICONE, MARY A",
+      "PAT_ENC_CSN_ID": 830047706,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "140482886",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2020-07-31 09:22:00",
+      "PAT_STATUS_USER_ID": "CCT400",
+      "PAT_STATUS_USER_ID_NAME": "KALSOW, COURTNEY C",
+      "PAT_ENC_CSN_ID": 832464108,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "143491637",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2020-09-03 14:55:00",
+      "PAT_STATUS_USER_ID": "PEPINPA",
+      "PAT_STATUS_USER_ID_NAME": "PEPIN, PAMELA A",
+      "PAT_ENC_CSN_ID": 833901305,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "145187795",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2020-09-23 10:42:00",
+      "PAT_STATUS_USER_ID": "KLL403",
+      "PAT_STATUS_USER_ID_NAME": "LOUGH, KAREN L",
+      "PAT_ENC_CSN_ID": 837844366,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "191678947",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2022-02-13 02:33:00",
+      "PAT_STATUS_USER_ID": "AMBBATCHPROC",
+      "PAT_STATUS_USER_ID_NAME": "AMB, BATCH PROCESSOR",
+      "PAT_ENC_CSN_ID": 921952141,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "192169229",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Arrived",
+      "PAT_STATUS_TIME": "2022-03-11 14:41:00",
+      "PAT_STATUS_USER_ID": "KLF403",
+      "PAT_STATUS_USER_ID_NAME": "FALDUTO, KAITLYN L",
+      "PAT_ENC_CSN_ID": 922942674,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "192169229",
+      "LINE": 2,
+      "ED_PAT_STATUS_C_NAME": "Visit in Progress",
+      "PAT_STATUS_TIME": "2022-03-11 15:46:00",
+      "PAT_STATUS_USER_ID": "ALG006",
+      "PAT_STATUS_USER_ID_NAME": "GILMOUR, AARON K",
+      "PAT_ENC_CSN_ID": 922942674,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "192169541",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Arrived",
+      "PAT_STATUS_TIME": "2022-03-22 16:42:00",
+      "PAT_STATUS_USER_ID": "KLF403",
+      "PAT_STATUS_USER_ID_NAME": "FALDUTO, KAITLYN L",
+      "PAT_ENC_CSN_ID": 922943112,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "192169541",
+      "LINE": 2,
+      "ED_PAT_STATUS_C_NAME": "Visit in Progress",
+      "PAT_STATUS_TIME": "2022-03-22 17:39:00",
+      "PAT_STATUS_USER_ID": "ALG006",
+      "PAT_STATUS_USER_ID_NAME": "GILMOUR, AARON K",
+      "PAT_ENC_CSN_ID": 922943112,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "205519277",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Scheduled",
+      "PAT_STATUS_TIME": "2022-07-07 12:52:00",
+      "PAT_STATUS_USER_ID": "PAM400",
+      "PAT_STATUS_USER_ID_NAME": "MANIX, PATRICIA A",
+      "PAT_ENC_CSN_ID": 948002801,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "205520385",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Scheduled",
+      "PAT_STATUS_TIME": "2022-07-07 12:59:00",
+      "PAT_STATUS_USER_ID": "PAM400",
+      "PAT_STATUS_USER_ID_NAME": "MANIX, PATRICIA A",
+      "PAT_ENC_CSN_ID": 948004323,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "205520385",
+      "LINE": 2,
+      "ED_PAT_STATUS_C_NAME": "Arrived",
+      "PAT_STATUS_TIME": "2022-08-29 13:23:00",
+      "PAT_STATUS_USER_ID": "LEWISAR1",
+      "PAT_STATUS_USER_ID_NAME": "LEWIS, ANTONIA R",
+      "PAT_ENC_CSN_ID": 948004323,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "205520385",
+      "LINE": 3,
+      "ED_PAT_STATUS_C_NAME": "Rooming in Progress",
+      "PAT_STATUS_TIME": "2022-08-29 13:31:00",
+      "PAT_STATUS_USER_ID": "MBS403",
+      "PAT_STATUS_USER_ID_NAME": "SMITH, MARY B",
+      "PAT_ENC_CSN_ID": 948004323,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "205520385",
+      "LINE": 4,
+      "ED_PAT_STATUS_C_NAME": "Waiting",
+      "PAT_STATUS_TIME": "2022-08-29 13:33:00",
+      "PAT_STATUS_USER_ID": "MBS403",
+      "PAT_STATUS_USER_ID_NAME": "SMITH, MARY B",
+      "PAT_ENC_CSN_ID": 948004323,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "205520385",
+      "LINE": 5,
+      "ED_PAT_STATUS_C_NAME": "Visit in Progress",
+      "PAT_STATUS_TIME": "2022-08-29 13:47:00",
+      "PAT_STATUS_USER_ID": "RAMMELZL",
+      "PAT_STATUS_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "PAT_ENC_CSN_ID": 948004323,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "205520385",
+      "LINE": 6,
+      "ED_PAT_STATUS_C_NAME": "Visit Complete",
+      "PAT_STATUS_TIME": "2022-08-29 14:28:00",
+      "PAT_STATUS_USER_ID": "PAM400",
+      "PAT_STATUS_USER_ID_NAME": "MANIX, PATRICIA A",
+      "PAT_ENC_CSN_ID": 948004323,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "205520385",
+      "LINE": 7,
+      "ED_PAT_STATUS_C_NAME": "Checked Out",
+      "PAT_STATUS_TIME": "2022-08-29 14:28:00",
+      "PAT_STATUS_USER_ID": "PAM400",
+      "PAT_STATUS_USER_ID_NAME": "MANIX, PATRICIA A",
+      "PAT_ENC_CSN_ID": 948004323,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "205520385",
+      "LINE": 8,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2022-08-29 23:58:00",
+      "PAT_STATUS_USER_ID": "RAMMELZL",
+      "PAT_STATUS_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "PAT_ENC_CSN_ID": 948004323,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "210637199",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Scheduled",
+      "PAT_STATUS_TIME": "2022-08-29 14:29:00",
+      "PAT_STATUS_USER_ID": "PAM400",
+      "PAT_STATUS_USER_ID_NAME": "MANIX, PATRICIA A",
+      "PAT_ENC_CSN_ID": 958147754,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "210637199",
+      "LINE": 2,
+      "ED_PAT_STATUS_C_NAME": "Arrived",
+      "PAT_STATUS_TIME": "2022-08-29 14:29:00",
+      "PAT_STATUS_USER_ID": "PAM400",
+      "PAT_STATUS_USER_ID_NAME": "MANIX, PATRICIA A",
+      "PAT_ENC_CSN_ID": 958147754,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "210637199",
+      "LINE": 3,
+      "ED_PAT_STATUS_C_NAME": "Visit in Progress",
+      "PAT_STATUS_TIME": "2022-09-20 04:06:00",
+      "PAT_STATUS_USER_ID": "224",
+      "PAT_STATUS_USER_ID_NAME": "AMBULATORY, ADMIN",
+      "PAT_ENC_CSN_ID": 958147754,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "210637199",
+      "LINE": 4,
+      "ED_PAT_STATUS_C_NAME": "Visit Complete",
+      "PAT_STATUS_TIME": "2022-09-20 04:06:00",
+      "PAT_STATUS_USER_ID": "224",
+      "PAT_STATUS_USER_ID_NAME": "AMBULATORY, ADMIN",
+      "PAT_ENC_CSN_ID": 958147754,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "210637199",
+      "LINE": 5,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2022-09-20 04:06:00",
+      "PAT_STATUS_USER_ID": "224",
+      "PAT_STATUS_USER_ID_NAME": "AMBULATORY, ADMIN",
+      "PAT_ENC_CSN_ID": 958147754,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "210637533",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Scheduled",
+      "PAT_STATUS_TIME": "2022-08-29 14:30:00",
+      "PAT_STATUS_USER_ID": "PAM400",
+      "PAT_STATUS_USER_ID_NAME": "MANIX, PATRICIA A",
+      "PAT_ENC_CSN_ID": 958148226,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "219723875",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2022-12-20 04:46:00",
+      "PAT_STATUS_USER_ID": "224",
+      "PAT_STATUS_USER_ID_NAME": "AMBULATORY, ADMIN",
+      "PAT_ENC_CSN_ID": 974452422,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "219843747",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Scheduled",
+      "PAT_STATUS_TIME": "2022-11-29 09:47:00",
+      "PAT_STATUS_USER_ID": "JONESLM1",
+      "PAT_STATUS_USER_ID_NAME": "JONES, LATONYA M",
+      "PAT_ENC_CSN_ID": 974614965,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "219843747",
+      "LINE": 2,
+      "ED_PAT_STATUS_C_NAME": "Arrived",
+      "PAT_STATUS_TIME": "2022-12-01 09:28:00",
+      "PAT_STATUS_USER_ID": "MAGGITMN",
+      "PAT_STATUS_USER_ID_NAME": "MAGGIT, MARIYAH N",
+      "PAT_ENC_CSN_ID": 974614965,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "219843747",
+      "LINE": 3,
+      "ED_PAT_STATUS_C_NAME": "Rooming in Progress",
+      "PAT_STATUS_TIME": "2022-12-01 09:35:00",
+      "PAT_STATUS_USER_ID": "MBS403",
+      "PAT_STATUS_USER_ID_NAME": "SMITH, MARY B",
+      "PAT_ENC_CSN_ID": 974614965,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "219843747",
+      "LINE": 4,
+      "ED_PAT_STATUS_C_NAME": "Waiting",
+      "PAT_STATUS_TIME": "2022-12-01 09:35:00",
+      "PAT_STATUS_USER_ID": "MBS403",
+      "PAT_STATUS_USER_ID_NAME": "SMITH, MARY B",
+      "PAT_ENC_CSN_ID": 974614965,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "219843747",
+      "LINE": 5,
+      "ED_PAT_STATUS_C_NAME": "Visit in Progress",
+      "PAT_STATUS_TIME": "2022-12-01 09:55:00",
+      "PAT_STATUS_USER_ID": "RAMMELZL",
+      "PAT_STATUS_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "PAT_ENC_CSN_ID": 974614965,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "219843747",
+      "LINE": 6,
+      "ED_PAT_STATUS_C_NAME": "Visit Complete",
+      "PAT_STATUS_TIME": "2022-12-01 10:18:00",
+      "PAT_STATUS_USER_ID": "PAM400",
+      "PAT_STATUS_USER_ID_NAME": "MANIX, PATRICIA A",
+      "PAT_ENC_CSN_ID": 974614965,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "219843747",
+      "LINE": 7,
+      "ED_PAT_STATUS_C_NAME": "Checked Out",
+      "PAT_STATUS_TIME": "2022-12-01 10:18:00",
+      "PAT_STATUS_USER_ID": "PAM400",
+      "PAT_STATUS_USER_ID_NAME": "MANIX, PATRICIA A",
+      "PAT_ENC_CSN_ID": 974614965,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "219843747",
+      "LINE": 8,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2022-12-01 20:06:00",
+      "PAT_STATUS_USER_ID": "RAMMELZL",
+      "PAT_STATUS_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "PAT_ENC_CSN_ID": 974614965,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "222347119",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2023-01-13 04:52:00",
+      "PAT_STATUS_USER_ID": "224",
+      "PAT_STATUS_USER_ID_NAME": "AMBULATORY, ADMIN",
+      "PAT_ENC_CSN_ID": 977858467,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "228068197",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2023-03-13 04:06:00",
+      "PAT_STATUS_USER_ID": "224",
+      "PAT_STATUS_USER_ID_NAME": "AMBULATORY, ADMIN",
+      "PAT_ENC_CSN_ID": 988126821,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "210637955",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Scheduled",
+      "PAT_STATUS_TIME": "2022-08-29 14:32:00",
+      "PAT_STATUS_USER_ID": "PAM400",
+      "PAT_STATUS_USER_ID_NAME": "MANIX, PATRICIA A",
+      "PAT_ENC_CSN_ID": 958148810,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "210637955",
+      "LINE": 2,
+      "ED_PAT_STATUS_C_NAME": "Arrived",
+      "PAT_STATUS_TIME": "2023-03-02 14:33:00",
+      "PAT_STATUS_USER_ID": "JMS402",
+      "PAT_STATUS_USER_ID_NAME": "SUTTER, JULIE M",
+      "PAT_ENC_CSN_ID": 958148810,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "210637955",
+      "LINE": 3,
+      "ED_PAT_STATUS_C_NAME": "Rooming in Progress",
+      "PAT_STATUS_TIME": "2023-03-02 14:42:00",
+      "PAT_STATUS_USER_ID": "MBS403",
+      "PAT_STATUS_USER_ID_NAME": "SMITH, MARY B",
+      "PAT_ENC_CSN_ID": 958148810,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "210637955",
+      "LINE": 4,
+      "ED_PAT_STATUS_C_NAME": "Waiting",
+      "PAT_STATUS_TIME": "2023-03-02 14:44:00",
+      "PAT_STATUS_USER_ID": "MBS403",
+      "PAT_STATUS_USER_ID_NAME": "SMITH, MARY B",
+      "PAT_ENC_CSN_ID": 958148810,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "210637955",
+      "LINE": 5,
+      "ED_PAT_STATUS_C_NAME": "Visit in Progress",
+      "PAT_STATUS_TIME": "2023-03-02 14:52:00",
+      "PAT_STATUS_USER_ID": "RAMMELZL",
+      "PAT_STATUS_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "PAT_ENC_CSN_ID": 958148810,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "210637955",
+      "LINE": 6,
+      "ED_PAT_STATUS_C_NAME": "Visit Complete",
+      "PAT_STATUS_TIME": "2023-03-02 15:03:00",
+      "PAT_STATUS_USER_ID": "RAMMELZL",
+      "PAT_STATUS_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "PAT_ENC_CSN_ID": 958148810,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "210637955",
+      "LINE": 7,
+      "ED_PAT_STATUS_C_NAME": "Checked Out",
+      "PAT_STATUS_TIME": "2023-03-02 15:04:00",
+      "PAT_STATUS_USER_ID": "PAM400",
+      "PAT_STATUS_USER_ID_NAME": "MANIX, PATRICIA A",
+      "PAT_ENC_CSN_ID": 958148810,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "210637955",
+      "LINE": 8,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2023-03-02 15:47:00",
+      "PAT_STATUS_USER_ID": "RAMMELZL",
+      "PAT_STATUS_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "PAT_ENC_CSN_ID": 958148810,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "234301558",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2023-04-22 05:03:00",
+      "PAT_STATUS_USER_ID": "224",
+      "PAT_STATUS_USER_ID_NAME": "AMBULATORY, ADMIN",
+      "PAT_ENC_CSN_ID": 996534320,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "246294080",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2023-08-23 08:38:00",
+      "PAT_STATUS_USER_ID": "KLL403",
+      "PAT_STATUS_USER_ID_NAME": "LOUGH, KAREN L",
+      "PAT_ENC_CSN_ID": 1020583168,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "229212487",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Scheduled",
+      "PAT_STATUS_TIME": "2023-03-02 15:06:00",
+      "PAT_STATUS_USER_ID": "PAM400",
+      "PAT_STATUS_USER_ID_NAME": "MANIX, PATRICIA A",
+      "PAT_ENC_CSN_ID": 991225117,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "229212487",
+      "LINE": 2,
+      "ED_PAT_STATUS_C_NAME": "Arrived",
+      "PAT_STATUS_TIME": "2023-09-28 09:19:00",
+      "PAT_STATUS_USER_ID": "JMS402",
+      "PAT_STATUS_USER_ID_NAME": "SUTTER, JULIE M",
+      "PAT_ENC_CSN_ID": 991225117,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "229212487",
+      "LINE": 3,
+      "ED_PAT_STATUS_C_NAME": "Rooming in Progress",
+      "PAT_STATUS_TIME": "2023-09-28 09:38:00",
+      "PAT_STATUS_USER_ID": "MBS403",
+      "PAT_STATUS_USER_ID_NAME": "SMITH, MARY B",
+      "PAT_ENC_CSN_ID": 991225117,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "229212487",
+      "LINE": 4,
+      "ED_PAT_STATUS_C_NAME": "Waiting",
+      "PAT_STATUS_TIME": "2023-09-28 09:41:00",
+      "PAT_STATUS_USER_ID": "MBS403",
+      "PAT_STATUS_USER_ID_NAME": "SMITH, MARY B",
+      "PAT_ENC_CSN_ID": 991225117,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "229212487",
+      "LINE": 5,
+      "ED_PAT_STATUS_C_NAME": "Visit in Progress",
+      "PAT_STATUS_TIME": "2023-09-28 09:55:00",
+      "PAT_STATUS_USER_ID": "RAMMELZL",
+      "PAT_STATUS_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "PAT_ENC_CSN_ID": 991225117,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "229212487",
+      "LINE": 6,
+      "ED_PAT_STATUS_C_NAME": "Visit Complete",
+      "PAT_STATUS_TIME": "2023-09-28 10:08:00",
+      "PAT_STATUS_USER_ID": "RAMMELZL",
+      "PAT_STATUS_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "PAT_ENC_CSN_ID": 991225117,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "229212487",
+      "LINE": 7,
+      "ED_PAT_STATUS_C_NAME": "Checked Out",
+      "PAT_STATUS_TIME": "2023-09-28 10:09:00",
+      "PAT_STATUS_USER_ID": "PAM400",
+      "PAT_STATUS_USER_ID_NAME": "MANIX, PATRICIA A",
+      "PAT_ENC_CSN_ID": 991225117,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "229212487",
+      "LINE": 8,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2023-09-28 10:18:00",
+      "PAT_STATUS_USER_ID": "RAMMELZL",
+      "PAT_STATUS_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "PAT_ENC_CSN_ID": 991225117,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "249977281",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Scheduled",
+      "PAT_STATUS_TIME": "2023-09-28 10:10:00",
+      "PAT_STATUS_USER_ID": "PAM400",
+      "PAT_STATUS_USER_ID_NAME": "MANIX, PATRICIA A",
+      "PAT_ENC_CSN_ID": 1028743701,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "249977281",
+      "LINE": 2,
+      "ED_PAT_STATUS_C_NAME": "Arrived",
+      "PAT_STATUS_TIME": "2023-09-28 10:10:00",
+      "PAT_STATUS_USER_ID": "PAM400",
+      "PAT_STATUS_USER_ID_NAME": "MANIX, PATRICIA A",
+      "PAT_ENC_CSN_ID": 1028743701,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "249977281",
+      "LINE": 3,
+      "ED_PAT_STATUS_C_NAME": "Visit Complete",
+      "PAT_STATUS_TIME": "2023-10-20 04:11:00",
+      "PAT_STATUS_USER_ID": "224",
+      "PAT_STATUS_USER_ID_NAME": "AMBULATORY, ADMIN",
+      "PAT_ENC_CSN_ID": 1028743701,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "249977281",
+      "LINE": 4,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2023-10-20 04:11:00",
+      "PAT_STATUS_USER_ID": "224",
+      "PAT_STATUS_USER_ID_NAME": "AMBULATORY, ADMIN",
+      "PAT_ENC_CSN_ID": 1028743701,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "252260169",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2023-10-20 04:07:00",
+      "PAT_STATUS_USER_ID": "224",
+      "PAT_STATUS_USER_ID_NAME": "AMBULATORY, ADMIN",
+      "PAT_ENC_CSN_ID": 1028766353,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "252286210",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2023-10-20 08:37:00",
+      "PAT_STATUS_USER_ID": "NACKSR",
+      "PAT_STATUS_USER_ID_NAME": "NACK, SAMANTHA R",
+      "PAT_ENC_CSN_ID": 1031703883,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "258687093",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Signed",
+      "PAT_STATUS_TIME": "2024-01-13 04:29:00",
+      "PAT_STATUS_USER_ID": "224",
+      "PAT_STATUS_USER_ID_NAME": "AMBULATORY, ADMIN",
+      "PAT_ENC_CSN_ID": 1043034397,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "249977653",
+      "LINE": 1,
+      "ED_PAT_STATUS_C_NAME": "Scheduled",
+      "PAT_STATUS_TIME": "2023-09-28 10:11:00",
+      "PAT_STATUS_USER_ID": "PAM400",
+      "PAT_STATUS_USER_ID_NAME": "MANIX, PATRICIA A",
+      "PAT_ENC_CSN_ID": 1028744231,
+      "$meta": {
+        "type": "ED_PAT_STATUS"
+      }
+    }
+  ]
+}

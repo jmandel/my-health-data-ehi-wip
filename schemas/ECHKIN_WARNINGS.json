@@ -1,0 +1,73 @@
+{
+  "name": "ECHKIN_WARNINGS",
+  "description": "This table contains warnings from the eCheck-In workflow.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ECHKIN_WARNING_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This stores a warning message that occurred during the eCheck-In.",
+      "entries": [
+        "Payment - Pt Chose to Pay at Clinic",
+        "Payment - Workers' Comp",
+        "Copay - Dual Coverage",
+        "Copay - Pre-Authorization Failed",
+        "Guarantor - Incorrect",
+        "E-sign - Unsigned Documents"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "GUAR_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the guarantor account ID related to the guarantor verification warning in eCheck-In."
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "$meta": {
+    "schemas": {
+      "ORDER_PENDING": {
+        "name": "ORDER_PENDING",
+        "description": "This table contains information on pending orders.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the pended order record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record"
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the user pending the order."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "PENDED_TIME",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The time an order was pended."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "RELEASED_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the user releasing a pended medication."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "RELEASED_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "SH_ORDR_PROV_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique identifier of the ordering provider for a signed and held order."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "SH_AUTH_PROV_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique identifier of the authorizing provider for this signed and held order record. A signed and held order is an order record that has been authorized but is intended for future use and is not yet active."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_PENDING",
+            "target": "ORD_PRFLST_TRK",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ORDER_PENDING": [
+    {
+      "ORDER_ID": 772179269,
+      "LINE": 1,
+      "USER_ID": "EDISUREI",
+      "USER_ID_NAME": "EDI, SURESCRIPTS IN",
+      "PENDED_TIME": "2023-02-19 11:36:00",
+      "RELEASED_USER_ID": "MBS403",
+      "RELEASED_USER_ID_NAME": "SMITH, MARY B",
+      "SH_AUTH_PROV_ID": "144590",
+      "$meta": {
+        "type": "ORDER_PENDING"
+      }
+    },
+    {
+      "ORDER_ID": 772179269,
+      "LINE": 2,
+      "USER_ID": "MBS403",
+      "USER_ID_NAME": "SMITH, MARY B",
+      "PENDED_TIME": "2023-02-20 13:11:00",
+      "RELEASED_USER_ID": "RAMMELZL",
+      "RELEASED_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "$meta": {
+        "type": "ORDER_PENDING"
+      }
+    },
+    {
+      "ORDER_ID": 439060609,
+      "LINE": 1,
+      "USER_ID": "PICONEMA",
+      "USER_ID_NAME": "PICONE, MARY A",
+      "PENDED_TIME": "2020-07-14 12:06:00",
+      "RELEASED_USER_ID": "PICONEMA",
+      "RELEASED_USER_ID_NAME": "PICONE, MARY A",
+      "SH_ORDR_PROV_ID": "219711",
+      "SH_AUTH_PROV_ID": "219711",
+      "$meta": {
+        "type": "ORDER_PENDING"
+      }
+    },
+    {
+      "ORDER_ID": 945468373,
+      "LINE": 1,
+      "USER_ID": "MYCHARTG",
+      "USER_ID_NAME": "MYCHART, GENERIC",
+      "PENDED_TIME": "2023-12-22 14:05:00",
+      "RELEASED_USER_ID": "MBS403",
+      "RELEASED_USER_ID_NAME": "SMITH, MARY B",
+      "$meta": {
+        "type": "ORDER_PENDING"
+      }
+    },
+    {
+      "ORDER_ID": 945468373,
+      "LINE": 2,
+      "USER_ID": "MBS403",
+      "USER_ID_NAME": "SMITH, MARY B",
+      "PENDED_TIME": "2023-12-22 15:13:00",
+      "RELEASED_USER_ID": "RAMMELZL",
+      "RELEASED_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "$meta": {
+        "type": "ORDER_PENDING"
+      }
+    }
+  ]
+}

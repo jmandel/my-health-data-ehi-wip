@@ -1,0 +1,60 @@
+{
+  "name": "PRE_AR_CHG_DOC",
+  "description": "This table stores information about charges documented by providers. Note: temporary accounts receivables (TAR) records in Chronicles are purged periodically depending on your system setting. Be aware that old data in this table might be lost if you truncate the table.",
+  "primaryKey": [
+    {
+      "columnName": "TAR_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TAR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the charge session record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The documentation provider associated with the charge."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "FUNCTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The function of the charge's documentation provider, such as performed or supervised.",
+      "entries": [
+        "Supervised",
+        "Performed",
+        "Assisted",
+        "Observed",
+        "Billing Provider",
+        "Surrogate Provider",
+        "Ordering Provider"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PROCEDURE_LIST",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The list of line numbers associated with the procedures that the documentation physician provided the specified function for. Cross-reference using the PRE_AR_CHG table, TAR_ID and CHARGE_LINE columns for more information about these charges."
+    }
+  ]
+}

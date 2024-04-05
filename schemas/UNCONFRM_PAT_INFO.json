@@ -1,0 +1,79 @@
+{
+  "name": "UNCONFRM_PAT_INFO",
+  "description": "This table stores unconfirmed patient tracking information.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "UNCONFRM_PAT_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unconfirmed patient status category ID for the patient.",
+      "entries": [
+        "Duplicate Review Needed",
+        "Identity Verification Needed",
+        "Patient Creation in Progress",
+        "Flagged as Suspicious"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "UNCONFRM_PAT_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unconfirmed patient workflow source category ID for the patient.",
+      "entries": [
+        "MyChart - On My Way",
+        "MyChart - Unverified Proxy Video Visit",
+        "Welcome",
+        "MyChart - Self-Signup",
+        "MyChart - Open Scheduling",
+        "MyChart - Symptom Checker",
+        "Unconfirmed Identity Activity",
+        "Web Service",
+        "MyChart - SAML Login",
+        "MyChart - Guest Proxy",
+        "MyChart - Provider Finder"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "UNCONFRM_PAT_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unconfirmed patient status reason category ID for the patient.",
+      "entries": [
+        "Fake Demographics",
+        "Identity Theft",
+        "No Identification",
+        "Patient Not Present",
+        "Patient Cannot Communicate",
+        "Other"
+      ]
+    }
+  ]
+}

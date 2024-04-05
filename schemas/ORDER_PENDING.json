@@ -1,0 +1,194 @@
+{
+  "name": "ORDER_PENDING",
+  "description": "This table contains information on pending orders.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the pended order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record"
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user pending the order."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PENDED_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The time an order was pended."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PENDED_FOR",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason an order was pended."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "RELEASED_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user releasing a pended medication."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "RELEASED_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PENDING_COMMENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Order pending comments."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PEND_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Order pending reason."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "SH_ORDR_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the ordering provider for a signed and held order."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "SH_AUTH_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the authorizing provider for this signed and held order record. A signed and held order is an order record that has been authorized but is intended for future use and is not yet active."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "SH_ORDER_MODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The verbal order mode category ID for the signed and held order, indicating the way the order was placed, e.g. telephone with readback.",
+      "entries": [
+        "Verbal",
+        "Standard"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "SH_VERB_ORD_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comment entered by a user when creating a signed and held order."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "SH_VRB_COMM_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the provider who verbally received the order and entered the order record in the system."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "SH_COSIGN_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the user responsible for providing a cosignature for the order."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "SH_COSIGN_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "SH_COSIGN_REQ_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether this order required a cosignature. 'Y' indicates that the order required a cosignature. 'N' or NULL indicates that the order did not require a cosignature.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "SH_VBL_CSN_NO_REQ_N",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Indicates whether a rule was used to prevent generating a verbal signature requirement for the order record."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "SH_COS_REQ_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The signature requirement creation source category ID for the order, indicating the reason a cosignature is required for this signed and held order.",
+      "entries": [
+        "Automatically Created",
+        "HIM",
+        "Create Signature Requirement Utility",
+        "Patient Creator Utility",
+        "Bulk Orders Utility",
+        "Beacon",
+        "Inactive User Attached to Ordering Provider",
+        "Instant Orders",
+        "Cosign Checkbox",
+        "Cosign Rule",
+        "LQL",
+        "Profile Setting 8535 - Admission Orders",
+        "Profile Setting 8536 - Code Status Orders",
+        "Profile Setting 38800 - RW Bulk Orders",
+        "Home Health Code Status Order",
+        "Anesthesia Sedation Order",
+        "Radiant Change Order LPP",
+        "Low Acuity Order",
+        "Cadence Decision Tree",
+        "Security EC36 - Rx Non-controlled",
+        "Security EC37 - Rx Controlled w/o C-II",
+        "Security EC90 - OP Procedures",
+        "Security EC104 - Rx Schedule II",
+        "Security EC235 - IP Non-controlled",
+        "Security EC236 - IP Controlled w/o C-II",
+        "Security EC237 - IP Schedule II",
+        "Security EC238 - IP Procedure",
+        "Security EC282 - DC Med"
+      ]
+    }
+  ]
+}

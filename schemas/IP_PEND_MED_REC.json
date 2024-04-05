@@ -1,0 +1,137 @@
+{
+  "name": "IP_PEND_MED_REC",
+  "description": "This table contains Inpatient order reconciliation information for pending orders.",
+  "primaryKey": [
+    {
+      "columnName": "EVENT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "EVENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the event record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PEND_LINK_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the link type of a pended order, for example \"AND\" if the order is meant to be connected to another specific order.",
+      "entries": [
+        "Followed by",
+        "Or",
+        "And"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PEND_LINK_GROUP",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the number of a group of pended orders. This does not link to anything."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PEND_LINK_GROUP_POS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the number assigned to an order as part of its group."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PEND_RES_INDI_CMNTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the pended comment about indications when a medication is resumed at discharge."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PEND_DC_NOTE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the pended note entered by an end user when they mark a medication to be discontinued."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PEND_ORDER_REC_HOLD_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the pended hold or unhold action, if any, for the current line.",
+      "entries": [
+        "Hold",
+        "Unhold"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PEND_HOLD_INFO_LINE_NUMBER",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number in the order record that contains additional hold information for this pended order reconciliation action, if applicable. The values in this column can be linked to the LINE column in the ORDER_HOLD_INFO table."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ORD_REC_ACT_BUTTON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The action button category ID for the button used to take this action. This is used to distinguish cases when multiple different buttons can produce the same action in REC_PEND_ACTION_C. Currently, this is only populated for actions taken in Transfer Medication Reconciliation.",
+      "entries": [
+        "Order",
+        "Substitute",
+        "Don't Order",
+        "Discontinue",
+        "Continue",
+        "Modify Inpatient",
+        "Prescribe",
+        "Don't Prescribe",
+        "Resume",
+        "Stop Taking",
+        "Sign",
+        "Sign & Hold",
+        "No Change",
+        "Modify Outpatient",
+        "Modify as FAM",
+        "Prescribe as CAM",
+        "Reorder",
+        "Don't Continue",
+        "Continue in Recovery",
+        "New",
+        "Prescribe Expired Long Term",
+        "No Change Expired Long Term",
+        "Stop Taking Expired Long Term",
+        "Discontinue Sign & Hold",
+        "Review Not Required",
+        "Resume Expired Long Term",
+        "Let Expire",
+        "Continue Paused",
+        "Resume Paused Order",
+        "Renew",
+        "Hold",
+        "Continue Hold",
+        "Unhold",
+        "Order and Hold",
+        "Discontinue Inpatient",
+        "Continue and Modify",
+        "Continue Hold and Modify",
+        "Continue And Unhold CAM",
+        "Order and Hold Inpatient",
+        "Don't Order Inpatient"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "name": "EXCUSE_TEMPLATE",
+  "description": "The EXCUSE_TEMPLATE table contains information about disposition workspace excuse letters generated for a patient's encounter.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the excuse associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EXCUSE_TEMPLATE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Name of the excuse template selected to print."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EXCUSE_ETX_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The record ID of the SmartText (pre-defined blocks of text) that an excuse template uses to generate the letter to print."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "EXCUSE_ETX_ID_SMARTTEXT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the SmartText record."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "EXCUSE_ETX_VERSION",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "Specific version of the SmartText (pre-defined blocks of text) the excuse template uses to generate the letter to print. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "EXCUSE_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Comment the provider entered after the excuse template to be printed as part of the excuse letter."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "EXCUSE_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status of the excuse",
+      "entries": [
+        "Deleted",
+        "Pending",
+        "Printed"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "COPY_FROM_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores a reference to the line containing the excuse that this excuse was copied from."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "EXCUSE_EDITOR_POS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the relative positions of pending excuses text as individual excuses are printed or deleted."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "EXCUSE_COMM_JOB_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores a pointer to the ID of the communication job (i.e. email, letter, fax) associated with the excuse."
+    }
+  ]
+}

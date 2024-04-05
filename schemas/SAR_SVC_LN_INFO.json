@@ -1,0 +1,72 @@
+{
+  "name": "SAR_SVC_LN_INFO",
+  "description": "The service line adjudication information for a specific case of a service authorization request (SAR). The associated administrative information for the case can be found in the SAR_INFO table with the same referral and coverage ID. Child tables SAR_SVC_LN_CODE, SAR_SVC_LN_CODE_MOD, SAR_SVC_LN_CODE_UNITS, SAR_SVC_LN_GROUP, SAR_SVC_LN_GROUP_UNITS, SAR_SVC_LN_RANGE, and SAR_SVC_LN_RANGE_UNITS contain multiple rows of additional information related to each row in this table. You can join to each of those tables on the REFERRAL_ID columns and SAR_SVC_LN_INFO.LINE = GROUP_LINE from those tables.",
+  "primaryKey": [
+    {
+      "columnName": "REFERRAL_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "REFERRAL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The referral ID for the referral record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SAR_VALID_FROM_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The start date for the line of Service Authorization Request (SAR) adjudication info."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SAR_VALID_TO_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The expiration date for the line of Service Authorization Request (SAR) adjudication info."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SAR_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status category for the line of Service Authorization Request (SAR) adjudication info."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SAR_DESC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The description associated with the line of Service Authorization Request (SAR) adjudication info."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "SAR_SVC_LN_CVG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The coverage associated with the line of Service Authorization Request (SAR) adjudication information."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "SAR_REASON",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason associated with the line of Service Authorization Request (SAR) adjudication info."
+    }
+  ]
+}

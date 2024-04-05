@@ -1,0 +1,239 @@
+{
+  "name": "TIMEOUT",
+  "description": "This table stores basic information about the timeout or Procedure Pass.\n\n\nFor timeouts: The answers to the timeout questions, comments, procedure info, verification info and staff info can be found in tables that start with the TIMEOUT_ prefix.\n\n\nFor Procedure Passes: the task information, review status, checkpoints, and other information can be found in tables that start with the PXPASS_ prefix.",
+  "primaryKey": [
+    {
+      "columnName": "TIMEOUT_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TIMEOUT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the timeout record for this row."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "RECORD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the record status (hidden, soft-deleted, etc...)",
+      "entries": [
+        "Soft Deleted",
+        "Hidden",
+        "Hidden and Soft Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "A serial number for the encounter in which the alert was fired. This number is unique across all patients and encounters in the system."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "TIMEOUT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the type of timeout.",
+      "entries": [
+        "Scheduling",
+        "Pre-admission Testing",
+        "Admission",
+        "Preprocedure",
+        "Sign-in",
+        "Pre-incision",
+        "Hand-off",
+        "Sign-out",
+        "ABO Pre-Organ Arrival Verification (Recipient)",
+        "ABO Organ Verification (Recipient)",
+        "ABO Organ Recovery Verification (Donor)",
+        "ABO Post-Organ Recovery Verification (Donor)",
+        "Extra Vessels Pre-Transplant Verification"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RECORD_CREATION_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date the record was created."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ATTEST_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the type of attestation performed.",
+      "entries": [
+        "Verify",
+        "Log Post",
+        "Log Complete",
+        "Log Addendum"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "VERIF_CLASS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of verification data this record will have.",
+      "entries": [
+        "Timeout",
+        "Attestation",
+        "Screening Form",
+        "Organ Check-in"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "STORYBOARD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The storyboard record that was used to document the intervention that the timeout record is associated with."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "STORYBOARD_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the Scripting Template."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "UNVERIFY_PERF_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant an unverified timeout is performed. When the timeout is verified, the instant it is performed will be stored in VERIFY_PERF_IN_DTTM column of TIMEOUT_VERIFY table."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "LAST_COMPLETE_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item keeps track of the date and time when the screening form is completed"
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PXPASS_TARGET_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The scheduled start instant of the target case or appointment associated with the Procedure Pass."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "TXP_DONOR_RQG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the donor record for the organ check-in."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "TXP_DONOR_VEL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the donor organ for an organ check-in."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "TXP_DONOR_VEL_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores record name (.2)"
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "TXP_DONOR_OPO_ORG_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The United Network for Organ Sharing (UNOS) and Organ Procurement Operations (OPO)-defined organ type that was checked in.",
+      "entries": [
+        "Kidneys Enbloc",
+        "Left Kidney",
+        "Right Kidney",
+        "Pancreas",
+        "Liver",
+        "Liver Split Left",
+        "Liver Split Right",
+        "Heart",
+        "Lungs Enbloc",
+        "Left Lung",
+        "Right Lung",
+        "Intestine",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "PXPASS_EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The episode that the procedure pass links to. This will be set for episode-based procedure passes, which are used for linking episode-based tasks to documentation that can complete the task."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "SMARTFORM_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The SmartForm used when creating this timeout."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "SMARTFORM_ID_FORM_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the form associated with the questionnaire."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "PRIMARY_PXPASS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The primary Procedure Pass."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "PAT_ABO",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the blood type of the patient associated with this verification."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "PAT_ABO_RESULT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item stores the resulted instant of the blood type result for the patient associated with this verification."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "PAT_UNOSID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the patient's UNOS ID."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "HAS_PAT_INFO_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores if patient information was discretely stored with this verification.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    }
+  ]
+}

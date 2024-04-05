@@ -1,0 +1,120 @@
+{
+  "name": "PAT_CARE_REG",
+  "description": "This table contains data for Patient Care Registration. Multiple rows may appear for each registration. Each row represents the data for one registration as it was added, deleted, or modified by a user at a particular point in time.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ROW_IDENTIFIER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The row identifier is used to group current data and audit trail data that are related to the same Patient Care Registration. In this table, multiple rows may appear with the same row identifier. Each row represents an edit that was made to the particular registration. The most current set of data for the registration can be found by looking at the most recent date and time in the EDIT_DATETIME column."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the User ID of the user who made the change. This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EDIT_DATETIME",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item holds the date and time (in UTC) when the change was made."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Patient Care Registration Type category ID for the registration."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "POS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the organization with which the patient is registered in this particular registration."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The start date on which the registration became effective."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The end date, after which the registration is no longer effective."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "IS_DELETED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Y indicates that the user deleted a registration that was made in error.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "User-entered comments about a registration."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "ADMSN_NOTIF_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Yes indicates that the organization wishes to receive a notification upon the patient's admission."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "EXTERNAL_IDENTIFIER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "An externally assigned identifier for a patient care organization."
+    }
+  ]
+}

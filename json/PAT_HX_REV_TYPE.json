@@ -1,0 +1,579 @@
+{
+  "$meta": {
+    "schemas": {
+      "PAT_HX_REV_TYPE": {
+        "name": "PAT_HX_REV_TYPE",
+        "description": "This table contains information types of history that were reviewed for a patient, such as Medical, Surgical, Socioeconomic, Alcohol, Tobacco, etc.\n\n\n\n\n\nWhere in the application a type of history was reviewed is in the PAT_HX_REV_TOPIC table.\n\n\n\n\n\nAdditional information about when a patient's history was reviewed and by whom is found in the PAT_HX_REVIEW table.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ENC_CSN_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "GROUP_LINE",
+            "ordinalPosition": 2
+          },
+          {
+            "columnName": "VALUE_LINE",
+            "ordinalPosition": 3
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI)."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "GROUP_LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number of the associated instance of history review in this encounter. Together with PAT_ENC_CSN_ID, this forms the foreign key to the PAT_HX_REVIEW table."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "VALUE_LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number of one of the multiple history types that were reviewed for the associated instance of review and encounter from the PAT_HX_REVIEW table."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "HX_REVIEWED_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value associated with the type of History Visit Navigator topic that was reviewed, such as Medical, Surgical, Socioeconomic, etc.",
+            "entries": [
+              "Medical",
+              "Surgical",
+              "ADL",
+              "Substance & Sexual Activity",
+              "Tobacco",
+              "Alcohol",
+              "Drug Use",
+              "Sexual Activity",
+              "Family",
+              "Custom",
+              "Pediatric",
+              "Obstetric",
+              "Social Documentation",
+              "Socioeconomic",
+              "Dialysis",
+              "Gynecology",
+              "Lifestyle",
+              "Relationships",
+              "BH Substance Use",
+              "Vaping"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "PAT_HX_REV_TYPE",
+            "target": "PAT_HX_REVIEW",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE_COUNT"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "PAT_HX_REV_TYPE",
+            "target": "SOCIAL_ADL_HX",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "PAT_HX_REV_TYPE",
+            "target": "PAT_ENC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "PAT_HX_REV_TYPE",
+            "target": "SOCIAL_HX",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PAT_HX_REV_TYPE": [
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "GROUP_LINE": 1,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Medical",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "GROUP_LINE": 2,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Surgical",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "GROUP_LINE": 3,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Family",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "GROUP_LINE": 4,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Tobacco",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "GROUP_LINE": 4,
+      "VALUE_LINE": 2,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Alcohol",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "GROUP_LINE": 4,
+      "VALUE_LINE": 3,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Drug Use",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "GROUP_LINE": 4,
+      "VALUE_LINE": 4,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Sexual Activity",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "GROUP_LINE": 5,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Custom",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "GROUP_LINE": 5,
+      "VALUE_LINE": 2,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Custom",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "GROUP_LINE": 5,
+      "VALUE_LINE": 3,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Custom",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "GROUP_LINE": 6,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Socioeconomic",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "GROUP_LINE": 7,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Social Documentation",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991221485,
+      "GROUP_LINE": 1,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Medical",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "GROUP_LINE": 1,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Medical",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "GROUP_LINE": 2,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Surgical",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "GROUP_LINE": 3,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Family",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "GROUP_LINE": 4,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Custom",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "GROUP_LINE": 4,
+      "VALUE_LINE": 2,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Custom",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "GROUP_LINE": 4,
+      "VALUE_LINE": 3,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Custom",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "GROUP_LINE": 5,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Tobacco",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "GROUP_LINE": 5,
+      "VALUE_LINE": 2,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Alcohol",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "GROUP_LINE": 5,
+      "VALUE_LINE": 3,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Drug Use",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "GROUP_LINE": 5,
+      "VALUE_LINE": 4,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Sexual Activity",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "GROUP_LINE": 6,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Tobacco",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "GROUP_LINE": 6,
+      "VALUE_LINE": 2,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Alcohol",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "GROUP_LINE": 6,
+      "VALUE_LINE": 3,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Drug Use",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "GROUP_LINE": 6,
+      "VALUE_LINE": 4,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Sexual Activity",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "GROUP_LINE": 7,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Socioeconomic",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "GROUP_LINE": 8,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Social Documentation",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 802802103,
+      "GROUP_LINE": 1,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2020-01-09 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Tobacco",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 802802103,
+      "GROUP_LINE": 2,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2020-01-09 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Tobacco",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "GROUP_LINE": 1,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Tobacco",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "GROUP_LINE": 2,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Medical",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "GROUP_LINE": 3,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Surgical",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "GROUP_LINE": 4,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Family",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "GROUP_LINE": 5,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Family",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "GROUP_LINE": 6,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Alcohol",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "GROUP_LINE": 6,
+      "VALUE_LINE": 2,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Sexual Activity",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "GROUP_LINE": 6,
+      "VALUE_LINE": 3,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Drug Use",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "GROUP_LINE": 6,
+      "VALUE_LINE": 4,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Tobacco",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "GROUP_LINE": 7,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Alcohol",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "GROUP_LINE": 7,
+      "VALUE_LINE": 2,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Sexual Activity",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "GROUP_LINE": 7,
+      "VALUE_LINE": 3,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Drug Use",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "GROUP_LINE": 7,
+      "VALUE_LINE": 4,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "HX_REVIEWED_TYPE_C_NAME": "Tobacco",
+      "$meta": {
+        "type": "PAT_HX_REV_TYPE"
+      }
+    }
+  ]
+}

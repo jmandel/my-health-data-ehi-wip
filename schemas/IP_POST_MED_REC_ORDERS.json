@@ -1,0 +1,91 @@
+{
+  "name": "IP_POST_MED_REC_ORDERS",
+  "description": "This table stores inpatient medication orders that were signed and/or released after discharge medication reconciliation was already complete for that admission, along with information about whether and why the signing user was shown the Reconciliation on the Fly prompt and how they responded to it.",
+  "primaryKey": [
+    {
+      "columnName": "EVENT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "EVENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the event record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "POST_REC_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the order that was signed after discharge order reconciliation had been completed."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "OTF_EVENT_LINE_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the event that was filed when this order was signed. Together with EVENT_ID, this forms the foreign key to the ED_IEV_EVENT_INFO table."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PROMPT_SHOWN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID indicating whether the user was prompted to reconcile the order for discharge prior to signing it, and what options, if any, were present in that prompt.",
+      "entries": [
+        "Prompt not shown",
+        "Message only",
+        "Full prompt",
+        "Message and Don't Prescribe button",
+        "Message and Reconcile After Signing button"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PROMPT_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the reason why the user wasn't shown the full prompt to reconcile this order for discharge. This is NULL if the user saw the full prompt.",
+      "entries": [
+        "Disabled in profile",
+        "Disabled for ED",
+        "Unsupported activity",
+        "Criteria not currently met",
+        "Manually disabled",
+        "Patient is Review Not Required",
+        "Medication is Review Not Required",
+        "Route is Review Not Required",
+        "Phase of Care is Review Not Required",
+        "Set to message-only in profile",
+        "No target navigator",
+        "Similar discharge med found",
+        "No target navigator and similar discharge med"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PROMPT_RESPONSE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the action, if any, that the user took on the prompt to reconcile this order for discharge.",
+      "entries": [
+        "Don't Prescribe",
+        "Reconcile After Signing"
+      ]
+    }
+  ]
+}

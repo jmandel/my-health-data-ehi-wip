@@ -1,0 +1,146 @@
+{
+  "name": "PRE_AR_CHG_HX",
+  "description": "This table contains one row for each activity performed on a temporary accounts receivable (TAR) record of type charge. This table contains basic information about the activity (activity code, user, date, and comment). Note: TAR records in Chronicles are purged periodically depending on your system setting. Be aware that old data in this table might be lost if you truncate the table.",
+  "primaryKey": [
+    {
+      "columnName": "TAR_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CHARGE_HX_LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TAR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the temporary transaction�record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CHARGE_HX_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the history information associated with this record. This does not correspond to the CHARGE_LINE columns of other PRE_AR_CHG tables."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ACTIVITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The activity�performed category ID�for the temporary transaction.",
+      "entries": [
+        "Enter WQ",
+        "Review",
+        "Reenter WQ",
+        "Force Resubmit",
+        "Transfer",
+        "Deletion",
+        "Automatic Transfer",
+        "Automatic Reentry",
+        "Resubmit",
+        "Automatic Filing",
+        "Defer",
+        "Activate",
+        "Charge Homed",
+        "Automatic Update",
+        "Retroadjudication",
+        "Pre Charge Review Extension",
+        "Research Review",
+        "Request for Billing Information",
+        "Research Correct",
+        "Anesthesia Session Flagged",
+        "Anesthesia Session Unflagged",
+        "Skip",
+        "Charge Session Created",
+        "Start Charge Review Filing",
+        "Violate Rule",
+        "Rule Resolved",
+        "Exit WQ",
+        "Charge Filed"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ACTIVITY_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the activity is performed."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ACTIVITY_EXIT_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the \"resolve\" activity is performed."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ACTIVITY_TIMESTAMP",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The time when the activity was performed in seconds from 12/31/1840."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who performed the activity.  This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "USER_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comments that the user added when performing the activity."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "EXIT_TIMESTAMP",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The time when the resolving activity was performed in seconds from 12/31/1840."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "EXIT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who performed the resolving activity.  This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "EXIT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "EXIT_ACTIVITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number of the resolving activity."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "DEFER_UNTIL_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Records the date & time (including time zone in UTC format) that a charge session was deferred until."
+    }
+  ]
+}

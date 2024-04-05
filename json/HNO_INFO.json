@@ -1,0 +1,3247 @@
+{
+  "$meta": {
+    "schemas": {
+      "HNO_INFO": {
+        "name": "HNO_INFO",
+        "description": "This table contains common information from General Use Notes items. This table focuses on time-insensitive, once-per-record data while other HNO tables (e.g., NOTES_ACCT, CODING_CLA_NOTES) contain the data for different note types.",
+        "primaryKey": [
+          {
+            "columnName": "NOTE_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "NOTE_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the note record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "NOTE_TYPE_NOADD_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This virtual item is populated with a category value from Note - Type No-Add (I HNO 51) according to the following logic: * if Note - Type No-Add (I HNO 51) is populated, use the value directly * if Note - Type No-Add (I HNO 51) is null and the note is not ambulatory, return null * if Note - Type No-Add (I HNO 51) is null and the note has an ambulatory encounter context, obtain a category from the UCN note type (I HNO 34033) and map that value to an equivalent category from Note - Type No Add (I HNO 51), if possible",
+            "entries": [
+              "General",
+              "Phone Message",
+              "Letter",
+              "Message",
+              "Telephone Encounter",
+              "Provider Comments",
+              "RTF Letter",
+              "Routing Comments",
+              "Specialty Comments",
+              "Charting Text",
+              "MyChart Message",
+              "Eligibility Message",
+              "Criteria Review",
+              "AP Claim Code Edit",
+              "Patient Flag",
+              "Dental Soft Tissue Note",
+              "ABN INFORMATION",
+              "Progress Note",
+              "Nursing Note",
+              "Consult/Results - Findings",
+              "Consult/Results - Impression",
+              "Consult/Results - Recommendations/Plans",
+              "Chart Sync Patient Summary Report",
+              "Chart Sync Admission Summary Report",
+              "H&P Note",
+              "Procedure Note",
+              "Communication Body",
+              "Anesthesia",
+              "Department Message",
+              "Assessment & Plan Note",
+              "Problem Overview",
+              "Subjective & Objective",
+              "Care Coordination",
+              "Home Care Admit",
+              "Home Care Non-Admit",
+              "CTI Order",
+              "Bookmark",
+              "Hospice Discharge Remarks",
+              "Charge Homing Guarantor Inquiry",
+              "Patient Genomic Indicator Overview Note",
+              "Home Health Face to Face Attestation",
+              "Hospice Face to Face Attestation",
+              "Sticky Note",
+              "Coding Query",
+              "Address Verification Message",
+              "Intake Communication",
+              "Pharmacy Enrollment Note",
+              "Patient Instructions",
+              "Discharge Attachment",
+              "Previous Reports",
+              "Result Order Report",
+              "Home Care Intervention",
+              "Home Health Plan of Care Header",
+              "Dermatology Finding Description",
+              "Specimen Tracking Comments",
+              "Radiology Study Results",
+              "Auth/Cert Update",
+              "VECOZO Authorization Update",
+              "OR Instructions",
+              "In Basket Conversation",
+              "Incoming Message Pend Notes",
+              "Xtenity Patient Portal Message",
+              "Outside Organization Note",
+              "Outside Organization Update",
+              "Outside Organization Document",
+              "Cosign with Attestation Text",
+              "Simple Med Note",
+              "Medication History",
+              "ANSI 278 Information",
+              "History Overview",
+              "ED Disposition Edit Trail",
+              "Lab",
+              "Intervention Data from External System",
+              "Event Note",
+              "Treatment Summary",
+              "Rehabilitation Potential",
+              "Discharge Plans",
+              "History Event Details",
+              "Referral Transaction Record",
+              "Happy Together Result Transcription",
+              "Group Note",
+              "Care Advice Text",
+              "Infection Case",
+              "Clinical Note Summary",
+              "Transplant",
+              "Organ",
+              "Reg History Event",
+              "Interfaced Result",
+              "Outside Organization Coverage Information"
+            ]
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique contact serial number for the patient encounter to which the note is attached. This number is unique across all patient encounters in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI)."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "ENTRY_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the user who created this note. This column is frequently used to link to the CLARITY_EMP table.",
+            "linksTo": "CLARITY_EMP"
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "ENTRY_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "IP_NOTE_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The note type associated with this note.",
+            "entries": [
+              "Progress Notes",
+              "Consults",
+              "Procedures",
+              "H&P",
+              "Discharge Summary",
+              "ED Notes",
+              "Initial Assessments",
+              "ED Triage Notes",
+              "Case Communication",
+              "OR Nursing",
+              "OR Surgeon",
+              "OR PreOp",
+              "OR PostOp",
+              "OR Anesthesia",
+              "Ambulatory Progress Notes",
+              "Ambulatory H&P Notes",
+              "Ambulatory Procedure Notes",
+              "Discharge Instructions",
+              "ED Provider Notes",
+              "Decision",
+              "Note to Patient via Portal",
+              "Anesthesia Preprocedure Evaluation",
+              "Anesthesia Postprocedure Evaluation",
+              "H&P (View-Only)",
+              "Interval H&P Note",
+              "Anesthesia Procedure Notes",
+              "Addendum Note",
+              "Care Plan",
+              "Hospital Course",
+              "Subjective & Objective",
+              "L&D Delivery Note",
+              "Telephone Encounter",
+              "Patient Instructions",
+              "Assessment & Plan Note",
+              "Communication Body",
+              "ED AVS Snapshot",
+              "Letter",
+              "Lactation Note",
+              "Committee Review",
+              "IP AVS Snapshot",
+              "MR AVS Snapshot",
+              "Pharmacy Enrollment Note",
+              "Pre-Procedure Assessment",
+              "Discharge Instr - Supplementary Instructions",
+              "Discharge Instr - AVS First Page",
+              "Discharge Instr - Meds",
+              "Discharge Instr - Pharmacy",
+              "Discharge Instr - Activity",
+              "Discharge Instr - Diet",
+              "Discharge Instr - Appointments",
+              "Discharge Instr - Lab",
+              "Discharge Instr - Other Orders",
+              "Discharge Instr - Other Info",
+              "CAA (Care Area Assessment)",
+              "Nursing Note",
+              "ACP (Advance Care Planning)",
+              "ERAS",
+              "Result Encounter Note",
+              "Radiation Planning Notes",
+              "Radiation Completion Notes",
+              "Home Infusion",
+              "Form",
+              "BH Treatment Plan",
+              "Group Note",
+              "Video Visit Routing Comment",
+              "E-Visit Routing Comment",
+              "Claim Note",
+              "Dialysis Plan of Care Note",
+              "Home Health Plan of Care Certification Statement",
+              "Home Health Plan of Care",
+              "SMD Notes",
+              "Unmapped External Note",
+              "Filtered External Note",
+              "Code Documentation",
+              "Sedation Documentation",
+              "JDT PCOD",
+              "Dental Procedure Details",
+              "Home Health",
+              "LTC Provider Review",
+              "Chart Abstraction",
+              "Inpatient Self-Administration Sheet",
+              "Outpatient Self-Administration Sheet",
+              "Inpatient Medication Chart",
+              "Outpatient Medication Chart",
+              "Hospice",
+              "Hospice Plan of Care",
+              "Hospice Non-Covered",
+              "Hard Deleted Note"
+            ]
+          },
+          {
+            "ordinalPosition": 16,
+            "name": "TX_IB_FOLDER_C_NAME",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Stores the Type of Message (I EOW 30) In Basket folder to be used by the Transcription interface to generate In Basket messages",
+            "entries": [
+              "Staff Message",
+              "Schedule List",
+              "Send a Letter",
+              "Phone Calls",
+              "Transcription",
+              "Patient Calls",
+              "Results",
+              "Charts",
+              "Dictations",
+              "Overdue Rslt",
+              "Orders",
+              "Med. Cosign",
+              "Referral Verification",
+              "Open Orders",
+              "Station Msg",
+              "Credential",
+              "Order Cosign",
+              "CRM",
+              "Claims",
+              "Referral Notice",
+              "Patient Call Back",
+              "Patient Reminder",
+              "Canceled Orders",
+              "Chart Cosign",
+              "Open Encounters",
+              "Charge Review",
+              "Charge Update",
+              "Case Creation",
+              "Case Review",
+              "Case Overdue",
+              "Rx Auth",
+              "Rx Response",
+              "Addendum",
+              "Break-the-Glass",
+              "Overdue Rx Auth",
+              "CDS alert",
+              "Charge Pending",
+              "Merge Notification for Patients with Histories Contacts",
+              "Incomplete Note",
+              "Preadmission Schedule List",
+              "Claim Letter",
+              "Referral Letter",
+              "Result Notes",
+              "Collection Tickler",
+              "Appointment Notification",
+              "Unmerge Notification for Patients with Histories Contacts",
+              "Order Based Transcription",
+              "CC'd Result Message",
+              "Overdue Notice",
+              "Receipt",
+              "Patient Schedule Request",
+              "Patient Refill Request",
+              "Patient Medical Advice Request",
+              "Patient CRM Request",
+              "Hospital ADT",
+              "Progress Notes",
+              "Length of Stay Alert",
+              "Clinical Letter",
+              "Letter Dictation",
+              "Voice Message",
+              "Preadmission Form",
+              "Covered Work",
+              "Verbal Order Cosign",
+              "Open Letters",
+              "Follow-up Reminder",
+              "Chart Deficiencies",
+              "Overdue Releases",
+              "Timeout Message",
+              "Charge Review Information",
+              "Add-on Orders",
+              "Expiring Orders",
+              "Progress Note Cosign",
+              "Work Queue Message",
+              "Nurse Triage Call Back",
+              "PCP Change Review",
+              "Incomplete Progress Note",
+              "Nurse Triage/Routing",
+              "Admission Notice",
+              "Discharge Notice",
+              "Transfer Notice",
+              "Initiate Call Back",
+              "Referral Status Change",
+              "Help Desk",
+              "Case Message",
+              "Log Message",
+              "HH Order",
+              "HH Order Alert",
+              "Home Health Discharge",
+              "CC Charts",
+              "Declined Deficiencies",
+              "Deficiency Update Errors",
+              "Expiring Referrals",
+              "ADT Orders Error",
+              "IP Cosign Note",
+              "Inpatient Transcriptions",
+              "Cancer Staging",
+              "ERefill",
+              "Inpatient ND Consultation Alert",
+              "Send Page",
+              "Outstanding Page",
+              "Rejected Transcription",
+              "Claim Refund Due",
+              "Overdue Transcription",
+              "MR Encounter form",
+              "Device data",
+              "Referral Notification Letter",
+              "Letter Review",
+              "Unsigned Orders",
+              "Encounter Report",
+              "Completed Orders",
+              "ADT Light",
+              "CRM Reply Message",
+              "First Access Notification",
+              "Web: New Patient",
+              "Referral Message",
+              "INR Reminder",
+              "Anticoagulation Enrollment",
+              "Restricted Messages",
+              "Medication Messages",
+              "Unverified Medication Messages",
+              "Order set notifications",
+              "Preference Card Change Request",
+              "HH Visit Set Auth",
+              "Reporting Workbench",
+              "HH Visit Set Scheduling",
+              "Home Care Schedule",
+              "HH UNLOCKED ASSESSMENT WARNING",
+              "HH THERAPY UPCODE MESSAGE",
+              "Bed Requested Notice",
+              "Bed Assigned Notice",
+              "Bed Request Completed Notice",
+              "Home Care Admit",
+              "HH Auth Cert",
+              "ADT Integrity Message",
+              "Unviewed Test Results Message",
+              "New User Request",
+              "Community File Upload",
+              "Overdue Message",
+              "ERefill Follow-up",
+              "Refill Errors",
+              "UNOS Notification",
+              "Post Mortem Notification",
+              "ERefill Cosign",
+              "Home Care Referral",
+              "Hospice Plan of Care Review",
+              "File Chart",
+              "File Restricted",
+              "Referral Triage",
+              "Multi-step Order Entry Task",
+              "E-Prescribing Errors",
+              "E-Prescribing Sig Map",
+              "Admin Request",
+              "Rx Adjudication Error",
+              "Continued Care and Services Request",
+              "eReferrals Errors",
+              "Hospice Complete Intake",
+              "INR Encounters",
+              "Episode Notification",
+              "Letter Queue",
+              "Comm Mgmt-New Provider Request",
+              "DBC Alert",
+              "Bulk Actions",
+              "Documentation Validation Checks",
+              "Group Review",
+              "Orders 2",
+              "Orders 3",
+              "Negative Application Receipts",
+              "REVIEW REPORTS",
+              "Medication Cancellation",
+              "Nurse Triage Encounter",
+              "Claims and Remittance Message",
+              "Radiology Messages",
+              "Rule Compiler Error Report",
+              "Claim 9999 Error",
+              "Overlay Resolution Message",
+              "ChartSync Conflict Message",
+              "Studies to Sign",
+              "CRM Notification",
+              "Rx Billing Errors",
+              "Rx Build Errors",
+              "RX Adjust Times Notification",
+              "Rx ADT Notification",
+              "Rx Patient Stored Medications",
+              "Rx Barcode Validation",
+              "Notification",
+              "Health Maintenance",
+              "Order Releasing Failures",
+              "Treatment Plan Verbal Order Cosign",
+              "Orders Second Sign Required",
+              "Orders Second Sign Rejected",
+              "Orders Second Sign Modify",
+              "Orders Second Sign Notify",
+              "MyChart Administration Message",
+              "MyChart IMH Questionnaire Message",
+              "MyChart Patient Entered Flowsheet Messages",
+              "Message to Patient",
+              "Unread Patient Message Notification",
+              "Patient Questionnaire Submission (OLD)",
+              "Patient Insurance Information Update",
+              "Patient Information Update",
+              "WPR merge unmerge summary message",
+              "Patient Access Notification",
+              "E-Visit Payment Received",
+              "Patient History Questionnaire Submission",
+              "Patient Access Login Admin Alert",
+              "Proxy Access Level Transition Locked Records Message",
+              "E-Visit Message",
+              "Clinical Update Message",
+              "Patient Preference Update",
+              "Patient Activation Code Request",
+              "ABN Follow Up",
+              "Kiosk Demographics Verification",
+              "Kiosk Insurance Verification",
+              "Kiosk Emergency Contact Verification",
+              "Kiosk Patient Photo Verification",
+              "Patient PCP Verification",
+              "Rx SAP Inventory Errors",
+              "Rx Test Adjudication",
+              "Event Mon - Outpatient",
+              "Event Mon - Inpatient",
+              "Event Mon - New Managed Access Patient",
+              "Event Mon - Lab Results",
+              "Event Mon - Emergency Department",
+              "Event Mon - Referrals",
+              "Event Mon - Financial",
+              "Event Mon - Patient Status",
+              "Event Mon - Enrollment",
+              "Home Care Case Communication",
+              "Medication Management",
+              "E-Consult",
+              "Prior Authorization",
+              "Interfaced Call Center",
+              "Nurse Triage/Routing Follow-up",
+              "Failed Fax",
+              "Chart Completion",
+              "Cosign - Clinic Orders",
+              "Treatment Plan Order Removal Cosign",
+              "Lab Cancel Item",
+              "Lab TAT Warning",
+              "Lab Verification Message",
+              "Lab Redraw Test",
+              "Lab Hold Message",
+              "Lab Ship Message",
+              "Lab Auto Result Checking Message",
+              "Media Manager",
+              "Research Recruitment",
+              "Research Provider Approval",
+              "Quality Improvement Message",
+              "Adverse Event Review",
+              "Research ADT Event Notification",
+              "POC Update Notification",
+              "Video Visit",
+              "Proxy Upgrade Request",
+              "AC SIGNIFICANT WEIGHT CHANGE",
+              "ED Charts",
+              "ED Charting Reminder",
+              "ED Note Accepted",
+              "Follow-Up Charts",
+              "IP ROUTING",
+              "IP CONSULT ORDER ALERT",
+              "MR ALLERGIES INTERACTION ALERT",
+              "Patient Drug-Disease Interactions",
+              "IP INCOMPLETE NOTE",
+              "MR ALLERGEN LIST",
+              "Dual Sign Orders",
+              "Chart Correction Message",
+              "ID Chart Correction Message",
+              "BestPractice",
+              "Feedback",
+              "Procedure Messages",
+              "Procedure Prep",
+              "Block Notification",
+              "Cardiology Message",
+              "Imaging Peer Review Message",
+              "Actionable Findings Escalation",
+              "Lab-AP: Surgical Pathology",
+              "Lab-AP: Cytology",
+              "Lab-AP: Cytology Rescreen",
+              "Lab-AP: QA Review",
+              "Lab-AP: Pathology Review",
+              "Lab-AP: Gross",
+              "Lab-AP: Histology",
+              "Lab Add-ons",
+              "OUT OF CONTACT NOTIFICATION",
+              "Registry Data Import",
+              "Coding Query",
+              "Route Plan",
+              "Treatment Summary",
+              "MR Coding Query",
+              "Patient Non-Clinical Update",
+              "Patient Clinical Update",
+              "MyChart Administration Notification",
+              "MyChart Notifications",
+              "Patient Questionnaire Submission",
+              "Patient Escalation",
+              "Patient Pharmacy Message",
+              "Therapy Plan Notifications",
+              "Update Diagnosis",
+              "Treatment Approval",
+              "Pending Orders",
+              "Document Signatures",
+              "Studies to Read",
+              "Overdue Results Errors",
+              "Results Error Message",
+              "Instant Orders Errors",
+              "Dictate Later",
+              "CE Event Notification",
+              "CE Request Notification",
+              "CE Outgoing Patient Query Notification",
+              "CE Incoming Patient Query Notification",
+              "CE Outside Messages",
+              "CE Outside Referral Updates",
+              "CE International Messages",
+              "CE Failed Direct Message Notification",
+              "External Chart Correction Message Notification",
+              "Multidose",
+              "Advance Care Plan Update",
+              "Bulk Letters",
+              "eMessaging Notifications",
+              "eMessaging Reports",
+              "eMessaging Dialog",
+              "Compass Rose Failed Request",
+              "Push Notification",
+              "Swiss Cost Assurance Notification",
+              "Appointment Request",
+              "Site Maintenance",
+              "Charge Router Message",
+              "Pending Mobile Charge Notification",
+              "Broadcast Message",
+              "ORTHO MISSING VISITS",
+              "Look-Alikes Saved Search",
+              "Look-Alikes Collaboration",
+              "Anesthesia Messages",
+              "Open Anesthesia Record",
+              "Med Review",
+              "Anesthesia Addendum Messages",
+              "Clinical Content Review",
+              "Employer Message",
+              "Unidentified Client Concern",
+              "Treatment Team Message",
+              "Patient Request",
+              "Secondary UR Review"
+            ]
+          },
+          {
+            "ordinalPosition": 17,
+            "name": "CREATE_INSTANT_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "The note's create instant."
+          },
+          {
+            "ordinalPosition": 23,
+            "name": "DATE_OF_SERVIC_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "The note's date of service."
+          },
+          {
+            "ordinalPosition": 25,
+            "name": "LST_FILED_INST_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "The instant the note was last edited."
+          },
+          {
+            "ordinalPosition": 26,
+            "name": "UPDATE_DATE",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The date and time when this row was created or last updated in Clarity."
+          },
+          {
+            "ordinalPosition": 27,
+            "name": "CURRENT_AUTHOR_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item stores the current author of the note for indexing purposes."
+          },
+          {
+            "ordinalPosition": 28,
+            "name": "CURRENT_AUTHOR_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 30,
+            "name": "VISIT_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Professional billing visit number attached to this note."
+          },
+          {
+            "ordinalPosition": 31,
+            "name": "CRT_INST_LOCAL_DTTM",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "This is a virtual item that gets the create instant (I HNO 17105), in local time format."
+          },
+          {
+            "ordinalPosition": 32,
+            "name": "NOTE_PURPOSE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This is a virtual item that displays the note purpose. It was previously stored in Note - Purpose (INP-5045).",
+            "entries": [
+              "NORMAL",
+              "COSIGN",
+              "ADDENDUM",
+              "Non Authorized Transcription",
+              "Resident Authorized Transcription",
+              "Authorized Transcription",
+              "Transcriptions with No recepient id"
+            ]
+          },
+          {
+            "ordinalPosition": 33,
+            "name": "PRIORITY_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The priority of the note (Yes = High, No = Routine).",
+            "entries": [
+              "Yes",
+              "No"
+            ]
+          },
+          {
+            "ordinalPosition": 41,
+            "name": "CONVERSATION_MSG_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The record for the message that was also filed as a note. The text filed in the message and the quicknote will be the same and displaying one of these to the end user should be sufficient."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "HNO_RECORD_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Record type.",
+            "entries": [
+              "PB Guarantor Note",
+              "PB Guarantor Letter",
+              "PB Insurance Follow-up Letter",
+              "PB Hospital Account Note",
+              "CRM Letter",
+              "CRM Envelope",
+              "CRM Email",
+              "HB Guarantor Note",
+              "HB Hospital Account Note",
+              "HB Guarantor Letter",
+              "HB Hospital Account Letter",
+              "HB Liability Bucket Letter",
+              "HB Liability Bucket Note",
+              "HB Contractual History Note",
+              "EB Guarantor Note",
+              "Reg Financial Assistance Letter",
+              "Reg Financial Assistance Tracker Note",
+              "Reg Financial Assistance Case Note"
+            ],
+            "mergedFrom": "HNO_INFO_2"
+          },
+          {
+            "ordinalPosition": 16,
+            "name": "ACTIVE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Whether the note is active. This item is not populated for all notes.",
+            "entries": [
+              "Active",
+              "Inactive"
+            ],
+            "mergedFrom": "HNO_INFO_2"
+          }
+        ],
+        "merged": [
+          {
+            "name": "HNO_INFO_2",
+            "description": "This table contains common information from General Use Notes items. This table focuses on one time only data while other HNO tables (e.g., NOTES_ACCT, CODING_CLA_NOTES) contain the data for different note types."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "HNO_INFO",
+            "target": "HNO_ORDERS",
+            "joinKeys": [
+              {
+                "source": "NOTE_ID",
+                "target": "NOTE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HNO_INFO",
+            "target": "NOTES_LINK_ORD_TXN",
+            "joinKeys": [
+              {
+                "source": "NOTE_ID",
+                "target": "NOTE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HNO_INFO",
+            "target": "V_EHI_HNO_LINKED_PATS",
+            "joinKeys": [
+              {
+                "source": "NOTE_ID",
+                "target": "NOTE_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HNO_INFO": [
+    {
+      "NOTE_ID": "1473625808",
+      "NOTE_TYPE_NOADD_C_NAME": "Letter",
+      "PAT_ENC_CSN_ID": 724619887,
+      "ENTRY_USER_ID": "JMS402",
+      "ENTRY_USER_ID_NAME": "SUTTER, JULIE M",
+      "IP_NOTE_TYPE_C_NAME": "Letter",
+      "UPDATE_DATE": "2018-08-20 13:06:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432308285",
+      "ENTRY_USER_ID": "JMH406",
+      "ENTRY_USER_ID_NAME": "HILL, JILL M",
+      "UPDATE_DATE": "2022-03-07 12:07:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "1484164938",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 727947624,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2018-08-28 13:40:00",
+      "DATE_OF_SERVIC_DTTM": "2018-08-28 13:40:00",
+      "LST_FILED_INST_DTTM": "2018-08-28 13:40:00",
+      "UPDATE_DATE": "2021-11-13 13:45:00",
+      "CURRENT_AUTHOR_ID": "DMW400",
+      "CURRENT_AUTHOR_ID_NAME": "WILD, DAWN M",
+      "CRT_INST_LOCAL_DTTM": "2018-08-28 08:40:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4662006870",
+      "NOTE_TYPE_NOADD_C_NAME": "Progress Note",
+      "PAT_ENC_CSN_ID": 991225117,
+      "IP_NOTE_TYPE_C_NAME": "Progress Notes",
+      "CREATE_INSTANT_DTTM": "2023-09-28 12:49:00",
+      "DATE_OF_SERVIC_DTTM": "2023-09-28 14:30:00",
+      "LST_FILED_INST_DTTM": "2023-09-28 15:18:00",
+      "UPDATE_DATE": "2023-11-10 17:08:00",
+      "CURRENT_AUTHOR_ID": "RAMMELZL",
+      "CURRENT_AUTHOR_ID_NAME": "RAMMELKAMP, ZOE L",
+      "CRT_INST_LOCAL_DTTM": "2023-09-28 07:49:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3818357566",
+      "UPDATE_DATE": "2022-08-29 11:10:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "2312068435",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 829467718,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2020-07-21 16:31:00",
+      "DATE_OF_SERVIC_DTTM": "2020-07-21 16:31:00",
+      "LST_FILED_INST_DTTM": "2020-07-21 16:41:00",
+      "UPDATE_DATE": "2021-11-25 15:03:00",
+      "CURRENT_AUTHOR_ID": "BUDZBANL",
+      "CURRENT_AUTHOR_ID_NAME": "BUDZBAN, NICOLE L",
+      "CRT_INST_LOCAL_DTTM": "2020-07-21 11:31:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432308287",
+      "ENTRY_USER_ID": "KLF403",
+      "ENTRY_USER_ID_NAME": "FALDUTO, KAITLYN L",
+      "UPDATE_DATE": "2022-03-11 17:05:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "3432308307",
+      "ENTRY_USER_ID": "AVADYNEVENDOR",
+      "ENTRY_USER_ID_NAME": "AVADYNE, VENDOR",
+      "UPDATE_DATE": "2022-04-30 10:14:00",
+      "PRIORITY_YN": "N",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "4662400462",
+      "ENTRY_USER_ID": "MBS403",
+      "ENTRY_USER_ID_NAME": "SMITH, MARY B",
+      "UPDATE_DATE": "2023-09-28 10:45:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "2035952480",
+      "ENTRY_USER_ID": "KJG400",
+      "ENTRY_USER_ID_NAME": "GILBECK, KAYLA J",
+      "UPDATE_DATE": "2023-03-30 11:17:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "3476135346",
+      "PAT_ENC_CSN_ID": 922942674,
+      "IP_NOTE_TYPE_C_NAME": "Consults",
+      "CREATE_INSTANT_DTTM": "2022-03-11 14:12:00",
+      "DATE_OF_SERVIC_DTTM": "2022-03-11 20:50:00",
+      "LST_FILED_INST_DTTM": "2022-03-11 23:53:00",
+      "UPDATE_DATE": "2022-04-25 14:17:00",
+      "CURRENT_AUTHOR_ID": "ALG006",
+      "CURRENT_AUTHOR_ID_NAME": "GILMOUR, AARON K",
+      "CRT_INST_LOCAL_DTTM": "2022-03-11 08:12:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "2304294490",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 829385742,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2020-07-16 16:49:00",
+      "DATE_OF_SERVIC_DTTM": "2020-07-16 16:49:00",
+      "LST_FILED_INST_DTTM": "2020-07-16 17:10:00",
+      "UPDATE_DATE": "2021-11-25 15:11:00",
+      "CURRENT_AUTHOR_ID": "BUDZBANL",
+      "CURRENT_AUTHOR_ID_NAME": "BUDZBAN, NICOLE L",
+      "CRT_INST_LOCAL_DTTM": "2020-07-16 11:49:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4849759260",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 1043034397,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2023-12-22 21:06:00",
+      "DATE_OF_SERVIC_DTTM": "2023-12-22 21:06:00",
+      "LST_FILED_INST_DTTM": "2023-12-22 21:14:00",
+      "UPDATE_DATE": "2023-12-22 16:08:00",
+      "CURRENT_AUTHOR_ID": "MBS403",
+      "CURRENT_AUTHOR_ID_NAME": "SMITH, MARY B",
+      "CRT_INST_LOCAL_DTTM": "2023-12-22 15:06:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4072440113",
+      "ENTRY_USER_ID": "KLL403",
+      "ENTRY_USER_ID_NAME": "LOUGH, KAREN L",
+      "UPDATE_DATE": "2022-12-22 12:06:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "4215475900",
+      "NOTE_TYPE_NOADD_C_NAME": "Progress Note",
+      "PAT_ENC_CSN_ID": 958148810,
+      "IP_NOTE_TYPE_C_NAME": "Progress Notes",
+      "CREATE_INSTANT_DTTM": "2023-03-02 14:02:00",
+      "DATE_OF_SERVIC_DTTM": "2023-03-02 20:45:00",
+      "LST_FILED_INST_DTTM": "2023-03-02 21:47:00",
+      "UPDATE_DATE": "2023-06-26 10:36:00",
+      "CURRENT_AUTHOR_ID": "RAMMELZL",
+      "CURRENT_AUTHOR_ID_NAME": "RAMMELKAMP, ZOE L",
+      "CRT_INST_LOCAL_DTTM": "2023-03-02 08:02:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4578516153",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 1020583168,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2023-08-21 15:56:00",
+      "DATE_OF_SERVIC_DTTM": "2023-08-21 15:56:00",
+      "LST_FILED_INST_DTTM": "2023-08-21 15:56:00",
+      "UPDATE_DATE": "2023-08-21 11:28:00",
+      "CURRENT_AUTHOR_ID": "KLL403",
+      "CURRENT_AUTHOR_ID_NAME": "LOUGH, KAREN L",
+      "CRT_INST_LOCAL_DTTM": "2023-08-21 10:56:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3431975379",
+      "UPDATE_DATE": "2022-02-17 13:05:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "2358866225",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 833901305,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2020-08-14 14:47:00",
+      "DATE_OF_SERVIC_DTTM": "2020-08-14 14:47:00",
+      "LST_FILED_INST_DTTM": "2020-08-14 14:49:00",
+      "UPDATE_DATE": "2021-11-25 15:14:00",
+      "CURRENT_AUTHOR_ID": "PEPINPA",
+      "CURRENT_AUTHOR_ID_NAME": "PEPIN, PAMELA A",
+      "CRT_INST_LOCAL_DTTM": "2020-08-14 09:47:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "2302009098",
+      "UPDATE_DATE": "2020-07-15 12:05:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432308309",
+      "ENTRY_USER_ID": "AVADYNEVENDOR",
+      "ENTRY_USER_ID_NAME": "AVADYNE, VENDOR",
+      "UPDATE_DATE": "2022-05-11 17:05:00",
+      "PRIORITY_YN": "N",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "2302283378",
+      "ENTRY_USER_ID": "BUDZBANL",
+      "ENTRY_USER_ID_NAME": "BUDZBAN, NICOLE L",
+      "UPDATE_DATE": "2020-07-15 15:06:00",
+      "PRIORITY_YN": "N",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4662399454",
+      "NOTE_TYPE_NOADD_C_NAME": "Progress Note",
+      "PAT_ENC_CSN_ID": 991225117,
+      "IP_NOTE_TYPE_C_NAME": "Progress Notes",
+      "CREATE_INSTANT_DTTM": "2023-09-28 14:46:00",
+      "DATE_OF_SERVIC_DTTM": "2023-09-28 14:30:00",
+      "LST_FILED_INST_DTTM": "2023-09-28 15:18:00",
+      "UPDATE_DATE": "2023-11-10 17:08:00",
+      "CURRENT_AUTHOR_ID": "MBS403",
+      "CURRENT_AUTHOR_ID_NAME": "SMITH, MARY B",
+      "CRT_INST_LOCAL_DTTM": "2023-09-28 09:46:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4663801838",
+      "UPDATE_DATE": "2023-09-28 17:09:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4072443549",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 977858467,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2022-12-22 17:29:00",
+      "DATE_OF_SERVIC_DTTM": "2022-12-22 17:29:00",
+      "LST_FILED_INST_DTTM": "2022-12-22 17:30:00",
+      "UPDATE_DATE": "2022-12-22 12:06:00",
+      "CURRENT_AUTHOR_ID": "KLL403",
+      "CURRENT_AUTHOR_ID_NAME": "LOUGH, KAREN L",
+      "CRT_INST_LOCAL_DTTM": "2022-12-22 11:29:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3455696699",
+      "UPDATE_DATE": "2022-03-01 17:05:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "2302006711",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 829385742,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2020-07-15 16:37:00",
+      "DATE_OF_SERVIC_DTTM": "2020-07-15 16:37:00",
+      "LST_FILED_INST_DTTM": "2020-07-15 16:48:00",
+      "UPDATE_DATE": "2021-11-25 15:03:00",
+      "CURRENT_AUTHOR_ID": "BUDZBANL",
+      "CURRENT_AUTHOR_ID_NAME": "BUDZBAN, NICOLE L",
+      "CRT_INST_LOCAL_DTTM": "2020-07-15 11:37:00",
+      "NOTE_PURPOSE_C_NAME": "ADDENDUM",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3441333955",
+      "ENTRY_USER_ID": "KEH405",
+      "ENTRY_USER_ID_NAME": "HOOVER, KATY E",
+      "UPDATE_DATE": "2022-04-21 19:22:00",
+      "PRIORITY_YN": "N",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4578520565",
+      "ENTRY_USER_ID": "WENTZTC",
+      "ENTRY_USER_ID_NAME": "IRELAND, TRACY C",
+      "UPDATE_DATE": "2023-08-23 10:53:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "4711777102",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 1031703883,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2023-10-20 13:12:00",
+      "DATE_OF_SERVIC_DTTM": "2023-10-20 13:12:00",
+      "LST_FILED_INST_DTTM": "2023-10-20 13:37:00",
+      "UPDATE_DATE": "2023-11-22 14:08:00",
+      "CURRENT_AUTHOR_ID": "NACKSR",
+      "CURRENT_AUTHOR_ID_NAME": "NACK, SAMANTHA R",
+      "CRT_INST_LOCAL_DTTM": "2023-10-20 08:12:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "1473624254",
+      "UPDATE_DATE": "2020-11-08 19:28:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "1473622964",
+      "UPDATE_DATE": "2020-11-08 19:28:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "2312789958",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 830043848,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2020-07-21 20:57:00",
+      "DATE_OF_SERVIC_DTTM": "2020-07-21 20:57:00",
+      "LST_FILED_INST_DTTM": "2020-07-21 20:57:00",
+      "UPDATE_DATE": "2021-11-25 15:03:00",
+      "CURRENT_AUTHOR_ID": "KLL403",
+      "CURRENT_AUTHOR_ID_NAME": "LOUGH, KAREN L",
+      "CRT_INST_LOCAL_DTTM": "2020-07-21 15:57:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4214918730",
+      "UPDATE_DATE": "2023-03-02 10:31:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4662454903",
+      "ENTRY_USER_ID": "RAMMELZL",
+      "ENTRY_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "UPDATE_DATE": "2023-09-28 11:25:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "3476208874",
+      "NOTE_TYPE_NOADD_C_NAME": "Sticky Note",
+      "ENTRY_USER_ID": "ALG006",
+      "ENTRY_USER_ID_NAME": "GILMOUR, AARON K",
+      "UPDATE_DATE": "2022-03-22 19:04:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "1576929392",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 750474644,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2019-02-12 21:52:00",
+      "DATE_OF_SERVIC_DTTM": "2019-02-12 21:52:00",
+      "LST_FILED_INST_DTTM": "2019-02-12 21:52:00",
+      "UPDATE_DATE": "2022-04-13 14:59:00",
+      "CURRENT_AUTHOR_ID": "MXB454",
+      "CURRENT_AUTHOR_ID_NAME": "BOWER, MEGAN M",
+      "CRT_INST_LOCAL_DTTM": "2019-02-12 15:52:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432308303",
+      "ENTRY_USER_ID": "AUTOACCEPT",
+      "ENTRY_USER_ID_NAME": "AUTO ACCEPT",
+      "UPDATE_DATE": "2022-04-26 10:27:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Liability Bucket Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "3416358616",
+      "ENTRY_USER_ID": "JLM406",
+      "ENTRY_USER_ID_NAME": "MIRON, JACKI L",
+      "UPDATE_DATE": "2022-04-21 19:22:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432308304",
+      "ENTRY_USER_ID": "HBBCKGRND",
+      "ENTRY_USER_ID_NAME": "HB, BACKGROUND",
+      "UPDATE_DATE": "2022-04-27 10:27:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "4662630592",
+      "ENTRY_USER_ID": "EDILABIM",
+      "ENTRY_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "UPDATE_DATE": "2023-09-28 11:25:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "4033191892",
+      "UPDATE_DATE": "2022-12-05 13:07:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3818147454",
+      "NOTE_TYPE_NOADD_C_NAME": "General",
+      "UPDATE_DATE": "2022-08-29 14:06:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432308289",
+      "ENTRY_USER_ID": "CMM400",
+      "ENTRY_USER_ID_NAME": "MUTCH, CHERIE M",
+      "UPDATE_DATE": "2022-03-23 16:04:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "3432308312",
+      "ENTRY_USER_ID": "HBBCKGRND",
+      "ENTRY_USER_ID_NAME": "HB, BACKGROUND",
+      "UPDATE_DATE": "2022-05-12 10:26:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "3486451939",
+      "ENTRY_USER_ID": "PBNIGHTP",
+      "ENTRY_USER_ID_NAME": "PB, SYSTEM NIGHTLY PROCESSOR",
+      "UPDATE_DATE": "2022-03-17 10:17:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "PB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "2004601471",
+      "UPDATE_DATE": "2020-01-13 13:06:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "1570694587",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 750474644,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2019-02-01 19:09:00",
+      "DATE_OF_SERVIC_DTTM": "2019-02-01 19:09:00",
+      "LST_FILED_INST_DTTM": "2019-02-01 19:09:00",
+      "UPDATE_DATE": "2022-04-13 15:00:00",
+      "CURRENT_AUTHOR_ID": "MXB454",
+      "CURRENT_AUTHOR_ID_NAME": "BOWER, MEGAN M",
+      "CRT_INST_LOCAL_DTTM": "2019-02-01 13:09:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432308298",
+      "ENTRY_USER_ID": "HBBCKGRND",
+      "ENTRY_USER_ID_NAME": "HB, BACKGROUND",
+      "UPDATE_DATE": "2022-04-15 10:26:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Liability Bucket Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "3432308299",
+      "ENTRY_USER_ID": "HBBCKGRND",
+      "ENTRY_USER_ID_NAME": "HB, BACKGROUND",
+      "UPDATE_DATE": "2022-04-15 10:26:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "2300504995",
+      "NOTE_TYPE_NOADD_C_NAME": "Progress Note",
+      "PAT_ENC_CSN_ID": 829213099,
+      "IP_NOTE_TYPE_C_NAME": "Progress Notes",
+      "CREATE_INSTANT_DTTM": "2020-07-14 19:40:00",
+      "DATE_OF_SERVIC_DTTM": "2020-07-14 19:30:00",
+      "LST_FILED_INST_DTTM": "2020-07-14 19:48:00",
+      "UPDATE_DATE": "2021-11-25 15:11:00",
+      "CURRENT_AUTHOR_ID": "PICONEMA",
+      "CURRENT_AUTHOR_ID_NAME": "PICONE, MARY A",
+      "CRT_INST_LOCAL_DTTM": "2020-07-14 14:40:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4083105781",
+      "UPDATE_DATE": "2022-12-29 10:23:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432308295",
+      "ENTRY_USER_ID": "WESTBRKK",
+      "ENTRY_USER_ID_NAME": "WESTBROOK, KARLA K",
+      "UPDATE_DATE": "2022-04-14 12:08:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "4072440226",
+      "ENTRY_USER_ID": "KLL403",
+      "ENTRY_USER_ID_NAME": "LOUGH, KAREN L",
+      "UPDATE_DATE": "2022-12-22 12:06:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "1998093001",
+      "UPDATE_DATE": "2020-11-21 21:45:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432308293",
+      "ENTRY_USER_ID": "WESTBRKK",
+      "ENTRY_USER_ID_NAME": "WESTBROOK, KARLA K",
+      "UPDATE_DATE": "2022-04-14 12:08:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "3432308310",
+      "ENTRY_USER_ID": "AVADYNEVENDOR",
+      "ENTRY_USER_ID_NAME": "AVADYNE, VENDOR",
+      "UPDATE_DATE": "2022-05-11 17:05:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "4024492394",
+      "NOTE_TYPE_NOADD_C_NAME": "Progress Note",
+      "PAT_ENC_CSN_ID": 974614965,
+      "IP_NOTE_TYPE_C_NAME": "Progress Notes",
+      "CREATE_INSTANT_DTTM": "2022-12-01 14:14:00",
+      "DATE_OF_SERVIC_DTTM": "2022-12-01 15:30:00",
+      "LST_FILED_INST_DTTM": "2022-12-02 02:06:00",
+      "UPDATE_DATE": "2023-02-02 18:05:00",
+      "CURRENT_AUTHOR_ID": "MBS403",
+      "CURRENT_AUTHOR_ID_NAME": "SMITH, MARY B",
+      "CRT_INST_LOCAL_DTTM": "2022-12-01 08:14:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "2302403336",
+      "UPDATE_DATE": "2020-07-15 15:06:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4016534636",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 974452422,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2022-11-28 18:41:00",
+      "DATE_OF_SERVIC_DTTM": "2022-11-28 18:41:00",
+      "LST_FILED_INST_DTTM": "2022-11-28 18:44:00",
+      "UPDATE_DATE": "2022-12-11 09:06:00",
+      "CURRENT_AUTHOR_ID": "RAMMELZL",
+      "CURRENT_AUTHOR_ID_NAME": "RAMMELKAMP, ZOE L",
+      "CRT_INST_LOCAL_DTTM": "2022-11-28 12:41:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432308302",
+      "ENTRY_USER_ID": "JED402",
+      "ENTRY_USER_ID_NAME": "SCHROEDER, JESSICA E",
+      "UPDATE_DATE": "2022-04-21 19:22:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "2359040568",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 833901305,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2020-08-14 15:48:00",
+      "DATE_OF_SERVIC_DTTM": "2020-08-14 15:48:00",
+      "LST_FILED_INST_DTTM": "2020-08-14 15:49:00",
+      "UPDATE_DATE": "2021-11-25 15:07:00",
+      "CURRENT_AUTHOR_ID": "PEPINPA",
+      "CURRENT_AUTHOR_ID_NAME": "PEPIN, PAMELA A",
+      "CRT_INST_LOCAL_DTTM": "2020-08-14 10:48:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4662030807",
+      "NOTE_TYPE_NOADD_C_NAME": "Progress Note",
+      "PAT_ENC_CSN_ID": 991225117,
+      "IP_NOTE_TYPE_C_NAME": "Progress Notes",
+      "CREATE_INSTANT_DTTM": "2023-09-28 13:00:00",
+      "DATE_OF_SERVIC_DTTM": "2023-09-28 14:30:00",
+      "LST_FILED_INST_DTTM": "2023-09-28 15:18:00",
+      "UPDATE_DATE": "2023-11-10 17:08:00",
+      "CURRENT_AUTHOR_ID": "MBS403",
+      "CURRENT_AUTHOR_ID_NAME": "SMITH, MARY B",
+      "CRT_INST_LOCAL_DTTM": "2023-09-28 08:00:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432308286",
+      "ENTRY_USER_ID": "KLF403",
+      "ENTRY_USER_ID_NAME": "FALDUTO, KAITLYN L",
+      "UPDATE_DATE": "2022-03-10 18:04:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "4191713575",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 988126821,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2023-02-20 19:01:00",
+      "DATE_OF_SERVIC_DTTM": "2023-02-20 19:01:00",
+      "LST_FILED_INST_DTTM": "2023-02-20 19:12:00",
+      "UPDATE_DATE": "2023-02-22 13:08:00",
+      "CURRENT_AUTHOR_ID": "MBS403",
+      "CURRENT_AUTHOR_ID_NAME": "SMITH, MARY B",
+      "CRT_INST_LOCAL_DTTM": "2023-02-20 13:01:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432308313",
+      "ENTRY_USER_ID": "HBBCKGRND",
+      "ENTRY_USER_ID_NAME": "HB, BACKGROUND",
+      "UPDATE_DATE": "2022-05-16 10:26:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "1998212111",
+      "NOTE_TYPE_NOADD_C_NAME": "Progress Note",
+      "PAT_ENC_CSN_ID": 799951565,
+      "IP_NOTE_TYPE_C_NAME": "Progress Notes",
+      "CREATE_INSTANT_DTTM": "2020-01-09 18:56:00",
+      "DATE_OF_SERVIC_DTTM": "2020-01-09 18:45:00",
+      "LST_FILED_INST_DTTM": "2020-01-09 19:02:00",
+      "UPDATE_DATE": "2023-06-26 10:36:00",
+      "CURRENT_AUTHOR_ID": "DHILLOPS",
+      "CURRENT_AUTHOR_ID_NAME": "DHILLON, PUNEET S",
+      "CRT_INST_LOCAL_DTTM": "2020-01-09 12:56:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432308291",
+      "ENTRY_USER_ID": "HBBCKGRND",
+      "ENTRY_USER_ID_NAME": "HB, BACKGROUND",
+      "UPDATE_DATE": "2022-04-01 10:18:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "4024957157",
+      "ENTRY_USER_ID": "RAMMELZL",
+      "ENTRY_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "UPDATE_DATE": "2022-12-01 11:07:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "1576267350",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 750474644,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2019-02-11 23:00:00",
+      "DATE_OF_SERVIC_DTTM": "2019-02-11 23:00:00",
+      "LST_FILED_INST_DTTM": "2019-02-11 23:00:00",
+      "UPDATE_DATE": "2022-04-13 15:00:00",
+      "CURRENT_AUTHOR_ID": "KAC05",
+      "CURRENT_AUTHOR_ID_NAME": "CAHILL, KATHRYN A",
+      "CRT_INST_LOCAL_DTTM": "2019-02-11 17:00:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4663801839",
+      "UPDATE_DATE": "2023-09-28 17:09:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4662400400",
+      "ENTRY_USER_ID": "MBS403",
+      "ENTRY_USER_ID_NAME": "SMITH, MARY B",
+      "UPDATE_DATE": "2023-09-28 10:45:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "4189573822",
+      "ENTRY_USER_ID": "MBS403",
+      "ENTRY_USER_ID_NAME": "SMITH, MARY B",
+      "UPDATE_DATE": "2023-02-20 14:07:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "3495270844",
+      "PAT_ENC_CSN_ID": 922943112,
+      "IP_NOTE_TYPE_C_NAME": "Progress Notes",
+      "CREATE_INSTANT_DTTM": "2022-03-22 13:21:00",
+      "DATE_OF_SERVIC_DTTM": "2022-03-22 22:00:00",
+      "LST_FILED_INST_DTTM": "2022-04-21 19:25:00",
+      "UPDATE_DATE": "2022-07-06 12:08:00",
+      "CURRENT_AUTHOR_ID": "ALG006",
+      "CURRENT_AUTHOR_ID_NAME": "GILMOUR, AARON K",
+      "CRT_INST_LOCAL_DTTM": "2022-03-22 08:21:00",
+      "NOTE_PURPOSE_C_NAME": "ADDENDUM",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "2312837011",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 830043848,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2020-07-21 21:21:00",
+      "DATE_OF_SERVIC_DTTM": "2020-07-21 21:21:00",
+      "LST_FILED_INST_DTTM": "2020-07-21 21:21:00",
+      "UPDATE_DATE": "2021-11-25 15:12:00",
+      "CURRENT_AUTHOR_ID": "KLL403",
+      "CURRENT_AUTHOR_ID_NAME": "LOUGH, KAREN L",
+      "CRT_INST_LOCAL_DTTM": "2020-07-21 16:21:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432308296",
+      "ENTRY_USER_ID": "HBBCKGRND",
+      "ENTRY_USER_ID_NAME": "HB, BACKGROUND",
+      "UPDATE_DATE": "2022-04-15 10:25:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "1483895113",
+      "UPDATE_DATE": "2018-08-28 12:10:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3819029543",
+      "NOTE_TYPE_NOADD_C_NAME": "Progress Note",
+      "PAT_ENC_CSN_ID": 948004323,
+      "IP_NOTE_TYPE_C_NAME": "Progress Notes",
+      "CREATE_INSTANT_DTTM": "2022-08-29 13:13:00",
+      "DATE_OF_SERVIC_DTTM": "2022-08-29 18:30:00",
+      "LST_FILED_INST_DTTM": "2022-08-30 04:58:00",
+      "UPDATE_DATE": "2023-02-22 13:08:00",
+      "CURRENT_AUTHOR_ID": "RAMMELZL",
+      "CURRENT_AUTHOR_ID_NAME": "RAMMELKAMP, ZOE L",
+      "CRT_INST_LOCAL_DTTM": "2022-08-29 08:13:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "2402050784",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 837844366,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2020-09-08 16:37:00",
+      "DATE_OF_SERVIC_DTTM": "2020-09-08 16:37:00",
+      "LST_FILED_INST_DTTM": "2020-09-08 16:38:00",
+      "UPDATE_DATE": "2021-11-26 15:12:00",
+      "CURRENT_AUTHOR_ID": "KLL403",
+      "CURRENT_AUTHOR_ID_NAME": "LOUGH, KAREN L",
+      "CRT_INST_LOCAL_DTTM": "2020-09-08 11:37:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3416456777",
+      "PAT_ENC_CSN_ID": 921952141,
+      "IP_NOTE_TYPE_C_NAME": "Miscellaneous",
+      "TX_IB_FOLDER_C_NAME": null,
+      "CREATE_INSTANT_DTTM": "2022-02-09 22:05:00",
+      "DATE_OF_SERVIC_DTTM": "2022-02-09 22:03:00",
+      "LST_FILED_INST_DTTM": "2022-02-09 22:05:00",
+      "UPDATE_DATE": "2022-02-09 17:04:00",
+      "CURRENT_AUTHOR_ID": "199995",
+      "CURRENT_AUTHOR_ID_NAME": "PROVIDER, NOT IN SYSTEM",
+      "CRT_INST_LOCAL_DTTM": "2022-02-09 16:05:00",
+      "NOTE_PURPOSE_C_NAME": "Authorized Transcription",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4072440227",
+      "ENTRY_USER_ID": "KLL403",
+      "ENTRY_USER_ID_NAME": "LOUGH, KAREN L",
+      "UPDATE_DATE": "2022-12-22 12:06:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4088135577",
+      "UPDATE_DATE": "2023-01-01 10:13:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "4663801837",
+      "UPDATE_DATE": "2023-09-28 17:09:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "1473666038",
+      "NOTE_TYPE_NOADD_C_NAME": "Progress Note",
+      "PAT_ENC_CSN_ID": 720803470,
+      "IP_NOTE_TYPE_C_NAME": "Progress Notes",
+      "CREATE_INSTANT_DTTM": "2018-08-09 15:25:00",
+      "DATE_OF_SERVIC_DTTM": "2018-08-09 14:30:00",
+      "LST_FILED_INST_DTTM": "2018-08-09 21:35:00",
+      "UPDATE_DATE": "2021-11-13 13:44:00",
+      "CURRENT_AUTHOR_ID": "DHILLOPS",
+      "CURRENT_AUTHOR_ID_NAME": "DHILLON, PUNEET S",
+      "CRT_INST_LOCAL_DTTM": "2018-08-09 10:25:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "2429386701",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 837844366,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2020-09-23 15:40:00",
+      "DATE_OF_SERVIC_DTTM": "2020-09-23 15:40:00",
+      "LST_FILED_INST_DTTM": "2020-09-23 15:42:00",
+      "UPDATE_DATE": "2021-11-26 15:14:00",
+      "CURRENT_AUTHOR_ID": "KLL403",
+      "CURRENT_AUTHOR_ID_NAME": "LOUGH, KAREN L",
+      "CRT_INST_LOCAL_DTTM": "2020-09-23 10:40:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "1484175461",
+      "NOTE_TYPE_NOADD_C_NAME": "Progress Note",
+      "PAT_ENC_CSN_ID": 725327197,
+      "IP_NOTE_TYPE_C_NAME": "Progress Notes",
+      "CREATE_INSTANT_DTTM": "2018-08-28 13:54:00",
+      "DATE_OF_SERVIC_DTTM": "2018-08-18 14:30:00",
+      "LST_FILED_INST_DTTM": "2018-08-28 13:54:00",
+      "UPDATE_DATE": "2021-11-13 13:45:00",
+      "CURRENT_AUTHOR_ID": "DMW400",
+      "CURRENT_AUTHOR_ID_NAME": "WILD, DAWN M",
+      "CRT_INST_LOCAL_DTTM": "2018-08-28 08:54:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4711694609",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 1031703883,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2023-10-20 13:10:00",
+      "DATE_OF_SERVIC_DTTM": "2023-10-20 13:10:00",
+      "LST_FILED_INST_DTTM": "2023-10-20 13:10:00",
+      "UPDATE_DATE": "2023-11-22 14:08:00",
+      "CURRENT_AUTHOR_ID": "NACKSR",
+      "CURRENT_AUTHOR_ID_NAME": "NACK, SAMANTHA R",
+      "CRT_INST_LOCAL_DTTM": "2023-10-20 08:10:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "2035952481",
+      "ENTRY_USER_ID": "KJG400",
+      "ENTRY_USER_ID_NAME": "GILBECK, KAYLA J",
+      "UPDATE_DATE": "2023-04-27 11:13:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "3432308294",
+      "ENTRY_USER_ID": "WESTBRKK",
+      "ENTRY_USER_ID_NAME": "WESTBROOK, KARLA K",
+      "UPDATE_DATE": "2022-04-14 12:08:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "1484174069",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 727947624,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2018-08-28 13:51:00",
+      "DATE_OF_SERVIC_DTTM": "2018-08-28 13:51:00",
+      "LST_FILED_INST_DTTM": "2018-08-28 13:54:00",
+      "UPDATE_DATE": "2021-11-13 13:45:00",
+      "CURRENT_AUTHOR_ID": "DMW400",
+      "CURRENT_AUTHOR_ID_NAME": "WILD, DAWN M",
+      "CRT_INST_LOCAL_DTTM": "2018-08-28 08:51:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4849609915",
+      "ENTRY_USER_ID": "RAMMELZL",
+      "ENTRY_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "UPDATE_DATE": "2023-12-22 16:08:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "3432308290",
+      "ENTRY_USER_ID": "HBBCKGRND",
+      "ENTRY_USER_ID_NAME": "HB, BACKGROUND",
+      "UPDATE_DATE": "2022-04-01 10:18:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "4072443570",
+      "ENTRY_USER_ID": "RAMMELZL",
+      "ENTRY_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "UPDATE_DATE": "2022-12-22 12:06:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "2312832051",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 830047706,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2020-07-21 21:17:00",
+      "DATE_OF_SERVIC_DTTM": "2020-07-21 21:17:00",
+      "LST_FILED_INST_DTTM": "2020-07-21 21:19:00",
+      "UPDATE_DATE": "2021-11-25 15:12:00",
+      "CURRENT_AUTHOR_ID": "PICONEMA",
+      "CURRENT_AUTHOR_ID_NAME": "PICONE, MARY A",
+      "CRT_INST_LOCAL_DTTM": "2020-07-21 16:17:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "2402256828",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 837844366,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2020-09-08 17:33:00",
+      "DATE_OF_SERVIC_DTTM": "2020-09-08 17:33:00",
+      "LST_FILED_INST_DTTM": "2020-09-08 17:34:00",
+      "UPDATE_DATE": "2021-11-26 15:20:00",
+      "CURRENT_AUTHOR_ID": "KLL403",
+      "CURRENT_AUTHOR_ID_NAME": "LOUGH, KAREN L",
+      "CRT_INST_LOCAL_DTTM": "2020-09-08 12:33:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "2035952477",
+      "ENTRY_USER_ID": "HIRZYHL",
+      "ENTRY_USER_ID_NAME": "HIRZY, HEIDI L",
+      "UPDATE_DATE": "2022-12-20 15:06:00",
+      "VISIT_NUM": "8",
+      "PRIORITY_YN": "N",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "PB Guarantor Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "4024965334",
+      "NOTE_TYPE_NOADD_C_NAME": "Patient Instructions",
+      "PAT_ENC_CSN_ID": 974614965,
+      "IP_NOTE_TYPE_C_NAME": "Patient Instructions",
+      "CREATE_INSTANT_DTTM": "2022-12-01 16:17:00",
+      "DATE_OF_SERVIC_DTTM": "2022-12-01 15:30:00",
+      "LST_FILED_INST_DTTM": "2022-12-01 16:17:00",
+      "UPDATE_DATE": "2023-02-02 18:05:00",
+      "CURRENT_AUTHOR_ID": "RAMMELZL",
+      "CURRENT_AUTHOR_ID_NAME": "RAMMELKAMP, ZOE L",
+      "CRT_INST_LOCAL_DTTM": "2022-12-01 10:17:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3557417913",
+      "ENTRY_USER_ID": "JED402",
+      "ENTRY_USER_ID_NAME": "SCHROEDER, JESSICA E",
+      "UPDATE_DATE": "2022-04-21 19:22:00",
+      "PRIORITY_YN": "N",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "2302535596",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 829385742,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2020-07-15 19:47:00",
+      "DATE_OF_SERVIC_DTTM": "2020-07-15 19:47:00",
+      "LST_FILED_INST_DTTM": "2020-07-15 20:04:00",
+      "UPDATE_DATE": "2021-11-25 15:02:00",
+      "CURRENT_AUTHOR_ID": "BUDZBANL",
+      "CURRENT_AUTHOR_ID_NAME": "BUDZBAN, NICOLE L",
+      "CRT_INST_LOCAL_DTTM": "2020-07-15 14:47:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "2035952476",
+      "ENTRY_USER_ID": "LSM400",
+      "ENTRY_USER_ID_NAME": "MCALLISTER, LINDA S",
+      "UPDATE_DATE": "2022-10-06 10:26:00",
+      "PRIORITY_YN": "N",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "PB Guarantor Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "4016430751",
+      "ENTRY_USER_ID": "RAMMELZL",
+      "ENTRY_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "UPDATE_DATE": "2022-11-28 13:06:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "3505657724",
+      "ENTRY_USER_ID": "PBNIGHTP",
+      "ENTRY_USER_ID_NAME": "PB, SYSTEM NIGHTLY PROCESSOR",
+      "UPDATE_DATE": "2022-03-28 10:17:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "PB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "4849833147",
+      "ENTRY_USER_ID": "EDISUREI",
+      "ENTRY_USER_ID_NAME": "EDI, SURESCRIPTS IN",
+      "UPDATE_DATE": "2023-12-22 16:08:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "2035952474",
+      "ENTRY_USER_ID": "KJG400",
+      "ENTRY_USER_ID_NAME": "GILBECK, KAYLA J",
+      "UPDATE_DATE": "2020-01-30 10:43:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "2304256474",
+      "ENTRY_USER_ID": "BUDZBANL",
+      "ENTRY_USER_ID_NAME": "BUDZBAN, NICOLE L",
+      "UPDATE_DATE": "2020-07-16 13:05:00",
+      "PRIORITY_YN": "N",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4849833203",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 1043034397,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2023-12-22 21:48:00",
+      "DATE_OF_SERVIC_DTTM": "2023-12-22 21:48:00",
+      "LST_FILED_INST_DTTM": "2023-12-22 21:48:00",
+      "UPDATE_DATE": "2023-12-22 16:08:00",
+      "CURRENT_AUTHOR_ID": "RAMMELZL",
+      "CURRENT_AUTHOR_ID_NAME": "RAMMELKAMP, ZOE L",
+      "CRT_INST_LOCAL_DTTM": "2023-12-22 15:48:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4072496920",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 977858467,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2022-12-22 17:49:00",
+      "DATE_OF_SERVIC_DTTM": "2022-12-22 17:49:00",
+      "LST_FILED_INST_DTTM": "2022-12-22 17:49:00",
+      "UPDATE_DATE": "2022-12-22 12:06:00",
+      "CURRENT_AUTHOR_ID": "RAMMELZL",
+      "CURRENT_AUTHOR_ID_NAME": "RAMMELKAMP, ZOE L",
+      "CRT_INST_LOCAL_DTTM": "2022-12-22 11:49:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432308301",
+      "ENTRY_USER_ID": "JED402",
+      "ENTRY_USER_ID_NAME": "SCHROEDER, JESSICA E",
+      "UPDATE_DATE": "2022-04-21 19:22:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "3432308297",
+      "ENTRY_USER_ID": "HBBCKGRND",
+      "ENTRY_USER_ID_NAME": "HB, BACKGROUND",
+      "UPDATE_DATE": "2022-04-15 10:25:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Liability Bucket Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "4660195333",
+      "UPDATE_DATE": "2023-09-27 13:10:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3820384431",
+      "NOTE_TYPE_NOADD_C_NAME": "Patient Instructions",
+      "PAT_ENC_CSN_ID": 948004323,
+      "IP_NOTE_TYPE_C_NAME": "Patient Instructions",
+      "CREATE_INSTANT_DTTM": "2022-08-29 19:07:00",
+      "DATE_OF_SERVIC_DTTM": "2022-08-29 18:30:00",
+      "LST_FILED_INST_DTTM": "2022-08-29 19:21:00",
+      "UPDATE_DATE": "2023-02-22 13:08:00",
+      "CURRENT_AUTHOR_ID": "RAMMELZL",
+      "CURRENT_AUTHOR_ID_NAME": "RAMMELKAMP, ZOE L",
+      "CRT_INST_LOCAL_DTTM": "2022-08-29 14:07:00",
+      "NOTE_PURPOSE_C_NAME": "ADDENDUM",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432308305",
+      "ENTRY_USER_ID": "HBBCKGRND",
+      "ENTRY_USER_ID_NAME": "HB, BACKGROUND",
+      "UPDATE_DATE": "2022-04-27 10:28:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "1997508480",
+      "ENTRY_USER_ID": "MBS403",
+      "ENTRY_USER_ID_NAME": "SMITH, MARY B",
+      "UPDATE_DATE": "2022-08-29 14:06:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "2312794553",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 829467718,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2020-07-21 20:56:00",
+      "DATE_OF_SERVIC_DTTM": "2020-07-21 20:56:00",
+      "LST_FILED_INST_DTTM": "2020-07-21 20:59:00",
+      "UPDATE_DATE": "2021-11-25 15:03:00",
+      "CURRENT_AUTHOR_ID": "BUDZBANL",
+      "CURRENT_AUTHOR_ID_NAME": "BUDZBAN, NICOLE L",
+      "CRT_INST_LOCAL_DTTM": "2020-07-21 15:56:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432308306",
+      "ENTRY_USER_ID": "HBBCKGRND",
+      "ENTRY_USER_ID_NAME": "HB, BACKGROUND",
+      "UPDATE_DATE": "2022-04-27 10:28:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "4578516078",
+      "ENTRY_USER_ID": "KLL403",
+      "ENTRY_USER_ID_NAME": "LOUGH, KAREN L",
+      "UPDATE_DATE": "2023-08-21 11:28:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "3820936656",
+      "UPDATE_DATE": "2022-11-14 17:05:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4216859306",
+      "NOTE_TYPE_NOADD_C_NAME": "Patient Instructions",
+      "PAT_ENC_CSN_ID": 958148810,
+      "IP_NOTE_TYPE_C_NAME": "Patient Instructions",
+      "CREATE_INSTANT_DTTM": "2023-03-02 20:58:00",
+      "DATE_OF_SERVIC_DTTM": "2023-03-02 20:45:00",
+      "LST_FILED_INST_DTTM": "2023-03-02 21:00:00",
+      "UPDATE_DATE": "2023-06-26 10:36:00",
+      "CURRENT_AUTHOR_ID": "RAMMELZL",
+      "CURRENT_AUTHOR_ID_NAME": "RAMMELKAMP, ZOE L",
+      "CRT_INST_LOCAL_DTTM": "2023-03-02 14:58:00",
+      "NOTE_PURPOSE_C_NAME": "ADDENDUM",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "2035952479",
+      "ENTRY_USER_ID": "KJG400",
+      "ENTRY_USER_ID_NAME": "GILBECK, KAYLA J",
+      "UPDATE_DATE": "2023-01-12 14:06:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "2300340575",
+      "UPDATE_DATE": "2020-11-29 13:23:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432308308",
+      "ENTRY_USER_ID": "DARRWM",
+      "ENTRY_USER_ID_NAME": "DARR, WILLIAM M",
+      "UPDATE_DATE": "2022-05-02 16:09:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "3819161963",
+      "NOTE_TYPE_NOADD_C_NAME": "Progress Note",
+      "PAT_ENC_CSN_ID": 948004323,
+      "IP_NOTE_TYPE_C_NAME": "Progress Notes",
+      "CREATE_INSTANT_DTTM": "2022-08-29 13:51:00",
+      "DATE_OF_SERVIC_DTTM": "2022-08-29 18:30:00",
+      "LST_FILED_INST_DTTM": "2022-08-30 04:58:00",
+      "UPDATE_DATE": "2023-02-22 13:08:00",
+      "CURRENT_AUTHOR_ID": "MBS403",
+      "CURRENT_AUTHOR_ID_NAME": "SMITH, MARY B",
+      "CRT_INST_LOCAL_DTTM": "2022-08-29 08:51:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432308284",
+      "ENTRY_USER_ID": "CMM400",
+      "ENTRY_USER_ID_NAME": "MUTCH, CHERIE M",
+      "UPDATE_DATE": "2022-02-17 15:04:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "1473734099",
+      "UPDATE_DATE": "2022-07-06 12:08:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "1570726288",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 750474644,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2019-02-01 19:39:00",
+      "DATE_OF_SERVIC_DTTM": "2019-02-01 19:39:00",
+      "LST_FILED_INST_DTTM": "2019-02-01 20:42:00",
+      "UPDATE_DATE": "2022-04-13 15:06:00",
+      "CURRENT_AUTHOR_ID": "JMG406",
+      "CURRENT_AUTHOR_ID_NAME": "GEORGE, JENNIFER M",
+      "CRT_INST_LOCAL_DTTM": "2019-02-01 13:39:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "1578207922",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 750474644,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2019-02-14 21:22:00",
+      "DATE_OF_SERVIC_DTTM": "2019-02-14 21:22:00",
+      "LST_FILED_INST_DTTM": "2019-02-14 21:23:00",
+      "UPDATE_DATE": "2022-04-13 14:59:00",
+      "CURRENT_AUTHOR_ID": "MXB454",
+      "CURRENT_AUTHOR_ID_NAME": "BOWER, MEGAN M",
+      "CRT_INST_LOCAL_DTTM": "2019-02-14 15:22:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432308292",
+      "ENTRY_USER_ID": "HBBCKGRND",
+      "ENTRY_USER_ID_NAME": "HB, BACKGROUND",
+      "UPDATE_DATE": "2022-04-04 14:24:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "4083097973",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 977858467,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2022-12-29 14:44:00",
+      "DATE_OF_SERVIC_DTTM": "2022-12-29 14:44:00",
+      "LST_FILED_INST_DTTM": "2022-12-29 14:45:00",
+      "UPDATE_DATE": "2022-12-29 10:22:00",
+      "CURRENT_AUTHOR_ID": "KAV402",
+      "CURRENT_AUTHOR_ID_NAME": "VANDYCK, KAYLA LOU A",
+      "CRT_INST_LOCAL_DTTM": "2022-12-29 08:44:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "1483895112",
+      "NOTE_TYPE_NOADD_C_NAME": "Progress Note",
+      "PAT_ENC_CSN_ID": 725327197,
+      "IP_NOTE_TYPE_C_NAME": "Progress Notes",
+      "CREATE_INSTANT_DTTM": "2018-08-27 21:56:00",
+      "DATE_OF_SERVIC_DTTM": "2018-08-18 14:30:00",
+      "LST_FILED_INST_DTTM": "2018-08-27 21:56:00",
+      "UPDATE_DATE": "2021-11-13 13:45:00",
+      "CURRENT_AUTHOR_ID": "DHILLOPS",
+      "CURRENT_AUTHOR_ID_NAME": "DHILLON, PUNEET S",
+      "CRT_INST_LOCAL_DTTM": "2018-08-27 16:56:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "CONVERSATION_MSG_ID": "358825337",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4083100314",
+      "UPDATE_DATE": "2022-12-29 10:22:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3431975380",
+      "UPDATE_DATE": "2022-02-17 13:05:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "1473639424",
+      "NOTE_TYPE_NOADD_C_NAME": "Progress Note",
+      "PAT_ENC_CSN_ID": 720803470,
+      "IP_NOTE_TYPE_C_NAME": "Progress Notes",
+      "CREATE_INSTANT_DTTM": "2018-08-09 14:47:00",
+      "DATE_OF_SERVIC_DTTM": "2018-08-09 14:30:00",
+      "LST_FILED_INST_DTTM": "2018-08-09 21:35:00",
+      "UPDATE_DATE": "2021-11-13 13:43:00",
+      "CURRENT_AUTHOR_ID": "WENTZTC",
+      "CURRENT_AUTHOR_ID_NAME": "IRELAND, TRACY C",
+      "CRT_INST_LOCAL_DTTM": "2018-08-09 09:47:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "2302008978",
+      "ENTRY_USER_ID": "BUDZBANL",
+      "ENTRY_USER_ID_NAME": "BUDZBAN, NICOLE L",
+      "UPDATE_DATE": "2020-07-15 12:05:00",
+      "PRIORITY_YN": "N",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432308311",
+      "ENTRY_USER_ID": "HBBCKGRND",
+      "ENTRY_USER_ID_NAME": "HB, BACKGROUND",
+      "UPDATE_DATE": "2022-05-12 10:26:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "4072440057",
+      "ENTRY_USER_ID": "KLL403",
+      "ENTRY_USER_ID_NAME": "LOUGH, KAREN L",
+      "UPDATE_DATE": "2022-12-22 12:06:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "4023698942",
+      "UPDATE_DATE": "2022-12-01 10:34:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432302795",
+      "ENTRY_USER_ID": "CMM400",
+      "ENTRY_USER_ID_NAME": "MUTCH, CHERIE M",
+      "UPDATE_DATE": "2022-02-17 15:04:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "PB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "4024447284",
+      "NOTE_TYPE_NOADD_C_NAME": "Progress Note",
+      "PAT_ENC_CSN_ID": 974614965,
+      "IP_NOTE_TYPE_C_NAME": "Progress Notes",
+      "CREATE_INSTANT_DTTM": "2022-12-01 13:56:00",
+      "DATE_OF_SERVIC_DTTM": "2022-12-01 15:30:00",
+      "LST_FILED_INST_DTTM": "2022-12-02 02:06:00",
+      "UPDATE_DATE": "2023-02-02 18:05:00",
+      "CURRENT_AUTHOR_ID": "RAMMELZL",
+      "CURRENT_AUTHOR_ID_NAME": "RAMMELKAMP, ZOE L",
+      "CRT_INST_LOCAL_DTTM": "2022-12-01 07:56:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4189573821",
+      "ENTRY_USER_ID": "EDISUREI",
+      "ENTRY_USER_ID_NAME": "EDI, SURESCRIPTS IN",
+      "UPDATE_DATE": "2023-02-19 12:04:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "2302402817",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 829385742,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2020-07-15 18:34:00",
+      "DATE_OF_SERVIC_DTTM": "2020-07-15 18:34:00",
+      "LST_FILED_INST_DTTM": "2020-07-15 19:26:00",
+      "UPDATE_DATE": "2021-11-25 15:11:00",
+      "CURRENT_AUTHOR_ID": "BUDZBANL",
+      "CURRENT_AUTHOR_ID_NAME": "BUDZBAN, NICOLE L",
+      "CRT_INST_LOCAL_DTTM": "2020-07-15 13:34:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4033189439",
+      "NOTE_TYPE_NOADD_C_NAME": "Progress Note",
+      "PAT_ENC_CSN_ID": 974614965,
+      "IP_NOTE_TYPE_C_NAME": "Progress Notes",
+      "CREATE_INSTANT_DTTM": "2022-12-05 18:14:00",
+      "DATE_OF_SERVIC_DTTM": "2022-12-01 15:30:00",
+      "LST_FILED_INST_DTTM": "2022-12-05 18:14:00",
+      "UPDATE_DATE": "2023-02-02 18:05:00",
+      "CURRENT_AUTHOR_ID": "PAM400",
+      "CURRENT_AUTHOR_ID_NAME": "MANIX, PATRICIA A",
+      "CRT_INST_LOCAL_DTTM": "2022-12-05 12:14:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4215509941",
+      "NOTE_TYPE_NOADD_C_NAME": "Progress Note",
+      "PAT_ENC_CSN_ID": 958148810,
+      "IP_NOTE_TYPE_C_NAME": "Progress Notes",
+      "CREATE_INSTANT_DTTM": "2023-03-02 14:15:00",
+      "DATE_OF_SERVIC_DTTM": "2023-03-02 20:45:00",
+      "LST_FILED_INST_DTTM": "2023-03-02 21:47:00",
+      "UPDATE_DATE": "2023-06-26 10:36:00",
+      "CURRENT_AUTHOR_ID": "MBS403",
+      "CURRENT_AUTHOR_ID_NAME": "SMITH, MARY B",
+      "CRT_INST_LOCAL_DTTM": "2023-03-02 08:15:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3462363025",
+      "UPDATE_DATE": "2022-03-04 12:04:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432308288",
+      "ENTRY_USER_ID": "KLF403",
+      "ENTRY_USER_ID_NAME": "FALDUTO, KAITLYN L",
+      "UPDATE_DATE": "2022-03-22 17:04:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "1998121083",
+      "NOTE_TYPE_NOADD_C_NAME": "Progress Note",
+      "PAT_ENC_CSN_ID": 799951565,
+      "IP_NOTE_TYPE_C_NAME": "Progress Notes",
+      "CREATE_INSTANT_DTTM": "2020-01-09 18:28:00",
+      "DATE_OF_SERVIC_DTTM": "2020-01-09 18:45:00",
+      "LST_FILED_INST_DTTM": "2020-01-09 19:02:00",
+      "UPDATE_DATE": "2021-11-23 15:14:00",
+      "CURRENT_AUTHOR_ID": "SMITHAM28",
+      "CURRENT_AUTHOR_ID_NAME": "THOMAS, ANGELA M",
+      "CRT_INST_LOCAL_DTTM": "2020-01-09 12:28:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "4711694512",
+      "ENTRY_USER_ID": "NACKSR",
+      "ENTRY_USER_ID_NAME": "NACK, SAMANTHA R",
+      "UPDATE_DATE": "2023-10-20 10:36:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "1572085464",
+      "UPDATE_DATE": "2020-11-12 13:44:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "3432308300",
+      "ENTRY_USER_ID": "HBBCKGRND",
+      "ENTRY_USER_ID_NAME": "HB, BACKGROUND",
+      "UPDATE_DATE": "2022-04-16 10:14:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "HB Hospital Account Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "2004599240",
+      "NOTE_TYPE_NOADD_C_NAME": "Progress Note",
+      "PAT_ENC_CSN_ID": 799951565,
+      "IP_NOTE_TYPE_C_NAME": "Progress Notes",
+      "CREATE_INSTANT_DTTM": "2020-01-13 18:45:00",
+      "DATE_OF_SERVIC_DTTM": "2020-01-09 18:45:00",
+      "LST_FILED_INST_DTTM": "2020-01-13 18:46:00",
+      "UPDATE_DATE": "2021-11-23 15:14:00",
+      "CURRENT_AUTHOR_ID": "PAM400",
+      "CURRENT_AUTHOR_ID_NAME": "MANIX, PATRICIA A",
+      "CRT_INST_LOCAL_DTTM": "2020-01-13 12:45:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "2035952478",
+      "ENTRY_USER_ID": "BURKEBD1",
+      "ENTRY_USER_ID_NAME": "BURKE, BRITANY D",
+      "UPDATE_DATE": "2022-12-20 16:06:00",
+      "PRIORITY_YN": "N",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "PB Guarantor Note",
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "4083104312",
+      "NOTE_TYPE_NOADD_C_NAME": "Telephone Encounter",
+      "PAT_ENC_CSN_ID": 977858467,
+      "IP_NOTE_TYPE_C_NAME": "Telephone Encounter",
+      "CREATE_INSTANT_DTTM": "2022-12-29 14:46:00",
+      "DATE_OF_SERVIC_DTTM": "2022-12-29 14:46:00",
+      "LST_FILED_INST_DTTM": "2022-12-29 14:46:00",
+      "UPDATE_DATE": "2022-12-29 10:22:00",
+      "CURRENT_AUTHOR_ID": "KAV402",
+      "CURRENT_AUTHOR_ID_NAME": "VANDYCK, KAYLA LOU A",
+      "CRT_INST_LOCAL_DTTM": "2022-12-29 08:46:00",
+      "NOTE_PURPOSE_C_NAME": "NORMAL",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true
+    },
+    {
+      "NOTE_ID": "2035952475",
+      "ENTRY_USER_ID": "LSM400",
+      "ENTRY_USER_ID_NAME": "MCALLISTER, LINDA S",
+      "UPDATE_DATE": "2022-10-06 10:26:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "ACTIVE_C_NAME": "Active"
+    },
+    {
+      "NOTE_ID": "3899651265",
+      "ENTRY_USER_ID": "LSM400",
+      "ENTRY_USER_ID_NAME": "MCALLISTER, LINDA S",
+      "UPDATE_DATE": "2022-10-06 10:26:00",
+      "$meta": {
+        "type": "HNO_INFO",
+        "mergedFrom": [
+          "HNO_INFO_2"
+        ]
+      },
+      "// mergedFrom HNO_INFO_2": true,
+      "HNO_RECORD_TYPE_C_NAME": "PB Guarantor Letter"
+    }
+  ]
+}

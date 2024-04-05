@@ -1,0 +1,248 @@
+{
+  "name": "PROBLEM_LIST",
+  "description": "The PROBLEM_LIST table contains data from patients' problem lists in the clinical system. The data in this table reflects the current status of all problems on the patient's problem list. In the clinical system, each problem is marked as active until it becomes (and is marked) Resolved or Deleted. At that point, by default, it will not be displayed in the application. However, any problem ever entered on this list is stored in the database and will exist in this table. Deleted and resolved problems can be viewed in the application by simply marking a checkbox to show them. Note that deleted and resolved problems can be restored by undeleting them (an option in the application). When a deleted problem is restored, its status is changed to active and the deleted date is returned to null.",
+  "primaryKey": [
+    {
+      "columnName": "PROBLEM_LIST_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PROBLEM_LIST_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of this Problem List entry."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "DX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the diagnosis record associated with the entry in the patient�s Problem List. Note: This is NOT the ICD9 diagnosis code. It is an internal identifier that is typically not visible to a user."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "DESCRIPTION",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The display name of the problem. Only contains data if the default display name is changed."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "NOTED_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Represents the first possible date that a problem could have been noted/onset on. By default, this is the problem's date of entry into the problem list. The intent of this field is to allow users to change this date to the date the problem was first diagnosed if that is different than the entry date.  A problem's noted date is documented as a fuzzy date, meaning that it can capture approximate date data (\"2012\", \"1/2012\") or exact data (\"3/5/2012\"). This column captures the earliest date of the effective range. See NOTED_END_DATE for the latest counterpart. For example, if 2012 is documented in hyperspace, then NOTED_DATE will be 1/1/2012 and NOTED_END_DATE will be 12/31/2012."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RESOLVED_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the problem was resolved in calendar format."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "DATE_OF_ENTRY",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This is the date the specific problem was last edited (i.e., a change was made, either in status, priority, etc.)."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ENTRY_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the system user who last edited the problem in the patient�s Problem List. This ID may be encrypted."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ENTRY_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PROBLEM_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The preview text (first characters) of the Overview note entered for a Problem List entry."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "CHRONIC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column indicates whether or not this problem is flagged as chronic.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "SHOW_IN_MYC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether this problem will be displayed in Epic's Patient Portal, MyChart.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PROBLEM_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value associated with the problem�s current state: Active, Resolved, or Deleted.  NOTE: Historical information regarding status changes can be viewed from within the application.",
+      "entries": [
+        "Active",
+        "Resolved",
+        "Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "CLASS_OF_PROBLEM_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value associated with additional information for the problem, such as Acute, chronic, minor, and so on."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "PRIORITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value associated with the relative severity of the problem. Problems can be given a priority (e.g., high, medium, or low).  This field shows the category value associated with the current priority level assigned to a problem."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "OVERVIEW_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is a link to the note record that contains the overview note pertaining to this problem record."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "STAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the cancer stage record associated with the entry in the patient�s Problem List."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PROBLEM_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The problem type for this problem.",
+      "entries": [
+        "MEDICAL",
+        "NURSING",
+        "Hospitalization"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "CREATING_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The order ID of the order that created the problem."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "NO_STAGE_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "For a problem that could be staged, stores the reason why it was not staged."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "NO_STAGE_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "For a problem that could be staged, stores a free-text comment explaining why the problem was not staged."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "NO_STAGE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "For a problem that could be staged, stores the user who chose not to stage it."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "NO_STAGE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "NO_STAGE_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "For a problem that could be staged, stores the instant when a user flagged it to not be staged."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "TREAT_SUMM_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the treatment summary status for this problem.",
+      "entries": [
+        "Has Treatment Summary",
+        "Treatment Summary Not Needed"
+      ]
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "NOTED_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Represents the last possible date that a problem could have been noted/onset on.   A problem's noted date is documented as a fuzzy date, meaning that it can capture approximate date data (\"2012\", \"1/2012\") or exact data (\"3/5/2012\"). This column captures the latest date of the effective range. See NOTED_DATE for the earliest counterpart. For example, if 2012 is documented in hyperspace, then NOTED_DATE will be 1/1/2012 and NOTED_END_DATE will be 12/31/2012.  Note that the value may be empty, even if NOTED_DATE is populated"
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "REL_GOALS_PROBLEM_LIST_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the CSN (contact serial number I.E. unique contact identifier) of the last related goals contact that was edited."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "REL_GOALS_INST_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the instant of the last related goals contact that was edited."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "PROB_STAGE_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Flag to indicate whether this problem has been staged or marked as no stage required.",
+      "entries": [
+        "Has Stage",
+        "No Stage Required"
+      ]
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "DIAG_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Represents the earliest possible date that a problem could have been diagnosed on. The latest possible date is stored in DIAG_END_DATE. If these values are the same, then the date is exact rather than fuzzy. For a problem or condition affecting a patient, the diagnosis date is defined as the date when a qualified professional first recognized the presence of that condition with sufficient certainty, regardless of whether it was fully characterized at that time. For diseases such as cancer, this may be the earliest date of a clinical diagnosis from before it was histologically confirmed, not the date of confirmation if that occurred later."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "DIAG_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Represents the last possible date that a problem could have been diagnosed on. The earliest possible date is stored in DIAG_START_DATE. If these values are the same, then the date is exact rather than fuzzy. For a problem or condition affecting a patient, the diagnosis date is defined as the date when a qualified professional first recognized the presence of that condition with sufficient certainty, regardless of whether it was fully characterized at that time. For diseases such as cancer, this may be the earliest date of a clinical diagnosis from before it was histologically confirmed, not the date of confirmation if that occurred later."
+    }
+  ]
+}

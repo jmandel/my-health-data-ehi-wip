@@ -1,0 +1,65 @@
+{
+  "name": "V_PB_TX_DTL_SNAPSHOT",
+  "description": "This view pivots the information provided in PB_TX_DTL_SNAP_ITEM and PB_TX_DTL_SNAP_VALUE into a more human-readable format. It also joins the metadata provided in PB_TX_DTL_SNAP_META associated with each snapshot.",
+  "primaryKey": [
+    {
+      "columnName": "TRANSACTION_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TRANSACTION_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID for the premium billing detail transaction."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SNAPSHOT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the snapshot was taken in UTC."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SNAPSHOT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user that triggered the snapshot."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SNAPSHOT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "AMOUNT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The amount associated with the detail transaction record in the snapshot and is initially populated during the computation stage of premium billing. It is derived from the PB_TX_DTL_SNAP_ITEM table where the SNAPSHOT_ITEM column value is 110, joined on its matching row in the PB_TX_DTL_SNAP_VALUE table with the value in the SNAPSHOT_VALUE column."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "OUTSTANDING_AMOUNT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The outstanding amount associated with the detail transaction record in the snapshot and is initially populated during the invoicing stage of premium billing. It is derived from the PB_TX_DTL_SNAP_ITEM table where the SNAPSHOT_ITEM column value is 440, joined on its matching row in the PB_TX_DTL_SNAP_VALUE table with the value in the SNAPSHOT_VALUE column."
+    }
+  ]
+}

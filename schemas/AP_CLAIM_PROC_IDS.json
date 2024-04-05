@@ -1,0 +1,37 @@
+{
+  "name": "AP_CLAIM_PROC_IDS",
+  "description": "This table stores the linkages between AP claims (CLM records) and their service lines (ETR records). A common use case for this table is to link from claim-level summary tables to service-line-level summary tables. For example, one path is to join AP_CLAIM to AP_CLAIM_PROC_IDS on CLAIM_ID and AP_CLAIM_PROC_IDS to AP_CLAIM_PROC on TX_ID.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID for the claim record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The service line number for of the claim this row corresponds to, as stored in Chronicles CLM item 18250."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the transaction (ETR) record that stores all service line information. The ETR records are commonly referred to as procedures, services, transactions, or service lines."
+    }
+  ]
+}

@@ -1,0 +1,687 @@
+{
+  "name": "PATIENT",
+  "description": "The PATIENT table contains one record for each patient in your system. The data contained in each record consists of demographics, PCP and primary location information, registration information, and other information.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used by other tables to link to PATIENT."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PAT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient�s name in the format Lastname, Firstname MI."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CITY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The city in which the patient lives."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "STATE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the state in which the patient lives."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "COUNTY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the county in which the patient lives."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "COUNTRY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the country in which the patient lives."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ZIP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ZIP Code area in which the patient lives."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "HOME_PHONE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient�s home phone number."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "WORK_PHONE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient�s work phone number."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "EMAIL_ADDRESS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient�s e-mail address."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "BIRTH_DATE",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date on which the patient was born."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ETHNIC_GROUP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value associated with the patient�s ethnic background."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "RELIGION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value associated with the patient�s religion."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "LANGUAGE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value associated with the patient�s language."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "SSN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient�s Social Security Number. This number is formatted as 999-99-9999, and a single trailing alphabetic character is also allowed."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "REG_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which the last patient verification occurred.  If a patient was verified and then re-verified at a later date, this column will show the re-verified date.  This column will be null for patients that have never been verified."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "REG_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value associated with the patient�s status in terms of the patient registration process as of the enterprise reporting extract. This is a customizable list, examples may include: 1 � New, 2 � Verified, and so on."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "MEDICARE_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient�s Medicare-assigned identification number, if applicable."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "MEDICAID_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Patient's Medicaid ID."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "ADV_DIRECTIVE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the value �Y� if the patient has a signed living will on file with your facility indicating how they want their health chare to be handled in the event of an incapacitating emergency. This information is entered in clinical system. If the patient has no signed living will on file this column contains the value �N�.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "ADV_DIRECTIVE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date a living will was received from the patient."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "CUR_PCP_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the provider record for the patient�s current General Primary Care Provider as of the enterprise reporting extract. This ID may be encrypted."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "CUR_PRIM_LOC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the location record for the patient�s Primary Location as of the time of the enterprise reporting extract. This column is retrieved from the item Primary Location."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "LEGAL_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The medical and/or legal status associated with the patient�s death. This item is populated through Admission/Discharge/Transfer (ADT) workflows."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "BIRTH_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value associated with the newborn�s status at birth as entered in ADT."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "PED_MULT_BIRTH_ORD",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "For multiple births, the place in the birth order of the current newborn patient."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "PED_MULT_BIRTH_TOT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The total number of births during the mother�s labor and delivery of this newborn patient."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "CREATE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the system user who entered this patient�s record. This ID may be encrypted."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "CREATE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "PAT_MRN_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient's medical record number (MRN), of the type associated with the patient's current primary location."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "DEATH_DATE",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date of death for the patient."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "REC_CREATE_PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the system user who created this patient�s record. This ID may be encrypted.   NOTE: For historical reasons, the column name ends in PAT_ID and cannot be changed; despite its name, it does not link to patient ID. It instead links to CLARITY_EMP.USER_ID."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "REC_CREATE_PAT_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "ORGAN_DONOR_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if the patient is an organ donor.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "TMP_CITY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the city in which the patient is temporarily residing."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "TMP_STATE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the state in which the patient is temporarily residing."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "TMP_COUNTRY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the country in which the patient is temporarily residing."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "TMP_ZIP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the ZIP Code in which the patient is temporarily residing."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "TMP_HOME_PHONE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the temporary phone number where the patient can be reached."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "TMP_COUNTY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the county in which the patient is temporarily residing."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "TMP_ADDR_START_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Contains the starting effective date of the patients temporary address information."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "TMP_ADDR_END_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Contains the ending effective date of the patients temporary address information."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "TMP_CARE_OF_PERSON",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the name of the contact person for the patient at the temporary residence."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "PAT_LAST_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The last name of the patient."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "PAT_FIRST_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The first name of the patient."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "PAT_MIDDLE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The middle name of the patient."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "PAT_TITLE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient's title, e.g. Mr., Mrs., Miss, Dr., etc.",
+      "entries": [
+        "Ms.",
+        "Mr.",
+        "Miss",
+        "Mrs.",
+        "Dr.",
+        "Fr.",
+        "Sr.",
+        "Rev.",
+        "Lord",
+        "King",
+        "Queen",
+        "Prince",
+        "Princess",
+        "Sheikh",
+        "Sheikha"
+      ]
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "PAT_NAME_SUFFIX_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The suffix to the patient's name, e.g. Jr., Sr., III, etc.",
+      "entries": [
+        "Sr.",
+        "Jr.",
+        "II",
+        "III",
+        "IV",
+        "V"
+      ]
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "SPECIAL_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The special status of the patient, such as employee or VIP."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "LANG_CARE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient's preferred language to receive care."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "LANG_WRIT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient's preferred language to receive written material."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "PROXY_PAT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if the patient has a proxy already.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "PROXY_PACK_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if the proxy packet was given to the patient.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "EMPLOYER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the unique ID of the patient's employer if the item linking the patient to an employer (I EAF 6410) is set to 1.  This is free text if the item linking the patient to an employer (I EAF 6410) is set to 2."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "EMPLOYER_ID_EMPLOYER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the employer."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "EMPY_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The employee's employment status (e.g. Full Time, Part time, Not Employed, etc.)",
+      "entries": [
+        "Full Time",
+        "Part Time",
+        "Not Employed",
+        "Self Employed",
+        "Retired",
+        "On Active Military Duty",
+        "Student - Full Time",
+        "Student - Part Time",
+        "Unknown"
+      ]
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "GUARDIAN_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the patient's legal guardian, if any."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "PREF_CLIN_ZIP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The zip code of the patient's preferred clinic."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "PREF_PCP_SEX_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value of the sex of the patient's preferred primary care physician.",
+      "entries": [
+        "Female",
+        "Male",
+        "Unknown",
+        "Nonbinary",
+        "X",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "PREF_PCP_SPEC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value of the specialty of the patient's preferred physician."
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "PREF_PCP_LANG_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value of the language of the patient's preferred primary care physician."
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "COUNTRY_OF_ORIG_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds data on the country in which a patient was born"
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "PED_CESAREAN_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the value \"Y\" if the patient was delivered by Cesarean Section. If the patient was not delivered by Cesarean Section, this column contains the value \"N\".",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "PED_NOUR_METH_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates the patient's pediatric nourishment method.",
+      "entries": [
+        "Breast Fed",
+        "Bottle Fed",
+        "Unknown",
+        "Not Asked",
+        "Bottle Fed - Breast Milk",
+        "Bottle Fed - Formula"
+      ]
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "PED_DELIVR_METH_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates the patient's delivery method at birth.",
+      "entries": [
+        "Vaginal, Spontaneous",
+        "C-Section, Low Transverse",
+        "Vertical C-Section",
+        "C-Section, Unspecified",
+        "Vaginal, Vacuum (Extractor)",
+        "Vaginal, Forceps",
+        "Vaginal, Breech",
+        "Non-Spontaneous Vaginal Delivery",
+        "VBAC, Spontaneous",
+        "C-Section, Low Vertical",
+        "C-Section, Classical",
+        "Biochemical"
+      ]
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "PED_MULTI_BIRTH_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the value \"Y\" if the patient is one of a multiple birth.  This column contains the value \"N\" if the patient was a single birth."
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "EDD_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The patient's Expected Date of Delivery."
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "EDD_ENTERED_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date the Expected Date of Delivery was entered."
+    },
+    {
+      "ordinalPosition": 69,
+      "name": "EDD_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Expected Date of Delivery comment."
+    },
+    {
+      "ordinalPosition": 70,
+      "name": "INTRPTR_NEEDED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the patient needs an interpreter."
+    },
+    {
+      "ordinalPosition": 71,
+      "name": "PCP_DON_CHART_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the primary care physician has finished moving all the information from the paper chart into the system."
+    },
+    {
+      "ordinalPosition": 72,
+      "name": "PAT_HAS_IOL_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is used as a data item to mark those patients having intraocular lenses."
+    },
+    {
+      "ordinalPosition": 73,
+      "name": "PED_BIRTH_LABOR",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the duration of labor related to a patient's birth history."
+    },
+    {
+      "ordinalPosition": 74,
+      "name": "PED_HOSP_DAYS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the number of days spent in the hospital related to a patient's birth history."
+    },
+    {
+      "ordinalPosition": 75,
+      "name": "MEDS_LAST_REV_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the last time the encounter medications list was reviewed."
+    },
+    {
+      "ordinalPosition": 76,
+      "name": "MEDS_LST_REV_USR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the last user to review the encounter medications list."
+    },
+    {
+      "ordinalPosition": 77,
+      "name": "MEDS_LST_REV_USR_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 78,
+      "name": "SELF_EC_VERIF_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Most recent date patient marked their emergency contact information as verified."
+    },
+    {
+      "ordinalPosition": 79,
+      "name": "SELF_EC_VERIF_ST_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status of the patient's last verified emergency contact request (e.g. verified yes or no).",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 80,
+      "name": "EMPR_ID_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A free text comment that can be entered when the value that is considered to be \"Other\" is selected as the employer. This option is available only if your organization has chosen to link the patient employer to the Employer (EEP) master file in the Facility Profile."
+    },
+    {
+      "ordinalPosition": 81,
+      "name": "PAT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value of the patient status. Possible statuses include alive and deceased.  Note that there are many patient creation workflows that do not populate this item so many alive patients could have blank statuses.   If using this column to report on the Alive or Deceased status of a patient population use PATIENT_4.PAT_LIVING_STAT_C instead.",
+      "entries": [
+        "Alive",
+        "Deceased"
+      ]
+    },
+    {
+      "ordinalPosition": 82,
+      "name": "MEDS_LAST_REV_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the contact serial number of the encounter in which the patient's current medications list was last reviewed."
+    },
+    {
+      "ordinalPosition": 83,
+      "name": "SEX_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number corresponding to the patient's sex."
+    }
+  ]
+}

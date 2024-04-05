@@ -1,0 +1,145 @@
+{
+  "name": "OCS_CODE_STATUS",
+  "description": "This table contains information about patient code statuses, which are mainly used for documenting compliance reasons and quality. This table replaces the older IP_CODE_STATUS table.",
+  "primaryKey": [
+    {
+      "columnName": "OCS_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "OCS_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID for the code status record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "OCS_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the code status record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "OCS_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This stores the status of the record (hidden, soft deleted, etc.)",
+      "entries": [
+        "Soft Deleted",
+        "Hidden",
+        "Hidden and Soft Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CODE_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Code status category value.",
+      "entries": [
+        "<Disabled>",
+        "Full Code",
+        "DNR",
+        "Partial Code"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ACTIVATED_INST",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant at which the code status (full code, DNR, etc.) was created."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the user that created the code status"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the code status order record."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "COMMENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comment associated with the code status."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "INACTIVATED_INST",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant at which the code status was inactivated."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "CONTEXT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The context (inpatient/ambulatory/etc.) in which the status was recorded.",
+      "entries": [
+        "Outpatient",
+        "Inpatient",
+        "HOV",
+        "ED",
+        "Surgery",
+        "Demographics",
+        "Home Health",
+        "Hospice"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PATIENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient for which this code status was recorded."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PATIENT_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Contact Serial Number of the encounter in which the code status order was placed."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "ACTV_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Holds the instant the code status was activated in UTC time."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "INACTV_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant at which the code status was inactivated in UTC time."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "VERBAL_ORDER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the home care order that created this code status record."
+    }
+  ]
+}

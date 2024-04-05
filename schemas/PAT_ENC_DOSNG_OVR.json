@@ -1,0 +1,132 @@
+{
+  "name": "PAT_ENC_DOSNG_OVR",
+  "description": "The PAT_ENC_DOSNG_OVR table contains the dosing instructions for individual days (such as holds, changes to doses for a day, missed doses, wrong doses taken) for anticoagulation patients when using the calendar based tracking section.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "OVERRIDE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date for which a daily correction is specified (may be a held dose, dose change to instructions, missed dose, wrong dose taken or comment)"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "OVERRIDE_DOSE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Override dose for the day (dose change or wrong dose taken)"
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "OVERRIDE_PILL_SIZE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Override pill size for the day (dose change)"
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "OVERRIDE_NO_OF_PILL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Override number of pills for the day (dose change)"
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "HOLD_DOSE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column will store a boolean Yes/No about whether the patient was instructed to hold their dose for the day.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "OVERRIDE_COMMENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Override comments for the day"
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "DOSE_MISSED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column will store a boolean Yes/No about whether the patient missed their dose for the day."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "UNDO_CORRECTION_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item will be used to undo the correction day. Setting this item to Yes will ignore this correction from being displayed on calendar."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "WRONG_DOSE_TAKEN_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item will store a boolean Yes/No about whether the patient took the wrong dose"
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "OVERRIDE_PILL_SIZE2",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Second override pill size for the day (dose change)"
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "OVERRIDE_NO_OF_PIL2",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Second override number of pills for the day (dose change)"
+    }
+  ]
+}

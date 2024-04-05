@@ -1,0 +1,548 @@
+{
+  "name": "COVERAGE_MEMBER_LIST",
+  "description": "The COVERAGE_MEMBER_LIST table contains information about the members associated with each coverage record. Since one coverage record can have multiple members, each row in the table corresponds to one member and is noted by the coverage ID and the line number.",
+  "primaryKey": [
+    {
+      "columnName": "COVERAGE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the coverage record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number used to identify each member of a coverage record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID assigned to the patient record (EPT .1)."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "MEM_COVERED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The member�s covered status for the coverage, such as Y � the coverage is verified and in effect, or N � the coverage was invalidated manually. Note: 3 � Pending (not verified, but in effect), 4 � In Question (was verified, but recent carrier information omitted this coverage), 5 � Invalid (never verified, not effective).",
+      "entries": [
+        "Covered",
+        "Not Covered",
+        "Pending",
+        "In Question",
+        "Invalid"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "MEM_REL_TO_SUB_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the category identifier of the member's relationship to the subscriber. This column is commonly used to join to ZC_MEM_REL_TO_SUB.",
+      "entries": [
+        "Self",
+        "Spouse",
+        "Child",
+        "Employee",
+        "Unknown"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "MEM_REL_TO_GUAR_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value associated with the relationship of the patient to the guarantor."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "DEPENDENT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "For members whose relationship to the subscriber is unclear, this column specifies how the member is covered by the subscriber.",
+      "entries": [
+        "Child Dependent",
+        "Adult Dependent",
+        "Non-Dependent",
+        "Unknown, Flag for Follow-Up"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "COURT_DECREE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "For members that are children involved in divorce scenarios, if a court has decreed exactly which of the parents is responsible for the child's medical expenses, then this column specifies how this subscriber is involved in that court decree.",
+      "entries": [
+        "Not Applicable (no court decree concerning healthcare expenses)",
+        "Subscriber is the parent responsible for healthcare expenses",
+        "Subscriber is the spouse of the parent responsible for healthcare expenses",
+        "Subscriber is a parent jointly responsible for healthcare expenses",
+        "Subscriber is the spouse of a parent jointly responsible for healthcare expenses",
+        "Subscriber is the parent not responsible for healthcare expenses",
+        "Subscriber is the spouse of the parent not responsible for healthcare expenses"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CUSTODY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "For members that are children involved in divorce scenarios, this column specifies what type of custody the subscriber has over the child member.",
+      "entries": [
+        "Not Applicable (parents married, widowed parent, etc)",
+        "Subscriber is the custodial parent",
+        "Subscriber is a joint custody parent",
+        "Subscriber is the spouse of the custodial parent",
+        "Subscriber is the spouse of a joint custody parent",
+        "Subscriber is the non-custodial parent",
+        "Subscriber is the spouse of the non-custodial parent"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "MEM_PAYOR_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the patient name as known to the Payor. This item is used to keep the name that is stored in the Patient master file separate from the name that the Payor is expecting."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "MEM_VERIFICATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The verification record for the coverage member."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "MEM_NUMBER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The identification number assigned to the member for the coverage."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "MEM_PERSON_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This contains the person code for a member ID on a coverage. For a member ID of 12345-01, the person code would be \"01\"."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "ELIGIBILITY_CLAR_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Clarifies the eligibility of the patient when sending an Rx Adjudication message (i.e. Student). This item is populated in ambulatory pharmacy.",
+      "entries": [
+        "Not Specified",
+        "No Override",
+        "Override",
+        "Full Time Student",
+        "Disabled Dependent",
+        "Dependent Parent",
+        "Significant Other"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "MEM_APP_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which the member applied for coverage."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "MEM_APP_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The time on which the member applied for coverage."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "MEM_EFF_FROM_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which the coverage goes into effect for the member."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "MEM_STUDENT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the member is a full time student this column contains the value �Y�. If the member is not a full time student, as determined by the member�s Employment Status, this column contains the value �N�."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "MEM_MEDICARE_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the patient's Medicare number from the patient record, if applicable. This stored value may be a HICN or a MBI.  This data is used primarily for Registration and will match PATIENT_4.LEGACY_HICN. However, it may be different from MEM_MEDICARE_NUM_COVERAGE, which is maintained through Enrollment and Eligibility infrastructure (preferred for managed care scenarios)."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "MEM_ENROLL_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The member's reason for enrollment."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "HIX_EN_ADDL_MAINT_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the additional maintenance reason from an incoming ANSI 834 enrollment file."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "MEM_EFF_TO_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date after which the coverage is no longer in effect for the member and the member becomes ineligible for benefits."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "MEM_TERM_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason the member was terminated from the coverage."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "MEM_SCHED_DISCON_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The member scheduled discontinuation date."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "MEM_LATE_ENROLL_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Y � the member applied for coverage after open enrollment. N � the member did not apply for the coverage after the open enrollment period.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "MEM_VERIF_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The last saved value of the member's verification status."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "LAST_VERIF_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the member on the coverage was last verified."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "PCN_OVERRIDE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The processor control number (PCN) for this member. This PCN overrides the PCN at the plan or payor level for this member only."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "MEMBER_VERF_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the user who last verified this member's status."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "MEMBER_VERF_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "MEMBER_ID_FROM_FILE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The member ID received on the source file for the member on the coverage."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "CARRIER_IDENTIFIER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Used for prescription adjudication in ambulatory pharmacy. Carrier code assigned in Workers' Compensation Program (327-CR)."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "CLAIM_IDENTIFIER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Used for prescription adjudication in ambulatory pharmacy. Identifies the claim number assigned by Workers' Compensation Program (435-DZ)."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "FACILITY_IDENTIFIER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Used for prescription adjudication in ambulatory pharmacy. ID assigned to the patient's clinic/host party (336-8C)."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "HOME_PLAN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Used for prescription adjudication in ambulatory pharmacy. Code identifying the Blue Cross or Blue Shield plan ID which indicates where the member's coverage has been designated. Usually where the member lives or purchased their coverage (314-CE)."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "PLAN_IDENTIFIER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Used for prescription adjudication in ambulatory pharmacy. Assigned by the processor to identify a set of parameters, benefits, or coverage criteria used to adjudicate a claim (524-FO)."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "RX_BILLING_INFO_ID",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Contains the default prescription billing information on this coverage like default values to send during claim adjudication."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "HIX_APP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The application ID of exchange coverages."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "HIX_ORIGIN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The origin type of exchange coverages."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "MEM_MAIL_CITY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The member's mailing city."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "MEM_MAIL_STATE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The member's mailing state."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "MEM_MAIL_ZIP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The member's mailing ZIP code."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "MEM_MAIL_COUNTY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The member's mailing county."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "MEM_MAIL_COUNTRY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The member's mailing country."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "MEM_MAIL_ADDR_LN_1",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains line one of the member's mailing address (the entirety of which is stored in CVG-18930). The purpose of this item is to provide the ability for reporting administrators to retrieve line one of the address without having to join the member address table."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "MEM_MAIL_ADDR_LN_2",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains line two of the member's mailing address (the entirety of which is stored in CVG-18930). The purpose of this item is to provide the ability for reporting administrators to retrieve line two of the address without having to join the member address table."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "MEM_CUSTO_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the member's custodial parent."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "MEM_CUSTO_CITY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The city of the member's custodial parent."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "MEM_CUSTO_STATE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The state of the member's custodial parent."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "MEM_CUSTO_ZIP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ZIP code of the member's custodial parent."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "MEM_CUSTO_COUNTY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The county of the member's custodial parent."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "MEM_CUSTO_COUNTRY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The country of the member's custodial parent."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "MEM_CUSTO_EMAIL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The e-mail address of the member's custodial parent."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "MEM_CUSTO_ADDR_LN_1",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains line one of the member's custodial parent address (the entirety of which is stored in CVG-18962). The purpose of this item is to provide the ability for reporting administrators to retrieve line one of the address without having to join the member custodial parent address table."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "MEM_CUSTO_ADDR_LN_2",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains line two of the member's custodial parent address (the entirety of which is stored in CVG-18962). The purpose of this item is to provide the ability for reporting administrators to retrieve line two of the address without having to join the member custodial parent address table."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "MEM_COVERED_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the category identifier of member's covered status, such as whether their coverage is currently valid or in question. This column is commonly used to join to ZC_COVERED_STATUS."
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "MEM_APPL_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time on which the member applied for coverage."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "MEM_PAYOR_SEX_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The member's sex as it is recorded in the payor's system.",
+      "entries": [
+        "Female",
+        "Male",
+        "Unknown",
+        "Nonbinary",
+        "X",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "MEM_MEDICARE_NUM_COVERAGE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the member's Medicare number from the coverage, if applicable. This stored value may be a HICN or a MBI.  This data is maintained through the standard Enrollment and Eligibility infrastructure (i.e. should be accurate for managed care scenarios). The number stored on the patient's record (MEM_MEDICARE_NUM or PATIENT.MEDICARE_NUM) may be different since it is used primarily for Registration."
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "MEM_LEGACY_HICN_COVERAGE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If there is a HICN available for the member (e.g. known prior to receiving their MBI), this column stores the HICN from the coverage.  This data is maintained through the standard Enrollment and Eligibility infrastructure (i.e. should be accurate for managed care scenarios). The number stored on the patient's record (PATIENT_4.LEGACY_HICN) may be different since it is used primarily for Registration."
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "MEM_MAIL_HOUSE_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The house number of the member's mailing address."
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "MEM_MAIL_DISTRICT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The district category ID of the member's mailing address."
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "MEM_CUSTO_HOUSE_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The house number of the member's custodial parent's address."
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "MEM_CUSTO_DISTRICT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The district category ID of the member's custodial parent's address."
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "MEM_ADDR_IS_UNDELIV_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if member mailing address is undeliverable.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "MEM_MEDICAID_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Medicaid Number for a member on a given coverage."
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "MEM_EFF_DT_CHNG_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The effective date change reason at the member level."
+    }
+  ]
+}

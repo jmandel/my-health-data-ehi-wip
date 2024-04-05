@@ -1,0 +1,332 @@
+{
+  "name": "POC_INFO",
+  "description": "This table contains no-add single item information for the Plan of Care (POC) master file.",
+  "primaryKey": [
+    {
+      "columnName": "RECORD_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the plan of care record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "RECORD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The record status, such as active or soft-deleted.",
+      "entries": [
+        "Soft Deleted",
+        "Hidden",
+        "Hidden and Soft Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "POC_CREATED_IN_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "This item contains the instant at which the POC was created."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "POC_REFRESHED_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "This item contains the instant at which the POC was last refreshed with up-to-date patient info."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "POC_LAST_SAVED_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "This item contains the instant at which the POC was last saved with user-entered information."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "POC_COMPLETED_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "This item contains the instant at which the POC was filed and/or sent."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PLAN_OF_CARE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the POC type.",
+      "entries": [
+        "Plan Of Care",
+        "Plan Of Care Update"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "UPDATE_POC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains a pointer to the POC being updated."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "EPISODE_SEQ_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item contains the parent POC sequence number."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "UPDATE_SEQ_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item contains the child POC sequence number."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the link to the episode in which the POC was created."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "CARE_PLAN_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The contact serial number of the care plan contact that contains the care plan information pulled into the POC."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "CARE_PLAN_INFO_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the POC contains care plan visit information, problems, or both.",
+      "entries": [
+        "Visit Data",
+        "Problem Data",
+        "Both Visit and Problem Data"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "POC_MEDS_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The contact serial number of the patient contact that contains the medications list for the POC."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "RECORD_CREATION_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item stores the date the record was created."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "EPSD_ELECTION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of hospice election."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "EPSD_EFFECTIVE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the hospice agency began taking care of the patient."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "TRIAGE_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient's triage code, as documented in the episode."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "POC_START_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Start date for a hospice plan of care.  The plan of care is effective until the next POC/POC update's start date."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "POC_END_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Virtual item which returns the end date of a hospice plan of care.  This is determined based on other plans of care (and, sometimes, the episode discharge date).  Typically a hospice plan of care will end whenever a subsequent plan of care is created.  A plan of care update will end when a subsequent plan of care update is created."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "POC_CODE_STATUS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient code status when the plan of care is completed."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "DISPLAY_NM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the display name for a plan of care."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the current status of a plan of care.",
+      "entries": [
+        "Draft",
+        "Completed",
+        "Signed",
+        "Revising",
+        "Revised",
+        "Addending",
+        "Addended",
+        "Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "SPOC_WORKFLOW_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the type for the current plan. This may be useful for classification and reporting upon different types of plans.",
+      "entries": [
+        "Dialysis",
+        "Social Care Client and Service Plan",
+        "Outpatient Rehab",
+        "Behavioral Health Treatment Plan",
+        "Hospice Plan of Care",
+        "Rehab Team Conference",
+        "Care Plan Meeting",
+        "Skilled Nursing Certification",
+        "Hospice Non-Covered",
+        "Home Health Plan of Care",
+        "Home Infusion Therapy",
+        "Agreements"
+      ]
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "SPOC_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates the type of plan a POC represents within a given workflow",
+      "entries": [
+        "Comprehensive",
+        "Update",
+        "Client Plan",
+        "Service Plan",
+        "Plan of Care and IDG Update",
+        "Plan of Care",
+        "IDG Update",
+        "Certified Home Health",
+        "Certified Home Health - Resumption of Care",
+        "Certified Home Health - Supplemental",
+        "Standard Written Order",
+        "Child Custody",
+        "Child Support"
+      ]
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the patient ID for whom the current plan has been created."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "SPOC_SIGNED_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the last required participant signed the plan."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "TEMPLATE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is true if a plan is a template agreement.  Template agreements are not agreements for any particular patient, but are used, temporarily, to contain information used to create multiple agreements which may be on different patients.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "TEMPLATE_POC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item links an agreement to the template agreement from which it was copied."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "POC_RATIFIED_INST_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Contains the instant at which the POC was ratified."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "POC_RATIFIED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates if the agreement is ratified or not.  A blank value indicates that no decision has been made.  A value of 1 (true) indicates that the agreement is ratified.  A value of 2 (false) indicates that a decision was made to not ratify the agreement.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "PLAN_UNDER_REVIEW_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether the hospice POC is under review. While under review the POC cannot be signed."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "CODE_STATUS_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient code status comment when the plan of care is completed."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "HH_ASMNT_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number of the assessment contact used to populate the home health Plan of Care."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "HH_CERT_PER_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number of the encounter that created the certification period associated with the home health Plan of Care."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "POC_AUTO_CREATED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the Plan of Care has been automatically created. 'Y' Indicates that this Plan of Care was automatically created. 'N' or NULL indicate that it was manually created."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "HH_POC_CONVERTED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the home health Specialty Plan of Care record corresponds to an old plan and was created out of the conversion."
+    }
+  ]
+}

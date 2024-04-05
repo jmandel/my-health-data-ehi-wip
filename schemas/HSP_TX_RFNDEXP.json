@@ -1,0 +1,65 @@
+{
+  "name": "HSP_TX_RFNDEXP",
+  "description": "This table contains information in the refund transaction that gets filed after its temporary transaction gets imported back from the AP system which processes it. This table contains information that is related to the AP system and the actions taken by it during the processing of the temporary transaction.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the hospital billing transaction."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the hospital account with which a hospital billing transaction is associated."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "RFND_AP_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date on which the A/P system processed the temporary transaction."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RFND_AP_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the action taken by the A/P system when it processed the temporary transaction.",
+      "entries": [
+        "Approved",
+        "Rejected"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RFND_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of the refund associated with the refund transaction."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "REFERENCE_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reference number of the refund associated with the transaction. This reference number is sent back by the AP system after it processed the temporary transaction."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "TX_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the import comment for the refund associated with the hospital billing transaction. This comment is sent back by the billing system after it processed the hospital temporary transaction."
+    }
+  ]
+}

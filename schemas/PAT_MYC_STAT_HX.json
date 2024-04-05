@@ -1,0 +1,155 @@
+{
+  "name": "PAT_MYC_STAT_HX",
+  "description": "This table keeps an audit trail of web-based chart system status changes made to a patient. This table can be used to determine when, who, and how a status was changed for a patient account. Every time the status is modified, a new row is added to this table.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "MYC_STAT_HX_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The activation status category number for the patient.",
+      "entries": [
+        "No Status",
+        "Activated",
+        "Inactivated",
+        "Pending Activation",
+        "Non Standard MyChart Status",
+        "Patient Declined",
+        "Activation Code Generated, but Disabled"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "MYC_STAT_HX_EMP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the employee that has changed status."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "MYC_STAT_HX_EMP_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "MYC_STAT_HX_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Item to store comments for status changes"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "MYC_STAT_HX_MTHD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The method of the status change for patients. This can be used to determine how or why the status was changed. For example, this could be used to find the method of activation code generation that is most successful for patient signup.",
+      "entries": [
+        "MyChart Administration Activity",
+        "MyChart Patient Utilities (text)",
+        "Launch MyChart Signup",
+        "SmartText",
+        "E-mailed Activation Code (Success)",
+        "Kiosk",
+        "EpicWeb Utilities",
+        "Web Service",
+        "Patient Deceased",
+        "Extension Web Service",
+        "Failed Login or Signup Attempts",
+        "EPT Deactivated",
+        "MyChart Signup (Web Site)",
+        "Patient Merge/Unmerge",
+        "Proxy Access Activity (Enable Non-Patient)",
+        "Procedure Order",
+        "Patient Declined Duration Expired",
+        "Proxy Only With No Proxies",
+        "E-mailed Activation Code (Failure)",
+        "Proxy Access Activity (Non-Patient Activation Code Generated)",
+        "Proxy Access Activity (Disable Non-Patient)",
+        "Proxy Access Activity (Enable for Proxy)",
+        "Auto Activated via Federated Login System",
+        "Prelude/Cadence Popup",
+        "Open Scheduling",
+        "Status Display Extension",
+        "MyChart Signup (Bedside)",
+        "Billing Correspondence",
+        "Self-Signup (Success)",
+        "Self-Signup (Failure)",
+        "Proxy MyChart Activated (Enable for Proxy)",
+        "Instant Activation",
+        "Patient Declined Terms and Conditions",
+        "After Visit Summary",
+        "Batch Job",
+        "Patient Checked for MyChart Eligibility",
+        "Happy Together",
+        "Registration (Non-Patient Activation Code Generated)",
+        "Auto Activated via Newborn Admission Extension",
+        "Auto Instant Activation",
+        "System Correction",
+        "Unverified Proxy Video Visit",
+        "Instant Activation On The Fly Code Generation",
+        "Demographic Authentication",
+        "Kanta Document Generation",
+        "Demographic Authentication (eCheck-In for All)",
+        "User Deactivated Own Account",
+        "Print Activation Instructions (Dialog Launched)",
+        "Print Activation Instructions (User Cancelled)",
+        "Fast Pass SMS",
+        "PGO Data Request",
+        "Rescheduling SMS",
+        "Proxy MyChart Instant Activated (Enable for Proxy)"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The department logged in to during the status change if applicable. This only applies to status changes done by a user in Hyperspace."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "WORKSTATION_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The workstation record used when the status was changed. This only applies to Welcome workstations and workflows within Welcome that change the status of the patient account."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "MYC_PROXY_ACTIVATION_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Flag indicating whether an activation status is due to a proxy or not.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    }
+  ]
+}

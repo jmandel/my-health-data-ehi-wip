@@ -1,0 +1,125 @@
+{
+  "name": "PAT_ENC_DSS",
+  "description": "The table PAT_ENC_DSS stores the score received from decision support system for an order and the provider's response to the decision support question.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "DSS_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID for the Decision Support System (DSS)."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "DSS_SCORE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The decision support score category ID returned by the decision support vendor.",
+      "entries": [
+        "\"ERROR\"",
+        "1 - Low Utility",
+        "2 - Low Utility",
+        "3 - Low Utility",
+        "4 - Marginal",
+        "5 - Marginal",
+        "6 - Marginal",
+        "7 - Indicated",
+        "8 - Indicated",
+        "9 - Indicated",
+        "Acceptable",
+        "Appropriate",
+        "Inappropriate",
+        "Indeterminate",
+        "Not Validated",
+        "Moderate"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DSS_RESPONSE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The action category ID for the action a user took in response to the decision support score.",
+      "entries": [
+        "I plan to proceed with this order",
+        "Guideline does not apply to patient condition",
+        "Do not agree with guideline",
+        "Other evidence base",
+        "Recommendation from radiologists/rendering provider",
+        "Deferring decision to radiologist/rendering provider",
+        "The DSS logic did not adequately address the clinical situation",
+        "I plan to cancel this order and not proceed with any imaging",
+        "I plan to cancel this order and select an alternative imaging study",
+        "Exam score is in the appropriate range",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "DSS_REASON",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the free-text response the user entered during the decision support process."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "DSS_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the procedure for which a Decision Support System (DSS) response was received."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "DSS_AUTH_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the authorizing provider of an order for which a DSS response was received. This column is frequently used to link to the CLARITY_SER table.",
+      "linksTo": "CLARITY_SER"
+    }
+  ]
+}

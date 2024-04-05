@@ -1,0 +1,90 @@
+{
+  "name": "PAT_GROUP",
+  "description": "The PAT_GROUP table contains information about patient groups. This table will hold groups used for scheduling as well as groups used for clinical documentation.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_GROUP_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_GROUP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the patient group record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "RECORD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the record status of the group record.",
+      "entries": [
+        "Active",
+        "Inactive",
+        "Deleted",
+        "Inactive and Deleted",
+        "Hidden",
+        "Inactive and Hidden",
+        "Deleted and Hidden",
+        "Inactive Deleted and Hidden"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_GROUP_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item defines the type of GRP record and whether or not this record stores a list of EPT IDs or a list of EPT CSNs.",
+      "entries": [
+        "Scheduling Group",
+        "Clinical Scheduled Group",
+        "Episode Group"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_LIST_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item describes the type of group that is being documented by clinical users."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "GROUP_START_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item stores the instant that a group was started."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "GROUP_END_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item stores the instant when a group ended."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CREATED_BY_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the user ID for the user that created a group."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CREATED_BY_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "GROUP_DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The department (linked to DEP) where the group took place."
+    }
+  ]
+}

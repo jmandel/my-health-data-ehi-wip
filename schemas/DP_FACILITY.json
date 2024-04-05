@@ -1,0 +1,267 @@
+{
+  "name": "DP_FACILITY",
+  "description": "This table contains information regarding Continued Care and Services Coordination, where each row represents a service considered for the patient's care. All services populated in a Continued Care and Services Coordination navigator section will be included in the table. The services can be provider (SER), facility (EAF), or department (DEP) records.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Provider/Resource (SER) ID of service being considered for Continued Care and Services Coordination."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PROV_ADDR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Unique Address ID for the address in the provider/resource (SER) record that has been selected in a Continued Care and Services Coordination navigator section. A provider/resource (SER) record can have more than one address, and each address can be selected in a Continued Care and Services Coordination navigator section."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "DP_FAC_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID of the request status for this service for this patient.",
+      "entries": [
+        "Accepted",
+        "Declined",
+        "Pending - No Request Sent",
+        "Pending - Request Sent",
+        "Removed",
+        "Considering",
+        "Processing"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "STATUS_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Instant when the Continued Care and Services Coordination request status for this service was last updated for the specific patient."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "DEST_BOOL",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This indicates whether a service has been selected as a caregiver for the patient. A service is defined as a caregiver service if it's included in the list on the Case Management - Caregiver Services screen in System Definitions."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "DEST_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant the patient's selected caregiver flag for this service was last updated."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "LOC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the service provider being considered for Continued Care and Services Coordination (post-discharge services or placement for the patient) for this row. This column is populated for all service providers that are location (EAF) type records."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique department ID of the service being considered for Continued Care and Services Coordination for this row. If this column is populated, the service in this row is a department (DEP) record."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is the note ID of a note record containing user comments about the related service in a Continued Care and Services Coordination navigator section for the given patient encounter."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "COORD_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The coordination type for Continued Care and Services Coordination.",
+      "entries": [
+        "Destination",
+        "Durable Medical Equipment",
+        "Dialysis/Infusion",
+        "Home Medical Care",
+        "Community Resources"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "SELECTED_SERVICE_BOOL",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Set to 1 if this service is marked as a patient's selected service, 0 otherwise."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "ARCHIVE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the instant a request or selected service for Continued Care and Services Coordination is archived."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "ARCHIVE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the user who archives the request or selected service for Continued Care and Services Coordination."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "ARCHIVE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "ENC_LOC_HAS_FIN_INTEREST_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Records whether the patient's encounter location had a disclosable financial interest in this service provider at the time this service provider was first added to Continued Care and Services Coordination navigator section. Financial interest is determined by settings items I EAF 34017, I EAF 34018, I EAF 34019, and I EAF 34020.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "DECISION_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the latest instant when the service provider decided whether they would accept the patient. This value will be cleared if the status is changed to pending."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "SELECTION_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the latest instant when the service provider was selected. This value will be cleared if the service provider is unselected."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "ACCEPTED_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the instant when the patient's request for this service was accepted."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "ARCHIVE_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the instant when the patient's request for this service was archived."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "DECLINED_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores by instant when the patient's request for this service was declined."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "SELECTION_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the instant when a service was selected from the patient's request for the service."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "ENC_SPECIFIC_FAX_NUMBER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the value of the case manager inputted encounter-specific fax number, and this fax number is used to contact the targeted provider during this patient encounter."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "RECOMMENDATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The community resource recommendation record associated with this request."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "ACCEPTED_SELECTED_BUS_DAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of business days between the accepted and selected dates. Business days exclude weekends and holidays."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "SELECTED_ENDED_BUS_DAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of business days between the selected and end dates. Business days exclude weekends and holidays."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "ACCEPTED_ENDED_BUS_DAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of business days between the accepted and end dates. Business days exclude weekends and holidays."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "COMP_BY_THIRD_PARTY_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A flag that is set when a third party marks a CCSC request as complete in a context that doesn't support archiving requests. This is not used for recommendation type requests or requests sent in a Compass Rose episode."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "SVC_LN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the service line associated with a service request for post-acute care documented in the Continued Care and Services Coordination (CCSC) activity."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "SVC_LN_ID_SVC_LN_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name (.2 item) of the service line record."
+    }
+  ]
+}

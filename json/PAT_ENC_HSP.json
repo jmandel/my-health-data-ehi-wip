@@ -1,0 +1,301 @@
+{
+  "$meta": {
+    "schemas": {
+      "PAT_ENC_HSP": {
+        "name": "PAT_ENC_HSP",
+        "description": "This table is the primary table for hospital encounter information. A hospital encounter is a contact in the patient record created through an ADT workflow such as preadmission, admission, ED Arrival, discharge, and hospital outpatient visit (HOV) contacts. These contact types have the ADT flag (I EPT 10101) set to 1. This table excludes all other contacts.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ENC_CSN_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "ADT_PAT_CLASS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value corresponding to the patient classification for this patient contact."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "ADT_PATIENT_STAT_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value corresponding to the patient status for this patient contact.",
+            "entries": [
+              "Preadmission",
+              "Admission",
+              "Discharged",
+              "Leave of Absence",
+              "Hospital Outpatient Visit"
+            ]
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "EXP_ADMISSION_TIME",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The date and time of the expected admission for this patient contact."
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "ADMIT_SOURCE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value corresponding to the admission source for this patient contact."
+          },
+          {
+            "ordinalPosition": 22,
+            "name": "HOSP_ADMSN_TIME",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The date and time that the patient was first admitted to the facility, bedded in the ED, or confirmed for an HOV for this contact, regardless of patient's base patient class."
+          },
+          {
+            "ordinalPosition": 23,
+            "name": "ADMIT_CONF_STAT_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value corresponding to the (admission) confirmation status for this patient contact.",
+            "entries": [
+              "Confirmed",
+              "Pending",
+              "Canceled",
+              "Completed"
+            ]
+          },
+          {
+            "ordinalPosition": 24,
+            "name": "HOSP_DISCH_TIME",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The hospital discharge date and time for this patient contact."
+          },
+          {
+            "ordinalPosition": 25,
+            "name": "HOSP_ADMSN_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value corresponding to the admission type for the patient contact."
+          },
+          {
+            "ordinalPosition": 29,
+            "name": "DISCH_DISP_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value corresponding to the discharge disposition for this patient contact."
+          },
+          {
+            "ordinalPosition": 37,
+            "name": "INPATIENT_DATA_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the Inpatient Data Store record."
+          },
+          {
+            "ordinalPosition": 64,
+            "name": "OP_ADM_DATE",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The date and time during the hospital encounter when the patient first received a base patient class of outpatient."
+          },
+          {
+            "ordinalPosition": 66,
+            "name": "OP_ADM_EVENT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The event record for the hospital encounter where the patient first received a base patient class of outpatient."
+          },
+          {
+            "ordinalPosition": 87,
+            "name": "HOSPITAL_AREA_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This field identifies the hospital area associated with the hospital unit in this patient contact."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "PAT_ENC_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc.",
+            "mergedFrom": "PAT_ENC_HSP_2"
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format.",
+            "mergedFrom": "PAT_ENC_HSP_2"
+          },
+          {
+            "ordinalPosition": 15,
+            "name": "ENC_CLOSED_OR_COMPLETED_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date that the encounter was closed or completed.",
+            "mergedFrom": "PAT_ENC_HSP_2"
+          },
+          {
+            "ordinalPosition": 27,
+            "name": "HOSP_DISCH_UTC_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "The hospital discharge date and time in UTC.",
+            "mergedFrom": "PAT_ENC_HSP_2"
+          },
+          {
+            "ordinalPosition": 28,
+            "name": "HOSP_ADMSN_UTC_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "The hospital admission date and time in UTC.",
+            "mergedFrom": "PAT_ENC_HSP_2"
+          }
+        ],
+        "merged": [
+          {
+            "name": "PAT_ENC_HSP_2",
+            "description": "The PAT_ENC_HSP_2 table is the subsequent table for the PAT_ENC_HSP table, which is the primary table for hospital encounter information. Each record in this table is based on a patient contact serial number."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "PAT_ENC_HSP",
+            "target": "ASSOCIATED_REFERRALS",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_ENC_HSP",
+            "target": "HSP_ADMIT_DIAG",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_ENC_HSP",
+            "target": "HSP_ADMIT_PROC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_ENC_HSP",
+            "target": "HSP_ATND_PROV",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_ENC_HSP",
+            "target": "PAT_ENC_ADMIT_DX_AUDIT",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_ENC_HSP",
+            "target": "PAT_ENC_QNRS_ANS",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PAT_ENC_HSP": [
+    {
+      "PAT_ENC_CSN_ID": 922942674,
+      "ADT_PAT_CLASS_C_NAME": "Therapies Series",
+      "ADT_PATIENT_STAT_C_NAME": "Hospital Outpatient Visit",
+      "EXP_ADMISSION_TIME": "2022-03-11 14:50:00",
+      "ADMIT_SOURCE_C_NAME": "Self",
+      "HOSP_ADMSN_TIME": "2022-03-11 14:41:00",
+      "ADMIT_CONF_STAT_C_NAME": "Completed",
+      "HOSP_DISCH_TIME": "2022-03-11 23:59:00",
+      "HOSP_ADMSN_TYPE_C_NAME": "Elective",
+      "DISCH_DISP_C_NAME": "Home - Discharge to Home or Self Care",
+      "INPATIENT_DATA_ID": "192169229",
+      "OP_ADM_DATE": "2022-03-11 14:41:00",
+      "OP_ADM_EVENT_ID": 133758524,
+      "HOSPITAL_AREA_ID": 101401,
+      "$meta": {
+        "type": "PAT_ENC_HSP",
+        "mergedFrom": [
+          "PAT_ENC_HSP_2"
+        ]
+      },
+      "// mergedFrom PAT_ENC_HSP_2": true,
+      "PAT_ENC_DATE_REAL": 66179,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "ENC_CLOSED_OR_COMPLETED_DATE": "2022-03-12 00:00:00",
+      "HOSP_DISCH_UTC_DTTM": "2022-03-12 05:59:00",
+      "HOSP_ADMSN_UTC_DTTM": "2022-03-11 20:41:09"
+    },
+    {
+      "PAT_ENC_CSN_ID": 922943112,
+      "ADT_PAT_CLASS_C_NAME": "Therapies Series",
+      "ADT_PATIENT_STAT_C_NAME": "Hospital Outpatient Visit",
+      "EXP_ADMISSION_TIME": "2022-03-22 17:00:00",
+      "ADMIT_SOURCE_C_NAME": "Self",
+      "HOSP_ADMSN_TIME": "2022-03-22 16:42:00",
+      "ADMIT_CONF_STAT_C_NAME": "Completed",
+      "HOSP_DISCH_TIME": "2022-03-22 23:59:00",
+      "HOSP_ADMSN_TYPE_C_NAME": "Elective",
+      "DISCH_DISP_C_NAME": "Home - Discharge to Home or Self Care",
+      "INPATIENT_DATA_ID": "192169541",
+      "OP_ADM_DATE": "2022-03-22 16:42:00",
+      "OP_ADM_EVENT_ID": 134253794,
+      "HOSPITAL_AREA_ID": 101401,
+      "$meta": {
+        "type": "PAT_ENC_HSP",
+        "mergedFrom": [
+          "PAT_ENC_HSP_2"
+        ]
+      },
+      "// mergedFrom PAT_ENC_HSP_2": true,
+      "PAT_ENC_DATE_REAL": 66190,
+      "CONTACT_DATE": "2022-03-22 00:00:00",
+      "ENC_CLOSED_OR_COMPLETED_DATE": "2022-03-23 00:00:00",
+      "HOSP_DISCH_UTC_DTTM": "2022-03-23 04:59:00",
+      "HOSP_ADMSN_UTC_DTTM": "2022-03-22 21:42:55"
+    }
+  ]
+}

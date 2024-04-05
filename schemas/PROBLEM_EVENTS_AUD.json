@@ -1,0 +1,104 @@
+{
+  "name": "PROBLEM_EVENTS_AUD",
+  "description": "This table contains an audit trail of changes made to a problem's history, stored in the PROBLEM_EVENTS table.",
+  "primaryKey": [
+    {
+      "columnName": "PROBLEM_LIST_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PROBLEM_LIST_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the problem record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "AUDIT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the user that edited an event"
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "AUDIT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "AUDIT_INST_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the UTC instant that an event was edited"
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "AUDIT_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the line number of the edited event"
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "AUDIT_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the action taken on this event",
+      "entries": [
+        "Event Added",
+        "Event Removed",
+        "Event Moved",
+        "Start date changed",
+        "End date changed",
+        "Description changed",
+        "History Deleted",
+        "History Created",
+        "Automated Refresh Status Change",
+        "Event Type Change",
+        "User comments modified",
+        "Event Master List Created"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "AUDIT_VALUE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the value associated with the audit action"
+    }
+  ]
+}

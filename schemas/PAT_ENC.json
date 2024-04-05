@@ -1,0 +1,593 @@
+{
+  "name": "PAT_ENC",
+  "description": "The patient encounter table contains one record for each patient encounter in your system. By default, this table does not contain Registration or PCP/Clinic Change contacts (encounter types 1 and 31). It does contain all appointments, office visits, telephone encounters, and other types of encounters. The primary key for the patient encounter table is PAT_ENC_CSN_ID.\n\n\nNote that there is an index named EIX_FILT_PAT_ENC_RFL on the REFERRAL_ID column in Oracle that does not appear in the index list. The index is created by EFN_FAUX_RFL_FILT_INX.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID assigned to the patient record. This ID may be encrypted if you have elected to use enterprise reporting�s encryption utility."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "A unique serial number for this encounter. This number is unique across all patients and encounters in the system."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PCP_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the provider record for the patient�s General Primary Care Provider as of the date of the encounter. This ID may be encrypted if you have elected to use enterprise reporting�s security utility."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "FIN_CLASS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value associated with the Financial Class of the encounter. Note: This item is only populated through an interface. It is not populated if you have billing system installed.",
+      "entries": [
+        "Commercial",
+        "Medicare",
+        "Medicaid",
+        "Self-Pay",
+        "Worker's Comp",
+        "Tricare",
+        "Champva",
+        "Group Health Plan",
+        "FECA Black Lung",
+        "Blue Shield",
+        "Medigap",
+        "Other",
+        "DK Regional",
+        "Client",
+        "Received Self-Pay",
+        "Sent to Consolidated Self-Pay Service Area"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "VISIT_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID for the visit provider associated with this encounter. In cases where there are multiple providers for one encounter, this is the ID of the first provider in the list. This item may be NULL if there is no provider for this encounter. This ID may be encrypted."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "VISIT_PROV_TITLE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The visit provider�s provider title (SER 5). See VISIT_PROV_ID above for the definition of visit provider."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the department for the encounter. If there are multiple departments for the encounter, this is the ID of the first department in the list."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "LMP_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of the patient�s Last Menstrual Period. Only contains data for encounters with female patients."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "ENC_CLOSED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A flag that signifies if this encounter is closed as of the time of the enterprise reporting extract. This column will have the value Y, N or null. Null indicates that closing the encounter does not apply, such as a future appointment.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ENC_CLOSED_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the system user who closed the patient encounter. This ID may be encrypted."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "ENC_CLOSED_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "ENC_CLOSE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which the patient encounter was closed."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "LOS_MODIFIER1_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The first Level of Service modifier applied to the encounter. This item will appear empty if no modifier is present."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "LOS_MODIFIER1_ID_MODIFIER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the modifier record."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "LOS_MODIFIER2_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The second Level of Service modifier applied to the encounter. This item will appear empty if no modifier is present."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "LOS_MODIFIER2_ID_MODIFIER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the modifier record."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "LOS_MODIFIER3_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The third Level of Service modifier applied to the encounter. This item will appear empty if no modifier is present."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "LOS_MODIFIER3_ID_MODIFIER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the modifier record."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "LOS_MODIFIER4_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The fourth Level of Service modifier applied to the encounter. This item will appear empty if no modifier is present."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "LOS_MODIFIER4_ID_MODIFIER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the modifier record."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "APPT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value associated with the appointment status of the encounter as of the most recent enterprise reporting extract, such as 1 � Scheduled, 2 � Completed, 3 � Canceled, etc.",
+      "entries": [
+        "Scheduled",
+        "Completed",
+        "Canceled",
+        "No Show",
+        "Left without seen",
+        "Arrived"
+      ]
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "APPT_CANC_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who canceled the appointment."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "APPT_CANC_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "CHECKIN_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the system user who checked in the patient for this encounter. If the encounter has not been through the Check In process this field will be NULL. This ID may be encrypted."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "CHECKIN_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "HOSP_ADMSN_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time that the patient was first admitted to the facility, bedded in the ED, or confirmed for an HOV for this contact, regardless of patient's base patient class."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "HOSP_DISCHRG_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The hospital discharge date and time for this patient contact."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "HOSP_ADMSN_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value for the type of admission for this encounter."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "NONCVRED_SERVICE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A flag used to indicate whether the appointment is scheduled in a service not covered by the patient's coverage benefits. The flag is set to \"Y\" when the service is not covered and an \"N\" when it is covered.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "REFERRAL_REQ_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A flag used to indicate whether an appointment requires a referral as determined by the visit coverage. This flag is set to �Y� when the appointment requires a referral. If the appointment does not require a referral, it is set to �N.\""
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "REFERRAL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the referral record linked to this appointment."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID number of the guarantor account assigned to the visit at the time it is scheduled or when it is checked in. This ID may be encrypted."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID number of the coverage record assigned to the visit at the time it is scheduled or when it is checked in. This ID may be encrypted."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the billing system Claim record (CLM record) linked to charges associated with this visit."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "PRIMARY_LOC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the patient�s primary location as of the contact date of the encounter. Note: This may not be the same as the patient�s current primary location."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "CHARGE_SLIP_NUMBER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The encounter form number or charge slip number assigned to this encounter. Note: The charge slip number is also stored in the financial table CLARITY_TDL. You can use this field to link to CLARITY_TDL to identify financial transactions associated with the encounter."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "COPAY_DUE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The dollar amount shown in the Copay Due field of the scheduling system's Check In Patient activity. This amount may be calculated by the system using the patient's coverage benefit information or be manually entered by a user. This field may also be empty if no copay amount was entered when the patient's appointment was checked in."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "UPDATE_DATE",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The time this patient encounter was pulled into enterprise reporting."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID number of the hospital billing account assigned to the encounter."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "ADM_FOR_SURG_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the patient is being admitted for surgery.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "SURGICAL_SVC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the surgical service for this patient contact."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "INPATIENT_DATA_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID number of the record used to determine how inpatient data is stored for the encounter."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "IP_EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID number of the inpatient episode of care. This includes discharges from the ED."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "EXTERNAL_VISIT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID for the contact as assigned by a non-system. Usually populated by an interface."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "CONTACT_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Comments entered by the provider for the contact."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "OUTGOING_CALL_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether a call associated with a telephone encounter was initiated by the patient or by the clinic / hospital. A \"Y\" indicates an outgoing call placed by the clinic / hospital while an \"N\" indicates and incoming call from the patient."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "DATA_ENTRY_PERSON",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the name of the user who created the encounter."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "REFERRAL_SOURCE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The referral ID number of the referring physician. This physician may be from an external organization."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "REFERRAL_SOURCE_ID_REFERRING_PROV_NAM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the referral source."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "WC_TPL_VISIT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A field used to indicate whether the patient's contact is related to workers compensation or third party liability situation."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "CONSENT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item describes the type of consent that was filed for a given encounter. It is a single-response customer-defined category."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "BMI",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This is the patient's Body Mass Index, which is calculated based on the recorded height and weight."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "BSA",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This is the patient's Body Surface Area, which is calculated based on the recorded height and weight."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "AVS_PRINT_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant that the After Visit Summary (AVS) was printed for this encounter."
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "AVS_FIRST_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Unique ID of the user who first prints out the After Visit Summary (AVS) for the encounter."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "AVS_FIRST_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "ENC_MED_FRZ_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The encounter medication freeze reason's category value.",
+      "entries": [
+        "Dirty flag",
+        "Mark Taking",
+        "New Order",
+        "Change or Reorder",
+        "Review Meds",
+        "Enter Vital Sign",
+        "Discontinue Med",
+        "Patient Arrival",
+        "Medication Refused",
+        "Close Encounter",
+        "End of Day",
+        "Mark Long-Term",
+        "Create CAM"
+      ]
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "EFFECTIVE_DATE_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of the encounter. The returned date is handled differently depending on the contact type of the encounter: If it is a surgery encounter, the date of the surgery will be returned. If it is a Hospital encounter, Admission/Discharge/Transfer (ADT) info will be used to return an appropriate date. If ADT info cannot be found, then the  Hospital Admission date (I EPT 18850) will be returned. If the Hospital Admission Date cannot be found, the temporary admission date (I EPT 18846) will be returned.."
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "DISCHARGE_DATE_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The discharge date for the encounter."
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "COPAY_PD_THRU_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The method by which the copay for an appointment was paid (e.g., via MyChart, a kiosk).",
+      "entries": [
+        "Mychart",
+        "Welcome"
+      ]
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "INTERPRETER_NEED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A flag used to indicate whether a patient requires an interpreter for an encounter.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "VST_SPECIAL_NEEDS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This field captures any special needs for a visit."
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "BEN_ENG_SP_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the adjudicated self-pay amount (the amount required to be paid by the patient) when determining the copay amount for the visit."
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "BEN_ADJ_COPAY_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the adjudicated copy amount for the visit according to the patient's coverage benefits."
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "BEN_ADJ_METHOD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Flag to indicate if and how the adjudicated copay was overridden",
+      "entries": [
+        "Benefit Package Adjudication Formula",
+        "Coverage Level Override",
+        "Plan Level Override",
+        "Copay Suppressed",
+        "Payor Level Override Programming Point",
+        "Service Area Level Override Programming Point",
+        "Waived - Secondary Coverage Available",
+        "Copay Computation Function Programming Point"
+      ]
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "ENC_CREATE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID number of the user who create the patient or encounter record."
+    },
+    {
+      "ordinalPosition": 69,
+      "name": "ENC_CREATE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 70,
+      "name": "ENC_INSTANT",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant an encounter was created"
+    },
+    {
+      "ordinalPosition": 71,
+      "name": "EFFECTIVE_DATE_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The start date and time of an encounter. The start date is pulled from the date stored in the EFFECTIVE_DATE_DT column. The time references the first populated time in the following fields: hospital admission time (EPT 18851), hospital temporary admission time (EPT 18847), ADT arrival time (EPT 10815), and expected admission time (EPT 10300).  The SlicerDicer reporting application uses this column to determine the EffectiveStartDate of encounters."
+    },
+    {
+      "ordinalPosition": 72,
+      "name": "CALCULATED_ENC_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A status flag used to  determine whether to include data from the encounter in the SlicerDicer reporting application. Statuses includes 1-Possible (e.g., the encounter is a scheduled outpatient appointment or the admission is pending) or 2-Complete (e.g., the appointment is complete, the admission is discharged).",
+      "entries": [
+        "Possible",
+        "Complete",
+        "Invalid",
+        "In Progress"
+      ]
+    }
+  ]
+}

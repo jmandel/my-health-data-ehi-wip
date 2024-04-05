@@ -1,0 +1,151 @@
+{
+  "$meta": {
+    "schemas": {
+      "MED_CVG_DX_VALUE": {
+        "name": "MED_CVG_DX_VALUE",
+        "description": "This table extracts the diagnosis codes associated with a medication estimate.",
+        "primaryKey": [
+          {
+            "columnName": "MED_ESTIMATE_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "CONTACT_DATE_REAL",
+            "ordinalPosition": 2
+          },
+          {
+            "columnName": "GROUP_LINE",
+            "ordinalPosition": 3
+          },
+          {
+            "columnName": "VALUE_LINE",
+            "ordinalPosition": 4
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "MED_ESTIMATE_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier (.1 item) for the medication estimate record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "CONTACT_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, and so on."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "GROUP_LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this contact."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "VALUE_LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number of one of the multiple values associated with a specific group of data within this contact."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "DX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Pointer to the diagnosis record associated with the medication estimate."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "MED_CVG_DX_VALUE",
+            "target": "MED_CVG_DETAILS",
+            "joinKeys": [
+              {
+                "source": "MED_ESTIMATE_ID",
+                "target": "MED_ESTIMATE_ID"
+              },
+              {
+                "source": "CONTACT_DATE_REAL",
+                "target": "CONTACT_DATE_REAL"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "MED_CVG_DX_VALUE",
+            "target": "MED_CVG_INFO",
+            "joinKeys": [
+              {
+                "source": "MED_ESTIMATE_ID",
+                "target": "MED_ESTIMATE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "MED_CVG_DX_VALUE",
+            "target": "MED_CVG_RESP_RSLT_DETAIL",
+            "joinKeys": [
+              {
+                "source": "MED_ESTIMATE_ID",
+                "target": "MED_ESTIMATE_ID"
+              },
+              {
+                "source": "CONTACT_DATE_REAL",
+                "target": "CONTACT_DATE_REAL"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "MED_CVG_DX_VALUE",
+            "target": "MED_CVG_ESTIMATE_VALS",
+            "joinKeys": [
+              {
+                "source": "MED_ESTIMATE_ID",
+                "target": "MED_ESTIMATE_ID"
+              },
+              {
+                "source": "CONTACT_DATE_REAL",
+                "target": "CONTACT_DATE_REAL"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "MED_CVG_DX_VALUE": [
+    {
+      "MED_ESTIMATE_ID": 8470183,
+      "CONTACT_DATE_REAL": 66444.01,
+      "GROUP_LINE": 1,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "DX_ID": 260690,
+      "$meta": {
+        "type": "MED_CVG_DX_VALUE"
+      }
+    }
+  ]
+}

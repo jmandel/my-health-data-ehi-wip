@@ -1,0 +1,121 @@
+{
+  "$meta": {
+    "schemas": {
+      "HSP_BKT_NAA_TX_TYP": {
+        "name": "HSP_BKT_NAA_TX_TYP",
+        "description": "The HSP_BKT_NAA_TX_TYP table contains information about the types of not allowed adjustment transactions posted at each line of the table HSP_BKT_NAA_ADJ_HX.",
+        "primaryKey": [
+          {
+            "columnName": "BUCKET_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "GROUP_LINE",
+            "ordinalPosition": 2
+          },
+          {
+            "columnName": "VALUE_LINE",
+            "ordinalPosition": 3
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "BUCKET_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the bucket record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "GROUP_LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "VALUE_LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number of one of the multiple values associated with a specific group of data within this record."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "NAA_ADJ_HX_TX_TYP_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The type of a transaction in the transaction table of the contractual adjustment history table.",
+            "entries": [
+              "Not Allowed Adjustment",
+              "Reversal of Not Allowed Adjustment",
+              "Variance Adjustment"
+            ]
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "HSP_ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the hospital account to which the liability bucket is linked."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "HSP_BKT_NAA_TX_TYP",
+            "target": "HSP_BKT_ADDTL_REC",
+            "joinKeys": [
+              {
+                "source": "BUCKET_ID",
+                "target": "BUCKET_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "HSP_BKT_NAA_TX_TYP",
+            "target": "HSP_BKT_ADJ_TXS",
+            "joinKeys": [
+              {
+                "source": "BUCKET_ID",
+                "target": "BUCKET_ID"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "HSP_BKT_NAA_TX_TYP",
+            "target": "HSP_BKT_NAA_ADJ_HX",
+            "joinKeys": [
+              {
+                "source": "BUCKET_ID",
+                "target": "BUCKET_ID"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HSP_BKT_NAA_TX_TYP": [
+    {
+      "BUCKET_ID": 464353002,
+      "GROUP_LINE": 3,
+      "VALUE_LINE": 1,
+      "NAA_ADJ_HX_TX_TYP_C_NAME": "Not Allowed Adjustment",
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_BKT_NAA_TX_TYP"
+      }
+    }
+  ]
+}

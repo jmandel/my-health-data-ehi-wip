@@ -1,0 +1,70 @@
+{
+  "name": "VARIANT_HT_AUDIT",
+  "description": "This table contains information about changes to this variant record done as a result of Happy Together variant auto-reconciliation.",
+  "primaryKey": [
+    {
+      "columnName": "VARIANT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "VARIANT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the variant record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record. Each line corresponds to a happy together action taken on this variant record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "RESULT_KEY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Reference ID of the result data to which this variant is linked.  This can be used to link to result information for the result to which this variant is linked, for example, by linking to DOCS_RCVD_RSLTS and DOCS_RCVD_RSLT_VAR_INFO."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "VAR_INFO_DOCUMENT_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The CSN of the source DXR from which this variant was reconciled"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "HT_VAR_AUDIT_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The action that was performed during variant auto-reconciliation",
+      "entries": [
+        "Created",
+        "Automatically Retracted",
+        "Invalidated"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "HT_VAR_AUDIT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The time instant in UTC when the action was performed"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "HT_VAR_AUDIT_LOCAL_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The time instant in local time when the action was performed"
+    }
+  ]
+}

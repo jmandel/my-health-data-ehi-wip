@@ -1,0 +1,158 @@
+{
+  "name": "CL_QANSWER_QA",
+  "description": "This table contains the questions and answers for questionnaire answer records. It also includes audit information such as when the question was answered and by whom.",
+  "primaryKey": [
+    {
+      "columnName": "ANSWER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ANSWER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the questionnaire answer record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Line count of the answers in the questionnaire record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "QUEST_LINE_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the question for this record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "QUEST_EDIT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user associated with this record."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "QUEST_EDIT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "QUESTION_INSTANT",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the instant a question was answered."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "VARCHAR_ANSWER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "For questions of networked or category response types where the linked INI and item is string (aka varchar) based, this column will hold either a record ID or category ID. These are useful for linking directly to other tables such as CLARITY_SER for provider-linked questions, or ZC tables for category response types.   If you are unsure what types of records these IDs hold, consult CL_QQUEST_OVTM for the question ID in the QUEST_ID column and use the RESP_INI and RESP_ITEM columns."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "NUMERIC_ANSWER",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "For questions of networked or category response types where the linked INI and item is numeric (integer) based, this column holds either a record ID or category ID."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "FLOAT_ANSWER",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "The answer to the question for this record converted into a floating point value."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "IS_NULL",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Specifies if there was no response to a question (set to 1 - Yes)."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "QUESTION_SDI",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The SmartData identifier of the SmartData element that this patient-entered custom history question uses."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "QUESN_SDI_FILED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether the response to this custom history question has been filed to the patient's history.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "DATETIME_ANSWER",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores questionnaire answer data in a datetime format that includes hours and seconds."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "TIME_ANSWER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The answer to the question for this record, formatted as a time value. This is the preferred column for reporting on answers to questions with the response type (LQL 110) of 3-Time.  Source: HQA 120"
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "SCORE_STD_ERR",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The standard error on the score calculated by the computerized adaptive testing (CAT) algorithm"
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "DOC_INFO_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of a document uploaded for a question."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "FOL_UP_PAR_QUEST_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The question ID (LQL) of the parent question for which this follow-up question is answered."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "PAT_LOC_DOC_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the ID of the drawing record (DCS) submitted by the patient in the locale in which he answered the question if the locale is different from the base locale."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "ANSWER_SEVERITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The severity level of an answer. Calculated using the thresholds defined for the question that was answered.",
+      "entries": [
+        "Normal",
+        "Abnormal",
+        "Critical"
+      ]
+    }
+  ]
+}

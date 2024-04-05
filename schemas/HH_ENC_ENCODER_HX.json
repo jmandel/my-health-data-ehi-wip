@@ -1,0 +1,104 @@
+{
+  "name": "HH_ENC_ENCODER_HX",
+  "description": "This table stores the history of Home Health Encounter Encoder use. Each row represents a use of an external third party encoder for a specific patient encounter. Within you will find which system was used by whom and for how long, as well as whether the session was successful or not.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ENCODER_SYSTEM_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the system which was used to launch a third party encoder session in Home Health Diagnosis Review for the given patient encounter.",
+      "entries": [
+        "3M Encoder",
+        "Nuance - Coding",
+        "Ingenix",
+        "TruCode",
+        "3M Connections Plus",
+        "Dolbey",
+        "M*Modal",
+        "Nuance - CDI",
+        "Dolbey CAC2"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "HX_CODER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who used an external coder to review this assessment."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "HX_CODER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "START_INST_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant when the coding session began."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "END_INST_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The time the encoder session ended."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "SESSION_RESULT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The result of the coding session."
+    }
+  ]
+}

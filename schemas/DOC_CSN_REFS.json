@@ -1,0 +1,37 @@
+{
+  "name": "DOC_CSN_REFS",
+  "description": "This table contains references to the document from patient contacts, by contact serial number.  It is populated by the Consents navigator section.",
+  "primaryKey": [
+    {
+      "columnName": "DOCUMENT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "DOCUMENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the document record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CSN_REFERENCE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the patient contacts (by contact serial number) that reference this document.  A reference here does not imply the document was created during any of these contacts and is different from the encounter storage level for documents (provided by I DCS 280); it is simply an indicator of relevance.  If this item is populated, a document should not be allowed to move between patients.  The user must remove all of these references manually before a patient change can occur."
+    }
+  ]
+}

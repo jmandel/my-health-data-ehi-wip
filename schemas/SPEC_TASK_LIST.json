@@ -1,0 +1,248 @@
+{
+  "name": "SPEC_TASK_LIST",
+  "description": "This table contains task information for Microbiology specimens and Anatomic Pathology cases.",
+  "primaryKey": [
+    {
+      "columnName": "SPECIMEN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SPECIMEN_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the specimen record"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "TASK_TEST_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the test that the task on the corresponding line applies to."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "TASK_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The task category number for the specimen"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "TASK_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The task action category number for the corresponding task.",
+      "entries": [
+        "Aliquot Creation",
+        "Block Creation",
+        "Slide Creation",
+        "Media Plate Creation"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "TASK_PARAMS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the parameters for the action associated with task on the corresponding line. For instance, this column may store the media type of the created container."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "TASK_INSTANT",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant when the task was completed."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "TASK_PERSON_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique employee identifier of the person completing the task."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "TASK_PERSON_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "TASK_LAB_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the lab in which the task was completed."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "TASK_INST",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The user-editable instant when the task was completed."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "TASK_LINKED_CTNR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique container identifier that might be created if the action associated with the task on the corresponding line is to create a media plate, a block or a slide that is related to a block."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "TASK_GROUP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is used to group tasks together. This feature is most commonly used to link multiple slides to a block."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "TASK_ACTION_QTY",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the number of times the action associated with this task must be performed."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "TASK_CHARGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores a charge associated with this task."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "TASK_CHARGE_QTY",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the number of times the billing code associated with this task must be charged."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "TASK_INT_LAB_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Used to indicate the lab tasks must be performed in. If a lab is listed in this item, the task will be added to the specimen only when the specimen (any container or test on the specimen) is received in the listed lab for the first time."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "TASK_LEVEL",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores number of levels."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "TASK_BLOCK_START_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the block fixation start time."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "TASK_BLOCK_END_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the block fixation end time."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "TASK_NOTES",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores any free text notes describing the task."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "TASK_DELETED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the related task has been soft-deleted. \"Y\" indicates that the task has been soft-deleted. \"N\" or an empty value indicates that the task has not been soft-deleted.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "TASK_AP_PART_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Returns the part ID for this anatomic pathology task, such as \"A1\"."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "TASK_PROTOCOL_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the test which populated the associated task."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "TASK_COMP_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant that the user indicated the task was completed in UTC."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "TASK_CHG_TR_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The charge trigger status category ID for the task.",
+      "entries": [
+        "Tech/No type charges have been triggered",
+        "Professional charges have been triggered",
+        "All types of charges have been triggered"
+      ]
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "TASK_UPD_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line in the tasks related table (SI 51310) that the current line is created to restore for when task was updated."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "TASK_UPD_ALERT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique alert record identifier created when the task was updated."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "TEST_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the associated test on the specimen. Together with SPECIMEN_ID, this forms the foreign key to the SPEC_TEST_REL table."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "CHARGE_SS_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the last dropped charge for the associated specimen task."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "CHARGE_QTY_SS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The quantity for the last dropped charge for the associated specimen task."
+    }
+  ]
+}

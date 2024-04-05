@@ -1,0 +1,48 @@
+{
+  "name": "FIN_ASST_CASE_LNKD_TRKR",
+  "description": "This table contains information on how financial assistance program trackers are linked to each other in a financial assistance case.",
+  "primaryKey": [
+    {
+      "columnName": "FIN_ASST_CASE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "FIN_ASST_CASE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the financial assistance case record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the group of the linked financial assistance trackers in the financial assistance case record. Together with FIN_ASST_CASE_ID, this forms the foreign key to the FIN_ASST_CASE_ASSOC_TRKR table."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple financial assistance trackers associated with the financial assistance case from the FIN_ASST_CASE_ASSOC_TRKR table."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "LINKED_FIN_ASST_TRACKER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the financial assistance tracker that is part of a linked group. The financial assistance trackers in a linked group are edited as if they are one by the financial counselor. Updating one tracker will mean updating all the trackers in the linked group."
+    }
+  ]
+}

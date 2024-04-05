@@ -1,0 +1,101 @@
+{
+  "name": "HH_OASIS_SUBM_RESP",
+  "description": "Contains information on Outcome and Assessment Information Set (OASIS) data set responses as obtained from the Centers for Medicare and Medicaid Services (CMS) through validation files.",
+  "primaryKey": [
+    {
+      "columnName": "OASIS_SET_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "OASIS_SET_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the data set record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "OAS_RESP_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The response status of an individual OASIS submission. This could be \"Accepted\" or \"Rejected\".",
+      "entries": [
+        "Accepted",
+        "Rejected"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "OAS_VALD_MRK_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant when an OASIS submission response status is changed either by the validation batch process or manually from Home Health Intake or actions taken in Reporting Workbench reports."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "OAS_RES_MRK_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the user who manually updates the status of an OASIS submission. If the batch process updates the submission status, this user ID is stored as \"."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "OAS_RES_MRK_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "OAS_RESP_HNO_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the note corresponding to an individual OASIS submission.  The note stores the reason why a submission was marked as Accepted or Rejected.  Errors and warnings received from CMS are stored in this note."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "OAS_RESP_EXP_LN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The OASIS export file that generated this response. This number corresponds to a line in Home Health OASIS Data Sets (I LHO 320), which stores all of the exports for a given OASIS data set."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "OAS_VALD_CMS_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time when the dataset was marked as accepted by CMS."
+    }
+  ]
+}

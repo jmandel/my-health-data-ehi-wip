@@ -1,0 +1,416 @@
+{
+  "name": "EPISODE",
+  "description": "This table contains high-level information on the episodes recorded in the clinical system for your patients. When a provider sees a patient several times for an ongoing condition, such as prenatal care, these encounters can be linked to a single Episode of Care. It does not contain episodes linked to an inpatient encounter.",
+  "primaryKey": [
+    {
+      "columnName": "EPISODE_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the episode of care record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the episode."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SUM_BLK_TYPE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The episode type."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the episode was initiated."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the episode was resolved in calendar format. This field is called \"Resolved\" on the clinical system screen."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "COMMENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Any free text comments about the episode."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PREGRAVID_WEIGHT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This field contains the pre-pregnancy weight maintained before this episode."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "NUMBER_OF_BABIES",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Prior to delivery, this column is expected to contain the number of fetuses that the patient is carrying. This can be manually documented, such as in the Prenatal Vitals section, or the value can be automatically set by creating or removing fetal result tabs in the ultrasound activity.  If your organization documents on the Delivery Summary then after the Delivery Summary is signed, this column is expected to contain the number of viable deliveries associated with the pregnancy. Specifically, this is the number of delivery records attached to the pregnancy. This expectation is based on Epic's recommendation that only viable deliveries should be documented on the Delivery Summary. Your organization may follow a different policy for when to create a delivery record. The behavior of this column containing the number of delivery records may be overridden at the profile level in system definitions, in which case it will continue to contain the number of fetuses that were being carried unless the number of deliveries is manually documented in its place."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PRIMARY_LPL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The primary problem linked to the episode."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status category number for the episode.",
+      "entries": [
+        "Active",
+        "Resolved",
+        "Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "L_UPDATE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the last user that updated the episode of care record."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "L_UPDATE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PATERNITY_ACK_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether a paternity acknowledgement has been signed by the biological father of the baby if the parents are not married. This column may not be applicable depending on the identity of the second parent and the two parents' relationship.",
+      "entries": [
+        "Yes",
+        "No",
+        "Unknown",
+        "Unnecessary"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "SMOKE_3_MO_BEF",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of cigarettes/packs smoked per day 3 months before the pregnancy by the mother."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "SMOKE_3_MO_BEF_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unit of measurement for the quantity of cigarettes being smoked 3 months before the pregnancy by the mother.",
+      "entries": [
+        "Packs",
+        "Cigarettes"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "SMOKE_1ST_3_MO",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of cigarettes/packs smoked per day in the first 3 months of the pregnancy by the mother."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "SMOKE_1ST_3_MO_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unit of measurement for the quantity of cigarettes being smoked the first three months of the pregnancy by the mother."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "SMOKE_2ND_3_MO",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of cigarettes/packs smoked per day in the second 3 months of the pregnancy by the mother."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "SMOKE_2ND_3_MO_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unit of measurement for the quantity of cigarettes being smoked the second three months of the pregnancy by the mother."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "SMOKE_3RD_TRI",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of cigarettes/packs smoked per day in the third trimester of the pregnancy by the mother."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "SMOKE_3RD_TRI_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unit of measurement for the quantity of cigarettes being smoked the third trimester of the pregnancy by the mother."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "DRINK_3_MO_BEF",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of alcoholic drinks consumed per week 3 months before the pregnancy by the mother."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "DRINK_1ST_3_MO",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of alcoholic drinks consumed per week in the first three months of the pregnancy by the mother."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "DRINK_2ND_3_MO",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of alcoholic drinks consumed per week in the second three months of the pregnancy by the mother."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "DRINK_3RD_TRI",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of alcoholic drinks consumed per week in the third trimester of the pregnancy by the mother."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "IN_CITY_LIMITS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether the address of the mother is inside the city limits.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "WIC_FOODS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Did the mother receive WIC foods during this pregnancy?"
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "TOTAL_PNC",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Override value to be used in situations where not all prenatal care was given at the same Epic provider and so not all prenatal care visits are in the system."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "MONTH_1ST_PNC",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Override value to be used in situations where not all prenatal care was given at the same Epic provider and so first date of prenatal care is not in the system and the month of the pregnancy when prenatal care began cannot be calculated."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "LIVE_BIRTHS_LIVING",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Override value to be used in situations where not all prenatal care was given at the same Epic provider, and consequently, other pregnancy information is not available. The number of children born alive which are still living not including children born at this birth."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "LIVE_BIRTHS_DEAD",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Override value to be used in situations where not all prenatal care was given at the same Epic provider, and consequently, other pregnancy information is not available. The number of other children born alive which are now deceased not including any born alive and deceased at this birth."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "MOTHER_MARRIED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether the mother is married at birth, conception, or any time in between."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "OB_PREGRAVID_BMI",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The patient's pre-pregnancy BMI for this pregnancy episode."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "FIRST_PNT_LOC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores who the patient's first prenatal care was with."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "SERV_AREA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the episode's service area. This column is used for DBC episodes, which are specific to a service area."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "OB_WRK_EDD_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The estimated date of delivery for a pregnancy episode."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "EXPECTED_DEL_LOC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Location where the woman plans to deliver her baby."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "DEL_LOC_CHANGE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Why the delivery location changed from the expected delivery location (EXPECTED_DEL_LOC_C) for a pregnancy episode."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "OB_FEEDING_INTENTIONS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Mother's intended feeding method for the baby.",
+      "entries": [
+        "Breast Milk",
+        "Formula",
+        "Breast Milk and Formula"
+      ]
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "INTENT_TREAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The intended treatment for an implanted Mechanical Circulatory Device.",
+      "entries": [
+        "Medical Management",
+        "Bridge to Recovery",
+        "Rescue Therapy",
+        "Bridge to Transplant - Currently Listed",
+        "Possible Bridge to Transplant - Likely Eligible",
+        "Possible Bridge to Transplant - Moderate Likelihood",
+        "Possible Bridge to Transplant - Unlikely Eligible",
+        "Destination Therapy - Modifiable",
+        "Destination Therapy - Unmodifiable",
+        "Unknown",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "INTENT_TREAT_OTHR",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The free text intended treatment for an implanted Mechanical Circulatory Device."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "MCS_DISCHARGE_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date a Mechanical Circulatory Device patient is discharged."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "MCS_EVAL_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The start date of the Mechanical Circulatory Device evaluation."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "MCS_REV_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the Mechanical Circulatory Device case was reviewed by the evaluation committee."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "MCS_ADMISSION_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date of the admission for the Mechanical Circulatory Device procedure."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "MCS_SURG_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of the Mechanical Circulatory Device surgery."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "MCS_IS_HISTORIC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Flag indicating a historic Mechanical Circulatory Device episode. This is intended to flag if the Device was implanted at another center than the Center that is currently following the patient.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "MCS_EVAL_END_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which the Mechanical Circulatory Device evaluation was completed."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "MCS_NEXT_REVIEW_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which both the Mechanical Circulatory Device episode and the patient chart should be reviewed."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "MCS_REFERRAL_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the patient was referred for the Mechanical Circulatory Device."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "MCS_TXPORT_MTHD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The method of transportation to the implantation center.",
+      "entries": [
+        "Car",
+        "Ambulance",
+        "Airplane",
+        "Helicopter"
+      ]
+    }
+  ]
+}

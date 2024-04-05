@@ -1,0 +1,629 @@
+{
+  "name": "PAT_ENC_2",
+  "description": "This table supplements the PAT_ENC table. It contains additional information related to patient encounters or appointments.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique system identifier of the patient encounter. Contact serial number is unique across all patients and all contacts."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which this patient encounter took place."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "COPAY_COINS_FLAG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Set to 1 if copay is coinsurance."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CAN_LET_C_NAME",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column links to the type of canceled appointment letter sent for this patient encounter. Some examples are \"No Letter\", \"No Show\",\"Cancelation Letter\", etc. This category column is linked to ZC_LET.LET_C.",
+      "entries": [
+        "No Letter"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SUP_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the provider ID of the supervising provider for this patient encounter."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SUP_PROV_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column links to information about the Type of Supervising provider.",
+      "entries": [
+        "No Supervision"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "SUP_PROV_REV_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "This column contains the date and time when the supervising provider submitted his or her review"
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "MEDS_REQUEST_PHR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The pharmacy identifier from which the medications were requested."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "MEDS_REQUEST_PHR_ID_PHARMACY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the pharmacy."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "MEDS_REQUEST_OP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains information about the fill option for the medication request.",
+      "entries": [
+        "Left",
+        "Right"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PHYS_BP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This contains the patient's blood pressure that was entered during the patient encounter."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "VITALS_TAKEN_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Holds the time the vitals were taken"
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PHYS_TEMP_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The source of the patient's temperature measurement.",
+      "entries": [
+        "Oral",
+        "Tympanic",
+        "Rectal",
+        "Axillary",
+        "Temporal",
+        "Skin",
+        "Bladder",
+        "Core",
+        "Esophageal"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "PAT_PAIN_SCORE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column indicates how much pain the patient was in via pain score."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "PAT_PAIN_LOC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains information about which body part is experiencing discomfort."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "PAT_PAIN_EDU_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains information as to whether pain education questions were asked.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PAT_PAIN_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains comments that were entered pertaining to the patient's pain"
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "PAT_PAIN_SCALE_CAT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the pain scale category under which the pain score is collected."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "SMOKING_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This simply stores information about whether the patient smokes, is quitting, etc.",
+      "entries": [
+        "Current/Former",
+        "Passive",
+        "Never"
+      ]
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "PHYS_SPO2",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Contains the blood oxygen saturation value for this encounter."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "SYS_GEN_LOS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column contains the system generated Level of Service information to link to the procedures tables."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "DOC_HX_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the source of entry for the history documentation.  This category column is linked to ZC_HISTORY_SOURCE.HISTORY_SOURCE_C.",
+      "entries": [
+        "Provider",
+        "Patient",
+        "Parent",
+        "Legal Guardian",
+        "Proxy User"
+      ]
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "APPT_LET_C_NAME",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column links to the type of appointment letter that was sent to this patient for this patient encounter. Some examples are \"No Letter\", \"Appt Letter\", etc.  This category column is linked to ZC_LET.LET_C."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "PARENT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item is a link to an encounter's parent encounter through the parent's contact serial number.  The contact serial number is the unique identifier for the encounter."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "SYNC_IP_DATA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is a contact-specific flag to tell Chart Sync whether inpatient clinical data for this visit (such as medication administration or documentation flowsheet data) should be synchronized between deployments. A value of 1 (or Yes) means that inpatient clinical data has been, and will continue to be, synchronized for this visit. Note that this item can only be set for a contact whose type is (or was at some point) an inpatient admission.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "APPTMT_LET_INST",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "If an appointment letter has been printed for this patient encounter, this column will list the date and time it was printed. If multiple letters were printed, we'll list the date and time of the most recent one."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "RESULT_LET_INST",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "If a result letter has been printed for this patient encounter, this column will list the date and time it was printed. If multiple letters were printed, we'll list the date and time of the most recent one."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "RESCHED_LET_INST",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "If a reschedule letter has been printed for this patient encounter, this column will list the date and time it was printed. If multiple letters were printed, we'll list the date and time of the most recent one."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "FOLLOW_LET_INST",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "If a follow-up letter has been printed for this patient encounter, this column will list the date and time it was printed. If multiple letters were printed, we'll list the date and time of the most recent one."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "PHYS_PEAK_FLOW",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column contains a measurement of the flow of air from the lungs: Peak Flow. If this column contains data, the measurement was taken during the associated encounter."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "ENC_SPEC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The encounter specialty item holds which of the encounter provider's specialties should be used for billing and reporting purposes for this encounter."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "LD_STATUS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Flag to denote if the encounter is for a mother who will deliver",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "ADT_PAT_CLASS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the Admission/Discharge/Transfer (ADT) patient classification for this patient contact."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "OTHER_BLOCK_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores \"Other\" Summary Blocks (non-IP, ED, OpTime)"
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "OTHER_BLOCK_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates the specific type of the episode summary, whose ID is stored in I EPT 1970.",
+      "entries": [
+        "Ambulatory",
+        "Leader Rounds",
+        "Travel"
+      ]
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "BILL_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Billing number, often used as an identifier in downstream systems."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "IP_DOC_CONTACT_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "For Hospital Outpatient Visit (HOV) encounters, this column stores the unique contact serial number for the patient contact which is used for clinical documentation.  This can be set for appointment contacts if they are not converted to HOVs."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "TEMP_PT_HIS_C",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item shows the temporary patient history.",
+      "entries": [
+        "Temporary",
+        "Identified as New or Anonymous"
+      ]
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "PRIMARY_PROCONT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the provider that is the primary contact for this patient encounter."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "PRIMARY_TEAM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the primary Provider Care Team for this patient encounter."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "PRIMARY_TEAM_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the record."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "MCIR_VACCINE_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient's eligibility code for Michigan's vaccination registry. This item only applies for the state of Michigan."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "VISIT_POS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the facility that was the place of service for this encounter."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "NO_INTERP_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column holds the reason an interpreter is not needed for the visit (in the case of a patient who would normally require one). It is meant to be populated when the corresponding EPT 495-INTERPRETER NEEDED? value is \"no\"."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "CVG_ADD_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The add date returned in the response message by the payor for the encounter. The add date is defined as the date that the payor added the patient as being covered."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "FARM_WORKER_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number of the patient's farm worker status for the encounter or appointment."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "KIOSK_HH_QUEST_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the health history template that is assigned to the patient encounter."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "KIOSK_HH_QUEST_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the Visit Navigator (VN) History Template Definition (LQH) record."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "HSP_ACCT_ADV_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "If the Hospital Account Advisor is turned on, this item records the date and time that the advisor's recommendation was accepted or rejected."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "VISIT_VERIFIED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the visit is verified.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "VERIF_VISIT_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The current date the visit contact was verified."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "VERIF_DATE_INIT_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The initial date the visit contact was verified."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "VERIF_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This collects the user ID of the user who verified the visit."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "ENC_LACT_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The lactation status category ID for the patient.",
+      "entries": [
+        "Yes",
+        "No",
+        "Unknown"
+      ]
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "PAT_LACT_CMNT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comments entered when the patient's lactation status has been edited."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "COSIGNER_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who cosigned the patient's chart."
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "COSIGNER_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "COSIGN_REV_INS_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time the chart was cosigned."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "PAR_DICT_COUNTER",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The counter for partial dictation."
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "IS_LOS_UPDATE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the status of any Level of Service updates.",
+      "entries": [
+        "CHANGE LOS UPDATE SENT",
+        "TX LOCKED UPDATE SENT"
+      ]
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "FORM_ID_COUNTER",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the counter of form IDs."
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "CONSNT_REV_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who reviewed patient consent."
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "CONSNT_REV_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "VISIT_PAYOR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the payor that is associated with this encounter."
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "VISIT_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the plan that is associated with this encounter."
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "SOCIO_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the source of entry for the sociological history."
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "TEL_ENC_MSG_RGRDING",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Free-text field containing user entered information regarding a telephone encounter message."
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "MSG_PRIORITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates the priority of the routed message.",
+      "entries": [
+        "High",
+        "Normal",
+        "Low"
+      ]
+    },
+    {
+      "ordinalPosition": 69,
+      "name": "RESEARCH_ENC_FLG_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Category ID of the research encounter flag used to mark the patient encounter as having all charges billed to a research study, the patient, or a mixture.  This is used for charge routing.",
+      "entries": [
+        "Research - Bill All to Patient",
+        "Research - Bill All to Study",
+        "Research - Bill Some to Study and Some to Patient",
+        "Not Research - Bill All to Patient"
+      ]
+    },
+    {
+      "ordinalPosition": 70,
+      "name": "FAM_SPOUSE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the patient's spouse"
+    },
+    {
+      "ordinalPosition": 71,
+      "name": "MSG_CALLER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the caller who left this message"
+    },
+    {
+      "ordinalPosition": 72,
+      "name": "CONSENT_EXP_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This is the expiration date of any consent forms that are attached to the patient."
+    },
+    {
+      "ordinalPosition": 73,
+      "name": "CV_ACC4_PAT_RESP_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether a patient wants identifying information to be excluded from submission to the American College of Cardiology-National Cardiovascular Data Registry's (ACC-NCDR) Catheterization and/or Percutaneous Coronary Intervention (CathPCI) registry."
+    },
+    {
+      "ordinalPosition": 74,
+      "name": "FAMILY_MEM_PREFIX_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the relationship between the patient and the patient's guarantor."
+    },
+    {
+      "ordinalPosition": 75,
+      "name": "AVS_REFUSED_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time when an end user documented that the patient declined the After Visit Summary."
+    },
+    {
+      "ordinalPosition": 76,
+      "name": "AVS_LAST_PRINT_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Records the instant the After Visit Summary was last printed"
+    },
+    {
+      "ordinalPosition": 77,
+      "name": "MED_LIST_UPDATE_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "If a patient's prescriptions or Facility-Administered Medications (FAMs) are updated (signed, modified, or discontinued; or other med reconciliation actions are changed) after the After Visit Summary (AVS) has been printed, this item is updated to hold a timestamp indicating the last time that such updates were made. It is left blank if no AVS has been printed yet."
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "name": "IP_RES_APP_EPI",
+  "description": "The IP_RES_APP_EPI table links restraint episodes with a restraint application.",
+  "primaryKey": [
+    {
+      "columnName": "INPATIENT_DATA_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "RES_TYPE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "APPLICATION_NUM",
+      "ordinalPosition": 3
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 4
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RES_TYPE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The restraint type can be a behavioral restraint (BH) or  nonbehavioral/medical-surgical restraint (MS)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "INPATIENT_DATA_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the inpatient data store record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "APPLICATION_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The APPLICATION_NUM refers to the application number for the admission.  The application number assigned to an application increases with each new application and does not repeat until a new admission.  Each application indicates the period of time from START to DISCONTINUED of all restraints.  There can be multiple episodes (orders) within an application."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Line number for each episode number during the restraint application."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EPISODE_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The EPISODE_NUM refers to the episode number for the admission.  The episode number assigned to an episode increases with each new episode and does not repeat until a new admission.  An episode is the length of a restraint order.  A value of '0' here represents that there were errors for the corresponding restraint type in the current inpatient data record."
+    }
+  ]
+}

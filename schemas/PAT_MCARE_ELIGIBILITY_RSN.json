@@ -1,0 +1,59 @@
+{
+  "name": "PAT_MCARE_ELIGIBILITY_RSN",
+  "description": "This table stores a member's Medicare eligibility reason information.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "MCARE_ELIG_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Medicare eligibility reason category ID for the member.",
+      "entries": [
+        "Age",
+        "Disabled without ESRD",
+        "ESRD only",
+        "Disabled with ESRD",
+        "None of the above"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The start date corresponding to the Medicare eligibility reason."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The end date corresponding to the Medicare eligibility reason."
+    }
+  ]
+}

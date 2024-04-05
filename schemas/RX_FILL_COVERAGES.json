@@ -1,0 +1,90 @@
+{
+  "name": "RX_FILL_COVERAGES",
+  "description": "This table contains the coverages used for prescription fills. A given fill can have multiple coverages associated with it. \n\n\n\n\n\nOther clinical information about the fill is in table ORDER_DISP_INFO.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "This is a numeric representation of the date of this encounter in your system. The integer portion of the number specifies the date of the encounter. The digits after the decimal point indicate multiple visits on one day."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RX_COVERAGES_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the list of coverage records used for the prescription fill."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PAYOR_PAY_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This is the amount each payor is responsible for on a prescription."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "RX_ACCTS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the guarantor account to use for any outstanding prescription balances on the order. It is populated in one of two ways. If a personal/family coverage is chosen in order entry, then a guarantor account (in the Pickup Pharmacy's service area) attached to that coverage will be used. Or, if an account of a type other than  personal/family is selected (for example, workers' comp), then that guarantor account will be used."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PLAN_PRICE_FOR_CVG",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "When a prescription is filled in an integrated pharmacy, a fill contact is created in the order and all fill information is saved to this fill contact. A prescription can have multiple fills.  This column is the coverage-specific plan price for the fill. This will be sent in to the payor during adjudication or used when billing charity or discount coverages."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PAYER_TAX_DUE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This is the rounded tax amount each payer is responsible for on a prescription. This is used for UAE billing."
+    }
+  ]
+}

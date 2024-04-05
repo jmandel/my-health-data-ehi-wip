@@ -1,0 +1,152 @@
+{
+  "name": "CNTRCT_MEAS_OUTCOMES",
+  "description": "This table will hold measurement contract associated with an outcome.",
+  "primaryKey": [
+    {
+      "columnName": "REGISTRY_DATA_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "REGISTRY_DATA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the registry data record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PRIMSRC_QUALITY_MEAS_OUTCOME_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The outcome as calculated by the primary sources. This will be a single value that says whether the patient is in the numerator for the measure, in the denominator only, or excluded from the measure.",
+      "entries": [
+        "In Numerator",
+        "In Denominator Only",
+        "Required Exclusion",
+        "Optional Exclusion"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SUPPSRC_QUALITY_MEAS_OUTCOME_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The outcome as calculated by the supplemental sources. This will be a single value that says whether the patient is in the numerator for the measure, in the denominator only, or excluded from the measure."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ATTR_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The attributed provider for the calculated contract measure outcome."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ATTR_DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The attributed department for the calculated contract measure outcome."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ATTR_LOC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The attributed primary location for the calculated contract measure outcome."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ATTR_SERV_AREA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The attributed service area for the calculated contract measure outcome."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "OUTCOME_IS_VALID_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether or not the calculated measure outcome is valid. For example, if the outcome was deleted from the source database, the relevant outcome would be considered invalid (0-No).",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "QM_EVENT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "For event-based measures, this is the date the qualifying event occurred for the measure outcome."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "LAST_REL_SERV_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The last date the service that satisfies the quality measure was performed."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "CLINICAL_DUE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The next date that a clinical service that satisfies a quality measure is due. This due date is based on the frequency with which the service needs to be completed and the last date that it was completed."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PROP_DAYS_COVERED",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The current Proportion of Days Covered (PDC) for the associated outcome. The expected range of values are 0-1 with decimal values allowed."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "IMPACTABLE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if there are enough days left in the measurement year that a fill today could move the patient to meet the adherence threshold."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "FIRST_FILL_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Is this outcome in the First Fill status? This status is where the patient has filled the medication once, but has not filled it a second time. During this timeframe the patient is not technically in the denominator yet, but once they pick up that second fill they will be."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "ATTR_PROV_GROUP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The attributed provider group for the calculated contract measure outcome."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "ATTR_PROV_GROUP_ID_PROV_GROUP_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Record name"
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "INDEX_RX_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The prescription start date during the measurement period for a medication adherence measure. This is the start date to use when calculating a Proportion of Days Covered (PDC) value."
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "name": "QRY_RECORD_INFO",
+  "description": "The QRY_RECORD_INFO table contains information about the no-add single response data for query records (records in the QRY master file).",
+  "primaryKey": [
+    {
+      "columnName": "QUERY_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "QUERY_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the query record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "EXTERNAL_IDENTIFIER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID received from a third party to uniquely identify the record in their system."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The overall status of the query.",
+      "entries": [
+        "Active",
+        "Response Received",
+        "Completed",
+        "Deleted",
+        "Deactivated"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient ID the query refers to."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The patient contact (CSN) the query refers to."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CREATION_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant the query was created in UTC."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "UPDATE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the instant the query record was updated in UTC."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "QUERY_WORKFLOW_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The workflow this query is a part of (Computer Assisted Physician Documentation (CAPD), Clinical Documentation Improvement, etc.). This value is used to drive functionality and reporting.",
+      "entries": [
+        "Coding Query",
+        "CDI Query",
+        "Coding Documentation Deficiency",
+        "CAPD",
+        "PB Coding Query"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "QRY_HIDE_PHYS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If this is set to 1-Yes, it will prevent physicians from seeing the query in the NoteReader Clinical Documentation Improvement (CDI) activity. If NoteReader CDI is in silent mode, all incoming queries will have this flag set automatically. CDI users can reset this flag by activating the query manually.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "RECORD_CREATION_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date the record was created."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "INSTANT_OF_UPDATE_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the instant the record was last locked/unlocked."
+    }
+  ]
+}

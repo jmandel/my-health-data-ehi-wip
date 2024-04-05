@@ -1,0 +1,82 @@
+{
+  "name": "BND_EPSD_EXCL_VISITS",
+  "description": "This table stores the list of patient contacts that should not be billed as part of a bundled episode.",
+  "primaryKey": [
+    {
+      "columnName": "EPISODE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the bundled episode record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VISIT_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The contact serial number of the patient contact that should not be billed as part of the bundled episode."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "BND_EPSD_VISIT_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the category ID of the source that indicated that the associated visit should not be billed as part of the bundled episode.",
+      "entries": [
+        "Clinical",
+        "Billing Manual Override",
+        "Link Automation",
+        "Link Automation, Manual Clinical"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "VISIT_UPDATE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the user who last associated the visit that should not be billed as part of the bundled episode."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "VISIT_UPDATE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "VISIT_UPDATE_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time that the user last associated the visit that should not be billed as part of the bundled episode."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DEFINES_CLIN_LINK_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the billing unlink is the reason the episode is unlinked on the clinical side (i.e. it hasn't ever been linked or unlinked directly from the clinical side).",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    }
+  ]
+}

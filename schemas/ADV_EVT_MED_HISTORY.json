@@ -1,0 +1,48 @@
+{
+  "name": "ADV_EVT_MED_HISTORY",
+  "description": "This table contains the history of this adverse event's related medications. Together with ADV_EVT_MED_ATTR_HISTORY, these tables contain the history of an adverse event's medication attributions.",
+  "primaryKey": [
+    {
+      "columnName": "ADVERSE_EVENT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ADVERSE_EVENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the adverse event record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the adverse event history in the adverse event record. Together with ADVERSE_EVENT_ID, this forms the foreign key to the ADVERSE_EVENT_HISTORY table."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple medication records that is related to the adverse event at the time the adverse event was documented."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "HX_MEDICATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the medication record that is related to the adverse event at the time the adverse event was documented."
+    }
+  ]
+}

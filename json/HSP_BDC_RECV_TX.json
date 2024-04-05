@@ -1,0 +1,74 @@
+{
+  "$meta": {
+    "schemas": {
+      "HSP_BDC_RECV_TX": {
+        "name": "HSP_BDC_RECV_TX",
+        "description": "This table contains recovery payment information for Denial/Correspondence (BDC) records.",
+        "primaryKey": [
+          {
+            "columnName": "BDC_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "BDC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the denial/correspondence record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "RECV_PAYMENT_TX_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The dollar amount, corresponding to a payment transaction, posted onto this denial record."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "PB_RECV_PMT_TX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the professional billing payment transactions posted onto this denial record."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "HSP_BDC_RECV_TX",
+            "target": "BDC_INFO",
+            "joinKeys": [
+              {
+                "source": "BDC_ID",
+                "target": "BDC_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HSP_BDC_RECV_TX": [
+    {
+      "BDC_ID": 43401924,
+      "LINE": 1,
+      "RECV_PAYMENT_TX_AMT": 179.02,
+      "PB_RECV_PMT_TX_ID": 319923250,
+      "$meta": {
+        "type": "HSP_BDC_RECV_TX"
+      }
+    }
+  ]
+}

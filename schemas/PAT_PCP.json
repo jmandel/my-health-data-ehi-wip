@@ -1,0 +1,157 @@
+{
+  "name": "PAT_PCP",
+  "description": "This table contains the Primary Care Provider (PCP) information for your patients over time. It can also contain data about providers that are not PCPs but are still on the patients' EpicCare-Ambulatory care teams.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PCP_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the provider record for this row. This column is frequently used to link to the CLARITY_SER table.",
+      "linksTo": "CLARITY_SER"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EFF_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date from which the provider is in effect as the member�s PCP."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "TERM_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The last date for which the provider was the member�s PCP."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PCP_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value associated with the type of the PCP. This is only populated when the provider is a patient's PCP and is null otherwise.",
+      "entries": [
+        "General"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "SPECIALTY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The specialty category ID for the patient care team member."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "RESULTS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The results to receive category ID for the patient care team member.",
+      "entries": [
+        "No results",
+        "Abnormal results only",
+        "All results"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PCP_MESSAGE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether a provider on a patient's care team wishes to be included as a recipient of messages sent to the patient's PCP. A �Y� indicates that the provider wishes to receive messages, a �N� indicates that the provider does not wish to receive the messages.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "RELATIONSHIP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The relationship to patient category ID for the patient care team member."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "OTHER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name for patient care team members that don't have a provider and resource record."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "OTHER_ADDRESS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The address for patient care team members that don't have a provider and resource record.  Lines are delimited with character 9s."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "OTHER_PHONE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The phone number for patient care team members that don't have a provider and resource record."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "OTHER_PAGER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The pager number for patient care team members that don't have a provider and resource record."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "OTHER_FAX",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The fax number for patient care team members that don't have a provider and resource record."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "OTHER_EMAIL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The email address for patient care team members that don't have a provider and resource record."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PCP_HX_COMMENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Free text comments that can be entered for a provider that is part of the care team for this patient."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "PCP_ADDRESS_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the address in the provider record that should be used to contact the patient's PCP. This column is frequently used in conjunction with the PCP_PROV_ID column to link to the CLARITY_SER_ADDR table.",
+      "linksTo": "CLARITY_SER_ADDR"
+    }
+  ]
+}

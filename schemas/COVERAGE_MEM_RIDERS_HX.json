@@ -1,0 +1,98 @@
+{
+  "name": "COVERAGE_MEM_RIDERS_HX",
+  "description": "The historical values of the COVERAGE_MEMBER_RIDERS over time.",
+  "primaryKey": [
+    {
+      "columnName": "COVERAGE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "CVG_ITM_HX_REL_ACT_GUID",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the coverage record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for the rider. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "BENEFIT_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the benefit plan record for the rider."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EFF_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the rider becomes effective for the patient. This date should never be NULL. The period of time between this date and the term date represents a period during which the specified patient is eligible for the specified rider. This date range will not overlap any other date range for the same rider and patient."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "TERM_DATE",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date after which the rider is no longer effective for the patient. If this date is NULL, the rider is assumed to always be effective from the effective date onward."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ITM_HX_START_LOCAL_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The start instant of when the coverage/line combination is valid in local time."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ITM_HX_START_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The start instant of when the coverage/line combination is valid in UTC."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ITM_HX_END_LOCAL_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The end instant of when the coverage/line combination is valid in local time."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ITM_HX_END_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The end instant of when the coverage/line combination is valid in UTC."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "CVG_ITM_HX_REL_ACT_GUID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This ID links this audit batch to one or more actions in the coverage action history table."
+    }
+  ]
+}

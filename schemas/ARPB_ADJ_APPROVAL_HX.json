@@ -1,0 +1,83 @@
+{
+  "name": "ARPB_ADJ_APPROVAL_HX",
+  "description": "This table extracts information about adjustments in PB Adjustment Review workqueues that have been approved or denied.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the transaction record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ADJ_APRV_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant the adjustment record was approved or declined."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ADJ_APRV_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value indicating the adjustment record's approval status.  The matching category title can be found in the table ZC_ADJ_APRV_STATUS.",
+      "entries": [
+        "Approved",
+        "Declined",
+        "Requested"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ADJ_APRV_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who approved the adjustment record."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ADJ_APRV_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ADJ_APRV_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comment left by the user who approved or declined the adjustment record."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ADJ_DECLINE_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value indicating the reason the adjustment record was declined.  The matching category title can be found in the table ZC_ADJ_DECLINE_RSN.",
+      "entries": [
+        "Other",
+        "Charge Voided",
+        "Charge has No Outstanding Balance",
+        "Payment Recouped"
+      ]
+    }
+  ]
+}

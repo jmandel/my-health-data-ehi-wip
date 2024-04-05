@@ -1,0 +1,129 @@
+{
+  "name": "VISIT_PREDICTIONS",
+  "description": "The VISIT_PREDICTIONS table contains information about when and where in the hospital a patient is expected to be during their visit. This will currently only include projections used for OR throughput.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "EXPECTED_PAT_LOC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the patient's expected location."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EXPECTED_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason for the patient's expected stay in this location.",
+      "entries": [
+        "Preprocedure",
+        "Procedure",
+        "Recovery",
+        "Phase II"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EXPECTED_START_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant at which the patient is expected to arrive in this location."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EXPECTED_DURATION",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of time (in minutes) a patient is expected to stay in this location."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PREDICTION_SRC_FEV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the event that created this prediction."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PREDICTION_SRC_FEV_ID_EVENT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the event."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PREDICTION_SRC_PND_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the pending record that created this prediction."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PREDICTION_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant at which this prediction was made."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PREDICTION_CAUSE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason or event that triggered this prediction to be made.",
+      "entries": [
+        "Appointment Scheduled",
+        "Preassignment Location Updated",
+        "Surgical Case Scheduled"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ACTIVE_PRED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether this prediction is the most current.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "UPDATED_BY_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who manually entered this prediction."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "UPDATED_BY_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    }
+  ]
+}

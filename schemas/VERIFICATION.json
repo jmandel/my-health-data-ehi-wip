@@ -1,0 +1,224 @@
+{
+  "name": "VERIFICATION",
+  "description": "The VERIFICATION table contains information about your verification records. These records include verification information for patients, guarantors, coverages, coverage members, hospital accounts, and encounters.",
+  "primaryKey": [
+    {
+      "columnName": "RECORD_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the verification record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "RECORD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the record status (hidden, soft-deleted, etc...)",
+      "entries": [
+        "Soft Deleted",
+        "Hidden",
+        "Hidden and Soft Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VERIF_RECORD_INI",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "INI of the verified record"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "VERIF_RECORD_IDNT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "ID of the verified record. This item is not networked, because it can contain an EPT, EAR, CVG, or HAR ID, depending on the verification type."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "VERIFICATION_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The verification type of the record. This can be patient, encounter, guarantor, hospital account, coverage, or member.",
+      "entries": [
+        "Patient",
+        "Patient Encounter",
+        "Guarantor",
+        "Hospital Account",
+        "Coverage",
+        "Coverage Member",
+        "Hospital Account 2",
+        "Patient Encounter Benefits",
+        "Coverage Encounter Benefits"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "VERIF_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The current verification status"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "LAST_VERIF_DATETIME",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Date and time of the last successful verification"
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "LAST_VERIF_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "User who performed the most recent verification"
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "LAST_VERIF_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "NEXT_REVIEW_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which the verification status needs review"
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "LAST_STAT_CHNG_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date on which the status was last changed"
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "LAST_CHANGE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who last changed the verification status"
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "LAST_CHANGE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "ENC_PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "ID for the patient of this encounter"
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "ENC_PAT_VERIF_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Verification record for the encounter patient"
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "ENC_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Contact Serial Number (CSN) for the patient encounter associated with the verification. Applies to encounter and hospital account verification."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "ENC_GUARANTOR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Responsible guarantor for this encounter"
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "ENC_GUAR_VERIF_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Verification record for the guarantor of this encounter"
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "ENC_GUAR_SNAPSHOT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status of the encounter guarantor at the time the encounter was verified"
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "ENC_HOSP_ACCT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Hospital account for this encounter"
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "ENC_HAR_VERIF_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Verification record of the hospital account for this encounter"
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "ENC_PAT_SNAPSHOT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status of the patient at the time the encounter or hospital account was verified."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "VERIF_SUBTYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The verification subtype of the record. Subtypes can include things like address or BSN.",
+      "entries": [
+        "Address",
+        "BSN",
+        "Contact Information",
+        "Primary Care Provider",
+        "Patient Contacts"
+      ]
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "SUB_PARENT_VRX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The parent verification record of the subtype verification record."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "SUB_ORIGIN_EAF_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The origin EAF ID of the subtype verification record. This could be the location, service area, or facility where the subtypes are defined."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "LAST_SELF_VERIF_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which the verification status was changed the last time by patient (using the Welcome kiosk)."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "VERIF_RECORD_IDNT_NUMERIC",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "ID of the verified record if the record's INI has a numeric ID type, or null if the verified record's ID is a string."
+    }
+  ]
+}

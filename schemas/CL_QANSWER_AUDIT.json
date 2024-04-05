@@ -1,0 +1,91 @@
+{
+  "name": "CL_QANSWER_AUDIT",
+  "description": "This column stores audit items which detail how patient-entered questionnaire responses were submitted.",
+  "primaryKey": [
+    {
+      "columnName": "ANSWER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ANSWER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the answer record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ANSWER_METHOD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the method/application by which patient-entered questionnaire responses were saved or updated (e.g. MyChart and/or Welcome).",
+      "entries": [
+        "MyChart",
+        "Welcome",
+        "EpicCare",
+        "MyChart Bedside",
+        "FHIR",
+        "Bedside in MyChart Mobile"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ANSWER_DTTM_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "This column stores the instant at which patient-entered questionnaire responses were saved or updated."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ANSWER_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "When applicable, this column stores EpicCare users who saved or updated patient-entered questionnaire responses on behalf of patients."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ANSWER_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ANSWER_MYPT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the MyChart user ID who last updated the questionnaire answers."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ANSWER_PAT_REL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the relationship to the patient of the user who last updated the questionnaire answers on behalf of the patient."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ANSWER_BY_KIOSK_PAT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether a questionnaire that was answered in Welcome was answered by the patient or a patient representative. 'Y' indicates that the questionnaire was answered by the patient. 'N' indicates that the questionnaire was answered by a patient representative. NULL indicates that the questionnaire was not answered in Welcome.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    }
+  ]
+}

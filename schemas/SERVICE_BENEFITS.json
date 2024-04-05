@@ -1,0 +1,438 @@
+{
+  "name": "SERVICE_BENEFITS",
+  "description": "The SERVICE_BENEFITS table contains service-level benefit information about the coverages for the encounter or estimate to which this benefit record is attached.",
+  "primaryKey": [
+    {
+      "columnName": "RECORD_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the benefit record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CVG_FOR_SVC_TYPE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This related group contains benefit information specific to a coverage and service type."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CVG_SVC_TYPE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The service type for which the listed insurance benefits apply."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CVG_SVC_TYPE_ID_SERVICE_TYPE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of this benefit service type."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EVALUATION_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The current evaluated status of the coverage benefits for this service type (coverage, not covered, in progress, etc.).",
+      "entries": [
+        "Covered",
+        "Not Covered"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "COPAY_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The copay for this coverage and service type."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DEDUCTIBLE_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Deductible for this coverage and service type."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "DEDUCTIBLE_MET_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of the deductible for this coverage and service type that has already been paid."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "COINS_PERCENT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The coinsurance percentage for this coverage and service type."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "COINS_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The coinsurance amount for this coverage and service type."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "OUT_OF_POCKET_MAX",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The maximum out-of-pocket payment for this coverage and service type."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "OUT_OF_PCKT_REMAIN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The remaining out-of-pocket payment for this coverage and service type."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "OUT_OF_PCKET_MET_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Has the out-of-pocket cost been met for this coverage and service type?",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "OOP_INCL_DEDUCT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Does the out-of-pocket payment include the deductible cost?"
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "COVERED_DAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Track covered days -- this is normally used for Medicare."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "NON_COVERED_DAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The non-covered days  - this is normally used for Medicare"
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "COINS_DAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Track the coinsurance days -- this is normally used for Medicare"
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "LTR_DAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Track the lifetime reserve days -- this is usually used for Medicare."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "ANNUAL_BEN_MAX_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The maximum annual benefits for this coverage and service type."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "ANNUAL_BEN_REMAIN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The annual benefits remaining for this coverage and service type."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "LIFETIME_BEN_MAX",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The maximum lifetime benefits for this coverage and service type."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "LIFETIME_BEN_REMAIN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The lifetime benefits remaining for this coverage and service type."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "SPEND_DOWN_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The spend down amount for this coverage and service type during the defined interval."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "SPEND_DOWN_REMAIN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The spend down amount remaining for this coverage and service type during the specified interval."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "SPEND_DOWN_INTRVL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The interval at which the spend down amount will reset.",
+      "entries": [
+        "One Week",
+        "One Month",
+        "Three Months",
+        "Six Months",
+        "One Year"
+      ]
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "PREEXISTING_COND_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Do any pre-existing conditions apply for this coverage and service type?"
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "PREEXIST_COND_DESC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The description of any pre-existing conditions that apply for this coverage and service type."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "IN_NETWORK_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Is in-network care required for this coverage and service type?"
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "PREFERRED_NETWORK",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The preferred network, if any, for this coverage and service type."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "TRACKING_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The tracking code for payor communication about this coverage and service type."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "DEDUCT_REMAIN_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of the deductible for this coverage and service type that has yet to be paid."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "DAILY_COPAY_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount that is multiplied by the length of stay to calculate the total inpatient copay for this coverage and service type. This is different from the visit copay amount."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "MAX_DAILY_COPAY",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The maximum total amount the patient may be charged in daily copays for this coverage and service type."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "FAMILY_TIER_SVC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Family tier for this line's coverage and service type.",
+      "entries": [
+        "N/A",
+        "Individual",
+        "Family"
+      ]
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "MAX_VISITS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The maximum number of visits for this coverage and service type."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "REMAINING_VISITS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The remaining number of visits for this coverage and service type."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "NET_LVL_SVC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Network level of this line's coverage and service type.",
+      "entries": [
+        "In",
+        "Out",
+        "Out of Area",
+        "N/A"
+      ]
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "NON_COVERED_SVC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Notes when a service is not covered by the payor for this encounter.",
+      "entries": [
+        "Covered",
+        "Not Covered"
+      ]
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "PAYOR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This is the payor for these service-level benefits. This item is used when recording benefits before a coverage record has been created, such as for estimates for prospective patients."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "SVC_ANNUAL_BEN_USED_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount that has already been used for this coverage and service type for a given year."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "RTE_COPAY_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the last copay value filed by RTE at the service level"
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "RTE_DEDUCT_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the last deductible amount filed by RTE at the service level"
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "RTE_DEDUCT_MET",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the last deductible met amount filed by RTE at the service level"
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "RTE_DEDUCT_REMAIN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the last deductible remaining amount filed by RTE at the service level"
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "RTE_COINS_PERCENT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the last coinsurance percent filed by RTE at the service level"
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "RTE_OOP_MAX",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the last OOP max amount filed by RTE at the service level"
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "RTE_OOP_REMAIN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the last OOP remaining amount filed by RTE at the service level"
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "PAYER_BEN_CAT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The benefit category identifier used by the payer. It will only be set for reference benefit records."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "VISIT_BEN_MAX_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The maximum visit benefits for this coverage and service type."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "VISIT_OUT_OF_POCKET_MAX_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The maximum visit out-of-pocket payment for this coverage and service type."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "BENEFITS_LAST_UPDATE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant that benefits data for this line's service type and coverage was last collected. This instant reflects the time that these benefits were entered originally, even if that entry was made on a different benefits record and the benefits were later copied to the current one."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "BENEFITS_LAST_UPDATE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who last made changes to this line's service type benefits values. This reflects the time that these benefits were entered originally, even if that entry was made on a different benefits record and the benefits were later copied to the current one."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "BENEFITS_LAST_UPDATE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "BENEFITS_LAST_UPDATE_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The method that was last used to make changes to this line's service type benefits values. This reflects the original entry of the benefits, even if the entry was made on a different benefits record and the benefits were later copied to the current one.",
+      "entries": [
+        "Manual Update",
+        "Eligibility Query",
+        "Previous Eligibility Query",
+        "Automatic population from benefits engine",
+        "Reference BEN for Estimates"
+      ]
+    }
+  ]
+}

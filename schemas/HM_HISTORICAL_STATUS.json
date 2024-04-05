@@ -1,0 +1,117 @@
+{
+  "name": "HM_HISTORICAL_STATUS",
+  "description": "Records Health Maintenance status over time.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "HM_TOPIC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Health Maintenance topic that applied to the patient at the time the snapshot was taken."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "HM_TOPIC_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the health maintenance topic."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "HM_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates the patient's due status for the Health Maintenance topic at the time the snapshot was taken.",
+      "entries": [
+        "Not Due",
+        "Due Soon",
+        "Due On",
+        "Overdue",
+        "Postponed",
+        "Completed",
+        "Addressed",
+        "Aged Out",
+        "Discontinued",
+        "Hidden"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "NEXT_DUE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The patient's next due date for this Health Maintenance topic at the time the snapshot was taken."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "LAST_COMPLETED_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date this patient last had a completion for the Health Maintenance topic, as of the time the snapshot was taken."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "HAS_OUTSIDE_COMPLETION_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether external data was used to complete the related Health Maintenance topic at the time the snapshot was recorded.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "EXTERNAL_CLINICAL_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "If the related HM topic is currently satisfied by external clinical data (e.g. Care Everywhere or immunization registries), this item will contain the date of the relevant completion."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "EXTERNAL_CLAIM_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "If the related HM topic is currently satisfied by external claims data, this item will contain the date of the relevant completion."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PAT_REPORTED_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "If the related HM topic is currently satisfied by patient-reported data, this item will contain the date of the relevant patient-reported satisfaction."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "EXTERNAL_HEALTH_PLAN_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "If the related HM topic is currently satisfied by external health plan data, this item will contain the date of the relevant completion."
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "name": "PAT_IDENTITYCHANGE",
+  "description": "This table contains information regarding the identity (demographic) changes that are made to the patient. The identity changes include changes to a patient's name, sex, Social Security number and/or date of birth. Whenever a user tries to change the above identity information in the graphical user interface (GUI) this table logs the action.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this row. Multiple pieces of information can be associated with this row."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ID_CHANGE_INSTANT",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant when someone edited this patient's identity."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ID_CHANGE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "User that changed patient demographics and triggered an identity overlay."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ID_CHANGE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ID_CHANGE_DEPT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Login department of user that made change, acts as report criteria."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ID_CHANGE_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Reason selected by user to indicate why the patient's identity is changed.",
+      "entries": [
+        "Demographic Linking",
+        "Incoming Interface Demographic Change"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ID_CHG_OLD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Name before the change."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ID_CHG_OLD_SSN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Social security number before change."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ID_CHANGE_OLD_SEX_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID of the patient's sex before the change.",
+      "entries": [
+        "Female",
+        "Male",
+        "Unknown",
+        "Nonbinary",
+        "X",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "ID_CHG_OLD_DOB_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Birth date before change."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ID_CHANGE_NEW_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient's name after the change."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "ID_CHANGE_NEW_SSN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Social security number after change."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "ID_CHANGE_NEW_SEX_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID of the patient's sex after the change."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "ID_CHG_NEW_DOB_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Birth date after change."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "ID_CHANGE_LOC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Login department's location."
+    }
+  ]
+}

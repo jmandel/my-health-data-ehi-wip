@@ -1,0 +1,415 @@
+{
+  "name": "HSP_BUCKET",
+  "description": "This table contains hospital liability bucket information from the Hospital Liability Buckets (HLB) master file. This table does not include information for pre-allocated HLB records that are not yet in use.",
+  "primaryKey": [
+    {
+      "columnName": "BUCKET_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "BUCKET_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the liability bucket."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "BUCKET_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the liability bucket."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the hospital account to which the liability bucket is linked."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "BKT_TYPE_HA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of the liability bucket.",
+      "entries": [
+        "Prebilled",
+        "Primary Claim",
+        "Secondary Claim",
+        "Self-Pay",
+        "Bad Debt",
+        "Interim Primary Claim",
+        "Interim Secondary Claim",
+        "Undistributed",
+        "Home Health RAP",
+        "Secondary Home Health RAP",
+        "Hospice Election",
+        "Secondary Hospice Election",
+        "Informational",
+        "Homing"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CLAIM_TYPE_HA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of claim associated with the liability bucket.",
+      "entries": [
+        "New Claim",
+        "Late Replacement Claim",
+        "Late Charge Claim",
+        "Late Write Off",
+        "Supplemental Payment Claim"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "BKT_STS_HA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status of the liability bucket.",
+      "entries": [
+        "Created",
+        "Queued",
+        "Processed",
+        "Printed",
+        "Outstanding",
+        "Error",
+        "Closed",
+        "Rejected",
+        "Replaced"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CLOSE_REASON_HA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason why the liability bucket was closed.",
+      "entries": [
+        "Transferred",
+        "Zero Balance",
+        "Replaced",
+        "Late Write-Off",
+        "RAP Canceled",
+        "No Part B Charges",
+        "Alternate Payor Charges Only",
+        "SNF Part B Charges Only",
+        "SNF Non-Covered Part A",
+        "Informational Claim Accepted"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the coverage associated with the liability bucket."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PAYOR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the payer associated with the liability bucket."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "BENEFIT_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the benefit plan associated with the liability bucket."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "CURRENT_BALANCE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The current balance on the liability bucket."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PREVIOUS_CREDITS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total monetary amount of credits on buckets from which liability was transferred to the bucket in question."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "CHARGE_TOTAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total monetary amount of charges on the liability bucket."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "PAYMENT_TOTAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total monetary amount of payments on the liability bucket."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "ADJUSTMENT_TOTAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total monetary amount of adjustments on the liability bucket."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "NEXT_RESP_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of liability that was transferred from this liability bucket to another bucket."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "SERV_AREA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the service area associated with the liability bucket."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "INTERIM_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "For an interim liability bucket, the billing start date. The first charge service date that is included in the bucket."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "INTERIM_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "For an interim liability bucket, the billing end date. The last charge service date that is included in the bucket."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "INTERIM_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "For an interim liability bucket, the interim bucket type. Choices are First Claim, Middle Claim, and Last Claim.",
+      "entries": [
+        "First Claim",
+        "Middle Claim",
+        "Last Claim"
+      ]
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "LAST_CLAIM_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of the last claim for the liability bucket."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "PMT_DIST_COMP_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores whether payment distribution is complete.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "EXP_NA_WOFF_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the expected not-allowed write-off amount."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "ACT_NA_WOFF_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the actual not-allowed write-off amount."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "CURR_AUTO_WO_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the current auto write-off transaction."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "RVSE_AUTO_WO_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the automatic write-off transaction's reversal on the liability bucket."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "WO_ADJ_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the write-off adjustment status.",
+      "entries": [
+        "No Expected W/O, No Actual W/O",
+        "Expected W/O done, No Actual W/O",
+        "No Expected W/O, Actual W/O done",
+        "Expected W/O = Actual W/O",
+        "Expected W/O <> Actual W/O"
+      ]
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "MDCRE_B_CLM_FLG_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates that the charges in the liability bucket should be submitted for Medicare part B claims processing.",
+      "entries": [
+        "No",
+        "Yes - Part A Exhausted",
+        "Yes - Part B Only"
+      ]
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "CLAIM_FORM_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The form type of the last claim on the bucket.",
+      "entries": [
+        "CMS Claim",
+        "UB Claim",
+        "State Visit Data",
+        "State Visit Provider Data",
+        "Vektis Claim",
+        "Pharmacy Claim"
+      ]
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "EXTERN_AR_FLAG_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "External A/R Flag. This flag determines if a bucket's balance is to be counted as belonging to an external agency.",
+      "entries": [
+        "Active AR",
+        "External Agency AR",
+        "Bad Debt",
+        "Outsourced",
+        "Received Self-Pay Active AR",
+        "Received Self-Pay External Agency AR",
+        "Received Self-Pay Bad Debt"
+      ]
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "BAD_DEBT_FLAG_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Bad Debt Flag. This flag determines if a bucket's balance is to be counted as belonging to a bad debt agency."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "PYR_RCVD_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column stores the date on which the latest claim for the associated liability bucket was received by a payer."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "FST_PYR_RCVD_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column stores the date on which the first claim for the associated liability bucket was received by a payer."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "WO_CPTN_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the transaction used to write off non-covered charges using a system action."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "LEVEL_OF_CARE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number of the patient's Level of Care on the interim bill start date associated with this bucket."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "USE_EXIST_DATA_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the claims processor should use data from an existing claim when resubmitting or demanding a new claim.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "ALT_PAY_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores whether this bucket resulted from alternate payer routing logic. Yes - It is an alternate payer; No - It is not an alternate payer; \" - Not been evaluated, status unknown."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "EXPECTED_REIMB_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the expected reimbursement comment"
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "SURCHARGE_HTR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the current transaction for the surcharge."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "COPAY_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Total current copay due on the bucket as specified by last payment on the insurance bucket or last user override."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "COINS_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Total current coinsurance due on the bucket as specified by last payment on the insurance bucket or last user override."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "DEDUCTIBLE_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Total current deductible due on the bucket as specified by last payment on the insurance bucket or last user override."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "NON_COVERED_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Total current non covered due on the bucket as specified by last payment on the insurance bucket or last user override."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "USER_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the comment the user entered when overriding self-pay explanation of benefits (EOB) information."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "XR_BILLED_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the expected reimbursement billed amount. It is the billed amount of the claim where the expected reimbursement is calculated."
+    }
+  ]
+}

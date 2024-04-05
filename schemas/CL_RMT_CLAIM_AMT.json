@@ -1,0 +1,63 @@
+{
+  "name": "CL_RMT_CLAIM_AMT",
+  "description": "Contains claim supplemental information from the electronic remittance payment. This information is sent in the AMT segment of an ANSI 835 Health Care Claim Payment/Advice file. This segment is used to send monetary amounts associated with the claim being paid. These amounts are in defined categories and sent only when the amount is non-zero. This information is stored in the remittance image record.",
+  "primaryKey": [
+    {
+      "columnName": "IMAGE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "IMAGE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "ID for the remittance image record containing the claim supplemental information."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CLAIM_AMT_QUAL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The amount qualifier code for the claim supplemental information. This is a standard code that indicates what the monetary amount represents.",
+      "entries": [
+        "Coverage amount",
+        "Discount amount",
+        "Per day limit",
+        "Patient amount paid",
+        "Interest",
+        "Negative ledger balance",
+        "Tax",
+        "Total claim before taxes",
+        "Federal medicare or medicaid payment mandate category 1",
+        "Federal medicare or medicaid payment mandate category 2",
+        "Federal medicare or medicaid payment mandate category 3",
+        "Federal medicare or medicaid payment mandate category 4",
+        "Federal medicare or medicaid payment mandate category 5",
+        "Mutually defined",
+        "Allowed - Actual",
+        "Deduction amount",
+        "Net billed"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CLAIM_SUPPL_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Monetary amount for the supplemental claim information. The specific meaning of this amount is indicated by the associated amount qualifier code."
+    }
+  ]
+}

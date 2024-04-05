@@ -1,0 +1,262 @@
+{
+  "$meta": {
+    "schemas": {
+      "COMMUNICATION_PREFERENCES": {
+        "name": "COMMUNICATION_PREFERENCES",
+        "description": "Contains communication concepts and preferred media.",
+        "primaryKey": [
+          {
+            "columnName": "PREFERENCES_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PREFERENCES_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The internal ID of the preference record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "COMMUNICATION_CONCEPT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the communication concept (HST) record. Communication preferences will be stored for each concept."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "COMMUNICATION_CONCEPT_ID_SETTING_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Setting record name."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "COMMUNICATION_PREFERENCES",
+            "target": "COMM_PREF_ADDL_ITEMS",
+            "joinKeys": [
+              {
+                "source": "PREFERENCES_ID",
+                "target": "PREFERENCES_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "COMMUNICATION_PREFERENCES",
+            "target": "COMM_PREFERENCES_APRV",
+            "joinKeys": [
+              {
+                "source": "PREFERENCES_ID",
+                "target": "PREFERENCES_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "COMMUNICATION_PREFERENCES",
+            "target": "PERSON_PREFERENCES",
+            "joinKeys": [
+              {
+                "source": "PREFERENCES_ID",
+                "target": "PERSON_PREFERENCE_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "COMMUNICATION_PREFERENCES": [
+    {
+      "PREFERENCES_ID": 1079221,
+      "LINE": 13,
+      "COMMUNICATION_CONCEPT_ID": 28101,
+      "COMMUNICATION_CONCEPT_ID_SETTING_NAME": "Health Maintenance Reminders",
+      "$meta": {
+        "type": "COMMUNICATION_PREFERENCES"
+      }
+    },
+    {
+      "PREFERENCES_ID": 1079221,
+      "LINE": 14,
+      "COMMUNICATION_CONCEPT_ID": 28102,
+      "COMMUNICATION_CONCEPT_ID_SETTING_NAME": "Bulk Communication",
+      "$meta": {
+        "type": "COMMUNICATION_PREFERENCES"
+      }
+    },
+    {
+      "PREFERENCES_ID": 1079221,
+      "LINE": 16,
+      "COMMUNICATION_CONCEPT_ID": 28103,
+      "COMMUNICATION_CONCEPT_ID_SETTING_NAME": "Communication Management",
+      "$meta": {
+        "type": "COMMUNICATION_PREFERENCES"
+      }
+    },
+    {
+      "PREFERENCES_ID": 1079221,
+      "LINE": 17,
+      "COMMUNICATION_CONCEPT_ID": 28104,
+      "COMMUNICATION_CONCEPT_ID_SETTING_NAME": "Case Notify",
+      "$meta": {
+        "type": "COMMUNICATION_PREFERENCES"
+      }
+    },
+    {
+      "PREFERENCES_ID": 1079221,
+      "LINE": 1,
+      "COMMUNICATION_CONCEPT_ID": 28110,
+      "COMMUNICATION_CONCEPT_ID_SETTING_NAME": "Preventative Care Reminder (Message)",
+      "$meta": {
+        "type": "COMMUNICATION_PREFERENCES"
+      }
+    },
+    {
+      "PREFERENCES_ID": 1079221,
+      "LINE": 2,
+      "COMMUNICATION_CONCEPT_ID": 28201,
+      "COMMUNICATION_CONCEPT_ID_SETTING_NAME": "New Message",
+      "$meta": {
+        "type": "COMMUNICATION_PREFERENCES"
+      }
+    },
+    {
+      "PREFERENCES_ID": 1079221,
+      "LINE": 3,
+      "COMMUNICATION_CONCEPT_ID": 28202,
+      "COMMUNICATION_CONCEPT_ID_SETTING_NAME": "New Letter",
+      "$meta": {
+        "type": "COMMUNICATION_PREFERENCES"
+      }
+    },
+    {
+      "PREFERENCES_ID": 1079221,
+      "LINE": 18,
+      "COMMUNICATION_CONCEPT_ID": 28204,
+      "COMMUNICATION_CONCEPT_ID_SETTING_NAME": "Test Results Delivery Preference",
+      "$meta": {
+        "type": "COMMUNICATION_PREFERENCES"
+      }
+    },
+    {
+      "PREFERENCES_ID": 1079221,
+      "LINE": 4,
+      "COMMUNICATION_CONCEPT_ID": 28210,
+      "COMMUNICATION_CONCEPT_ID_SETTING_NAME": "Advance Care Planning",
+      "$meta": {
+        "type": "COMMUNICATION_PREFERENCES"
+      }
+    },
+    {
+      "PREFERENCES_ID": 1079221,
+      "LINE": 5,
+      "COMMUNICATION_CONCEPT_ID": 28301,
+      "COMMUNICATION_CONCEPT_ID_SETTING_NAME": "Prescription Ready",
+      "$meta": {
+        "type": "COMMUNICATION_PREFERENCES"
+      }
+    },
+    {
+      "PREFERENCES_ID": 1079221,
+      "LINE": 6,
+      "COMMUNICATION_CONCEPT_ID": 28302,
+      "COMMUNICATION_CONCEPT_ID_SETTING_NAME": "New Test Results",
+      "$meta": {
+        "type": "COMMUNICATION_PREFERENCES"
+      }
+    },
+    {
+      "PREFERENCES_ID": 1079221,
+      "LINE": 7,
+      "COMMUNICATION_CONCEPT_ID": 28410,
+      "COMMUNICATION_CONCEPT_ID_SETTING_NAME": "Automatic Payment Processed",
+      "$meta": {
+        "type": "COMMUNICATION_PREFERENCES"
+      }
+    },
+    {
+      "PREFERENCES_ID": 1079221,
+      "LINE": 8,
+      "COMMUNICATION_CONCEPT_ID": 28412,
+      "COMMUNICATION_CONCEPT_ID_SETTING_NAME": "New Estimate",
+      "$meta": {
+        "type": "COMMUNICATION_PREFERENCES"
+      }
+    },
+    {
+      "PREFERENCES_ID": 1079221,
+      "LINE": 15,
+      "COMMUNICATION_CONCEPT_ID": 28501,
+      "COMMUNICATION_CONCEPT_ID_SETTING_NAME": "Cadence Appt Letter Preference",
+      "$meta": {
+        "type": "COMMUNICATION_PREFERENCES"
+      }
+    },
+    {
+      "PREFERENCES_ID": 1079221,
+      "LINE": 19,
+      "COMMUNICATION_CONCEPT_ID": 28503,
+      "COMMUNICATION_CONCEPT_ID_SETTING_NAME": "Cadence Appointment Notifications Preference",
+      "$meta": {
+        "type": "COMMUNICATION_PREFERENCES"
+      }
+    },
+    {
+      "PREFERENCES_ID": 1079221,
+      "LINE": 9,
+      "COMMUNICATION_CONCEPT_ID": 28514,
+      "COMMUNICATION_CONCEPT_ID_SETTING_NAME": "Questionnaire Due Soon",
+      "$meta": {
+        "type": "COMMUNICATION_PREFERENCES"
+      }
+    },
+    {
+      "PREFERENCES_ID": 1079221,
+      "LINE": 10,
+      "COMMUNICATION_CONCEPT_ID": 28515,
+      "COMMUNICATION_CONCEPT_ID_SETTING_NAME": "Questionnaire Available",
+      "$meta": {
+        "type": "COMMUNICATION_PREFERENCES"
+      }
+    },
+    {
+      "PREFERENCES_ID": 1079221,
+      "LINE": 11,
+      "COMMUNICATION_CONCEPT_ID": 28516,
+      "COMMUNICATION_CONCEPT_ID_SETTING_NAME": "New Auto Wait List Offer",
+      "$meta": {
+        "type": "COMMUNICATION_PREFERENCES"
+      }
+    },
+    {
+      "PREFERENCES_ID": 1079221,
+      "LINE": 12,
+      "COMMUNICATION_CONCEPT_ID": 28517,
+      "COMMUNICATION_CONCEPT_ID_SETTING_NAME": "New Scheduling Ticket",
+      "$meta": {
+        "type": "COMMUNICATION_PREFERENCES"
+      }
+    }
+  ]
+}

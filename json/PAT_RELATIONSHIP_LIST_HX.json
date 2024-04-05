@@ -1,0 +1,82 @@
+{
+  "$meta": {
+    "schemas": {
+      "PAT_RELATIONSHIP_LIST_HX": {
+        "name": "PAT_RELATIONSHIP_LIST_HX",
+        "description": "This table contains historical information about patient relationships. It includes information about relationship types and the dates that the relationships were valid. The records included in this table are Patient Relationships (RLA) records. Multiple lines in this table indicate the history of a relationship and are stored in chronological order (line 1 is the earliest).",
+        "primaryKey": [
+          {
+            "columnName": "RELATIONSHIP_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "RELATIONSHIP_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the patient contact record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "RELATION_TO_PAT_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The relationship to patient category ID for the patient contact."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "RELATIONSHIP_END_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date the patient contact's relation to the patient ended."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "PAT_RELATIONSHIP_LIST_HX",
+            "target": "PAT_RELATIONSHIP_LIST",
+            "joinKeys": [
+              {
+                "source": "RELATIONSHIP_ID",
+                "target": "PAT_RELATIONSHIP_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PAT_RELATIONSHIP_LIST_HX": [
+    {
+      "RELATIONSHIP_ID": 31533871,
+      "LINE": 1,
+      "RELATION_TO_PAT_C_NAME": "Spouse",
+      "$meta": {
+        "type": "PAT_RELATIONSHIP_LIST_HX"
+      }
+    },
+    {
+      "RELATIONSHIP_ID": 31533870,
+      "LINE": 1,
+      "RELATION_TO_PAT_C_NAME": "Significant other",
+      "RELATIONSHIP_END_DATE": "2024-02-15 00:00:00",
+      "$meta": {
+        "type": "PAT_RELATIONSHIP_LIST_HX"
+      }
+    }
+  ]
+}

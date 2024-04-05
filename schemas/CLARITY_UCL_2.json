@@ -1,0 +1,100 @@
+{
+  "name": "CLARITY_UCL_2",
+  "description": "Universal Charge Line information. Each row represents one UCL transaction.",
+  "primaryKey": [
+    {
+      "columnName": "UCL_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "UCL_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the charge line record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CHARGE_STAGE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the current stage for the charge.",
+      "entries": [
+        "Pre-Handler Review",
+        "Charge Handler",
+        "Destination Router",
+        "Destination Filer",
+        "Post-Handler Review",
+        "Pre-Process",
+        "Repost Review",
+        "Triggered"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CREATED_IN_RTR_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates whether the charge was created by the charge router.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CREATED_FROM_UCL_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The charge from which this charge was created. This means that whenever a charge is generated from another charge, this item will represent the charge it was created from. If a charge is created manually in the editor, this item will not be set since it wasn't created from another charge."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "THIRD_PTY_ELIG_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates whether the charge is third party eligible. This is used by lab charges.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PRO_HOSP_ACCT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The professional billing hospital account tied to the visit for the guarantor account."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PRO_VIS_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The current professional billing visit for the guarantor account."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "RESEARCH_ENROLL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the research study association linked to this charge."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ORIG_BILL_AREA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The item stores the original value of provider bill area."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ORIG_BILL_AREA_ID_BILL_AREA_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The record name of this bill area, financial subdivision, or financial division."
+    }
+  ]
+}

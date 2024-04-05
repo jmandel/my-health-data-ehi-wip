@@ -1,0 +1,96 @@
+{
+  "$meta": {
+    "schemas": {
+      "HSP_ACCT_OCUR_HAR": {
+        "name": "HSP_ACCT_OCUR_HAR",
+        "description": "This table contains the Occurrence Codes and Occurrence Dates for a Hospital Accounts Receivable (HAR) record.",
+        "primaryKey": [
+          {
+            "columnName": "ACCT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ACCT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the hospital account."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "This column stores the line number in the results of a query. Because multiple occurrence codes can be stored in one hospital account, each code will have a unique line number."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "OCCURRENCE_CODE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "An occurrence code stored in the hospital account."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "OCCURRENCE_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date associated with an occurrence code stored in the hospital account."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ACCT_OCUR_HAR",
+            "target": "HAR_ALL",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ACCT_OCUR_HAR",
+            "target": "HSP_ACCT_CLAIM_HAR",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ACCT_OCUR_HAR",
+            "target": "HSP_ACCOUNT",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HSP_ACCT_OCUR_HAR": [
+    {
+      "ACCT_ID": 376684810,
+      "LINE": 1,
+      "OCCURRENCE_CODE_C_NAME": "Onset of Symptoms/Illness",
+      "OCCURRENCE_DATE": "2022-02-17 00:00:00",
+      "$meta": {
+        "type": "HSP_ACCT_OCUR_HAR"
+      }
+    }
+  ]
+}

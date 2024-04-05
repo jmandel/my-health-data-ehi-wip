@@ -1,0 +1,106 @@
+{
+  "name": "EXT_FORMULARY_ID",
+  "description": "This table contains the external formulary ID values.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique, internal contact date in decimal format. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "EXT_FORM_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the external formulary that is associated with this patient encounter."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "EXT_ALT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This unique ID of the external alternative formulary associated with this patient encounter."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "EXT_PHARM_CVG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the external pharmacy coverage associated with this patient encounter."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "EXT_COPAY_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the external copay associated with this patient encounter."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "EXT_FORM_ID_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column contains the external formulary ID line."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "EXTERNAL_RX_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The pharmacy coverage type category number for this patient encounter.",
+      "entries": [
+        "Retail",
+        "Mail Order",
+        "Retail+Mail"
+      ]
+    }
+  ]
+}

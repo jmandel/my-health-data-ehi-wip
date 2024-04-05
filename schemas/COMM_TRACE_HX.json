@@ -1,0 +1,105 @@
+{
+  "name": "COMM_TRACE_HX",
+  "description": "The history of a communication trace.",
+  "primaryKey": [
+    {
+      "columnName": "COMM_TRACE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "COMM_TRACE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the outreach record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "COMM_ACTION_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Table of audit events logged against a trace. This item stores the UTC of the event."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "COMM_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Table of audit events logged against a trace. This item stores the action taken on this trace. This can be from the system, or user intervention.",
+      "entries": [
+        "Create",
+        "Sidetrack",
+        "Re-Queue",
+        "To Interconnect",
+        "To Cloud",
+        "Sent",
+        "Receive",
+        "Update",
+        "Cancel",
+        "Expire",
+        "Text / Close 2Way",
+        "Auto-Invite / Invite Queue",
+        "Auto-Invite / Hold Tank",
+        "Auto-Invite / Send Queue",
+        "MO / Processed",
+        "MO / Processing Failed"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "COMM_ACTION_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Table of audit events logged against a trace. This item stores status of the trace at the time the audit happened. NOT the status that resulted.",
+      "entries": [
+        "Created",
+        "Queued",
+        "Sidetracked",
+        "Session Active",
+        "To Interconnect",
+        "To Cloud",
+        "Pending",
+        "Sent",
+        "Delivered",
+        "Canceled",
+        "Expired",
+        "Failed",
+        "Unknown",
+        "Auto-Invite Tank",
+        "Auto-Invite Queue",
+        "ECS Not In Use"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "COMM_ACTION_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Table of audit events logged against a trace. This item stores comments about the event. Initial use case was to store the true status string from cloud since it may change with vendors / cloud changes where cache may not have a chance to update in time."
+    }
+  ]
+}

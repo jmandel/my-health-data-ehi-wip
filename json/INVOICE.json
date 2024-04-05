@@ -1,0 +1,537 @@
+{
+  "$meta": {
+    "schemas": {
+      "INVOICE": {
+        "name": "INVOICE",
+        "description": "This table includes the basic data for the invoice (INV) record. It contains one row for each used INV record (excluding unused pre-allocated invoices). Note that a row in this table can correspond to multiple claims sent.",
+        "primaryKey": [
+          {
+            "columnName": "INVOICE_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "INVOICE_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The Invoice ID."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The patient ID associated with this invoice."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The account ID that is associated with this invoice."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "SERV_AREA_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID of the service area associated with this invoice."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "LOC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID of the revenue location associated with this invoice."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "POS_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID of the place of service associated with this invoice."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "DEPARTMENT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID of the department associated with this invoice."
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "PROV_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the ID of the billing provider associated with the invoice."
+          },
+          {
+            "ordinalPosition": 17,
+            "name": "TAX_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the tax ID associated with the invoice."
+          },
+          {
+            "ordinalPosition": 18,
+            "name": "TAX_ID_TYPE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the type of tax ID associated with the invoice."
+          },
+          {
+            "ordinalPosition": 20,
+            "name": "INSURANCE_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Stores the insurance amount for the invoice."
+          },
+          {
+            "ordinalPosition": 21,
+            "name": "SELF_PAY_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Stores the initial self-pay amount for the invoice."
+          },
+          {
+            "ordinalPosition": 22,
+            "name": "INIT_INSURANCE_BAL",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Stores the initial insurance amount for the invoice."
+          },
+          {
+            "ordinalPosition": 23,
+            "name": "INIT_SELF_PAY_BAL",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Stores the initial self-pay amount for the invoice."
+          },
+          {
+            "ordinalPosition": 24,
+            "name": "BILL_AREA_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Stores the bill area associated with the invoice."
+          },
+          {
+            "ordinalPosition": 25,
+            "name": "BILL_AREA_ID_BILL_AREA_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The record name of this bill area, financial subdivision, or financial division."
+          },
+          {
+            "ordinalPosition": 26,
+            "name": "PB_HOSP_ACT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The Professional Billing Hospital Account ID."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "INVOICE",
+            "target": "INV_BASIC_INFO",
+            "joinKeys": [
+              {
+                "source": "INVOICE_ID",
+                "target": "INV_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "INVOICE",
+            "target": "INV_CLM_ICN",
+            "joinKeys": [
+              {
+                "source": "INVOICE_ID",
+                "target": "INVOICE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "INVOICE",
+            "target": "INV_CLM_LN_ADDL",
+            "joinKeys": [
+              {
+                "source": "INVOICE_ID",
+                "target": "INVOICE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "INVOICE",
+            "target": "INV_DX_INFO",
+            "joinKeys": [
+              {
+                "source": "INVOICE_ID",
+                "target": "INVOICE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "INVOICE",
+            "target": "INV_NDC_INFO",
+            "joinKeys": [
+              {
+                "source": "INVOICE_ID",
+                "target": "INVOICE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "INVOICE",
+            "target": "INV_NUM_TX_PIECES",
+            "joinKeys": [
+              {
+                "source": "INVOICE_ID",
+                "target": "INV_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "INVOICE",
+            "target": "INV_PMT_RECOUP",
+            "joinKeys": [
+              {
+                "source": "INVOICE_ID",
+                "target": "INVOICE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "INVOICE",
+            "target": "INV_TX_PIECES",
+            "joinKeys": [
+              {
+                "source": "INVOICE_ID",
+                "target": "INV_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "INVOICE": [
+    {
+      "INVOICE_ID": 24584313,
+      "PAT_ID": "Z7004242",
+      "ACCOUNT_ID": 1810018166,
+      "SERV_AREA_ID": 18,
+      "LOC_ID": 1700801,
+      "POS_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "PROV_ID": "802011",
+      "TAX_ID": "391837462",
+      "TAX_ID_TYPE": "E",
+      "INSURANCE_AMT": 335,
+      "SELF_PAY_AMT": 0,
+      "INIT_INSURANCE_BAL": 335,
+      "INIT_SELF_PAY_BAL": 0,
+      "BILL_AREA_ID": 9,
+      "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
+      "PB_HOSP_ACT_ID": 4307370,
+      "$meta": {
+        "type": "INVOICE"
+      }
+    },
+    {
+      "INVOICE_ID": 24584314,
+      "PAT_ID": "Z7004242",
+      "ACCOUNT_ID": 1810018166,
+      "SERV_AREA_ID": 18,
+      "LOC_ID": 1700801,
+      "POS_ID": 1700801,
+      "DEPARTMENT_ID": 1700801005,
+      "PROV_ID": "802011",
+      "TAX_ID": "391837462",
+      "TAX_ID_TYPE": "E",
+      "INSURANCE_AMT": 151,
+      "SELF_PAY_AMT": 0,
+      "INIT_INSURANCE_BAL": 151,
+      "INIT_SELF_PAY_BAL": 0,
+      "BILL_AREA_ID": 9,
+      "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
+      "PB_HOSP_ACT_ID": 4307813,
+      "$meta": {
+        "type": "INVOICE"
+      }
+    },
+    {
+      "INVOICE_ID": 24873734,
+      "PAT_ID": "Z7004242",
+      "ACCOUNT_ID": 1810018166,
+      "SERV_AREA_ID": 18,
+      "LOC_ID": 1700801,
+      "POS_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "PROV_ID": "802011",
+      "TAX_ID": "391837462",
+      "TAX_ID_TYPE": "E",
+      "INSURANCE_AMT": 0,
+      "SELF_PAY_AMT": 0,
+      "INIT_INSURANCE_BAL": 335,
+      "INIT_SELF_PAY_BAL": 0,
+      "BILL_AREA_ID": 9,
+      "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
+      "PB_HOSP_ACT_ID": 4307370,
+      "$meta": {
+        "type": "INVOICE"
+      }
+    },
+    {
+      "INVOICE_ID": 24873736,
+      "PAT_ID": "Z7004242",
+      "ACCOUNT_ID": 1810018166,
+      "SERV_AREA_ID": 18,
+      "LOC_ID": 1700801,
+      "POS_ID": 1700801,
+      "DEPARTMENT_ID": 1700801005,
+      "PROV_ID": "802011",
+      "TAX_ID": "391837462",
+      "TAX_ID_TYPE": "E",
+      "INSURANCE_AMT": 0,
+      "SELF_PAY_AMT": 0,
+      "INIT_INSURANCE_BAL": 151,
+      "INIT_SELF_PAY_BAL": 0,
+      "BILL_AREA_ID": 9,
+      "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
+      "PB_HOSP_ACT_ID": 4307813,
+      "$meta": {
+        "type": "INVOICE"
+      }
+    },
+    {
+      "INVOICE_ID": 35267927,
+      "PAT_ID": "Z7004242",
+      "ACCOUNT_ID": 1810018166,
+      "SERV_AREA_ID": 18,
+      "LOC_ID": 1700801,
+      "POS_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "PROV_ID": "802011",
+      "TAX_ID": "391837462",
+      "TAX_ID_TYPE": "E",
+      "INSURANCE_AMT": 0,
+      "SELF_PAY_AMT": 0,
+      "INIT_INSURANCE_BAL": 165,
+      "INIT_SELF_PAY_BAL": 0,
+      "BILL_AREA_ID": 9,
+      "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
+      "PB_HOSP_ACT_ID": 5960354,
+      "$meta": {
+        "type": "INVOICE"
+      }
+    },
+    {
+      "INVOICE_ID": 39392511,
+      "PAT_ID": "Z7004242",
+      "ACCOUNT_ID": 1810018166,
+      "SERV_AREA_ID": 18,
+      "LOC_ID": 1700801,
+      "POS_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "PROV_ID": "219711",
+      "TAX_ID": "391837462",
+      "TAX_ID_TYPE": "E",
+      "INSURANCE_AMT": 0,
+      "SELF_PAY_AMT": 0,
+      "INIT_INSURANCE_BAL": 170,
+      "INIT_SELF_PAY_BAL": 0,
+      "BILL_AREA_ID": 9,
+      "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
+      "PB_HOSP_ACT_ID": 6585418,
+      "$meta": {
+        "type": "INVOICE"
+      }
+    },
+    {
+      "INVOICE_ID": 56467923,
+      "PAT_ID": "Z7004242",
+      "ACCOUNT_ID": 1810018166,
+      "SERV_AREA_ID": 18,
+      "LOC_ID": 1700801,
+      "POS_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "PROV_ID": "144590",
+      "TAX_ID": "391837462",
+      "TAX_ID_TYPE": "E",
+      "INSURANCE_AMT": 0,
+      "SELF_PAY_AMT": 0,
+      "INIT_INSURANCE_BAL": 516,
+      "INIT_SELF_PAY_BAL": 0,
+      "BILL_AREA_ID": 9,
+      "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
+      "PB_HOSP_ACT_ID": 9586039,
+      "$meta": {
+        "type": "INVOICE"
+      }
+    },
+    {
+      "INVOICE_ID": 56523114,
+      "PAT_ID": "Z7004242",
+      "ACCOUNT_ID": 1810018166,
+      "SERV_AREA_ID": 18,
+      "LOC_ID": 1700801,
+      "POS_ID": 1700801,
+      "DEPARTMENT_ID": 1700801005,
+      "PROV_ID": "144590",
+      "TAX_ID": "391837462",
+      "TAX_ID_TYPE": "E",
+      "INSURANCE_AMT": 0,
+      "SELF_PAY_AMT": 0,
+      "INIT_INSURANCE_BAL": 173,
+      "INIT_SELF_PAY_BAL": 0,
+      "BILL_AREA_ID": 9,
+      "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
+      "PB_HOSP_ACT_ID": 9587009,
+      "$meta": {
+        "type": "INVOICE"
+      }
+    },
+    {
+      "INVOICE_ID": 58319567,
+      "PAT_ID": "Z7004242",
+      "ACCOUNT_ID": 1810018166,
+      "SERV_AREA_ID": 18,
+      "LOC_ID": 1700801,
+      "POS_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "PROV_ID": "144590",
+      "TAX_ID": "391837462",
+      "TAX_ID_TYPE": "E",
+      "INSURANCE_AMT": 0,
+      "SELF_PAY_AMT": 0,
+      "INIT_INSURANCE_BAL": 315,
+      "INIT_SELF_PAY_BAL": 0,
+      "BILL_AREA_ID": 9,
+      "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
+      "PB_HOSP_ACT_ID": 10141450,
+      "$meta": {
+        "type": "INVOICE"
+      }
+    },
+    {
+      "INVOICE_ID": 58660400,
+      "PAT_ID": "Z7004242",
+      "ACCOUNT_ID": 1810018166,
+      "SERV_AREA_ID": 18,
+      "LOC_ID": 1700801,
+      "POS_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "PROV_ID": "144590",
+      "TAX_ID": "391837462",
+      "TAX_ID_TYPE": "E",
+      "INSURANCE_AMT": 0,
+      "SELF_PAY_AMT": 0,
+      "INIT_INSURANCE_BAL": 315,
+      "INIT_SELF_PAY_BAL": 0,
+      "BILL_AREA_ID": 9,
+      "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
+      "PB_HOSP_ACT_ID": 10141450,
+      "$meta": {
+        "type": "INVOICE"
+      }
+    },
+    {
+      "INVOICE_ID": 60492688,
+      "PAT_ID": "Z7004242",
+      "ACCOUNT_ID": 1810018166,
+      "SERV_AREA_ID": 18,
+      "LOC_ID": 1700801,
+      "POS_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "PROV_ID": "144590",
+      "TAX_ID": "391837462",
+      "TAX_ID_TYPE": "E",
+      "INSURANCE_AMT": 0,
+      "SELF_PAY_AMT": 0,
+      "INIT_INSURANCE_BAL": 226,
+      "INIT_SELF_PAY_BAL": 0,
+      "BILL_AREA_ID": 9,
+      "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
+      "PB_HOSP_ACT_ID": 10685743,
+      "$meta": {
+        "type": "INVOICE"
+      }
+    },
+    {
+      "INVOICE_ID": 65200403,
+      "PAT_ID": "Z7004242",
+      "ACCOUNT_ID": 1810018166,
+      "SERV_AREA_ID": 18,
+      "LOC_ID": 1700801,
+      "POS_ID": 1700801,
+      "DEPARTMENT_ID": 1700801005,
+      "PROV_ID": "144590",
+      "TAX_ID": "391837462",
+      "TAX_ID_TYPE": "E",
+      "INSURANCE_AMT": 0,
+      "SELF_PAY_AMT": 0,
+      "INIT_INSURANCE_BAL": 203,
+      "INIT_SELF_PAY_BAL": 0,
+      "BILL_AREA_ID": 9,
+      "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
+      "PB_HOSP_ACT_ID": 11825589,
+      "$meta": {
+        "type": "INVOICE"
+      }
+    },
+    {
+      "INVOICE_ID": 65226259,
+      "PAT_ID": "Z7004242",
+      "ACCOUNT_ID": 1810018166,
+      "SERV_AREA_ID": 18,
+      "LOC_ID": 1700801,
+      "POS_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "PROV_ID": "144590",
+      "TAX_ID": "391837462",
+      "TAX_ID_TYPE": "E",
+      "INSURANCE_AMT": 0,
+      "SELF_PAY_AMT": 0,
+      "INIT_INSURANCE_BAL": 114,
+      "INIT_SELF_PAY_BAL": 0,
+      "BILL_AREA_ID": 9,
+      "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
+      "PB_HOSP_ACT_ID": 10686227,
+      "$meta": {
+        "type": "INVOICE"
+      }
+    },
+    {
+      "INVOICE_ID": 65425314,
+      "PAT_ID": "Z7004242",
+      "ACCOUNT_ID": 1810018166,
+      "SERV_AREA_ID": 18,
+      "LOC_ID": 1700801,
+      "POS_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "PROV_ID": "144590",
+      "TAX_ID": "391837462",
+      "TAX_ID_TYPE": "E",
+      "INSURANCE_AMT": 0,
+      "SELF_PAY_AMT": 0,
+      "INIT_INSURANCE_BAL": 330,
+      "INIT_SELF_PAY_BAL": 0,
+      "BILL_AREA_ID": 9,
+      "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
+      "PB_HOSP_ACT_ID": 10686227,
+      "$meta": {
+        "type": "INVOICE"
+      }
+    }
+  ]
+}

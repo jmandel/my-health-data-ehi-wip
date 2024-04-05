@@ -1,0 +1,105 @@
+{
+  "name": "ENROLL_QUESR_SERIES",
+  "description": "This table contains information about questionnaire series assigned to a patient as part of a research study enrollment.",
+  "primaryKey": [
+    {
+      "columnName": "ENROLL_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ENROLL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the enrollment record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SERIES_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the questionnaire series assigned for a patient-study association."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SERIES_ID_SERIES_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name for the questionnaire series record."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SERIES_ANS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the questionnaire series response for questionnaire series assigned for a patient-study association."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ASGN_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time that a questionnaire series was assigned for a patient-study association."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "QUESR_ASGN_MTHD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The assignment method category ID for the questionnaire series assigned for a patient-study association.",
+      "entries": [
+        "Auto-assignment by status",
+        "Manually assigned via Research Studies activity",
+        "Manually assigned via Reporting Workbench",
+        "Populated via life sciences data exchange"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ASGN_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the user that assigned the questionnaire series for a patient-study association. This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ASGN_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ENROLL_SERIES_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status category ID of the questionnaire series assigned for a patient-study association.",
+      "entries": [
+        "Assigned",
+        "Completed",
+        "Disabled"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "ASGN_FOR_ENROLL_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The enrollment status category ID that caused a questionnaire series to be automatically assigned for a patient-study association."
+    }
+  ]
+}

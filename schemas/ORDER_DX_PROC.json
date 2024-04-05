@@ -1,0 +1,90 @@
+{
+  "name": "ORDER_DX_PROC",
+  "description": "The ORDER_DX_PROC table enables you to report on the diagnoses associated with procedures ordered in clinical system. Since one procedure order may be associated with multiple diagnoses, each row in this table is one procedure - diagnosis relation. We have also included patient and contact identification information for each record. Note that system settings may or may not require that procedures be associated with diagnoses.  This table contains only information for those procedures and diagnoses that have been explicitly associated. Check with your clinical system Application Administrator to determine how your organization has this set up.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_PROC_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the procedure order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this procedure record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "DX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the diagnosis record associated with the procedure order."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "DX_QUALIFIER_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The diagnosis qualifier category ID, which indicates modifier information for the diagnosis associated with the order record."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "COMMENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Comments added when the procedure was ordered"
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DX_CHRONIC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the diagnosis associated with this order record was marked as chronic during the ordering process. 'Y' indicates that a the diagnosis was marked as chronic. 'N' or NULL indicate that a the diagnosis was not marked as chronic.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ASSOC_DX_DESC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores a free text diagnosis description entered by the end user.  Also referred to as the \"display as\" field."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ASSOC_REQ_DX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the original requisition diagnosis associated with the order. Diagnoses stored by this item might be entered for either clinical or billing purposes."
+    }
+  ]
+}

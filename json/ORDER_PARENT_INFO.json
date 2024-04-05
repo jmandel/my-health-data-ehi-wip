@@ -1,0 +1,634 @@
+{
+  "$meta": {
+    "schemas": {
+      "ORDER_PARENT_INFO": {
+        "name": "ORDER_PARENT_INFO",
+        "description": "This table will hold procedure order data where it is sometimes necessary to obtain the information from the parent (or possibly grandparent) order if it exists. Otherwise default to the child/normal order record's information in cases where there is no parent order.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier that consists of the order ID. Grandparent, parent and child orders will populate this table."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "PARENT_ORDER_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "If the ID in the ORDER_ID column is a child order, then this column will hold the original order ID that instantiated the child (possibly a parent or possibly a grandparent order). If the ID in the ORDER_ID column is an order placed by an end user in the system (i.e. it was never instantiated- such as parent or grandparents), then this column will hold the same ID."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "ORDERING_DTTM",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "This is the original ordering date and time of the order record in the PARENT_ORDER_ID column.  For child orders, the date and time in ORDER_PROC.ORDER_INST is the date and time the order was released."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "ORD_LOGIN_DEP_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This is the original login department of the order record in the PARENT_ORDER_ID column.   For child orders, the department in ORDER_PROC_2.LOGIN_DEP_ID is the department in which the order was released."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI). This will be the contact used to place the order record in the PARENT_ORDER_ID column.   For child orders, the contact serial number in ORDER_PROC.PAT_ENC_CSN_ID is the contact in which the order was released."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "PAT_CONTACT_DEP_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This is the patient contact department of the order record in the PARENT_ORDER_ID column."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "FINALIZE_PHYSICIAN",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "OBS_MTHD_ID",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORD_CLIN_IND",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORDER_ANATOMICAL_REGION",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORDER_COMMENT",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORDER_DOCUMENTS",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORDER_DX_PROC",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORDER_IMPRESSION",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORDER_INSTANTIATED",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORDER_MODALITY_TYPE",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORDER_MYC_RELEASE",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORDER_NARRATIVE",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORDER_RAD_ACC_NUM",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORDER_RAD_READING",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORDER_READ_ACK",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORDER_RES_COMMENT",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORDER_RESULTS",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORDER_REVIEW",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORDER_SIGNED_PROC",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORD_INDICATIONS",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORD_PROC_INSTR",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORD_RSLT_COMPON_ID",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORD_SPEC_QUEST",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "PERFORMING_ORG_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "RIS_SGND_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "SPEC_SOURCE_SNOMED",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "SPEC_TYPE_SNOMED",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ORDER_PARENT_INFO": [
+    {
+      "ORDER_ID": 439060612,
+      "PARENT_ORDER_ID": 439060612,
+      "ORDERING_DTTM": "2020-07-21 12:38:00",
+      "ORD_LOGIN_DEP_ID": 1700801002,
+      "PAT_ENC_CSN_ID": 829995922,
+      "PAT_CONTACT_DEP_ID": 1700801002,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 772179265,
+      "PARENT_ORDER_ID": 772179265,
+      "ORDERING_DTTM": "2022-12-01 10:15:00",
+      "ORD_LOGIN_DEP_ID": 1700801002,
+      "PAT_ENC_CSN_ID": 974614965,
+      "PAT_CONTACT_DEP_ID": 1700801002,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 439060610,
+      "PARENT_ORDER_ID": 439060610,
+      "ORDERING_DTTM": "2020-07-15 12:22:00",
+      "ORD_LOGIN_DEP_ID": 1700801002,
+      "PAT_ENC_CSN_ID": 829393933,
+      "PAT_CONTACT_DEP_ID": 1700801002,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 439060608,
+      "PARENT_ORDER_ID": 439060608,
+      "ORDERING_DTTM": "2020-01-09 12:53:00",
+      "ORD_LOGIN_DEP_ID": 1700801002,
+      "PAT_ENC_CSN_ID": 799951565,
+      "PAT_CONTACT_DEP_ID": 1700801002,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 945468372,
+      "PARENT_ORDER_ID": 772179264,
+      "ORDERING_DTTM": "2022-08-29 23:57:00",
+      "ORD_LOGIN_DEP_ID": 1700801002,
+      "PAT_ENC_CSN_ID": 948004323,
+      "PAT_CONTACT_DEP_ID": 1700801002,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 945468371,
+      "PARENT_ORDER_ID": 945468368,
+      "ORDERING_DTTM": "2023-09-28 10:02:00",
+      "ORD_LOGIN_DEP_ID": 1700801002,
+      "PAT_ENC_CSN_ID": 991225117,
+      "PAT_CONTACT_DEP_ID": 1700801002,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 945468370,
+      "PARENT_ORDER_ID": 945468369,
+      "ORDERING_DTTM": "2023-09-28 10:02:00",
+      "ORD_LOGIN_DEP_ID": 1700801002,
+      "PAT_ENC_CSN_ID": 991225117,
+      "PAT_CONTACT_DEP_ID": 1700801002,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 772179268,
+      "PARENT_ORDER_ID": 772179268,
+      "ORDERING_DTTM": "2022-12-22 11:29:00",
+      "ORD_LOGIN_DEP_ID": 1700801002,
+      "PAT_ENC_CSN_ID": 977858467,
+      "PAT_CONTACT_DEP_ID": 1700801002,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 772179267,
+      "PARENT_ORDER_ID": 772179267,
+      "ORDERING_DTTM": "2022-12-22 11:29:00",
+      "ORD_LOGIN_DEP_ID": 1700801002,
+      "PAT_ENC_CSN_ID": 977858467,
+      "PAT_CONTACT_DEP_ID": 1700801002,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 439060609,
+      "PARENT_ORDER_ID": 439060609,
+      "ORDERING_DTTM": "2020-07-14 14:40:00",
+      "ORD_LOGIN_DEP_ID": 1700801002,
+      "PAT_ENC_CSN_ID": 829213099,
+      "PAT_CONTACT_DEP_ID": 1700801002,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 439060613,
+      "PARENT_ORDER_ID": 439060612,
+      "ORDERING_DTTM": "2020-07-21 12:38:00",
+      "ORD_LOGIN_DEP_ID": 1700801002,
+      "PAT_ENC_CSN_ID": 829995922,
+      "PAT_CONTACT_DEP_ID": 1700801002,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 439060607,
+      "PARENT_ORDER_ID": 439060605,
+      "ORDERING_DTTM": "2018-08-09 10:13:00",
+      "ORD_LOGIN_DEP_ID": 1700801002,
+      "PAT_ENC_CSN_ID": 720803470,
+      "PAT_CONTACT_DEP_ID": 1700801002,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 439060604,
+      "PARENT_ORDER_ID": 439060604,
+      "ORDERING_DTTM": "2018-08-09 10:13:00",
+      "ORD_LOGIN_DEP_ID": 1700801002,
+      "PAT_ENC_CSN_ID": 720803470,
+      "PAT_CONTACT_DEP_ID": 1700801002,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 439060605,
+      "PARENT_ORDER_ID": 439060605,
+      "ORDERING_DTTM": "2018-08-09 10:13:00",
+      "ORD_LOGIN_DEP_ID": 1700801002,
+      "PAT_ENC_CSN_ID": 720803470,
+      "PAT_CONTACT_DEP_ID": 1700801002,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 439060614,
+      "PARENT_ORDER_ID": 439060614,
+      "ORDERING_DTTM": "2020-09-15 17:08:00",
+      "PAT_ENC_CSN_ID": 839256727,
+      "PAT_CONTACT_DEP_ID": 8,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 772179262,
+      "PARENT_ORDER_ID": 772179260,
+      "ORDERING_DTTM": "2022-08-29 14:23:00",
+      "ORD_LOGIN_DEP_ID": 1700801002,
+      "PAT_ENC_CSN_ID": 948004323,
+      "PAT_CONTACT_DEP_ID": 1700801002,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 945468367,
+      "PARENT_ORDER_ID": 945468367,
+      "ORDERING_DTTM": "2023-09-28 09:47:00",
+      "ORD_LOGIN_DEP_ID": 1700801002,
+      "PAT_ENC_CSN_ID": 991225117,
+      "PAT_CONTACT_DEP_ID": 1700801002,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 945468368,
+      "PARENT_ORDER_ID": 945468368,
+      "ORDERING_DTTM": "2023-09-28 10:02:00",
+      "ORD_LOGIN_DEP_ID": 1700801002,
+      "PAT_ENC_CSN_ID": 991225117,
+      "PAT_CONTACT_DEP_ID": 1700801002,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 945468369,
+      "PARENT_ORDER_ID": 945468369,
+      "ORDERING_DTTM": "2023-09-28 10:02:00",
+      "ORD_LOGIN_DEP_ID": 1700801002,
+      "PAT_ENC_CSN_ID": 991225117,
+      "PAT_CONTACT_DEP_ID": 1700801002,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 439060606,
+      "PARENT_ORDER_ID": 439060604,
+      "ORDERING_DTTM": "2018-08-09 10:13:00",
+      "ORD_LOGIN_DEP_ID": 1700801002,
+      "PAT_ENC_CSN_ID": 720803470,
+      "PAT_CONTACT_DEP_ID": 1700801002,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 772179259,
+      "PARENT_ORDER_ID": 772179259,
+      "ORDERING_DTTM": "2019-02-08 20:05:00",
+      "PAT_ENC_CSN_ID": 927098738,
+      "PAT_CONTACT_DEP_ID": 8,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 772179260,
+      "PARENT_ORDER_ID": 772179260,
+      "ORDERING_DTTM": "2022-08-29 14:23:00",
+      "ORD_LOGIN_DEP_ID": 1700801002,
+      "PAT_ENC_CSN_ID": 948004323,
+      "PAT_CONTACT_DEP_ID": 1700801002,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 772179263,
+      "PARENT_ORDER_ID": 772179263,
+      "ORDERING_DTTM": "2022-08-29 23:57:00",
+      "ORD_LOGIN_DEP_ID": 1700801002,
+      "PAT_ENC_CSN_ID": 948004323,
+      "PAT_CONTACT_DEP_ID": 1700801002,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 772179264,
+      "PARENT_ORDER_ID": 772179264,
+      "ORDERING_DTTM": "2022-08-29 23:57:00",
+      "ORD_LOGIN_DEP_ID": 1700801002,
+      "PAT_ENC_CSN_ID": 948004323,
+      "PAT_CONTACT_DEP_ID": 1700801002,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 763403909,
+      "PARENT_ORDER_ID": 763403909,
+      "ORDERING_DTTM": "2022-02-09 15:26:00",
+      "ORD_LOGIN_DEP_ID": 101401088,
+      "PAT_ENC_CSN_ID": 921952141,
+      "PAT_CONTACT_DEP_ID": 101401088,
+      "$meta": {
+        "type": "ORDER_PARENT_INFO"
+      }
+    }
+  ]
+}

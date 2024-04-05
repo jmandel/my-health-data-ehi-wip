@@ -1,0 +1,48 @@
+{
+  "name": "FLOWSHEET_METAEDIT_VAL",
+  "description": "Historical third-party metadata (e.g. from Apple's HealthKit) is split across three tables. This table holds values from each key-value pair. The key names are held on table FLOWSHEET_METAEDIT_LOOSE, and key category values, for keys that have been assigned category values, are held on FLOWSHEET_METAEDIT_STRICT. Reporting on this metadata can be more easily accomplished by joining these tables on primary key (FSD_ID, GROUP_LINE, VALUE_LINE).",
+  "primaryKey": [
+    {
+      "columnName": "FSD_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "FSD_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the Flowsheets data record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple values associated with a specific group of data within this record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EDITD_3P_META_VAL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Within a line, each position represents a value in a dictionary of third-party metadata attached to the historical Flowsheets value with the corresponding line number. The same line/position for the edited third party metadata key (I FSD 2320) corresponds to the key name and (if the particular key is recognized by Epic) on the edited third party metadata value (I FSD 2310) corresponds to the category-value representation of the key."
+    }
+  ]
+}

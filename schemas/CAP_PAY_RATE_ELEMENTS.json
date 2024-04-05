@@ -1,0 +1,117 @@
+{
+  "name": "CAP_PAY_RATE_ELEMENTS",
+  "description": "This table stores rate element information used in a capitation transaction.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the transaction record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "FRM_TBL_GRP_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The group type of the rate elements.",
+      "entries": [
+        "Constant",
+        "Coverage Risk Factor",
+        "Benefit Plan Rate Factor",
+        "Lookup",
+        "Part A",
+        "Part B",
+        "Part D",
+        "Employer Group Rate Factor"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "LOOKUP_TABLE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The lookup table which was used to retrieve the rate element's values."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "LOOKUP_TABLE_ID_RATE_TABLE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Name of the capitation rate table."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "MATCHED_CVG_ATTR_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column will be deprecated. To continue accessing this data, use the MATCHED_CVG_ATTR_C column from the CAP_PAY_EL_DETAILS table.  The coverage attribute used to select the rate group from the lookup table."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PREMIUM_BUCKET_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The capitation bucket which was the source of capitation RR subcomponent amounts used in the formula."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "MEM_LIST_ROW_KEY",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The row number of the member in the member list (TML) to which each row in related group 3510 corresponds to for a specialty capitation transaction."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "MATCHED_RIDER_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column will be deprecated. To continue accessing this data, use the MATCHED_RIDER_PLAN_ID column from the CAP_PAY_EL_DETAILS table.  The rider used to select the rate group from the lookup table."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "MATCHED_RULE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column will be deprecated. To continue accessing this data, use the MATCHED_RULE_ID column from the CAP_PAY_EL_DETAILS table.  The rule that passed when selecting the rate group for the lookup table."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "MATCHED_RULE_ID_RULE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the rule."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "REFINEMENT_LOOKUP_TABLE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column will be deprecated. To continue accessing this data, use the REFINEMENT_LOOKUP_TABLE_ID column from the CAP_PAY_EL_DETAILS table.  The additional refinement rate table used to look up a member's rate."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "REFINEMENT_LOOKUP_TABLE_ID_RATE_TABLE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Name of the capitation rate table."
+    }
+  ]
+}

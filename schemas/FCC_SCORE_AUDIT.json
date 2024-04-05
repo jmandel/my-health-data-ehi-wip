@@ -1,0 +1,90 @@
+{
+  "name": "FCC_SCORE_AUDIT",
+  "description": "This table can be used to recreate an audit trail for Facility Charge Calculator scores that were modified. Since old scores are saved into these items, a row isn't exactly a snapshot of the scores and user at that particular instant listed. Instead, a snapshot is created by pairing a row's user and instant to the scores of the next row. If it is the last row with that rule, the user and instant apply to the current scores in FAC_CHG_OVERRIDES.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CALCULATED_TOTAL_SCORE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The audit item for the calculated score in FAC_CHG_OVERRIDE. Whenever facility charge calculator items change, a new row is added to this item. If those changes include the calculated score, this item saves the original value. If it hasn't changed, the current value is saved to this item."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "OVERRIDE_TOTAL_SCORE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The audit item for the override score in FAC_CHG_OVERRIDE. Whenever facility charge calculator items change, a new row is added to this item. If those changes include the override score, this item saves the original value. If it hasn't changed, the current value is saved to this item."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "EDIT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Facility Charge Calculator audit item. Whenever Facility Charge Calculator items change, a new line is added to this item, and this item records the current user's ID."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "EDIT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "EDIT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant of each set of facility charge calculator changes. Whenever Facility charge calculator items change, this item records the current instant on a new row, or the value of the override instant in FAC_CHG_OVERRIDE if available."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "AUTO_FILED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The audit item for auto-filed scores in FAC_CHG_OVERRIDE. Whenever facility charge calculator items change, a new row is added to this item. If those changes include the \"Auto Filed\" item, the original value is stored in this item.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    }
+  ]
+}

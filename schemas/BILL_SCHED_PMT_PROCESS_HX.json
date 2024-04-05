@@ -1,0 +1,91 @@
+{
+  "name": "BILL_SCHED_PMT_PROCESS_HX",
+  "description": "This table contains the payment processing history from the Billing Scheduled Payment (BSP) master file.",
+  "primaryKey": [
+    {
+      "columnName": "SCHED_PMT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SCHED_PMT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the scheduled payment record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PROCESS_HX_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the instant of the processing history."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PROCESS_HX_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the action of the processing history.",
+      "entries": [
+        "Scheduled",
+        "Unscheduled",
+        "Processed"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PROCESS_HX_ACTION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date on which the corresponding action was performed."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PROCESS_HX_PMT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the history of the amount that was scheduled or processed."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PROCESS_HX_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the history of the user who performed the corresponding action."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PROCESS_HX_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PROCESS_HX_CARD_HX_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column stores the history line from the payment method record where the transaction history is stored."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PROCESS_HX_TX_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the transaction identifier returned by the credit card engine."
+    }
+  ]
+}

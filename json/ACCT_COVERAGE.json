@@ -1,0 +1,74 @@
+{
+  "$meta": {
+    "schemas": {
+      "ACCT_COVERAGE": {
+        "name": "ACCT_COVERAGE",
+        "description": "This table contains coverage lists for every accounts receivable (EAR) record.",
+        "primaryKey": [
+          {
+            "columnName": "ACCOUNT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique account record ID. This ID number may be encrypted if you have elected to use enterprise reporting�s security utility."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "Line number to identify the status information within the account."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "COVERAGE_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The coverage ID for the guarantor record."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ACCT_COVERAGE",
+            "target": "ACCOUNT",
+            "joinKeys": [
+              {
+                "source": "ACCOUNT_ID",
+                "target": "ACCOUNT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ACCT_COVERAGE": [
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 1,
+      "COVERAGE_ID": 5934765,
+      "$meta": {
+        "type": "ACCT_COVERAGE"
+      }
+    },
+    {
+      "ACCOUNT_ID": 4793998,
+      "LINE": 1,
+      "COVERAGE_ID": 5934765,
+      "$meta": {
+        "type": "ACCT_COVERAGE"
+      }
+    }
+  ]
+}

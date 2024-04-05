@@ -1,0 +1,66 @@
+{
+  "name": "CX_PAT_TRANSITION_TRACKER",
+  "description": "This table contains data for a patient's claims that is tracked for Claims Exchange transition purposes. Each row stores the earliest claim service start date that a patient receives through Claims Exchange for an organization and/or program.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CX_ORGANIZATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The payer source organization (DXO) transitioning to Claims Exchange"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CX_ORGANIZATION_ID_EXTERNAL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Organization's external name used as the display name on forms and user interfaces."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CX_PROGRAM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The contract (VBP) of the payer source organization (DXO) that is transitioning to Claims Exchange."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CX_PROGRAM_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the program record."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CX_EARLY_CLAIM_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Earliest claim service start date received for a patient through Claims Exchange from a payer source organization (DXO)."
+    }
+  ]
+}

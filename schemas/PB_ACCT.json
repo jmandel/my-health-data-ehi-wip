@@ -1,0 +1,162 @@
+{
+  "name": "PB_ACCT",
+  "description": "Stores information about Premium Billing accounts.",
+  "primaryKey": [
+    {
+      "columnName": "PB_ACCT_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PB_ACCT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID for the premium billing account."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "ACCOUNT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Name for the premium billing account."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PBA_REC_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Displays the status of the premium billing account record (i.e. active or deleted).",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EXT_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "External ID for the premium billing account."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PB_FORMAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID for the premium billing invoice format that is used when printing premium billing invoices for the premium billing account."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PB_FORMAT_ID_FORMAT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Name of the premium billing invoice format"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "DELINQUENCY_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date the premium billing account was last delinquent."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DELINQUENT_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Delinquency status of the premium billing account.",
+      "entries": [
+        "Not Delinquent"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "DELINQ_PB_INVC_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID for the last invoice for which the premium billing account was delinquent."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "POST_PMT_ON_INV_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This Yes/No flag indicates whether payments should automatically be posted to the premium billing account when the premium billing account is invoiced."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "INDIVIDUAL_BILL_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This Yes/No flag indicates whether this account is an individual billing account."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "UPDATE_DATE",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The extract date and time of the record for this table."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "OWNING_BUSSEG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the business segment ID that owns the premium billing account record."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "AUTO_PAY_ACTIVE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether auto pay is currently active for this account. Y is stored if it is active, N otherwise.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "AUTO_PAY_CARD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the unique identifier of the payment card currently being used for auto pay."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "AUTO_PAY_PAYMENT_DAY",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the day of the month auto pay is currently scheduled to occur on."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "AUTO_PAY_NEXT_PAYMENT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the next date auto pay is currently scheduled to occur on."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "ORIGINAL_SUBSCRIBER_PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the original subscriber that an individual account was created for."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "BUCKET_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The account status represents the overall state of an account. This is composite of the premium bucket statuses for the buckets on an account. An account with a status of \"New\" does not have any transactions filed to it. An account with a status of \"Open - Unreconciled\" as at least one bucket that has a status of \"Open - Unreconciled\". An account with the status of \"Open - Reconciled\" has been fully reconciled and contains transactions that have not been invoiced. An account with a status of \"Closed\" has all buckets reconciled and invoiced.",
+      "entries": [
+        "New",
+        "Open - Unreconciled",
+        "Open - Reconciled",
+        "Closed"
+      ]
+    }
+  ]
+}

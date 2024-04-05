@@ -1,0 +1,55 @@
+{
+  "name": "ADV_EVT_SUPPLY_ATTR_HX",
+  "description": "This table contains the history of this adverse event's attribution to the associated supply. Together with ADV_EVT_SUPPLY_HISTORY, these tables contain the history of an adverse event's supply attributions.",
+  "primaryKey": [
+    {
+      "columnName": "ADVERSE_EVENT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ADVERSE_EVENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the adverse event record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the adverse event history in the adverse event record. Together with ADVERSE_EVENT_ID, this forms the foreign key to the ADVERSE_EVENT_HISTORY table."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple attribution levels for the corresponding supply record as it related to the adverse event at the time the adverse event was documented."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "HX_ITEM_ATTRIBUTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The attribution level category ID for the corresponding supply as it related to the adverse event at the time the adverse event was documented.",
+      "entries": [
+        "Unrelated",
+        "Unlikely",
+        "Possible",
+        "Probable",
+        "Definite"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,437 @@
+{
+  "name": "MYC_MESG",
+  "description": "This table contains information on messages sent to and from web-based chart system patients.",
+  "primaryKey": [
+    {
+      "columnName": "MESSAGE_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "MESSAGE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID used to identify a web-based chart system message record. A new record is created each time a patient sends a message from a web-based chart system to a system user and each time a system user sends a message to a web-based chart system patient."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CREATED_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time the web-based chart system message record was created in local time."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PARENT_MESSAGE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the original message in a chain of web-based chart system messages between patients and system users."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "INBASKET_MSG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the system message associated with the web-based chart system message. An example is when a patient sends a message to a system user."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique, internal contact date in decimal format. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "FROM_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the system user who sent a web-based chart system message to a patient."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "FROM_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "TO_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the system user who was sent a web-based chart system message from a patient."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "TO_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "TOFROM_PAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The message direction category number for the web-based chart system message. 1 corresponds to \"To patient\". 2 corresponds to \"From patient\".",
+      "entries": [
+        "To Patient",
+        "From Patient"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ORIGINAL_TO",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If a message sent from a web-based chart system patient is re-routed from its intended destination, then the ID of the original recipient is stored in the field. Most commonly this occurs when a system user does not accept messages directly from web-based chart system patients. In this case, the message will be re-routed to a pool, but the employee ID of the system user will be stored here. The ID of the final destination is stored in MODIFIED_TO."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "RQSTD_PHARMACY_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the pharmacy selected by the patient from the drop down list when sending a Medication Renewal Request message."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "RQSTD_PHARMACY_ID_PHARMACY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the pharmacy."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "UPDATE_DATE",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time that this web-based chart system message record was pulled into enterprise reporting."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "REQUEST_SUBJECT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This field is only used for medical advice request messages and indicates the subject selected by the patient from the drop down list."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The provider that was used in routing the patient access message. The provider may vary depending on message type."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The department used in routing the patient access message. The department may vary depending on message type."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "RESP_INFO",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Some response types will include additional information, such as a phone number.  If such data exists for the chosen response method, it will be stored in this field."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "SUBJECT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The subject line of the web-based chart system message."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "EOW_READ_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The read status category number for the web-based chart system message.",
+      "entries": [
+        "Unread",
+        "Read"
+      ]
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "BILL_ACCT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the guarantor account associated with this web-based chart system message."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "BILL_ACCT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The billing account type category number for the web-based chart system message. Only billing-specific customer service messages have a value specified for this column.",
+      "entries": [
+        "Physician Billing",
+        "Hospital Billing",
+        "Single Billing Office"
+      ]
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "BILL_ACCT_HAR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the hospital account associated with this web-based chart system message."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "RELATED_MESSAGE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the parent message of the original message chain. This applies only when the system is configured to allow patients to reply to messages associated with closed encounters by creating a new message chain. This item is populated for the message that starts a new chain."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "WPR_OWNER_WPR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the web-based chart system patient who owns this message."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "CR_TX_CARD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the credit card used for this transaction."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "CR_TX_MYPT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the web-based chart system patient associated with this transaction."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "CR_TX_AMOUNT_AUTH",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount authorized for this transaction."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "PAT_HX_QUESR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the history questionnaire associated with this message."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "PAT_HX_QUESR_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the Visit Navigator (VN) History Template Definition (LQH) record."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "HX_QUESR_CONTEXT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The history questionnaire context category number for the web-based chart system message.",
+      "entries": [
+        "Visit Type",
+        "Provider",
+        "Department",
+        "Message Task",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "HX_QUESR_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the provider associated with the questionnaire."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "HX_QUESR_ENCPROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the provider associated with the appointment that the questionnaire is linked to."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "HX_QUESR_APPT_DAT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The appointment contact date (DAT) if the questionnaire is linked to an appointment."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "HX_QUESR_FILED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the history questionnaire has been filed for this web-based chart system message. Y indicates that the history questionnaire has been filed. N or a null value indicates that the history questionnaire has not been filed.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "DELIVERY_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant that this message is scheduled for delivery to the patient. This item may not be populated. In the event that this item is not populated, then the instant the message is created is used to determine when the patient can view the message."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "RECORD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category title of the status of the message. If not populated, then the message is active; Soft deleted is set when a message is revoked.",
+      "entries": [
+        "Soft Deleted",
+        "Hidden",
+        "Hidden and Soft Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "CR_TX_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the type of transaction (E-Visit or Copay).",
+      "entries": [
+        "E-Visit",
+        "Copay"
+      ]
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "HX_QUESR_REVIEW_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the history questionnaire has been viewed by a provider in edit mode for this web-based chart system message. Y indicates that the history questionnaire has been viewed, N or a null value indicates that the history questionnaire has not been viewed."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "HX_QUESR_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for the appt contact if questionnaire is linked to an appt. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "OUTREACH_RUN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This is the campaign outreach configuration template associated with this message."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "RENEWAL_REQ_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the request source of a medication renewal request. The  default is 2-Web.",
+      "entries": [
+        "IVR",
+        "Web",
+        "Pharmacy",
+        "Ambulatory",
+        "Discharge",
+        "External E-Prescription",
+        "Other",
+        "Telephone",
+        "Hospital Outpatient",
+        "Surgery",
+        "Emergency",
+        "System",
+        "Call Center",
+        "Reporting Workbench",
+        "Automatic Refill",
+        "Pharmacy Front Counter",
+        "Dispense Activity",
+        "External System",
+        "Willow Home Infusion",
+        "Prescription Document",
+        "Willow Inpatient",
+        "Resupply Request",
+        "Residential Facility",
+        "Hospital",
+        "Test Billing"
+      ]
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "REQ_PHARM_FREE_TEXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the selected pharmacy was entered by the user as free-text, then it is stored here."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "HX_QUESR_EDIT_MYPT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the Patient Access Account (WPR) record for the user who last made changes to an in progress history questionnaire"
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "HX_QUESR_EDIT_INST_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the time at which changes were last made to an in progress history questionnaire"
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "REFERRAL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the referral this message is associated with."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "COMM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The customer service record ID corresponding to the message"
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "AUTH_REQUEST_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The authorization request this message is associated with."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "INFO_REQ_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Information Request this message is associated with."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "NON_HX_QUESR_WITH_HX_DATA_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "1 - If WMG stores history data even though the WMG type is not 22 - HISTORY Questionnaire."
+    }
+  ]
+}

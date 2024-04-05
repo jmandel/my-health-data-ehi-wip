@@ -1,0 +1,44 @@
+{
+  "name": "RES_FETALWEIGHT",
+  "description": "OB Ultrasound Fetal Weight.",
+  "primaryKey": [
+    {
+      "columnName": "FINDING_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "OB_UTZ_FETAL_WT_ROW",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The active fetal weight row in the baby's RES record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "FINDING_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the finding record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "OB_UTZ_EFW_SEL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores which estimation of fetal weight was selected as best indicative of a fetus' true weight. The selected EFW is stored as the corresponding category value from column OB_UTZ_EFW_SRC_C in table OB_UTZ_EFW.  The weight selected by the resulting clinician as definitive for the study can be found by joining on RES_FETALWEIGHT.FINDING_ID = OB_UTZ_EFW.FINDING_ID AND RES_FETALWEIGHT.OB_UTZ_EFW_SEL_C = OB_UTZ_EFW.OB_UTZ_EFW_SRC_C",
+      "entries": [
+        "Shepard 1982 (AC, BPD)",
+        "Hadlock 1984 (AC)",
+        "Hadlock 1985 (AC, FL)",
+        "Hadlock 1984 (AC, BPD)",
+        "Hadlock 1984 (AC, HC)",
+        "Hadlock 1985 (AC, FL, BPD)",
+        "Hadlock 1985 (AC, FL, HC)",
+        "Hadlock 1985 (AC, FL, BPD, HC)",
+        "Other Source"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "name": "MYC_FEEDBACK_QNR_DATA",
+  "description": "This table stores data about feedback questionnaires attached to appointments.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "MYC_FEEDBACK_QNR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item defines a patient feedback questionnaire to be asked for this appointment."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "MYC_FEEDBACK_QNR_ID_FORM_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the form associated with the questionnaire."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "MYC_FDBCK_QNR_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores how the related feedback questionnaire was assigned to the appointment.",
+      "entries": [
+        "Automatic Assigned - MyChart",
+        "Automatic Assigned - Welcome",
+        "Manually Assigned",
+        "Copied from Surgery",
+        "Automatic Assigned - BPA",
+        "Assigned from Procedure Pass workflow",
+        "Assigned by Vendor"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "MYC_FDBK_QNR_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status of the related patient-entered feedback appointment questionnaire.",
+      "entries": [
+        "Assigned",
+        "Started at home",
+        "Started in facility",
+        "Reviewable",
+        "Completed",
+        "Incomplete",
+        "Hidden",
+        "Temporarily hidden"
+      ]
+    }
+  ]
+}

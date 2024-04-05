@@ -1,0 +1,157 @@
+{
+  "name": "HH_VO_COMPONENTS",
+  "description": "This table contains Home Health verbal orders components information. This information is used to track changes made to verbal orders on the Home Health Remote Client.",
+  "primaryKey": [
+    {
+      "columnName": "VERBAL_ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "VERBAL_ORDER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the verbal order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "COMPON_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Verbal orders component type.  Links to category table ZC_COMP_TYPE.",
+      "entries": [
+        "Other",
+        "Medication",
+        "Intervention",
+        "Visit",
+        "Plan of Care",
+        "DME",
+        "Admit",
+        "Hospice Plan Of Care",
+        "Certificate of Terminal Illness",
+        "Hospice Face to Face Attestation",
+        "Home Health Face to Face Attestation",
+        "Code Status"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "COMPON_OLD_MED_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Old medication verbal order ID.  Links to table ORDER_PROC."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "COMPON_NEW_MED_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "New medication verbal order ID."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "COMPON_VST_DISC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Verbal order component visit discipline.  Links to category table ZC_COMPON_VST_DISC."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "COMPON_OLD_FREQ",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Verbal order component old visit frequency."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "COMPON_NEW_FREQ",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Verbal order component new visit frequency."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "COMPON_NOTES_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Verbal order component note ID."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "COMPON_CERT_PER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Verbal order component certification period."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "COMPON_EPS_CARE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Verbal order component episode of care ID.  Links to EPISODE table."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "COMPON_LINK_COMP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Verbal order component linked component.  This item is used to store the link to the components for which this verbal order component is created."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "COMP_PENDING_FAX_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores whether the verbal order component  has been pended.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "COMPON_TAKING_DIFF_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item stores the pointer to the patient taking differently line associated with a Home Health medication verbal order, if it exists."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "DISCON_MED_TEXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Additional information on why an order's medication is discontinued."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "MED_AUDIT_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the medication audit trail. This is the line number found in column LINE of AUDIT_ORD_RXNOADD."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "SUPPL_ORDER_NOT_SENT_ALL_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether the order has been sent to all the providers who should be notified of changes to the plan of care.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    }
+  ]
+}

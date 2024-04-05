@@ -1,0 +1,56 @@
+{
+  "name": "PR_EST_NOTIF",
+  "description": "This tables stores the notifications sent for estimate records.",
+  "primaryKey": [
+    {
+      "columnName": "ESTIMATE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ESTIMATE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the patient estimate record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "NOTIF_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the UTC instant when the notification was sent for this estimate."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "NOTIF_HX_DESTTYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of notification that was sent (e.g. Email/SMS).",
+      "entries": [
+        "Email",
+        "SMS",
+        "Push"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "NOTIF_DEST",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The destination (email or phone number) to which an estimate notification was sent."
+    }
+  ]
+}

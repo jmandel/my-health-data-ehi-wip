@@ -1,0 +1,99 @@
+{
+  "$meta": {
+    "schemas": {
+      "ARPB_TX_VOID": {
+        "name": "ARPB_TX_VOID",
+        "description": "This table contains information on transactions that were either: * Transferred * Voided * Reversed * Retroadjudicated",
+        "primaryKey": [
+          {
+            "columnName": "TX_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "TX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the transaction record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "OLD_ETR_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This item holds a pointer for a transaction that was reposted retroactively to the original transaction."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "REPOSTED_ETR_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This item stores a pointer to the old transaction in the case of charge correction or repost."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "REPOST_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This indicates the type of repost on the source transaction.  This is either set to repost or correction.",
+            "entries": [
+              "Repost",
+              "Correction"
+            ]
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "DEL_REVERSE_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This is the date that the transaction was voided or reversed."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "DEL_CHARGE_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item stores the user who voided this transaction."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "DEL_CHARGE_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "DEL_CHARGE_INSTANT",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "This item stores the instant that a transaction was voided."
+          }
+        ]
+      }
+    }
+  },
+  "ARPB_TX_VOID": [
+    {
+      "TX_ID": 317236398,
+      "OLD_ETR_ID": 315026147,
+      "REPOSTED_ETR_ID": 315026147,
+      "$meta": {
+        "type": "ARPB_TX_VOID"
+      }
+    },
+    {
+      "TX_ID": 315026147,
+      "REPOST_TYPE_C_NAME": "Correction",
+      "DEL_REVERSE_DATE": "2022-12-20 00:00:00",
+      "DEL_CHARGE_USER_ID": "HIRZYHL",
+      "DEL_CHARGE_USER_ID_NAME": "HIRZY, HEIDI L",
+      "DEL_CHARGE_INSTANT": "2022-12-20 14:37:00",
+      "$meta": {
+        "type": "ARPB_TX_VOID"
+      }
+    }
+  ]
+}

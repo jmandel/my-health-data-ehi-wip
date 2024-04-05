@@ -1,0 +1,119 @@
+{
+  "name": "COMMUNITY_RESOURCE",
+  "description": "This table stores details about the recommendation of a community resource for a patient. This table can be joined with the COMMUNITY_RESOURCE_CNCT table on COMMUNITY_RESOURCE__LAST_UPDATE_RECOM_CSN_ID and COMMUNITY_RESOURCE_CNCT__RECOMMENDATION_CSN_ID in order to form a resulting table that includes all current information about the community resource recommendation.",
+  "primaryKey": [
+    {
+      "columnName": "RECOMMENDATION_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RECOMMENDATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the recommendation record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "RECORD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the record status (hidden, soft-deleted, or both)",
+      "entries": [
+        "Soft Deleted",
+        "Hidden",
+        "Hidden and Soft Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "RECORD_TYPE_CRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of this community resource recommendation record, used to differentiate various implementations of the CRC masterfile.",
+      "entries": [
+        "Recommendation",
+        "Encounter Level"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient this community resource recommendation is for."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CREATING_PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The patient encounter in which this community resource recommendation was created."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RESOURCE_FACILITY_POS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The community based organization to which the patient was recommended or referred."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "RECORD_CREATION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date the record was created"
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "RESOURCE_DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The department to which the patient was recommended or referred."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "RESOURCE_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The provider to which the patient was recommended or referred."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "RESOURCE_PROV_ADDRESS_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique address ID associated with the provider record to which the patient was recommended or referred."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "DP_COORD_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The coordination type.",
+      "entries": [
+        "Destination",
+        "Durable Medical Equipment",
+        "Dialysis/Infusion",
+        "Home Medical Care",
+        "Community Resources"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "RESOURCE_SVC_LN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The service line or program ID to which the patient was recommended or referred to receive services."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "RESOURCE_SVC_LN_ID_SVC_LN_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name (.2 item) of the service line record."
+    }
+  ]
+}

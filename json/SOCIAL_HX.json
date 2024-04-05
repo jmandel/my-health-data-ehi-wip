@@ -1,0 +1,684 @@
+{
+  "$meta": {
+    "schemas": {
+      "SOCIAL_HX": {
+        "name": "SOCIAL_HX",
+        "description": "The SOCIAL_HX table contains social history data for each history encounter stored in your system. This table has one row per history encounter.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ENC_CSN_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "CIGARETTES_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Y if the patient uses cigarettes. N if the patient does not.  NOTE: Uses the EPIC_IN_ITEM function to determine if a given value exists in a multiple response item.  If the category value for this selection exists in the multiple response item, then it returns \"Y\", otherwise it returns \"N\".",
+            "entries": [
+              "Cigarettes",
+              "Pipe",
+              "Cigars",
+              "Snuff",
+              "Chew"
+            ]
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PIPES_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Y if the patient smokes a pipe. N if the patient does not.  NOTE: Uses the EPIC_IN_ITEM function to determine if a given value exists in a multiple response item.  If the category value for this selection exists in the multiple response item, then it returns \"Y\", otherwise it returns \"N\"."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "CIGARS_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Y if the patient uses cigars. N if the patient does not. NOTE: Uses the EPIC_IN_ITEM function to determine if a given value exists in a multiple response item.  If the category value for this selection exists in the multiple response item, then it returns \"Y\", otherwise it returns \"N\"."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "SNUFF_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Y if the patient uses snuff. N if the patient does not. NOTE: Uses the EPIC_IN_ITEM function to determine if a given value exists in a multiple response item.  If the category value for this selection exists in the multiple response item, then it returns \"Y\", otherwise it returns \"N\"."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "CHEW_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Y if the patient uses chewing tobacco. N if the patient does not. NOTE: Uses the EPIC_IN_ITEM function to determine if a given value exists in a multiple response item.  If the category value for this selection exists in the multiple response item, then it returns \"Y\", otherwise it returns \"N\"."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "ALCOHOL_COMMENT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Free-text comments regarding the patient�s use of alcohol."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "IV_DRUG_USER_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Y if the patient is an IV drug user. N if the patient is not.  NOTE: Uses the EPIC_IN_ITEM function to determine if a given value exists in a multiple response item.  If the category value for this selection exists in the multiple response item, then it returns \"Y\", otherwise it returns \"N\".",
+            "entries": [
+              "IV"
+            ]
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "ILLICIT_DRUG_CMT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Free-text comments regarding the patient�s use of illicit drugs."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "FEMALE_PARTNER_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Y if the patient has a female sexual partner. N if the patient does not. NOTE: Uses the EPIC_IN_ITEM function to determine if a given value exists in a multiple response item.  If the category value for this selection exists in the multiple response item, then it returns \"Y\", otherwise it returns \"N\".",
+            "entries": [
+              "Female",
+              "Male"
+            ]
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "MALE_PARTNER_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Y if the patient has a male sexual partner. N if the patient does not. NOTE: Uses the EPIC_IN_ITEM function to determine if a given value exists in a multiple response item.  If the category value for this selection exists in the multiple response item, then it returns \"Y\", otherwise it returns \"N\"."
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "CONDOM_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Y if the patient uses a condom during sexual activity. N if the patient does not. NOTE: Uses the EPIC_IN_ITEM function to determine if a given value exists in a multiple response item.  If the category value for this selection exists in the multiple response item, then it returns \"Y\", otherwise it returns \"N\".",
+            "entries": [
+              "Condom",
+              "Pill",
+              "Diaphragm",
+              "I.U.D.",
+              "Surgical",
+              "Spermicide",
+              "Implant",
+              "Rhythm",
+              "Injection",
+              "Sponge",
+              "Inserts",
+              "Abstinence"
+            ]
+          },
+          {
+            "ordinalPosition": 15,
+            "name": "PILL_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Y if the patient uses birth control pills. N if the patient does not. NOTE: Uses the EPIC_IN_ITEM function to determine if a given value exists in a multiple response item.  If the category value for this selection exists in the multiple response item, then it returns \"Y\", otherwise it returns \"N\"."
+          },
+          {
+            "ordinalPosition": 16,
+            "name": "DIAPHRAGM_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Y if the patient uses a diaphragm. N if the patient does not. NOTE: Uses the EPIC_IN_ITEM function to determine if a given value exists in a multiple response item.  If the category value for this selection exists in the multiple response item, then it returns \"Y\", otherwise it returns \"N\"."
+          },
+          {
+            "ordinalPosition": 17,
+            "name": "IUD_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Y if the patient uses an IUD. N if the patient does not. NOTE: Uses the EPIC_IN_ITEM function to determine if a given value exists in a multiple response item.  If the category value for this selection exists in the multiple response item, then it returns \"Y\", otherwise it returns \"N\"."
+          },
+          {
+            "ordinalPosition": 18,
+            "name": "SURGICAL_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Y if the patient uses a surgical method of birth control such as hysterectomy, vasectomy, or tubal-ligation. N if the patient does not. NOTE: Uses the EPIC_IN_ITEM function to determine if a given value exists in a multiple response item.  If the category value for this selection exists in the multiple response item, then it returns \"Y\", otherwise it returns \"N\"."
+          },
+          {
+            "ordinalPosition": 19,
+            "name": "SPERMICIDE_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Y if the patient uses spermicide. N if the patient does not. NOTE: Uses the EPIC_IN_ITEM function to determine if a given value exists in a multiple response item.  If the category value for this selection exists in the multiple response item, then it returns \"Y\", otherwise it returns \"N\"."
+          },
+          {
+            "ordinalPosition": 20,
+            "name": "IMPLANT_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Y if the patient uses an implant as a form of birth control. N if the patient does not. NOTE: Uses the EPIC_IN_ITEM function to determine if a given value exists in a multiple response item.  If the category value for this selection exists in the multiple response item, then it returns \"Y\", otherwise it returns \"N\"."
+          },
+          {
+            "ordinalPosition": 21,
+            "name": "RHYTHM_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Y if the patient uses the rhythm method as a form of birth control. N if the patient does not. NOTE: Uses the EPIC_IN_ITEM function to determine if a given value exists in a multiple response item.  If the category value for this selection exists in the multiple response item, then it returns \"Y\", otherwise it returns \"N\"."
+          },
+          {
+            "ordinalPosition": 22,
+            "name": "INJECTION_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Y if the patient uses an injection as a form of birth control. N if the patient does not. NOTE: Uses the EPIC_IN_ITEM function to determine if a given value exists in a multiple response item.  If the category value for this selection exists in the multiple response item, then it returns \"Y\", otherwise it returns \"N\"."
+          },
+          {
+            "ordinalPosition": 23,
+            "name": "SPONGE_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Y if the patient uses a sponge as a form of birth control. N if the patient does not. NOTE: Uses the EPIC_IN_ITEM function to determine if a given value exists in a multiple response item.  If the category value for this selection exists in the multiple response item, then it returns \"Y\", otherwise it returns \"N\"."
+          },
+          {
+            "ordinalPosition": 24,
+            "name": "INSERTS_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Y if the patient uses inserts as a form of birth control. N if the patient does not. NOTE: Uses the EPIC_IN_ITEM function to determine if a given value exists in a multiple response item.  If the category value for this selection exists in the multiple response item, then it returns \"Y\", otherwise it returns \"N\"."
+          },
+          {
+            "ordinalPosition": 25,
+            "name": "ABSTINENCE_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Y if the patient practices abstinence. N if the patient does not. NOTE: Uses the EPIC_IN_ITEM function to determine if a given value exists in a multiple response item.  If the category value for this selection exists in the multiple response item, then it returns \"Y\", otherwise it returns \"N\"."
+          },
+          {
+            "ordinalPosition": 28,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "A unique serial number for this encounter. This number is unique across all patients and encounters in the system."
+          },
+          {
+            "ordinalPosition": 29,
+            "name": "TOB_SRC_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Source for Tobacco History",
+            "entries": [
+              "Provider",
+              "Patient",
+              "Parent",
+              "Legal Guardian",
+              "Proxy User"
+            ]
+          },
+          {
+            "ordinalPosition": 30,
+            "name": "ALCOHOL_SRC_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This columns stores the person (e.g. provider, patient, legal guardian) who provided alcohol use information for this encounter."
+          },
+          {
+            "ordinalPosition": 31,
+            "name": "DRUG_SRC_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This columns stores the person (e.g. provider, patient, legal guardian) who provided illicit drug use information for this encounter."
+          },
+          {
+            "ordinalPosition": 32,
+            "name": "SEX_SRC_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This columns stores the person (e.g. provider, patient, legal guardian) who provided sexual activity information for this encounter."
+          },
+          {
+            "ordinalPosition": 33,
+            "name": "HX_LNK_ENC_CSN",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The Contact Serial Number of the encounter in which the history was created/edited. If the history was created/edited outside of the context of an encounter, then this column will be blank."
+          },
+          {
+            "ordinalPosition": 34,
+            "name": "ALCOHOL_USE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value associated with the patient's alcohol use. Data may include, Yes, No, or Not Asked.",
+            "entries": [
+              "Yes",
+              "No",
+              "Not Asked",
+              "Defer",
+              "Not Currently",
+              "Never"
+            ]
+          },
+          {
+            "ordinalPosition": 35,
+            "name": "ILL_DRUG_USER_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value associated with the patient's use of illicit drugs. Data may include, Yes, No, or Not Asked.",
+            "entries": [
+              "Yes",
+              "No",
+              "Not Asked",
+              "Defer",
+              "Not Currently",
+              "Never"
+            ]
+          },
+          {
+            "ordinalPosition": 36,
+            "name": "SEXUALLY_ACTIVE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value associated with the patient's sexual activity. Data may include Yes, No, Not Asked, or Not Now",
+            "entries": [
+              "Yes",
+              "Never",
+              "Not Asked",
+              "Not Currently",
+              "Defer"
+            ]
+          },
+          {
+            "ordinalPosition": 37,
+            "name": "TOBACCO_USER_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value associated with the patient's tobacco use. Data may include, Yes, Never, Not Asked or Quit.",
+            "entries": [
+              "Yes",
+              "Never",
+              "Not Asked",
+              "Quit",
+              "Passive"
+            ]
+          },
+          {
+            "ordinalPosition": 38,
+            "name": "SMOKELESS_TOB_USE_C",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "Stores the patient's usage of smokeless tobacco.  Data may include, Current User, Former User, Never Used or Unknown."
+          },
+          {
+            "ordinalPosition": 40,
+            "name": "SMOKING_TOB_USE_C",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "Stores the patient's usage of smoking tobacco.  Data may include, Current Everyday Smoker, Current Some Day Smoker, Former Smoker, Never Smoker, Unknown If Ever Smoked or Smoker, Current Status Unknown."
+          },
+          {
+            "ordinalPosition": 41,
+            "name": "UNKNOWN_FAM_HX_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Y if the patient's family history is unknown by the patient. N otherwise.",
+            "entries": [
+              "No",
+              "Yes"
+            ]
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "PAT_ENC_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc.",
+            "mergedFrom": "FAM_HX_PAT_ONLY"
+          }
+        ],
+        "merged": [
+          {
+            "name": "FAM_HX_PAT_ONLY",
+            "description": "This table represents all family history specific patient information."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "SOCIAL_HX",
+            "target": "FAMILY_HX_STATUS",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "SOCIAL_HX",
+            "target": "FAMILY_HX",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "SOCIAL_HX",
+            "target": "MEDICAL_HX",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "SOCIAL_HX",
+            "target": "PAT_HX_REVIEW",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "SOCIAL_HX",
+            "target": "PAT_HX_REV_TOPIC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "SOCIAL_HX",
+            "target": "PAT_HX_REV_TYPE",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "SOCIAL_HX",
+            "target": "PAT_SOCIAL_HX_DOC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "SOCIAL_HX",
+            "target": "SOCIAL_ADL_HX",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "SOCIAL_HX",
+            "target": "SURGICAL_HX",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "SOCIAL_HX": [
+    {
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "CIGARETTES_YN": "N",
+      "PIPES_YN": "N",
+      "CIGARS_YN": "N",
+      "SNUFF_YN": "N",
+      "CHEW_YN": "N",
+      "ALCOHOL_COMMENT": "about 3-4 drinks per week",
+      "IV_DRUG_USER_YN": "N",
+      "ILLICIT_DRUG_CMT": "occasional cannabis",
+      "FEMALE_PARTNER_YN": "Y",
+      "MALE_PARTNER_YN": "N",
+      "CONDOM_YN": "N",
+      "PILL_YN": "N",
+      "DIAPHRAGM_YN": "N",
+      "IUD_YN": "N",
+      "SURGICAL_YN": "N",
+      "SPERMICIDE_YN": "N",
+      "IMPLANT_YN": "N",
+      "RHYTHM_YN": "N",
+      "INJECTION_YN": "N",
+      "SPONGE_YN": "N",
+      "INSERTS_YN": "N",
+      "ABSTINENCE_YN": "N",
+      "PAT_ENC_CSN_ID": 1028739468,
+      "TOB_SRC_C_NAME": "Provider",
+      "ALCOHOL_SRC_C_NAME": "Provider",
+      "DRUG_SRC_C_NAME": "Provider",
+      "SEX_SRC_C_NAME": "Provider",
+      "HX_LNK_ENC_CSN": 991225117,
+      "ALCOHOL_USE_C_NAME": "Yes",
+      "ILL_DRUG_USER_C_NAME": "No",
+      "SEXUALLY_ACTIVE_C_NAME": "Yes",
+      "TOBACCO_USER_C_NAME": "Never",
+      "SMOKELESS_TOB_USE_C": 3,
+      "SMOKING_TOB_USE_C": 5,
+      "UNKNOWN_FAM_HX_YN": "N",
+      "$meta": {
+        "type": "SOCIAL_HX",
+        "mergedFrom": [
+          "FAM_HX_PAT_ONLY"
+        ]
+      },
+      "// mergedFrom FAM_HX_PAT_ONLY": true,
+      "PAT_ENC_DATE_REAL": 66745.01
+    },
+    {
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "CIGARETTES_YN": "N",
+      "PIPES_YN": "N",
+      "CIGARS_YN": "N",
+      "SNUFF_YN": "N",
+      "CHEW_YN": "N",
+      "ALCOHOL_COMMENT": "about 3-4 drinks per week",
+      "IV_DRUG_USER_YN": "N",
+      "ILLICIT_DRUG_CMT": "occasional cannabis",
+      "FEMALE_PARTNER_YN": "Y",
+      "MALE_PARTNER_YN": "N",
+      "CONDOM_YN": "N",
+      "PILL_YN": "N",
+      "DIAPHRAGM_YN": "N",
+      "IUD_YN": "N",
+      "SURGICAL_YN": "N",
+      "SPERMICIDE_YN": "N",
+      "IMPLANT_YN": "N",
+      "RHYTHM_YN": "N",
+      "INJECTION_YN": "N",
+      "SPONGE_YN": "N",
+      "INSERTS_YN": "N",
+      "ABSTINENCE_YN": "N",
+      "PAT_ENC_CSN_ID": 991221485,
+      "TOB_SRC_C_NAME": "Provider",
+      "ALCOHOL_SRC_C_NAME": "Provider",
+      "DRUG_SRC_C_NAME": "Provider",
+      "SEX_SRC_C_NAME": "Provider",
+      "HX_LNK_ENC_CSN": 958148810,
+      "ALCOHOL_USE_C_NAME": "Yes",
+      "ILL_DRUG_USER_C_NAME": "No",
+      "SEXUALLY_ACTIVE_C_NAME": "Yes",
+      "TOBACCO_USER_C_NAME": "Never",
+      "SMOKELESS_TOB_USE_C": 3,
+      "SMOKING_TOB_USE_C": 5,
+      "UNKNOWN_FAM_HX_YN": "N",
+      "$meta": {
+        "type": "SOCIAL_HX",
+        "mergedFrom": [
+          "FAM_HX_PAT_ONLY"
+        ]
+      },
+      "// mergedFrom FAM_HX_PAT_ONLY": true,
+      "PAT_ENC_DATE_REAL": 66535.02
+    },
+    {
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "CIGARETTES_YN": "N",
+      "PIPES_YN": "N",
+      "CIGARS_YN": "N",
+      "SNUFF_YN": "N",
+      "CHEW_YN": "N",
+      "ALCOHOL_COMMENT": "about 3-4 drinks per week",
+      "IV_DRUG_USER_YN": "N",
+      "ILLICIT_DRUG_CMT": "occasional cannabis",
+      "FEMALE_PARTNER_YN": "Y",
+      "MALE_PARTNER_YN": "N",
+      "CONDOM_YN": "N",
+      "PILL_YN": "N",
+      "DIAPHRAGM_YN": "N",
+      "IUD_YN": "N",
+      "SURGICAL_YN": "N",
+      "SPERMICIDE_YN": "N",
+      "IMPLANT_YN": "N",
+      "RHYTHM_YN": "N",
+      "INJECTION_YN": "N",
+      "SPONGE_YN": "N",
+      "INSERTS_YN": "N",
+      "ABSTINENCE_YN": "N",
+      "PAT_ENC_CSN_ID": 958134730,
+      "TOB_SRC_C_NAME": "Provider",
+      "ALCOHOL_SRC_C_NAME": "Provider",
+      "DRUG_SRC_C_NAME": "Provider",
+      "SEX_SRC_C_NAME": "Provider",
+      "HX_LNK_ENC_CSN": 948004323,
+      "ALCOHOL_USE_C_NAME": "Yes",
+      "ILL_DRUG_USER_C_NAME": "No",
+      "SEXUALLY_ACTIVE_C_NAME": "Yes",
+      "TOBACCO_USER_C_NAME": "Never",
+      "SMOKELESS_TOB_USE_C": 3,
+      "SMOKING_TOB_USE_C": 5,
+      "UNKNOWN_FAM_HX_YN": "N",
+      "$meta": {
+        "type": "SOCIAL_HX",
+        "mergedFrom": [
+          "FAM_HX_PAT_ONLY"
+        ]
+      },
+      "// mergedFrom FAM_HX_PAT_ONLY": true,
+      "PAT_ENC_DATE_REAL": 66350.01
+    },
+    {
+      "CONTACT_DATE": "2020-01-09 00:00:00",
+      "CIGARETTES_YN": "N",
+      "PIPES_YN": "N",
+      "CIGARS_YN": "N",
+      "SNUFF_YN": "N",
+      "CHEW_YN": "N",
+      "ALCOHOL_COMMENT": "drinks 3-4 days /week",
+      "IV_DRUG_USER_YN": "N",
+      "FEMALE_PARTNER_YN": "Y",
+      "MALE_PARTNER_YN": "N",
+      "CONDOM_YN": "N",
+      "PILL_YN": "N",
+      "DIAPHRAGM_YN": "N",
+      "IUD_YN": "N",
+      "SURGICAL_YN": "N",
+      "SPERMICIDE_YN": "N",
+      "IMPLANT_YN": "N",
+      "RHYTHM_YN": "N",
+      "INJECTION_YN": "N",
+      "SPONGE_YN": "N",
+      "INSERTS_YN": "N",
+      "ABSTINENCE_YN": "N",
+      "PAT_ENC_CSN_ID": 802802103,
+      "TOB_SRC_C_NAME": "Provider",
+      "ALCOHOL_SRC_C_NAME": "Provider",
+      "DRUG_SRC_C_NAME": "Provider",
+      "SEX_SRC_C_NAME": "Provider",
+      "HX_LNK_ENC_CSN": 799951565,
+      "ALCOHOL_USE_C_NAME": "Yes",
+      "ILL_DRUG_USER_C_NAME": "No",
+      "SEXUALLY_ACTIVE_C_NAME": "Yes",
+      "TOBACCO_USER_C_NAME": "Never",
+      "SMOKELESS_TOB_USE_C": 3,
+      "SMOKING_TOB_USE_C": 5,
+      "UNKNOWN_FAM_HX_YN": "N",
+      "$meta": {
+        "type": "SOCIAL_HX",
+        "mergedFrom": [
+          "FAM_HX_PAT_ONLY"
+        ]
+      },
+      "// mergedFrom FAM_HX_PAT_ONLY": true,
+      "PAT_ENC_DATE_REAL": 65387.01
+    },
+    {
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "CIGARETTES_YN": "N",
+      "PIPES_YN": "N",
+      "CIGARS_YN": "N",
+      "SNUFF_YN": "N",
+      "CHEW_YN": "N",
+      "ALCOHOL_COMMENT": "drinks 3-4 days /week",
+      "IV_DRUG_USER_YN": "N",
+      "FEMALE_PARTNER_YN": "Y",
+      "MALE_PARTNER_YN": "N",
+      "CONDOM_YN": "N",
+      "PILL_YN": "N",
+      "DIAPHRAGM_YN": "N",
+      "IUD_YN": "N",
+      "SURGICAL_YN": "N",
+      "SPERMICIDE_YN": "N",
+      "IMPLANT_YN": "N",
+      "RHYTHM_YN": "N",
+      "INJECTION_YN": "N",
+      "SPONGE_YN": "N",
+      "INSERTS_YN": "N",
+      "ABSTINENCE_YN": "N",
+      "PAT_ENC_CSN_ID": 724623985,
+      "TOB_SRC_C_NAME": "Provider",
+      "ALCOHOL_SRC_C_NAME": "Provider",
+      "DRUG_SRC_C_NAME": "Provider",
+      "SEX_SRC_C_NAME": "Provider",
+      "HX_LNK_ENC_CSN": 720803470,
+      "ALCOHOL_USE_C_NAME": "Yes",
+      "ILL_DRUG_USER_C_NAME": "No",
+      "SEXUALLY_ACTIVE_C_NAME": "Yes",
+      "TOBACCO_USER_C_NAME": "Never",
+      "SMOKELESS_TOB_USE_C": 3,
+      "SMOKING_TOB_USE_C": 5,
+      "UNKNOWN_FAM_HX_YN": "N",
+      "$meta": {
+        "type": "SOCIAL_HX",
+        "mergedFrom": [
+          "FAM_HX_PAT_ONLY"
+        ]
+      },
+      "// mergedFrom FAM_HX_PAT_ONLY": true,
+      "PAT_ENC_DATE_REAL": 64869.02
+    }
+  ]
+}

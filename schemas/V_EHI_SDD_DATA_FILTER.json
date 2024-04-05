@@ -1,0 +1,93 @@
+{
+  "name": "V_EHI_SDD_DATA_FILTER",
+  "description": "This view returns all defining information about a patient's SDOH data that is configured in the system. Each row in this table represents documentation for a single SDOH domain for a single patient.that can be used for EHI requests.",
+  "primaryKey": [
+    {
+      "columnName": "SDOH_DATA_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SDOH_DATA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the social determinant data record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "RECORD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the record status. SDD only supports soft deleted records.",
+      "entries": [
+        "Soft Deleted",
+        "Hidden",
+        "Hidden and Soft Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "DOMAIN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the domain this record stores data for.",
+      "entries": [
+        "Intimate Partner Violence",
+        "Social Connections",
+        "Alcohol Use",
+        "Tobacco Use",
+        "Financial Resource Strain",
+        "Depression",
+        "Stress",
+        "Physical Activity",
+        "Food Insecurity",
+        "Transportation Needs",
+        "Housing Stability",
+        "Health Literacy",
+        "Substance Use",
+        "Internet Access",
+        "Digital Skills",
+        "Inadequate Housing",
+        "Homelessness",
+        "Educational Attainment",
+        "Employment Status",
+        "Veteran Status",
+        "Elder Abuse",
+        "Health Insurance Status",
+        "Medical Cost Burden",
+        "Utilities",
+        "Personal Safety",
+        "Access to Care",
+        "Postpartum Depression",
+        "Caregiver Education and Work",
+        "Safety and Environment",
+        "Caregiver Health",
+        "Child Education",
+        "Adolescent Education and Socialization",
+        "Adolescent Substance Use",
+        "Adolescent Education",
+        "Adolescent Socialization"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient this SDD record stores data for."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CONCERNS_PRESENT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Tracks whether the patient has needs in any source for this domain. Checks the most recent entry across all sources to determine if there is a concern.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    }
+  ]
+}

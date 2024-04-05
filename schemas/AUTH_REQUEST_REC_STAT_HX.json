@@ -1,0 +1,64 @@
+{
+  "name": "AUTH_REQUEST_REC_STAT_HX",
+  "description": "This table contains information about changes to the Chronicles record status/soft-delete flag (SDFL item) of the authorization request record. Only records that have had their record status changed will be included in this table.",
+  "primaryKey": [
+    {
+      "columnName": "AUTH_REQUEST_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "AUTH_REQUEST_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the authorization request record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SDFL_EDIT_DTTM",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "The date and time that the record status of the authorization request record was changed."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SDFL_EDIT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the user who changed the authorization request record status."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SDFL_EDIT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SDFL_EDIT_ACTI_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The edit action category ID for the change of the authorization request record status.",
+      "entries": [
+        "Soft Delete",
+        "Undo Delete",
+        "Hide",
+        "Unhide"
+      ]
+    }
+  ]
+}

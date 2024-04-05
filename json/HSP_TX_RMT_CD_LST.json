@@ -1,0 +1,141 @@
+{
+  "$meta": {
+    "schemas": {
+      "HSP_TX_RMT_CD_LST": {
+        "name": "HSP_TX_RMT_CD_LST",
+        "description": "This table contains remit code lists from the Hospital Permanent Transactions (HTR) master file.",
+        "primaryKey": [
+          {
+            "columnName": "TX_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "TX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the hospital billing transaction with associated remit code lists."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number in the results of a query. Each remittance code list will have its own line."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "RMT_CODE_LIST_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the remittance code used for the hospital billing transaction."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "RMT_CODE_LIST_ID_REMIT_CODE_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of each remittance code."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "RMT_AMT_LIST",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the remittance code amount associated with transaction."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "RMT_CODE_EXT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the external identifier for the remittance code associated with the hospital billing transaction."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "GRP_CODE_LIST_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item holds the reason group code associated with the reason code.",
+            "entries": [
+              "Patient Responsibility",
+              "Contractual Obligation",
+              "Payor Initiated",
+              "Correction and Reversal",
+              "Other Adjustment"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "HSP_TX_RMT_CD_LST",
+            "target": "HSP_TRANSACTIONS",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HSP_TX_RMT_CD_LST": [
+    {
+      "TX_ID": 681354876,
+      "LINE": 1,
+      "RMT_CODE_LIST_ID": "1",
+      "RMT_CODE_LIST_ID_REMIT_CODE_NAME": "1-DEDUCTIBLE AMOUNT",
+      "RMT_AMT_LIST": 554.27,
+      "RMT_CODE_EXT": "1",
+      "GRP_CODE_LIST_C_NAME": "Patient Responsibility",
+      "$meta": {
+        "type": "HSP_TX_RMT_CD_LST"
+      }
+    },
+    {
+      "TX_ID": 681354876,
+      "LINE": 2,
+      "RMT_CODE_LIST_ID": "45",
+      "RMT_CODE_LIST_ID_REMIT_CODE_NAME": "45-CHGS EXCD FEE SCH/MAX ALLOWABLE.",
+      "RMT_AMT_LIST": 527.08,
+      "RMT_CODE_EXT": "45",
+      "GRP_CODE_LIST_C_NAME": "Contractual Obligation",
+      "$meta": {
+        "type": "HSP_TX_RMT_CD_LST"
+      }
+    },
+    {
+      "TX_ID": 681354876,
+      "LINE": 4,
+      "RMT_CODE_LIST_ID": "94",
+      "RMT_CODE_LIST_ID_REMIT_CODE_NAME": "94-PROCESSED IN EXCESS OF CHARGES.",
+      "RMT_AMT_LIST": -121.73,
+      "RMT_CODE_EXT": "94",
+      "GRP_CODE_LIST_C_NAME": "Other Adjustment",
+      "$meta": {
+        "type": "HSP_TX_RMT_CD_LST"
+      }
+    },
+    {
+      "TX_ID": 681354876,
+      "LINE": 3,
+      "RMT_CODE_LIST_ID": "97",
+      "RMT_CODE_LIST_ID_REMIT_CODE_NAME": "97-PMT INCL IN PMT FOR OTHR SVC/PX.",
+      "RMT_AMT_LIST": 557.47,
+      "RMT_CODE_EXT": "97",
+      "GRP_CODE_LIST_C_NAME": "Contractual Obligation",
+      "$meta": {
+        "type": "HSP_TX_RMT_CD_LST"
+      }
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "$meta": {
+    "schemas": {
+      "ORDER_COMMENT": {
+        "name": "ORDER_COMMENT",
+        "description": "The ORDER_COMMENT table allows you to report on comments for non-medication orders.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the non-medication order."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "ORDERING_COMMENT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Free text comment for non-medication orders."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_COMMENT",
+            "target": "APPT_REQUEST",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "REQUEST_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_COMMENT",
+            "target": "ORDER_PARENT_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_COMMENT",
+            "target": "ORDER_PROC",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_COMMENT",
+            "target": "ORD_PRFLST_TRK",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ORDER_COMMENT": [
+    {
+      "ORDER_ID": 763403909,
+      "LINE": 1,
+      "ORDERING_COMMENT": "Meriter location is defaulted for this order. Scheduling staff will assist patient in scheduling at patient's preferred Meriter location.",
+      "$meta": {
+        "type": "ORDER_COMMENT"
+      }
+    },
+    {
+      "ORDER_ID": 772179267,
+      "LINE": 1,
+      "ORDERING_COMMENT": "MGH",
+      "$meta": {
+        "type": "ORDER_COMMENT"
+      }
+    },
+    {
+      "ORDER_ID": 772179267,
+      "LINE": 2,
+      "ORDERING_COMMENT": "(617) 724-0412",
+      "$meta": {
+        "type": "ORDER_COMMENT"
+      }
+    },
+    {
+      "ORDER_ID": 772179268,
+      "LINE": 1,
+      "ORDERING_COMMENT": "Dr Yoon Cho at BWH",
+      "$meta": {
+        "type": "ORDER_COMMENT"
+      }
+    },
+    {
+      "ORDER_ID": 772179268,
+      "LINE": 2,
+      "ORDERING_COMMENT": "(508) 718-4011",
+      "$meta": {
+        "type": "ORDER_COMMENT"
+      }
+    }
+  ]
+}

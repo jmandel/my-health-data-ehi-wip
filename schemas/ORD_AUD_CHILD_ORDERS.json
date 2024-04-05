@@ -1,0 +1,37 @@
+{
+  "name": "ORD_AUD_CHILD_ORDERS",
+  "description": "This table contains audit information about the child orders released from this imaging order.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CHILD_ORDER_IDS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Audit of child orders IDs released from this imaging order. The values are delimited by \"^\". The source item is located at ORDER_INSTANTIATED.INSTNTD_ORDER_ID."
+    }
+  ]
+}

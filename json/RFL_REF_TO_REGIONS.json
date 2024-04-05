@@ -1,0 +1,106 @@
+{
+  "$meta": {
+    "schemas": {
+      "RFL_REF_TO_REGIONS": {
+        "name": "RFL_REF_TO_REGIONS",
+        "description": "This table holds the list of geographical areas for referred to geographical steering in Referral and Order Entry. It will only be populated if the \"Use Referred to Geographic Areas\" Referral system definition is set to Yes.",
+        "primaryKey": [
+          {
+            "columnName": "REFERRAL_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "REFERRAL_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the referral."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "REF_TO_AREAS_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the geographical area record that was used for referred to geographical steering for this referral. The stored value will be the first populated value from this list: 1) The referred to department's geographic area item  2) The referred to location/POS 3) The referred to vendor 4) The referred to provider"
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "RFL_REF_TO_REGIONS",
+            "target": "EPA_INFO",
+            "joinKeys": [
+              {
+                "source": "REFERRAL_ID",
+                "target": "REFERRAL_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "RFL_REF_TO_REGIONS": [
+    {
+      "REFERRAL_ID": 15963353,
+      "LINE": 1,
+      "REF_TO_AREAS_ID": 6,
+      "$meta": {
+        "type": "RFL_REF_TO_REGIONS"
+      }
+    },
+    {
+      "REFERRAL_ID": 15963353,
+      "LINE": 2,
+      "REF_TO_AREAS_ID": 12,
+      "$meta": {
+        "type": "RFL_REF_TO_REGIONS"
+      }
+    },
+    {
+      "REFERRAL_ID": 13661714,
+      "LINE": 1,
+      "REF_TO_AREAS_ID": 6,
+      "$meta": {
+        "type": "RFL_REF_TO_REGIONS"
+      }
+    },
+    {
+      "REFERRAL_ID": 9463136,
+      "LINE": 1,
+      "REF_TO_AREAS_ID": 6,
+      "$meta": {
+        "type": "RFL_REF_TO_REGIONS"
+      }
+    },
+    {
+      "REFERRAL_ID": 9463136,
+      "LINE": 2,
+      "REF_TO_AREAS_ID": 12,
+      "$meta": {
+        "type": "RFL_REF_TO_REGIONS"
+      }
+    },
+    {
+      "REFERRAL_ID": 9463136,
+      "LINE": 3,
+      "REF_TO_AREAS_ID": 7,
+      "$meta": {
+        "type": "RFL_REF_TO_REGIONS"
+      }
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "name": "PNEG_SURG_HX",
+  "description": "The PNEG_SURG_HX table contains pertinent negative surgical history data from history contacts entered in clinical system patient encounters. Since one patient encounter may contain multiple surgical history contacts, each contact is uniquely identified by a patient encounter serial number and a line number.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PNEG_SURG_HX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The entry date for a patient's pertinent negative surgical history"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PNEG_SURG_HX_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The entry date for a patient's pertinent negative surgical history for a procedure."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PNEG_SURG_HX_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Free text comments entered for the patient's pertinent negative surgical history."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PNEG_SURG_HX_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the source of entry for the surgical history. Category table information for this item is stored in the Clarity table ZC_HISTORY_SOURCE.",
+      "entries": [
+        "Provider",
+        "Patient",
+        "Parent",
+        "Legal Guardian",
+        "Proxy User"
+      ]
+    }
+  ]
+}

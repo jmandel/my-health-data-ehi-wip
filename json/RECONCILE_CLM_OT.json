@@ -1,0 +1,1749 @@
+{
+  "$meta": {
+    "schemas": {
+      "RECONCILE_CLM_OT": {
+        "name": "RECONCILE_CLM_OT",
+        "description": "This table contains over time single information for claim reconciliation records.",
+        "primaryKey": [
+          {
+            "columnName": "CLAIM_REC_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "CONTACT_DATE_REAL",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "CLAIM_REC_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the claim reconciliation record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The contact date of the claim, in external format."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "CONTACT_DATE_REAL",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The contact date of the claim, in internal format."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "PAYR_CLM_AMT_SUBMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The amount submitted by the payer on this claim."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "PAYOR_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The payer name of the payer on the claim."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "CH_REF_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This is the claim's clearinghouse reference number."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "CH_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This is the claim's clearinghouse name."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "STATUS_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The status date of the claim."
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "FILE_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This is the filename associated with this claim."
+          },
+          {
+            "ordinalPosition": 15,
+            "name": "CLM_CLOSED_REASON_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value for the reason the claim was closed. This value can be used to link to the ZC_CLM_CLSD_REASON table to get more information on the category values.",
+            "linksTo": "ZC_CLM_CLSD_REASON",
+            "entries": [
+              "Payment",
+              "Posting Action",
+              "External Status Change",
+              "Bucket Closed",
+              "Bucket Rejected",
+              "Bucket Replaced",
+              "Bucket Reopened",
+              "Invoice Split During Refresh"
+            ]
+          },
+          {
+            "ordinalPosition": 22,
+            "name": "CH_SENT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Stores the date that the claim was sent out of the clearinghouse."
+          },
+          {
+            "ordinalPosition": 23,
+            "name": "PAYOR_RECV_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Stores the date that the payer received the claim."
+          },
+          {
+            "ordinalPosition": 24,
+            "name": "CLAIM_SEL_ACT_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the action that was selected to be performed on the invoice.",
+            "entries": [
+              "No Action",
+              "Accept Claim",
+              "Send to WQ"
+            ]
+          },
+          {
+            "ordinalPosition": 28,
+            "name": "PERFORM_ACT_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Will store the action that was performed on the invoice.",
+            "entries": [
+              "No Action",
+              "Accept Claim from Run",
+              "Send to WQ from Run",
+              "Accept from WQ",
+              "Resubmit from WQ",
+              "Resend to WQ",
+              "External Test Response No Action Mapped"
+            ]
+          },
+          {
+            "ordinalPosition": 29,
+            "name": "PERFORM_ACT_RSN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the reason for the action that was performed on the invoice."
+          },
+          {
+            "ordinalPosition": 30,
+            "name": "GROUP_CONTROL_NUM",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "Stores the group control number (GS-06) value for an American National Standards Institute (ANSI) electronic claim file."
+          },
+          {
+            "ordinalPosition": 47,
+            "name": "SUPPORTED_ACTIONS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The claim actions supported by the interface profile at the time a claim status update is received from an external entity.",
+            "entries": [
+              "Accept Claim",
+              "Send to Workqueue",
+              "All Available Actions"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "RECONCILE_CLM_OT",
+            "target": "RECONCILE_CLM",
+            "joinKeys": [
+              {
+                "source": "CLAIM_REC_ID",
+                "target": "CLAIM_REC_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "RECONCILE_CLM_OT": [
+    {
+      "CLAIM_REC_ID": "42972138",
+      "CONTACT_DATE": "2018-08-14 00:00:00",
+      "CONTACT_DATE_REAL": 64874,
+      "STATUS_DATE": "2018-08-14 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "42972138",
+      "CONTACT_DATE": "2018-08-14 00:00:00",
+      "CONTACT_DATE_REAL": 64874.01,
+      "STATUS_DATE": "2018-08-14 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/active/PB837P132367008140247.txt",
+      "GROUP_CONTROL_NUM": 1040683,
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "42972138",
+      "CONTACT_DATE": "2018-08-15 00:00:00",
+      "CONTACT_DATE_REAL": 64875,
+      "PAYOR_NAME": "PAPER COMMERCIAL",
+      "CH_NAME": "Emdeon Claim Master",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/CAP_EPICCODE08142018.CSV",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "42972138",
+      "CONTACT_DATE": "2018-08-15 00:00:00",
+      "CONTACT_DATE_REAL": 64875.01,
+      "PAYOR_NAME": "PAPER COMMERCIAL",
+      "CH_NAME": "Emdeon Claim Master",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/CAP_EPICCODE08142018.CSV",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "42972138",
+      "CONTACT_DATE": "2018-08-28 00:00:00",
+      "CONTACT_DATE_REAL": 64888,
+      "STATUS_DATE": "2018-08-28 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "42972138",
+      "CONTACT_DATE": "2018-08-29 00:00:00",
+      "CONTACT_DATE_REAL": 64889,
+      "PAYOR_NAME": "PAPER COMMERCIAL",
+      "CH_NAME": "Emdeon Claim Master",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20180828.CSV",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "95305293",
+      "CONTACT_DATE": "2022-09-23 00:00:00",
+      "CONTACT_DATE_REAL": 66375,
+      "STATUS_DATE": "2022-09-23 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "95305293",
+      "CONTACT_DATE": "2022-09-23 00:00:00",
+      "CONTACT_DATE_REAL": 66375.01,
+      "STATUS_DATE": "2022-09-23 00:00:00",
+      "FILE_NAME": "/epic/xfer/CCC/APL/claims/18_0923_CCC_1500.txt",
+      "GROUP_CONTROL_NUM": 1283792,
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "95305293",
+      "CONTACT_DATE": "2022-09-23 00:00:00",
+      "CONTACT_DATE_REAL": 66375.02,
+      "STATUS_DATE": "2022-09-23 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "95305293",
+      "CONTACT_DATE": "2022-09-23 00:00:00",
+      "CONTACT_DATE_REAL": 66375.03,
+      "PAYR_CLM_AMT_SUBMT": 173,
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2022-09-23 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/file.01597838.277",
+      "PAYOR_RECV_DATE": "2022-09-23 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "Accept Claim",
+      "PERFORM_ACT_C_NAME": "Accept Claim from Run",
+      "PERFORM_ACT_RSN": "Claim eligible for accept from claim run",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "95305293",
+      "CONTACT_DATE": "2022-09-23 00:00:00",
+      "CONTACT_DATE_REAL": 66375.04,
+      "PAYR_CLM_AMT_SUBMT": 173,
+      "CH_REF_NUM": "CP22266071776774681",
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2022-09-23 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/report.00460914.277",
+      "PAYOR_RECV_DATE": "2022-09-23 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "95305293",
+      "CONTACT_DATE": "2022-09-23 00:00:00",
+      "CONTACT_DATE_REAL": 66375.05,
+      "PAYR_CLM_AMT_SUBMT": 173,
+      "CH_REF_NUM": "CP22266071776774681",
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2022-09-23 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/report.00460914.277",
+      "PAYOR_RECV_DATE": "2022-09-23 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "42972139",
+      "CONTACT_DATE": "2018-08-14 00:00:00",
+      "CONTACT_DATE_REAL": 64874,
+      "STATUS_DATE": "2018-08-14 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "42972139",
+      "CONTACT_DATE": "2018-08-14 00:00:00",
+      "CONTACT_DATE_REAL": 64874.01,
+      "STATUS_DATE": "2018-08-14 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/active/PB837P132367008140247.txt",
+      "GROUP_CONTROL_NUM": 1040683,
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "42972139",
+      "CONTACT_DATE": "2018-08-15 00:00:00",
+      "CONTACT_DATE_REAL": 64875,
+      "PAYOR_NAME": "PAPER COMMERCIAL",
+      "CH_NAME": "Emdeon Claim Master",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/CAP_EPICCODE08142018.CSV",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "42972139",
+      "CONTACT_DATE": "2018-08-15 00:00:00",
+      "CONTACT_DATE_REAL": 64875.01,
+      "PAYOR_NAME": "PAPER COMMERCIAL",
+      "CH_NAME": "Emdeon Claim Master",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/CAP_EPICCODE08142018.CSV",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "42972139",
+      "CONTACT_DATE": "2018-08-28 00:00:00",
+      "CONTACT_DATE_REAL": 64888,
+      "STATUS_DATE": "2018-08-28 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "42972139",
+      "CONTACT_DATE": "2018-08-29 00:00:00",
+      "CONTACT_DATE_REAL": 64889,
+      "PAYOR_NAME": "PAPER COMMERCIAL",
+      "CH_NAME": "Emdeon Claim Master",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20180828.CSV",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98402730",
+      "CONTACT_DATE": "2022-12-07 00:00:00",
+      "CONTACT_DATE_REAL": 66450,
+      "STATUS_DATE": "2022-12-07 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98402730",
+      "CONTACT_DATE": "2022-12-07 00:00:00",
+      "CONTACT_DATE_REAL": 66450.01,
+      "STATUS_DATE": "2022-12-07 00:00:00",
+      "FILE_NAME": "/epic/xfer/CCC/APL/claims/18_1207_CCC_1500.txt",
+      "GROUP_CONTROL_NUM": 1305924,
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98402730",
+      "CONTACT_DATE": "2022-12-07 00:00:00",
+      "CONTACT_DATE_REAL": 66450.02,
+      "STATUS_DATE": "2022-12-07 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98402730",
+      "CONTACT_DATE": "2022-12-07 00:00:00",
+      "CONTACT_DATE_REAL": 66450.03,
+      "PAYR_CLM_AMT_SUBMT": 315,
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2022-12-07 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/file.01738244.277",
+      "PAYOR_RECV_DATE": "2022-12-07 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "Accept Claim",
+      "PERFORM_ACT_C_NAME": "Accept Claim from Run",
+      "PERFORM_ACT_RSN": "Claim eligible for accept from claim run",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98402730",
+      "CONTACT_DATE": "2022-12-07 00:00:00",
+      "CONTACT_DATE_REAL": 66450.04,
+      "PAYR_CLM_AMT_SUBMT": 315,
+      "CH_REF_NUM": "CP22341091087061171",
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2022-12-07 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/report.00496259.277",
+      "PAYOR_RECV_DATE": "2022-12-07 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98402730",
+      "CONTACT_DATE": "2022-12-07 00:00:00",
+      "CONTACT_DATE_REAL": 66450.05,
+      "PAYR_CLM_AMT_SUBMT": 315,
+      "CH_REF_NUM": "CP22341091087061171",
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2022-12-07 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/report.00496259.277",
+      "PAYOR_RECV_DATE": "2022-12-07 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "110203431",
+      "CONTACT_DATE": "2023-10-05 00:00:00",
+      "CONTACT_DATE_REAL": 66752,
+      "STATUS_DATE": "2023-10-05 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "110203431",
+      "CONTACT_DATE": "2023-10-05 00:00:00",
+      "CONTACT_DATE_REAL": 66752.01,
+      "STATUS_DATE": "2023-10-05 00:00:00",
+      "FILE_NAME": "/epic/xfer/CCC/APL/claims/18_1005_CCC_1500.txt",
+      "GROUP_CONTROL_NUM": 1392562,
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "110203431",
+      "CONTACT_DATE": "2023-10-05 00:00:00",
+      "CONTACT_DATE_REAL": 66752.02,
+      "STATUS_DATE": "2023-10-05 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "110203431",
+      "CONTACT_DATE": "2023-10-05 00:00:00",
+      "CONTACT_DATE_REAL": 66752.03,
+      "PAYR_CLM_AMT_SUBMT": 114,
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2023-10-05 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/file.02060262.277",
+      "PAYOR_RECV_DATE": "2023-10-05 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "Accept Claim",
+      "PERFORM_ACT_C_NAME": "Accept Claim from Run",
+      "PERFORM_ACT_RSN": "Claim eligible for accept from claim run",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "110203431",
+      "CONTACT_DATE": "2023-10-05 00:00:00",
+      "CONTACT_DATE_REAL": 66752.04,
+      "PAYR_CLM_AMT_SUBMT": 114,
+      "CH_REF_NUM": "CP23278082537866881",
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2023-10-05 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/report.00646335.277",
+      "PAYOR_RECV_DATE": "2023-10-05 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "110203431",
+      "CONTACT_DATE": "2023-10-05 00:00:00",
+      "CONTACT_DATE_REAL": 66752.05,
+      "PAYR_CLM_AMT_SUBMT": 114,
+      "CH_REF_NUM": "CP23278082537866881",
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2023-10-05 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/report.00646335.277",
+      "PAYOR_RECV_DATE": "2023-10-05 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "110539507",
+      "CONTACT_DATE": "2023-10-13 00:00:00",
+      "CONTACT_DATE_REAL": 66760,
+      "STATUS_DATE": "2023-10-13 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "110539507",
+      "CONTACT_DATE": "2023-10-13 00:00:00",
+      "CONTACT_DATE_REAL": 66760.01,
+      "STATUS_DATE": "2023-10-13 00:00:00",
+      "FILE_NAME": "/epic/xfer/CCC/APL/claims/18_1013_CCC_1500.txt",
+      "GROUP_CONTROL_NUM": 1394870,
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "110539507",
+      "CONTACT_DATE": "2023-10-13 00:00:00",
+      "CONTACT_DATE_REAL": 66760.02,
+      "STATUS_DATE": "2023-10-13 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "110539507",
+      "CONTACT_DATE": "2023-10-13 00:00:00",
+      "CONTACT_DATE_REAL": 66760.03,
+      "PAYR_CLM_AMT_SUBMT": 330,
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2023-10-13 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/file.02067910.277",
+      "PAYOR_RECV_DATE": "2023-10-13 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "Accept Claim",
+      "PERFORM_ACT_C_NAME": "Accept Claim from Run",
+      "PERFORM_ACT_RSN": "Claim eligible for accept from claim run",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "110539507",
+      "CONTACT_DATE": "2023-10-13 00:00:00",
+      "CONTACT_DATE_REAL": 66760.04,
+      "PAYR_CLM_AMT_SUBMT": 330,
+      "CH_REF_NUM": "CP23286085767045691",
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2023-10-13 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/report.00650271.277",
+      "PAYOR_RECV_DATE": "2023-10-13 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "110539507",
+      "CONTACT_DATE": "2023-10-13 00:00:00",
+      "CONTACT_DATE_REAL": 66760.05,
+      "PAYR_CLM_AMT_SUBMT": 330,
+      "CH_REF_NUM": "CP23286085767045691",
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2023-10-13 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/report.00650271.277",
+      "PAYOR_RECV_DATE": "2023-10-13 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "43461737",
+      "CONTACT_DATE": "2018-08-29 00:00:00",
+      "CONTACT_DATE_REAL": 64889,
+      "STATUS_DATE": "2018-08-29 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "43461737",
+      "CONTACT_DATE": "2018-08-29 00:00:00",
+      "CONTACT_DATE_REAL": 64889.01,
+      "STATUS_DATE": "2018-08-29 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/active/PB837P133822908290246.txt",
+      "GROUP_CONTROL_NUM": 1042201,
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "43461737",
+      "CONTACT_DATE": "2018-08-30 00:00:00",
+      "CONTACT_DATE_REAL": 64890,
+      "STATUS_DATE": "2018-08-30 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "43461737",
+      "CONTACT_DATE": "2018-08-30 00:00:00",
+      "CONTACT_DATE_REAL": 64890.01,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_NAME": "Emdeon Claim Master",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/CAP_EPICCODE08292018.CSV",
+      "CLAIM_SEL_ACT_C_NAME": "Accept Claim",
+      "PERFORM_ACT_C_NAME": "Accept Claim from Run",
+      "PERFORM_ACT_RSN": "Claim eligible for accept from claim run",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "43461737",
+      "CONTACT_DATE": "2018-08-30 00:00:00",
+      "CONTACT_DATE_REAL": 64890.02,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "123286",
+      "CH_NAME": "Emdeon Claim Master",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20180829.CSV",
+      "CH_SENT_DATE": "2018-08-29 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "43461737",
+      "CONTACT_DATE": "2018-08-31 00:00:00",
+      "CONTACT_DATE_REAL": 64891,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "EP082918790317035",
+      "CH_NAME": "Emdeon Claim Master",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20180830.CSV",
+      "CH_SENT_DATE": "2018-08-29 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "43461737",
+      "CONTACT_DATE": "2018-08-31 00:00:00",
+      "CONTACT_DATE_REAL": 64891.01,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "EP082918790317035",
+      "CH_NAME": "Emdeon Claim Master",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20180830.CSV",
+      "CH_SENT_DATE": "2018-08-29 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "43461737",
+      "CONTACT_DATE": "2018-08-31 00:00:00",
+      "CONTACT_DATE_REAL": 64891.02,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "EP082918790317035",
+      "CH_NAME": "Emdeon Claim Master",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20180830.CSV",
+      "CH_SENT_DATE": "2018-08-29 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "43461737",
+      "CONTACT_DATE": "2018-09-10 00:00:00",
+      "CONTACT_DATE_REAL": 64901,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "EP082918790317035",
+      "CH_NAME": "Emdeon Claim Master",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20180909.CSV",
+      "CH_SENT_DATE": "2018-08-29 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "60433254",
+      "CONTACT_DATE": "2020-01-10 00:00:00",
+      "CONTACT_DATE_REAL": 65388,
+      "STATUS_DATE": "2020-01-10 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "60433254",
+      "CONTACT_DATE": "2020-01-10 00:00:00",
+      "CONTACT_DATE_REAL": 65388.01,
+      "STATUS_DATE": "2020-01-10 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/active/PB837P_DX_175522301100247.txt",
+      "GROUP_CONTROL_NUM": 1091835,
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "60433254",
+      "CONTACT_DATE": "2020-01-13 00:00:00",
+      "CONTACT_DATE_REAL": 65391,
+      "STATUS_DATE": "2020-01-13 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "60433254",
+      "CONTACT_DATE": "2020-01-13 00:00:00",
+      "CONTACT_DATE_REAL": 65391.01,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_NAME": "Emdeon Claim Master",
+      "STATUS_DATE": "2020-01-13 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/CAP_EPICCODE01102020.CSV",
+      "CLAIM_SEL_ACT_C_NAME": "Accept Claim",
+      "PERFORM_ACT_C_NAME": "Accept Claim from Run",
+      "PERFORM_ACT_RSN": "Claim eligible for accept from claim run",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "60433254",
+      "CONTACT_DATE": "2020-01-13 00:00:00",
+      "CONTACT_DATE_REAL": 65391.02,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "182687",
+      "CH_NAME": "Emdeon Claim Master",
+      "STATUS_DATE": "2020-01-13 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20200110.CSV",
+      "CH_SENT_DATE": "2020-01-10 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "60433254",
+      "CONTACT_DATE": "2020-01-13 00:00:00",
+      "CONTACT_DATE_REAL": 65391.03,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "EP011020736119095",
+      "CH_NAME": "Emdeon Claim Master",
+      "STATUS_DATE": "2020-01-13 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20200111.CSV",
+      "CH_SENT_DATE": "2020-01-10 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "60433254",
+      "CONTACT_DATE": "2020-01-13 00:00:00",
+      "CONTACT_DATE_REAL": 65391.04,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "EP011020736119095",
+      "CH_NAME": "Emdeon Claim Master",
+      "STATUS_DATE": "2020-01-13 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20200111.CSV",
+      "CH_SENT_DATE": "2020-01-10 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "60433254",
+      "CONTACT_DATE": "2020-01-13 00:00:00",
+      "CONTACT_DATE_REAL": 65391.05,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "EP011020736119095",
+      "CH_NAME": "Emdeon Claim Master",
+      "STATUS_DATE": "2020-01-13 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20200111.CSV",
+      "CH_SENT_DATE": "2020-01-10 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "60433254",
+      "CONTACT_DATE": "2020-01-13 00:00:00",
+      "CONTACT_DATE_REAL": 65391.06,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "EP011020736119095",
+      "CH_NAME": "Emdeon Claim Master",
+      "STATUS_DATE": "2020-01-13 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20200111.CSV",
+      "CH_SENT_DATE": "2020-01-10 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "60433254",
+      "CONTACT_DATE": "2020-01-13 00:00:00",
+      "CONTACT_DATE_REAL": 65391.07,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "EP011020736119095",
+      "CH_NAME": "Emdeon Claim Master",
+      "STATUS_DATE": "2020-01-13 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20200111.CSV",
+      "CH_SENT_DATE": "2020-01-10 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "60433254",
+      "CONTACT_DATE": "2020-01-13 00:00:00",
+      "CONTACT_DATE_REAL": 65391.08,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "EP011020736119095",
+      "CH_NAME": "Emdeon Claim Master",
+      "STATUS_DATE": "2020-01-13 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20200111.CSV",
+      "CH_SENT_DATE": "2020-01-10 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "60433254",
+      "CONTACT_DATE": "2020-01-29 00:00:00",
+      "CONTACT_DATE_REAL": 65407,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "EP011020736119095",
+      "CH_NAME": "Emdeon Claim Master",
+      "STATUS_DATE": "2020-01-29 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20200128.CSV",
+      "CH_SENT_DATE": "2020-01-10 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98976876",
+      "CONTACT_DATE": "2022-12-20 00:00:00",
+      "CONTACT_DATE_REAL": 66463,
+      "STATUS_DATE": "2022-12-20 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98976876",
+      "CONTACT_DATE": "2022-12-20 00:00:00",
+      "CONTACT_DATE_REAL": 66463.01,
+      "STATUS_DATE": "2022-12-20 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98976876",
+      "CONTACT_DATE": "2022-12-20 00:00:00",
+      "CONTACT_DATE_REAL": 66463.02,
+      "STATUS_DATE": "2022-12-20 00:00:00",
+      "FILE_NAME": "APBUS04Q",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98990043",
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CONTACT_DATE_REAL": 66464,
+      "STATUS_DATE": "2022-12-21 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98990043",
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CONTACT_DATE_REAL": 66464.01,
+      "STATUS_DATE": "2022-12-21 00:00:00",
+      "FILE_NAME": "/epic/xfer/CCC/APL/claims/18_1221_CCC_1500.txt",
+      "GROUP_CONTROL_NUM": 1309957,
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98990043",
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CONTACT_DATE_REAL": 66464.02,
+      "STATUS_DATE": "2022-12-21 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98990043",
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CONTACT_DATE_REAL": 66464.03,
+      "PAYR_CLM_AMT_SUBMT": 315,
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2022-12-21 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/file.01753306.277",
+      "PAYOR_RECV_DATE": "2022-12-21 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "Accept Claim",
+      "PERFORM_ACT_C_NAME": "Accept Claim from Run",
+      "PERFORM_ACT_RSN": "Claim eligible for accept from claim run",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98990043",
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CONTACT_DATE_REAL": 66464.04,
+      "PAYR_CLM_AMT_SUBMT": 315,
+      "CH_REF_NUM": "CP22355073326776211",
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2022-12-21 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/report.00503318.277",
+      "PAYOR_RECV_DATE": "2022-12-21 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98990043",
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CONTACT_DATE_REAL": 66464.05,
+      "PAYR_CLM_AMT_SUBMT": 315,
+      "CH_REF_NUM": "CP22355073326776211",
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2022-12-21 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/report.00503318.277",
+      "PAYOR_RECV_DATE": "2022-12-21 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98976876",
+      "CONTACT_DATE": "2022-12-20 00:00:00",
+      "CONTACT_DATE_REAL": 66463,
+      "STATUS_DATE": "2022-12-20 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98976876",
+      "CONTACT_DATE": "2022-12-20 00:00:00",
+      "CONTACT_DATE_REAL": 66463.01,
+      "STATUS_DATE": "2022-12-20 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98976876",
+      "CONTACT_DATE": "2022-12-20 00:00:00",
+      "CONTACT_DATE_REAL": 66463.02,
+      "STATUS_DATE": "2022-12-20 00:00:00",
+      "FILE_NAME": "APBUS04Q",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98990043",
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CONTACT_DATE_REAL": 66464,
+      "STATUS_DATE": "2022-12-21 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98990043",
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CONTACT_DATE_REAL": 66464.01,
+      "STATUS_DATE": "2022-12-21 00:00:00",
+      "FILE_NAME": "/epic/xfer/CCC/APL/claims/18_1221_CCC_1500.txt",
+      "GROUP_CONTROL_NUM": 1309957,
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98990043",
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CONTACT_DATE_REAL": 66464.02,
+      "STATUS_DATE": "2022-12-21 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98990043",
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CONTACT_DATE_REAL": 66464.03,
+      "PAYR_CLM_AMT_SUBMT": 315,
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2022-12-21 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/file.01753306.277",
+      "PAYOR_RECV_DATE": "2022-12-21 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "Accept Claim",
+      "PERFORM_ACT_C_NAME": "Accept Claim from Run",
+      "PERFORM_ACT_RSN": "Claim eligible for accept from claim run",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98990043",
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CONTACT_DATE_REAL": 66464.04,
+      "PAYR_CLM_AMT_SUBMT": 315,
+      "CH_REF_NUM": "CP22355073326776211",
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2022-12-21 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/report.00503318.277",
+      "PAYOR_RECV_DATE": "2022-12-21 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "98990043",
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CONTACT_DATE_REAL": 66464.05,
+      "PAYR_CLM_AMT_SUBMT": 315,
+      "CH_REF_NUM": "CP22355073326776211",
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2022-12-21 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/report.00503318.277",
+      "PAYOR_RECV_DATE": "2022-12-21 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "95212572",
+      "CONTACT_DATE": "2022-09-21 00:00:00",
+      "CONTACT_DATE_REAL": 66373,
+      "STATUS_DATE": "2022-09-21 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "95212572",
+      "CONTACT_DATE": "2022-09-21 00:00:00",
+      "CONTACT_DATE_REAL": 66373.01,
+      "STATUS_DATE": "2022-09-21 00:00:00",
+      "FILE_NAME": "/epic/xfer/CCC/APL/claims/18_0921_CCC_1500.txt",
+      "GROUP_CONTROL_NUM": 1283007,
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "95212572",
+      "CONTACT_DATE": "2022-09-21 00:00:00",
+      "CONTACT_DATE_REAL": 66373.02,
+      "STATUS_DATE": "2022-09-21 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "95212572",
+      "CONTACT_DATE": "2022-09-21 00:00:00",
+      "CONTACT_DATE_REAL": 66373.03,
+      "PAYR_CLM_AMT_SUBMT": 516,
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2022-09-21 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/file.01594489.277",
+      "PAYOR_RECV_DATE": "2022-09-21 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "Accept Claim",
+      "PERFORM_ACT_C_NAME": "Accept Claim from Run",
+      "PERFORM_ACT_RSN": "Claim eligible for accept from claim run",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "95212572",
+      "CONTACT_DATE": "2022-09-21 00:00:00",
+      "CONTACT_DATE_REAL": 66373.04,
+      "PAYR_CLM_AMT_SUBMT": 516,
+      "CH_REF_NUM": "CP22264084342253301",
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2022-09-21 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/report.00459874.277",
+      "PAYOR_RECV_DATE": "2022-09-21 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "95212572",
+      "CONTACT_DATE": "2022-09-21 00:00:00",
+      "CONTACT_DATE_REAL": 66373.05,
+      "PAYR_CLM_AMT_SUBMT": 516,
+      "CH_REF_NUM": "CP22264084342253301",
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2022-09-21 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/report.00459874.277",
+      "PAYOR_RECV_DATE": "2022-09-21 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "110156845",
+      "CONTACT_DATE": "2023-10-04 00:00:00",
+      "CONTACT_DATE_REAL": 66751,
+      "STATUS_DATE": "2023-10-04 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "110156845",
+      "CONTACT_DATE": "2023-10-04 00:00:00",
+      "CONTACT_DATE_REAL": 66751.01,
+      "STATUS_DATE": "2023-10-04 00:00:00",
+      "FILE_NAME": "/epic/xfer/CCC/APL/claims/18_1004_CCC_1500.txt",
+      "GROUP_CONTROL_NUM": 1392101,
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "110156845",
+      "CONTACT_DATE": "2023-10-04 00:00:00",
+      "CONTACT_DATE_REAL": 66751.02,
+      "STATUS_DATE": "2023-10-04 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "110156845",
+      "CONTACT_DATE": "2023-10-04 00:00:00",
+      "CONTACT_DATE_REAL": 66751.03,
+      "PAYR_CLM_AMT_SUBMT": 203,
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2023-10-04 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/file.02059022.277",
+      "PAYOR_RECV_DATE": "2023-10-04 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "Accept Claim",
+      "PERFORM_ACT_C_NAME": "Accept Claim from Run",
+      "PERFORM_ACT_RSN": "Claim eligible for accept from claim run",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "110156845",
+      "CONTACT_DATE": "2023-10-05 00:00:00",
+      "CONTACT_DATE_REAL": 66752,
+      "PAYR_CLM_AMT_SUBMT": 203,
+      "CH_REF_NUM": "CP23277143715905541",
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2023-10-04 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/report.00646047.277",
+      "PAYOR_RECV_DATE": "2023-10-04 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "110156845",
+      "CONTACT_DATE": "2023-10-05 00:00:00",
+      "CONTACT_DATE_REAL": 66752.01,
+      "PAYR_CLM_AMT_SUBMT": 203,
+      "CH_REF_NUM": "CP23277143715905541",
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2023-10-04 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/report.00646047.277",
+      "PAYOR_RECV_DATE": "2023-10-04 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "43461738",
+      "CONTACT_DATE": "2018-08-29 00:00:00",
+      "CONTACT_DATE_REAL": 64889,
+      "STATUS_DATE": "2018-08-29 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "43461738",
+      "CONTACT_DATE": "2018-08-29 00:00:00",
+      "CONTACT_DATE_REAL": 64889.01,
+      "STATUS_DATE": "2018-08-29 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/active/PB837P133822908290246.txt",
+      "GROUP_CONTROL_NUM": 1042201,
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "43461738",
+      "CONTACT_DATE": "2018-08-30 00:00:00",
+      "CONTACT_DATE_REAL": 64890,
+      "STATUS_DATE": "2018-08-30 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "43461738",
+      "CONTACT_DATE": "2018-08-30 00:00:00",
+      "CONTACT_DATE_REAL": 64890.01,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_NAME": "Emdeon Claim Master",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/CAP_EPICCODE08292018.CSV",
+      "CLAIM_SEL_ACT_C_NAME": "Accept Claim",
+      "PERFORM_ACT_C_NAME": "Accept Claim from Run",
+      "PERFORM_ACT_RSN": "Claim eligible for accept from claim run",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "43461738",
+      "CONTACT_DATE": "2018-08-30 00:00:00",
+      "CONTACT_DATE_REAL": 64890.02,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "123287",
+      "CH_NAME": "Emdeon Claim Master",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20180829.CSV",
+      "CH_SENT_DATE": "2018-08-29 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "43461738",
+      "CONTACT_DATE": "2018-08-31 00:00:00",
+      "CONTACT_DATE_REAL": 64891,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "EP082918790317036",
+      "CH_NAME": "Emdeon Claim Master",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20180830.CSV",
+      "CH_SENT_DATE": "2018-08-29 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "43461738",
+      "CONTACT_DATE": "2018-08-31 00:00:00",
+      "CONTACT_DATE_REAL": 64891.01,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "EP082918790317036",
+      "CH_NAME": "Emdeon Claim Master",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20180830.CSV",
+      "CH_SENT_DATE": "2018-08-29 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "43461738",
+      "CONTACT_DATE": "2018-08-31 00:00:00",
+      "CONTACT_DATE_REAL": 64891.02,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "EP082918790317036",
+      "CH_NAME": "Emdeon Claim Master",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20180830.CSV",
+      "CH_SENT_DATE": "2018-08-29 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "43461738",
+      "CONTACT_DATE": "2018-09-10 00:00:00",
+      "CONTACT_DATE_REAL": 64901,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "EP082918790317036",
+      "CH_NAME": "Emdeon Claim Master",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20180909.CSV",
+      "CH_SENT_DATE": "2018-08-29 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "102143190",
+      "CONTACT_DATE": "2023-03-13 00:00:00",
+      "CONTACT_DATE_REAL": 66546,
+      "STATUS_DATE": "2023-03-13 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "102143190",
+      "CONTACT_DATE": "2023-03-13 00:00:00",
+      "CONTACT_DATE_REAL": 66546.01,
+      "STATUS_DATE": "2023-03-13 00:00:00",
+      "FILE_NAME": "/epic/xfer/CCC/APL/claims/18_0313_CCC_1500.txt",
+      "GROUP_CONTROL_NUM": 1334762,
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "102143190",
+      "CONTACT_DATE": "2023-03-13 00:00:00",
+      "CONTACT_DATE_REAL": 66546.02,
+      "STATUS_DATE": "2023-03-13 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "102143190",
+      "CONTACT_DATE": "2023-03-13 00:00:00",
+      "CONTACT_DATE_REAL": 66546.03,
+      "PAYR_CLM_AMT_SUBMT": 226,
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2023-03-13 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/file.01849462.277",
+      "PAYOR_RECV_DATE": "2023-03-13 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "Accept Claim",
+      "PERFORM_ACT_C_NAME": "Accept Claim from Run",
+      "PERFORM_ACT_RSN": "Claim eligible for accept from claim run",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "102143190",
+      "CONTACT_DATE": "2023-03-14 00:00:00",
+      "CONTACT_DATE_REAL": 66547,
+      "PAYR_CLM_AMT_SUBMT": 226,
+      "CH_REF_NUM": "CP23072160823955131",
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2023-03-13 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/report.00544138.277",
+      "PAYOR_RECV_DATE": "2023-03-14 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "102143190",
+      "CONTACT_DATE": "2023-03-14 00:00:00",
+      "CONTACT_DATE_REAL": 66547.01,
+      "PAYR_CLM_AMT_SUBMT": 226,
+      "CH_REF_NUM": "CP23072160823955131",
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2023-03-13 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/HealthcareIP/report.00544138.277",
+      "PAYOR_RECV_DATE": "2023-03-14 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "66988170",
+      "CONTACT_DATE": "2020-08-14 00:00:00",
+      "CONTACT_DATE_REAL": 65605,
+      "STATUS_DATE": "2020-08-14 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "66988170",
+      "CONTACT_DATE": "2020-08-14 00:00:00",
+      "CONTACT_DATE_REAL": 65605.01,
+      "STATUS_DATE": "2020-08-14 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/active/PB837P_DX_191156308140247.txt",
+      "GROUP_CONTROL_NUM": 1115642,
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "66988170",
+      "CONTACT_DATE": "2020-08-17 00:00:00",
+      "CONTACT_DATE_REAL": 65608,
+      "STATUS_DATE": "2020-08-17 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "66988170",
+      "CONTACT_DATE": "2020-08-17 00:00:00",
+      "CONTACT_DATE_REAL": 65608.01,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_NAME": "Emdeon Claim Master",
+      "STATUS_DATE": "2020-08-17 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/CAP_EPICCODE08142020.CSV",
+      "CLAIM_SEL_ACT_C_NAME": "Accept Claim",
+      "PERFORM_ACT_C_NAME": "Accept Claim from Run",
+      "PERFORM_ACT_RSN": "Claim eligible for accept from claim run",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "66988170",
+      "CONTACT_DATE": "2020-08-17 00:00:00",
+      "CONTACT_DATE_REAL": 65608.02,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "208089",
+      "CH_NAME": "Emdeon Claim Master",
+      "STATUS_DATE": "2020-08-17 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20200814.CSV",
+      "CH_SENT_DATE": "2020-08-14 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "66988170",
+      "CONTACT_DATE": "2020-08-17 00:00:00",
+      "CONTACT_DATE_REAL": 65608.03,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "EP081420741205510",
+      "CH_NAME": "Emdeon Claim Master",
+      "STATUS_DATE": "2020-08-17 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20200815.CSV",
+      "CH_SENT_DATE": "2020-08-14 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "66988170",
+      "CONTACT_DATE": "2020-08-17 00:00:00",
+      "CONTACT_DATE_REAL": 65608.04,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "EP081420741205510",
+      "CH_NAME": "Emdeon Claim Master",
+      "STATUS_DATE": "2020-08-17 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20200815.CSV",
+      "CH_SENT_DATE": "2020-08-14 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "66988170",
+      "CONTACT_DATE": "2020-08-17 00:00:00",
+      "CONTACT_DATE_REAL": 65608.05,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "EP081420741205510",
+      "CH_NAME": "Emdeon Claim Master",
+      "STATUS_DATE": "2020-08-17 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20200816.CSV",
+      "CH_SENT_DATE": "2020-08-14 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "66988170",
+      "CONTACT_DATE": "2020-08-17 00:00:00",
+      "CONTACT_DATE_REAL": 65608.06,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "EP081420741205510",
+      "CH_NAME": "Emdeon Claim Master",
+      "STATUS_DATE": "2020-08-17 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20200816.CSV",
+      "CH_SENT_DATE": "2020-08-14 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "66988170",
+      "CONTACT_DATE": "2020-08-17 00:00:00",
+      "CONTACT_DATE_REAL": 65608.07,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "EP081420741205510",
+      "CH_NAME": "Emdeon Claim Master",
+      "STATUS_DATE": "2020-08-17 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20200816.CSV",
+      "CH_SENT_DATE": "2020-08-14 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "66988170",
+      "CONTACT_DATE": "2020-08-17 00:00:00",
+      "CONTACT_DATE_REAL": 65608.08,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "EP081420741205510",
+      "CH_NAME": "Emdeon Claim Master",
+      "STATUS_DATE": "2020-08-17 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20200816.CSV",
+      "CH_SENT_DATE": "2020-08-14 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "66988170",
+      "CONTACT_DATE": "2020-08-17 00:00:00",
+      "CONTACT_DATE_REAL": 65608.09,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "EP081420741205510",
+      "CH_NAME": "Emdeon Claim Master",
+      "STATUS_DATE": "2020-08-17 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20200816.CSV",
+      "CH_SENT_DATE": "2020-08-14 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "66988170",
+      "CONTACT_DATE": "2020-09-18 00:00:00",
+      "CONTACT_DATE_REAL": 65640,
+      "PAYOR_NAME": "BCBS WI (UNITED WI COMPCARE)",
+      "CH_REF_NUM": "EP081420741205510",
+      "CH_NAME": "Emdeon Claim Master",
+      "STATUS_DATE": "2020-09-18 00:00:00",
+      "FILE_NAME": "/epic/xfer/APLPBclaims/status/reports/STC20200917.CSV",
+      "CH_SENT_DATE": "2020-08-14 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "89293998",
+      "CONTACT_DATE": "2022-04-15 00:00:00",
+      "CONTACT_DATE_REAL": 66214,
+      "STATUS_DATE": "2022-04-15 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "89293998",
+      "CONTACT_DATE": "2022-04-15 00:00:00",
+      "CONTACT_DATE_REAL": 66214.01,
+      "STATUS_DATE": "2022-04-15 00:00:00",
+      "FILE_NAME": "/epic/xfer/claim/active/04150357_101401_HBEMDCEV_2332531.txt",
+      "GROUP_CONTROL_NUM": 1230251,
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "89293998",
+      "CONTACT_DATE": "2022-04-15 00:00:00",
+      "CONTACT_DATE_REAL": 66214.02,
+      "STATUS_DATE": "2022-04-15 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "89293998",
+      "CONTACT_DATE": "2022-04-15 00:00:00",
+      "CONTACT_DATE_REAL": 66214.03,
+      "PAYR_CLM_AMT_SUBMT": 1638.82,
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2022-04-15 00:00:00",
+      "FILE_NAME": "/epic/xfer/claim/277/HCIP/file.01430155.277",
+      "PAYOR_RECV_DATE": "2022-04-15 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "Accept Claim",
+      "PERFORM_ACT_C_NAME": "Accept Claim from Run",
+      "PERFORM_ACT_RSN": "Claim eligible for accept from claim run",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "89293998",
+      "CONTACT_DATE": "2022-04-15 00:00:00",
+      "CONTACT_DATE_REAL": 66214.04,
+      "PAYR_CLM_AMT_SUBMT": 1638.82,
+      "CH_REF_NUM": "CI22105075998530741",
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2022-04-15 00:00:00",
+      "FILE_NAME": "/epic/xfer/claim/277/HCIP/report.00390977.277",
+      "PAYOR_RECV_DATE": "2022-04-15 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "89293998",
+      "CONTACT_DATE": "2022-04-15 00:00:00",
+      "CONTACT_DATE_REAL": 66214.05,
+      "PAYR_CLM_AMT_SUBMT": 1638.82,
+      "CH_REF_NUM": "CI22105075998530741",
+      "CH_NAME": "HEALTHCAREIP",
+      "STATUS_DATE": "2022-04-15 00:00:00",
+      "FILE_NAME": "/epic/xfer/claim/277/HCIP/report.00390977.277",
+      "PAYOR_RECV_DATE": "2022-04-15 00:00:00",
+      "CLAIM_SEL_ACT_C_NAME": "No Action",
+      "SUPPORTED_ACTIONS_C_NAME": "All Available Actions",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    },
+    {
+      "CLAIM_REC_ID": "89293998",
+      "CONTACT_DATE": "2022-04-26 00:00:00",
+      "CONTACT_DATE_REAL": 66225,
+      "CLM_CLOSED_REASON_C_NAME": "Bucket Closed",
+      "$meta": {
+        "type": "RECONCILE_CLM_OT"
+      }
+    }
+  ]
+}

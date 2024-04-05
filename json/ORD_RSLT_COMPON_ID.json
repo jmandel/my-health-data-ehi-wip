@@ -1,0 +1,203 @@
+{
+  "$meta": {
+    "schemas": {
+      "ORD_RSLT_COMPON_ID": {
+        "name": "ORD_RSLT_COMPON_ID",
+        "description": "This table contains component-level SNOMED codes from the related multiple response Component SNOMED Code (I ORD 2510) item.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "CONTACT_DATE_REAL",
+            "ordinalPosition": 2
+          },
+          {
+            "columnName": "GROUP_LINE",
+            "ordinalPosition": 3
+          },
+          {
+            "columnName": "VALUE_LINE",
+            "ordinalPosition": 4
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the order record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "CONTACT_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "GROUP_LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this contact."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "VALUE_LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number of one of the multiple values associated with a specific group of data within this contact."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "COMPON_SNOMED_CT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Systematized Nomenclature of Medicine (SNOMED) code associated w/ the component from an Order record."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ORD_RSLT_COMPON_ID",
+            "target": "OBS_MTHD_ID",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "CONTACT_DATE_REAL",
+                "target": "CONTACT_DATE_REAL"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORD_RSLT_COMPON_ID",
+            "target": "ORDER_MYC_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORD_RSLT_COMPON_ID",
+            "target": "ORDER_PARENT_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORD_RSLT_COMPON_ID",
+            "target": "ORDER_READ_ACK",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "CONTACT_DATE_REAL",
+                "target": "CONTACT_DATE_REAL"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORD_RSLT_COMPON_ID",
+            "target": "ORDER_RESULTS",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              },
+              {
+                "source": "CONTACT_DATE_REAL",
+                "target": "ORD_DATE_REAL"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORD_RSLT_COMPON_ID",
+            "target": "ORDER_STATUS",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "CONTACT_DATE_REAL",
+                "target": "ORD_DATE_REAL"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORD_RSLT_COMPON_ID",
+            "target": "ORDER_PROC",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORD_RSLT_COMPON_ID",
+            "target": "ORD_PRFLST_TRK",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ORD_RSLT_COMPON_ID": [
+    {
+      "ORDER_ID": 945468372,
+      "CONTACT_DATE_REAL": 66745.01,
+      "GROUP_LINE": 1,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "COMPON_SNOMED_CT": "131194007",
+      "$meta": {
+        "type": "ORD_RSLT_COMPON_ID"
+      }
+    }
+  ]
+}

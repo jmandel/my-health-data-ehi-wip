@@ -1,0 +1,54 @@
+{
+  "name": "ORDER_PARENT_INFO",
+  "description": "This table will hold procedure order data where it is sometimes necessary to obtain the information from the parent (or possibly grandparent) order if it exists. Otherwise default to the child/normal order record's information in cases where there is no parent order.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier that consists of the order ID. Grandparent, parent and child orders will populate this table."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PARENT_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If the ID in the ORDER_ID column is a child order, then this column will hold the original order ID that instantiated the child (possibly a parent or possibly a grandparent order). If the ID in the ORDER_ID column is an order placed by an end user in the system (i.e. it was never instantiated- such as parent or grandparents), then this column will hold the same ID."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ORDERING_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "This is the original ordering date and time of the order record in the PARENT_ORDER_ID column.  For child orders, the date and time in ORDER_PROC.ORDER_INST is the date and time the order was released."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ORD_LOGIN_DEP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This is the original login department of the order record in the PARENT_ORDER_ID column.   For child orders, the department in ORDER_PROC_2.LOGIN_DEP_ID is the department in which the order was released."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI). This will be the contact used to place the order record in the PARENT_ORDER_ID column.   For child orders, the contact serial number in ORDER_PROC.PAT_ENC_CSN_ID is the contact in which the order was released."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PAT_CONTACT_DEP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This is the patient contact department of the order record in the PARENT_ORDER_ID column."
+    }
+  ]
+}

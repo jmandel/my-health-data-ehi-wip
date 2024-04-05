@@ -1,0 +1,128 @@
+{
+  "name": "HSP_CLAIM_PAT_RESP",
+  "description": "This table contains information about how the patient responsibility for the claim was calculated.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_PRINT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_PRINT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the claim print record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CLAIM_PX_LINE_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the line number in related group 710 that this detail line corresponds to. If blank, then the patient responsibility detail on this line is for DRG reimbursement."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SERVICE_TYPE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the service type associated with the benefits on this line. If coverage level benefits are used, then the service type will be blank."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SERVICE_TYPE_ID_SERVICE_TYPE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of this benefit service type."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SERVICE_TYPE_SOURCE_DESC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores a description of how the service type was calculated for the line."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "DEDUCTIBLE_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the amount of deductible that was applied to this line."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "COPAY_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the amount of copay that was applied to this line."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "COINSURANCE_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the amount of coinsurance that was applied to this line."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "NON_COVERED_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the amount that was not covered by insurance on this line."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "NON_COVERED_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the reason that the not covered amount is not covered by insurance.",
+      "entries": [
+        "Noncovered procedure",
+        "Lifetime insurance maximum reached",
+        "Annual insurance maximum reached",
+        "Visit insurance maximum reached"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ANNUAL_MOOP_CONTRIB_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the amount that this line contributed to the maximum out of pocked accumulation."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "VISIT_MOOP_CONTRIB_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the amount that this line contributed to the maximum visit out of pocked accumulation."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "OUT_OF_POCKET_LMT_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the reason that the out-of-pocket maximum limited the patient responsibility for the current line.",
+      "entries": [
+        "Annual out-of-pocket max met on a previous line",
+        "Visit out-of-pocket max met on a previous line",
+        "Annual and visit out-of-pocket max met on a previous line",
+        "Annual out-of-pocket max met on the current line",
+        "Visit out-of-pocket max met on the current line",
+        "Annual and visit out-of-pocket max met on the current line"
+      ]
+    }
+  ]
+}

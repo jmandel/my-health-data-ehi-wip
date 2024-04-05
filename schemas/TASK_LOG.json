@@ -1,0 +1,189 @@
+{
+  "name": "TASK_LOG",
+  "description": "This table extracts the related table Task Log: Instant (I LTK 81900), which contains the log of actions that happened on a task.",
+  "primaryKey": [
+    {
+      "columnName": "ACTIVITY_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ACTIVITY_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the task record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "TASK_LOG_INST_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant in UTC the action was done."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "TASK_LOG_ACTION_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of action logged.",
+      "entries": [
+        "System Action",
+        "User Action"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "TASK_LOG_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The action that was done on the task.",
+      "entries": [
+        "Added",
+        "Removed",
+        "Forward Scheduled",
+        "Paused",
+        "Resumed",
+        "Details Edited",
+        "Mark Resume After Discharge",
+        "Mark Not Resumed After Discharge",
+        "Schedule Updated",
+        "Instances Cleaned Up",
+        "Time Zone Changed",
+        "Added via Medication Reminder Pause Anchor Event"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "MYPT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The MyChart user (WPR) who did the action."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "DISPLAY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The new display when the display name (LTK-41) is changed."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "TASK_DESC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The new description when the description (LTK-42) is changed."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "FREQ_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The new frequency record when the frequency (LTK-300) is changed."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "FREQ_ID_FREQ_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the frequency record."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "TASK_START_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The new start instant when the start date (LTK-540) is changed."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "TASK_END_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The new end instant when the end date (LTK-550) or duration (LTK-556) is changed."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "GOAL_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The new goal record when the goal (LTK-220) is changed."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "TASK_START_TIME_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The new start type when the start type (LTK-270) is changed.",
+      "entries": [
+        "Source",
+        "Now",
+        "On a Specific Date",
+        "Pend For Later"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "TASK_START_OFFSET_DAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The new start offset days when the start offset days (I LTK 580) is changed."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "TASK_START_OFFSET_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The new start offset type when the start offset type (LTK-581) is changed.",
+      "entries": [
+        "Before",
+        "After"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "DURATION_DAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The new duration in days when the duration (LTK-556) is changed."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "DAYS_AFTER_DISCHARGE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The new days after discharge when the days after discharge (LTK-81051) is changed."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "SCHEDULE_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The new schedule status when the schedule status (LTK-81011) is changed.",
+      "entries": [
+        "Scheduled",
+        "Not Scheduled",
+        "Will Be Scheduled"
+      ]
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "FLO_THRESHOLD_VALUE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The new flowsheet threshold value when the flowsheet threshold value (LTK-43) is changed."
+    }
+  ]
+}

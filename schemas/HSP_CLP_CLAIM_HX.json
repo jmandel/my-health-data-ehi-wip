@@ -1,0 +1,122 @@
+{
+  "name": "HSP_CLP_CLAIM_HX",
+  "description": "This table contains the claim action histories for the claim print records associated with the hospital account/liability bucket.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_PRINT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_PRINT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the claim record associated with a single hospital account."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "The contact date for the creation of the record in internal format. (There is only one contact date per claim print record.)"
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple values associated with a specific group of data within this record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CLM_ACTION_HIST_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of claim action that was taken.",
+      "entries": [
+        "Viewed",
+        "Refreshed",
+        "Comment Added",
+        "Submitted",
+        "Force Submitted",
+        "Created",
+        "Processed",
+        "Accepted",
+        "Resubmitted",
+        "Printed to Paper",
+        "Filed Electronically",
+        "EOB Printed",
+        "Removed From Queue",
+        "Edited Claim",
+        "Forced to Paper",
+        "Cancel Claim Created",
+        "Sent to External Grouper",
+        "Received Update From External Grouper",
+        "Sent Claim to Claim Edit Workqueue",
+        "Added Late Charges",
+        "Auto-processed by External Grouper",
+        "Reset Edited Values",
+        "Replaced Corrected Charge",
+        "Removed Reversed Charge",
+        "Rapid Retest: Sent Claim",
+        "Rapid Retest: Received Update",
+        "Rapid Retest: Transmission Failed",
+        "Rapid Retest: Response Timed Out",
+        "Demand Claim Print Failed",
+        "Changed Bundled Episode"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the hospital account with which this claim record is associated."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CM_PHY_OWN_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "ID of the physical deployment owner for this record. Physical owners will be where the data is hosted, either on the cross-over server or the owner deployment."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CLM_HIST_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user ID who performed claim action for the claim record."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CLM_HIST_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CLM_HIST_CMT_PTR",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The pointer to the comments for the claim action for the claim record."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "CLM_HIST_DTTM",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "The date and time the claim action was performed."
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "name": "BLOOD_REQTS_VALS_AUDIT",
+  "description": "This table extracts the related multiple response Blood Special Requirements - Audit Trail (I EPT 18017) item, which stores the audit trail of blood special requirements for the patient. It contains the current values as well as all previous values for this patient.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the associated instance of editing blood special requirements in the patient's record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of multiple edited pieces of information associated with the patient and the editing instance."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "BLOOD_SPECIAL_REQTS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores all previously recorded values for special requirements that should be applied to blood orders for this patient",
+      "entries": [
+        "Irradiated",
+        "CMV Negative",
+        "Leukoreduced",
+        "Sickle Cell (Hgb S) Negative",
+        "Concentrate",
+        "HLA Match",
+        "Solid-Phase Red-Cell Adherence",
+        "PLA-1 Negative",
+        "Cryoreduced",
+        "Washed",
+        "PAS",
+        "Plasma Compatible"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "name": "HSP_BDC_DENIAL_DATA",
+  "description": "This table contains denial information stored in the Denial/Remark/Correspondence records in the Denial/Correspondence (BDC) master file. There can be multiple lines of data for each record. Each line represents one claim/explanations of benefits (EOB) line that was denied.",
+  "primaryKey": [
+    {
+      "columnName": "BDC_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE_COUNT",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "BDC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the denial or correspondence record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE_COUNT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Line number of denial data. There can be multiple lines of denial data and this is the number of the line that enterprise reporting is extracting."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE_ON_EOB",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column stores the line on explanation of benefits that was denied. \"-1\" represents the total denial data that is the sum of the invoice-level and sum of line-level data. \"0\" represents the invoice-level data."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "LINE_BILLED_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Billed amount on the claim line that was denied. If the denial was at the invoice level - this is the billed amount for the entire claim"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "LINE_ALLWD_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Allowed amount for claim line that was denied. If the denial was for the entire invoice this is the allowed amount for the entire claim."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "LINE_PAID_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the amount paid for the line that was denied. $0.00 if fully denied, >0 if partially denied. If the denial was for the entire invoice then this is the amount paid for the entire claim."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "LINE_DENIED_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Denied amount for claim line that was denied. If the denial is for the entire invoice then this is the denied amount for the claim."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "LINE_COMMENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores comments on explanation of benefits for denied line."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "LINE_REVENUE_CODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the line-level revenue code for the denial."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "LINE_REVENUE_CODE_ID_REVENUE_CODE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the revenue code."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "LINE_CPT_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the line-level CPT(R) code for the denial."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "LINE_PRIMARY_CHARGE_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Charge with the greatest amount from the claim line that was denied. If two charges have the same amount the older one will be the primary charge."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "LINE_SERVICE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The line level service date of the denial."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "LINE_QUANTITY",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The line level quantity for the denied line."
+    }
+  ]
+}

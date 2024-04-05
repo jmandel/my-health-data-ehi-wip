@@ -1,0 +1,127 @@
+{
+  "name": "SERIES_LOG_INFO",
+  "description": "Table to store the audit log information for questionnaire series answer records. The audit log contains data such as the last update instant, date, action, questionnaire ID, User (EMP) ID, Patient Access Account (WPR) ID and reason why tickler notification was not queued.",
+  "primaryKey": [
+    {
+      "columnName": "SERIES_ANS_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SERIES_ANS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the series answer record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SRS_ACTION_INS_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This column is used to store the instant when there is a update on this record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SRS_ACTION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column is used to store the action date for this questionnaire series."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SRS_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column is used to store the actions taken for this questionnaire series.",
+      "entries": [
+        "Enable Series - Provider",
+        "Enable Series - Reporting Workbench",
+        "Enable Series - BPA",
+        "Enable Series - UnMerge",
+        "Enable Series - Pending",
+        "Enable Series - Procedure Pass",
+        "Enable Series - Research Automatic Assignment",
+        "Enable Series - Research Activity Assignment",
+        "Disable Series - Provider",
+        "Disable Series - Reporting Workbench",
+        "Disable Series - Merge",
+        "Disable Series - Contact Mover",
+        "Disable Series - Batch Job",
+        "Disable Series - Patient Opted Out",
+        "Disable Series - Found New Treatment",
+        "Disable Series - Procedure Pass",
+        "Disable Series - Patient Expired",
+        "Disable Series - Research Activity Retraction",
+        "Enable Questionnaire",
+        "Disable Questionnaire",
+        "Notification - Queued",
+        "Notification - Not Queued",
+        "Notification - Sent",
+        "Notification - Not Sent",
+        "Completed"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SRS_ACT_QUESR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column is used to store the questionnaire ID for the audit action"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "SRS_ACT_QUESR_ID_FORM_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the form associated with the questionnaire."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "SRS_ACT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column is used to store who made this action."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "SRS_ACT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "SRS_ACT_WPR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the web portal ID of the user who answered the questionnaire."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "SRS_NOTIF_FAIL_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Reason why tickler notification could not be queued.",
+      "entries": [
+        "No Subscriber",
+        "Throttled",
+        "Invalid Call",
+        "Build Issue",
+        "Lock Failed"
+      ]
+    }
+  ]
+}

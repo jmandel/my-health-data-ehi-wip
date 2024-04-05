@@ -1,0 +1,132 @@
+{
+  "name": "HSP_CLM_EDIT_ERROR",
+  "description": "The HSP_CLM_EDIT_ERROR table contains information about your Hospital Billing claim edit errors. This table will have one row for each error that is on the claim print record (CLP) at the time of the extract. For each daily extract, the data will be appended on to the existing data in this table and this historical data will be preserved. So, if a claim had two errors and was in the claim error pool for three days, there will be six rows for that claim in this table (two rows for each of the three days that the claim had errors).\n\n\n\n\n\nThe EXTRACT_DT column can be used to restrict your results to claim errors on a specific day. To see the errors in the claim error pool as of the last extract use EXTRACT_DT = today's date. This assumes the last extract for HSP_CLM_EDIT_ERROR was today.\n\n\n\n\n\nHistorical data for this table cannot be rebuilt, so full extracts should not be performed on this table.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_PRINT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "EXTRACT_DT",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "OVERALL_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_PRINT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the claim record that entered the claim edit workqueue."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "EXTRACT_DT",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant at which the extract occurred (date and time)."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "OVERALL_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column tracks the overall number of lines in the table for the CLP_ID for the date it was extracted. This produces a unique number for a single CLP_ID for a single extract date. This allows the selection of a single CLP_ID for reporting on total number of CLP's errored in a given day. For any given date, set the report to select on an overall line = 1 to pull a single CLP_ID for each errored CLP into the report. This reduces the chance for record duplication in the report. You are not able to report on the errors on the CLP_ID."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SERV_AREA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the service area that appears on this claim."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "LOC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the revenue location that appears on this claim."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "GUARANTOR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The guarantor ID that appears on the claim."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the hospital account that appears on this claim."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "BUCKET_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the hospital liability bucket that appears on this claim."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The coverage ID that appears on the claim."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PAYOR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the payer that appears on this claim."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "BENEFIT_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The benefit plan ID that appears on this claim."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the billing provider that appears on the claim."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "TOTAL_CHARGES",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The dollar amount of charges on the claim."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "TOTAL_PAYMENTS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The dollar amount in payments that appear on the claim. This applies to claims that have already had payments made on them."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "AMOUNT_DUE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The dollar amount due from the claim. For cancel claims, the amount due is always zero. For other claims, this is the amount of charges on the bucket minus any payments, adjustments, or previous credits. In cases where a payment, adjustment, or previous credit could be applied to more than one claim, the amount is prorated based on the ratio of the claim charge amount to the total charge amount of all applicable claims on that bucket."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "INVOICE_NUMBER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The invoice number that appears on the claim."
+    }
+  ]
+}

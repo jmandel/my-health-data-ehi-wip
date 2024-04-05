@@ -1,0 +1,899 @@
+{
+  "$meta": {
+    "schemas": {
+      "CL_REMIT": {
+        "name": "CL_REMIT",
+        "description": "This table stores information for each Image Database (IMD) record. This can be check-level or claim-level, and is indicated in column IMD_TYPE_C.",
+        "primaryKey": [
+          {
+            "columnName": "IMAGE_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "IMAGE_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This is the ID for the remittance image record. A separate remittance image record is created for each invoice payment."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "CREATION_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date when the remittance image record was created (i.e., when the electronic file was loaded and created)."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "SERVICE_AREA_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The service area of the invoice to which this remittance payment was posted."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "PAYMENT_METHOD_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The posting method by which this remittance record was created (manual or through electronic remittance).",
+            "entries": [
+              "Remittance",
+              "Manual payment posting"
+            ]
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "PAYMENT_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The payment type for this remittance record (self-pay or insurance).",
+            "entries": [
+              "Insurance payment",
+              "Self-Pay"
+            ]
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "REF_IMG_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Reference remittance record for general remittance file information.  A separate remittance image record is created for each invoice payment in the remittance file. The general check level information is stored in the first remittance image record and subsequent image records hold the image ID of that record in this item."
+          },
+          {
+            "ordinalPosition": 16,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The patient from the invoice to which the payment in the remittance image record is posted."
+          },
+          {
+            "ordinalPosition": 17,
+            "name": "CLM_START_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The starting date of the claim that was sent out to the payer."
+          },
+          {
+            "ordinalPosition": 18,
+            "name": "CLM_END_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The ending date of the claim that was sent out to the payer."
+          },
+          {
+            "ordinalPosition": 19,
+            "name": "CLP_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Internal ID of the claim record (for Hospital Billing only)."
+          },
+          {
+            "ordinalPosition": 20,
+            "name": "IMD_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Specifies the type of Remittance Image. 1 is Check Level and 2 is File Level.",
+            "entries": [
+              "Check Level IMD",
+              "Invoice IMD"
+            ]
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "INV_NO",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The invoice number for the remittance image.",
+            "mergedFrom": "CL_RMT_CLM_INFO"
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "CLM_STAT_CD_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This is the code identifying the status of an entire claim.",
+            "entries": [
+              "Processed as Primary",
+              "Processed as Secondary",
+              "Processed as Tertiary",
+              "Denied",
+              "Pended",
+              "Received, but not in process",
+              "Suspended",
+              "Suspended-investigation with field",
+              "Suspended-return with material",
+              "Suspended-review pending",
+              "Processed as Primary, Forwarded to additional Payer(s)",
+              "Processed as Secondary, Forwarded to additional Payer(s)",
+              "Processed as Tertiary, Forwarded to additional Payer(s)",
+              "Reversal of previous payment",
+              "Not Our Claim, Forwarded to additional Payer(s)",
+              "Predetermination pricing only, No payment",
+              "Reviewed"
+            ],
+            "mergedFrom": "CL_RMT_CLM_INFO"
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "CLAIM_CHRG_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This is the amount for submitted charges on this claim.",
+            "mergedFrom": "CL_RMT_CLM_INFO"
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "CLAIM_PAID_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This is the amount paid on the claim.",
+            "mergedFrom": "CL_RMT_CLM_INFO"
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "PAT_RESP_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This is the patient responsibility amount for the claim.",
+            "mergedFrom": "CL_RMT_CLM_INFO"
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "CLM_FILING_CODE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This is a code identifying the type of claim.",
+            "entries": [
+              "Preferred provider organization (PPO)",
+              "Point of service (POS)",
+              "Exclusive provider organization (EPO)",
+              "Indemnity Insurance",
+              "Health maintenance organization (HMO) medicare risk",
+              "Automobile medical",
+              "Tricare",
+              "Disability",
+              "Health maintenance organization",
+              "Liability medical",
+              "Medicare part A",
+              "Medicare part B",
+              "Medicaid",
+              "Other federal program",
+              "Title V",
+              "Veteran administration plan",
+              "Workers' compensation health claim",
+              "Dental Maintenance Organization",
+              "Champus",
+              "Mutually Defined"
+            ],
+            "mergedFrom": "CL_RMT_CLM_INFO"
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "ICN_NO",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This is the payer's internal control number for the claim.",
+            "mergedFrom": "CL_RMT_CLM_INFO"
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "FAC_CODE_VAL",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This is the facility code used when the submitted code has been modified through adjudication.",
+            "mergedFrom": "CL_RMT_CLM_INFO"
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "CLAIM_FREQ_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This is the frequency code of the claim.",
+            "entries": [
+              "Non-Payment/Zero",
+              "ORIGINAL",
+              "CORRECTED",
+              "REPLACEMENT",
+              "VOID",
+              "Late Charge(s) Only",
+              "Interim - First Claim",
+              "Interim - Continuing Claim",
+              "Interim - Last Claim",
+              "Final Claim for a Home Health PPS Episode",
+              "Admission/Election Notice",
+              "Hospice/Demonstration (CMS Coord, Centers of Ex, Prov Part)/Rel Non-Med Care Inst",
+              "Hospice Change of Provider Notice",
+              "Hospice/Demonstration (CMS Coord, Centers of Ex, Prov Part)/Rel Non-Med Care Inst V/C",
+              "Hospice Change of Ownership",
+              "Beneficiary Initiated Adjustment",
+              "CWF Initiated Adjustment Claim",
+              "CMS Initiated Adjustment",
+              "Intermediary Adjustment Claim (Other than QIO or Provider)",
+              "Initiated Adjustment Claim - Other",
+              "OIG Initiated Adjustment Claim",
+              "MSP Initiated Adjustment Claim",
+              "Nonpayment/Zero Claims",
+              "QIO Adjustment Claim",
+              "Claim Submitted for Reconsideration Outside of Timely Limits",
+              "Void/Cancel a Prior Abbreviated Encounter Submission",
+              "Replacement of Prior Abbreviated Encounter Submission",
+              "New Abbreviated Encounter Submission"
+            ],
+            "mergedFrom": "CL_RMT_CLM_INFO"
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "DRG_WGT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The diagnosis related group weight.",
+            "mergedFrom": "CL_RMT_CLM_INFO"
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "FILE_INV_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Contains the actual invoice number that came in the file.",
+            "mergedFrom": "CL_RMT_CLM_INFO"
+          }
+        ],
+        "merged": [
+          {
+            "name": "CL_RMT_CLM_INFO",
+            "description": "This table contains the invoice level information to which the payment in the remittance record is posted."
+          },
+          {
+            "name": "CL_RMT_DELIVER_MTD",
+            "description": "This table contains information on the remittance delivery method when the funds are transferred independently from the remittance."
+          },
+          {
+            "name": "CL_RMT_INP_ADJ_INF",
+            "description": "This table contains inpatient adjudication information from the Remittance Image."
+          },
+          {
+            "name": "CL_RMT_OPT_ADJ_INF",
+            "description": "This table contains outpatient adjudication information from the Image Database (IMD) master file."
+          },
+          {
+            "name": "CL_RMT_PRV_SUM_INF",
+            "description": "This table stores the provider summary information for a remittance image record."
+          },
+          {
+            "name": "CL_RMT_PRV_SUP_INF",
+            "description": "This table contains the provider supplemental summary information for the remittance record."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "CL_REMIT",
+            "target": "CL_RMT_CLM_DT_INFO",
+            "joinKeys": [
+              {
+                "source": "IMAGE_ID",
+                "target": "IMAGE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "CL_REMIT",
+            "target": "CL_RMT_CLM_ENTITY",
+            "joinKeys": [
+              {
+                "source": "IMAGE_ID",
+                "target": "IMAGE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "CL_REMIT",
+            "target": "CL_RMT_HC_RMK_CODE",
+            "joinKeys": [
+              {
+                "source": "IMAGE_ID",
+                "target": "IMAGE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "CL_REMIT",
+            "target": "CL_RMT_SVC_AMT_INF",
+            "joinKeys": [
+              {
+                "source": "IMAGE_ID",
+                "target": "IMAGE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "CL_REMIT",
+            "target": "CL_RMT_SVC_DAT_INF",
+            "joinKeys": [
+              {
+                "source": "IMAGE_ID",
+                "target": "IMAGE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "CL_REMIT",
+            "target": "CL_RMT_SVCE_LN_INF",
+            "joinKeys": [
+              {
+                "source": "IMAGE_ID",
+                "target": "IMAGE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "CL_REMIT",
+            "target": "CL_RMT_SVC_LVL_ADJ",
+            "joinKeys": [
+              {
+                "source": "IMAGE_ID",
+                "target": "IMAGE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "CL_REMIT",
+            "target": "CL_RMT_SVC_LVL_REF",
+            "joinKeys": [
+              {
+                "source": "IMAGE_ID",
+                "target": "IMAGE_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "CL_REMIT": [
+    {
+      "IMAGE_ID": "103811458",
+      "CREATION_DATE": "2020-09-17 00:00:00",
+      "SERVICE_AREA_ID": 18,
+      "PAYMENT_METHOD_C_NAME": "Remittance",
+      "PAYMENT_TYPE_C_NAME": "Insurance payment",
+      "REF_IMG_ID": "103811433",
+      "PAT_ID": "Z7004242",
+      "CLM_START_DATE": "2020-07-14 00:00:00",
+      "CLM_END_DATE": "2020-07-14 00:00:00",
+      "IMD_TYPE_C_NAME": "Invoice IMD",
+      "$meta": {
+        "type": "CL_REMIT",
+        "mergedFrom": [
+          "CL_RMT_CLM_INFO",
+          "CL_RMT_DELIVER_MTD",
+          "CL_RMT_INP_ADJ_INF",
+          "CL_RMT_OPT_ADJ_INF",
+          "CL_RMT_PRV_SUM_INF",
+          "CL_RMT_PRV_SUP_INF"
+        ]
+      },
+      "// mergedFrom CL_RMT_CLM_INFO": true,
+      "INV_NO": "L1004718920",
+      "CLM_STAT_CD_C_NAME": "Processed as Primary",
+      "CLAIM_CHRG_AMT": 170,
+      "CLAIM_PAID_AMT": 113.3,
+      "CLM_FILING_CODE_C_NAME": "Preferred provider organization (PPO)",
+      "ICN_NO": "2020228BN6036",
+      "FILE_INV_NUM": "L1004718920",
+      "// mergedFrom CL_RMT_DELIVER_MTD": true,
+      "// mergedFrom CL_RMT_INP_ADJ_INF": true,
+      "// mergedFrom CL_RMT_OPT_ADJ_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUM_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUP_INF": true
+    },
+    {
+      "IMAGE_ID": "163701585",
+      "CREATION_DATE": "2022-04-25 00:00:00",
+      "SERVICE_AREA_ID": 10,
+      "PAYMENT_METHOD_C_NAME": "Remittance",
+      "PAYMENT_TYPE_C_NAME": "Insurance payment",
+      "REF_IMG_ID": "163701569",
+      "PAT_ID": "Z7004242",
+      "CLM_START_DATE": "2022-03-11 00:00:00",
+      "CLM_END_DATE": "2022-03-22 00:00:00",
+      "CLP_ID": 123337005,
+      "IMD_TYPE_C_NAME": "Invoice IMD",
+      "$meta": {
+        "type": "CL_REMIT",
+        "mergedFrom": [
+          "CL_RMT_CLM_INFO",
+          "CL_RMT_DELIVER_MTD",
+          "CL_RMT_INP_ADJ_INF",
+          "CL_RMT_OPT_ADJ_INF",
+          "CL_RMT_PRV_SUM_INF",
+          "CL_RMT_PRV_SUP_INF"
+        ]
+      },
+      "// mergedFrom CL_RMT_CLM_INFO": true,
+      "INV_NO": "37668481002",
+      "CLM_STAT_CD_C_NAME": "Processed as Primary",
+      "CLAIM_CHRG_AMT": 1638.82,
+      "CLAIM_PAID_AMT": 121.73,
+      "PAT_RESP_AMT": 554.27,
+      "CLM_FILING_CODE_C_NAME": "Preferred provider organization (PPO)",
+      "ICN_NO": "2022105BL4618",
+      "FAC_CODE_VAL": "13",
+      "CLAIM_FREQ_C_NAME": "Interim - First Claim",
+      "FILE_INV_NUM": "37668481002",
+      "// mergedFrom CL_RMT_DELIVER_MTD": true,
+      "// mergedFrom CL_RMT_INP_ADJ_INF": true,
+      "// mergedFrom CL_RMT_OPT_ADJ_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUM_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUP_INF": true
+    },
+    {
+      "IMAGE_ID": "182080752",
+      "CREATION_DATE": "2022-10-02 00:00:00",
+      "SERVICE_AREA_ID": 18,
+      "PAYMENT_METHOD_C_NAME": "Remittance",
+      "PAYMENT_TYPE_C_NAME": "Insurance payment",
+      "REF_IMG_ID": "182080625",
+      "PAT_ID": "Z7004242",
+      "CLM_START_DATE": "2022-08-29 00:00:00",
+      "CLM_END_DATE": "2022-08-29 00:00:00",
+      "IMD_TYPE_C_NAME": "Invoice IMD",
+      "$meta": {
+        "type": "CL_REMIT",
+        "mergedFrom": [
+          "CL_RMT_CLM_INFO",
+          "CL_RMT_DELIVER_MTD",
+          "CL_RMT_INP_ADJ_INF",
+          "CL_RMT_OPT_ADJ_INF",
+          "CL_RMT_PRV_SUM_INF",
+          "CL_RMT_PRV_SUP_INF"
+        ]
+      },
+      "// mergedFrom CL_RMT_CLM_INFO": true,
+      "INV_NO": "L1006928390",
+      "CLM_STAT_CD_C_NAME": "Processed as Primary",
+      "CLAIM_CHRG_AMT": 516,
+      "CLAIM_PAID_AMT": 272.89,
+      "PAT_RESP_AMT": 6.99,
+      "CLM_FILING_CODE_C_NAME": "Preferred provider organization (PPO)",
+      "ICN_NO": "2022264BT5584",
+      "FILE_INV_NUM": "L1006928390",
+      "// mergedFrom CL_RMT_DELIVER_MTD": true,
+      "// mergedFrom CL_RMT_INP_ADJ_INF": true,
+      "// mergedFrom CL_RMT_OPT_ADJ_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUM_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUP_INF": true
+    },
+    {
+      "IMAGE_ID": "182080857",
+      "CREATION_DATE": "2022-10-02 00:00:00",
+      "SERVICE_AREA_ID": 18,
+      "PAYMENT_METHOD_C_NAME": "Remittance",
+      "PAYMENT_TYPE_C_NAME": "Insurance payment",
+      "REF_IMG_ID": "182080625",
+      "PAT_ID": "Z7004242",
+      "CLM_START_DATE": "2022-08-29 00:00:00",
+      "CLM_END_DATE": "2022-08-29 00:00:00",
+      "IMD_TYPE_C_NAME": "Invoice IMD",
+      "$meta": {
+        "type": "CL_REMIT",
+        "mergedFrom": [
+          "CL_RMT_CLM_INFO",
+          "CL_RMT_DELIVER_MTD",
+          "CL_RMT_INP_ADJ_INF",
+          "CL_RMT_OPT_ADJ_INF",
+          "CL_RMT_PRV_SUM_INF",
+          "CL_RMT_PRV_SUP_INF"
+        ]
+      },
+      "// mergedFrom CL_RMT_CLM_INFO": true,
+      "INV_NO": "L1006942840",
+      "CLM_STAT_CD_C_NAME": "Processed as Primary",
+      "CLAIM_CHRG_AMT": 173,
+      "CLAIM_PAID_AMT": 7.57,
+      "PAT_RESP_AMT": 0.83,
+      "CLM_FILING_CODE_C_NAME": "Preferred provider organization (PPO)",
+      "ICN_NO": "2022266BM7967",
+      "FILE_INV_NUM": "L1006942840",
+      "// mergedFrom CL_RMT_DELIVER_MTD": true,
+      "// mergedFrom CL_RMT_INP_ADJ_INF": true,
+      "// mergedFrom CL_RMT_OPT_ADJ_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUM_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUP_INF": true
+    },
+    {
+      "IMAGE_ID": "192950267",
+      "CREATION_DATE": "2022-12-18 00:00:00",
+      "SERVICE_AREA_ID": 18,
+      "PAYMENT_METHOD_C_NAME": "Remittance",
+      "PAYMENT_TYPE_C_NAME": "Insurance payment",
+      "REF_IMG_ID": "192950108",
+      "PAT_ID": "Z7004242",
+      "CLM_START_DATE": "2022-12-01 00:00:00",
+      "CLM_END_DATE": "2022-12-01 00:00:00",
+      "IMD_TYPE_C_NAME": "Invoice IMD",
+      "$meta": {
+        "type": "CL_REMIT",
+        "mergedFrom": [
+          "CL_RMT_CLM_INFO",
+          "CL_RMT_DELIVER_MTD",
+          "CL_RMT_INP_ADJ_INF",
+          "CL_RMT_OPT_ADJ_INF",
+          "CL_RMT_PRV_SUM_INF",
+          "CL_RMT_PRV_SUP_INF"
+        ]
+      },
+      "// mergedFrom CL_RMT_CLM_INFO": true,
+      "INV_NO": "L1007201490",
+      "CLM_STAT_CD_C_NAME": "Denied",
+      "CLAIM_CHRG_AMT": 315,
+      "CLAIM_PAID_AMT": 0,
+      "CLM_FILING_CODE_C_NAME": "Preferred provider organization (PPO)",
+      "ICN_NO": "2022341BT5497",
+      "FILE_INV_NUM": "L1007201490",
+      "// mergedFrom CL_RMT_DELIVER_MTD": true,
+      "// mergedFrom CL_RMT_INP_ADJ_INF": true,
+      "// mergedFrom CL_RMT_OPT_ADJ_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUM_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUP_INF": true
+    },
+    {
+      "IMAGE_ID": "195454935",
+      "CREATION_DATE": "2023-01-08 00:00:00",
+      "SERVICE_AREA_ID": 18,
+      "PAYMENT_METHOD_C_NAME": "Remittance",
+      "PAYMENT_TYPE_C_NAME": "Insurance payment",
+      "REF_IMG_ID": "195454909",
+      "PAT_ID": "Z7004242",
+      "CLM_START_DATE": "2022-12-01 00:00:00",
+      "CLM_END_DATE": "2022-12-01 00:00:00",
+      "IMD_TYPE_C_NAME": "Invoice IMD",
+      "$meta": {
+        "type": "CL_REMIT",
+        "mergedFrom": [
+          "CL_RMT_CLM_INFO",
+          "CL_RMT_DELIVER_MTD",
+          "CL_RMT_INP_ADJ_INF",
+          "CL_RMT_OPT_ADJ_INF",
+          "CL_RMT_PRV_SUM_INF",
+          "CL_RMT_PRV_SUP_INF"
+        ]
+      },
+      "// mergedFrom CL_RMT_CLM_INFO": true,
+      "INV_NO": "L1007233831",
+      "CLM_STAT_CD_C_NAME": "Processed as Primary",
+      "CLAIM_CHRG_AMT": 315,
+      "CLAIM_PAID_AMT": 179.02,
+      "PAT_RESP_AMT": 19.89,
+      "CLM_FILING_CODE_C_NAME": "Preferred provider organization (PPO)",
+      "ICN_NO": "2022341BT5497",
+      "FILE_INV_NUM": "L1007233831",
+      "// mergedFrom CL_RMT_DELIVER_MTD": true,
+      "// mergedFrom CL_RMT_INP_ADJ_INF": true,
+      "// mergedFrom CL_RMT_OPT_ADJ_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUM_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUP_INF": true
+    },
+    {
+      "IMAGE_ID": "195454936",
+      "CREATION_DATE": "2023-01-08 00:00:00",
+      "SERVICE_AREA_ID": 18,
+      "PAYMENT_METHOD_C_NAME": "Remittance",
+      "PAYMENT_TYPE_C_NAME": "Insurance payment",
+      "REF_IMG_ID": "195454909",
+      "PAT_ID": "Z7004242",
+      "CLM_START_DATE": "2022-12-01 00:00:00",
+      "CLM_END_DATE": "2022-12-01 00:00:00",
+      "IMD_TYPE_C_NAME": "Invoice IMD",
+      "$meta": {
+        "type": "CL_REMIT",
+        "mergedFrom": [
+          "CL_RMT_CLM_INFO",
+          "CL_RMT_DELIVER_MTD",
+          "CL_RMT_INP_ADJ_INF",
+          "CL_RMT_OPT_ADJ_INF",
+          "CL_RMT_PRV_SUM_INF",
+          "CL_RMT_PRV_SUP_INF"
+        ]
+      },
+      "// mergedFrom CL_RMT_CLM_INFO": true,
+      "INV_NO": "L1007201490",
+      "CLM_STAT_CD_C_NAME": "Reversal of previous payment",
+      "CLAIM_CHRG_AMT": -315,
+      "CLAIM_PAID_AMT": 0,
+      "CLM_FILING_CODE_C_NAME": "Preferred provider organization (PPO)",
+      "ICN_NO": "2022341BT5497",
+      "FILE_INV_NUM": "L1007201490",
+      "// mergedFrom CL_RMT_DELIVER_MTD": true,
+      "// mergedFrom CL_RMT_INP_ADJ_INF": true,
+      "// mergedFrom CL_RMT_OPT_ADJ_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUM_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUP_INF": true
+    },
+    {
+      "IMAGE_ID": "204543235",
+      "CREATION_DATE": "2023-03-27 00:00:00",
+      "SERVICE_AREA_ID": 18,
+      "PAYMENT_METHOD_C_NAME": "Remittance",
+      "PAYMENT_TYPE_C_NAME": "Insurance payment",
+      "REF_IMG_ID": "204542891",
+      "PAT_ID": "Z7004242",
+      "CLM_START_DATE": "2023-03-02 00:00:00",
+      "CLM_END_DATE": "2023-03-02 00:00:00",
+      "IMD_TYPE_C_NAME": "Invoice IMD",
+      "$meta": {
+        "type": "CL_REMIT",
+        "mergedFrom": [
+          "CL_RMT_CLM_INFO",
+          "CL_RMT_DELIVER_MTD",
+          "CL_RMT_INP_ADJ_INF",
+          "CL_RMT_OPT_ADJ_INF",
+          "CL_RMT_PRV_SUM_INF",
+          "CL_RMT_PRV_SUP_INF"
+        ]
+      },
+      "// mergedFrom CL_RMT_CLM_INFO": true,
+      "INV_NO": "L1007449820",
+      "CLM_STAT_CD_C_NAME": "Processed as Primary",
+      "CLAIM_CHRG_AMT": 226,
+      "CLAIM_PAID_AMT": 0,
+      "PAT_RESP_AMT": 139.97,
+      "CLM_FILING_CODE_C_NAME": "Preferred provider organization (PPO)",
+      "ICN_NO": "2023072DV0514",
+      "FILE_INV_NUM": "L1007449820",
+      "// mergedFrom CL_RMT_DELIVER_MTD": true,
+      "// mergedFrom CL_RMT_INP_ADJ_INF": true,
+      "// mergedFrom CL_RMT_OPT_ADJ_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUM_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUP_INF": true
+    },
+    {
+      "IMAGE_ID": "228893273",
+      "CREATION_DATE": "2023-10-18 00:00:00",
+      "SERVICE_AREA_ID": 18,
+      "PAYMENT_METHOD_C_NAME": "Remittance",
+      "PAYMENT_TYPE_C_NAME": "Insurance payment",
+      "REF_IMG_ID": "228893185",
+      "PAT_ID": "Z7004242",
+      "CLM_START_DATE": "2023-09-28 00:00:00",
+      "CLM_END_DATE": "2023-09-28 00:00:00",
+      "IMD_TYPE_C_NAME": "Invoice IMD",
+      "$meta": {
+        "type": "CL_REMIT",
+        "mergedFrom": [
+          "CL_RMT_CLM_INFO",
+          "CL_RMT_DELIVER_MTD",
+          "CL_RMT_INP_ADJ_INF",
+          "CL_RMT_OPT_ADJ_INF",
+          "CL_RMT_PRV_SUM_INF",
+          "CL_RMT_PRV_SUP_INF"
+        ]
+      },
+      "// mergedFrom CL_RMT_CLM_INFO": true,
+      "INV_NO": "L1007985430",
+      "CLM_STAT_CD_C_NAME": "Processed as Primary",
+      "CLAIM_CHRG_AMT": 203,
+      "CLAIM_PAID_AMT": 19.25,
+      "CLM_FILING_CODE_C_NAME": "Preferred provider organization (PPO)",
+      "ICN_NO": "2023277DI2086",
+      "FILE_INV_NUM": "L1007985430",
+      "// mergedFrom CL_RMT_DELIVER_MTD": true,
+      "// mergedFrom CL_RMT_INP_ADJ_INF": true,
+      "// mergedFrom CL_RMT_OPT_ADJ_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUM_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUP_INF": true
+    },
+    {
+      "IMAGE_ID": "228893430",
+      "CREATION_DATE": "2023-10-18 00:00:00",
+      "SERVICE_AREA_ID": 18,
+      "PAYMENT_METHOD_C_NAME": "Remittance",
+      "PAYMENT_TYPE_C_NAME": "Insurance payment",
+      "REF_IMG_ID": "228893185",
+      "PAT_ID": "Z7004242",
+      "CLM_START_DATE": "2023-09-28 00:00:00",
+      "CLM_END_DATE": "2023-09-28 00:00:00",
+      "IMD_TYPE_C_NAME": "Invoice IMD",
+      "$meta": {
+        "type": "CL_REMIT",
+        "mergedFrom": [
+          "CL_RMT_CLM_INFO",
+          "CL_RMT_DELIVER_MTD",
+          "CL_RMT_INP_ADJ_INF",
+          "CL_RMT_OPT_ADJ_INF",
+          "CL_RMT_PRV_SUM_INF",
+          "CL_RMT_PRV_SUP_INF"
+        ]
+      },
+      "// mergedFrom CL_RMT_CLM_INFO": true,
+      "INV_NO": "L1007990080",
+      "CLM_STAT_CD_C_NAME": "Processed as Primary",
+      "CLAIM_CHRG_AMT": 114,
+      "CLAIM_PAID_AMT": 38.85,
+      "CLM_FILING_CODE_C_NAME": "Preferred provider organization (PPO)",
+      "ICN_NO": "2023278BR8828",
+      "FILE_INV_NUM": "L1007990080",
+      "// mergedFrom CL_RMT_DELIVER_MTD": true,
+      "// mergedFrom CL_RMT_INP_ADJ_INF": true,
+      "// mergedFrom CL_RMT_OPT_ADJ_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUM_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUP_INF": true
+    },
+    {
+      "IMAGE_ID": "229308484",
+      "CREATION_DATE": "2023-10-21 00:00:00",
+      "SERVICE_AREA_ID": 18,
+      "PAYMENT_METHOD_C_NAME": "Remittance",
+      "PAYMENT_TYPE_C_NAME": "Insurance payment",
+      "REF_IMG_ID": "229308329",
+      "PAT_ID": "Z7004242",
+      "CLM_START_DATE": "2023-09-28 00:00:00",
+      "CLM_END_DATE": "2023-09-28 00:00:00",
+      "IMD_TYPE_C_NAME": "Invoice IMD",
+      "$meta": {
+        "type": "CL_REMIT",
+        "mergedFrom": [
+          "CL_RMT_CLM_INFO",
+          "CL_RMT_DELIVER_MTD",
+          "CL_RMT_INP_ADJ_INF",
+          "CL_RMT_OPT_ADJ_INF",
+          "CL_RMT_PRV_SUM_INF",
+          "CL_RMT_PRV_SUP_INF"
+        ]
+      },
+      "// mergedFrom CL_RMT_CLM_INFO": true,
+      "INV_NO": "L1008016200",
+      "CLM_STAT_CD_C_NAME": "Processed as Primary",
+      "CLAIM_CHRG_AMT": 330,
+      "CLAIM_PAID_AMT": 223.42,
+      "CLM_FILING_CODE_C_NAME": "Preferred provider organization (PPO)",
+      "ICN_NO": "2023286CD3233",
+      "FILE_INV_NUM": "L1008016200",
+      "// mergedFrom CL_RMT_DELIVER_MTD": true,
+      "// mergedFrom CL_RMT_INP_ADJ_INF": true,
+      "// mergedFrom CL_RMT_OPT_ADJ_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUM_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUP_INF": true
+    },
+    {
+      "IMAGE_ID": "61020663",
+      "CREATION_DATE": "2018-09-08 00:00:00",
+      "SERVICE_AREA_ID": 18,
+      "PAYMENT_METHOD_C_NAME": "Remittance",
+      "PAYMENT_TYPE_C_NAME": "Insurance payment",
+      "REF_IMG_ID": "61020617",
+      "PAT_ID": "Z7004242",
+      "CLM_START_DATE": "2018-08-09 00:00:00",
+      "CLM_END_DATE": "2018-08-09 00:00:00",
+      "IMD_TYPE_C_NAME": "Invoice IMD",
+      "$meta": {
+        "type": "CL_REMIT",
+        "mergedFrom": [
+          "CL_RMT_CLM_INFO",
+          "CL_RMT_DELIVER_MTD",
+          "CL_RMT_INP_ADJ_INF",
+          "CL_RMT_OPT_ADJ_INF",
+          "CL_RMT_PRV_SUM_INF",
+          "CL_RMT_PRV_SUP_INF"
+        ]
+      },
+      "// mergedFrom CL_RMT_CLM_INFO": true,
+      "INV_NO": "L1002834030",
+      "CLM_STAT_CD_C_NAME": "Processed as Primary",
+      "CLAIM_CHRG_AMT": 335,
+      "CLAIM_PAID_AMT": 230.73,
+      "CLM_FILING_CODE_C_NAME": "Preferred provider organization (PPO)",
+      "ICN_NO": "2018241CN0502",
+      "DRG_WGT": 0,
+      "FILE_INV_NUM": "L1002834030",
+      "// mergedFrom CL_RMT_DELIVER_MTD": true,
+      "// mergedFrom CL_RMT_INP_ADJ_INF": true,
+      "// mergedFrom CL_RMT_OPT_ADJ_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUM_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUP_INF": true
+    },
+    {
+      "IMAGE_ID": "61020664",
+      "CREATION_DATE": "2018-09-08 00:00:00",
+      "SERVICE_AREA_ID": 18,
+      "PAYMENT_METHOD_C_NAME": "Remittance",
+      "PAYMENT_TYPE_C_NAME": "Insurance payment",
+      "REF_IMG_ID": "61020617",
+      "PAT_ID": "Z7004242",
+      "CLM_START_DATE": "2018-08-09 00:00:00",
+      "CLM_END_DATE": "2018-08-09 00:00:00",
+      "IMD_TYPE_C_NAME": "Invoice IMD",
+      "$meta": {
+        "type": "CL_REMIT",
+        "mergedFrom": [
+          "CL_RMT_CLM_INFO",
+          "CL_RMT_DELIVER_MTD",
+          "CL_RMT_INP_ADJ_INF",
+          "CL_RMT_OPT_ADJ_INF",
+          "CL_RMT_PRV_SUM_INF",
+          "CL_RMT_PRV_SUP_INF"
+        ]
+      },
+      "// mergedFrom CL_RMT_CLM_INFO": true,
+      "INV_NO": "L1002834040",
+      "CLM_STAT_CD_C_NAME": "Processed as Primary",
+      "CLAIM_CHRG_AMT": 151,
+      "CLAIM_PAID_AMT": 23.52,
+      "CLM_FILING_CODE_C_NAME": "Preferred provider organization (PPO)",
+      "ICN_NO": "2018241CN0503",
+      "DRG_WGT": 0,
+      "FILE_INV_NUM": "L1002834040",
+      "// mergedFrom CL_RMT_DELIVER_MTD": true,
+      "// mergedFrom CL_RMT_INP_ADJ_INF": true,
+      "// mergedFrom CL_RMT_OPT_ADJ_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUM_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUP_INF": true
+    },
+    {
+      "IMAGE_ID": "85777291",
+      "CREATION_DATE": "2020-01-27 00:00:00",
+      "SERVICE_AREA_ID": 18,
+      "PAYMENT_METHOD_C_NAME": "Remittance",
+      "PAYMENT_TYPE_C_NAME": "Insurance payment",
+      "REF_IMG_ID": "85777270",
+      "PAT_ID": "Z7004242",
+      "CLM_START_DATE": "2020-01-09 00:00:00",
+      "CLM_END_DATE": "2020-01-09 00:00:00",
+      "IMD_TYPE_C_NAME": "Invoice IMD",
+      "$meta": {
+        "type": "CL_REMIT",
+        "mergedFrom": [
+          "CL_RMT_CLM_INFO",
+          "CL_RMT_DELIVER_MTD",
+          "CL_RMT_INP_ADJ_INF",
+          "CL_RMT_OPT_ADJ_INF",
+          "CL_RMT_PRV_SUM_INF",
+          "CL_RMT_PRV_SUP_INF"
+        ]
+      },
+      "// mergedFrom CL_RMT_CLM_INFO": true,
+      "INV_NO": "L1004236460",
+      "CLM_STAT_CD_C_NAME": "Processed as Primary",
+      "CLAIM_CHRG_AMT": 165,
+      "CLAIM_PAID_AMT": 0,
+      "PAT_RESP_AMT": 133.29,
+      "CLM_FILING_CODE_C_NAME": "Preferred provider organization (PPO)",
+      "ICN_NO": "2020010DE9628",
+      "FILE_INV_NUM": "L1004236460",
+      "// mergedFrom CL_RMT_DELIVER_MTD": true,
+      "// mergedFrom CL_RMT_INP_ADJ_INF": true,
+      "// mergedFrom CL_RMT_OPT_ADJ_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUM_INF": true,
+      "// mergedFrom CL_RMT_PRV_SUP_INF": true
+    }
+  ]
+}

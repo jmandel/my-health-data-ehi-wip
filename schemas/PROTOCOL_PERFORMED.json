@@ -1,0 +1,44 @@
+{
+  "name": "PROTOCOL_PERFORMED",
+  "description": "The PROTOCOL_PERFORMED table contains information about the users that have protocolled imaging orders. The table may be useful in both determining the users that have protocolled a particular exam and determining the exams that a given user has protocolled. There should never be more than one row for a given user and order. The key pieces of data stored in this table are the protocolling user (PROTOCOL_USER_ID) and the instant the protocolling action was performed (INSTANT_UTC_DTTM). Since the data stored in the columns relate to related-response items in Chronicles, you will need both the ORDER_ID and the LINE to uniquely identify a row of data.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the order record. This column can be used to link to other order based tables, such as ORDER_PROC or V_IMG_STUDY."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PROTOCOL_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This unique ID of the user that protocolled the exam. Any protocolling related action taken in hyperspace will cause the user to have an entry in this column for the corresponding order which they were protocolling. However, this column should only ever contain one row for each user and order ID."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PROTOCOL_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    }
+  ]
+}

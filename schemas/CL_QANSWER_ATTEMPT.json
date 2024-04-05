@@ -1,0 +1,106 @@
+{
+  "name": "CL_QANSWER_ATTEMPT",
+  "description": "This table contains attempts at answering a patient-entered questionnaire.",
+  "primaryKey": [
+    {
+      "columnName": "ANSWER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ANSWER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the questionnaire answer record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ATTEMPT_START_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant at which the patient-entered questionnaire attempt started. � An attempt begins when the questionnaire is started, resumed, or traversed�to from another questionnaire. This includes navigating forwards, backwards, and jumping to a question from the review page."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ATTEMPT_END_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant at which the patient-entered questionnaire attempt ended.�The end of the attempt is updated when the user takes an action during�the attempt. � For branched questionnaires, the end instant does not include actions�taken on its parent."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ATTEMPT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status of the patient-entered questionnaire attempt. This column can be joined to the ZC_ST_WKFL_STATUS table.",
+      "entries": [
+        "Started",
+        "Abandoned",
+        "Completed"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ATTEMPT_ANSWER_METHOD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The method used when attempting to answer the patient-entered questionnaire.",
+      "entries": [
+        "MyChart",
+        "Welcome",
+        "EpicCare",
+        "MyChart Bedside",
+        "FHIR",
+        "Bedside in MyChart Mobile"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ATTEMPT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who updated the patient-entered questionnaire answers on behalf of the patient if answering from Hyperspace."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ATTEMPT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ATTEMPT_MYPT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The MyChart user who updated the patient-entered questionnaire answers."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ATTEMPT_SESSION_NUM",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The session number for a MyChart user for the MyChart user access audit trail."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "ATTEMPT_FURTHEST_QUESTION_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The furthest question in the questionnaire that was answered by the user during the attempt."
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "name": "IP_DATA_STORE",
+  "description": "This table contains generic information related to a patient's inpatient stay, including data on patient education, notes, and other topics.",
+  "primaryKey": [
+    {
+      "columnName": "INPATIENT_DATA_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "INPATIENT_DATA_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the inpatient data store record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "TEMPLATE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the flowsheet template."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "TEMPLATE_ID_DISPLAY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The display name associated with this template."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "DISCH_INST_HNO_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The HNO ID of the patient's discharge instructions, for discharge instructions created in version Epic Aug 2021 or prior. In version Epic Nov 2021 and later, the discharge instruction information that was previously stored in INP will now be stored in HNO for Note Type 18-Discharge Instructions, with information about instances where discharge instructions were reviewed, updated, or signed extracted in the Clarity table DISCH_INSTR_HISTORY."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RECORD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The current status of the Inpatient Data record: active or resolved.",
+      "entries": [
+        "Active",
+        "Resolved",
+        "Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EPT_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Link to Contact Serial Number in EPT for associated encounter."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "BRST_STAT_INST_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the last instant that Breastfeeding Status was saved."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PAIN_EDU_INST_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the last instant the Pain Education was saved."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "HC_INSTANT_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the last instant that the Head Circumference was saved."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PF_INSTANT_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the last instant that Peak Flow was saved."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "EXINGC_INSTANT_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the last instant that Exclude in Growth Charts information was saved."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ALT_PRINT_INST_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the last instant BestPractice Advisory (BPA) alert information was saved."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "IP_NOTE_MOD_INST_TM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The time the Notes were last modified for this Inpatient Data record."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "UPDATE_DATE",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time this row was last updated (the last time it was extracted or this column was backfilled)."
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "name": "HNO_INFO_2",
+  "description": "This table contains common information from General Use Notes items. This table focuses on one time only data while other HNO tables (e.g., NOTES_ACCT, CODING_CLA_NOTES) contain the data for different note types.",
+  "primaryKey": [
+    {
+      "columnName": "NOTE_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The note ID for the note record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "RELEVANT_REC_EVENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the Events (IEV) record which contains records marked relevant to the Note such as problems, allergies, lab results, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "GROUP_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the group note ID for notes that are created in a group documentation context."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "LETTER_DEST_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The letter destination category ID for the note. This column is only populated if this row is for a Customer Relationship Management letter.",
+      "entries": [
+        "Patient Portal",
+        "Print",
+        "Print and Portal",
+        "Email",
+        "Patient Portal Retracted",
+        "Print and Portal Retracted"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "LETTER_FINAL_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant the letter was finalized. This column is only populated if this row is for a Customer Relationship Management letter."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "HNO_RECORD_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Record type.",
+      "entries": [
+        "PB Guarantor Note",
+        "PB Guarantor Letter",
+        "PB Insurance Follow-up Letter",
+        "PB Hospital Account Note",
+        "CRM Letter",
+        "CRM Envelope",
+        "CRM Email",
+        "HB Guarantor Note",
+        "HB Hospital Account Note",
+        "HB Guarantor Letter",
+        "HB Hospital Account Letter",
+        "HB Liability Bucket Letter",
+        "HB Liability Bucket Note",
+        "HB Contractual History Note",
+        "EB Guarantor Note",
+        "Reg Financial Assistance Letter",
+        "Reg Financial Assistance Tracker Note",
+        "Reg Financial Assistance Case Note"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "RFL_LETTER_ENC_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the encounter in which the referral communication letter was written"
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CONV_MSG_CID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the Community ID (CID) of a related In Basket Message (EOW) record."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "OUTREACH_TEMPLATE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the campaign outreach template that created the letter."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "SOURCE_EDITS_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores a Contact Serial Number (CSN) pointer to the General Use Notes (HNO) record that holds edits to the parent note while an attestation is in progress."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "EXT_DOC_EVNT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "External autoreconciled note event identifier"
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "EXT_NOTE_TYPE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Autoreconciled external note type name"
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "EXT_DUP_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Autoreconciled extneral note duplicate source note"
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "EXT_DUP_NOTE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Autoreconciled external note duplicate note type",
+      "entries": [
+        "Same reference ID",
+        "Duplicate text",
+        "Same globally unique ID"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "PARENT_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The parent note ID of a soft-deleted transcription record."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "ACTIVE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether the note is active. This item is not populated for all notes.",
+      "entries": [
+        "Active",
+        "Inactive"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "EXT_AUTHOR",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Name of the external note's author. The name is stored as pieces delimited by character 127 and is ordered as follows: Last Name, Last Name from Spouse, First Name, Middle Name, Last Name Prefix, Spouse Last Name Prefix, Title, Suffix, Academic Initials."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "NOTE_UPDATE_INST_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The last time this note was received through Care Everywhere. The value of Received Assessment and Plan Existence Days (I DXC 17000) defines how long notes with this item set exist before they are deleted. Scheduled task Remove HNO Records (E1J 88032) deletes notes and all of their references that have not been received within the amount of days defined by Received Assessment and Plan Existence Days (I DXC 17000)  Received Assessment and Plan Existence Days (I DXC 17000) defaults to 30 days if not set."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "ROUT_RECPNT_COMMUNICATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This is a Communication Management (LCA) record that contains information about recipients that users selected for routing in the clinical note editor."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "EXTERNAL_SOURCE_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If this note is associated with information in an outside system, the ID of that information can be stored here."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "EXTERNAL_PROBLEM_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reference ID for the external problem linked to the note."
+    }
+  ]
+}

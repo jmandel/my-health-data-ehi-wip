@@ -1,0 +1,92 @@
+{
+  "name": "MC_PRICER_SUMMARY",
+  "description": "This table contains pricing summary output returned by the Epic Pricer.",
+  "primaryKey": [
+    {
+      "columnName": "PRICER_MSG_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PRICER_MSG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the Pricer Message record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PRICE_SUM_ALLOW",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Returned allowed amount from pricing summary data."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PRICE_SUM_PMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Returned payment amount from pricing summary data. This is a calculation of the allowed amount minus coinsurance/deductible."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PRICE_SUM_DEDUCT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Returned deductible amount from pricing summary data."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PRICE_SUM_COINS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Returned coinsurance amount from pricing summary data."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PRICE_SUM_OUTLIER",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Returned outlier amount from pricing summary data."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PRICE_SUM_HCPCS_RTN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The returned HCPCS Pricer return code from pricing summary data.",
+      "entries": [
+        "Priced Normally",
+        "Review Needed for Co-Surgeon",
+        "Review Needed for Assistant At Surgery",
+        "Not for Medicare",
+        "Paid in Other Services",
+        "Missing HCPCS Code",
+        "Fee Schedule Amount is 0",
+        "HCPCS Code Not Found in Fee Schedule",
+        "HCPCS and POS Type Do Not Match",
+        "Missing Required Modifier",
+        "Missing Ambulance Pickup Zipcode",
+        "Missing Anesthesia Time in Minutes",
+        "Service Date Prior to HCPCS Effective Date",
+        "Team Surgeon Distribution Required",
+        "More Than 5 Surgeries",
+        "Missing Physician",
+        "Invalid Units for Bilateral Codes",
+        "Invalid Modifiers",
+        "CBSA Not Found",
+        "Wage Index Not Found",
+        "NOC Not Found for NDC",
+        "Generic bad request"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PRICE_SUM_FSC_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Returned fee schedule amount from pricing summary data."
+    }
+  ]
+}

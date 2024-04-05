@@ -1,0 +1,56 @@
+{
+  "name": "PAT_VA_BENEFIT_INFO",
+  "description": "This table stores information about a patient's veteran status and benefits as reported by the VA.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "QUERY_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which we sent a query to the VA for a patient's veteran status. The other items in the 82400 related group will hold the results of that query, if any."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "VA_VETERAN_STATUS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether or not the patient is considered a Title 38 Veteran according to the VA.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RSN_NOT_CONFIRMED",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason a patient is not considered a Title 38 Veteran."
+    }
+  ]
+}

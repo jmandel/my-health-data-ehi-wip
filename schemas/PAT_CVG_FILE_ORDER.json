@@ -1,0 +1,70 @@
+{
+  "name": "PAT_CVG_FILE_ORDER",
+  "description": "The PAT_CVG_FILE_ORDER table contains information about the filing order of each member's coverages. Since members can have multiple coverages, each row of coverage filing order information in this table is identified by the patient ID and a line number.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID assigned to the patient record. This ID may be encrypted if you have elected to use enterprise reporting�s encryption utility."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number used to identify each line of filing order information for the patient."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID assigned to the coverage record. This ID may be encrypted if you have elected to use enterprise reporting�s encryption utility."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "FILING_ORDER",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The coverage filing order, as determined manually by a user or automatically using the automatic filing order rules."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "FILING_ORDER_CAT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This field will contain the abbreviation Spec if the coverage has a relative filing order; for example, a worker�s comp coverage would have a filing order of Special so that coverage would be consulted first when working with worker�s comp related charges.",
+      "entries": [
+        "Special",
+        "N/A",
+        "N/A and Special"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "HOSP_FILE_ORD",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The coverage filing order pertaining to inpatient charges. This column only contains data if you are using Epic�s ADT or inpatient applications."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "HOSP_FILE_ORD_CAT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column only contains data if you are using Epic�s ADT or inpatient applications."
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "name": "ORDER_RES_COMP_CMT",
+  "description": "This table contains result component value comments for orders that are populated by the Incoming Results Interface. These result component value comments are not populated through Enter/Edit Results. The data in this table is only populated if the result component value normally stored in the Value_Internal (I ORD 2010) item (ORDER_RESULTS.ORD_VALUE or ORDER_RESULTS.ORD_NUM_VALUE) is too long to be stored in that item.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE_COMP",
+      "ordinalPosition": 3
+    },
+    {
+      "columnName": "LINE_COMMENT",
+      "ordinalPosition": 4
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The order ID for this order/procedure."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "This is a numeric representation of the date of this encounter in your system.  The integer portion of the number specifies the date of the encounter. The digits after the decimal point indicate multiple visits on one day."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE_COMP",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line count associated with the result component. This line number will match with the LINE column in the ORDER_RESULTS table. It is probable that this table will not have all the lines from the ORDER_RESULTS table since this table only contains data for the components that do not have data in item that stores the result component in the Order record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "COMPONENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of each result component for each result.  Additional data about result components can be found in the CLARITY_COMPONENT table."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "COMPONENT_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the component."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "LINE_COMMENT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line count associated with each line of the result component comments. There can be multiple lines of comments, therefore each line has a line number."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The contact owner deployment of this record; used in Community Model record sharing."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "RESULTS_COMP_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The result component value comments for this order record which are populated by the Incoming Results Interface.  These result comments are NOT populated by Enter/Edit Results. This column is populated when the result component values that are normally stored in the result component in the Order record (ORDER_RESULTS.ORD_VALUE or ORDER_RESULTS.ORD_NUM_VALUE) are too long to be stored in the result component in the Order record."
+    }
+  ]
+}

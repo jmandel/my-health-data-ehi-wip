@@ -1,0 +1,102 @@
+{
+  "name": "COD_CONTACT_STAT_HX",
+  "description": "This table contains history information about a contact on a coding (COD) record, including the contact status history, contact action Coordinated Universal Time (UTC) date and time, contact action local date and time, user acting on the contact, and the reason why the contact is acted on. Currently, Clinical Documentation Improvement (CDI) Reviews are stored as contacts (or rows) on the COD record. This table contains CDI Review status, CDI Review action UTC date and time, CDI Review action local date and time, user acting on the CDI Review, and the reason why the user is acting on the CDI Review.",
+  "primaryKey": [
+    {
+      "columnName": "RECORD_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the coding record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "COD_CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "COD_CONTACT_STAT_HX_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the history of the contact status of the coding record.",
+      "entries": [
+        "Active",
+        "Restored",
+        "Combined",
+        "Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "COD_CONTACT_ACT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item stores the UTC instant when an action is taken on a contact on the coding record."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "COD_CONTACT_ACT_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "This virtual item displays the local instant when an action is taken on a contact on the coding record."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "COD_CONTACT_ACT_USR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the user ID of the user that takes action on a contact on the coding record."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "COD_CONTACT_ACT_USR_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "COD_CONTACT_ACT_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the reason for an action taken on a contact on the coding record.",
+      "entries": [
+        "Wrong Patient",
+        "Wrong Account",
+        "Deleted In Error",
+        "Other"
+      ]
+    }
+  ]
+}

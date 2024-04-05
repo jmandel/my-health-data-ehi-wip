@@ -1,0 +1,69 @@
+{
+  "name": "HSP_ACCT_HC_EXT_ERROR",
+  "description": "This table contains error information returned by an external system for hospital coding workflows.",
+  "primaryKey": [
+    {
+      "columnName": "ACCT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ACCT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the hospital account record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "EXT_ERROR_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The error code returned by an external system."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EXT_ERROR_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of error returned by an external system.",
+      "entries": [
+        "Error",
+        "Warning"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EXT_ERR_WORKFLOW_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The hospital coding workflow associated with the external error code.",
+      "entries": [
+        "Coding",
+        "Alternate Coding",
+        "Clinical Documentation Improvement",
+        "Abstracting",
+        "Specialty Association"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EXT_ERROR_TEXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user-facing message supplied with the external error code."
+    }
+  ]
+}

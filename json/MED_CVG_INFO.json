@@ -1,0 +1,219 @@
+{
+  "$meta": {
+    "schemas": {
+      "MED_CVG_INFO": {
+        "name": "MED_CVG_INFO",
+        "description": "This table holds information about medication coverage records.",
+        "primaryKey": [
+          {
+            "columnName": "MED_ESTIMATE_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "MED_ESTIMATE_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier (.1 item) for the medication estimate record."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "RECORD_CREATION_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Stores the date the record was created."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "CNCT_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the record type for this medication estimate.",
+            "entries": [
+              "Medication Estimate",
+              "Alternatives for Medication Estimate"
+            ]
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "CVG_MEMBER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This holds the member ID associated with this medication estimate."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the patient record for this row (EPT ID). This column is frequently used to link to the PATIENT table.",
+            "linksTo": "PATIENT"
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "ENC_CSN",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Encounter contact serial number of the patient encounter record for this row (EPT CSN). A unique contact serial number in decimal format."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "EPRESCRIBING_NET_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The identifier of the e-prescribing network (DXO) record used for real-time prescription benefits (RTPB) for this estimate."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "EPRESCRIBING_NET_ID_EXTERNAL_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Organization's external name used as the display name on forms and user interfaces."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "CVG_PAYER_IDNT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This holds the external ID of the payer associated with this estimate."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "ORDER_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This item holds the record ID of the order (ORD) this medication estimate is linked to. It may be null if an order has not been linked yet."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "MED_CVG_INFO",
+            "target": "MED_CVG_ALTERNATIVES",
+            "joinKeys": [
+              {
+                "source": "MED_ESTIMATE_ID",
+                "target": "MED_ESTIMATE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "MED_CVG_INFO",
+            "target": "MED_CVG_DETAILS",
+            "joinKeys": [
+              {
+                "source": "MED_ESTIMATE_ID",
+                "target": "MED_ESTIMATE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "MED_CVG_INFO",
+            "target": "MED_CVG_DX_VALUE",
+            "joinKeys": [
+              {
+                "source": "MED_ESTIMATE_ID",
+                "target": "MED_ESTIMATE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "MED_CVG_INFO",
+            "target": "MED_CVG_RESP_RSLT_DETAIL",
+            "joinKeys": [
+              {
+                "source": "MED_ESTIMATE_ID",
+                "target": "MED_ESTIMATE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "MED_CVG_INFO",
+            "target": "MED_CVG_STATUS_DETAILS",
+            "joinKeys": [
+              {
+                "source": "MED_ESTIMATE_ID",
+                "target": "MED_ESTIMATE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "MED_CVG_INFO",
+            "target": "MED_CVG_USERACTION",
+            "joinKeys": [
+              {
+                "source": "MED_ESTIMATE_ID",
+                "target": "MED_ESTIMATE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "MED_CVG_INFO",
+            "target": "MED_CVG_ESTIMATE_VALS",
+            "joinKeys": [
+              {
+                "source": "MED_ESTIMATE_ID",
+                "target": "MED_ESTIMATE_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "MED_CVG_INFO": [
+    {
+      "MED_ESTIMATE_ID": 8470183,
+      "RECORD_CREATION_DATE": "2022-12-01 00:00:00",
+      "CNCT_TYPE_C_NAME": "Medication Estimate",
+      "CVG_MEMBER_ID": "FA1000010XMWEJQ%602496879%001",
+      "PAT_ID": "Z7004242",
+      "ENC_CSN": 974614965,
+      "EPRESCRIBING_NET_ID": 1000495,
+      "EPRESCRIBING_NET_ID_EXTERNAL_NAME": "RTPB Network Vendor",
+      "CVG_PAYER_IDNT": "P00000000001001",
+      "ORDER_ID": 772179266,
+      "$meta": {
+        "type": "MED_CVG_INFO"
+      }
+    },
+    {
+      "MED_ESTIMATE_ID": 7107673,
+      "RECORD_CREATION_DATE": "2022-08-29 00:00:00",
+      "CNCT_TYPE_C_NAME": "Medication Estimate",
+      "CVG_MEMBER_ID": "FA1000010XMWEJQ%602496879%001",
+      "PAT_ID": "Z7004242",
+      "ENC_CSN": 948004323,
+      "EPRESCRIBING_NET_ID": 1000495,
+      "EPRESCRIBING_NET_ID_EXTERNAL_NAME": "RTPB Network Vendor",
+      "CVG_PAYER_IDNT": "P00000000001001",
+      "ORDER_ID": 772179261,
+      "$meta": {
+        "type": "MED_CVG_INFO"
+      }
+    },
+    {
+      "MED_ESTIMATE_ID": 7107675,
+      "RECORD_CREATION_DATE": "2022-08-29 00:00:00",
+      "CNCT_TYPE_C_NAME": "Alternatives for Medication Estimate",
+      "CVG_MEMBER_ID": "FA1000010XMWEJQ%602496879%001",
+      "PAT_ID": "Z7004242",
+      "ENC_CSN": 948004323,
+      "EPRESCRIBING_NET_ID": 1000495,
+      "EPRESCRIBING_NET_ID_EXTERNAL_NAME": "RTPB Network Vendor",
+      "CVG_PAYER_IDNT": "P00000000001001",
+      "ORDER_ID": 772179261,
+      "$meta": {
+        "type": "MED_CVG_INFO"
+      }
+    }
+  ]
+}

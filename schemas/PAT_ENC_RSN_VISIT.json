@@ -1,0 +1,66 @@
+{
+  "name": "PAT_ENC_RSN_VISIT",
+  "description": "The PAT_ENC_RSN_VISIT contains the data entered as the Reason for Visit for a clinical system encounter. Each row in this table is one reason for visit associated with a patient encounter. One patient encounter may have multiple reasons for visit; therefore, the item LINE is used to identify each reason for visit within an encounter.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "A unique serial number for this encounter. This number is unique across all patients and encounters in the system."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the reason for visit within the encounter."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ENC_REASON_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the record associated with the Reason for Visit entered in an encounter."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "COMMENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comments associated with the reason for visit entered in a clinical system exam encounter."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RFV_ONSET_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The onset date for reason for call/visit stored on this line.  Typically this value will only be collected during call workflows such as a telephone encounter."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "BODY_LOC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The body location associated with the reason for visit for this patient encounter. This column is frequently used to link to the VESSEL_DOC table.",
+      "linksTo": "VESSEL_DOC"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "BODY_LOC_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores record name (.2)"
+    }
+  ]
+}

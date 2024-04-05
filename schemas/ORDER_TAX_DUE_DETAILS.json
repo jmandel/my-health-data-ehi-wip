@@ -1,0 +1,80 @@
+{
+  "name": "ORDER_TAX_DUE_DETAILS",
+  "description": "This table contains tax charge components associated with the total tax due for an order.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "TAX_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column contains the contact serial number (CSN) of the tax definition record that was applied to the product or service within a business transaction."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "TAX_CLASS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The tax classification category ID that determines which tax rate to use in the corresponding tax definition record for the order.",
+      "entries": [
+        "Non-Taxable",
+        "Taxable"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "DUE_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column contains the amount due in taxes, without rounding, for a tax definition."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "EXEMPTED_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column contains the amount of tax exempted, without rounding, for a tax authority."
+    }
+  ]
+}

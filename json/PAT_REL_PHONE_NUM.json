@@ -1,0 +1,141 @@
+{
+  "$meta": {
+    "schemas": {
+      "PAT_REL_PHONE_NUM": {
+        "name": "PAT_REL_PHONE_NUM",
+        "description": "This table contains information about the patient contacts' phone numbers. The records included in this table are Patient Relationships (RLA) records.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_RELATIONSHIP_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_RELATIONSHIP_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the patient contact record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PHONE_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Patient contact's phone number."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "PHONE_NUM_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The phone number type category ID for the patient contact's phone number.",
+            "entries": [
+              "Mobile",
+              "Pager",
+              "Home Fax",
+              "Other Fax",
+              "Assistant",
+              "TTY",
+              "Home Phone",
+              "Work Phone",
+              "Video Phone"
+            ]
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "PRIMARY_PHONE_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates whether the phone number for this patient contact is the primary email address",
+            "entries": [
+              "No",
+              "Yes"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "PAT_REL_PHONE_NUM",
+            "target": "PAT_RELATIONSHIP_LIST",
+            "joinKeys": [
+              {
+                "source": "PAT_RELATIONSHIP_ID",
+                "target": "PAT_RELATIONSHIP_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PAT_REL_PHONE_NUM": [
+    {
+      "PAT_RELATIONSHIP_ID": 31533871,
+      "LINE": 1,
+      "PRIMARY_PHONE_YN": "N",
+      "$meta": {
+        "type": "PAT_REL_PHONE_NUM"
+      }
+    },
+    {
+      "PAT_RELATIONSHIP_ID": 31533871,
+      "LINE": 2,
+      "PRIMARY_PHONE_YN": "N",
+      "$meta": {
+        "type": "PAT_REL_PHONE_NUM"
+      }
+    },
+    {
+      "PAT_RELATIONSHIP_ID": 31533871,
+      "LINE": 3,
+      "PHONE_NUM": "REDACTED",
+      "PHONE_NUM_TYPE_C_NAME": "Mobile",
+      "PRIMARY_PHONE_YN": "Y",
+      "$meta": {
+        "type": "PAT_REL_PHONE_NUM"
+      }
+    },
+    {
+      "PAT_RELATIONSHIP_ID": 31533870,
+      "LINE": 1,
+      "PHONE_NUM_TYPE_C_NAME": "Home Phone",
+      "PRIMARY_PHONE_YN": "N",
+      "$meta": {
+        "type": "PAT_REL_PHONE_NUM"
+      }
+    },
+    {
+      "PAT_RELATIONSHIP_ID": 31533870,
+      "LINE": 2,
+      "PHONE_NUM_TYPE_C_NAME": "Work Phone",
+      "PRIMARY_PHONE_YN": "N",
+      "$meta": {
+        "type": "PAT_REL_PHONE_NUM"
+      }
+    },
+    {
+      "PAT_RELATIONSHIP_ID": 31533870,
+      "LINE": 3,
+      "PHONE_NUM": "REDACTED",
+      "PHONE_NUM_TYPE_C_NAME": "Mobile",
+      "PRIMARY_PHONE_YN": "Y",
+      "$meta": {
+        "type": "PAT_REL_PHONE_NUM"
+      }
+    }
+  ]
+}

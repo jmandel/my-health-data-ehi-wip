@@ -1,0 +1,713 @@
+{
+  "name": "AP_CLAIM_PROC_3",
+  "description": "This table summarizes data for AP Claims service lines, with each service line given one row.\n\n\n\n\n\nTo link this table�s service line information back to a claim header, join this table to AP_CLAIM_PROC_IDS on the TX_ID column. If you need to report on claim service lines specific to Cost Sharing Reduction (CSR), join this table instead to AP_CLAIM_PROC_IDS_CSR on the TX_ID column.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the AP Claim procedure transaction."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "ALWD_AMT_ADJ_RCR",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The referral rules table used in determining the referral requirements which affect the allowed amount of the service line on the AP Claim. Join ALWD_AMT_ADJ_RCR and ALWD_AMT_ADJ_RCR_LN to REFERRAL_RCR_LINE.TABLE_ID and REFERRAL_RCR_LINE.LINE for information on the matched line."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ALWD_AMT_ADJ_FSC",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The fee schedule that was used in determining the allowed amount of the service line on the AP Claim, if Regional Usual and Customary pricing was used."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ALWD_AMT_ADJ_FSC_FEE_SCHEDULE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of each fee schedule."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ALWD_AMT_ADJ_UC_HMU",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The conversion factor table that was used in determining the allowed amount of the service line on the AP Claim, if Regional Usual and Customary pricing was used."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ALWD_AMT_ADJ_UC_HMU_TABLE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name for the conversion factor table."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ALWD_AMT_ADJ_UC_ZIP",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The ZIP Code that was used in determining the allowed amount of the service line on the AP Claim, if Regional Usual and Customary pricing was used."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ALWD_AMT_ADJ_RCR_LN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the referral rules table used in determining the allowed amount of the service line on the AP Claim. Join ALWD_AMT_ADJ_RCR and ALWD_AMT_ADJ_RCR_LN to REFERRAL_RCR_LINE.TABLE_ID and REFERRAL_RCR_LINE.LINE for information on the matched line."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ALWD_AMT_ADJ_CFR_RQ",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The benefit referral classifier from the referral rules table that is used to determine the referral requirement for the allowed amount of the service line on the AP Claim."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ALWD_AMT_ADJ_CFR_RQ_CLASSIFIER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The title of the classifier record."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "ALWD_AMT_ADJ_USE_UC",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Determines whether the Usual and Customary value in the contract was used. Join this column to ZC_IS_UC_APPLIED on INTERNAL_ID in order to translate values."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PROC_QTY_OVRRIDEN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Flag to indicate if the Procedure Quantity was manually overridden by the user.",
+      "entries": [
+        "User Overridden",
+        "System Computed",
+        "To Be Determined"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PMT_INFO_RESP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The responsibility class from the split definition table that was assigned to the service line on the AP Claim."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "PMT_INFO_RESP_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the responsibility class record."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "PMT_INFO_SPLIT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The effective date of the split definition table used in determining the responsibility class of the service line on the AP Claim."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "PMT_INFO_SPLIT_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line of the split definition table used in determining the responsibility class of the service line on the AP Claim."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PMT_INFO_CPNT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The component or component group of the split definition table used in determining the responsibility class of the service line on the AP Claim."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "PMT_INFO_CPNT_ID_COMPONENT_INDEX_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the component index record"
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "SERVICE_AREA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The service area of the service line on the AP claim."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "RX_POINTER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of medication file for the service line."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "RX_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The medication type for this service line.",
+      "entries": [
+        "Acute",
+        "Chronic",
+        "PAT"
+      ]
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "START_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The start time of the procedure."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "STOP_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The stop time of the procedure."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "SERVICE_TIME",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The elapsed time of the procedure in minutes."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "PMT_RESP_OVER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The override responsibility class that was assigned to the service line on the AP Claim."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "PMT_RESP_OVER_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the responsibility class record."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "VEN_CNTRCT_RFL_LST",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The list of referrals satisfying the vendor contract authorization requirements.   This column will be deprecated in a future release. Reporting content should use Clarity table AP_CLM_PX_VEN_CNTRCT_RFL going forward, which contains one row per linked referral record."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "OPR_AUTH_RFL_LST",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The list of referrals satisfying the operational authorization requirements.  This column will be deprecated in a future release. Reporting content should use Clarity table AP_CLM_PX_OPR_AUTH_RFL going forward, which contains one row per linked referral record."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "BEN_REQ_RFL_LST",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The list of referrals satisfying the benefits authorization requirements.  This column will be deprecated in a future release. Reporting content should use Clarity table AP_CLM_PX_BEN_AUTH_RFL going forward, which contains one row per linked referral record."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "OPR_AUTH_CMP_CMG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the component or component group matched on the operational authorization table for this procedure. The operational authorization table is found in the Tapestry Profile."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "OPR_AUTH_CMP_CMG_ID_COMPONENT_INDEX_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the component index record"
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "OPR_AUTH_NET_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The column stores the network status value as found by matching on the operational authorization table. The operational authorization table is found in the Tapestry Profile. The stored values can be translated using the ZC_NETWORK_LEVELS table.",
+      "entries": [
+        "In",
+        "Out",
+        "Out of Area",
+        "N/A"
+      ]
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "OPR_AUTH_EFF_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The effective date column value of the matched row on the operational authorization table. The operational authorization table is found in the Tapestry Profile."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "OPR_AUTH_TERM_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The termination date column value of the matched row on the operational authorization table. The operational authorization table is found in the Tapestry Profile."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "OPR_AUTH_REQ_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores whether or not authorization is required as found by matching on the operational authorization table. The operational authorization table is found in the Tapestry Profile. The stored values can be translated using the ZC_AUTH_REC table.",
+      "entries": [
+        "No",
+        "Yes-Internal",
+        "Yes-External"
+      ]
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "OPR_AUTH_CFR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The column stores the unique identifier of the referral classifier as found by matching on the operational authorization table. The operational authorization table is found in the Tapestry Profile."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "OPR_AUTH_CFR_ID_CLASSIFIER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The title of the classifier record."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "HR_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The healthcare reimbursement amount for the procedure."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "OVERRIDE_HR_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The override healthcare reimbursement amount."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "PMT_ORIG_RESP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The responsibility class that was originally matched before it got overridden by the system."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "PMT_ORIG_RESP_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the responsibility class record."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "ALWD_AMT_ADJ_UC_FSM",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The fee schedule map that was used in determining the allowed amount of the service line on the AP Claim, if Regional Usual and Customary pricing was used."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "ALWD_AMT_ADJ_UC_FSM_FEE_SCHEDULE_MAP_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name for the fee schedule map record."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "NETWORK_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Network status at the service level",
+      "entries": [
+        "In Network",
+        "Out of Network",
+        "N/A"
+      ]
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "OVRD_STOP_LOSS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If set to 1-Yes, then the contractual stop loss threshold will not be evaluated when this service is adjudicated, and stop loss will therefore not be applied to this service.  If set to 0-No, then stop loss will be applied to this service if applicable to the claim.  If left blank, then the claim-level override (CLM 18132) will be used.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "PRIM_PAT_NOTCOV",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "For non-primary claims (e.g. secondary), the patient not covered amount adjudicated by the primary insurance company."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "PRIM_PAT_DED",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "For non-primary claims (e.g. secondary), the patient deductible amount adjudicated by the primary insurance company."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "PRIM_PAT_COPAY",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "For non-primary claims (e.g. secondary), the patient copay amount adjudicated by the primary insurance company."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "PRIM_PAT_COINS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "For non-primary claims (e.g. secondary), the patient co-insurance amount adjudicated by the primary insurance company."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "ORIGINAL_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Holds the original service line ID for claim line splitting."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "ALWD_AMT_ADJ_DSLW_DSC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores a Y/N flag if the amount of this service line will route to patient responsibility as a disallowed amount. If Y, the discount amount on a service priced by the line was routed to patient responsibility as a disallowed amount. If N, means the system left the discount amount as provider responsibility."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "ALWD_AMT_ADJ_NSL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the ID stop loss term record (NSL) that was used in determining the allowed amount of this service line."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "ALWD_AMT_ADJ_NSL_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the stop loss term record."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "ALWD_AMT_ADJ_UBC",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the ID of the revenue record (UBC) used in determining the allowed amount of this service line."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "ALWD_AMT_ADJ_UBC_REVENUE_CODE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the revenue code."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "RESPONSIBLE_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the responsible amount for this service line, as calculated by custom COB logic. If the payment method (AP_CLAIM.METH_TO_PAY_CLM_C) for the claim this service line is associated with is 1 (Primary Coverage), this column will be null."
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "NDC_PRICE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Holds the National Drug Code (NDC) price for the service."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "NDC_FEE_SCHEDULE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Holds the ID of the National Drug Code (NDC) fee schedule used."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "NDC_FEE_SCHEDULE_ID_FEE_SCHEDULE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of each fee schedule."
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "NDC_PRICING_METHOD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the category ID of the contract-level National Drug Code (NDC) pricing method for the service.",
+      "entries": [
+        "Percent of NDC Fee Schedule",
+        "Minimum of NDC Fee Schedules",
+        "Maximum of NDC Fee Schedules"
+      ]
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "NDC_PRICING_METHOD_ALLOWED_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the category ID of the National Drug Code (NDC) pricing method applied to the service allowed amount.",
+      "entries": [
+        "Use Only NDC Price",
+        "Minimum of Amounts",
+        "Maximum of Amounts",
+        "Add to Service Allowed Amount",
+        "Use NDC Price, but Fall Back to Contract"
+      ]
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "NDC_HANDLING_FEE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Holds the National Drug Code (NDC) handling fee used to price the service."
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "NDC_BASE_RATE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The National Drug Code (NDC) base rate used to price the service."
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "NDC_UNIT_PRICE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Holds the National Drug Code (NDC) unit price used to price the service."
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "NDC_PERCENT_OF_UNIT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Holds the National Drug Code (NDC) percent of unit charge used to price the service."
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "NDC_PERCENT_OF_FEE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Holds the National Drug Code (NDC) percent of fee schedule used to price the service."
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "NDC_CLAIM_THRESHOLD",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Holds the National Drug Code (NDC) claim-level threshold used to price the service."
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "NDC_SERVICE_THRESHOLD",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Holds the National Drug Code (NDC) service-level threshold used to price the service."
+    },
+    {
+      "ordinalPosition": 69,
+      "name": "NDC_SERVICE_THRESHOLD_TYPE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Holds the National Drug Code (NDC) service-level threshold type."
+    },
+    {
+      "ordinalPosition": 70,
+      "name": "NDC_CLAIM_THRESHOLD_MET_YN_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A flag that stores whether or not the National Drug Code (NDC) claim-level threshold was met.  If set to 0-No, the threshold was not met.  If set to 1-Yes, the threshold was met."
+    },
+    {
+      "ordinalPosition": 71,
+      "name": "NDC_SERVICE_THRESHOLD_MET_YN_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A flag that stores whether or not the National Drug Code (NDC) claim-level threshold was met.  If set to 0-No, the threshold was not met.  If set to 1-Yes, the threshold was met."
+    },
+    {
+      "ordinalPosition": 72,
+      "name": "NDC_PAYMENT_MECHANISM_PRICE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Holds the contractual payment mechanism price that the National Drug Code (NDC) price was compared with or added to during adjudication."
+    },
+    {
+      "ordinalPosition": 73,
+      "name": "ADJ_TO_PAT_OOP",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Amount that the patient out of pocket would have been on a capitated secondary service had the service not been capitated according to the contract. This amount gets displayed on the 835 in the CAS*CO*45 segment."
+    },
+    {
+      "ordinalPosition": 74,
+      "name": "REDISTRIBUTED_TO_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Specifies the line to which this line's primary factors (primary insurance and primary patient portion) were redistributed for the purposes of secondary claim adjudication, if applicable."
+    },
+    {
+      "ordinalPosition": 75,
+      "name": "REPRESENTATIVE_LINE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Specifies whether this line is used as a representative line for one or more other service lines for the purposes of secondary claim adjudication."
+    },
+    {
+      "ordinalPosition": 76,
+      "name": "OVERRIDE_RENTAL_RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Contains the rental record which this service should use when pricing by durable medical equipment (DME) rental."
+    },
+    {
+      "ordinalPosition": 77,
+      "name": "DME_RENTAL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Contains the rental linked to this service."
+    },
+    {
+      "ordinalPosition": 78,
+      "name": "SYS_ADJUST_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value of the system calculated reason for the adjustment to this procedure on the accounts payable claim record.",
+      "entries": [
+        "Procedure is capitated",
+        "Coordination of Benefits",
+        "Maintenance of Benefits",
+        "Allowed exceeds amount patient paid",
+        "Pay by DRG"
+      ]
+    },
+    {
+      "ordinalPosition": 79,
+      "name": "DME_PRICING_RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Holds the Durable Medical Equipment (DME) pricing record used during adjudication of the claim."
+    },
+    {
+      "ordinalPosition": 80,
+      "name": "DME_PRICING_RECORD_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the pricing record."
+    },
+    {
+      "ordinalPosition": 81,
+      "name": "MOOP_MET_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Maximum Out-Of-Pockets (MOOPs) apply to this service.",
+      "entries": [
+        "No (Old)",
+        "Yes (Old)",
+        "N/A (Old)",
+        "Yes",
+        "No",
+        "N/A"
+      ]
+    },
+    {
+      "ordinalPosition": 82,
+      "name": "DEDUCTIBLE_MET_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Displays whether the deductible limit was met, not met, or didn't apply to this service.  11 - Yes indicates that the deductible was met by this service or before the service was adjudicated. 12 - No indicates that a deductible applies to the service, but the limit was not met as of the time the service was adjudicated. 13 - N/A indicates that no deductibles apply to this service."
+    },
+    {
+      "ordinalPosition": 83,
+      "name": "NOT_COVERED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores Yes if the service is not covered, No if the service is covered, or NULL if the service was adjudicated prior to this calculation being available."
+    },
+    {
+      "ordinalPosition": 84,
+      "name": "SUBROGATION_DEMAND_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the subrogation demand amount from another payer for a service."
+    },
+    {
+      "ordinalPosition": 85,
+      "name": "SUBROGATION_ADJ_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the amount for a service that was not paid due to subrogation demand being less than net payable."
+    },
+    {
+      "ordinalPosition": 86,
+      "name": "LN_ITEM_CTRL_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The line item control number from the submitted EDI claim. This is the ID of the service line in the submitter's system."
+    },
+    {
+      "ordinalPosition": 87,
+      "name": "CLIA_NUMBER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Identification of a Clinical Laboratory Improvement Amendment (CLIA) certified facility that contrasts with the claim level."
+    },
+    {
+      "ordinalPosition": 88,
+      "name": "REFERRING_CLIA_FACILITY_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Identification of a Clinical Laboratory Improvement Amendment (CLIA) certified facility that was referred to for qualifying tests."
+    },
+    {
+      "ordinalPosition": 89,
+      "name": "HAS_UNMAPPED_CODE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if there were procedure codes on the incoming claim that could not be mapped to internal records."
+    },
+    {
+      "ordinalPosition": 90,
+      "name": "PI_REDUCT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Payer Initiated Billed Amount Reduction from Emergency Department Claim (EDC) Analyzer as a result of down coding."
+    },
+    {
+      "ordinalPosition": 91,
+      "name": "PI_REDUCT_OVRIDE_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Override amount for Payer Initiated Reduction"
+    },
+    {
+      "ordinalPosition": 92,
+      "name": "ALWD_AMT_ADJ_UC_ZIP_FULL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ZIP Code that was used in determining the allowed amount of the service line on the AP Claim, if Regional Usual and Customary pricing was used. This column can support both 5 and 9 digit zip codes."
+    }
+  ]
+}

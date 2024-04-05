@@ -1,0 +1,126 @@
+{
+  "name": "MED_CVG_INFO",
+  "description": "This table holds information about medication coverage records.",
+  "primaryKey": [
+    {
+      "columnName": "MED_ESTIMATE_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "MED_ESTIMATE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the medication estimate record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CM_PHY_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this record or line. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CM_LOG_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance from which this record or line was extracted. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RECORD_CREATION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date the record was created."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CNCT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the record type for this medication estimate.",
+      "entries": [
+        "Medication Estimate",
+        "Alternatives for Medication Estimate"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CVG_MEMBER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This holds the member ID associated with this medication estimate."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row (EPT ID). This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ENC_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Encounter contact serial number of the patient encounter record for this row (EPT CSN). A unique contact serial number in decimal format."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "EPRESCRIBING_NET_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The identifier of the e-prescribing network (DXO) record used for real-time prescription benefits (RTPB) for this estimate."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "EPRESCRIBING_NET_ID_EXTERNAL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Organization's external name used as the display name on forms and user interfaces."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "CVG_PAYER_IDNT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This holds the external ID of the payer associated with this estimate."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item holds the record ID of the order (ORD) this medication estimate is linked to. It may be null if an order has not been linked yet."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "REPORTING_VERSION",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item is used for reporting purposes. It holds a number that is used to determine which items were available when this record was created."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "VIEWED_BEFORE_SIGN_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item records if a user viewed estimate data in the RTPB window prior to the order being signed. It will only be set to Yes if the the query results were actually displayed prior to signing. This item is only populated on records of type 1-Medication Estimate.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "ALT_VIEWED_BEFORE_SIGN_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item records if a user ever viewed an alternative in the RTPB window prior to the order being signed. To determine which specific alternatives were viewed, see LME 320-Displayed to User Before Signing. This item is only populated on records of type 1-Medication Estimate."
+    }
+  ]
+}

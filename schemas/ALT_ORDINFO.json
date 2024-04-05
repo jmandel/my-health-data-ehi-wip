@@ -1,0 +1,124 @@
+{
+  "name": "ALT_ORDINFO",
+  "description": "This table contains order or order template related information for all alerts. Link to ALERT to get patient, vendor, and alert type information for specific alert. Link to ALT_HISTORY to get alert history information. Link to specific alert table to get specific alert information for a given alert type.",
+  "primaryKey": [
+    {
+      "columnName": "ALT_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ALT_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "A unique serial number for this contact. This number is unique across all alerts in the system."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique order ID for the order that triggered this alert, if it exists. This could be null if one of the following is true: 1. The alert was triggered and the new medication was removed in Order Entry before an order was created. 2. The alert was triggered when signing an order template. OTP_ID contains the unique order template ID.  If the alert is for a medication, link this column to ORDER_MED.ORDER_MED_ID to get the medication order information. If the alert is for a procedure, link this column to the ORDER_PROC table to get the procedure order information."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ORD_CNCT_DAT_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "The contact date in internal, decimal format for the order."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "IS_PRIMARY_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "For medication alert, the alert appears because new medication orders are entered, or some actions are taken for existing medication, or order templates are signed or released, etc. During such scenario, if the alert appears because of actions on some selected medication order or order template, the selected medication order or order template is the reason, and the value in this column is \"Y\". Otherwise, it is \"N\". Default is \"N\".",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "MED_ALERTS_ACTN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value for action done for corresponding order or order template. Link it to ZC_MED_ALERTS_ACTN.MED_ALERTS_ACTC_C to get name, title, abbreviation. Empty or NULL means that is no action for corresponding order.",
+      "entries": [
+        "Override",
+        "Remove",
+        "Discontinue",
+        "Cancel Fill"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for involved order or order template."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ALT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique alert ID for each alert.  You could link it to ALERT.ALT_ID to get patient and vendor information in table ALERT."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ORDER_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the order status if the order is Signed and Held.",
+      "entries": [
+        "Signed and Held"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ORDERING_MODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the ordering mode.",
+      "entries": [
+        "Outpatient",
+        "Inpatient"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ORDER_POC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The phase of care assigned to the order when interaction checking occurred."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ON_MAR_HOLD_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether an order was on Medication Administration Record (MAR) hold when this warning was displayed."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "MED_FROM_OUTSIDE_SRC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column indicates whether or not an order comes from reconciled data. If the order does come from outside data, it will contain the value Yes. If the order does not come from outside data, it will contain the value No. Additionally, this column will be blank for any warnings that fired before the system was keeping track of this."
+    }
+  ]
+}

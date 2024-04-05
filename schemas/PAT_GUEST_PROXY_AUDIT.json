@@ -1,0 +1,73 @@
+{
+  "name": "PAT_GUEST_PROXY_AUDIT",
+  "description": "An audit trail that tracks when a patient's guest proxy relationships are created, changed, or removed.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PROXY_AUD_MYPT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Guest proxy relationship to audit"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "GSTPRXYAUD_ACT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Action done on the guest proxy relationship",
+      "entries": [
+        "Relationship Created",
+        "Upgrade Requested",
+        "Upgrade declined",
+        "Upgraded",
+        "Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PROXY_AUD_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The time at which an action was audited for a guest proxy relationship"
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PROXY_AUD_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the user who performed the action being audited"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PROXY_AUD_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    }
+  ]
+}

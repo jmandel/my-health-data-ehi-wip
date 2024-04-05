@@ -1,0 +1,71 @@
+{
+  "name": "PRIORITY_AUDIT_TRL",
+  "description": "Table to track changes to the priority of a transport request.",
+  "primaryKey": [
+    {
+      "columnName": "TRANSPORT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TRANSPORT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the Transport Request record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "NEW_PRIORITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The new transport request priority in the audit trail.",
+      "entries": [
+        "Stat",
+        "High",
+        "Normal",
+        "Low"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "OLD_PRIORITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The old transport request priority in the audit trail"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PRIOR_CHNG_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant at which a transport request priority was changed."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PRIOR_CHNG_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who changed the priority of this transport request."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PRIOR_CHNG_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    }
+  ]
+}

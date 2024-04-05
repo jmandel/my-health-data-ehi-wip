@@ -1,0 +1,109 @@
+{
+  "$meta": {
+    "schemas": {
+      "ORD_MED_USER_ADMIN": {
+        "name": "ORD_MED_USER_ADMIN",
+        "description": "This table contains user-entered administration instructions. This information is already contained as a part of the table ORD_MED_ADMININSTR so this table does not have to be extracted.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the medication order (prescription) record. NOTE: This is an internal unique identifier for order (ORD) master file records in this table and cannot be used to link to CLARITY_MEDICATION.rd."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for each user-entered administration instruction line."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "MED_USER_ADMN_INSTR",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "User-entered admin instructions converted to plain text. This item (I ORD 7226) replaces the functionality of I ORD 7220 for entering/changing admin instructions. I ORD 7220 is still used for displaying the admin instructions and is updated automatically from this item."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "ORDERING_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date the order was placed in calendar format."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "ORD_MED_USER_ADMIN",
+            "target": "ORDER_RPTD_SIG_INSTR",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORD_MED_USER_ADMIN",
+            "target": "ORDER_MED",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_MED_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORD_MED_USER_ADMIN",
+            "target": "ORD_PRFLST_TRK",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ORD_MED_USER_ADMIN": [
+    {
+      "ORDER_ID": 772179266,
+      "LINE": 1,
+      "MED_USER_ADMN_INSTR": "Start with 10 mg at night; can increase to 20 mg after 1-2 weeks if no",
+      "ORDERING_DATE": "2022-12-01 00:00:00",
+      "$meta": {
+        "type": "ORD_MED_USER_ADMIN"
+      }
+    },
+    {
+      "ORDER_ID": 772179266,
+      "LINE": 2,
+      "MED_USER_ADMN_INSTR": "side effects",
+      "ORDERING_DATE": "2022-12-01 00:00:00",
+      "$meta": {
+        "type": "ORD_MED_USER_ADMIN"
+      }
+    }
+  ]
+}

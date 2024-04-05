@@ -1,0 +1,88 @@
+{
+  "$meta": {
+    "schemas": {
+      "HSP_ACCT_EARSTADDR": {
+        "name": "HSP_ACCT_EARSTADDR",
+        "description": "Table containing guarantor street address in guarantor demographics of the hospital account for what was the guarantor address at the time of discharge.",
+        "primaryKey": [
+          {
+            "columnName": "ACCT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ACCT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the hospital account."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "GUAR_ADDRESS",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the multiple lines of the guarantor street address at time of discharge for a hospital account."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ACCT_EARSTADDR",
+            "target": "HAR_ALL",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ACCT_EARSTADDR",
+            "target": "HSP_ACCT_CLAIM_HAR",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ACCT_EARSTADDR",
+            "target": "HSP_ACCOUNT",
+            "joinKeys": [
+              {
+                "source": "ACCT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HSP_ACCT_EARSTADDR": [
+    {
+      "ACCT_ID": 376684810,
+      "LINE": 1,
+      "GUAR_ADDRESS": "REDACTED",
+      "$meta": {
+        "type": "HSP_ACCT_EARSTADDR"
+      }
+    }
+  ]
+}

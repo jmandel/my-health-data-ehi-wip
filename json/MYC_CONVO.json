@@ -1,0 +1,681 @@
+{
+  "$meta": {
+    "schemas": {
+      "MYC_CONVO": {
+        "name": "MYC_CONVO",
+        "description": "MyChart conversations.",
+        "primaryKey": [
+          {
+            "columnName": "THREAD_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "THREAD_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier (.1 item) for the thread record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The patient this conversation is about. Currently only ever expected to be one, but that could change in the future."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "SUBJECT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Subject of the conversation."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "MYC_MSG_TYP_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The MyChart message type of this conversation. This is the primary message type that will be used for messages on this conversation.",
+            "entries": [
+              "User Message",
+              "Patient Medical Advice Request",
+              "Patient Appointment Schedule Request",
+              "Patient Appointment Cancel Request",
+              "Patient Customer Service Request",
+              "Patient HM Schedule Request",
+              "Patient Medication Renewal Request",
+              "Patient Information Update Request",
+              "Patient Referral Message",
+              "Credit Card Payment",
+              "Patient preferences update request",
+              "Patient HM Reminder Message",
+              "History Questionnaire Submission",
+              "General Questionnaire Submission",
+              "Insurance Update Request",
+              "E-Visit",
+              "Questionnaire Series Submission",
+              "Questionnaire Submission CC",
+              "Test Results Message",
+              "Admin Non Member Proxy Signup Duplicate Alert Check",
+              "Admin WPR merge-unmerge status",
+              "Admin MPI Add Login Failed",
+              "Admin Alert - General",
+              "Partially Answered History Questionnaire",
+              "Case Reminder Message",
+              "Video Visit",
+              "Social Care Unidentified Client Concern",
+              "Advance Care Planning Request",
+              "Campaign Outreach Message",
+              "Billing Message Draft",
+              "Patient Immunization Screening Validation Failure Notification",
+              "Proxy Upgrade Request",
+              "Education Question",
+              "Care Plan Escalation",
+              "Pharmacy Message",
+              "Release of Information",
+              "PCP Update Request",
+              "Patient Referral Notification",
+              "Patient-Entered Immunization Reconciliation Request",
+              "Patient Immunization Reconciliation Notification",
+              "Treatment Team Message",
+              "Patient-Entered Flowsheet Notification",
+              "Unviewed Test Result Notification",
+              "System Message",
+              "IB - SMART FORWARDING",
+              "CE - Referral",
+              "CE - Discharge",
+              "CE - General Communication",
+              "CE - Patient Initiated",
+              "CE - Emergency Discharge",
+              "CE - Inpatient Discharge",
+              "CE - Unknown",
+              "CE - Not Specified",
+              "CE - Event Notification",
+              "CE - Medication Adherence",
+              "CE - Share Everywhere Message",
+              "CE - Healthy Planet Link Upload",
+              "CE - General Communication Reply",
+              "CE - Incoming External Encounter",
+              "CE - Update Notification",
+              "CE - Referral Outcome",
+              "CE - Referral Interim Note",
+              "CE - General Event Notification",
+              "Community Staff Message",
+              "Community Referral Message",
+              "Community Custom Message 1",
+              "Community Custom Message 2",
+              "Community Custom Message 3",
+              "Community Custom Message 4",
+              "Community Custom Message 5",
+              "Community Custom Message 6",
+              "Community Custom Message 7",
+              "Community Custom Message 8",
+              "Community Custom Message 9",
+              "Community Custom Message 10"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "MYC_CONVO",
+            "target": "MYC_CONVO_ABT_CUST_SVC",
+            "joinKeys": [
+              {
+                "source": "THREAD_ID",
+                "target": "THREAD_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "MYC_CONVO",
+            "target": "MYC_CONVO_ABT_MED_ADVICE",
+            "joinKeys": [
+              {
+                "source": "THREAD_ID",
+                "target": "THREAD_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "MYC_CONVO",
+            "target": "MYC_CONVO_AUDIENCE",
+            "joinKeys": [
+              {
+                "source": "THREAD_ID",
+                "target": "THREAD_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "MYC_CONVO",
+            "target": "MYC_CONVO_ENCS",
+            "joinKeys": [
+              {
+                "source": "THREAD_ID",
+                "target": "THREAD_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "MYC_CONVO",
+            "target": "MYC_CONVO_MSGS",
+            "joinKeys": [
+              {
+                "source": "THREAD_ID",
+                "target": "THREAD_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "MYC_CONVO",
+            "target": "MYC_CONVO_USERS",
+            "joinKeys": [
+              {
+                "source": "THREAD_ID",
+                "target": "THREAD_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "MYC_CONVO",
+            "target": "MYC_CONVO_VIEWERS",
+            "joinKeys": [
+              {
+                "source": "THREAD_ID",
+                "target": "THREAD_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "MYC_CONVO": [
+    {
+      "THREAD_ID": 173000322,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "\"Message Your Care Team\" not working",
+      "MYC_MSG_TYP_C_NAME": "Patient Customer Service Request",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000328,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "RE: \"Message Your Care Team\" not working",
+      "MYC_MSG_TYP_C_NAME": "Patient Customer Service Request",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000338,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "RE: \"Message Your Care Team\" not working",
+      "MYC_MSG_TYP_C_NAME": "Patient Customer Service Request",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000345,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "lab results",
+      "MYC_MSG_TYP_C_NAME": "User Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000355,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Appointment Request",
+      "MYC_MSG_TYP_C_NAME": "Patient Appointment Schedule Request",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000360,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Appointment Scheduled",
+      "MYC_MSG_TYP_C_NAME": "System Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000366,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "RE: Appointment Request",
+      "MYC_MSG_TYP_C_NAME": "Patient Appointment Schedule Request",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000370,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Appointment Reminder",
+      "MYC_MSG_TYP_C_NAME": "System Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000375,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Appointment Request",
+      "MYC_MSG_TYP_C_NAME": "Patient Appointment Schedule Request",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000379,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Appointment Scheduled",
+      "MYC_MSG_TYP_C_NAME": "System Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000382,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Appointment Changed",
+      "MYC_MSG_TYP_C_NAME": "System Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000386,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Appointment Canceled",
+      "MYC_MSG_TYP_C_NAME": "System Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000390,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Appointment Rescheduled",
+      "MYC_MSG_TYP_C_NAME": "System Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000394,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Appointment Changed",
+      "MYC_MSG_TYP_C_NAME": "System Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000399,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Questionnaire Submission",
+      "MYC_MSG_TYP_C_NAME": "General Questionnaire Submission",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000402,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Questionnaire Submission",
+      "MYC_MSG_TYP_C_NAME": "Questionnaire Submission CC",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000408,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "imaging questions",
+      "MYC_MSG_TYP_C_NAME": "User Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000415,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "RE: imaging questions",
+      "MYC_MSG_TYP_C_NAME": "User Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000421,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "RE: imaging questions",
+      "MYC_MSG_TYP_C_NAME": "User Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000428,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Appointment Request",
+      "MYC_MSG_TYP_C_NAME": "Patient Appointment Schedule Request",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000432,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Appointment Request",
+      "MYC_MSG_TYP_C_NAME": "Patient Appointment Schedule Request",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000436,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "wrist pain",
+      "MYC_MSG_TYP_C_NAME": "User Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000442,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Please update your email address. The last attempt to send an e-mail notification was undeliverable.",
+      "MYC_MSG_TYP_C_NAME": "System Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000446,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "RE: wrist pain",
+      "MYC_MSG_TYP_C_NAME": "User Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000449,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "RE: wrist pain",
+      "MYC_MSG_TYP_C_NAME": "User Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000454,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Please update your email address. The last attempt to send an e-mail notification was undeliverable.",
+      "MYC_MSG_TYP_C_NAME": "System Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000457,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "RE:  Dr. Dhillon departure from Associated Physicians",
+      "MYC_MSG_TYP_C_NAME": "User Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000460,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Appointment Request",
+      "MYC_MSG_TYP_C_NAME": "Patient Appointment Schedule Request",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000465,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "RE: Appointment Request",
+      "MYC_MSG_TYP_C_NAME": "Patient Appointment Schedule Request",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000471,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "RE: Appointment Request",
+      "MYC_MSG_TYP_C_NAME": "Patient Appointment Schedule Request",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000475,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "RE: Appointment Request",
+      "MYC_MSG_TYP_C_NAME": "Patient Appointment Schedule Request",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000482,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "RE: Appointment Request",
+      "MYC_MSG_TYP_C_NAME": "Patient Appointment Schedule Request",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000486,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "RE:  Scheduling COVID-19 vaccine",
+      "MYC_MSG_TYP_C_NAME": "User Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 173000491,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Re:  Primary Care Physician Reassignment",
+      "MYC_MSG_TYP_C_NAME": "User Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 196546636,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Appointment Reminder",
+      "MYC_MSG_TYP_C_NAME": "Appointment Reminder Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 197506505,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Appointment Reminder",
+      "MYC_MSG_TYP_C_NAME": "Appointment Reminder Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 220170643,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Appointment Request (HM)",
+      "MYC_MSG_TYP_C_NAME": "Patient HM Schedule Request",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 231360293,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Questionnaire Submission",
+      "MYC_MSG_TYP_C_NAME": "General Questionnaire Submission",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 231360294,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Questionnaire Submission",
+      "MYC_MSG_TYP_C_NAME": "Questionnaire Submission CC",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 239205581,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Appointment Cancellation Request",
+      "MYC_MSG_TYP_C_NAME": "Patient Appointment Cancel Request",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 247718617,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Recommendation for neurologist?",
+      "MYC_MSG_TYP_C_NAME": "Patient Medical Advice Request",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 247791454,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Appointment Request",
+      "MYC_MSG_TYP_C_NAME": "Patient Appointment Schedule Request",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 251370414,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Neurology referral",
+      "MYC_MSG_TYP_C_NAME": "Patient Medical Advice Request",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 260261051,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Questionnaire Submission",
+      "MYC_MSG_TYP_C_NAME": "General Questionnaire Submission",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 264877647,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Associated Physicians No Show Policy Update for All Patients",
+      "MYC_MSG_TYP_C_NAME": "User Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 282124979,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Health Reminders",
+      "MYC_MSG_TYP_C_NAME": "Patient HM Reminder Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 284338920,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Appointment Request",
+      "MYC_MSG_TYP_C_NAME": "Patient Appointment Schedule Request",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 284456600,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "appointment request",
+      "MYC_MSG_TYP_C_NAME": "User Message",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 290062984,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Questionnaire Submission",
+      "MYC_MSG_TYP_C_NAME": "General Questionnaire Submission",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 290062985,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Questionnaire Submission",
+      "MYC_MSG_TYP_C_NAME": "Questionnaire Submission CC",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 290238609,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Weight reading",
+      "MYC_MSG_TYP_C_NAME": "Patient Medical Advice Request",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 293541098,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Appointment Request",
+      "MYC_MSG_TYP_C_NAME": "Patient Appointment Schedule Request",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    },
+    {
+      "THREAD_ID": 302881804,
+      "PAT_ID": "Z7004242",
+      "SUBJECT": "Medication Renewal Request",
+      "MYC_MSG_TYP_C_NAME": "Patient Medication Renewal Request",
+      "$meta": {
+        "type": "MYC_CONVO"
+      }
+    }
+  ]
+}

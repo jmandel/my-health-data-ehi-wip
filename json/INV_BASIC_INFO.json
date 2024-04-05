@@ -1,0 +1,828 @@
+{
+  "$meta": {
+    "schemas": {
+      "INV_BASIC_INFO": {
+        "name": "INV_BASIC_INFO",
+        "description": "This table contains basic invoice information. Each column in this table is from the INV 100 related group, and each line in the table corresponds to a claim that was sent for this invoice (INV) record.",
+        "primaryKey": [
+          {
+            "columnName": "INV_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "INV_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The invoice ID."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the invoice number associated with the invoice record. Multiple invoice numbers can be associated with a single invoice record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "INV_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The specific invoice number for the bill or claim. Subsequent invoice numbers may be secondary claims or primary claims that were resubmitted to the same payer."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "INV_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The status for the invoice number.",
+            "entries": [
+              "Processed",
+              "Accepted",
+              "Submitted",
+              "Error",
+              "Rejected",
+              "Closed",
+              "Voided",
+              "Removed"
+            ]
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "CVG_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The coverage record ID."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "EPM_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The payer ID."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "EPP_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The benefit plan ID."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "FROM_SVC_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The from (minimum) service date for the invoice number. This date is determined from the transaction on the invoice with the service date furthest in the past."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "TO_SVC_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The to (maximum) service date for the invoice number. This date is determined from the transaction on the invoice with the most recent service date."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "INV_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The claim type for the invoice number. This column identifies whether the invoice number is a bill/statement or a claim.",
+            "entries": [
+              "Claim",
+              "Statement"
+            ]
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "CROSS_OVER_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates whether the invoice number is a crossover claim. This usually only applies to secondary claims and indicates that although the claim associated with the invoice was created, it was suppressed from a claim run.",
+            "entries": [
+              "No",
+              "Yes"
+            ]
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "MAILING_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The bill/statement or claim mailing name for the invoice number."
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "MAILING_ADDR",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The bill/statement or claim mailing street address for the invoice number."
+          },
+          {
+            "ordinalPosition": 15,
+            "name": "CITY_STATE_ZIP",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The bill/statement or claim mailing city, state, and ZIP Code for the invoice number."
+          },
+          {
+            "ordinalPosition": 16,
+            "name": "CLM_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The claim information record ID."
+          },
+          {
+            "ordinalPosition": 18,
+            "name": "REF_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The referral ID."
+          },
+          {
+            "ordinalPosition": 19,
+            "name": "REF_ID_REFERRING_PROV_NAM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the referral source."
+          },
+          {
+            "ordinalPosition": 21,
+            "name": "EAF_POS_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The place of service ID."
+          },
+          {
+            "ordinalPosition": 22,
+            "name": "TAX_ID_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The tax ID/IRS number for the invoice number."
+          },
+          {
+            "ordinalPosition": 23,
+            "name": "TAX_ID_TYPE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The tax ID/IRS number type for the invoice number."
+          },
+          {
+            "ordinalPosition": 26,
+            "name": "REPLACED_INV",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Contains a list of all the replaced invoice numbers associated with the invoice record."
+          },
+          {
+            "ordinalPosition": 27,
+            "name": "CLM_CHANGE_RSN_COD",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Contains a list of all the claim change reason codes associated with the invoice record."
+          },
+          {
+            "ordinalPosition": 28,
+            "name": "CLM_CHANGE_COMMENT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Contains a list of all the claim change comments associated with the invoice record."
+          },
+          {
+            "ordinalPosition": 30,
+            "name": "MAIL_PHONE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The mailing phone number for the invoice number."
+          },
+          {
+            "ordinalPosition": 31,
+            "name": "ALTPAYR_INV_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Identifies if the invoice is for an alternate payer."
+          },
+          {
+            "ordinalPosition": 32,
+            "name": "LATE_REPLACEMENT_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Flag to indicate the late replacement claim status of the invoice.",
+            "entries": [
+              "Replacement",
+              "Late",
+              "Late and Other Charges"
+            ]
+          },
+          {
+            "ordinalPosition": 33,
+            "name": "CRD_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The claim reconciliation record ID."
+          },
+          {
+            "ordinalPosition": 34,
+            "name": "CLM_EXT_VAL_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID associated with the claim external value record for this row. Values derived from the claim print record or edited by the user will be stored in the claim external value. Form output will be based on the claim external value."
+          },
+          {
+            "ordinalPosition": 36,
+            "name": "CLM_ACCEPT_DT",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The invoice accept date."
+          },
+          {
+            "ordinalPosition": 38,
+            "name": "FILING_ORDER_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column holds the filing order position of the claim coverage at the time claims were processed.",
+            "entries": [
+              "Primary",
+              "Secondary",
+              "Tertiary",
+              "Post-Tertiary",
+              "Unknown"
+            ]
+          },
+          {
+            "ordinalPosition": 39,
+            "name": "CLAIM_RUN_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The claim run number."
+          },
+          {
+            "ordinalPosition": 40,
+            "name": "DEMAND_CLAIM_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column indicates whether the invoice was created in a demand claim run."
+          },
+          {
+            "ordinalPosition": 42,
+            "name": "PREDETERMINATION_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores a Yes/No indicator that the associated record represents a request for a predetermination of benefits."
+          },
+          {
+            "ordinalPosition": 43,
+            "name": "PREDICTED_PAY_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The predicted payment response date for a claim based on historical trends for the payer."
+          },
+          {
+            "ordinalPosition": 44,
+            "name": "SUGGESTED_FOL_UP_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The suggested initial follow-up date for a claim based on historical trends for the payer."
+          },
+          {
+            "ordinalPosition": 45,
+            "name": "FINAL_FOL_UP_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This item shows the final date all the follow-up records were completed and is based on the last Completed Date (I FOL 122). It will only have a value if all of the follow-up records are currently completed. Should one reopen, this value will also be cleared."
+          },
+          {
+            "ordinalPosition": 46,
+            "name": "CLM_CLOSED_TIMELY_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Denotes if the claim closed prior to its Suggested Initial Follow-up Date, whereby it was no longer outstanding to insurance. The claim closed date is based on the CRD item of the same name (I CRD 86) if set, else the Final Follow-up Completed Date (I INV 133)."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "INV_BASIC_INFO",
+            "target": "INVOICE",
+            "joinKeys": [
+              {
+                "source": "INV_ID",
+                "target": "INVOICE_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "INV_BASIC_INFO": [
+    {
+      "INV_ID": 24584313,
+      "LINE": 1,
+      "INV_NUM": "L1002792520",
+      "INV_STATUS_C_NAME": "Rejected",
+      "CVG_ID": 5934765,
+      "EPM_ID": 1302,
+      "EPP_ID": 130204,
+      "FROM_SVC_DATE": "2018-08-09 00:00:00",
+      "TO_SVC_DATE": "2018-08-09 00:00:00",
+      "INV_TYPE_C_NAME": "Claim",
+      "MAILING_NAME": "BLUE CROSS WI PPO/FEDERAL",
+      "MAILING_ADDR": "PO BOX 105187",
+      "CITY_STATE_ZIP": "ATLANTA, GA 30348-5187",
+      "REF_ID": "802011",
+      "REF_ID_REFERRING_PROV_NAM": "DHILLON, PUNEET S",
+      "EAF_POS_ID": 1700801,
+      "TAX_ID_NUM": "391837462",
+      "TAX_ID_TYPE": "E",
+      "MAIL_PHONE": "800-676-2583",
+      "ALTPAYR_INV_YN": "N",
+      "CRD_ID": "42972138",
+      "FILING_ORDER_C_NAME": "Primary",
+      "CLAIM_RUN_NUM": "1323670",
+      "DEMAND_CLAIM_YN": "N",
+      "$meta": {
+        "type": "INV_BASIC_INFO"
+      }
+    },
+    {
+      "INV_ID": 24584314,
+      "LINE": 1,
+      "INV_NUM": "L1002792530",
+      "INV_STATUS_C_NAME": "Rejected",
+      "CVG_ID": 5934765,
+      "EPM_ID": 1302,
+      "EPP_ID": 130204,
+      "FROM_SVC_DATE": "2018-08-09 00:00:00",
+      "TO_SVC_DATE": "2018-08-09 00:00:00",
+      "INV_TYPE_C_NAME": "Claim",
+      "MAILING_NAME": "BLUE CROSS WI PPO/FEDERAL",
+      "MAILING_ADDR": "PO BOX 105187",
+      "CITY_STATE_ZIP": "ATLANTA, GA 30348-5187",
+      "REF_ID": "802011",
+      "REF_ID_REFERRING_PROV_NAM": "DHILLON, PUNEET S",
+      "EAF_POS_ID": 1700801,
+      "TAX_ID_NUM": "391837462",
+      "TAX_ID_TYPE": "E",
+      "MAIL_PHONE": "800-676-2583",
+      "ALTPAYR_INV_YN": "N",
+      "CRD_ID": "42972139",
+      "FILING_ORDER_C_NAME": "Primary",
+      "CLAIM_RUN_NUM": "1323670",
+      "DEMAND_CLAIM_YN": "N",
+      "$meta": {
+        "type": "INV_BASIC_INFO"
+      }
+    },
+    {
+      "INV_ID": 24873734,
+      "LINE": 1,
+      "INV_NUM": "L1002834030",
+      "INV_STATUS_C_NAME": "Closed",
+      "CVG_ID": 5934765,
+      "EPM_ID": 1302,
+      "EPP_ID": 130204,
+      "FROM_SVC_DATE": "2018-08-09 00:00:00",
+      "TO_SVC_DATE": "2018-08-09 00:00:00",
+      "INV_TYPE_C_NAME": "Claim",
+      "MAILING_NAME": "BLUE CROSS WI PPO/FEDERAL",
+      "MAILING_ADDR": "PO BOX 105187",
+      "CITY_STATE_ZIP": "ATLANTA, GA 30348-5187",
+      "REF_ID": "802011",
+      "REF_ID_REFERRING_PROV_NAM": "DHILLON, PUNEET S",
+      "EAF_POS_ID": 1700801,
+      "TAX_ID_NUM": "391837462",
+      "TAX_ID_TYPE": "E",
+      "MAIL_PHONE": "800-676-2583",
+      "ALTPAYR_INV_YN": "N",
+      "CRD_ID": "43461737",
+      "CLM_EXT_VAL_ID": 54875409,
+      "CLM_ACCEPT_DT": "2018-08-30 00:00:00",
+      "FILING_ORDER_C_NAME": "Primary",
+      "CLAIM_RUN_NUM": "1338229",
+      "DEMAND_CLAIM_YN": "N",
+      "FINAL_FOL_UP_DATE": "2018-09-10 00:00:00",
+      "$meta": {
+        "type": "INV_BASIC_INFO"
+      }
+    },
+    {
+      "INV_ID": 24873736,
+      "LINE": 1,
+      "INV_NUM": "L1002834040",
+      "INV_STATUS_C_NAME": "Closed",
+      "CVG_ID": 5934765,
+      "EPM_ID": 1302,
+      "EPP_ID": 130204,
+      "FROM_SVC_DATE": "2018-08-09 00:00:00",
+      "TO_SVC_DATE": "2018-08-09 00:00:00",
+      "INV_TYPE_C_NAME": "Claim",
+      "MAILING_NAME": "BLUE CROSS WI PPO/FEDERAL",
+      "MAILING_ADDR": "PO BOX 105187",
+      "CITY_STATE_ZIP": "ATLANTA, GA 30348-5187",
+      "REF_ID": "802011",
+      "REF_ID_REFERRING_PROV_NAM": "DHILLON, PUNEET S",
+      "EAF_POS_ID": 1700801,
+      "TAX_ID_NUM": "391837462",
+      "TAX_ID_TYPE": "E",
+      "MAIL_PHONE": "800-676-2583",
+      "ALTPAYR_INV_YN": "N",
+      "CRD_ID": "43461738",
+      "CLM_EXT_VAL_ID": 54875411,
+      "CLM_ACCEPT_DT": "2018-08-30 00:00:00",
+      "FILING_ORDER_C_NAME": "Primary",
+      "CLAIM_RUN_NUM": "1338229",
+      "DEMAND_CLAIM_YN": "N",
+      "FINAL_FOL_UP_DATE": "2018-09-10 00:00:00",
+      "$meta": {
+        "type": "INV_BASIC_INFO"
+      }
+    },
+    {
+      "INV_ID": 35267927,
+      "LINE": 1,
+      "INV_NUM": "L1004236460",
+      "INV_STATUS_C_NAME": "Closed",
+      "CVG_ID": 5934765,
+      "EPM_ID": 1302,
+      "EPP_ID": 130204,
+      "FROM_SVC_DATE": "2020-01-09 00:00:00",
+      "TO_SVC_DATE": "2020-01-09 00:00:00",
+      "INV_TYPE_C_NAME": "Claim",
+      "MAILING_NAME": "BLUE CROSS WI PPO/FEDERAL",
+      "MAILING_ADDR": "PO BOX 105187",
+      "CITY_STATE_ZIP": "ATLANTA, GA 30348-5187",
+      "REF_ID": "802011",
+      "REF_ID_REFERRING_PROV_NAM": "DHILLON, PUNEET S",
+      "EAF_POS_ID": 1700801,
+      "TAX_ID_NUM": "391837462",
+      "TAX_ID_TYPE": "E",
+      "MAIL_PHONE": "800-676-2583",
+      "ALTPAYR_INV_YN": "N",
+      "CRD_ID": "60433254",
+      "CLM_EXT_VAL_ID": 81666215,
+      "CLM_ACCEPT_DT": "2020-01-13 00:00:00",
+      "FILING_ORDER_C_NAME": "Primary",
+      "CLAIM_RUN_NUM": "1755223",
+      "DEMAND_CLAIM_YN": "N",
+      "PREDETERMINATION_YN": "N",
+      "FINAL_FOL_UP_DATE": "2020-01-27 00:00:00",
+      "$meta": {
+        "type": "INV_BASIC_INFO"
+      }
+    },
+    {
+      "INV_ID": 39392511,
+      "LINE": 1,
+      "INV_NUM": "L1004718920",
+      "INV_STATUS_C_NAME": "Closed",
+      "CVG_ID": 5934765,
+      "EPM_ID": 1302,
+      "EPP_ID": 130204,
+      "FROM_SVC_DATE": "2020-07-14 00:00:00",
+      "TO_SVC_DATE": "2020-07-14 00:00:00",
+      "INV_TYPE_C_NAME": "Claim",
+      "MAILING_NAME": "BLUE CROSS WI PPO/FEDERAL",
+      "MAILING_ADDR": "PO BOX 105187",
+      "CITY_STATE_ZIP": "ATLANTA, GA 30348-5187",
+      "CLM_ID": 2985948,
+      "REF_ID": "219711",
+      "REF_ID_REFERRING_PROV_NAM": "PICONE, MARY A",
+      "EAF_POS_ID": 1700801,
+      "TAX_ID_NUM": "391837462",
+      "TAX_ID_TYPE": "E",
+      "MAIL_PHONE": "800-676-2583",
+      "ALTPAYR_INV_YN": "N",
+      "CRD_ID": "66988170",
+      "CLM_EXT_VAL_ID": 92489134,
+      "CLM_ACCEPT_DT": "2020-08-17 00:00:00",
+      "FILING_ORDER_C_NAME": "Primary",
+      "CLAIM_RUN_NUM": "1911563",
+      "DEMAND_CLAIM_YN": "N",
+      "PREDETERMINATION_YN": "N",
+      "FINAL_FOL_UP_DATE": "2020-09-17 00:00:00",
+      "$meta": {
+        "type": "INV_BASIC_INFO"
+      }
+    },
+    {
+      "INV_ID": 56467923,
+      "LINE": 1,
+      "INV_NUM": "L1006928390",
+      "INV_STATUS_C_NAME": "Closed",
+      "CVG_ID": 5934765,
+      "EPM_ID": 1302,
+      "EPP_ID": 130204,
+      "FROM_SVC_DATE": "2022-08-29 00:00:00",
+      "TO_SVC_DATE": "2022-08-29 00:00:00",
+      "INV_TYPE_C_NAME": "Claim",
+      "MAILING_NAME": "BLUE CROSS WI PPO/FEDERAL",
+      "MAILING_ADDR": "PO BOX 105187",
+      "CITY_STATE_ZIP": "ATLANTA, GA 30348-5187",
+      "REF_ID": "144590",
+      "REF_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
+      "EAF_POS_ID": 1700801,
+      "TAX_ID_NUM": "391837462",
+      "TAX_ID_TYPE": "E",
+      "MAIL_PHONE": "800-676-2583",
+      "ALTPAYR_INV_YN": "N",
+      "CRD_ID": "95212572",
+      "CLM_EXT_VAL_ID": 137546178,
+      "CLM_ACCEPT_DT": "2022-09-21 00:00:00",
+      "FILING_ORDER_C_NAME": "Primary",
+      "CLAIM_RUN_NUM": "2442823",
+      "DEMAND_CLAIM_YN": "N",
+      "PREDETERMINATION_YN": "N",
+      "FINAL_FOL_UP_DATE": "2022-10-04 00:00:00",
+      "$meta": {
+        "type": "INV_BASIC_INFO"
+      }
+    },
+    {
+      "INV_ID": 56523114,
+      "LINE": 1,
+      "INV_NUM": "L1006942840",
+      "INV_STATUS_C_NAME": "Closed",
+      "CVG_ID": 5934765,
+      "EPM_ID": 1302,
+      "EPP_ID": 130204,
+      "FROM_SVC_DATE": "2022-08-29 00:00:00",
+      "TO_SVC_DATE": "2022-08-29 00:00:00",
+      "INV_TYPE_C_NAME": "Claim",
+      "MAILING_NAME": "BLUE CROSS WI PPO/FEDERAL",
+      "MAILING_ADDR": "PO BOX 105187",
+      "CITY_STATE_ZIP": "ATLANTA, GA 30348-5187",
+      "REF_ID": "144590",
+      "REF_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
+      "EAF_POS_ID": 1700801,
+      "TAX_ID_NUM": "391837462",
+      "TAX_ID_TYPE": "E",
+      "MAIL_PHONE": "800-676-2583",
+      "ALTPAYR_INV_YN": "N",
+      "CRD_ID": "95305293",
+      "CLM_EXT_VAL_ID": 137709283,
+      "CLM_ACCEPT_DT": "2022-09-23 00:00:00",
+      "FILING_ORDER_C_NAME": "Primary",
+      "CLAIM_RUN_NUM": "2445112",
+      "DEMAND_CLAIM_YN": "N",
+      "PREDETERMINATION_YN": "N",
+      "FINAL_FOL_UP_DATE": "2022-10-04 00:00:00",
+      "$meta": {
+        "type": "INV_BASIC_INFO"
+      }
+    },
+    {
+      "INV_ID": 58319567,
+      "LINE": 1,
+      "INV_NUM": "L1007201490",
+      "INV_STATUS_C_NAME": "Voided",
+      "CVG_ID": 5934765,
+      "EPM_ID": 1302,
+      "EPP_ID": 130204,
+      "FROM_SVC_DATE": "2022-12-01 00:00:00",
+      "TO_SVC_DATE": "2022-12-01 00:00:00",
+      "INV_TYPE_C_NAME": "Claim",
+      "MAILING_NAME": "BLUE CROSS WI PPO/FEDERAL",
+      "MAILING_ADDR": "PO BOX 105187",
+      "CITY_STATE_ZIP": "ATLANTA, GA 30348-5187",
+      "REF_ID": "144590",
+      "REF_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
+      "EAF_POS_ID": 1700801,
+      "TAX_ID_NUM": "391837462",
+      "TAX_ID_TYPE": "E",
+      "MAIL_PHONE": "800-676-2583",
+      "ALTPAYR_INV_YN": "N",
+      "CRD_ID": "98402730",
+      "CLM_EXT_VAL_ID": 142198034,
+      "CLM_ACCEPT_DT": "2022-12-07 00:00:00",
+      "FILING_ORDER_C_NAME": "Primary",
+      "CLAIM_RUN_NUM": "2498305",
+      "DEMAND_CLAIM_YN": "N",
+      "PREDETERMINATION_YN": "N",
+      "FINAL_FOL_UP_DATE": "2022-12-20 00:00:00",
+      "$meta": {
+        "type": "INV_BASIC_INFO"
+      }
+    },
+    {
+      "INV_ID": 58660400,
+      "LINE": 1,
+      "INV_NUM": "L1007233830",
+      "INV_STATUS_C_NAME": "Accepted",
+      "CVG_ID": 5934765,
+      "EPM_ID": 1302,
+      "EPP_ID": 130204,
+      "FROM_SVC_DATE": "2022-12-01 00:00:00",
+      "TO_SVC_DATE": "2022-12-01 00:00:00",
+      "INV_TYPE_C_NAME": "Claim",
+      "MAILING_NAME": "BLUE CROSS WI PPO/FEDERAL",
+      "MAILING_ADDR": "PO BOX 105187",
+      "CITY_STATE_ZIP": "ATLANTA, GA 30348-5187",
+      "CLM_ID": 4128938,
+      "REF_ID": "144590",
+      "REF_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
+      "EAF_POS_ID": 1700801,
+      "TAX_ID_NUM": "391837462",
+      "TAX_ID_TYPE": "E",
+      "MAIL_PHONE": "800-676-2583",
+      "ALTPAYR_INV_YN": "N",
+      "CRD_ID": "98976876",
+      "CLM_EXT_VAL_ID": 142971646,
+      "CLM_ACCEPT_DT": "2022-12-20 00:00:00",
+      "FILING_ORDER_C_NAME": "Primary",
+      "CLAIM_RUN_NUM": "2508144",
+      "DEMAND_CLAIM_YN": "Y",
+      "PREDETERMINATION_YN": "N",
+      "FINAL_FOL_UP_DATE": "2023-01-10 00:00:00",
+      "$meta": {
+        "type": "INV_BASIC_INFO"
+      }
+    },
+    {
+      "INV_ID": 58660400,
+      "LINE": 2,
+      "INV_NUM": "L1007233831",
+      "INV_STATUS_C_NAME": "Closed",
+      "CVG_ID": 5934765,
+      "EPM_ID": 1302,
+      "EPP_ID": 130204,
+      "FROM_SVC_DATE": "2022-12-01 00:00:00",
+      "TO_SVC_DATE": "2022-12-01 00:00:00",
+      "INV_TYPE_C_NAME": "Claim",
+      "CROSS_OVER_YN": "N",
+      "MAILING_NAME": "BLUE CROSS WI PPO/FEDERAL",
+      "MAILING_ADDR": "PO BOX 105187",
+      "CITY_STATE_ZIP": "ATLANTA, GA 30348-5187",
+      "CLM_ID": 4128938,
+      "REF_ID": "144590",
+      "REF_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
+      "EAF_POS_ID": 1700801,
+      "TAX_ID_NUM": "391837462",
+      "TAX_ID_TYPE": "E",
+      "REPLACED_INV": "L1007233830",
+      "CLM_CHANGE_RSN_COD": "D4",
+      "CLM_CHANGE_COMMENT": "DX corrected",
+      "MAIL_PHONE": "800-676-2583",
+      "ALTPAYR_INV_YN": "N",
+      "LATE_REPLACEMENT_C_NAME": "Replacement",
+      "CRD_ID": "98990043",
+      "CLM_EXT_VAL_ID": 142993942,
+      "CLM_ACCEPT_DT": "2022-12-21 00:00:00",
+      "FILING_ORDER_C_NAME": "Primary",
+      "CLAIM_RUN_NUM": "2508319",
+      "DEMAND_CLAIM_YN": "N",
+      "PREDETERMINATION_YN": "N",
+      "FINAL_FOL_UP_DATE": "2023-01-10 00:00:00",
+      "$meta": {
+        "type": "INV_BASIC_INFO"
+      }
+    },
+    {
+      "INV_ID": 60492688,
+      "LINE": 1,
+      "INV_NUM": "L1007449820",
+      "INV_STATUS_C_NAME": "Closed",
+      "CVG_ID": 5934765,
+      "EPM_ID": 1302,
+      "EPP_ID": 130204,
+      "FROM_SVC_DATE": "2023-03-02 00:00:00",
+      "TO_SVC_DATE": "2023-03-02 00:00:00",
+      "INV_TYPE_C_NAME": "Claim",
+      "MAILING_NAME": "BLUE CROSS WI PPO/FEDERAL",
+      "MAILING_ADDR": "PO BOX 105187",
+      "CITY_STATE_ZIP": "ATLANTA, GA 30348-5187",
+      "REF_ID": "144590",
+      "REF_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
+      "EAF_POS_ID": 1700801,
+      "TAX_ID_NUM": "391837462",
+      "TAX_ID_TYPE": "E",
+      "MAIL_PHONE": "800-676-2583",
+      "ALTPAYR_INV_YN": "N",
+      "CRD_ID": "102143190",
+      "CLM_EXT_VAL_ID": 147566850,
+      "CLM_ACCEPT_DT": "2023-03-13 00:00:00",
+      "FILING_ORDER_C_NAME": "Primary",
+      "CLAIM_RUN_NUM": "2568477",
+      "DEMAND_CLAIM_YN": "N",
+      "PREDETERMINATION_YN": "N",
+      "FINAL_FOL_UP_DATE": "2023-03-28 00:00:00",
+      "$meta": {
+        "type": "INV_BASIC_INFO"
+      }
+    },
+    {
+      "INV_ID": 65200403,
+      "LINE": 1,
+      "INV_NUM": "L1007985430",
+      "INV_STATUS_C_NAME": "Closed",
+      "CVG_ID": 5934765,
+      "EPM_ID": 1302,
+      "EPP_ID": 130204,
+      "FROM_SVC_DATE": "2023-09-28 00:00:00",
+      "TO_SVC_DATE": "2023-09-28 00:00:00",
+      "INV_TYPE_C_NAME": "Claim",
+      "MAILING_NAME": "BLUE CROSS WI PPO/FEDERAL",
+      "MAILING_ADDR": "PO BOX 105187",
+      "CITY_STATE_ZIP": "ATLANTA, GA 30348-5187",
+      "REF_ID": "144590",
+      "REF_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
+      "EAF_POS_ID": 1700801,
+      "TAX_ID_NUM": "391837462",
+      "TAX_ID_TYPE": "E",
+      "MAIL_PHONE": "800-676-2583",
+      "ALTPAYR_INV_YN": "N",
+      "CRD_ID": "110156845",
+      "CLM_EXT_VAL_ID": 160523726,
+      "CLM_ACCEPT_DT": "2023-10-04 00:00:00",
+      "FILING_ORDER_C_NAME": "Primary",
+      "CLAIM_RUN_NUM": "2721616",
+      "DEMAND_CLAIM_YN": "N",
+      "PREDETERMINATION_YN": "N",
+      "PREDICTED_PAY_DATE": "2023-10-16 00:00:00",
+      "SUGGESTED_FOL_UP_DATE": "2023-10-22 00:00:00",
+      "FINAL_FOL_UP_DATE": "2023-10-18 00:00:00",
+      "CLM_CLOSED_TIMELY_YN": "Y",
+      "$meta": {
+        "type": "INV_BASIC_INFO"
+      }
+    },
+    {
+      "INV_ID": 65226259,
+      "LINE": 1,
+      "INV_NUM": "L1007990080",
+      "INV_STATUS_C_NAME": "Closed",
+      "CVG_ID": 5934765,
+      "EPM_ID": 1302,
+      "EPP_ID": 130204,
+      "FROM_SVC_DATE": "2023-09-28 00:00:00",
+      "TO_SVC_DATE": "2023-09-28 00:00:00",
+      "INV_TYPE_C_NAME": "Claim",
+      "MAILING_NAME": "BLUE CROSS WI PPO/FEDERAL",
+      "MAILING_ADDR": "PO BOX 105187",
+      "CITY_STATE_ZIP": "ATLANTA, GA 30348-5187",
+      "REF_ID": "144590",
+      "REF_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
+      "EAF_POS_ID": 1700801,
+      "TAX_ID_NUM": "391837462",
+      "TAX_ID_TYPE": "E",
+      "MAIL_PHONE": "800-676-2583",
+      "ALTPAYR_INV_YN": "N",
+      "CRD_ID": "110203431",
+      "CLM_EXT_VAL_ID": 160603141,
+      "CLM_ACCEPT_DT": "2023-10-05 00:00:00",
+      "FILING_ORDER_C_NAME": "Primary",
+      "CLAIM_RUN_NUM": "2722845",
+      "DEMAND_CLAIM_YN": "N",
+      "PREDETERMINATION_YN": "N",
+      "PREDICTED_PAY_DATE": "2023-10-17 00:00:00",
+      "SUGGESTED_FOL_UP_DATE": "2023-10-23 00:00:00",
+      "FINAL_FOL_UP_DATE": "2023-10-18 00:00:00",
+      "CLM_CLOSED_TIMELY_YN": "Y",
+      "$meta": {
+        "type": "INV_BASIC_INFO"
+      }
+    },
+    {
+      "INV_ID": 65425314,
+      "LINE": 1,
+      "INV_NUM": "L1008016200",
+      "INV_STATUS_C_NAME": "Closed",
+      "CVG_ID": 5934765,
+      "EPM_ID": 1302,
+      "EPP_ID": 130204,
+      "FROM_SVC_DATE": "2023-09-28 00:00:00",
+      "TO_SVC_DATE": "2023-09-28 00:00:00",
+      "INV_TYPE_C_NAME": "Claim",
+      "MAILING_NAME": "BLUE CROSS WI PPO/FEDERAL",
+      "MAILING_ADDR": "PO BOX 105187",
+      "CITY_STATE_ZIP": "ATLANTA, GA 30348-5187",
+      "REF_ID": "144590",
+      "REF_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
+      "EAF_POS_ID": 1700801,
+      "TAX_ID_NUM": "391837462",
+      "TAX_ID_TYPE": "E",
+      "MAIL_PHONE": "800-676-2583",
+      "ALTPAYR_INV_YN": "N",
+      "CRD_ID": "110539507",
+      "CLM_EXT_VAL_ID": 161161359,
+      "CLM_ACCEPT_DT": "2023-10-13 00:00:00",
+      "FILING_ORDER_C_NAME": "Primary",
+      "CLAIM_RUN_NUM": "2729057",
+      "DEMAND_CLAIM_YN": "N",
+      "PREDETERMINATION_YN": "N",
+      "PREDICTED_PAY_DATE": "2023-10-26 00:00:00",
+      "SUGGESTED_FOL_UP_DATE": "2023-11-01 00:00:00",
+      "FINAL_FOL_UP_DATE": "2023-10-23 00:00:00",
+      "CLM_CLOSED_TIMELY_YN": "Y",
+      "$meta": {
+        "type": "INV_BASIC_INFO"
+      }
+    }
+  ]
+}

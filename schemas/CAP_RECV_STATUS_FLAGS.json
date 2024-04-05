@@ -1,0 +1,48 @@
+{
+  "name": "CAP_RECV_STATUS_FLAGS",
+  "description": "Stores the capitation payment health status flags used in determining how to calculate the total capitation payment amount.",
+  "primaryKey": [
+    {
+      "columnName": "TRANSACTION_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TRANSACTION_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the detail transaction record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "MCARE_HEALTH_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the health status flags used to calculate the total amount of a capitation payment.",
+      "entries": [
+        "Long Term Institutional",
+        "ESRD",
+        "Medicaid",
+        "Hospice",
+        "Disabled",
+        "Dialysis",
+        "Institutional",
+        "Home and Community Based Services",
+        "Nursing Home Certifiable"
+      ]
+    }
+  ]
+}

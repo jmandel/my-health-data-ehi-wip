@@ -1,0 +1,1520 @@
+{
+  "$meta": {
+    "schemas": {
+      "HSP_TRANSACTIONS": {
+        "name": "HSP_TRANSACTIONS",
+        "description": "This table contains hospital account transaction detail from the Hospital Permanent Transactions (HTR) master file.",
+        "primaryKey": [
+          {
+            "columnName": "TX_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "TX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the hospital billing transaction."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "HSP_ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the hospital account associated with the hospital billing transaction."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "ACCT_CLASS_HA_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Holds the account class of the account when the transaction filed. This is set for all transaction types."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "ACTION_STRING",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "A comma-delimited list of one or more numbers stored in a payment transaction that correspond to actions entered in payment posting. Actions are 1 -- Not Allowed Adjustment, 2 -- Next Responsible Party, 3 -- Claim Denied."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "ALLOWED_AMOUNT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "An allowed amount stored in a payment transaction."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "BILLED_AMOUNT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "A billed amount stored in a payment transaction."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "BILLING_PROV_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the billing provider stored in the hospital billing transaction."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "BUCKET_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the liability bucket on which the transaction is currently active. This field is only populated for payment and adjustment transactions, not charges."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "COINSURANCE_AMOUNT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "A coinsurance amount stored in a payment transaction. Coinsurance amounts are informational only."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "COPAY_AMOUNT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "A copay amount stored in a payment transaction. Coinsurance amounts are informational only."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "DEDUCTIBLE_AMOUNT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "A deductible amount stored in a payment transaction. Coinsurance amounts are informational only."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "DEPARTMENT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the department associated with the hospital billing transaction."
+          },
+          {
+            "ordinalPosition": 16,
+            "name": "DFLT_UB_REV_CD_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The default revenue code from the procedure master file for a charge transaction."
+          },
+          {
+            "ordinalPosition": 17,
+            "name": "DFLT_UB_REV_CD_ID_REVENUE_CODE_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the revenue code."
+          },
+          {
+            "ordinalPosition": 19,
+            "name": "FIN_CLASS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the category ID of the financial class stored in a hospital billing transaction. For charges, the financial class comes from the hospital account that the charge is associated with. For payments, the financial class comes from the payer specified during payment posting. If no payer is specified during payment posting, the financial class is self-pay. If the adjustment is entered in adjustment posting, the financial class is from the payer specified in adjustment posting. If the adjustment is created from a bucket action, the financial class comes from the financial class on the bucket. If no payer is specified during adjustment posting or the adjustment bucket action is made on an undistributed bucket, the financial class is self-pay. Adjustment refund bucket actions can specify the payer, in which case the specified payer's financial class is used.",
+            "entries": [
+              "Commercial",
+              "Medicare",
+              "Medicaid",
+              "Self-Pay",
+              "Worker's Comp",
+              "Tricare",
+              "Champva",
+              "Group Health Plan",
+              "FECA Black Lung",
+              "Blue Shield",
+              "Medigap",
+              "Other",
+              "DK Regional",
+              "Client",
+              "Received Self-Pay",
+              "Sent to Consolidated Self-Pay Service Area"
+            ]
+          },
+          {
+            "ordinalPosition": 25,
+            "name": "INT_CONTROL_NUMBER",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The internal control number stored in a payment transaction."
+          },
+          {
+            "ordinalPosition": 26,
+            "name": "IS_SYSTEM_ADJ_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Denotes whether an adjustment was the result of moving balances between liability buckets or between collection statuses.",
+            "entries": [
+              "No",
+              "Yes"
+            ]
+          },
+          {
+            "ordinalPosition": 28,
+            "name": "IS_LATE_CHARGE_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Denotes whether a charge is a late charge."
+          },
+          {
+            "ordinalPosition": 33,
+            "name": "ORIG_PRICE",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Denotes the price that was determined for a charge based on fee schedules."
+          },
+          {
+            "ordinalPosition": 36,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "For a charge dropped via ADT's bed charge billing function or a payment collected at the point-of-service, the contact serial number of the patient contact that triggered the bed charge or led to the collection of the payment."
+          },
+          {
+            "ordinalPosition": 38,
+            "name": "PAYMENT_SRC_HA_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The payment source stored in a payment transaction, i.e. cash, check, or credit card.",
+            "entries": [
+              "Cash",
+              "Check",
+              "Credit Card",
+              "EOB",
+              "Voucher",
+              "Bank Account",
+              "Trust Account"
+            ]
+          },
+          {
+            "ordinalPosition": 39,
+            "name": "PAYOR_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the payer associated with each payment or adjustment. This is not populated for charge transactions or when the payment or adjustment is posted to the self-pay bucket. Payments are assigned to the payer specified in payment posting. Adjustments made using adjustment posting are assigned to the payer specified in adjustment posting. Adjustments made using bucket actions are assigned to the payer on the liability bucket to which the adjustment was posted. Refund bucket actions can override the bucket payer with a user entered payer. Users can override any adjustment's payer in adjustment workqueues. Adjustments posted to the undistributed bucket have no payer unless overridden."
+          },
+          {
+            "ordinalPosition": 40,
+            "name": "PERFORMING_PROV_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the performing provider associated with a charge transaction."
+          },
+          {
+            "ordinalPosition": 41,
+            "name": "PREV_CREDITS_ACT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "For adjustment transactions that move liability from one bucket to another, the total monetary amount of previous credits on the former bucket."
+          },
+          {
+            "ordinalPosition": 42,
+            "name": "PRIM_FEE_SCHED_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the primary fee schedule used to price a charge transaction."
+          },
+          {
+            "ordinalPosition": 43,
+            "name": "PRIM_FEE_SCHED_ID_FEE_SCHEDULE_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of each fee schedule."
+          },
+          {
+            "ordinalPosition": 44,
+            "name": "PROCEDURE_DESC",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the value manually entered for the procedure description at the time of charge entry. If no value was manually entered, then the procedure record's Name History (I EAP 6) is populated here."
+          },
+          {
+            "ordinalPosition": 45,
+            "name": "PROC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the procedure associated with the hospital billing transaction."
+          },
+          {
+            "ordinalPosition": 46,
+            "name": "QUANTITY",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "For charge transactions, the quantity."
+          },
+          {
+            "ordinalPosition": 47,
+            "name": "REFERENCE_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The payment posting reference number associated with a transaction."
+          },
+          {
+            "ordinalPosition": 48,
+            "name": "UB_REV_CODE_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The revenue code associated with a charge transaction. This could come from the procedure master file or from a user-entered override."
+          },
+          {
+            "ordinalPosition": 49,
+            "name": "UB_REV_CODE_ID_REVENUE_CODE_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the revenue code."
+          },
+          {
+            "ordinalPosition": 50,
+            "name": "REVENUE_LOC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the revenue location stored in the hospital billing transaction. It is only set when hospital account identifiers are assigned by location instead of service area."
+          },
+          {
+            "ordinalPosition": 51,
+            "name": "SERV_AREA_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the service area associated with the hospital billing transaction."
+          },
+          {
+            "ordinalPosition": 52,
+            "name": "SERVICE_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The service date of a charge, the deposit date of a payment, or the creation date of an adjustment."
+          },
+          {
+            "ordinalPosition": 55,
+            "name": "TEMP_TX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID number of the temporary transaction (HTT record) associated with the transaction in question."
+          },
+          {
+            "ordinalPosition": 56,
+            "name": "TOTAL_CHARGES_ACT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "For adjustment transactions that move liability from one bucket to another, the total monetary amount of charges on the latter bucket."
+          },
+          {
+            "ordinalPosition": 57,
+            "name": "TX_AMOUNT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The monetary amount of a transaction."
+          },
+          {
+            "ordinalPosition": 58,
+            "name": "TX_COMMENT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "A comment associated with a transaction."
+          },
+          {
+            "ordinalPosition": 59,
+            "name": "TX_FILED_TIME",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The date and time when a transaction was filed on a hospital account."
+          },
+          {
+            "ordinalPosition": 60,
+            "name": "TX_NUM_IN_HOSPACCT",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "A number denoting in what order the transaction filed on the hospital account. For example, if the transaction in question was the third transaction to file on the account, this column would contain the number 3."
+          },
+          {
+            "ordinalPosition": 61,
+            "name": "TX_POST_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date on which the transaction was posted."
+          },
+          {
+            "ordinalPosition": 62,
+            "name": "TX_SOURCE_HA_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The source of the transaction, i.e. unit charge entry, payment posting, electronic remittance,",
+            "entries": [
+              "Transaction Import",
+              "Interface",
+              "EpicCare",
+              "Daily Charge",
+              "Bed Charge",
+              "Batch Charge Entry",
+              "Unit Charge Entry",
+              "Payment Posting",
+              "Adjustment Posting",
+              "Post Adjustment - Account Maintenance",
+              "Reverse Transaction - Account Maintenance",
+              "Reversal and Repost",
+              "Charge Correction",
+              "Order Trigger",
+              "Transfer Transaction",
+              "Combine Accounts",
+              "Electronic Remittance",
+              "HB Only Quick Payment Posting",
+              "Account Maintenance - Actions",
+              "Revenue Reclassification - Account Class Change",
+              "Revenue Reclassification - Financial Class Change",
+              "Claims Accept - Bucket Split",
+              "Small Balance Write-Off",
+              "System Auto Action",
+              "Hourly Charge",
+              "Expected Not-Allwd-Auto Write-Off",
+              "Claim Denial Payment",
+              "Willow Inpatient",
+              "Refund - Account Maintenance",
+              "OpTime",
+              "Radiant",
+              "MyChart Web",
+              "Inpatient",
+              "Resolute Professional Billing",
+              "Emergency Dept",
+              "Home Health",
+              "Lab",
+              "Cohort",
+              "Enterprise Payment Posting",
+              "Charge Router Charge Entry",
+              "Self-Pay Discount",
+              "Payment Collection",
+              "Late Fee",
+              "Tx Report - Add Corresponding Charge",
+              "Patient Refund",
+              "Welcome",
+              "Cardiology",
+              "Obstetrics",
+              "Handheld",
+              "Late Charge Write-Off",
+              "Hospice Per Diem",
+              "Hospice",
+              "Surcharge",
+              "Adjustment Import",
+              "DBC Product",
+              "DBC Accepted Invoice",
+              "Willow Ambulatory",
+              "Anesthesia",
+              "Reverse Transaction - Tx Report",
+              "Billing Activity",
+              "Web Service",
+              "HB Coding",
+              "Auto Pay Payment Plan",
+              "Distribution",
+              "Duplicated Charge",
+              "Billing Charge Write-Off",
+              "Transaction Classification Balancing",
+              "Financial Assistance",
+              "Cumulative Billing",
+              "MyChart Mobile",
+              "Pay as Guest",
+              "Unbilled Expected Write-Off",
+              "DBC Denied Invoice",
+              "Bundle Payment Distribution",
+              "DBC Denied Invoice - Ignored",
+              "Balance Transfer In",
+              "Balance Transfer Out",
+              "Balance Correct In",
+              "Balance Correct Out",
+              "Visit Auto Pay",
+              "Trust Transfer",
+              "Trust Recurring Payment",
+              "Notification Billing",
+              "Advance Billing",
+              "Two-Way SMS",
+              "Linked Procedure"
+            ]
+          },
+          {
+            "ordinalPosition": 63,
+            "name": "TX_TYPE_HA_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The transaction type, i.e. charge, payment, debit adjustment, or credit adjustment.",
+            "entries": [
+              "Charge",
+              "Payment",
+              "Debit Adjustment",
+              "Credit Adjustment"
+            ]
+          },
+          {
+            "ordinalPosition": 65,
+            "name": "USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the user who posted the hospital billing transaction."
+          },
+          {
+            "ordinalPosition": 66,
+            "name": "USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 70,
+            "name": "ALLOWANCE_ADJ_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Y/N flag indicating if there is an allowance adjustment."
+          },
+          {
+            "ordinalPosition": 71,
+            "name": "PLACE_OF_SVC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the place of service associated with the hospital billing transaction."
+          },
+          {
+            "ordinalPosition": 72,
+            "name": "NON_COVERED_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates whether the transaction is expected to be a non-covered charge."
+          },
+          {
+            "ordinalPosition": 76,
+            "name": "NON_COVERED_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The non-covered amount associated with the transaction."
+          },
+          {
+            "ordinalPosition": 77,
+            "name": "IS_REFUND_ADJ_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Denotes whether this is a Refund Adjustment."
+          },
+          {
+            "ordinalPosition": 78,
+            "name": "INVOICE_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The invoice number for the transaction."
+          },
+          {
+            "ordinalPosition": 79,
+            "name": "COLLECTION_AGENCY",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the collection agency that the hospital billing transaction has been sent to for collections."
+          },
+          {
+            "ordinalPosition": 80,
+            "name": "COLLECTION_AGENCY_COLL_AGENCY_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the collection agency."
+          },
+          {
+            "ordinalPosition": 81,
+            "name": "PRIMARY_PLAN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Holds the primary plan of the account when the transaction filed. This is set for all transaction types."
+          },
+          {
+            "ordinalPosition": 92,
+            "name": "RECONCILIATION_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Reconciliation number from a remittance run."
+          },
+          {
+            "ordinalPosition": 111,
+            "name": "INI_FILE_ATTEMPT_DT",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Item to represent the date when the first attempt to file the transaction was made."
+          },
+          {
+            "ordinalPosition": 113,
+            "name": "IMD_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the image associated with this hospital billing transaction."
+          },
+          {
+            "ordinalPosition": 115,
+            "name": "EB_PMT_HAR_RES_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates whether hospital account restrictions are used."
+          },
+          {
+            "ordinalPosition": 117,
+            "name": "PMT_HAR_DIS_TO_DT",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The hospital account restriction discharge to date."
+          },
+          {
+            "ordinalPosition": 121,
+            "name": "PAYMENT_NOT_ALLOWED",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column contains the not-allowed amount on the payment transaction."
+          },
+          {
+            "ordinalPosition": 122,
+            "name": "EB_PMT_TOTAL_AMOUNT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column contains the original payment amount. Original payment amount is the amount of the payment prior to getting split in split cases and if the payment is not split, then the original payment amount is the full payment of the transaction."
+          },
+          {
+            "ordinalPosition": 123,
+            "name": "EB_PMT_POST_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The type category number of the post type used to post the enterprise payment."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "CHRG_AMT_SRC_FLG_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The charge amount source flag category number for the charge transaction.",
+            "entries": [
+              "HB Default",
+              "Non HB in origin",
+              "Manually Overridden",
+              "HB Pricing Contract"
+            ],
+            "mergedFrom": "HSP_TRANSACTIONS_2"
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "ORIG_ACCT_COMB_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the first account that a hospital billing transaction attempted to post to prior to combine accounts or combined account redirection. Resets upon transfer.",
+            "mergedFrom": "HSP_TRANSACTIONS_2"
+          },
+          {
+            "ordinalPosition": 30,
+            "name": "DX_PRIM_CODE_SET_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The primary diagnosis code set configured in the facility for the service date of the transaction.",
+            "entries": [
+              "ICD-9-CM",
+              "ICD-10-CM",
+              "ICD-10-CA",
+              "ICD-10-UK",
+              "DBC",
+              "ICD-10 Dutch",
+              "ICD-10-AM",
+              "A&E Diagnoses",
+              "SKS",
+              "ICD-10-THL",
+              "ICPC-2",
+              "ICD-O-3",
+              "ICD-10-GM",
+              "ICD-9-CM Supplemental",
+              "ICD-10-BE",
+              "ICD-10-NO",
+              "Apache",
+              "DSM-5",
+              "KinCor",
+              "ORPHA"
+            ],
+            "mergedFrom": "HSP_TRANSACTIONS_2"
+          },
+          {
+            "ordinalPosition": 31,
+            "name": "DX_ALT_CODE_SET_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The alternate diagnosis code set configured in the facility for the service date of the transaction.",
+            "mergedFrom": "HSP_TRANSACTIONS_2"
+          },
+          {
+            "ordinalPosition": 34,
+            "name": "FIRST_TX_POST_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This column stores the post date of the first transaction across hospital billing and professional billing in a chain of transfers, reposts, and reversals.",
+            "mergedFrom": "HSP_TRANSACTIONS_2"
+          },
+          {
+            "ordinalPosition": 37,
+            "name": "ACCT_FIN_CLASS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Holds the financial class of the account when the transaction filed. This is set for all transaction types.",
+            "entries": [
+              "Commercial",
+              "Medicare",
+              "Medicaid",
+              "Self-Pay",
+              "Worker's Comp",
+              "Tricare",
+              "Champva",
+              "Group Health Plan",
+              "FECA Black Lung",
+              "Blue Shield",
+              "Medigap",
+              "Other",
+              "DK Regional",
+              "Client",
+              "Received Self-Pay",
+              "Sent to Consolidated Self-Pay Service Area"
+            ],
+            "mergedFrom": "HSP_TRANSACTIONS_2"
+          },
+          {
+            "ordinalPosition": 38,
+            "name": "PRIMARY_PAYOR_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the primary payer of the account when the transaction filed. This is set for all transaction types.",
+            "mergedFrom": "HSP_TRANSACTIONS_2"
+          },
+          {
+            "ordinalPosition": 43,
+            "name": "PRIMARY_COVERAGE_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Holds the primary coverage of the account when the transaction filed. This is set for all transaction types.",
+            "mergedFrom": "HSP_TRANSACTIONS_2"
+          },
+          {
+            "ordinalPosition": 44,
+            "name": "HAR_FIRST_POST_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This column stores the post date of the first hospital billing transaction on the hospital account in a chain of reposts and reversals.",
+            "mergedFrom": "HSP_TRANSACTIONS_2"
+          },
+          {
+            "ordinalPosition": 45,
+            "name": "POST_SOURCE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the source from which the payment is posted in the system. This is calculated based on the transaction source on the hospital billing transaction.",
+            "entries": [
+              "Back-end",
+              "MyChart",
+              "E-Remit",
+              "Web Service",
+              "Welcome",
+              "Auto Pay",
+              "Payment Posting",
+              "Staff Collected",
+              "Refund",
+              "ROI",
+              "Willow Ambulatory",
+              "Two-Way SMS"
+            ],
+            "mergedFrom": "HSP_TRANSACTIONS_2"
+          },
+          {
+            "ordinalPosition": 53,
+            "name": "ADJUSTMENT_CAT_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The adjustment category of the adjustment procedure at the time of posting.",
+            "entries": [
+              "Refund",
+              "NSF Adjustment/Fee",
+              "Contractual",
+              "Charity",
+              "Capitation",
+              "Discount",
+              "Late Fee",
+              "Bad Debt Write Off",
+              "PLB Adjustment",
+              "Escheat",
+              "Administrative",
+              "External AR Write Off",
+              "Payment Reversal",
+              "Underpayment",
+              "Denied - Timely Filing",
+              "Denied - Medical Necessity",
+              "Denied - Missing Documentation",
+              "Denied - No Auth",
+              "Denied - Registration",
+              "Denied - Miscellaneous",
+              "Other Allowance",
+              "Estimate Accuracy Write Off",
+              "Resident Trust Account",
+              "Downgrade"
+            ],
+            "mergedFrom": "HSP_TRANSACTIONS_2"
+          },
+          {
+            "ordinalPosition": 54,
+            "name": "WRITE_OFF_RSN_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The mapped write-off reason for the adjustment.",
+            "entries": [
+              "Contractual",
+              "Self-Pay Discount/Charity",
+              "Other Allowance",
+              "Bad Debt/External AR",
+              "Administrative",
+              "Underpayment",
+              "Denied - Timely Filing",
+              "Denied - Medical Necessity",
+              "Denied - Missing Documentation",
+              "Denied - No Auth",
+              "Denied - Registration",
+              "Denied - Miscellaneous",
+              "PLB Adjustment",
+              "Estimate Accuracy",
+              "Capitation",
+              "Downgrade",
+              "N/A - Payment Refund/Reversal",
+              "N/A - Resident Trust Account"
+            ],
+            "mergedFrom": "HSP_TRANSACTIONS_2"
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "IS_PRE_SERVICE_PMT_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates whether or not this is a pre-service payment, such as a co-pay. This item is only populated for self-pay payments A payment is considered pre-service if it is a visit pre-pay or co-pay payment (such as during check-in).",
+            "entries": [
+              "No",
+              "Yes"
+            ],
+            "mergedFrom": "HSP_TRANSACTIONS_3"
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "FIRST_HTR_TX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the first hospital billing transaction in a chain of transactions. Note that this chain will include transactions from both hospital billing and professional billing, so this item will return the very first transaction. For a given transaction, either column HSP_TRANSACTIONS_3.FIRST_HTR_ID, or column HSP_TRANSACTIONS_3.FIRST_ETR_ID will be populated. This is different from column HSP_TRANSACTIONS_2.FIRST_TX_ID, which only chains back to the point that the transaction was transferred from professional billing.",
+            "mergedFrom": "HSP_TRANSACTIONS_3"
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "POSTING_DEPARTMENT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The department where the transaction was posted.",
+            "mergedFrom": "HSP_TRANSACTIONS_3"
+          },
+          {
+            "ordinalPosition": 20,
+            "name": "IS_ADV_BILL_TRANS_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates if this transaction an advance bill transfer system adjustment. Includes both credit and debit adjustments.",
+            "mergedFrom": "HSP_TRANSACTIONS_3"
+          },
+          {
+            "ordinalPosition": 23,
+            "name": "CLAIM_PRINT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The payment's claim print ID with a matching invoice number.",
+            "mergedFrom": "HSP_TRANSACTIONS_3"
+          },
+          {
+            "ordinalPosition": 27,
+            "name": "PAT_PMT_COLL_WKFL_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column contains the workflow category ID performed to collect a patient payment from the point of view of the user. For example, MyChart eCheck-in vs. MyChart One-Touch.",
+            "entries": [
+              "Staff Collected",
+              "MyChart Billing",
+              "MyChart One-Touch",
+              "MyChart Pay as Guest",
+              "MyChart Visit Payment",
+              "MyChart eCheck-in",
+              "Welcome Balance Payment",
+              "Welcome Check-in",
+              "Two-Way SMS",
+              "Payment Posting",
+              "Lockbox",
+              "Release of Information",
+              "Willow Ambulatory",
+              "Web Service"
+            ],
+            "mergedFrom": "HSP_TRANSACTIONS_3"
+          },
+          {
+            "ordinalPosition": 31,
+            "name": "EB_TX_SOURCE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the enterprise posting module for the transaction. This is calculated based on the hospital billing transaction source for the transaction. For reversals, the module will always match the module of the reversed parent transaction.",
+            "entries": [
+              "Payment Plan Auto Pay",
+              "Enterprise Payment Posting",
+              "HB Payment Posting",
+              "PB Payment Posting",
+              "Electronic Remittance",
+              "PB Charge Entry Fast Pay",
+              "POS Quick Pay",
+              "Welcome",
+              "MyChart Web",
+              "PB Release of Information",
+              "Transaction Import",
+              "Web Service",
+              "Payment Collection",
+              "Willow Ambulatory",
+              "Distribution",
+              "Transfer from PB",
+              "Transfer from HB",
+              "MyChart Mobile",
+              "Guest Pay",
+              "Account Maintenance Refund",
+              "Patient Refund",
+              "Back-End Refund",
+              "Visit Auto Pay",
+              "Trust Recurring Payment",
+              "Premium Billing Auto Pay",
+              "Premium Billing One Time Payment",
+              "Premium Billing Payment Posting",
+              "Two-Way SMS",
+              "External Agency Payment"
+            ],
+            "mergedFrom": "HSP_TRANSACTIONS_3"
+          }
+        ],
+        "merged": [
+          {
+            "name": "HSP_TRANSACTIONS_2",
+            "description": "This table contains hospital account transaction details from the Hospital Permanent Transactions (HTR) master file."
+          },
+          {
+            "name": "HSP_TRANSACTIONS_3",
+            "description": "This table contains hospital account transaction details from the Hospital Permanent Transactions (HTR) master file."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "HSP_TRANSACTIONS",
+            "target": "HSP_PMT_LINE_REMIT",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_TRANSACTIONS",
+            "target": "HSP_PMT_REMIT_DETAIL",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_TRANSACTIONS",
+            "target": "HSP_TX_AUTH_INFO",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_TRANSACTIONS",
+            "target": "HSP_TX_DIAG",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_TRANSACTIONS",
+            "target": "HSP_TX_LINE_INFO",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_TRANSACTIONS",
+            "target": "HSP_TX_NAA_DETAIL",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_TRANSACTIONS",
+            "target": "HSP_TX_RMT_CD_LST",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HSP_TRANSACTIONS": [
+    {
+      "TX_ID": 685171641,
+      "HSP_ACCOUNT_ID": 376684810,
+      "ACCT_CLASS_HA_C_NAME": "Therapies Series",
+      "ACTION_STRING": "4",
+      "BILLED_AMOUNT": 1638.82,
+      "BUCKET_ID": 464353000,
+      "DEPARTMENT": 101061,
+      "FIN_CLASS_C_NAME": "Self-Pay",
+      "PAYMENT_SRC_HA_C_NAME": "Check",
+      "PROCEDURE_DESC": "AVADYNE PAYMENT",
+      "PROC_ID": 99974,
+      "QUANTITY": 1,
+      "REFERENCE_NUM": "0000000000",
+      "REVENUE_LOC_ID": 101401,
+      "SERV_AREA_ID": 10,
+      "SERVICE_DATE": "2022-05-11 00:00:00",
+      "TEMP_TX_ID": 715471300,
+      "TX_AMOUNT": -554.27,
+      "TX_COMMENT": "Enterprise Electronic Remittance Run 7559881",
+      "TX_FILED_TIME": "2022-05-11 08:35:00",
+      "TX_NUM_IN_HOSPACCT": 2,
+      "TX_POST_DATE": "2022-05-11 00:00:00",
+      "TX_SOURCE_HA_C_NAME": "Electronic Remittance",
+      "TX_TYPE_HA_C_NAME": "Payment",
+      "USER_ID": "GARLANAR",
+      "USER_ID_NAME": "GARLAND, ALICIA R",
+      "IS_REFUND_ADJ_YN": "N",
+      "INVOICE_NUM": "376684810***",
+      "COLLECTION_AGENCY": 32,
+      "COLLECTION_AGENCY_COLL_AGENCY_NAME": "AVADYNE",
+      "PRIMARY_PLAN_ID": 130204,
+      "INI_FILE_ATTEMPT_DT": "2022-05-11 00:00:00",
+      "EB_PMT_HAR_RES_YN": "Y",
+      "PMT_HAR_DIS_TO_DT": "2022-05-10 00:00:00",
+      "EB_PMT_TOTAL_AMOUNT": "554.27",
+      "EB_PMT_POST_TYPE_C_NAME": "AGENCY PAYMENT",
+      "$meta": {
+        "type": "HSP_TRANSACTIONS",
+        "mergedFrom": [
+          "HSP_TRANSACTIONS_2",
+          "HSP_TRANSACTIONS_3"
+        ]
+      },
+      "// mergedFrom HSP_TRANSACTIONS_2": true,
+      "ORIG_ACCT_COMB_ID": 376684810,
+      "FIRST_TX_POST_DATE": "2022-05-11 00:00:00",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "PRIMARY_PAYOR_ID": 1302,
+      "PRIMARY_COVERAGE_ID": 5934765,
+      "HAR_FIRST_POST_DATE": "2022-05-11 00:00:00",
+      "POST_SOURCE_C_NAME": "E-Remit",
+      "// mergedFrom HSP_TRANSACTIONS_3": true,
+      "IS_PRE_SERVICE_PMT_YN": "N",
+      "FIRST_HTR_TX_ID": 685171641,
+      "POSTING_DEPARTMENT_ID": 101061,
+      "IS_ADV_BILL_TRANS_YN": "N",
+      "PAT_PMT_COLL_WKFL_C_NAME": "Lockbox",
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
+    },
+    {
+      "TX_ID": 681354883,
+      "HSP_ACCOUNT_ID": 376684810,
+      "ACCT_CLASS_HA_C_NAME": "Therapies Series",
+      "BUCKET_ID": 464353002,
+      "FIN_CLASS_C_NAME": "Blue Cross",
+      "IS_SYSTEM_ADJ_YN": "Y",
+      "PAYOR_ID": 1302,
+      "PROCEDURE_DESC": "SYSTEM CREDIT ADJUSTMENT",
+      "PROC_ID": 34691,
+      "QUANTITY": 1,
+      "REVENUE_LOC_ID": 101401,
+      "SERV_AREA_ID": 10,
+      "SERVICE_DATE": "2022-04-26 00:00:00",
+      "TEMP_TX_ID": 711303868,
+      "TX_AMOUNT": -554.27,
+      "TX_FILED_TIME": "2022-04-26 09:01:00",
+      "TX_NUM_IN_HOSPACCT": 5,
+      "TX_POST_DATE": "2022-04-26 00:00:00",
+      "TX_SOURCE_HA_C_NAME": "Payment Posting",
+      "TX_TYPE_HA_C_NAME": "Credit Adjustment",
+      "USER_ID": "AUTOACCEPT",
+      "USER_ID_NAME": "AUTO ACCEPT",
+      "IS_REFUND_ADJ_YN": "N",
+      "PRIMARY_PLAN_ID": 130204,
+      "INI_FILE_ATTEMPT_DT": "2022-04-26 00:00:00",
+      "$meta": {
+        "type": "HSP_TRANSACTIONS",
+        "mergedFrom": [
+          "HSP_TRANSACTIONS_2",
+          "HSP_TRANSACTIONS_3"
+        ]
+      },
+      "// mergedFrom HSP_TRANSACTIONS_2": true,
+      "ORIG_ACCT_COMB_ID": 376684810,
+      "FIRST_TX_POST_DATE": "2022-04-26 00:00:00",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "PRIMARY_PAYOR_ID": 1302,
+      "PRIMARY_COVERAGE_ID": 5934765,
+      "HAR_FIRST_POST_DATE": "2022-04-26 00:00:00",
+      "POST_SOURCE_C_NAME": "Payment Posting",
+      "// mergedFrom HSP_TRANSACTIONS_3": true,
+      "FIRST_HTR_TX_ID": 681354883,
+      "IS_ADV_BILL_TRANS_YN": "N",
+      "EB_TX_SOURCE_C_NAME": "HB Payment Posting"
+    },
+    {
+      "TX_ID": 681354880,
+      "HSP_ACCOUNT_ID": 376684810,
+      "ACCT_CLASS_HA_C_NAME": "Therapies Series",
+      "BUCKET_ID": 464353000,
+      "FIN_CLASS_C_NAME": "Self-Pay",
+      "IS_SYSTEM_ADJ_YN": "Y",
+      "PREV_CREDITS_ACT": -1084.55,
+      "PROCEDURE_DESC": "SYSTEM DEBIT ADJUSTMENT",
+      "PROC_ID": 34693,
+      "QUANTITY": 1,
+      "REVENUE_LOC_ID": 101401,
+      "SERV_AREA_ID": 10,
+      "SERVICE_DATE": "2022-04-26 00:00:00",
+      "TEMP_TX_ID": 711303867,
+      "TOTAL_CHARGES_ACT": 1638.82,
+      "TX_AMOUNT": 554.27,
+      "TX_FILED_TIME": "2022-04-26 09:01:00",
+      "TX_NUM_IN_HOSPACCT": 4,
+      "TX_POST_DATE": "2022-04-26 00:00:00",
+      "TX_SOURCE_HA_C_NAME": "Payment Posting",
+      "TX_TYPE_HA_C_NAME": "Debit Adjustment",
+      "USER_ID": "AUTOACCEPT",
+      "USER_ID_NAME": "AUTO ACCEPT",
+      "IS_REFUND_ADJ_YN": "N",
+      "PRIMARY_PLAN_ID": 130204,
+      "INI_FILE_ATTEMPT_DT": "2022-04-26 00:00:00",
+      "$meta": {
+        "type": "HSP_TRANSACTIONS",
+        "mergedFrom": [
+          "HSP_TRANSACTIONS_2",
+          "HSP_TRANSACTIONS_3"
+        ]
+      },
+      "// mergedFrom HSP_TRANSACTIONS_2": true,
+      "ORIG_ACCT_COMB_ID": 376684810,
+      "FIRST_TX_POST_DATE": "2022-04-26 00:00:00",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "PRIMARY_PAYOR_ID": 1302,
+      "PRIMARY_COVERAGE_ID": 5934765,
+      "HAR_FIRST_POST_DATE": "2022-04-26 00:00:00",
+      "POST_SOURCE_C_NAME": "Payment Posting",
+      "// mergedFrom HSP_TRANSACTIONS_3": true,
+      "FIRST_HTR_TX_ID": 681354880,
+      "IS_ADV_BILL_TRANS_YN": "N",
+      "EB_TX_SOURCE_C_NAME": "HB Payment Posting"
+    },
+    {
+      "TX_ID": 681354878,
+      "HSP_ACCOUNT_ID": 376684810,
+      "ACCT_CLASS_HA_C_NAME": "Therapies Series",
+      "BUCKET_ID": 464353002,
+      "DEPARTMENT": 101061,
+      "FIN_CLASS_C_NAME": "Blue Cross",
+      "INT_CONTROL_NUMBER": "2022105BL4618",
+      "PAYMENT_SRC_HA_C_NAME": "Electronic Funds Transfer",
+      "PAYOR_ID": 1302,
+      "PROCEDURE_DESC": "CONTRACTUAL WRITE-OFF (INSURANCE)",
+      "PROC_ID": 10226,
+      "QUANTITY": 1,
+      "REFERENCE_NUM": "3178010520",
+      "REVENUE_LOC_ID": 101401,
+      "SERV_AREA_ID": 10,
+      "SERVICE_DATE": "2022-04-26 00:00:00",
+      "TEMP_TX_ID": 711275281,
+      "TX_AMOUNT": -962.82,
+      "TX_COMMENT": "Electronic Remittance Run 7526348; Not-Allowed Action after Pmt Posting.",
+      "TX_FILED_TIME": "2022-04-26 09:01:00",
+      "TX_NUM_IN_HOSPACCT": 3,
+      "TX_POST_DATE": "2022-04-26 00:00:00",
+      "TX_SOURCE_HA_C_NAME": "Electronic Remittance",
+      "TX_TYPE_HA_C_NAME": "Credit Adjustment",
+      "USER_ID": "AUTOACCEPT",
+      "USER_ID_NAME": "AUTO ACCEPT",
+      "ALLOWANCE_ADJ_YN": "Y",
+      "IS_REFUND_ADJ_YN": "N",
+      "PRIMARY_PLAN_ID": 130204,
+      "RECONCILIATION_NUM": "BCWI0_20220426_ERA07732296_ACH_ORIGINAL.835",
+      "INI_FILE_ATTEMPT_DT": "2022-04-26 00:00:00",
+      "$meta": {
+        "type": "HSP_TRANSACTIONS",
+        "mergedFrom": [
+          "HSP_TRANSACTIONS_2",
+          "HSP_TRANSACTIONS_3"
+        ]
+      },
+      "// mergedFrom HSP_TRANSACTIONS_2": true,
+      "ORIG_ACCT_COMB_ID": 376684810,
+      "FIRST_TX_POST_DATE": "2022-04-26 00:00:00",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "PRIMARY_PAYOR_ID": 1302,
+      "PRIMARY_COVERAGE_ID": 5934765,
+      "HAR_FIRST_POST_DATE": "2022-04-26 00:00:00",
+      "POST_SOURCE_C_NAME": "E-Remit",
+      "ADJUSTMENT_CAT_C_NAME": "Contractual",
+      "WRITE_OFF_RSN_C_NAME": "Contractual",
+      "// mergedFrom HSP_TRANSACTIONS_3": true,
+      "FIRST_HTR_TX_ID": 681354878,
+      "POSTING_DEPARTMENT_ID": 101061,
+      "IS_ADV_BILL_TRANS_YN": "N",
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
+    },
+    {
+      "TX_ID": 681354876,
+      "HSP_ACCOUNT_ID": 376684810,
+      "ACCT_CLASS_HA_C_NAME": "Therapies Series",
+      "ACTION_STRING": "2,1,4",
+      "ALLOWED_AMOUNT": 676,
+      "BILLED_AMOUNT": 1638.82,
+      "BUCKET_ID": 464353002,
+      "COINSURANCE_AMOUNT": 0,
+      "COPAY_AMOUNT": 0,
+      "DEDUCTIBLE_AMOUNT": 554.27,
+      "DEPARTMENT": 101061,
+      "FIN_CLASS_C_NAME": "Blue Cross",
+      "INT_CONTROL_NUMBER": "2022105BL4618",
+      "PAYMENT_SRC_HA_C_NAME": "Electronic Funds Transfer",
+      "PAYOR_ID": 1302,
+      "PROCEDURE_DESC": "EMDEON INSURANCE PAYMENT",
+      "PROC_ID": 104664,
+      "QUANTITY": 1,
+      "REFERENCE_NUM": "3178010520",
+      "REVENUE_LOC_ID": 101401,
+      "SERV_AREA_ID": 10,
+      "SERVICE_DATE": "2022-04-26 00:00:00",
+      "TEMP_TX_ID": 711275281,
+      "TX_AMOUNT": -121.73,
+      "TX_COMMENT": "Electronic Remittance Run 7526348",
+      "TX_FILED_TIME": "2022-04-26 09:01:00",
+      "TX_NUM_IN_HOSPACCT": 1,
+      "TX_POST_DATE": "2022-04-26 00:00:00",
+      "TX_SOURCE_HA_C_NAME": "Electronic Remittance",
+      "TX_TYPE_HA_C_NAME": "Payment",
+      "USER_ID": "AUTOACCEPT",
+      "USER_ID_NAME": "AUTO ACCEPT",
+      "NON_COVERED_AMT": 0,
+      "IS_REFUND_ADJ_YN": "N",
+      "INVOICE_NUM": "37668481002",
+      "PRIMARY_PLAN_ID": 130204,
+      "RECONCILIATION_NUM": "BCWI0_20220426_ERA07732296_ACH_ORIGINAL.835",
+      "INI_FILE_ATTEMPT_DT": "2022-04-26 00:00:00",
+      "IMD_ID": "163701585",
+      "PAYMENT_NOT_ALLOWED": 962.82,
+      "EB_PMT_TOTAL_AMOUNT": "6316.85",
+      "$meta": {
+        "type": "HSP_TRANSACTIONS",
+        "mergedFrom": [
+          "HSP_TRANSACTIONS_2",
+          "HSP_TRANSACTIONS_3"
+        ]
+      },
+      "// mergedFrom HSP_TRANSACTIONS_2": true,
+      "ORIG_ACCT_COMB_ID": 376684810,
+      "FIRST_TX_POST_DATE": "2022-04-26 00:00:00",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "PRIMARY_PAYOR_ID": 1302,
+      "PRIMARY_COVERAGE_ID": 5934765,
+      "HAR_FIRST_POST_DATE": "2022-04-26 00:00:00",
+      "POST_SOURCE_C_NAME": "E-Remit",
+      "// mergedFrom HSP_TRANSACTIONS_3": true,
+      "FIRST_HTR_TX_ID": 681354876,
+      "POSTING_DEPARTMENT_ID": 101061,
+      "IS_ADV_BILL_TRANS_YN": "N",
+      "CLAIM_PRINT_ID": 123337005,
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
+    },
+    {
+      "TX_ID": 678816451,
+      "HSP_ACCOUNT_ID": 376684810,
+      "ACCT_CLASS_HA_C_NAME": "Therapies Series",
+      "BUCKET_ID": 464353002,
+      "FIN_CLASS_C_NAME": "Blue Cross",
+      "IS_SYSTEM_ADJ_YN": "Y",
+      "PAYOR_ID": 1302,
+      "PROCEDURE_DESC": "SYSTEM DEBIT ADJUSTMENT",
+      "PROC_ID": 34693,
+      "QUANTITY": 1,
+      "REVENUE_LOC_ID": 101401,
+      "SERV_AREA_ID": 10,
+      "SERVICE_DATE": "2022-04-15 00:00:00",
+      "TEMP_TX_ID": 708463295,
+      "TOTAL_CHARGES_ACT": 1638.82,
+      "TX_AMOUNT": 1638.82,
+      "TX_FILED_TIME": "2022-04-15 00:35:00",
+      "TX_NUM_IN_HOSPACCT": 2,
+      "TX_POST_DATE": "2022-04-15 00:00:00",
+      "TX_SOURCE_HA_C_NAME": "Account Maintenance - Actions",
+      "TX_TYPE_HA_C_NAME": "Debit Adjustment",
+      "USER_ID": "HBBCKGRND",
+      "USER_ID_NAME": "HB, BACKGROUND",
+      "IS_REFUND_ADJ_YN": "N",
+      "PRIMARY_PLAN_ID": 130204,
+      "INI_FILE_ATTEMPT_DT": "2022-04-15 00:00:00",
+      "$meta": {
+        "type": "HSP_TRANSACTIONS",
+        "mergedFrom": [
+          "HSP_TRANSACTIONS_2",
+          "HSP_TRANSACTIONS_3"
+        ]
+      },
+      "// mergedFrom HSP_TRANSACTIONS_2": true,
+      "ORIG_ACCT_COMB_ID": 376684810,
+      "FIRST_TX_POST_DATE": "2022-04-15 00:00:00",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "PRIMARY_PAYOR_ID": 1302,
+      "PRIMARY_COVERAGE_ID": 5934765,
+      "HAR_FIRST_POST_DATE": "2022-04-15 00:00:00",
+      "// mergedFrom HSP_TRANSACTIONS_3": true,
+      "FIRST_HTR_TX_ID": 678816451,
+      "IS_ADV_BILL_TRANS_YN": "N"
+    },
+    {
+      "TX_ID": 678816450,
+      "HSP_ACCOUNT_ID": 376684810,
+      "ACCT_CLASS_HA_C_NAME": "Therapies Series",
+      "BUCKET_ID": 464352999,
+      "FIN_CLASS_C_NAME": "Blue Cross",
+      "IS_SYSTEM_ADJ_YN": "Y",
+      "PAYOR_ID": 1302,
+      "PROCEDURE_DESC": "SYSTEM CREDIT ADJUSTMENT",
+      "PROC_ID": 34691,
+      "QUANTITY": 1,
+      "REVENUE_LOC_ID": 101401,
+      "SERV_AREA_ID": 10,
+      "SERVICE_DATE": "2022-04-15 00:00:00",
+      "TEMP_TX_ID": 708463294,
+      "TX_AMOUNT": -1638.82,
+      "TX_FILED_TIME": "2022-04-15 00:35:00",
+      "TX_NUM_IN_HOSPACCT": 1,
+      "TX_POST_DATE": "2022-04-15 00:00:00",
+      "TX_SOURCE_HA_C_NAME": "Account Maintenance - Actions",
+      "TX_TYPE_HA_C_NAME": "Credit Adjustment",
+      "USER_ID": "HBBCKGRND",
+      "USER_ID_NAME": "HB, BACKGROUND",
+      "IS_REFUND_ADJ_YN": "N",
+      "PRIMARY_PLAN_ID": 130204,
+      "INI_FILE_ATTEMPT_DT": "2022-04-15 00:00:00",
+      "$meta": {
+        "type": "HSP_TRANSACTIONS",
+        "mergedFrom": [
+          "HSP_TRANSACTIONS_2",
+          "HSP_TRANSACTIONS_3"
+        ]
+      },
+      "// mergedFrom HSP_TRANSACTIONS_2": true,
+      "ORIG_ACCT_COMB_ID": 376684810,
+      "FIRST_TX_POST_DATE": "2022-04-15 00:00:00",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "PRIMARY_PAYOR_ID": 1302,
+      "PRIMARY_COVERAGE_ID": 5934765,
+      "HAR_FIRST_POST_DATE": "2022-04-15 00:00:00",
+      "// mergedFrom HSP_TRANSACTIONS_3": true,
+      "FIRST_HTR_TX_ID": 678816450,
+      "IS_ADV_BILL_TRANS_YN": "N"
+    },
+    {
+      "TX_ID": 672984063,
+      "HSP_ACCOUNT_ID": 376684810,
+      "ACCT_CLASS_HA_C_NAME": "Therapies Series",
+      "BILLING_PROV_ID": "599471",
+      "DEPARTMENT": 101401044,
+      "DFLT_UB_REV_CD_ID": 430,
+      "DFLT_UB_REV_CD_ID_REVENUE_CODE_NAME": "OCCUPATIONAL THERAPY - GENERAL CLASSIFICATION",
+      "FIN_CLASS_C_NAME": "Blue Cross",
+      "IS_LATE_CHARGE_YN": "N",
+      "ORIG_PRICE": 865.08,
+      "PAT_ENC_CSN_ID": 922943112,
+      "PERFORMING_PROV_ID": "599471",
+      "PRIM_FEE_SCHED_ID": 426,
+      "PRIM_FEE_SCHED_ID_FEE_SCHEDULE_NAME": "IHS MHM DEFAULT FEE SCHEDULE",
+      "PROCEDURE_DESC": "HC ADL/SELF CARE TRN EA 15M",
+      "PROC_ID": 79022,
+      "QUANTITY": 4,
+      "UB_REV_CODE_ID": 430,
+      "UB_REV_CODE_ID_REVENUE_CODE_NAME": "OCCUPATIONAL THERAPY - GENERAL CLASSIFICATION",
+      "REVENUE_LOC_ID": 101401,
+      "SERV_AREA_ID": 10,
+      "SERVICE_DATE": "2022-03-22 00:00:00",
+      "TEMP_TX_ID": 702071086,
+      "TX_AMOUNT": 865.08,
+      "TX_FILED_TIME": "2022-03-22 18:13:00",
+      "TX_NUM_IN_HOSPACCT": 3,
+      "TX_POST_DATE": "2022-03-22 00:00:00",
+      "TX_SOURCE_HA_C_NAME": "Inpatient",
+      "TX_TYPE_HA_C_NAME": "Charge",
+      "USER_ID": "ALG006",
+      "USER_ID_NAME": "GILMOUR, AARON K",
+      "PLACE_OF_SVC_ID": 101401,
+      "NON_COVERED_YN": "N",
+      "IS_REFUND_ADJ_YN": "N",
+      "PRIMARY_PLAN_ID": 130204,
+      "INI_FILE_ATTEMPT_DT": "2022-03-22 00:00:00",
+      "$meta": {
+        "type": "HSP_TRANSACTIONS",
+        "mergedFrom": [
+          "HSP_TRANSACTIONS_2",
+          "HSP_TRANSACTIONS_3"
+        ]
+      },
+      "// mergedFrom HSP_TRANSACTIONS_2": true,
+      "CHRG_AMT_SRC_FLG_C_NAME": "HB Default",
+      "ORIG_ACCT_COMB_ID": 376684810,
+      "FIRST_TX_POST_DATE": "2022-03-22 00:00:00",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "PRIMARY_PAYOR_ID": 1302,
+      "PRIMARY_COVERAGE_ID": 5934765,
+      "HAR_FIRST_POST_DATE": "2022-03-22 00:00:00",
+      "// mergedFrom HSP_TRANSACTIONS_3": true,
+      "FIRST_HTR_TX_ID": 672984063,
+      "POSTING_DEPARTMENT_ID": 101401044,
+      "IS_ADV_BILL_TRANS_YN": "N"
+    },
+    {
+      "TX_ID": 670514272,
+      "HSP_ACCOUNT_ID": 376684810,
+      "ACCT_CLASS_HA_C_NAME": "Therapies Series",
+      "BILLING_PROV_ID": "599471",
+      "DEPARTMENT": 101401044,
+      "DFLT_UB_REV_CD_ID": 434,
+      "DFLT_UB_REV_CD_ID_REVENUE_CODE_NAME": "OCCUPATIONAL THERAPY - EVALUATION OR REEVALUATION",
+      "FIN_CLASS_C_NAME": "Blue Cross",
+      "IS_LATE_CHARGE_YN": "N",
+      "ORIG_PRICE": 557.47,
+      "PAT_ENC_CSN_ID": 922942674,
+      "PERFORMING_PROV_ID": "599471",
+      "PRIM_FEE_SCHED_ID": 426,
+      "PRIM_FEE_SCHED_ID_FEE_SCHEDULE_NAME": "IHS MHM DEFAULT FEE SCHEDULE",
+      "PROCEDURE_DESC": "HC OT EVAL LOW COMPLEX",
+      "PROC_ID": 87356,
+      "QUANTITY": 1,
+      "UB_REV_CODE_ID": 434,
+      "UB_REV_CODE_ID_REVENUE_CODE_NAME": "OCCUPATIONAL THERAPY - EVALUATION OR REEVALUATION",
+      "REVENUE_LOC_ID": 101401,
+      "SERV_AREA_ID": 10,
+      "SERVICE_DATE": "2022-03-11 00:00:00",
+      "TEMP_TX_ID": 699409232,
+      "TX_AMOUNT": 557.47,
+      "TX_FILED_TIME": "2022-03-11 17:53:00",
+      "TX_NUM_IN_HOSPACCT": 2,
+      "TX_POST_DATE": "2022-03-11 00:00:00",
+      "TX_SOURCE_HA_C_NAME": "Inpatient",
+      "TX_TYPE_HA_C_NAME": "Charge",
+      "USER_ID": "ALG006",
+      "USER_ID_NAME": "GILMOUR, AARON K",
+      "PLACE_OF_SVC_ID": 101401,
+      "NON_COVERED_YN": "N",
+      "IS_REFUND_ADJ_YN": "N",
+      "PRIMARY_PLAN_ID": 130204,
+      "INI_FILE_ATTEMPT_DT": "2022-03-11 00:00:00",
+      "$meta": {
+        "type": "HSP_TRANSACTIONS",
+        "mergedFrom": [
+          "HSP_TRANSACTIONS_2",
+          "HSP_TRANSACTIONS_3"
+        ]
+      },
+      "// mergedFrom HSP_TRANSACTIONS_2": true,
+      "CHRG_AMT_SRC_FLG_C_NAME": "HB Default",
+      "ORIG_ACCT_COMB_ID": 376684810,
+      "DX_PRIM_CODE_SET_C_NAME": "ICD-10-CM",
+      "DX_ALT_CODE_SET_C_NAME": "ICD-9-CM",
+      "FIRST_TX_POST_DATE": "2022-03-11 00:00:00",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "PRIMARY_PAYOR_ID": 1302,
+      "PRIMARY_COVERAGE_ID": 5934765,
+      "HAR_FIRST_POST_DATE": "2022-03-11 00:00:00",
+      "// mergedFrom HSP_TRANSACTIONS_3": true,
+      "FIRST_HTR_TX_ID": 670514272,
+      "POSTING_DEPARTMENT_ID": 101401044,
+      "IS_ADV_BILL_TRANS_YN": "N"
+    },
+    {
+      "TX_ID": 670514271,
+      "HSP_ACCOUNT_ID": 376684810,
+      "ACCT_CLASS_HA_C_NAME": "Therapies Series",
+      "BILLING_PROV_ID": "599471",
+      "DEPARTMENT": 101401044,
+      "DFLT_UB_REV_CD_ID": 430,
+      "DFLT_UB_REV_CD_ID_REVENUE_CODE_NAME": "OCCUPATIONAL THERAPY - GENERAL CLASSIFICATION",
+      "FIN_CLASS_C_NAME": "Blue Cross",
+      "IS_LATE_CHARGE_YN": "N",
+      "ORIG_PRICE": 216.27,
+      "PAT_ENC_CSN_ID": 922942674,
+      "PERFORMING_PROV_ID": "599471",
+      "PRIM_FEE_SCHED_ID": 426,
+      "PRIM_FEE_SCHED_ID_FEE_SCHEDULE_NAME": "IHS MHM DEFAULT FEE SCHEDULE",
+      "PROCEDURE_DESC": "HC ADL/SELF CARE TRN EA 15M",
+      "PROC_ID": 79022,
+      "QUANTITY": 1,
+      "UB_REV_CODE_ID": 430,
+      "UB_REV_CODE_ID_REVENUE_CODE_NAME": "OCCUPATIONAL THERAPY - GENERAL CLASSIFICATION",
+      "REVENUE_LOC_ID": 101401,
+      "SERV_AREA_ID": 10,
+      "SERVICE_DATE": "2022-03-11 00:00:00",
+      "TEMP_TX_ID": 699409231,
+      "TX_AMOUNT": 216.27,
+      "TX_FILED_TIME": "2022-03-11 17:53:00",
+      "TX_NUM_IN_HOSPACCT": 1,
+      "TX_POST_DATE": "2022-03-11 00:00:00",
+      "TX_SOURCE_HA_C_NAME": "Inpatient",
+      "TX_TYPE_HA_C_NAME": "Charge",
+      "USER_ID": "ALG006",
+      "USER_ID_NAME": "GILMOUR, AARON K",
+      "PLACE_OF_SVC_ID": 101401,
+      "NON_COVERED_YN": "N",
+      "IS_REFUND_ADJ_YN": "N",
+      "PRIMARY_PLAN_ID": 130204,
+      "INI_FILE_ATTEMPT_DT": "2022-03-11 00:00:00",
+      "$meta": {
+        "type": "HSP_TRANSACTIONS",
+        "mergedFrom": [
+          "HSP_TRANSACTIONS_2",
+          "HSP_TRANSACTIONS_3"
+        ]
+      },
+      "// mergedFrom HSP_TRANSACTIONS_2": true,
+      "CHRG_AMT_SRC_FLG_C_NAME": "HB Default",
+      "ORIG_ACCT_COMB_ID": 376684810,
+      "DX_PRIM_CODE_SET_C_NAME": "ICD-10-CM",
+      "DX_ALT_CODE_SET_C_NAME": "ICD-9-CM",
+      "FIRST_TX_POST_DATE": "2022-03-11 00:00:00",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "PRIMARY_PAYOR_ID": 1302,
+      "PRIMARY_COVERAGE_ID": 5934765,
+      "HAR_FIRST_POST_DATE": "2022-03-11 00:00:00",
+      "// mergedFrom HSP_TRANSACTIONS_3": true,
+      "FIRST_HTR_TX_ID": 670514271,
+      "POSTING_DEPARTMENT_ID": 101401044,
+      "IS_ADV_BILL_TRANS_YN": "N"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "name": "HSP_ACCT_CVG_LIST",
+  "description": "This table contains hospital account and PB visit coverage list information from the Hospital Accounts Receivable (HAR) master file.",
+  "primaryKey": [
+    {
+      "columnName": "HSP_ACCOUNT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the hospital account."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column stores the line number in the results of a query. As multiple coverages can be associated with one hospital account, each coverage will have a unique line number."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the coverage associated with the hospital account."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CVG_IGNR_PRIM_PAY_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores whether the coverage was ignored for being assigned as primary payer. Typically the first coverage in the coverage list is used for primary payer, but a subsequent coverage may be assigned in some cases instead.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CVG_IGNR_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the reason why the coverage was ignored for primary payer. Typically the first coverage in the coverage list is used to determine primary payer, but a subsequent coverage may be assigned in some cases instead.",
+      "entries": [
+        "Coverage Billed for LTC Denial",
+        "Coverage Billed for Home Infusion Denial",
+        "Coverage Manually Skipped for Financial Class Reporting"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CVG_TIMELY_FILING_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item stores the timely filing date for the coverage. The date is updated as the HAR changes and remains populated after the HAR is closed for reporting purposes. The date stamped is the earliest timely filing date from any active, non-closed buckets for this coverage. If no buckets are active, for primary coverages the prebilled bucket is used to calculate the expected timely filing. For secondary coverages with non active buckets, the NRP deadline is used from the previous coverage."
+    }
+  ]
+}

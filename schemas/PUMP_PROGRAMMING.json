@@ -1,0 +1,217 @@
+{
+  "name": "PUMP_PROGRAMMING",
+  "description": "This table contains compliance information about infusion pumps. The records included in this table are Alerts (ALT) records that track information about pump programming attempts.",
+  "primaryKey": [
+    {
+      "columnName": "ALERT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ALERT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the med alert record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "INF_ACTION_TAKEN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID of the action taken by the user after getting the message from the pump.",
+      "entries": [
+        "Apply HM Modifiers",
+        "Run Extension",
+        "Apply Care Plan Template",
+        "Task Template",
+        "Open SmartSet",
+        "Open Order Set",
+        "Send In Basket Message",
+        "Acknowledge/Override Warning",
+        "Discontinue Order",
+        "Cancel Warning",
+        "Remove Order",
+        "Barcode Scan",
+        "No Action Taken",
+        "Schedule Asynchronous",
+        "Single Order",
+        "Apply Contraindication",
+        "Cancel Fill",
+        "Place On-The-Fly Order",
+        "Open Pathway",
+        "Health Maintenance Override",
+        "Health Maintenance Postpone",
+        "Mark Result Critical",
+        "Cancel Dispense Preparation",
+        "Remove HM Modifiers",
+        "Patient FYI Flag",
+        "SmartData Element",
+        "Flag Result Message as Important",
+        "Accept BPA (No Action Taken)",
+        "Cancel BPA",
+        "Resend Message to Pump",
+        "Add Problem",
+        "Research Study",
+        "Questionnaire Series",
+        "Remove ERX single order",
+        "Remove EAP single order",
+        "Remove Study Medication Container",
+        "Link Study Medication Container",
+        "Activity Link",
+        "Inline Alert Warning",
+        "Care Path",
+        "Questionnaire",
+        "Use Partial Package",
+        "Add Diagnosis",
+        "Resolve Problem",
+        "Auto Launched Active Guidelines",
+        "Remove Order Set",
+        "Alert Becomes Not Applicable (Addressed Outside of Alert)",
+        "Replaced By New Version of Alert (Addressed Outside of Alert)",
+        "Alert Disappears (Addressed Outside of Alert)",
+        "Documentation Changed (Alert No Longer Applies)",
+        "Flowsheets",
+        "Outpatient Care Plan",
+        "Push Notification",
+        "Deferred",
+        "Deferred BPA No Longer Applies",
+        "Instant Order",
+        "Discontinue Active Order",
+        "Pregnancy Status",
+        "Advance Beneficiary Notice",
+        "Local Coverage Determination",
+        "Generic Link",
+        "Best Care for My Patient",
+        "CDS Hooks System Action",
+        "Adjust Other Association",
+        "End Other Association",
+        "Delete Other Association",
+        "Update Association Time to Now",
+        "End Association"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "INF_ERROR_TITLE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The title of the message from the pump that is displayed to the user."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "INF_ERROR_TEXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The message text from the pump that is displayed to the user."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "INF_INT_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID of the status of the message from the pump.",
+      "entries": [
+        "Waiting",
+        "Complete"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "INF_SEND_INST_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant when the pump program was sent to the infusion pump."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "INF_RESPONSE_I_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant when the response was received from the infusion pump."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "INF_MED_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the medication that is associated with this message from the pump."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "INF_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the order that is associated with this message from the pump."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "INF_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user that is associated with this message from the pump. This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "INF_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "INF_DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the patient's department that is associated with this message from the pump."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "INF_DEVICE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the device that is associated with this message from the pump."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "INF_DEVICE_ID_DEVICE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name for this device."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "INF_LINE_NUMBER",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the most recent prior message sent to the pump for the same order for the same patient encounter."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "VOLUME_TO_INFUSE_IN_ML",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The volume to infuse in mL that was sent to the pump."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "INF_ATTEMPT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Tracks the instant the user attempted to program the pump"
+    }
+  ]
+}

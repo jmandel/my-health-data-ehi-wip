@@ -1,0 +1,37 @@
+{
+  "name": "ORDER_FIRST_DOSE_EDU_PTR",
+  "description": "This table contains pointers for first-dose medication education for this ordered medication.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "FIRST_DOSE_EDU_MEDICATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the medication record associated with a first-dose education point for this medication. Similar medications in the same encounter hold identical values for this column.  This is typically used to join to CL_PAT_EDU_POINT (overall point information), CL_PAT_EDU_HISTORY (audit trail of changes to points), CL_PATEDU_CNTCT_PT (encounter-specific point information), or CL_PAT_EDU_LEARNER (point learner documentation).  To associate the point information with a patient, use the patient ID to join with the PAT_ID column in CL_PAT_EDU_NS, and then use the PED_ID column in CL_PAT_EDU_NS to join with the PED_ID column in one of the tables from above. To associate the point information with a patient encounter, use the patient CSN to join with the PAT_CSN column in CL_PAT_EDU_OS, and then use the PED_ID and CONTACT_DATE_REAL columns in CL_PAT_EDU_OS to join with the PED_ID and CONTACT_DATE_REAL columns in CL_PATEDU_CNTCT_PT or CL_PAT_EDU_LEARNER."
+    }
+  ]
+}

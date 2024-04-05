@@ -1,0 +1,262 @@
+{
+  "name": "RES_DB_MAIN",
+  "description": "The RES_DB_MAIN is the primary table for storing results data.",
+  "primaryKey": [
+    {
+      "columnName": "RESULT_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RESULT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the result record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "RES_VAL_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The validation status category number for the result.",
+      "entries": [
+        "In Progress",
+        "Resulted",
+        "Preliminary",
+        "Verified",
+        "Cancel",
+        "Don't Test",
+        "Deleted",
+        "Pending Preliminary Verification",
+        "Pending Final Verification",
+        "Corrected",
+        "Cosign",
+        "Workflow Step Completed"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "RES_SPECIMEN_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the specimen that is associated with the result record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RES_SPEC_NO_REL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The related external specimen ID number for the given result. It gets the specimen ID through related externa ID number (I OVR 10026), which in turn uses the specimen related external ID number (I OVS 26) for the first specimen associated with the result."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RES_EPT_PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient (EPT) associated with the result record."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RES_GW_RESULT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the result record for a general workcard associated with this result record."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "RES_OW_RESULT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the organism workcard result record associated with this result record."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "RES_ABNORMAL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The abnormal level category number for the result.",
+      "entries": [
+        "Normal"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "RES_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The order ID associated with the result's test. It gets the order ID through the related external ID number (I OVR 10026) , which in turn uses order ID (I OVS 85) for the first specimen associated with the result."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "RES_TEST_MTHD_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the test method."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "RES_TEST_MTHD_ID_METHOD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the instrument interface, method, method grouper, or middle tier interface record."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "RES_VERIFY_LAB_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Lab where result was verified"
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "RES_RQG_PAT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the non-participating submitter's patient (RQG) associated with the result record."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "CURRENT_ACTION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The action which is currently in progress for the workcard."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "CURRENT_ACTION_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the node record."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "SLIDE_REVIEW_RPT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Setting for a hematology test to determine if the Slide Review part of the test is reported out or not.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "DIFF_REPORTED_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of differential reported category number for the result.    Note: this item is used for CBC test only.   Also note: unlike DIFF_TYPE_RPTD_C, this item is not set only during result transmittal and so may be set when DIFF_TYPE_RPTD_C is not.",
+      "entries": [
+        "Auto",
+        "Manual",
+        "None"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "DIFF_CELL_COUNT_EVT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the number of cells to count before which an action will be triggered. This value is used when a manual cell count is being performed such as a CBC Differential."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "MAIN_RPTD_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Setting for a hematology test to determine if the main part of the test is loaded and reported out."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "CAT_INI",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the master file from which to select a category list for multiline component level category comments."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "CAT_ITEM",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the item from which to select a category list for multiline component level category comments."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "TEST_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The test line number for the information associated with the specimen of this result. Along with RES_SPECIMEN_ID, this forms the foreign key to the SPEC_TEST_REL table."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "DIFF_TYPE_RPTD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of differential reported category number for the result.   Note: this item is used for CBC test only. Since this item is set only during result transmittal, it is not set for Quality Control (QC) results. Lastly, only the main result will have this item set."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "COSIGN_MAJOR_EDT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if a cosigned version of the result has been modified with a major edit."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "LINKED_CBC_TEST_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the hemogram/auto diff test linked to a manual diff test. If there is no linked test, the unique ID of the manual diff test is stored."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "RAND_REFX_FIRED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Tracks if the random rescreen reflex extension was fired for this result"
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "REQ_COSIGNER_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the unique ID of the user record requested to cosign this result. If blank, any user can cosign this result."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "REQ_COSIGNER_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "VALIDATION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the result was validated."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "SPEC_TYPE_CONTAINER_TYPE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID for the container type of the specimen for this result."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "SPEC_TYPE_CONTAINER_TYPE_ID_CONTAINER_TYPE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the container type record."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "VAR_UPDATE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time when the variant associated with this result was added, updated, or deleted."
+    }
+  ]
+}

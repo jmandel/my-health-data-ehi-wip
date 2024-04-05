@@ -1,0 +1,86 @@
+{
+  "name": "AP_CLAIMS_BUNDLE_LEDGER",
+  "description": "This table is used to represent bundled episode ledgers which contain information about the services linked to episodes.",
+  "primaryKey": [
+    {
+      "columnName": "EPISODE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the episode record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "BND_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount by which a transaction updated the bundle ledger. This could be either a contribution or an adjustment."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "BND_SOURCE_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The source type of the bundle ledger transaction.",
+      "entries": [
+        "Phase Expected Payment - Case Rate",
+        "Phase Expected Payment - Per Diem Rate",
+        "Service Line Contractual Amount",
+        "Service Line Adjustment Amount",
+        "Ad-Hoc Adjustment"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "BND_TX_ENTRY_INST_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant that the bundle ledger transaction was logged in the UTC timezone."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "BND_SERVICE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The service date of the transaction."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "BND_SOURCE_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the AP Claim service line that caused the transaction."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "BND_REVERSAL_OF_LN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The bundle ledger line that was reversed by this transaction."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "BND_TX_ENTRY_INST_LOCAL_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant that the bundle ledger transaction was logged in the local time zone."
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "name": "DENTAL_ORTHODONTICS",
+  "description": "Table for storing Orthodontics Episode items such as Treatment Scope, Treatment Start Date, etc.",
+  "primaryKey": [
+    {
+      "columnName": "SUMMARY_BLOCK_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SUMMARY_BLOCK_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the episode record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ORTHO_BANDING_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date on which the brackets or bands were placed on patient's teeth."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ORTHO_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date on which the last phase of an orthodontic treatment ends."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ORTHO_ESTIMATED_LENGTH",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Estimated number of months an orthodontic treatment would last."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ORTHO_TX_SCOPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The current scope of orthodontic treatment.",
+      "entries": [
+        "Limited",
+        "Comprehensive",
+        "Habit Control",
+        "Retainer Only"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ORTHO_EPSD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Status of the episode in terms of \"Ongoing\", \"Pending\", or \"Discontinued\".",
+      "entries": [
+        "Ongoing",
+        "Paused",
+        "Discontinued",
+        "Completed"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ORTHO_EPSD_STATUS_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Reason why an orthodontics episode is pending or discontinued.",
+      "entries": [
+        "Ongoing poor oral hygiene",
+        "Patient declined treatment",
+        "Treatment not recommended",
+        "Patient concerns about pain",
+        "Patient concerns about personal appearance",
+        "Patient concerns about social stigma",
+        "Patient concerns about treatment cost",
+        "Patient concerns about transportation",
+        "Patient concerns about speech",
+        "Other adverse effects of orthodontic treatment",
+        "Parent/guardian request",
+        "Appliance removal by patient",
+        "Patient relocation",
+        "Overall treatment length",
+        "Dietary changes",
+        "Root resorption",
+        "Referral to other dental specialty",
+        "Automatic Discontinuation",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ORTHO_MODIFIED_INST_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "History item that tracks every instant an orthodontic episode has been modified."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "ORTHO_MODIFIED_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the user that modified orthodontics data for this history line."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ORTHO_MODIFIED_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "ORTHO_MODIFIED_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the contact CSN where data was modified for this history line."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "ORTHO_STATUS_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Comment on why an orthodontics episode status is paused or discontinued."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "ORTHO_TX_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the status of the orthodontic treatment.",
+      "entries": [
+        "Under Evaluation",
+        "Observation",
+        "Planning",
+        "Active",
+        "Retention"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "ORTHO_DENTITION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the treatment dentition for the orthodontics episode.",
+      "entries": [
+        "Primary",
+        "Transitional",
+        "Adolescent",
+        "Adult"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "OWNER_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the case owner responsible for the overall orthodontics episode."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "TREAT_DEPT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This is the primary department where the patient will be treated during the orthodontics episode."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "ORTHO_READY_TX_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores whether the patient is ready for treatment in this episode. The item is documented as part of the patient's comprehensive exam. If left blank, then a clinical decision has not yet been made.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "ORTHO_TX_PHASE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This is the treatment phase for the orthodontic treatment."
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "name": "V_EHI_ICF_CYCLE_PATIENTS_DATA",
+  "description": "The INFERTILITY_CYCLE_LINKS table is not able to safely export all of its columns without potentially compromising the other patients that are attached to the infertility treatment cycle. The extracted patient's roles (e.g., sperm donor, intended parent) on the infertility treatment cycle determines the data they are allowed to view about the other patients attached to the cycle. This view filters the full data of the INFERTILITY_CYCLE_LINKS table based on the extracted patient's roles to be safely exported without compromising PHI.\n\n\n\n\n\nAll extracted patients should be able to see the type of roles that were a part of a cycle (e.g., there is a sperm provider). Extracted patients with the role of intended parent should be able to see all the name of the known donors and the external donor information. Extracted patients with the role of known donor (a non-anonymous sperm or egg provider but not an intended parent) should be able to see all the names of the other known donors and intended parents but not the external donor information. Extracted patients with the role of anonymous donor should not be able to see any of the names of the other patients on the cycle or the external donor information.",
+  "primaryKey": [
+    {
+      "columnName": "CYCLE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CYCLE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the fertility treatment cycle record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINKED_PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient ID of a patient involved in a fertility treatment cycle."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient�s name in the format Lastname, Firstname MI."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "IS_EXTRACTED_PAT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "When extracting a patient's cycles, rows marked with 'Y' represent their roles on the cycle. Else if marked 'N' then that row represents another patient attached to the cycle. The extracted patient refers to the LINKED_PAT_ID column."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "DONOR_DONATION_AGE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The age of the donor at the time of donation of the specimen (sperm or egg)."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "DONOR_DONATION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of donation of the specimen (sperm or egg)."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DONOR_BANK",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the donation bank the specimen had came from."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "DONOR_BANK_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A free text comment for the name of the donation bank."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "DONOR_GAMETE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The gamete donor ID (may be assigned by the donation bank)."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "DONOR_RACE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A patient's race. Multiple races may be associated with this patient.  This is represented by a semicolon (;) delimited string.  The values in this column come from the TITLE column of the ZC_PATIENT_RACE table."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "DONOR_RELATIONSHIP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column indicates the type of relationship of the external donor to the patient.",
+      "entries": [
+        "Anonymous",
+        "Directed - Biological Relation",
+        "Directed - Non-biological Relation",
+        "Unknown"
+      ]
+    }
+  ]
+}

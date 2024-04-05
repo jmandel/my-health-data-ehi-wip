@@ -1,0 +1,472 @@
+{
+  "name": "HSP_ACCOUNT_3",
+  "description": "This table contains hospital account information from the Hospital Accounts Receivable (HAR) master file. This third hospital account table has the same basic structure as HSP_ACCOUNT and HSP_ACCOUNT_2, but was created as a third table to prevent the other tables from getting any larger. This table will exclude professional billing hospital account records created by visit filing order in non-single billing office service areas.",
+  "primaryKey": [
+    {
+      "columnName": "HSP_ACCOUNT_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the hospital account."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "ISS_TRAUMA",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The trauma \"Injury Severity Score\" (1-75)"
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ADMIT_TYPE_EPT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Admit type as stored on patient record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_STS_EPT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Patient Status as stored on patient record."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PMTPLN_EST_INIT_BAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the initial estimated payment plan balance for the hospital account."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "IP_ADMIT_DATE_TIME",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column indicates the inpatient admission date and time that has been stored in the hospital account.  This may differ from the admission date and represents the date a patient was admitted with an IP base class."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "NEW_CANCER_YNU",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores a yes/no/unknown record of whether or not a patient's cancer is new.",
+      "entries": [
+        "Yes",
+        "No",
+        "Unknown"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "HYPERALIMENT_DAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column stores the number of days that a patient received hyperalimentation therapy."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "BAD_DEBT_FLAG_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Bad Debt Flag. This flag determines if an account's non-prebilled balance is in bad debt. This is only used if account-based bad debt is used.",
+      "entries": [
+        "Active AR",
+        "External Agency AR",
+        "Bad Debt",
+        "Outsourced",
+        "Received Self-Pay Active AR",
+        "Received Self-Pay External Agency AR",
+        "Received Self-Pay Bad Debt"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PAT_HOUSE_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "House number in the address in patient demographic information on a hospital account. Added to support international address formats."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "FAC_TRANS_FROM_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The facility the patient was transferred from prior to their stay."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "FAC_TRANS_TO_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The facility the patient was transferred to after their stay."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "TISSUE_REMOVED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item represents if tissue was removed during surgery.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "READMIT_RLTD_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item represents if the patient was readmitted for a related reason."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "WNDCARE_PRVD_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item represents if wound care was provided during this visit."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "OSHPD_ADM_SITE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The OSHPD admission site category number for this hospital account.  This data is populated by coders in the abstracting activity.  The abstracting activity must be configured to include this field to use this."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "OSHPD_LIC_SITE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The OSHPD licensure of site category number for this hospital account.  This data is populated by coders in the abstracting activity.  The abstracting activity must be configured to include this field to use this."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "OSHPD_RTE_ADM_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The OSHPD route of admission category number for this hospital account.  This data is populated by coders in the abstracting activity.  The abstracting activity must be configured to include this field to use this."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "OSHPD_TYP_CARE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The OSHPD patient's type of care category number for this hospital account.  This data is populated by coders in the abstracting activity.  The abstracting activity must be configured to include this field to use this."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "HAS_OPEN_OVRP_BD_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the hospital account has open overpayment records."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "EBC_BIRTH_DT_TM",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date and time of birth on the electronic birth certificate for the child that is associated with this hospital account."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "HH_HSB_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the home health summary block that is associated with this hospital account."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "SELF_PAY_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether this hospital account is self-pay."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "EBC_LAST_MENSES_FT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The date of the mother's last normal menses prior to the birth."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "SBO_SPLIT_HAR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for a mixed hospital account used with splits in shared-mode single billing office. This will be populated on professional billing-only hospital accounts that were created as the result of splitting a mixed hospital account."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "BILL_DRG_QLFR_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the additional diagnosis-related group (DRG) qualifier for the billing DRG type and code.",
+      "entries": [
+        "HAC Dx Included",
+        "Analyzed DRG",
+        "Admission DRG",
+        "PPC DRG",
+        "PPC Admit DRG"
+      ]
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "ACTUAL_COPAY_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "For all insurance buckets of the last coverage in the filing order, the total copay specified by insurance on payments."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "ACTUAL_COINS_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "For all insurance buckets of the last coverage in the filing order, the total coinsurance specified by insurance on payments."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "ACTUAL_DED_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "For all insurance buckets of the last coverage in the filing order, the total deductible specified by insurance on payments."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "SBO_BILL_AREA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Save the bill area associated with HAR. Currently it is only set when the one PB HAR per bill area logic is used."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "SBO_BILL_AREA_ID_BILL_AREA_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The record name of this bill area, financial subdivision, or financial division."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "MYC_LST_ST_VW_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This column stores the date and time when this Hospital Billing statement was last viewed in MyChart for this hospital account. If you are using hospital account-level statements, this field will be updated when that specific hospital account statement is viewed in MyChart. If you are using guarantor-level statements, then this field will be updated when a guarantor statement that includes this hospital account is viewed in MyChart. The date and time for this column is stored in Coordinated Universal Time (UTC) and can be converted to local time by using the EFN_UTC_TO_LOCAL Clarity database function."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "MYC_LST_DB_VW_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This column stores the date and time when a Hospital Billing detail bill was last viewed in MyChart for this hospital account. The date and time for this column is stored in Coordinated Universal Time (UTC) and can be converted to local time by using the EFN_UTC_TO_LOCAL Clarity database function."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "MYC_LST_LTR_VW_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This column stores the date and time when a Hospital Billing letter was last viewed in MyChart for this hospital account. The date and time for this column is stored in Coordinated Universal Time (UTC) and can be converted to local time by using the EFN_UTC_TO_LOCAL Clarity database function."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "CDI_SPECIALIST_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the person responsible for the CDI process."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "CDI_SPECIALIST_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "CDI_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date the CDI review started."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "CDI_LAST_RVW_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the last date the CDI review was done."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "CDI_DRG_CHANGED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column indicates whether the clinical documentation improvement (CDI) queries resulted in a DRG change.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "CDI_INITIAL_DRG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the initial DRG before the CDI review is complete."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "CDI_INITIAL_DRG_ID_DRG_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the Diagnoses Related Group name."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "CDI_INITIAL_REIMB",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the expected reimbursement based on the initial DRG."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "CDI_INITIAL_DRG_WT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the initial DRG weight."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "CDI_WORKING_DRG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the working DRG assigned by the CDI specialist."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "CDI_WORKING_DRG_ID_DRG_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the Diagnoses Related Group name."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "CDI_WORKING_REIMB",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the expected reimbursement based on the working DRG."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "CDI_WORKING_DRG_WT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the working DRG weight."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "CDI_PRIMARY_DX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the primary diagnosis identified by the CDI specialist."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "CDI_DRG_MATCH_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the final DRG selected by the coder matches the working DRG specified by the CDI specialist."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "BP_DIASTOLIC",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Diastolic Blood Pressure"
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "PULSE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The pulse for the patient on the hospital account. This is an abstracting item. The data can be configured to copy from the first pulse taken on the primary contact."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "BP_SYSTOLIC",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Systolic Blood Pressure"
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "PRELIM_COD_DX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the Preliminary Cause of Death as entered by a coder."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "COD_RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the coding record for CDI that is associated with the hospital account."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "CMS_OP_ESRD_STRT_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column stores the date the patient started to receive maintenance dialysis treatments for end-stage renal disease (ESRD)."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "CMS_OP_ESRD_DX_G_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The first date that the acute comorbidity of gastrointestinal bleeding was present during maintenance dialysis treatments for ESRD."
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "CMS_OP_ESRD_DX_B_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column stores the first date the acute comorbidity of bacterial pneumonia was present during maintenance dialysis treatments for end-stage renal disease (ESRD)."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "CMS_OP_ESRD_DX_P_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The first date that the acute comorbidity of pericarditis was present during maintenance dialysis treatments for ESRD."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "BILLING_DRG_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This virtual item displays the source code set of the billing DRG.",
+      "entries": [
+        "Primary Code Set",
+        "Alternate Code Set"
+      ]
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "NYS_PROC_STRT_DTTM",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The start date and time that the ambulatory surgery patient entered the operating room exclusive of pre-op (preparation) and post-op (recovery) time.  This is used for New York SPARCS reporting."
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "NYS_PROC_END_DTTM",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The end date and time that the ambulatory surgery patient left the operating room exclusive of pre-op (preparation) and post-op (recovery) time.  This is used for New York SPARCS reporting."
+    }
+  ]
+}

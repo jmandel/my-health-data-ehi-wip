@@ -1,0 +1,95 @@
+{
+  "name": "ODC_BASIC",
+  "description": "The ODC_BASIC table contains the basic information for the order context record. These include record status, logical/physical owner, record type, status, etc.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_CONTEXT_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_CONTEXT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the order context record, which contains information about when orders are intended to be used."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "ODC_RECORD_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type category number for the order context record.",
+      "entries": [
+        "User created context",
+        "Surgical/Invasive",
+        "Procedure order context"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ODC_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status category number for the order context record.",
+      "entries": [
+        "Active",
+        "Active-Completed",
+        "Auto-Completed",
+        "Expired",
+        "Canceled"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ODC_PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PAT_VISIT_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the contact serial number (CSN) of the visit that the order context is linked to."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "HOLDING_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The pend reason category ID for the order context record, which indicates the reason the record was created."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "LAST_ORDER_ADDED_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The most recent date when an order was associated with the order context record."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "LAST_ORDER_RLSD_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The most recent date when an order associated with this order context record was activated."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "OVERRIDE_START_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the original surgical visit associated with this order context record was cancelled."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "INACTIVE_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the context record was set to an inactive status."
+    }
+  ]
+}

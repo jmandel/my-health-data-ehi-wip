@@ -1,0 +1,162 @@
+{
+  "$meta": {
+    "schemas": {
+      "SVC_PMT_HISTORY": {
+        "name": "SVC_PMT_HISTORY",
+        "description": "The SVC_PMT_HISTORY table contains line level history for how a payment was processed.",
+        "primaryKey": [
+          {
+            "columnName": "TX_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "GROUP_LINE",
+            "ordinalPosition": 2
+          },
+          {
+            "columnName": "VALUE_LINE",
+            "ordinalPosition": 3
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "TX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the transaction Record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "GROUP_LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "VALUE_LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number of one of the multiple values associated with a specific group of data within this record."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "SVC_PMT_HISTORY_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Contains a line level action that was taken for the payment.",
+            "entries": [
+              "The claim charge amount was increased due to charge not found extension.",
+              "Resubmit Insurance action will be suppressed. The coverage is not effective.",
+              "Retro/Transfer/Charge Correction to the invoice has suppressed Resubmit Insurance.",
+              "Retro/Transfer/Charge Correction to the invoice has suppressed Next Responsible Party.",
+              "Denial has suppressed Next Responsible Party.",
+              "Write-off suppressed due to not allowed write-off performed by other payor.",
+              "Write-off suppressed due to not allowed write-off previously performed.",
+              "Write-off suppressed as insurance write-off actions are not allowed to overpost.",
+              "Resubmit insurance action will be suppressed. This secondary crossover payment has arrived before the primary.",
+              "Next responsible party action will be suppressed. This secondary crossover payment has arrived before the primary.",
+              "Secondary coverage skipped as they have already paid (from crossover).",
+              "Resubmit insurance action will be suppressed. This is a crossover payment.",
+              "Self-pay bad debt will be automatically recovered.",
+              "A next responsible party action has been performed.",
+              "A next responsible party action has been removed.",
+              "Remark codes",
+              "This is a duplicate payment by the primary payor.",
+              "A next responsible party was changed to research.",
+              "A credit adjustment was decreased to preserve patient liability.",
+              "NAA suppressed due to preserve patient liability.",
+              "NAA suppressed due to $0 due to preserve patient liability.",
+              "NAA modified due to preserve patient liability.",
+              "Remittance workqueue comment.",
+              "Remittance Note",
+              "Removed paid amount and added as capitation adjustment.",
+              "Tax amount removed from line.",
+              "The write-off amount is equal to or greater than the charge amount.",
+              "NAA suppressed for full denials.",
+              "Payment matched to charge with different procedure code",
+              "NRP of zero balance is not performed because balance is no longer zero.",
+              "No NRP is performed because NRP amount is negative.",
+              "No NRP is performed because outstanding balance is negative.",
+              "NRP amount is reduced to outstanding balance.",
+              "Action amount adjusted due to FQHC/FPEP adjustment.",
+              "Payment matched to charge with different billed amount.",
+              "Paid amount cleared and moved to bundled line. Offsetting adjustment added.",
+              "Paid amount added from show-only line(s). Offsetting adjustment added."
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "SVC_PMT_HISTORY",
+            "target": "ARPB_TX_MATCH_HX",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "SVC_PMT_HISTORY",
+            "target": "PMT_EOB_INFO_II",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "SVC_PMT_HISTORY",
+            "target": "PMT_EOB_INFO_I",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "SVC_PMT_HISTORY",
+            "target": "ARPB_TX_MODERATE",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "SVC_PMT_HISTORY": [
+    {
+      "TX_ID": 319922979,
+      "GROUP_LINE": 1,
+      "VALUE_LINE": 1,
+      "SVC_PMT_HISTORY_C_NAME": "Retro/Transfer/Charge Correction to the invoice has suppressed Next Responsible Party.",
+      "$meta": {
+        "type": "SVC_PMT_HISTORY"
+      }
+    }
+  ]
+}

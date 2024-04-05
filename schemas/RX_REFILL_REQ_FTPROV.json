@@ -1,0 +1,55 @@
+{
+  "name": "RX_REFILL_REQ_FTPROV",
+  "description": "Stores free-text recipients of Refill Authorization Requests.  The information contained in each line is detailed below:\n\n\n\n\n\nLine   Info\n\n\n1       Provider Name\n\n\n2       Provider DEA Number\n\n\n3       Provider Phone\n\n\n4       Provider Fax\n\n\n5       Provider NPI\n\n\n6       Whether the provider is an E-Prescribing provider\n\n\n7       Provider Address: House number\n\n\n8       Provider Address: Street\n\n\n9       Provider Address: City\n\n\n10      Provider Address: State\n\n\n11      Provider Address: Zip\n\n\n12      Provider Address: District\n\n\n13      Provider Address: County\n\n\n14      Provider Address: Country",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "REFILL_REQ_FREETEXT_PROV",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The free-text provider the refill authorization request was sent to. This column is blank if the request was sent to a provider in the database or an In Basket pool."
+    }
+  ]
+}

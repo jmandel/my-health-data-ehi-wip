@@ -1,0 +1,699 @@
+{
+  "name": "PAT_ENC_ANTICOAG",
+  "description": "This table contains information related to anticoagulation monitoring encounters. It includes dosing information for the encounter (columns that contain the word DOSE or PILL with the exception of WEEKLY_MAX_DOSE and DOSE_DESC), information for the INR selected in the encounter (LAST_INR, LAST_INR_DATE, LATE_INR_ORDER_ID, LAST_INR_LINE_NUM), information from the anticoagulation episode values at the time of the encounter (INR_GOAL_C, INR_GOAL_HIGH, INR_GOAL_LOW, TARGET_END_DATE, WEEKLY_MAX_DOSE, ANTICOAG_DX, INDEFINITE_TREAMENT_YN), and other encounter details (DOSE_DESC, RETURN_DATE, ANTICOAG_TREND_C, AC_LAST_CHANGE_USER_ID, AC_LAST_CHANGE_IN_DTTM, ANTICOAG_NO_CHAN_YN, MANAGEMENT_TYPE_C)\n\n\n\n\n\nThe dosing columns do not apply when using the calendar tracking section (LVN 617) for the anticoagulation encounter. \n\n\n\n\n\nThe following columns only apply when using the calendar tracking section (LVN 617) for the anticoagulation encounter:  ANTICOAG_TREND_C, AC_LAST_CHANGE_USER_ID, AC_LAST_CHANGE_IN_DTTM, ANTICOAG_NO_CHAN_YN, and MANAGEMENT_TYPE_C.\n\n\n\n\n\nThere is a related table, EPI_ANTICOAG, for the most recent anticoagulation episode information.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "The date for the patient encounter in internal format."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "INR_GOAL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient's INR goal, which is a range, at time of the encounter.  The current INR goal is in the EPI_ANTICOAG table.",
+      "entries": [
+        "1.5-2.0",
+        "1.5-2.5",
+        "2.0-3.0",
+        "2.5-3.5",
+        "3.0-4.0",
+        "3.0-4.5",
+        "3.5-4.5"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "INR_GOAL_HIGH",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "The high value for the INR goal range. The column represents the high value portion of the category title at the time of extract. If application administrators change the meaning of a category value's title, this column could get out of sync. It is recommended to use INR_GOAL_C to link to ZC_INR_GOAL to look up the category title for the complete INR goal range (low and high)."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "INR_GOAL_LOW",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "The low value for the INR goal range. The column represents the low value portion of the category title at the time of extract. If application administrators change the meaning of a category value's title, this column could get out of sync. It is recommended to use INR_GOAL_C to link to ZC_INR_GOAL to look up the category title for the complete INR goal range (low and high)."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "TARGET_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Target end date at the time of the visit."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "LAST_INR",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The most recent INR result as of the encounter."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "LAST_INR_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of most recent INR result as of the encounter."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "WEEKLY_MAX_DOSE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Weekly max dose at the time of the visit."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PT_DEVIATE_DOSE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if the patient deviated from dose instructions.  If so, the 'taken' columns have been manually updated with the actual doses the patient reported taken.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "DOSE_SUN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Sunday dose in mg"
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "DOSE_MON",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Monday dose in mg"
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "DOSE_TUE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Tuesday daily dose in mg"
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "DOSE_WED",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Wednesday dose in mg"
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "DOSE_THU",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Thursday dose in mg"
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "DOSE_FRI",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Friday dose in mg"
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "DOSE_SAT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Saturday dose in mg"
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PILL_SZ_SUN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Sunday pill size in mg"
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "PILL_SZ_MON",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Monday pill size in mg"
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "PILL_SZ_TUE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Tuesday pill size in mg"
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "PILL_SZ_WED",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Wednesday pill size in mg"
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "PILL_SZ_THU",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Thursday pill size in mg"
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "PILL_SZ_FRI",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Friday pill size in mg"
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "PILL_SZ_SAT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Saturday pill size in mg"
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "PILLS_SUN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Sunday number of pills"
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "PILLS_MON",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Monday number of pills"
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "PILLS_TUE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Tuesday number of pills"
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "PILLS_WED",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Wednesday number of pills"
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "PILLS_THU",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Thursday number of pills"
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "PILLS_FRI",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Friday number of pills"
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "PILLS_SAT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Saturday number of pills"
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "WEEKLY_DOSE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Total dose for the week in mg."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "PILL_DISTRIBUTION",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "How the pills were distributed (0=single pill,1=additional pill,2=alternate pill)"
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "RETURN_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date the patient should return for their next INR as of this encounter.  The most recent return date is in the table EPI_ANTICOAG."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "WEEKLY_DOSE_TAKEN",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "Patient reported weekly dose taken"
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "DOSE_TAKEN_SUN",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "Dose taken Sunday in mg"
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "DOSE_TAKEN_MON",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "Dose taken Monday in mg"
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "DOSE_TAKEN_TUE",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "Dose taken Tuesday in mg"
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "DOSE_TAKEN_WED",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "Dose taken Wednesday in mg"
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "DOSE_TAKEN_THU",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "Dose taken Thursday in mg"
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "DOSE_TAKEN_FRI",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "Dose taken Friday in mg"
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "DOSE_TAKEN_SAT",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "Dose taken Saturday in mg"
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "PILL_SZ_SUN_ADL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Sunday pill size of additional pills"
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "PILL_SZ_MON_ADL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Monday pill size of additional pills"
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "PILL_SZ_TUE_ADL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Tuesday pill size of additional pills"
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "PILL_SZ_WED_ADL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Wednesday pill size of additional pills"
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "PILL_SZ_THU_ADL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Thursday pill size of additional pills"
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "PILL_SZ_FRI_ADL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Friday pill size of additional pills"
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "PILL_SZ_SAT_ADL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Saturday pill size of additional pills"
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "PILLS_SUN_ADL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Number of additional pills for Sunday"
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "PILLS_MON_ADL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Number of additional pills for Monday"
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "PILLS_TUE_ADL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Number of additional pills for Tuesday"
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "PILLS_WED_ADL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Number of additional pills for Wednesday"
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "PILLS_THU_ADL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Number of additional pills for Thursday"
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "PILLS_FRI_ADL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Number of additional pills for Friday"
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "PILLS_SAT_ADL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Number of additional pills for Saturday"
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "WEEKLY_DOSE_ALT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If an alternate week schedule is used, this column contains the total dose for the second (alternate) week"
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "DOSE_SUN_ALT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Sunday alternate week dose in mg"
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "DOSE_MON_ALT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Monday alternate week dose in mg"
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "DOSE_TUE_ALT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Tuesday alternate week dose in mg"
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "DOSE_WED_ALT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Wednesday alternate week dose in mg"
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "DOSE_THU_ALT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Thursday alternate week dose in mg"
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "DOSE_FRI_ALT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Friday alternate week dose in mg"
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "DOSE_SAT_ALT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Saturday alternate week dose in mg"
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "PILL_SZ_SUN_ALT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Sunday alternate week pill size"
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "PILL_SZ_MON_ALT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Monday alternate week pill size"
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "PILL_SZ_TUE_ALT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Tuesday alternate week pill size"
+    },
+    {
+      "ordinalPosition": 69,
+      "name": "PILL_SZ_WED_ALT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Wednesday alternate week pill size"
+    },
+    {
+      "ordinalPosition": 70,
+      "name": "PILL_SZ_THU_ALT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Thursday alternate week pill size"
+    },
+    {
+      "ordinalPosition": 71,
+      "name": "PILL_SZ_FRI_ALT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Friday alternate week pill size"
+    },
+    {
+      "ordinalPosition": 72,
+      "name": "PILL_SZ_SAT_ALT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Saturday alternate week pill size"
+    },
+    {
+      "ordinalPosition": 73,
+      "name": "PILLS_SUN_ALT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Sunday alternate week number of pills"
+    },
+    {
+      "ordinalPosition": 74,
+      "name": "PILLS_MON_ALT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Monday alternate week number of pills"
+    },
+    {
+      "ordinalPosition": 75,
+      "name": "PILLS_TUE_ALT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Tuesday alternate week number of pills"
+    },
+    {
+      "ordinalPosition": 76,
+      "name": "PILLS_WED_ALT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Wednesday alternate week number of pills"
+    },
+    {
+      "ordinalPosition": 77,
+      "name": "PILLS_THU_ALT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Thursday alternate week number of pills"
+    },
+    {
+      "ordinalPosition": 78,
+      "name": "PILLS_FRI_ALT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Friday alternate week number of pills"
+    },
+    {
+      "ordinalPosition": 79,
+      "name": "PILLS_SAT_ALT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Saturday alternate week number of pills"
+    },
+    {
+      "ordinalPosition": 80,
+      "name": "WKLY_DOSE_TKN_ALT",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "The total actual dose taken by patient during the alternate week"
+    },
+    {
+      "ordinalPosition": 81,
+      "name": "DOSE_TKN_SUN_ALT",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "The actual dose taken by patient during the alternate week on Sunday"
+    },
+    {
+      "ordinalPosition": 82,
+      "name": "DOSE_TKN_MON_ALT",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "The actual dose taken by patient during the alternate week on Monday"
+    },
+    {
+      "ordinalPosition": 83,
+      "name": "DOSE_TKN_TUE_ALT",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "The actual dose taken by patient during the alternate week on Tuesday"
+    },
+    {
+      "ordinalPosition": 84,
+      "name": "DOSE_TKN_WED_ALT",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "The actual dose taken by patient during the alternate week on Wednesday"
+    },
+    {
+      "ordinalPosition": 85,
+      "name": "DOSE_TKN_THU_ALT",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "The actual dose taken by patient during the alternate week on Thursday"
+    },
+    {
+      "ordinalPosition": 86,
+      "name": "DOSE_TKN_FRI_ALT",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "The actual dose taken by patient during the alternate week on Friday"
+    },
+    {
+      "ordinalPosition": 87,
+      "name": "DOSE_TKN_SAT_ALT",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "The actual dose taken by patient during the alternate week on Saturday"
+    },
+    {
+      "ordinalPosition": 88,
+      "name": "ANTICOAG_DX",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Anticoagulation diagnoses at time of visit in a comma delimited list.   The most recent list is maintained at the episode level in the table EPI_PROBLEM_LIST."
+    },
+    {
+      "ordinalPosition": 89,
+      "name": "INDEFINITE_TREAT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The value of the anticoagulation indefinite treatment episode item at the time of the visit.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 90,
+      "name": "ANTICOAG_TREND_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Used to keep track of the trend of the dosing instructions (up, down, same) in the calendar based anticoagulation tracking section.",
+      "entries": [
+        "Same",
+        "Up",
+        "Down"
+      ]
+    },
+    {
+      "ordinalPosition": 91,
+      "name": "AC_LAST_CHG_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Keeps track of the last user to document dosing instructions (dosing plan, override/hold or no change) in the calendar based anticoagulation tracking section."
+    },
+    {
+      "ordinalPosition": 92,
+      "name": "AC_LAST_CHG_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 93,
+      "name": "ANTICOAG_NO_CHAN_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "When a user documents that no change was made to dosing instructions, then this is set to \"Yes\". This is an option in the calendar based anticoagulation tracking section."
+    },
+    {
+      "ordinalPosition": 94,
+      "name": "MANAGEMENT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Anticoagulation management type/priority (such as high, critical, routine). This appears in the calendar based tracking section and suggests to the user an appropriate return date."
+    },
+    {
+      "ordinalPosition": 95,
+      "name": "LAST_INR_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the order record associated with the INR result selected for this encounter"
+    }
+  ]
+}

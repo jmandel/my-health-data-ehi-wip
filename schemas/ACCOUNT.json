@@ -1,0 +1,842 @@
+{
+  "name": "ACCOUNT",
+  "description": "Accounts contain information about billing for services, while coverages contain information about insurance payors, benefits, subscribers, and members. This table contains one row for each account record in your system.",
+  "primaryKey": [
+    {
+      "columnName": "ACCOUNT_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the guarantor record. This ID number may be encrypted if you have elected to use enterprise reporting�s security utility."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "ACCOUNT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the name for the guarantor record. The name could be hidden if you have elected to use enterprise reporting�s security utility."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_PERSON",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the person to contact for questions regarding the guarantor. This item could be hidden."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "BIRTHDATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The guarantor's date of birth."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SEX",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The sex of the guarantor. This is extracted as the category abbreviation.",
+      "entries": [
+        "Female",
+        "Male",
+        "Unknown",
+        "Nonbinary",
+        "X",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "IS_ACTIVE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column indicates whether the guarantor was active at the time of the extract.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CITY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The city in which the guarantor lives."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "STATE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value of the state in which the guarantor lives."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ZIP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ZIP Code area in which the guarantor lives."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "HOME_PHONE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The guarantor�s home phone number (may contain dashes)."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "WORK_PHONE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The guarantor�s work phone number (may contain dashes)."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ACCOUNT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Category value associated with the type of account, such as Personal/Family, Worker�s Comp, etc.",
+      "entries": [
+        "Other",
+        "Personal/Family",
+        "Non-Employed CRNA",
+        "Case Rate",
+        "Clearing Account",
+        "Trust Account",
+        "ROI Requester",
+        "Invalid"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "REFERRING_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the referral source for this guarantor."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "REFERRING_PROV_ID_REFERRING_PROV_NAM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the referral source."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "SERV_AREA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the service area (EAF .1) to which this account belongs."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "FIN_CLASS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value of the primary financial class of the guarantor (i.e. commercial, Medicare, self-pay, etc.)",
+      "entries": [
+        "Commercial",
+        "Medicare",
+        "Medicaid",
+        "Self-Pay",
+        "Worker's Comp",
+        "Tricare",
+        "Champva",
+        "Group Health Plan",
+        "FECA Black Lung",
+        "Blue Shield",
+        "Medigap",
+        "Other",
+        "DK Regional",
+        "Client",
+        "Received Self-Pay",
+        "Sent to Consolidated Self-Pay Service Area"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "TOTAL_BALANCE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total outstanding balance on the account as of the time of the extract."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "INSURANCE_BALANCE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of the insurance balance on the guarantor as of the time of the extract."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PATIENT_BALANCE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of the self-pay balance on the account as of the time of the extract."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "BILLING_CYCLE_C",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value associated with the billing cycle to which the guarantor belongs."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "BILLING_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value for the billing status used for handling statements for this guarantor, such as Age and Hold Statements, Age and Send Statements, Don�t Age and Hold Statements, and so on.",
+      "entries": [
+        "Age & Send Stmts",
+        "Age & Hold Stmts",
+        "Don't Age & Send Stmts",
+        "Don't Age & Hold Stmts"
+      ]
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "PMT_PLAN_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The dollar amount to be paid per period if a payment plan has been established for this account."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "PMT_PLAN_STRT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column stores the date when the payment plan becomes effective. This column will only be populated if the guarantor is on a payment plan."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "PMT_PLAN_DUE_DATE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The day of the month when the payment plan amount is due if the account is on a payment plan."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "LAST_INS_PMT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the most recent insurance payment was received for this account before the enterprise reporting extract."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "LAST_PAT_PMT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the most recent patient payment was received for this account before the enterprise reporting extract."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "LAST_PAT_PMT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of the most recent patient payment received for this account before the enterprise reporting extract."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "LAST_STMT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the most recent patient statement was sent for the account."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "CONTRACT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the pricing contract that was set up with the guarantor."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "CONTRACT_EXP_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which the contract attached to this guarantor expires."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "COLLECTOR_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the system user who is the collector assigned to this guarantor. This ID may be encrypted if you have elected to use enterprise reporting�s security utility."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "COLLECTOR_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "EPIC_ACCT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the guarantor record. This field will be hidden in a public view of the ACCOUNT table."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "RESEARCH_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the research study or client record for this guarantor."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "OCCUPATION",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The occupation of the guarantor."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "UNDIST_PMT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the account has any undistributed payments.  Y indicates the account has some undistributed payments.  A null value indicates the account has no undistributed payments.  An N will not be populated for this column."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "CREDIT_BALANCE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the guarantor has credit balance.  Y indicates the guarantor has credit balance.  A null value indicates the guarantor has no credit balance.  An N will not be populated for this column."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "PP_AMOUNT_DUE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Hospital Billing Payment Plan current amount due."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "PP_CUR_BALANCE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Hospital Billing Payment Plan current balance."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "EB_LAST_ND_STMT_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Last non-demand enterprise statement date."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "EB_LAST_D_STMT_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Last demand enterprise statement date."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "HOM_CLARITY_FLG_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column indicates whether the guarantor should be extracted. If the guarantor is homed it will be extracted, otherwise not: 1-extract, 0-do not extract."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "HB_BALANCE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This value is the Hospital Billing balance on the guarantor."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "HB_PREBILL_BALANCE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This value is the Hospital Billing prebilled balance on the account."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "HB_INSURANCE_BALAN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This value is the Hospital Billing insurance balance on the guarantor, but excludes hospital accounts in external AR or bad debt."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "HB_SELFPAY_BALANCE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This value is the Hospital Billing self-pay balance on the account, but excludes hospital accounts in external AR, bad debt or that have not yet been billed to self-pay."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "HB_BADDEBT_BALANCE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This value is the Hospital Billing bad debt balance on the guarantor."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "HB_UNDISTRIB_BAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This value is the Hospital Billing undistributed balance on the account, but excludes hospital accounts in external AR or bad debt."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "HB_SP_AGING_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Oldest Self-pay aging date."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "HB_INS_AGING_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column stores the hospital billing insurance aging date."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "HB_LAST_INS_PMT_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column stores the last hospital billing insurance payment date."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "HB_LAST_SP_PMT_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column stores the last hospital billing self-pay payment date."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "SBO_HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the default hospital account of the guarantor. The item is only used in single billing office mode."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "EB_LAST_INFO_ST_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column stores the date the last enterprise non-demand informational statement was generated. Informational statements are those with no self-pay balance for the guarantor."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "EB_LAST_D_INFO_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column stores the date the last enterprise demand informational statement was generated. Informational statements are those with no self-pay balance for the guarantor."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "GUAR_REHOMED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether a new guarantor was created as a result of running the rehoming report and performing the rehome account action.  Y indicates a new guarantor was created as a result of running the rehoming report and performing the rehome account action.  An N will not be populated for this column.  This item will only be populated if the guarantor is rehomed.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "OLD_REHOMED_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Holds a pointer from the new guarantor to the old guarantor"
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "EMPR_ID_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A free text comment that can be entered when the value that is considered to be \"Other\" is selected as the employer. This option is available only if your organization has chosen to link the account employer to the Employer (EEP) master file in the Facility Profile."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "PAT_REC_OF_GUAR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the guarantor is the same person as a patient, this item contains the patient ID."
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "HOUSE_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the house number for the guarantor's address."
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "NXT_STM_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Specifies the next statement date on the client account"
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "CLNT_BILL_FRQNCY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Specifies the statement frequency for this guarantor.  Available options are weekly, monthly, bi-weekly, or weekly and end-of-month.",
+      "entries": [
+        "Monthly",
+        "Weekly",
+        "Bi-Weekly",
+        "Weekly and End of Month"
+      ]
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "CLNT_BILL_DAY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Specifies the day of the week to generate the client bill on provided that CLNT_BILL_FRQNCY_C is set to weekly or biweekly.",
+      "entries": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ]
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "CLNT_BILL_DT_MNTH",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Specifies the day of the month to bill the client on provided that CLNT_BILL_FRQNCY_C is set to monthly."
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "CLIENT_ACCOUNT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether or not this is a client guarantor."
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "PMT_PLAN_DURATION",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The payment plan duration in months."
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "PMT_PLAN_TOTAL_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The payment plan total amount."
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "PMT_PLAN_ON_TIME_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether payment plan is on time, \"Y\" for on time, \"N\" for not on time.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 69,
+      "name": "PMT_PLAN_BAL_PD_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column indicates whether the payment plan will be effective until the balance is paid off that is, the payment plan remains effective if new charges occur. This column will only be populated if there is a payment plan.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 70,
+      "name": "PMT_PLAN_LNKSTMT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the payment plan due day is linked to the statement day.  Y indicates the payment plan due day is linked to the statement day.  This column will only be populated if there is a payment plan."
+    },
+    {
+      "ordinalPosition": 71,
+      "name": "RQG_RELATIONSHIP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the guarantor's relationship to the�requisition grouper patient record.",
+      "entries": [
+        "Aunt",
+        "Brother",
+        "Daughter",
+        "Father",
+        "Friend",
+        "Granddaughter",
+        "Grandfather",
+        "Grandmother",
+        "Grandson",
+        "Legal Guardian",
+        "Mother",
+        "Other",
+        "Step Father",
+        "Sister",
+        "Self",
+        "Step Mother",
+        "Son",
+        "Spouse",
+        "Uncle",
+        "Employer",
+        "Unverified Proxy",
+        "Transplant Recipient",
+        "Visit Contact"
+      ]
+    },
+    {
+      "ordinalPosition": 72,
+      "name": "HB_BD_SELFPAY_BAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Self-pay balance of accounts in bad debt that have been billed to self-pay."
+    },
+    {
+      "ordinalPosition": 73,
+      "name": "HB_BD_INSURANCE_BAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the total of all insurance buckets for this guarantor's hospital accounts that are in bad debt when using account-based bad debt."
+    },
+    {
+      "ordinalPosition": 74,
+      "name": "HB_BD_UNDISTRIB_BAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the total of all undistributed buckets for this guarantor's hospital accounts that are in bad debt when using account-based bad debt."
+    },
+    {
+      "ordinalPosition": 75,
+      "name": "COUNTY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the county of the guarantor's billing address."
+    },
+    {
+      "ordinalPosition": 76,
+      "name": "COUNTRY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the country of the guarantor's billing address."
+    },
+    {
+      "ordinalPosition": 77,
+      "name": "EMPY_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the guarantor's employment status.",
+      "entries": [
+        "Full Time",
+        "Part Time",
+        "Not Employed",
+        "Self Employed",
+        "Retired",
+        "On Active Military Duty",
+        "Student - Full Time",
+        "Student - Part Time",
+        "Unknown"
+      ]
+    },
+    {
+      "ordinalPosition": 78,
+      "name": "GUAR_EMPR_CITY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The city of the guarantor's employer."
+    },
+    {
+      "ordinalPosition": 79,
+      "name": "GUAR_EMPR_STATE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the state of the guarantor's employer."
+    },
+    {
+      "ordinalPosition": 80,
+      "name": "GUAR_EMPR_ZIP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ZIP code of the guarantor's employer."
+    },
+    {
+      "ordinalPosition": 81,
+      "name": "GUAR_EMP_CNTRY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the country of the guarantor's employer."
+    },
+    {
+      "ordinalPosition": 82,
+      "name": "INCOME_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Income source."
+    },
+    {
+      "ordinalPosition": 83,
+      "name": "LANGUAGE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value for the preferred language of the guarantor."
+    },
+    {
+      "ordinalPosition": 84,
+      "name": "HB_LAST_STMT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column contains the date of the last statement sent to the guarantor."
+    },
+    {
+      "ordinalPosition": 85,
+      "name": "HB_NEXT_STMT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column contains the date of the next statement to be sent to the guarantor."
+    },
+    {
+      "ordinalPosition": 86,
+      "name": "HB_LAST_DEMAND_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column contains the date of the last demand statement to be sent to the guarantor."
+    },
+    {
+      "ordinalPosition": 87,
+      "name": "HB_BILL_NOTE_EXP_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column contains the expiration date of the billing note on this guarantor."
+    },
+    {
+      "ordinalPosition": 88,
+      "name": "HB_PP_MONTHLY_DUE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the monthly payment due on a hospital account for a payment plan."
+    },
+    {
+      "ordinalPosition": 89,
+      "name": "HB_PP_CUR_HAR_DUE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Current amount due on a hospital account for a payment plan."
+    },
+    {
+      "ordinalPosition": 90,
+      "name": "HB_PP_INIT_HAR_BAL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The initial balance on the hospital account when the payment plan starts."
+    },
+    {
+      "ordinalPosition": 91,
+      "name": "GUAR_VERIF_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number of the guarantor verification status."
+    },
+    {
+      "ordinalPosition": 92,
+      "name": "LAST_VERIF_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column contains the date of the last verification of the associated guarantor."
+    },
+    {
+      "ordinalPosition": 93,
+      "name": "NEXT_REVIEW_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Next date this guarantor's verification should be reviewed."
+    },
+    {
+      "ordinalPosition": 94,
+      "name": "LAST_VERIF_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique identifier of the last user to verify the guarantor."
+    },
+    {
+      "ordinalPosition": 95,
+      "name": "LAST_VERIF_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 96,
+      "name": "GUAR_EMP_HOUSE_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The house number of the guarantor's employer."
+    },
+    {
+      "ordinalPosition": 97,
+      "name": "GUAR_EMPR_DISTR_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the district of the guarantor's employer."
+    },
+    {
+      "ordinalPosition": 98,
+      "name": "GUAR_VERIF_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The verification record of the guarantor."
+    },
+    {
+      "ordinalPosition": 99,
+      "name": "CONF_NAM_OF_ASSC_PT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the confidential name of the associated patient, if it exists. This name is used to determine the confidential nature of the guarantor."
+    },
+    {
+      "ordinalPosition": 100,
+      "name": "EXT_BD_SP_BAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This value is the Professional Billing external AR bad debt self-pay balance."
+    },
+    {
+      "ordinalPosition": 101,
+      "name": "EXT_BD_INS_BAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This value is the Professional Billing external AR bad debt insurance balance."
+    },
+    {
+      "ordinalPosition": 102,
+      "name": "PB_EXT_SP_BAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This value is the Professional Billing external AR self-pay balance for the account."
+    },
+    {
+      "ordinalPosition": 103,
+      "name": "PB_EXT_INS_BAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This value is the Professional Billing external AR insurance balance for the account."
+    }
+  ]
+}

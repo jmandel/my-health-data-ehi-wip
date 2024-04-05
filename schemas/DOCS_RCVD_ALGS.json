@@ -1,0 +1,307 @@
+{
+  "name": "DOCS_RCVD_ALGS",
+  "description": "This table stores discrete allergies information received from outside sources.",
+  "primaryKey": [
+    {
+      "columnName": "DOCUMENT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "DOCUMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the Received Document record ID."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "This is a numeric representation of the date of this encounter in your system. The integer portion of the number specifies the date of the encounter. The digits after the decimal point indicate multiple visits on one day."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ALG_REF_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores a unique reference identifier to identify a specific instance of an allergy."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ALG_SEVERITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the overall allergy severity.",
+      "entries": [
+        "High",
+        "Medium",
+        "Low"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ALG_DATE_NOTED_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item stores the date when the allergy was noted by the external system."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ALG_DATE_RESOLVD_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item stores the date of when the allergy was resolved."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ALG_SRC_LPL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the source Problem List record identifier."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ALG_TYPE_OF_CHNG_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the type of change being performed on the allergy.",
+      "entries": [
+        "Receive",
+        "Edit",
+        "Delete"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ALGN_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the display name of the allergen as sent by the external source."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "ALGN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the Allergen record identifier that maps to the allergen from the external source."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ALGN_ID_ALLERGEN_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the allergen record."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "ALG_TYPE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the textual allergy type sent by the external source."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "ALG_TYPE_ID_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the category value which maps to the allergy type sent by  the external source.",
+      "entries": [
+        "Systemic",
+        "Drug Class",
+        "Food",
+        "Environmental",
+        "Animal",
+        "Plant",
+        "Chemical",
+        "Drug Ingredient",
+        "Drug",
+        "opt"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "ALG_SRC_DXR_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item will store the contact serial (CSN) number of the Received Document record that owns the instance of this allergy."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "ALG_DUP_OVRD_LPL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the record identifier of the local allergy that this external allergy should be grouped with."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "ALG_LAST_UPD_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item stores the date and time when the allergy was last updated by the external system."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "ALG_PT_SRC_APP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If this allergy is a patient-entered allergy (i.e. DXR type = 25), this item stores the application which was used to edit the allergy for the contact (e.g. MyChart or Welcome). If blank, this is assumed to be MyChart.",
+      "entries": [
+        "MyChart",
+        "Welcome"
+      ]
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "ALGRX_TYPE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the text value of the allergy reaction type sent by the external source."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "ALGRX_TYPE_ID_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the category value which maps to the allergy reaction type sent by the external source."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "ALG_DT_NOTED_NF_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the nullFlavor value from the effectiveTime low node in a received CDA document.",
+      "entries": [
+        "No Information",
+        "Invalid",
+        "Derived",
+        "Other",
+        "Negative infinity",
+        "Positive infinity",
+        "Un-encoded",
+        "Masked",
+        "Not applicable",
+        "Unknown",
+        "Asked but unknown",
+        "Temporarily unavailable",
+        "Not asked",
+        "Sufficient quantity",
+        "Trace",
+        "Not present",
+        "User Selected"
+      ]
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "ALG_DT_RESOLV_NF_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the nullFlavor value from the effectiveTime high node in a received CDA document."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "ALG_STATE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the value from the statusCode node in a received CDA document. This item itself is not the status of the allergy.",
+      "entries": [
+        "Other",
+        "Normal",
+        "Aborted",
+        "Active",
+        "Cancelled",
+        "Completed",
+        "Held",
+        "New",
+        "Suspended",
+        "Nullified",
+        "Obsolete"
+      ]
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "ALG_STATUS_ENTRY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the value from the status entryRelationship node in a received CDA document. This item itself is not the status of the allergy.",
+      "entries": [
+        "Active",
+        "Inactive",
+        "Resolved"
+      ]
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "ALG_HIST_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The item indicates whether the allergy is current or historical.",
+      "entries": [
+        "Current",
+        "Historical",
+        "Inactive",
+        "Discontinued",
+        "Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "ALG_HIST_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item stores the date that the historical status for this allergy is valid through. After this date, the historical status needs to be rechecked."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "ALG_SRC_WPR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the Patient Access Accounts ID of the MyChart user who edited the allergy for the contact."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "ALG_CRITICALITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the category value for overall allergy criticality.",
+      "entries": [
+        "Unable to assess",
+        "High",
+        "Low",
+        "Moderate",
+        "Fatal"
+      ]
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "ALG_CRITICALITY_TXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the free text allergy criticality."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "ALG_PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the contact serial number (CSN) of the encounter that the allergy was added on."
+    }
+  ]
+}

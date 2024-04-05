@@ -1,0 +1,96 @@
+{
+  "$meta": {
+    "schemas": {
+      "HSP_ACCT_PYMT_LIST": {
+        "name": "HSP_ACCT_PYMT_LIST",
+        "description": "This table contains payment lists for hospital accounts.",
+        "primaryKey": [
+          {
+            "columnName": "HSP_ACCOUNT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "HSP_ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the hospital account."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PMT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the payment that is associated with this hospital account."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ACCT_PYMT_LIST",
+            "target": "HAR_ALL",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ACCT_PYMT_LIST",
+            "target": "HSP_ACCT_CLAIM_HAR",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ACCT_PYMT_LIST",
+            "target": "HSP_ACCOUNT",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HSP_ACCT_PYMT_LIST": [
+    {
+      "HSP_ACCOUNT_ID": 376684810,
+      "LINE": 1,
+      "PMT_ID": 681354876,
+      "$meta": {
+        "type": "HSP_ACCT_PYMT_LIST"
+      }
+    },
+    {
+      "HSP_ACCOUNT_ID": 376684810,
+      "LINE": 2,
+      "PMT_ID": 685171641,
+      "$meta": {
+        "type": "HSP_ACCT_PYMT_LIST"
+      }
+    }
+  ]
+}

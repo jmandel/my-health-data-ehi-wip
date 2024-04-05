@@ -1,0 +1,55 @@
+{
+  "name": "OR_CASE_AUDIT_TRL",
+  "description": "The OR_CASE_AUDIT_TRL table contains OR management system case audit trail information.",
+  "primaryKey": [
+    {
+      "columnName": "OR_CASE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "OR_CASE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the case record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of the line of the audit information for the case."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "AUDIT_RESCHED_TO_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column stores the next scheduled date for the case if the rescheduling action took place. The rescheduling action includes the actions of moved, removed, and bumped."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "AUDIT_ADD_ON_SCH_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether this case was added on after the schedule was finalized, as defined by settings in Location or System Definitions (not the add-on checkbox in the case). Y is returned if the case is an add-on and the actions are canceled, scheduled, or rescheduled. N is returned if the case is not an add-on and the actions are canceled, scheduled, or rescheduled. Null is returned if the action on the case is not canceled, scheduled, or rescheduled.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "AUDIT_INCLUDE_ORG_CANC_RPT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the case audit action is included in organizational cancellations reporting based on room, service, holiday, weekend, and add-on exclusions defined in System or Location Definitions. Y indicates that the case is included in cancellations reporting. N indicates that the case is not included in cancellations reporting. This column is only populated if the action is 'canceled', 'scheduled', 'moved', 'swapped OR', 'removed', or 'bumped'."
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "name": "SPEC_HOLD_INFO",
+  "description": "The SPEC_HOLD_INFO table contains information pertaining to holds placed on a specimen.",
+  "primaryKey": [
+    {
+      "columnName": "SPECIMEN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SPECIMEN_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the specimen record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "HOLD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The hold category number for the test specified in column HOLD_TEST_ID."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "HOLD_TEST_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the test that has a hold on it."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "HOLD_BEGIN_INS_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant when the hold took effect."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "HOLD_BEGIN_CMT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the note that was made (if any) when the hold was placed."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "HOLD_CLEAR_INS_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant when the hold was cleared. A blank value here means the hold is still active."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "HOLD_CLEAR_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who cleared the hold. If this is empty and column HOLD_CLEAR_INS_DTTM has a value, it means the system automatically cleared the hold."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "HOLD_CLEAR_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "HOLD_CLEAR_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the reason the hold was cleared. This should only have a value if column HOLD_CLEAR_INS_DTTM also has a value."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "HOLD_CLEAR_CMT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the note that was made (if any) when the hold was cleared."
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "EPI_AC_PROV_INFO",
+  "description": "This table stores external providers of the anticoagulation episode. It can also be used for internal providers. To match the role of an internal provider, a join has to be made to the EPI_ANTICOAG_PROV table using columns SUMMARY_BLOCK_ID and LINE.",
+  "primaryKey": [
+    {
+      "columnName": "SUMMARY_BLOCK_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SUMMARY_BLOCK_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the summary block record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ANTICOAG_PROV_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Anticoagulation freetext provider(s)"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ANTICOAG_PRO_ROLE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Anticoag provider(s) role",
+      "entries": [
+        "Responsible",
+        "Referring"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "name": "FA_NOTES_QUERY",
+  "description": "This table contains information about queries sent to retrieve financial information for patients and/or patient contacts in a financial assistance case record.",
+  "primaryKey": [
+    {
+      "columnName": "NOTE_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the note record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "QUERY_PERSON_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the user record who triggered the query. This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "QUERY_PERSON_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "QUERY_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the query was triggered."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "QUERY_TRIGGER_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The trigger source category ID for the query.",
+      "entries": [
+        "User",
+        "Background Process",
+        "Batch Job"
+      ]
+    }
+  ]
+}

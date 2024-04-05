@@ -1,0 +1,170 @@
+{
+  "name": "REFERRAL_BED_DAY",
+  "description": "The REFERRAL_BED_DAY table contains information on bed days on referrals.",
+  "primaryKey": [
+    {
+      "columnName": "REFERRAL_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "REFERRAL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the referral in database."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "A line number that is used to identify a group of bed day information"
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which the member is scheduled to start treatment associated with each bed day type"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which the member is scheduled to or actually does complete treatment associated with each bed day type."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "BED_DAY_TYPE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The bed day type or classification used to categorize the scheduled days of treatment."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "BED_DAY_TYPE_ID_BED_DAY_TYPE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the bed day type record (i.e. ICU or non-authorized.)"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ESTIMATED_DAYS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The estimated number of days the member spends in treatment associated with each bed day type."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CONVERTED_DAYS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "A manual conversion of the calculated number of Raw days for each bed day type, the raw days are calculated from the start and end date. Partial days are allowed"
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "RAW_DAYS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Displays the actual number of days the member spends in treatment associated with each bed day type, calculated from the start and end date. Partial days are allowed."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "OVERRIDE_DAYS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "A manual override of the calculated number of days for each bed day type. Partial days are allowed."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "AVOID_BED_DAY_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Track the avoidable bed day reason for the current row in the bed days table."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "BED_DAYS_COMMENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Track the comments for the current row in the bed days table. If the comment is more than 256 characters, it will be truncated to 256."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "DEN_BED_DAY_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Track the denied reason for the current row in the bed days table."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "BED_DAY_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Track the Approved/Denied status for the current row in the bed days table.",
+      "entries": [
+        "Approved",
+        "Denied",
+        "Pending Review",
+        "Closed"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "APPR_BED_DAY_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Track the approved reason for the current row in the bed days table."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "REQUESTED_ON_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Track the date and time the bed day was requested for the current row in the table."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "DECIDED_ON_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Track the date and time a decision was made on the bed day status for the current row in the table."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "BED_DAY_PRIORITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The bed days request priority category ID for the bed day line on the referral record.",
+      "entries": [
+        "Routine",
+        "Urgent",
+        "Emergency",
+        "Elective",
+        "Two Week Wait",
+        "See Details"
+      ]
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PEND_BED_DAY_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Track the pending review reason for the current row in the bed days table."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "CLOSED_BED_DAY_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Track the closed reason for the current row in the bed days table."
+    }
+  ]
+}

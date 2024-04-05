@@ -1,0 +1,233 @@
+{
+  "name": "ORDER_RES_OT",
+  "description": "This table stores tracked recommendation information and Blood result dispense status for orders-related results. This table can also store Dermatology Skin Findings.",
+  "primaryKey": [
+    {
+      "columnName": "FINDING_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "FINDING_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the finding record corresponding to this result."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "This is a numeric representation of the date of this encounter in your system. The integer portion of the number specifies the date of the encounter. The digits after the decimal point indicate multiple visits on one day."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "REC_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The recommendation status category ID for a result finding.",
+      "entries": [
+        "Needs Follow-up",
+        "Closed",
+        "Resolved"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ADMINPX_ORD_DAT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format from which the corresponding order's tracked result originated. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ADMINPX_BLOODSTAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The blood product status history category ID for the order, as sent via a results interface from a blood bank.",
+      "entries": [
+        "Requested",
+        "Selected",
+        "Issued",
+        "Transfusing",
+        "Transfused",
+        "Returned",
+        "Expired/Released"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "LESION_REMOVE_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comments entered by the user when a lesion was removed from a patient's record."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "LAST_DOC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time when this finding was last documented on."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "LESION_REMOVE_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The removal reason category ID for the lesion.",
+      "entries": [
+        "Other",
+        "Removing incorrect data"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "DX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the diagnosis associated with a finding."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the note associated with this finding."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "REGION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the anatomic region where a finding was placed."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "REGION_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores record name (.2)"
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "BACKGROUND_AVATAR_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The avatar image category ID that was showing when the result finding was placed onto a location on the body.",
+      "entries": [
+        "Adult Male",
+        "Adult Female",
+        "Adult Neutral",
+        "Oropharynx",
+        "Adult Hands",
+        "Adult Feet",
+        "Male Genitalia",
+        "Female Genitalia",
+        "Adult Head",
+        "Child Neutral",
+        "Standard Colon",
+        "Standard Upper GI Tract",
+        "EUS",
+        "ERCP",
+        "Pulm",
+        "Left Hemicolectomy",
+        "Right Hemicolectomy",
+        "Sigmoid Colectomy",
+        "Colostomy",
+        "J-Pouch",
+        "Sigmoidoscopy",
+        "Billroth I",
+        "Billroth II",
+        "Roux-en-Y Gastric Bypass",
+        "Nissen Fundoplication",
+        "Sleeve Gastrectomy",
+        "Lower EUS",
+        "Remote Client"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "DERM_FINDING_COUNT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of findings in this result finding record. Allows user to document like findings in the same anatomical region under one result finding record"
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "FINDING_LOC_SUFFIX",
+      "type": "VARCHAR",
+      "discontinued": true,
+      "description": "This items stores a suffix string that was added by the user to make a finding location unique."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "FINDING_LOC_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This items stores an override name string that was added by the user to make a finding location unique."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "GROUP_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the group note associated with this finding."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PLAN_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the plan note associated with this finding."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "REC_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the reasons why a screening program recommendation was selected.",
+      "entries": [
+        "Inadequate bowel preparation",
+        "Inflammatory bowel disease",
+        "Personal history of colon polyps",
+        "Personal history of colon cancer",
+        "Family history of colon polyps",
+        "Family history of colon cancer",
+        "Age greater than 65",
+        "Gastric ulcer surveillance",
+        "Barrett's esophagus surveillance",
+        "Dysphagia",
+        "Reflux symptoms",
+        "Dyspepsia",
+        "Abnormal pathology",
+        "Incomplete procedure",
+        "Patient preference",
+        "Life expectancy is less than 10 years",
+        "Overall health",
+        "Prior screening history",
+        "Abnormal pathology",
+        "Incomplete procedure"
+      ]
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "FOLLOWUP_RESP_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the provider who was documented as being responsible for following up on this screening program recommendation."
+    }
+  ]
+}

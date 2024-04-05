@@ -1,0 +1,150 @@
+{
+  "name": "COD_CONTACT_INFO",
+  "description": "The table COD_CONTACT_INFO contains information about coding records (records in the COD master file). A row in this table contains information about each individual contact for coding records. Coding records store information from Clinical Documentation Improvement (CDI) reviews. A single coding record is created for the hospital account, with each contact (or row) containing information from a separate CDI review of the account.",
+  "primaryKey": [
+    {
+      "columnName": "CONTACT_SERIAL_NUM",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CODING_RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the coding record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_SERIAL_NUM",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The contact serial number (CSN) of the contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The contact number of the contact."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CNCT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The contact type of the contact.",
+      "entries": [
+        "Record Creation",
+        "CDI Working Review",
+        "CDI Baseline Review",
+        "CDI Forecast Review"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CDI_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user ID of the clinical documentation improvement (CDI) specialist who performed the CDI review."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CDI_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CDI_NEXT_REVIEW_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The next review date for a clinical documentation improvement (CDI) review."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CDI_PX_CODE_SET_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The procedure code set in a clinical documentation improvement (CDI) review.",
+      "entries": [
+        "ICD-9-CM Volume 3",
+        "ICD-10-PCS",
+        "OPCS-4",
+        "A&E Investigation/Treatment"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "CDI_DX_CODE_SET_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The diagnosis code set in a clinical documentation improvement (CDI) review.",
+      "entries": [
+        "ICD-9-CM",
+        "ICD-10-CM",
+        "ICD-10-CA",
+        "ICD-10-UK",
+        "DBC",
+        "ICD-10 Dutch",
+        "ICD-10-AM",
+        "A&E Diagnoses",
+        "SKS",
+        "ICD-10-THL",
+        "ICPC-2",
+        "ICD-O-3",
+        "ICD-10-GM",
+        "ICD-9-CM Supplemental",
+        "ICD-10-BE",
+        "ICD-10-NO",
+        "Apache",
+        "DSM-5",
+        "KinCor",
+        "ORPHA"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "CONTACT_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the current status of a contact on the coding record.",
+      "entries": [
+        "Active",
+        "Restored",
+        "Combined",
+        "Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "CDI_REVIEW_LOC_DTTM",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "The date and time that a clinical documentation improvement (CDI) review took place, relative to the timezone of the location in which the review took place."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "LINKED_QUERY_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column is reserved for future development."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "SOURCE_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the contact serial number from the source coding record associated with this coding contact. This item is set when a coding contact is merged from another coding record."
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "name": "PROBLEM_EVENTS",
+  "description": "This table contains a list of relevant events documented as the history of a patient's problem.",
+  "primaryKey": [
+    {
+      "columnName": "PROBLEM_LIST_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PROBLEM_LIST_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the problem record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PRB_EVENT_STATE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the state of each event (active or inactive)",
+      "entries": [
+        "Active",
+        "Inactive"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PRB_EVENT_INDEX",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the index of each event in the problem's history"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PRB_EVENT_HX_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the history type that each event was created from",
+      "entries": [
+        "Oncology History"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PRB_EVENT_STDATE_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the start date of each event"
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PRB_EVENT_ENDATE_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the end date of each event"
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PRB_EVENT_CAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the category/type of each event",
+      "entries": [
+        "Initial Diagnosis"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PRB_EVENT_DESC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the description/details of each event"
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PRB_EVENT_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the problem event note ID"
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PROBLEM_EVENT_LINKED_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the action configured in Problem List Automated Actions (I LSD 2765) that triggered the automatic creation of the oncology history event on the same line.",
+      "entries": [
+        "External Event",
+        "Sign Cancer Stage",
+        "Save Treatment or Therapy Plan",
+        "Save Radiation Therapy Episode"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "PROBLEM_EVENT_AUTO_UPDATE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores a yes or no to indicate whether or not an event will automatically update.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "CONTACT_SERIAL_NUM",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column contains the contact serial number of the oncology history problem (LPL) contact."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "PRB_EVENT_USR_DTL_AUTO_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the note ID for the note containing the auto-generated event's user-entered comments."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PRB_EVENT_AUTO_NOTE_BEHAVIOR_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains whether the user-entered comments will replace or be appended to the auto-generated event details when the event is viewed in a SmartLink or print group. This setting only applies to events which are generated by the system and cannot be otherwise edited.",
+      "entries": [
+        "Append",
+        "Replace"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "PRB_EVENT_EXTERNAL_UNIQUE_KEY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains a key to uniquely identify an oncology history event created by the external events API. If filing an automated event based on chronicles data, this item should not be used."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PROB_EXTERNAL_EVENT_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item contains the start date for an oncology history event filed from the external events API. It should contain the same value as LPL 8103-problem event start date unless a user has chosen to manually override the start date for the event. If filing an automated event based on chronicles data, this item should not be used."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "PROB_EXTERNAL_EVENT_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item contains the end date for an oncology history event filed from the external events API. It should contain the same value as LPL 8104-problem event end date unless a user has chosen to manually override the end date for the event. If filing an automated event based on chronicles data, this item should not be used."
+    }
+  ]
+}

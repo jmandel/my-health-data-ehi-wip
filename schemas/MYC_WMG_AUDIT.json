@@ -1,0 +1,68 @@
+{
+  "name": "MYC_WMG_AUDIT",
+  "description": "This table contains audit trail items that store information about a message related to the message viewers functionality.",
+  "primaryKey": [
+    {
+      "columnName": "MESSAGE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "MESSAGE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID used to identify a web-based chart system message record. A new record is created each time a patient sends a message from a web-based chart system to a system user and each time a system user sends a message to a web-based chart system patient."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "WMG_AUD_EVENT_INST",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "Contains the instant of the audit trail entry in local time."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "WMG_AUD_VIEWER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "MyChart ID of the person associated with this audit item"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "WMG_AUD_LOCATION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the new location of the message",
+      "entries": [
+        "Inbox",
+        "Sent Messages",
+        "Trash Can",
+        "Bedside Conversation"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "WMG_AUD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the status (ie: read, unread) of the message",
+      "entries": [
+        "Read",
+        "Unread"
+      ]
+    }
+  ]
+}

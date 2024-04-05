@@ -1,0 +1,213 @@
+{
+  "$meta": {
+    "schemas": {
+      "ORDER_REVIEW": {
+        "name": "ORDER_REVIEW",
+        "description": "This table contains a list of all the users that have reviewed the order and whether that review was accepted or not.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the order record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line count for this table is determined by the number of users who reviewed this order."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "REVIEW_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The user that reviewed the order."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "REVIEW_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "REVIEWED_TIME",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "The date and time when the order was reviewed."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "REVIEW_ACCEPTED_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column contains Y/N to determine if the reviewer accepted the order.",
+            "entries": [
+              "Yes",
+              "No"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_REVIEW",
+            "target": "ORDER_MYC_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_REVIEW",
+            "target": "ORDER_PARENT_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_REVIEW",
+            "target": "ORDER_PROC",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_REVIEW",
+            "target": "ORD_PRFLST_TRK",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ORDER_REVIEW": [
+    {
+      "ORDER_ID": 439060607,
+      "LINE": 2,
+      "REVIEW_USER_ID": "DHILLOPS",
+      "REVIEW_USER_ID_NAME": "DHILLON, PUNEET S",
+      "REVIEWED_TIME": "2018-08-27 21:58:00",
+      "REVIEW_ACCEPTED_YN": "Y",
+      "$meta": {
+        "type": "ORDER_REVIEW"
+      }
+    },
+    {
+      "ORDER_ID": 439060606,
+      "LINE": 1,
+      "REVIEW_USER_ID": "DHILLOPS",
+      "REVIEW_USER_ID_NAME": "DHILLON, PUNEET S",
+      "REVIEWED_TIME": "2018-08-09 17:00:00",
+      "$meta": {
+        "type": "ORDER_REVIEW"
+      }
+    },
+    {
+      "ORDER_ID": 439060606,
+      "LINE": 2,
+      "REVIEW_USER_ID": "DHILLOPS",
+      "REVIEW_USER_ID_NAME": "DHILLON, PUNEET S",
+      "REVIEWED_TIME": "2018-08-09 17:01:00",
+      "REVIEW_ACCEPTED_YN": "Y",
+      "$meta": {
+        "type": "ORDER_REVIEW"
+      }
+    },
+    {
+      "ORDER_ID": 439060607,
+      "LINE": 3,
+      "REVIEW_USER_ID": "DMW400",
+      "REVIEW_USER_ID_NAME": "WILD, DAWN M",
+      "REVIEWED_TIME": "2018-08-28 13:54:00",
+      "REVIEW_ACCEPTED_YN": "Y",
+      "$meta": {
+        "type": "ORDER_REVIEW"
+      }
+    },
+    {
+      "ORDER_ID": 439060607,
+      "LINE": 1,
+      "REVIEW_USER_ID": "KLL403",
+      "REVIEW_USER_ID_NAME": "LOUGH, KAREN L",
+      "REVIEWED_TIME": "2018-08-20 15:57:00",
+      "$meta": {
+        "type": "ORDER_REVIEW"
+      }
+    },
+    {
+      "ORDER_ID": 772179262,
+      "LINE": 1,
+      "REVIEW_USER_ID": "RAMMELZL",
+      "REVIEW_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "REVIEWED_TIME": "2022-08-29 22:15:00",
+      "REVIEW_ACCEPTED_YN": "Y",
+      "$meta": {
+        "type": "ORDER_REVIEW"
+      }
+    },
+    {
+      "ORDER_ID": 945468370,
+      "LINE": 1,
+      "REVIEW_USER_ID": "RAMMELZL",
+      "REVIEW_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "REVIEWED_TIME": "2023-09-28 21:40:00",
+      "REVIEW_ACCEPTED_YN": "Y",
+      "$meta": {
+        "type": "ORDER_REVIEW"
+      }
+    },
+    {
+      "ORDER_ID": 945468371,
+      "LINE": 1,
+      "REVIEW_USER_ID": "RAMMELZL",
+      "REVIEW_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "REVIEWED_TIME": "2023-09-28 21:40:00",
+      "REVIEW_ACCEPTED_YN": "Y",
+      "$meta": {
+        "type": "ORDER_REVIEW"
+      }
+    },
+    {
+      "ORDER_ID": 945468372,
+      "LINE": 1,
+      "REVIEW_USER_ID": "RAMMELZL",
+      "REVIEW_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "REVIEWED_TIME": "2023-09-28 21:40:00",
+      "REVIEW_ACCEPTED_YN": "Y",
+      "$meta": {
+        "type": "ORDER_REVIEW"
+      }
+    }
+  ]
+}

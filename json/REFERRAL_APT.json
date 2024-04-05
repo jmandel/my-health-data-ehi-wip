@@ -1,0 +1,112 @@
+{
+  "$meta": {
+    "schemas": {
+      "REFERRAL_APT": {
+        "name": "REFERRAL_APT",
+        "description": "This table contains information about referral appointments.",
+        "primaryKey": [
+          {
+            "columnName": "REFERRAL_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE_COUNT",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "REFERRAL_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The referral ID for the referral record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE_COUNT",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "A line number that is used to group information about contacts that have counted towards the referral."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "SERVICE_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of the service (date of the appointment, claim, charge, or admission date) that is associated with the referral"
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "SERVICE_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The type of service that has been counted as a contact toward the total of completed contacts for this referral.",
+            "entries": [
+              "Override",
+              "Admission",
+              "Visit",
+              "Claim",
+              "Charge",
+              "Home Health Intake",
+              "Surgery",
+              "Home Infusion",
+              "Lab Requisition"
+            ]
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "SERIAL_NUMBER",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID number of the contact, if the source is either \"Visit\" or \"Admission\""
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "TABLE_COUNT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The number of completed contacts that have been counted for this source."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "REFERRAL_APT",
+            "target": "EPA_INFO",
+            "joinKeys": [
+              {
+                "source": "REFERRAL_ID",
+                "target": "REFERRAL_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "REFERRAL_APT": [
+    {
+      "REFERRAL_ID": 13661714,
+      "LINE_COUNT": 1,
+      "SERVICE_DATE": "2022-03-11 00:00:00",
+      "SERVICE_TYPE_C_NAME": "Visit",
+      "SERIAL_NUMBER": 922942674,
+      "TABLE_COUNT": 1,
+      "$meta": {
+        "type": "REFERRAL_APT"
+      }
+    },
+    {
+      "REFERRAL_ID": 13661714,
+      "LINE_COUNT": 2,
+      "SERVICE_DATE": "2022-03-22 00:00:00",
+      "SERVICE_TYPE_C_NAME": "Visit",
+      "SERIAL_NUMBER": 922943112,
+      "TABLE_COUNT": 1,
+      "$meta": {
+        "type": "REFERRAL_APT"
+      }
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "name": "PAT_ENC_5",
+  "description": "This table supplements the PAT_ENC, PAT_ENC_2, PAT_ENC_3, and PAT_ENC_4 tables. It contains additional information related to patient encounters or appointments.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PUBLIC_HOUSING_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item tracks whether or not a patient lived in public housing at the time of a given encounter.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PVT_HOSP_ENC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the private encounter setting for this patient contact."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "LINK_INS_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The lab insurance type category ID for the insurance type used with the ordering encounter in EpicCare Link.",
+      "entries": [
+        "Other Patient Insurance"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PAT_VER_HCA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the patient's response on the Health Care Agent Verification screen in Welcome; either \"Patient indicated data was correct\" or \"Patient indicated they want to discuss care decisions with a clinician.\"",
+      "entries": [
+        "Patient indicated data was correct",
+        "Patient indicated they want to discuss care decisions with a clinician"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "EXT_GRP_IDNT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column holds appointment group identifiers assigned by external systems. If two appointments have the same external group identifier, they were checked in as a group, and they will be treated as a group in Epic."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "EXT_GRP_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the source of an external group identifier in EXT_GRP_IDNT. If two rows have the same value for their external group source, the same external system grouped the appointments."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PREPAY_SET_BY_USER_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item will be set to Yes if the prepay due for this visit was manually set by a user."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PREPAY_UPDATE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "User who last updated the prepay due amount."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PREPAY_UPDATE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PREPAY_UPDATE_INST_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The last instant the prepay due for the visit was updated."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PREPAY_CALC_SCENARIO",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the scenario/reason why the corresponding payment needs to be collected upfront from the patient."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "AUTHCERT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the auth/cert associated with the patient contact."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "ED_REF_CALLBAK_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether a referring provider requests a call back from the ED physician at the end their visit"
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "ED_REF_CALLBAK_P_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Provider that is referring the patient to the ED"
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "ED_REF_CALLBAK_C_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Location the provider is being referred to the ED from"
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "ED_REF_CALLBAK_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Phone number to contact the referring provider at after ED visit"
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "IS_ON_DEMAND_VV_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Denotes whether this contact is an on-demand video visit."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "ATTR_DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the department that is associated with the encounter."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "PAT_DTREE_ANSWER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the decision tree that was completed by the patient which resulted in this encounter being created."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "PREPAY_DISCNT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the total amount that was discounted because a patient paid early."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "PREPAY_DISCNT_PCT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the percent that was used to calculate the prepay discounted amount."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "PREPAY_PROPOSED_DISCNT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores what the prepay discount would be if it applied."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "PREPAY_DISCNT_CALC_RULE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the rule that was used to determine the prepay discount percent."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "PREPAY_DISCNT_CALC_RULE_ID_RULE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the rule."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "PREPAY_DISCNT_CALC_PCT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the system calculated percent for a prepay discount."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "PREPAY_DISCNT_OVRIDE_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If a user overrides the prepay discount amount, the override will be stored here and we will no longer use rules to determine the prepay discount."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "PREPAY_DISCNT_OVRIDE_PCT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If a user overrides the prepay discount percent, the override will be stored here and we will no longer use rules to determine the prepay discount."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "PREPAY_DISCNT_OVRIDE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If a user overrides the prepay discount, this will store the user who made the override."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "PREPAY_DISCNT_OVRIDE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "PREPAY_DISCNT_OVRIDE_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If a user overrides the prepay discount and adds a comment about why they did so, the comment will be stored here."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "PREPAY_DISCNT_OVRIDE_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "If a user overrides the prepay discount, this will store the instant it was overridden. This item is mainly used for reference purposes."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "EVISIT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The current status of the e-visit encounter.",
+      "entries": [
+        "Submitted",
+        "Abandoned"
+      ]
+    }
+  ]
+}

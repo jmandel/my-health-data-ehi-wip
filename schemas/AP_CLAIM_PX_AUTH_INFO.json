@@ -1,0 +1,107 @@
+{
+  "name": "AP_CLAIM_PX_AUTH_INFO",
+  "description": "This table contains information about the service-level authorizations used for the AP Claim's services.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the transaction record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "AUTH_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The matching Authorization ID for the AP Claims procedure."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "OPERATIONAL_MATCH_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether the authorization is needed for the operational authorizations requirements. 'Y' indicates that this is needed to satisfy the operational authorizations requirements. 'N' or NULL indicate that it's not.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "BENEFIT_MATCH_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether the authorization is needed for the benefits authorizations requirements. 'Y' indicates that this is needed to satisfy the benefits authorizations requirements. 'N' or NULL indicate that it's not."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "VENDOR_CONTRACT_MATCH_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether the authorization is needed for the vendor contract. 'Y' indicates that this is needed for the vendor contract. 'N' or NULL indicate that it's not."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "COUNTS_USED",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The count used from this authorization. Note that this remains set even if the claim gets voided, or the service line is deleted."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "COUNTS_CALCULATED",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The count used that is calculated during AP claim adjudication."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "COUNTS_SHARED_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether the service-level authorization count used is shared with a previously-adjudicated claim or service.",
+      "entries": [
+        "No",
+        "Yes, shared with another claim",
+        "Yes, shared with another service"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "AUTH_ATTACH_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether the linked authorization was added manually or by the system.",
+      "entries": [
+        "Adjudication Referral Matching",
+        "Manual",
+        "EDI Claim File"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "SUGGESTED_AUTH_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether the attached authorization was flagged and suggested as a potential authorization to a user."
+    }
+  ]
+}

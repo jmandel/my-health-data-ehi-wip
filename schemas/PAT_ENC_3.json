@@ -1,0 +1,302 @@
+{
+  "name": "PAT_ENC_3",
+  "description": "This table supplements the PAT_ENC and PAT_ENC_2 tables. It contains additional information related to patient encounters or appointments.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CHKOUT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID number of the user who completed the check out process for the patient for this encounter. If the encounter has not been checked out, this field will appear as \"null.\" This ID may be encrypted."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CHKOUT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ENC_BILL_AREA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The bill area which should be assigned to charges created from this encounter. The available bill areas to choose from will be determined based on lists in the provider and department records."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ENC_BILL_AREA_ID_BILL_AREA_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The record name of this bill area, financial subdivision, or financial division."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "RX_CHG_ADMIT_FLG_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the status of charge suppression for the patient. 1 indicates all charges are being suppressed. 2 indicates suppressed charges are now dropped. 3 indicates some or all charges are currently being suppressed.",
+      "entries": [
+        "All Rx Charges Pending",
+        "Rx Dropped Charges on Admission",
+        "Rx Charges Pending -- Charges Individually Flagged",
+        "Rx Dropped Charges by Utility"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DX_UNIQUE_COUNTER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The number of unique diagnoses associated with this patient encounter. Unique diagnoses are stored in item EPT 18425, which is extracted by the DX_UNIQUE column in the PAT_ENC_DX table."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "HP_DEFAULTED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether the hospital problem was automatically populated from the list of admission diagnoses.  This column will have a Y if the problem was populated from an admission diagnosis and an N otherwise.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "IP_CP_LAST_VAR_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time the last care plan variance was documented."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "READY_QUT_SMOKING_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column is used to indicate whether patient is ready to quit smoking.",
+      "entries": [
+        "Not Asked",
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "COUNSELING_GIVEN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column is used to indicate whether smoking counseling is given.",
+      "entries": [
+        "Not Answered",
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "COMMAUTO_SENDER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique user ID of the sender of the automatically generated communications."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "COMMAUTO_SENDER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "BENEFIT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The benefit record used to store discrete information about the patient's insurance benefits for this encounter."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "PREPAY_DUE_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of pre-payment that is due for this visit."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PREPAY_AMT_FROM_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The activity that set the pre-payment due amount.",
+      "entries": [
+        "Estimate",
+        "Benefit Collection",
+        "Payment Collection",
+        "External System",
+        "Financial Assistance"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "PREPAY_PAID_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The pre-payment amount that has been collected for this visit."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PREADMSN_TESTING_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The preadmission testing date."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "SMK_CESS_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The last user to modify the Smoking Cessation items for the encounter."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "SMK_CESS_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "SMK_CESS_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Indicates whether Instant Smoking Cessation items were modified for an encounter."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "DO_NOT_BILL_INS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if a visit is marked as Do Not Bill Insurance.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "SELF_PAY_VISIT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether a visit is self-pay."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "REFERRAL_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The means by which the patient learned about the organization."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "SCHOOL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient's school."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "COPAY_NUM_UNITS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of units used to calculate the copay for this encounter."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "COPAY_AMT_PER_UNIT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The copay per each copay unit for this encounter."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "COPAY_LASTCALC_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the copay was last calculated for this encounter."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "COPAY_OVERRIDDEN_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the user has overridden the copay amount for this encounter."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "OB_TOTAL_WT_GAIN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column contains the patient's total weight gain in ounces as of the encounter if the patient had a weight documented on the encounter and a pregnancy episode with a pregravid weight linked to the encounter."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "MEDICAID_GROUP_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Item to store the name of a group defined by a Medicaid program."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "STUDENT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Tracks a patient's student status for a given encounter."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "MEDICAID_GROUP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Item to store the identifier of a group defined by a Medicaid program."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "EXTERNAL_REF_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reference ID from an external organization for the patient visit."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "OUTCOME_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The clinical outcome of an encounter.  The value of this item will then be used to determine the appropriate RTT/waiting status for the encounter. It is primarily applicable to the UK and Denmark."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "HSPC_NO_ADM_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Hospice Reason for Non-Admit category ID for the hospice episode."
+    }
+  ]
+}

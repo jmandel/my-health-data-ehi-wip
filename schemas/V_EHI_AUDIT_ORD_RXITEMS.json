@@ -1,0 +1,101 @@
+{
+  "name": "V_EHI_AUDIT_ORD_RXITEMS",
+  "description": "This table provides information on changes to specified no-add items in the order (ORD) master file formatted for the EHI export.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_MED_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    },
+    {
+      "columnName": "CHANGED_DATA_ELEMENT",
+      "ordinalPosition": 4
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_MED_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the medication order (prescription) record. NOTE: This is an internal unique identifier for ORD master file records in this table and cannot be used to link to CLARITY_MEDICATION."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for each change."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "A value is needed. For multiple response item, it is the line number for each real data or 0 for total count line. For single response item, it is 1."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "AUDIT_LOCAL_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant of change."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "OLD_VALUE_INTERNAL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "For audited items which store a networked record ID, this column will extract the CID of the linked record in OLD_VALUE. For other items this will extract the same value as OLD_VALUE."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "NEW_VALUE_INTERNAL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "For audited items which store a networked record ID, this column will extract the CID of the linked record in NEW_VALUE. For other items this will extract the same value as NEW_VALUE."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "OLD_VALUE_EXTERNAL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The old value of the item in external format. Dates, categories, and networked items will display meaningful information instead of the internal value."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "NEW_VALUE_EXTERNAL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The new value of the item in external format. Dates, categories, and networked items will display meaningful information instead of the internal value."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CHANGED_DATA_ELEMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Clarity table and column which corresponds to the data which changed."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "CHANGE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique user ID who made the change."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "CHANGE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    }
+  ]
+}

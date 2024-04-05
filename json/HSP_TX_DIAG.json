@@ -1,0 +1,117 @@
+{
+  "$meta": {
+    "schemas": {
+      "HSP_TX_DIAG": {
+        "name": "HSP_TX_DIAG",
+        "description": "This table contains hospital account transaction diagnoses from the Hospital Permanent Transactions (HTR) master file.",
+        "primaryKey": [
+          {
+            "columnName": "TX_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "TX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the hospital billing transaction."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number in the results of a query. Because multiple diagnosis codes can be associated with one charge, each diagnosis will have a unique line number."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "HSP_ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the hospital account associated with the hospital billing transaction."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "POST_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The post date of a transaction."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "SERV_AREA_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The service area with which a transaction is associated."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "DX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the diagnosis code."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "DX_QUAL_HA_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "A qualifier entered with a diagnosis code in charge entry.",
+            "entries": [
+              "Active",
+              "Inactive",
+              "Acute",
+              "Chronic",
+              "Temporary"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "HSP_TX_DIAG",
+            "target": "HSP_TRANSACTIONS",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HSP_TX_DIAG": [
+    {
+      "TX_ID": 670514272,
+      "LINE": 1,
+      "HSP_ACCOUNT_ID": 376684810,
+      "POST_DATE": "2022-03-11 00:00:00",
+      "SERV_AREA_ID": 10,
+      "DX_ID": 468251,
+      "DX_QUAL_HA_C_NAME": "Active",
+      "$meta": {
+        "type": "HSP_TX_DIAG"
+      }
+    },
+    {
+      "TX_ID": 670514271,
+      "LINE": 1,
+      "HSP_ACCOUNT_ID": 376684810,
+      "POST_DATE": "2022-03-11 00:00:00",
+      "SERV_AREA_ID": 10,
+      "DX_ID": 468251,
+      "DX_QUAL_HA_C_NAME": "Active",
+      "$meta": {
+        "type": "HSP_TX_DIAG"
+      }
+    }
+  ]
+}

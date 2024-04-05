@@ -1,0 +1,70 @@
+{
+  "name": "BILL_SCHED_PMT_NOTIF_HX",
+  "description": "This table contains the notification history information from the Billing Scheduled Payment (BSP) master file.",
+  "primaryKey": [
+    {
+      "columnName": "SCHED_PMT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SCHED_PMT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the scheduled payment record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "NOTIF_HX_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the instant when the scheduled payment notification was sent to the guarantor."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "NOTIF_HX_DEST_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the destination type to which the scheduled payment notification was sent.",
+      "entries": [
+        "Email",
+        "SMS",
+        "Push"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "NOTIF_HX_DESTINATION",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the destination to which the scheduled payment notification was sent. It will store the email address or phone number based on the destination type."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "NOTIF_HX_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the amount for which the notification was sent."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "NOTIF_HX_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "This column stores the local date and time when the scheduled payment notification was sent to the guarantor."
+    }
+  ]
+}

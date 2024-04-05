@@ -1,0 +1,105 @@
+{
+  "$meta": {
+    "schemas": {
+      "HSP_CLAIM_PRINT": {
+        "name": "HSP_CLAIM_PRINT",
+        "description": "This table contains claim print record information for claims associated with a given hospital account or liability bucket.",
+        "primaryKey": [
+          {
+            "columnName": "CLAIM_PRINT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "CONTACT_DATE_REAL",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "CLAIM_PRINT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Stores the claim record ID associated with a single hospital account or liability bucket."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "CONTACT_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "The contact date for the creation of the record in internal format. (There is only one contact date per CLP record.)"
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "HSP_ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID of the hospital account with which this claim record is associated."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "HSP_CLAIM_PRINT",
+            "target": "HSP_CLP_REV_CODE",
+            "joinKeys": [
+              {
+                "source": "CLAIM_PRINT_ID",
+                "target": "CLAIM_PRINT_ID"
+              },
+              {
+                "source": "CONTACT_DATE_REAL",
+                "target": "CONTACT_DATE_REAL"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "HSP_CLAIM_PRINT",
+            "target": "HSP_CLAIM_DETAIL1",
+            "joinKeys": [
+              {
+                "source": "CLAIM_PRINT_ID",
+                "target": "CLAIM_PRINT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HSP_CLAIM_PRINT": [
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLAIM_PRINT"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLAIM_PRINT"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLAIM_PRINT"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLAIM_PRINT"
+      }
+    }
+  ]
+}

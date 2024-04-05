@@ -1,0 +1,136 @@
+{
+  "$meta": {
+    "schemas": {
+      "COVERAGE_MEMBER_LIST": {
+        "name": "COVERAGE_MEMBER_LIST",
+        "description": "The COVERAGE_MEMBER_LIST table contains information about the members associated with each coverage record. Since one coverage record can have multiple members, each row in the table corresponds to one member and is noted by the coverage ID and the line number.",
+        "primaryKey": [
+          {
+            "columnName": "COVERAGE_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "COVERAGE_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the coverage record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number used to identify each member of a coverage record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID assigned to the patient record (EPT .1)."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "MEM_COVERED_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The member�s covered status for the coverage, such as Y � the coverage is verified and in effect, or N � the coverage was invalidated manually. Note: 3 � Pending (not verified, but in effect), 4 � In Question (was verified, but recent carrier information omitted this coverage), 5 � Invalid (never verified, not effective).",
+            "entries": [
+              "Covered",
+              "Not Covered",
+              "Pending",
+              "In Question",
+              "Invalid"
+            ]
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "MEM_REL_TO_SUB_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the category identifier of the member's relationship to the subscriber. This column is commonly used to join to ZC_MEM_REL_TO_SUB.",
+            "entries": [
+              "Self",
+              "Spouse",
+              "Child",
+              "Employee",
+              "Unknown"
+            ]
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "MEM_VERIFICATION_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The verification record for the coverage member."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "MEM_NUMBER",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The identification number assigned to the member for the coverage."
+          },
+          {
+            "ordinalPosition": 17,
+            "name": "MEM_EFF_FROM_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date on which the coverage goes into effect for the member."
+          },
+          {
+            "ordinalPosition": 18,
+            "name": "MEM_STUDENT_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "If the member is a full time student this column contains the value �Y�. If the member is not a full time student, as determined by the member�s Employment Status, this column contains the value �N�."
+          },
+          {
+            "ordinalPosition": 56,
+            "name": "MEM_COVERED_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the category identifier of member's covered status, such as whether their coverage is currently valid or in question. This column is commonly used to join to ZC_COVERED_STATUS."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "COVERAGE_MEMBER_LIST",
+            "target": "COVERAGE",
+            "joinKeys": [
+              {
+                "source": "COVERAGE_ID",
+                "target": "COVERAGE_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "COVERAGE_MEMBER_LIST": [
+    {
+      "COVERAGE_ID": 5934765,
+      "LINE": 1,
+      "PAT_ID": "Z7004242",
+      "MEM_COVERED_YN": "Y",
+      "MEM_REL_TO_SUB_C_NAME": "Self",
+      "MEM_VERIFICATION_ID": 68534851,
+      "MEM_NUMBER": "MSJ60249687901",
+      "MEM_EFF_FROM_DATE": "2018-08-09 00:00:00",
+      "MEM_STUDENT_YN": "N",
+      "MEM_COVERED_C_NAME": "Covered",
+      "$meta": {
+        "type": "COVERAGE_MEMBER_LIST"
+      }
+    }
+  ]
+}

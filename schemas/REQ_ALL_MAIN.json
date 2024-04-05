@@ -1,0 +1,65 @@
+{
+  "name": "REQ_ALL_MAIN",
+  "description": "The REQ_ALL_MAIN table contains basic information about Requisitions, Cases, and External System Patient Demographics.",
+  "primaryKey": [
+    {
+      "columnName": "REQUISITION_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "REQUISITION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the requisition, case, or external system patient demographics record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "REQ_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type category ID for the requisition, case, or external system patient demographics record.",
+      "entries": [
+        "Requisition",
+        "Case",
+        "External System Patient Demographics",
+        "External System Identifier Mapping"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number (CSN) of the patient. If you use IntraConnect, this is the Unique Contact Identifier (UCI). For requisitions, this is the CSN for the Lab Requisition encounter associated with the requisition. For cases, this is the CSN for the encounter linked to the first order on the case."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RQG_GROUPER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the requisition grouper associated with this record."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CANCELED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the record is canceled. 'Y' indicates that the record is a canceled requisition or case. 'N' indicates that the record is not canceled.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "name": "V_VARIANT_KEY_ASSOC_REC",
+  "description": "This view makes it easy to report on genomic variant records and key associated records including situations where the variant record is indirectly associated. To include only currently active variants, filter on ( CURRENT_PAT_ID IS NOT NULL OR CURRENT_RQG_GROUPER_ID IS NOT NULL ). To include only the last contact on which the variant was active, filter on ( ORDER_CONTACT_DATE_REAL IS NULL OR ORDER_CONTACT_DATE_REAL = LAST_ORDER_CONTACT_DATE_REAL ). \n\n\n\n\n\nThe primary key is listed as VARIANT_ID and ORDER_CONTACT_DATE_REAL, but a not null restriction is not enforced on ORDER_CONTACT_DATE_REAL. Incomplete variants will have one row with NULL for ORDER_CONTACT_DATE_REAL.",
+  "primaryKey": [
+    {
+      "columnName": "VARIANT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "ORDER_CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "VARIANT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the variant record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PERSISTENT_PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table. While the ID in the PAT_ID column will get cleared out when its variant record is superseded, the value in this column will continue to indicate the patient.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PERSISTENT_RQG_GROUPER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The historically maintained requisition grouper ID. While the requisition grouper ID in item 99 will be cleared out of a VAR record when a new VAR superscedes it, this will retain the grouper link."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for the patient contact associated with this order. This number is unique across patients and encounters in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the order record."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ORDER_CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format of an order contact. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "IS_INCOMPLETE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether or not the variant should be considered an incomplete result."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ORDER_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The order type category number for the order.",
+      "entries": [
+        "Medications"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ORDER_CLASS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the order class. This value is used to define how clinical systems process the order.",
+      "entries": [
+        "Normal"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "IS_SENSITIVE_ORDER_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores whether the order is considered sensitive, based on configuration in System Definitions."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the procedure record corresponding to this order. Note: This is not the CPT(TM) code. It is an internal identifier that is typically not visible to a user, and can be used to link to CLARITY_EAP."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PARENT_VARIANT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If the variant record is contained within another variant, the unique identifier for the containing or parent variant record."
+    }
+  ]
+}

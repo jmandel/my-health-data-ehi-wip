@@ -1,0 +1,65 @@
+{
+  "name": "ORD_NESTED_OSQS",
+  "description": "Contains nested panel information where each line represents one level of nesting.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "NESTED_PANEL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores a list of OSQ IDs representing the nested panels from which an order was placed."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "NESTED_PANEL_CONTACT_DATE_REAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores a list of grouped orders (OSQ) contact dates (DATs) corresponding to the nested (group within group) OSQ IDs."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "NESTED_PANEL_UNIQ_KEY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores a list of \"panel info\"s corresponding to the OSQ IDs above, which uniquely identify identical nested OSQs placed in the same ordering session."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "NESTED_GROUP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "For orders from clinical pathways (a method of placing many orders that are meant to take place over a period of time all at once), stores a list of TRG IDs representing the groups of orders which contain other groups of orders from which the order originated."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "NESTED_GROUP_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores a list of Patient Order Groups and Treatment Days (TRG) Contact Serial Numbers (CSN) associated with the above TRG IDs."
+    }
+  ]
+}

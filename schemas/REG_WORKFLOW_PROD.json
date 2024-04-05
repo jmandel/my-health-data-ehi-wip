@@ -1,0 +1,99 @@
+{
+  "name": "REG_WORKFLOW_PROD",
+  "description": "The REG_WORKFLOW_PROD table contains productivity data about particular workflows on a patient contact such as Admit, Sign-In, Check-In, and Check-Out. This table stores the number of Admit, Sign-In, Check-In and Check-Out workflows completed. The table only tracks a workflow the first time it is successfully completed for that encounter. For example, when a user first checks in a patient to see the doctor, that will be tracked, but if the user subsequently reenters the Check-In workflow and changes some data, that will not be tracked. Similarly, if a user enters the Check-In workflow to try and check in a patient, but then exits the workflow without checking the patient in, that will not be tracked.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "WKFL_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Which type of workflow this line is tracking (e.g. Admit, Sign-In, etcetera).",
+      "entries": [
+        "Sign In",
+        "Check In",
+        "Check Out",
+        "Admit"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "WKFL_END_INST_DTTM",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "Stores the instant when the user completed a workflow."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "WKFL_DURATION",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the duration of the workflow in seconds."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "WKFL_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the user who completed the workflow."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "WKFL_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "WKFL_PAT_DEP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the patient encounter department at the end of the workflow."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "WKFL_LOGIN_DEP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the department where the user was logged in at the time of the end of the workflow."
+    }
+  ]
+}

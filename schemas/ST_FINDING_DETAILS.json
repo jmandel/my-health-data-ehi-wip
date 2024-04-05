@@ -1,0 +1,137 @@
+{
+  "name": "ST_FINDING_DETAILS",
+  "description": "This table shows the details of a soft tissue finding.",
+  "primaryKey": [
+    {
+      "columnName": "FINDING_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "FINDING_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the finding record"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ST_FIND_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The soft tissue finding type, documenting severity of the finding.",
+      "entries": [
+        "Malignant Lesion",
+        "Pre-Malignant Lesion",
+        "Benign Lesion",
+        "Neoplasm",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ST_AVAT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The soft tissue avatar type, which is either extraoral or intraoral.",
+      "entries": [
+        "Extraoral",
+        "Intraoral"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ST_FIND_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The current status of the soft tissue finding, which is either unresolved, resolved, or removed.",
+      "entries": [
+        "Resolved",
+        "Unresolved",
+        "Removed"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ST_MOD_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A unique user identifier that consists of the name and the user ID of the user that modified the soft tissue finding."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ST_MOD_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ST_MOD_INST_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant when the soft tissue finding was modified."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "DX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the diagnosis associated with the soft tissue finding."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "REGION_RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the anatomy region associated with the soft tissue finding."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "REGION_RECORD_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores record name (.2)"
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "FINDING_LOC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The exact coordinates of the soft tissue finding based on the coordinate system of the avatar it was documented on. If the finding is an icon (point and click tool), this item stores the coordinates of the center of the finding icon. If the finding is selected using the region selection tool, this item is left blank since the region ID is already stored in item 17004."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "FINDING_COUNT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of findings this soft tissue finding represents. Allows user to document like findings in the same region under one soft tissue finding record."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "FINDING_LOC_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The display name of the soft tissue finding that overrides the finding's default name of the associated anatomy region."
+    }
+  ]
+}

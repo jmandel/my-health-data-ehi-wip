@@ -1,0 +1,37 @@
+{
+  "name": "REFERRAL_ORG_FILTER_SA",
+  "description": "This table holds a list of authorized service areas, business segments and the patient associated with each referral. This table is used with Organizational Filtering. An organization will have access to a referral if they are authorized for at least one of the referral's associated service areas/business segments or if they are authorized for the referral's associated patient.",
+  "primaryKey": [
+    {
+      "columnName": "REFERRAL_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "REFERRAL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the referral record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple service areas and business segments can be associated with a referral."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "AUTH_SA_OR_BUS_SEG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The authorized service areas and business segments. This is only populated when Tapestry business segmentation is on. When it is, this column is used to determine which organizations are authorized to view the referral."
+    }
+  ]
+}

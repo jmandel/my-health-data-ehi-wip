@@ -1,0 +1,37 @@
+{
+  "name": "TREATMENT_PLAN_NOTES",
+  "description": "The TREATMENT_PLAN_NOTES table contains the note text from Treatment Plan Notes (I TPL 50) as written in the properties window of a Treatment Plan. \n\n\n\n\n\nThe text from Treatment Plan Notes is first converted to plain text. The formatting information in RTF note text or HTML note text is removed. The plain text is then broken up into lines of 4000 characters or fewer.",
+  "primaryKey": [
+    {
+      "columnName": "TREATMENT_PLAN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TREATMENT_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The record ID for the treatment plan."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the note text associated with this treatment plan.   The note text is first converted to plain text, then broken into lines of 4000 characters or fewer.  Words and line breaks are not split across different lines.  This column (\"LINE\") indicates the line number of the processed text."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "NOTES_TEXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The text of the treatment plan note.  The note text is first converted to plain text, then broken into lines of 4000 characters or fewer.  Words and line breaks are not split across different lines."
+    }
+  ]
+}

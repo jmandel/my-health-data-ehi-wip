@@ -1,0 +1,684 @@
+{
+  "name": "PRE_AR_CHG_2",
+  "description": "This table is a continuation of the PRE_AR_CHG table. This table contains one row for each line of each temporary accounts receivable (TAR) record (think of a TAR record as one charge entry screen and each line as an individual procedure). Deleting charge lines will delete rows from this table. This table contains additional information about the procedure.",
+  "primaryKey": [
+    {
+      "columnName": "TAR_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CHARGE_LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TAR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the transaction record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CHARGE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this transaction record.  This represents a single charge procedure in the transaction."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PENDING_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The pending status of this transaction: 1 means Pending and 2 means Waiting to Pend. If blank, the transaction is not pending.",
+      "entries": [
+        "Pending",
+        "Waiting to Pend"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "TX_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "What this transaction record is used for (e.g. charge, payment, adjustment, etc...).",
+      "entries": [
+        "Charge",
+        "Payment/Adjustment",
+        "Single Adjustment",
+        "Visit",
+        "Express Payment"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PENDING_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The pending reason category ID for the temporary�transaction.",
+      "entries": [
+        "Other",
+        "Error in Charge Entry Validation Check",
+        "Warning in Charge Entry Validation Check",
+        "Import: Transaction Imported to holding Tank",
+        "Inpatient: Charge needs to be reviewed"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PENDING_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A free-text comment to further explain why this transaction is pending."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "LAST_EDITED_DATE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The last date the check payment was edited."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "HOSP_ACCOUNT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the hospital account record ID for the transaction."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "EXT_BILLING_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A billing number from an external billing system."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "EXT_REFERENCE_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A reference number from an external billing system."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "ENC_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The kind of encounter which is associated with this transaction (e.g. Walk-In, Appointment, Anesthesia, etc...).",
+      "entries": [
+        "Registration",
+        "Walk-In",
+        "Hospital Encounter",
+        "Canceled",
+        "Unmerge",
+        "Contact Moved",
+        "Intake",
+        "EMPTY",
+        "Research Encounter",
+        "Recurring Plan",
+        "Update",
+        "PCP/Clinic Change",
+        "Wait List",
+        "Enrollment",
+        "Social Care Application",
+        "Service Decision Registration",
+        "Leader Rounds",
+        "Clerical Orders",
+        "Mother Baby Link",
+        "Lactation Encounter",
+        "Appointment",
+        "Surgery",
+        "Anesthesia",
+        "Anesthesia Event",
+        "Guardian Screening",
+        "Ancillary Procedure",
+        "Anticoagulation Discharge Documentation",
+        "Health Maintenance Letter",
+        "Patient Message",
+        "E-Visit",
+        "Mobile Order Only",
+        "Questionnaire Series Submission",
+        "Travel",
+        "Patient Self-Triage",
+        "Community Care Management",
+        "Patient Outreach",
+        "Telephone",
+        "Nurse Triage",
+        "E-Consult",
+        "E-Consult Community Order",
+        "Clinical Documentation Only",
+        "Telemedicine",
+        "Plan of Care Documentation",
+        "External Communication",
+        "Reconciled Outside Data",
+        "External Contact",
+        "Ophth Exam",
+        "Dialysis Calendar Documentation",
+        "Pre-Admission Testing",
+        "Episode Documentation Update",
+        "Hospice Admission",
+        "Home Infusion",
+        "Home Infusion Billing",
+        "Episode Update",
+        "Home Health Resumption of Care Planning",
+        "Home Health Admission",
+        "Home Care Visit",
+        "Home Care Update",
+        "Kanta Service Event",
+        "Patient Web Update",
+        "Community Orders",
+        "Committee Review",
+        "Post Mortem Documentation",
+        "Billing Encounter",
+        "Lab Requisition",
+        "Office Visit",
+        "Consent Form",
+        "Procedure Pass",
+        "External Hospital Admission",
+        "Letter (Out)",
+        "Hospital",
+        "Refill",
+        "Immunization",
+        "History",
+        "Referral",
+        "Orders Only",
+        "Rx Refill Authorize",
+        "Meds Only (Web)",
+        "Meds Void (Web)",
+        "Resolute Professional Billing Hospital Prof Fee",
+        "Episode Changes",
+        "Ancillary Orders",
+        "Pharmacy Visit",
+        "BPA",
+        "Abstract"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PROV_SPECIALTY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The provider's area of expert knowledge which applies for this transaction."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "DEFAULT_SVC_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The service date when this transaction took place."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "DO_NOT_BILL_INS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Do Not Bill Insurance for the charge session (taken from visit if encounter form # is used). Possible values will be \"Y\" and \"N\".",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "CHARGE_DESC_OVRIDE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the charge description if it has been changed from the default."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "PROC_MED_NEC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether this particular charge line is a medical necessity or not.  Possible values will be \"Y\" and \"N\".",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "COPAY_INDICATOR_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The payment type for this copay.",
+      "entries": [
+        "Co-ins",
+        "Copay",
+        "Not Covered",
+        "No Patient Payment"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "TAX",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The tax related to this charge."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "TAX_PROC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the procedure line is a tax procedure"
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "DX_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The diagnoses which apply to this charge line. This will be in the form of comma-separated integers, where each integer corresponds with a line in the CHG_REVIEW_DX table for this transaction."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "MANUAL_PRICE_OVRIDE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Indicates if this price override is a manual override or was due to a pricing contract."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "ADJ_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Adjustment amount for one charge line."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "PRICE_OVRIDE_FLAG",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Holds the price override for this line, if one has been set."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "PANEL_PROC_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The procedure number for this charge line. Corresponds to the Procedure Master # (EAP-100)."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "HEMATOCRIT_READING",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The hematocrit reading for this procedure, if one has been taken."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "HEMOGLOBIN_READING",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The hemoglobin reading for this procedure, if one has been taken."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "CHG_NOT_BILL_INS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Do Not Bill Insurance for charge line. Possible values will be \"Y\" and \"N\"."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "CHARGE_LENGTH",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The length of time in minutes that this procedure took."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "START_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The time when this procedure was started."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "STOP_TIME",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The time when this procedure was finished."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when this procedure was started."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "STOP_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when this procedure was finished."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "SERVICE_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The time of service for a charge line."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "SELF_PAY_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The self-pay amount associated with this charge line as determined by the Benefits Engine."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the claim information record associated with this charge line."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "CHG_CVG_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The coverage status category ID for the temporary transaction. This is�determined by the Benefits Engine.",
+      "entries": [
+        "Covered, write-off",
+        "Not covered",
+        "Covered, no write-off",
+        "Not covered but assigned to payer"
+      ]
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "OLD_ETR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique Accounts Receivable (AR) transaction ID which is associated with this charge record. This column is frequently used to link to the ARPB_TRANSACTIONS table.",
+      "linksTo": "ARPB_TRANSACTIONS"
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "ANESTHESIA_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Anesthesia procedure type.",
+      "entries": [
+        "General",
+        "IV",
+        "Local",
+        "Monitored Anesthesia Care",
+        "Regional"
+      ]
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "EMERG_STATUS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates where this charge is associated with an admitted�patient with an emergency status.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "PHYSICAL_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Physical status of the patient who had the anesthesia procedure.",
+      "entries": [
+        "Normal Healthy",
+        "Mild Systemic Disease",
+        "Severe Systemic Disease",
+        "Severe/Threat",
+        "Moribund",
+        "Brain Dead"
+      ]
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "ANES_BASE_UNITS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Anesthesia base units for the charge procedure."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "EMERG_UNITS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Emergency units for the charge procedure."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "PHYSICAL_STAT_UNITS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Physical status units for the charge procedure."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "AGE_UNITS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Age units for the anesthesia procedure."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "ANES_AGE_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Anesthesia age unit procedure."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "ANES_EMERG_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Anesthesia emergency unit procedure."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "CHARGE_BILL_STS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The anesthesia billing status category ID for the temporary transaction.",
+      "entries": [
+        "Yes",
+        "No",
+        "Supplemental",
+        "Supplemental Unit"
+      ]
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "ANES_SUPP_UNITS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Anesthesia supplemental units."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "ANES_AGE_PROC_UNIT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Anesthesia age unit procedure unit."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "ANES_EMERG_PROC_UNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Anesthesia emergency unit procedure unit."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "ORIG_ANES_TX_SS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Original anesthesia transaction for special supplemental."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "RAD_THER_END",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Indicates end of radiation treatment."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "RAD_THER_LINK",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Radiation therapy link for transfer/retro."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "CHANGED_DX_PX_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if charge review changed the diagnosis or procedure."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "ORIG_PAT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Original self-pay amount before discount."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "SST_DISCNT_OVRD_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Flag to indicate that the self-pay discount amount was manually overridden by the user."
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "SST_SP_AMT_OVRD_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Flag to indicate that the self-pay amount was overridden in the self-pay discount workflow."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "SST_DISCNT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The self-pay discount amount."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "POS_TYPE_OVRRID_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Place of service type override for a single charge line",
+      "entries": [
+        "Telehealth - Provided in Patient's Home",
+        "Office",
+        "Home",
+        "Assisted Living Facility",
+        "Group Home",
+        "Mobile Unit",
+        "Temporary Lodging",
+        "Walk-in Retail Health Clinic",
+        "Place of Employment - Worksite",
+        "Off Campus - Outpatient Hospital",
+        "Urgent Care Facility",
+        "Inpatient Hospital",
+        "On Campus - Outpatient Hospital",
+        "Emergency Room - Hospital",
+        "Ambulatory Surgical Center",
+        "Birthing Center",
+        "Military Treatment Facility",
+        "Outreach Site/Street",
+        "Skilled Nursing Facility",
+        "Nursing Facility",
+        "Custodial Care Facility",
+        "Hospice",
+        "Adult Living Care Facility",
+        "Ambulance - Land",
+        "Ambulance - Air or Water",
+        "Independent Clinic",
+        "Federally Qualified Health Center",
+        "Inpatient Psychiatric Facility",
+        "Psychiatric Facility - Partial Hospitalization",
+        "Community Mental Health Center",
+        "Intermediate Care Facility/ Individuals with Intellectual Disabilities",
+        "Residential Substance Abuse Treatment Facility",
+        "Psychiatric Residential Treatment Center",
+        "Non-residential Substance Abuse Treatment Facility",
+        "Non-residential Opioid Treatment Facility",
+        "Mass Immunization Center",
+        "Comprehensive Inpatient Rehabilitation Facility",
+        "Comprehensive Outpatient Rehabilitation Facility",
+        "End-Stage Renal Disease Treatment Facility",
+        "Public Health Clinic",
+        "Rural Health Clinic",
+        "Independent Laboratory",
+        "Other Place of Service",
+        "Pharmacy",
+        "Telehealth - Provided Other than in Patient's Home",
+        "School",
+        "Homeless Shelter",
+        "Indian Health Service Free-standing Facility",
+        "Indian Health Service Provider-based Facility",
+        "Tribal 638 Free-standing Facility",
+        "Tribal 638 Provider-based Facility",
+        "Prison/Correctional Facility"
+      ]
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "BFD_COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the coverage used to compute reimbursement and pricing contract for charge lines that qualify for bill for denial workflows."
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "MEDICATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The medication ID of the medication associated with this charge."
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "WRITE_OFF_EXCEPTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The write-off exception for this charge.",
+      "entries": [
+        "Yes",
+        "Yes, No NCC either"
+      ]
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "INSURANCE_ONLY_FLAG_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A flag to indicate if insurance only billing applies to this charge.",
+      "entries": [
+        "Yes",
+        "yes and new SST"
+      ]
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "AUTO_PAT_WRITEOFF_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is set when the user flags the charge line for an automatic patient writeoff, and it is unset if the user unflags the charge line. This allows the system to distinguish when the user was the source of the insurance only flag value, rather than the system having set it automatically."
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "DENTAL_PREAUTH_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the amount that will be sent to insurance for preauthorization for the associated charge line."
+    }
+  ]
+}

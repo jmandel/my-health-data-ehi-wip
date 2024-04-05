@@ -1,0 +1,143 @@
+{
+  "name": "PAYOR_COMM_HX",
+  "description": "The PAYOR_COMM_HX table contains a history of communications sent to payers by inpatient case managers. This data is from the Payer Communication navigator section. Each row represents a communication that was sent to a payer.\n\n\n\n\n\nIf no communication was sent to a specific payer, a row will appear for that payer with the current fax, phone number, and contact name. In addition, a row will also be displayed for any fax, phone number, and/or contact name updates, if the update happened after sending the last communication. Therefore, the last row for a given payer contains the most current contact information for them.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "AGENCY_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the payor communication recipient."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "AGENCY_ID_AGENCY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the agency."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ROI_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the release of information disclosure record; the disclosure stores all information about the communication itself, such as sending time and user."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "LRP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the report that was sent to the payor. This column is always populated when a report is sent, but should only be used as a fallback if no Release of Information (ROI) is available in ROI_ID (such as in an IntraConnect scenario). Starting in the May 2023 version, this item extracted by this column will no longer be populated."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "LRP_ID_REPORT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the report"
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "SENT_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant that the report was sent. This column is always populated when a report is sent, but should only be used as a fallback if no Release of Information (ROI) is available in ROI_ID (such as in an IntraConnect scenario)."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "OVERRIDE_FAX",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The fax number that was used or will be used for faxing the communication."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "OVERRIDE_PHONE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The phone number for the recipient at the time the communication was sent, or the most current phone number for the recipient."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "COMM_MODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Method by which the communication was sent.",
+      "entries": [
+        "Fax",
+        "Save to File"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "OVERRIDE_CT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The contact person name for the recipient at the time the communication was sent, or the most current contact person name for the recipient."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "ORIG_SEND_LN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "If this line documents a resent report, this column includes the LINE number (in this table) of the line documenting the original sending of that report. This column is NULL on lines documenting an original sending."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "COMM_MEMO_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the note ID of a note containing user comments about the related communication sent to the payer."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "IS_CUSTOM_DOCUMENT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This indicates whether the communication included a custom document generated using document builder.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    }
+  ]
+}

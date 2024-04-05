@@ -1,0 +1,81 @@
+{
+  "$meta": {
+    "schemas": {
+      "PAT_EPISODE": {
+        "name": "PAT_EPISODE",
+        "description": "The PAT_EPISODE table links patient ID numbers to Episodes of Care records. This is especially helpful for connecting patients to episodes of care when there are no linked encounters on an episode record. When this is the case, the PAT_ID column in the EPISODE table may be null.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID assigned to the patient record. This ID may be encrypted if you have elected to use enterprise reporting�s encryption utility."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "EPISODE_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID number associated with an Episode of Care."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "PAT_EPISODE",
+            "target": "PAT_REL_ADDR",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "PAT_EPISODE",
+            "target": "PATIENT",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PAT_EPISODE": [
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 1,
+      "EPISODE_ID": 200498750,
+      "$meta": {
+        "type": "PAT_EPISODE"
+      }
+    }
+  ]
+}

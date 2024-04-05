@@ -1,0 +1,44 @@
+{
+  "name": "PAT_ENC_LOS_DX",
+  "description": "The PAT_ENC_LOS_DX table enables you to report on the diagnoses associated with the level of service (LOS) entered for a patient encounter. This table contains only information for those diagnoses that have been explicitly associated with the LOS.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "DX_UNIQUE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the diagnosis associated with the Level of Service (LOS). This value corresponds to the DX_UNIQUE column in the PAT_ENC_DX table. Together with PAT_ENC_CSN_ID, this forms the foreign key to the PAT_ENC_DX table."
+    }
+  ]
+}

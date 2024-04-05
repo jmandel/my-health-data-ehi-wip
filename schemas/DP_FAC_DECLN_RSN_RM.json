@@ -1,0 +1,91 @@
+{
+  "name": "DP_FAC_DECLN_RSN_RM",
+  "description": "This table contains the reasons why a service declined a patient's request for continued care or services.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the associated post-acute service provider in the patient encounter considered for the patient's post-acute care. Together with the PAT_ENC_CSN_ID column, this forms the foreign key to the DP_FACILITY table."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple selected services that are associated with the patient and the service providers from the DP_FACILITY table."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "DP_FAC_DECLN_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Reason a service declines a patient request.",
+      "entries": [
+        "Acuity too high",
+        "Age",
+        "Already enrolled",
+        "Bariatric",
+        "Bed not available",
+        "Behavior issues or concerns",
+        "Benefits exhausted",
+        "Cannot meet patient's needs",
+        "Cannot meet patient's psychosocial needs",
+        "Cost of care",
+        "Cost of medications/treatments",
+        "Criminal history/record",
+        "Facility declined (no reason given)",
+        "Facility full",
+        "Fall risk",
+        "History of violence and/or drug or alcohol abuse",
+        "Inadequate staffing",
+        "No payer/insurance",
+        "Not eligible",
+        "Out of network",
+        "Out of service area",
+        "Patient consent required",
+        "Payer/insurance denied or not accepted",
+        "Services no longer provided or available",
+        "Unable to contact",
+        "Unable to get help",
+        "Other (Comment)"
+      ]
+    }
+  ]
+}

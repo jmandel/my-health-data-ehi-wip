@@ -1,0 +1,193 @@
+{
+  "$meta": {
+    "schemas": {
+      "ALLERGY": {
+        "name": "ALLERGY",
+        "description": "The ALLERGY table contains information about the allergies noted in your patients' clinical system records. You would use this table if you wanted to report on the number of patients who are allergic to sulfa drugs, for example. To determine the allergic reaction, link to the ALLERGY_REACTIONS table.",
+        "primaryKey": [
+          {
+            "columnName": "ALLERGY_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ALLERGY_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID used to identify the allergy record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "ALLERGEN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID assigned to the allergen (Agent) record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "ALLERGEN_ID_ALLERGEN_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the allergen record."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "DATE_NOTED",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date the patient made it known that they had experienced an allergic reaction in calendar format."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "ENTRY_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the clinical system user who entered this allergy into the patient�s record. This ID may be encrypted.  NOTE: If an allergy record is edited/updated, this will show the most recent change user ID."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "ENTRY_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "SEVERITY_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The allergy type category value, describing the nature or character of the allergy (i.e. systemic, topical, etc.). NOTE: This field refers to the field called \"TYPE\" in the Allergy module in clinical system."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "ALLERGY_SEVERITY_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item stores the severity of an allergy.",
+            "entries": [
+              "High",
+              "Medium",
+              "Low"
+            ]
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "ALRGY_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The status category number for this allergy record. The status can be active or deleted.",
+            "entries": [
+              "Active",
+              "Deleted"
+            ]
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "ALRGY_ENTERED_DTTM",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The date and time the allergy was entered into the patient's record using a calendar format. NOTE: If an allergy record is edited/updated this will show the most recent change."
+          },
+          {
+            "ordinalPosition": 17,
+            "name": "ALLERGY_PAT_CSN",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The patient contact corresponding to the patient encounter in which this allergy was edited."
+          },
+          {
+            "ordinalPosition": 18,
+            "name": "ALLERGY_NOTED_DATE_ACCURACY_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The noted date accuracy of an allergy determines the accuracy of the noted date specified in DATE_NOTED.  A value of 1-Year indicates that the specific day in the DATE_NOTED column is accurate to the year and not to the specific day. Similarly a value of 2-Month indicates that it is accurate to the month. A value of 3-Exact Date or an empty value indicates that the corresponding value in DATE_NOTED column is accurate to that day.",
+            "entries": [
+              "Year",
+              "Month",
+              "Exact Date"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "ALLERGY",
+            "target": "ALLERGY_REACTIONS",
+            "joinKeys": [
+              {
+                "source": "ALLERGY_ID",
+                "target": "ALLERGY_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ALLERGY": [
+    {
+      "ALLERGY_ID": 30689238,
+      "ALLERGEN_ID": 48968,
+      "ALLERGEN_ID_ALLERGEN_NAME": "TREE NUT",
+      "DATE_NOTED": "2018-08-09 00:00:00",
+      "ENTRY_USER_ID": "WENTZTC",
+      "ENTRY_USER_ID_NAME": "IRELAND, TRACY C",
+      "SEVERITY_C_NAME": "Allergy",
+      "ALLERGY_SEVERITY_C_NAME": "High",
+      "ALRGY_STATUS_C_NAME": "Active",
+      "ALRGY_ENTERED_DTTM": "2018-08-09 09:45:00",
+      "$meta": {
+        "type": "ALLERGY"
+      }
+    },
+    {
+      "ALLERGY_ID": 58599837,
+      "ALLERGEN_ID": 49007,
+      "ALLERGEN_ID_ALLERGEN_NAME": "PEANUT (DIAGNOSTIC)",
+      "DATE_NOTED": "2020-07-14 00:00:00",
+      "ENTRY_USER_ID": "PICONEMA",
+      "ENTRY_USER_ID_NAME": "PICONE, MARY A",
+      "SEVERITY_C_NAME": "Allergy",
+      "ALLERGY_SEVERITY_C_NAME": "High",
+      "ALRGY_STATUS_C_NAME": "Active",
+      "ALRGY_ENTERED_DTTM": "2020-07-14 14:34:00",
+      "ALLERGY_PAT_CSN": 829213099,
+      "ALLERGY_NOTED_DATE_ACCURACY_C_NAME": "Exact Date",
+      "$meta": {
+        "type": "ALLERGY"
+      }
+    },
+    {
+      "ALLERGY_ID": 30689295,
+      "ALLERGEN_ID": 33,
+      "ALLERGEN_ID_ALLERGEN_NAME": "SULFA ANTIBIOTICS",
+      "DATE_NOTED": "2018-08-09 00:00:00",
+      "ENTRY_USER_ID": "WENTZTC",
+      "ENTRY_USER_ID_NAME": "IRELAND, TRACY C",
+      "SEVERITY_C_NAME": "Allergy",
+      "ALLERGY_SEVERITY_C_NAME": "High",
+      "ALRGY_STATUS_C_NAME": "Active",
+      "ALRGY_ENTERED_DTTM": "2018-08-09 09:45:00",
+      "$meta": {
+        "type": "ALLERGY"
+      }
+    },
+    {
+      "ALLERGY_ID": 30689317,
+      "ALLERGEN_ID": 25,
+      "ALLERGEN_ID_ALLERGEN_NAME": "PENICILLINS",
+      "DATE_NOTED": "2018-08-09 00:00:00",
+      "ENTRY_USER_ID": "WENTZTC",
+      "ENTRY_USER_ID_NAME": "IRELAND, TRACY C",
+      "SEVERITY_C_NAME": "Allergy",
+      "ALLERGY_SEVERITY_C_NAME": "High",
+      "ALRGY_STATUS_C_NAME": "Active",
+      "ALRGY_ENTERED_DTTM": "2018-08-09 09:46:00",
+      "$meta": {
+        "type": "ALLERGY"
+      }
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "name": "PAT_ENC_STAT_HX",
+  "description": "This is the ADT encounter status history. It will track changes to the patient's encounter status (I EPT 10115) and confirmation status (I EPT 18852). The user who made the change, time the change occurred, the new encounter status, and the new confirmation status are recorded. A reason for the change may be provided if the change was triggered through ADT Event Management.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique, internal contact date in decimal format. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "UPDATE_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Instant the encounter status was updated"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "UPDATED_ENC_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Patient encounter status after update",
+      "entries": [
+        "Preadmission",
+        "Admission",
+        "Discharged",
+        "Leave of Absence",
+        "Hospital Outpatient Visit"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "UPDATED_CONF_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Confirmation status after the update",
+      "entries": [
+        "Confirmed",
+        "Pending",
+        "Canceled",
+        "Completed"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "UPDATE_EVENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the Leave of Absence Event that triggered the update to the encounter's status."
+    }
+  ]
+}

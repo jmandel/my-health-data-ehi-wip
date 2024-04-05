@@ -1,0 +1,92 @@
+{
+  "$meta": {
+    "schemas": {
+      "FLWSHT_SINGL_COL": {
+        "name": "FLWSHT_SINGL_COL",
+        "description": "This table contains data on the last instant of data being filed to a single column template in Doc Flowsheets.",
+        "primaryKey": [
+          {
+            "columnName": "FSD_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "FSD_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique identifier for the record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "SINGLE_FLO_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item stores the Flowsheet ID of a row that has been documented on a single column template, with Single Column Recorded Instant - Single Rcrd (FSD 5005) holding the most recent time recorded for this row."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "SINGLE_RCRD_IN_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "This item stores the most recent time recorded for a Flowsheet ID in the Single Column FLO ID (related item FSD 5000) that was documented on a single column template. The time is saved in the UTC (Coordinated Universal Time) time zone."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "FLWSHT_SINGL_COL",
+            "target": "IP_FLWSHT_REC",
+            "joinKeys": [
+              {
+                "source": "FSD_ID",
+                "target": "FSD_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "FLWSHT_SINGL_COL": [
+    {
+      "FSD_ID": "118744115",
+      "LINE": 1,
+      "SINGLE_FLO_ID": "711",
+      "SINGLE_RCRD_IN_DTTM": "2022-12-01 15:26:00",
+      "$meta": {
+        "type": "FLWSHT_SINGL_COL"
+      }
+    },
+    {
+      "FSD_ID": "118744115",
+      "LINE": 2,
+      "SINGLE_FLO_ID": "712",
+      "SINGLE_RCRD_IN_DTTM": "2022-12-01 15:26:00",
+      "$meta": {
+        "type": "FLWSHT_SINGL_COL"
+      }
+    },
+    {
+      "FSD_ID": "118744115",
+      "LINE": 3,
+      "SINGLE_FLO_ID": "713",
+      "SINGLE_RCRD_IN_DTTM": "2022-12-01 15:26:00",
+      "$meta": {
+        "type": "FLWSHT_SINGL_COL"
+      }
+    }
+  ]
+}

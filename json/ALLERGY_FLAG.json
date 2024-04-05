@@ -1,0 +1,121 @@
+{
+  "$meta": {
+    "schemas": {
+      "ALLERGY_FLAG": {
+        "name": "ALLERGY_FLAG",
+        "description": "This table holds data of whether the patient's allergies were marked as containing no drug allergies.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+            "linksTo": "PATIENT"
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "ALRGY_FLAG_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores a \"Y\" if the patient's \"No Known Allergies\" checkbox is selected and an \"N\" if the checkbox is not selected.",
+            "entries": [
+              "No",
+              "Yes"
+            ]
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "ALRGY_FLG_UPD_BY_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item stores the user who updated the patient's No Known Allergies status."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "ALRGY_FLG_UPD_BY_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "ALRGY_FLAG_UPD_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "This item stores the instant of update for when the patient's No Known Allergies status is changed."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "ALLERGY_FLAG",
+            "target": "PAT_REL_ADDR",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ALLERGY_FLAG",
+            "target": "PATIENT",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ALLERGY_FLAG": [
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 1,
+      "ALRGY_FLAG_YN": "Y",
+      "ALRGY_FLG_UPD_BY_ID": "WENTZTC",
+      "ALRGY_FLG_UPD_BY_ID_NAME": "IRELAND, TRACY C",
+      "ALRGY_FLAG_UPD_DTTM": "2018-08-09 14:44:00",
+      "$meta": {
+        "type": "ALLERGY_FLAG"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 2,
+      "ALRGY_FLAG_YN": "N",
+      "ALRGY_FLG_UPD_BY_ID": "WENTZTC",
+      "ALRGY_FLG_UPD_BY_ID_NAME": "IRELAND, TRACY C",
+      "ALRGY_FLAG_UPD_DTTM": "2018-08-09 14:44:00",
+      "$meta": {
+        "type": "ALLERGY_FLAG"
+      }
+    }
+  ]
+}

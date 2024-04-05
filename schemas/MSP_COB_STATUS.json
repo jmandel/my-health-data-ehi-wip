@@ -1,0 +1,48 @@
+{
+  "name": "MSP_COB_STATUS",
+  "description": "The MSP_COB_STATUS table contains information related to the MSPQ Coordination of Benefits status. This status determines whether Medicare is primary or secondary to other insurances for a patient on a given contact, based on answers filled out for the MSPQ.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "MSP_COB_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Coordination of Benefits status category number for the Medicare Secondary Payor Questionnaire (MSPQ). Indicates whether Medicare is primary or secondary to other insurance for a given contact.",
+      "entries": [
+        "Medicare is Secondary",
+        "Medicare is Primary"
+      ]
+    }
+  ]
+}

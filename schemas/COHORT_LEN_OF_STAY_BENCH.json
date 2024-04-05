@@ -1,0 +1,79 @@
+{
+  "name": "COHORT_LEN_OF_STAY_BENCH",
+  "description": "This table contains a history of length of stay benchmarks that applies to a patient based on their cohort.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "LOS_BENCH_UPD_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Instant the cohort length of stay benchmark was updated."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "COHORT_LOS_BENCH",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Length of stay benchmark for patient's cohort."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "COHORT_LOS_CACHE_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The data type and quality associated with the cohort length of stay listed in COHORT_LOS_BENCH.",
+      "entries": [
+        "Error in Cosmos",
+        "Insufficient Data",
+        "Standard Query",
+        "Basic Query"
+      ]
+    }
+  ]
+}

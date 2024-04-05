@@ -1,0 +1,731 @@
+{
+  "$meta": {
+    "schemas": {
+      "REFERRAL": {
+        "name": "REFERRAL",
+        "description": "The REFERRAL table is the primary table for referral information stored in system.",
+        "primaryKey": [
+          {
+            "columnName": "REFERRAL_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "REFERRAL_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the referral in database. This is the primary key for the REFERRAL table."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "EXTERNAL_ID_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The external identification number used on the referral."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The ID of the patient associated with the referral."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "PCP_PROV_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the patient's primary care provider at the time the referral was created."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "ENTRY_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date the referral was entered."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "RFL_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value representing the status of the referral (I.e. authorized, open, pending, etc.).",
+            "entries": [
+              "Authorized",
+              "Open",
+              "Pending Review",
+              "Canceled",
+              "Denied",
+              "Closed",
+              "New Request",
+              "Incomplete"
+            ]
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "REFERRING_PROV_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the referral source (REF) record of the provider who made the referral. This column is frequently used to link to the REFERRAL_SOURCE table. The actual provider (SER) ID can be found in column REF_PROVIDER_ID of table REFERRAL_SOURCE.",
+            "linksTo": "REFERRAL_SOURCE"
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "REFERRING_PROV_ID_REFERRING_PROV_NAM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the referral source."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "PROV_SPEC_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value indicating the provider specialty being referred to."
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "RFL_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value indicating the type of referral."
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "RSN_FOR_RFL_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value indicating the main (first) reason for the referral.   Since multiple reasons can be listed, use table REFERRAL_REASONS to view all of them."
+          },
+          {
+            "ordinalPosition": 15,
+            "name": "RFL_CLASS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value indicating the class of the referral.",
+            "entries": [
+              "Internal",
+              "Incoming",
+              "Outgoing"
+            ]
+          },
+          {
+            "ordinalPosition": 19,
+            "name": "AUTH_NUM_OF_VISITS",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The number of visits authorized for this referral."
+          },
+          {
+            "ordinalPosition": 23,
+            "name": "START_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The start date of the referral."
+          },
+          {
+            "ordinalPosition": 24,
+            "name": "EXP_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The expiration date of the referral."
+          },
+          {
+            "ordinalPosition": 28,
+            "name": "SERV_AREA_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID number of the service area associated with the referral."
+          },
+          {
+            "ordinalPosition": 29,
+            "name": "COVERAGE_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the coverage associated with the referral."
+          },
+          {
+            "ordinalPosition": 30,
+            "name": "NUM_PROC",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The number of procedures associated with the referral."
+          },
+          {
+            "ordinalPosition": 31,
+            "name": "SVC_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "If available, this column is populated by the authorized start date (I RFL 85). If not, it is populated by the expiration date on the referral (I RFL 90). If neither of these are available, the column will be empty. The date in this column is based on days since December 31, 1840."
+          },
+          {
+            "ordinalPosition": 34,
+            "name": "PAYOR_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID number of the payor associated with the referral."
+          },
+          {
+            "ordinalPosition": 35,
+            "name": "PLAN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID number of the plan associated with the referral."
+          },
+          {
+            "ordinalPosition": 36,
+            "name": "SERV_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This column is populated by the authorized start date (I RFL 85) if available. If not, it is populated by the expiration date on the referral (I RFL 90). If neither of these are available, the column will be empty. The date in this column is in MM/DD/YYYY format."
+          },
+          {
+            "ordinalPosition": 37,
+            "name": "RETRO_FLAG_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value used to mark a referral as being \"Retro\" entered.",
+            "entries": [
+              "Yes",
+              "No"
+            ]
+          },
+          {
+            "ordinalPosition": 39,
+            "name": "AUTO_APPROVED_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date on which the referral was approved automatically by the system."
+          },
+          {
+            "ordinalPosition": 40,
+            "name": "AUTH_RSN_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value indicating the authorization reason associated with the referral."
+          },
+          {
+            "ordinalPosition": 41,
+            "name": "REFD_BY_LOC_POS_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID number of the place of service the referral was referred from."
+          },
+          {
+            "ordinalPosition": 42,
+            "name": "REFD_TO_LOC_POS_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID number of the place of service the referral was referred to."
+          },
+          {
+            "ordinalPosition": 43,
+            "name": "REFD_TO_DEPT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID number of the department the referral was referred to."
+          },
+          {
+            "ordinalPosition": 44,
+            "name": "REFD_TO_SPEC_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value indicating the specialty the department was referred to."
+          },
+          {
+            "ordinalPosition": 45,
+            "name": "PRIORITY_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value indicating the priority of the referral.",
+            "entries": [
+              "Routine",
+              "Urgent",
+              "Emergency",
+              "Elective",
+              "Two Week Wait",
+              "See Details"
+            ]
+          },
+          {
+            "ordinalPosition": 50,
+            "name": "IBNR_PAY_UNTIL_DT",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date up to which your facility will pay claims for the procedures approved on this referral."
+          },
+          {
+            "ordinalPosition": 52,
+            "name": "PRIM_LOC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the member's primary location at the time the referral was entered."
+          },
+          {
+            "ordinalPosition": 59,
+            "name": "ACTUAL_NUM_VISITS",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The actual number of completed visits for this referral."
+          },
+          {
+            "ordinalPosition": 60,
+            "name": "SCHED_NUM_VISITS",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The number of visits scheduled for this referral."
+          },
+          {
+            "ordinalPosition": 61,
+            "name": "REQUEST_NUM_VISITS",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The number of visits requested for this referral."
+          },
+          {
+            "ordinalPosition": 65,
+            "name": "DISP_VAL_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Whether the referral was accepted (\"appointed\") or refused (\"denied\") by the referred-to provider, department or facility.",
+            "entries": [
+              "Appointed",
+              "Denied"
+            ]
+          },
+          {
+            "ordinalPosition": 68,
+            "name": "REFD_BY_DEPT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID number of the department the referral was referred by."
+          },
+          {
+            "ordinalPosition": 69,
+            "name": "CLOSE_RSN_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "For closed referrals, the category value indicating the reason for closing."
+          },
+          {
+            "ordinalPosition": 70,
+            "name": "SCHED_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Scheduling status of the referral to keep track of internally schedulable referrals.  For category list use ZC_SCHED_STATUS.",
+            "entries": [
+              "Do not change"
+            ]
+          },
+          {
+            "ordinalPosition": 71,
+            "name": "SCHED_BY_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Indicates deadline to schedule a referral."
+          },
+          {
+            "ordinalPosition": 72,
+            "name": "PREAUTH_REQ_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "For referrals created from an order, indicates if a preauthorization number must be collected before scheduling.",
+            "entries": [
+              "Prior Authorization Number Required",
+              "Prior Authorization Number Collected",
+              "Prior Authorization Number Not Collected",
+              "Prior Authorization Number Processed"
+            ]
+          },
+          {
+            "ordinalPosition": 75,
+            "name": "PREAUTH_CHG_EMP_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the user who last changed the preauthorization data."
+          },
+          {
+            "ordinalPosition": 76,
+            "name": "PREAUTH_CHG_EMP_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 77,
+            "name": "PREAUTH_CHNGD_DTTM",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "Date/time stamp for last time the preauthorization data was changed."
+          },
+          {
+            "ordinalPosition": 81,
+            "name": "EXT_REF_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This is the external referring date."
+          },
+          {
+            "ordinalPosition": 87,
+            "name": "DECISION_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Date on which the referral's current status was assigned."
+          },
+          {
+            "ordinalPosition": 89,
+            "name": "RFL_STATCHG_RSN_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The reason category number describing why the referral status was changed.",
+            "entries": [
+              "Canceled Order",
+              "TPL Created",
+              "Order Added",
+              "Order Modified",
+              "Order Deleted",
+              "Build Change",
+              "Coverage Change",
+              "Treatment Department Change",
+              "Diagnosis Change",
+              "Create AUTs for new coverage",
+              "Day/Cycle Copied"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "REFERRAL": [
+    {
+      "REFERRAL_ID": 9463136,
+      "EXTERNAL_ID_NUM": "9463136",
+      "PAT_ID": "Z7004242",
+      "PCP_PROV_ID": "802011",
+      "ENTRY_DATE": "2020-01-09 00:00:00",
+      "RFL_STATUS_C_NAME": "Closed",
+      "REFERRING_PROV_ID": "802011",
+      "REFERRING_PROV_ID_REFERRING_PROV_NAM": "DHILLON, PUNEET S",
+      "PROV_SPEC_C_NAME": "Gastroenterology",
+      "RFL_TYPE_C_NAME": "Referral",
+      "RSN_FOR_RFL_C_NAME": "Specialty Services Required",
+      "RFL_CLASS_C_NAME": "Outgoing",
+      "AUTH_NUM_OF_VISITS": 1,
+      "START_DATE": "2020-01-09 00:00:00",
+      "EXP_DATE": "2021-01-08 00:00:00",
+      "SERV_AREA_ID": 18,
+      "COVERAGE_ID": 5934765,
+      "NUM_PROC": 1,
+      "SVC_DATE_REAL": 65387,
+      "PAYOR_ID": 1302,
+      "PLAN_ID": 130204,
+      "SERV_DATE": "2020-01-09 00:00:00",
+      "RETRO_FLAG_YN": "N",
+      "AUTO_APPROVED_DATE": "2020-01-09 00:00:00",
+      "REFD_BY_LOC_POS_ID": 1700801,
+      "REFD_TO_LOC_POS_ID": 36997,
+      "PRIORITY_C_NAME": "Routine",
+      "IBNR_PAY_UNTIL_DT": "2021-04-08 00:00:00",
+      "PRIM_LOC_ID": 1700801,
+      "REQUEST_NUM_VISITS": 1,
+      "REFD_BY_DEPT_ID": 1700801002,
+      "CLOSE_RSN_C_NAME": "Expired-Auto Closed",
+      "SCHED_STATUS_C_NAME": "Do Not Schedule",
+      "EXT_REF_DATE": "2020-01-09 00:00:00",
+      "DECISION_DATE": "2021-01-09 00:00:00",
+      "$meta": {
+        "type": "REFERRAL"
+      }
+    },
+    {
+      "REFERRAL_ID": 10321219,
+      "EXTERNAL_ID_NUM": "10321219",
+      "PAT_ID": "Z7004242",
+      "PCP_PROV_ID": "802011",
+      "ENTRY_DATE": "2020-07-14 00:00:00",
+      "RFL_STATUS_C_NAME": "Closed",
+      "REFERRING_PROV_ID": "219711",
+      "REFERRING_PROV_ID_REFERRING_PROV_NAM": "PICONE, MARY A",
+      "RFL_TYPE_C_NAME": "MRI/CAT Scan",
+      "RFL_CLASS_C_NAME": "Internal",
+      "AUTH_NUM_OF_VISITS": 1,
+      "START_DATE": "2020-07-14 00:00:00",
+      "EXP_DATE": "2021-07-14 00:00:00",
+      "SERV_AREA_ID": 18,
+      "COVERAGE_ID": 5934765,
+      "NUM_PROC": 1,
+      "SVC_DATE_REAL": 65574,
+      "PAYOR_ID": 1302,
+      "PLAN_ID": 130204,
+      "SERV_DATE": "2020-07-14 00:00:00",
+      "RETRO_FLAG_YN": "N",
+      "REFD_BY_LOC_POS_ID": 1700801,
+      "REFD_TO_SPEC_C_NAME": "Radiology",
+      "PRIORITY_C_NAME": "Routine",
+      "IBNR_PAY_UNTIL_DT": "2021-10-12 00:00:00",
+      "PRIM_LOC_ID": 1700801,
+      "REQUEST_NUM_VISITS": 1,
+      "REFD_BY_DEPT_ID": 1700801002,
+      "CLOSE_RSN_C_NAME": "Order Canceled-Auto Closed",
+      "SCHED_STATUS_C_NAME": "Do Not Schedule",
+      "SCHED_BY_DATE": "2020-08-13 00:00:00",
+      "PREAUTH_REQ_C_NAME": "Prior Authorization Number Required",
+      "PREAUTH_CHG_EMP_ID": "PICONEMA",
+      "PREAUTH_CHG_EMP_ID_NAME": "PICONE, MARY A",
+      "PREAUTH_CHNGD_DTTM": "2020-07-14 14:40:00",
+      "EXT_REF_DATE": "2020-07-14 00:00:00",
+      "DECISION_DATE": "2020-07-16 00:00:00",
+      "RFL_STATCHG_RSN_C_NAME": "Canceled Order",
+      "$meta": {
+        "type": "REFERRAL"
+      }
+    },
+    {
+      "REFERRAL_ID": 10327483,
+      "EXTERNAL_ID_NUM": "10327483",
+      "PAT_ID": "Z7004242",
+      "PCP_PROV_ID": "802011",
+      "ENTRY_DATE": "2020-07-15 00:00:00",
+      "RFL_STATUS_C_NAME": "Closed",
+      "REFERRING_PROV_ID": "219711",
+      "REFERRING_PROV_ID_REFERRING_PROV_NAM": "PICONE, MARY A",
+      "RFL_TYPE_C_NAME": "MRI/CAT Scan",
+      "RFL_CLASS_C_NAME": "Internal",
+      "AUTH_NUM_OF_VISITS": 1,
+      "START_DATE": "2020-07-15 00:00:00",
+      "EXP_DATE": "2021-01-10 00:00:00",
+      "SERV_AREA_ID": 18,
+      "COVERAGE_ID": 5934765,
+      "NUM_PROC": 1,
+      "SVC_DATE_REAL": 65575,
+      "PAYOR_ID": 1302,
+      "PLAN_ID": 130204,
+      "SERV_DATE": "2020-07-15 00:00:00",
+      "RETRO_FLAG_YN": "N",
+      "AUTO_APPROVED_DATE": "2020-07-15 00:00:00",
+      "REFD_BY_LOC_POS_ID": 1700801,
+      "REFD_TO_SPEC_C_NAME": "Radiology",
+      "PRIORITY_C_NAME": "Routine",
+      "IBNR_PAY_UNTIL_DT": "2021-10-13 00:00:00",
+      "PRIM_LOC_ID": 1700801,
+      "REQUEST_NUM_VISITS": 1,
+      "REFD_BY_DEPT_ID": 1700801002,
+      "CLOSE_RSN_C_NAME": "Order Canceled-Auto Closed",
+      "SCHED_STATUS_C_NAME": "Do Not Schedule",
+      "SCHED_BY_DATE": "2020-08-14 00:00:00",
+      "PREAUTH_REQ_C_NAME": "Prior Authorization Number Collected",
+      "PREAUTH_CHG_EMP_ID": "BUDZBANL",
+      "PREAUTH_CHG_EMP_ID_NAME": "BUDZBAN, NICOLE L",
+      "PREAUTH_CHNGD_DTTM": "2020-07-15 14:26:00",
+      "EXT_REF_DATE": "2020-07-15 00:00:00",
+      "DECISION_DATE": "2020-08-14 00:00:00",
+      "RFL_STATCHG_RSN_C_NAME": "Canceled Order",
+      "$meta": {
+        "type": "REFERRAL"
+      }
+    },
+    {
+      "REFERRAL_ID": 10358290,
+      "EXTERNAL_ID_NUM": "10358290",
+      "PAT_ID": "Z7004242",
+      "PCP_PROV_ID": "802011",
+      "ENTRY_DATE": "2020-07-21 00:00:00",
+      "RFL_STATUS_C_NAME": "Closed",
+      "REFERRING_PROV_ID": "219711",
+      "REFERRING_PROV_ID_REFERRING_PROV_NAM": "PICONE, MARY A",
+      "RFL_TYPE_C_NAME": "MRI/CAT Scan",
+      "RFL_CLASS_C_NAME": "Internal",
+      "AUTH_NUM_OF_VISITS": 1,
+      "START_DATE": "2020-07-21 00:00:00",
+      "EXP_DATE": "2021-07-21 00:00:00",
+      "SERV_AREA_ID": 18,
+      "COVERAGE_ID": 5934765,
+      "NUM_PROC": 1,
+      "SVC_DATE_REAL": 65581,
+      "PAYOR_ID": 1302,
+      "PLAN_ID": 130204,
+      "SERV_DATE": "2020-07-21 00:00:00",
+      "REFD_BY_LOC_POS_ID": 1700801,
+      "REFD_TO_SPEC_C_NAME": "Radiology",
+      "PRIORITY_C_NAME": "Routine",
+      "IBNR_PAY_UNTIL_DT": "2021-10-19 00:00:00",
+      "PRIM_LOC_ID": 1700801,
+      "REQUEST_NUM_VISITS": 1,
+      "REFD_BY_DEPT_ID": 1700801002,
+      "CLOSE_RSN_C_NAME": "Expired-Auto Closed",
+      "SCHED_STATUS_C_NAME": "Do Not Schedule",
+      "SCHED_BY_DATE": "2020-08-20 00:00:00",
+      "PREAUTH_REQ_C_NAME": "Prior Authorization Number Required",
+      "PREAUTH_CHG_EMP_ID": "PICONEMA",
+      "PREAUTH_CHG_EMP_ID_NAME": "PICONE, MARY A",
+      "PREAUTH_CHNGD_DTTM": "2020-07-21 12:38:00",
+      "EXT_REF_DATE": "2020-07-21 00:00:00",
+      "DECISION_DATE": "2021-07-22 00:00:00",
+      "$meta": {
+        "type": "REFERRAL"
+      }
+    },
+    {
+      "REFERRAL_ID": 13661714,
+      "EXTERNAL_ID_NUM": "13661714",
+      "PAT_ID": "Z7004242",
+      "PCP_PROV_ID": "802011",
+      "ENTRY_DATE": "2022-02-09 00:00:00",
+      "RFL_STATUS_C_NAME": "Closed",
+      "REFERRING_PROV_ID": "805364",
+      "REFERRING_PROV_ID_REFERRING_PROV_NAM": "GILLESPIE, BENJAMIN T",
+      "PROV_SPEC_C_NAME": "Occupational Therapy",
+      "RFL_TYPE_C_NAME": "Referral",
+      "RSN_FOR_RFL_C_NAME": "Specialty Services Required",
+      "RFL_CLASS_C_NAME": "Internal",
+      "AUTH_NUM_OF_VISITS": 365,
+      "START_DATE": "2022-02-09 00:00:00",
+      "EXP_DATE": "2022-04-20 00:00:00",
+      "SERV_AREA_ID": 10,
+      "COVERAGE_ID": 5934765,
+      "NUM_PROC": 1,
+      "SVC_DATE_REAL": 66149,
+      "PAYOR_ID": 1302,
+      "PLAN_ID": 130204,
+      "SERV_DATE": "2022-02-09 00:00:00",
+      "REFD_BY_LOC_POS_ID": 101401,
+      "REFD_TO_LOC_POS_ID": 101401,
+      "REFD_TO_DEPT_ID": 101401034,
+      "PRIORITY_C_NAME": "Routine",
+      "IBNR_PAY_UNTIL_DT": "2023-11-11 00:00:00",
+      "PRIM_LOC_ID": 1700801,
+      "ACTUAL_NUM_VISITS": 2,
+      "SCHED_NUM_VISITS": 0,
+      "REQUEST_NUM_VISITS": 365,
+      "DISP_VAL_C_NAME": "Appointed",
+      "REFD_BY_DEPT_ID": 101401088,
+      "CLOSE_RSN_C_NAME": "Patient Discharged",
+      "SCHED_STATUS_C_NAME": "Do Not Schedule",
+      "SCHED_BY_DATE": "2022-03-11 00:00:00",
+      "PREAUTH_REQ_C_NAME": "Prior Authorization Number Required",
+      "PREAUTH_CHG_EMP_ID": "JLM406",
+      "PREAUTH_CHG_EMP_ID_NAME": "MIRON, JACKI L",
+      "PREAUTH_CHNGD_DTTM": "2022-02-09 15:26:00",
+      "EXT_REF_DATE": "2022-02-09 00:00:00",
+      "DECISION_DATE": "2022-04-21 00:00:00",
+      "$meta": {
+        "type": "REFERRAL"
+      }
+    },
+    {
+      "REFERRAL_ID": 15963353,
+      "EXTERNAL_ID_NUM": "15963353",
+      "PAT_ID": "Z7004242",
+      "PCP_PROV_ID": "144590",
+      "ENTRY_DATE": "2022-12-01 00:00:00",
+      "RFL_STATUS_C_NAME": "Authorized",
+      "REFERRING_PROV_ID": "144590",
+      "REFERRING_PROV_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
+      "PROV_SPEC_C_NAME": "Neurology",
+      "RFL_TYPE_C_NAME": "Referral",
+      "RSN_FOR_RFL_C_NAME": "Specialty Services Required",
+      "RFL_CLASS_C_NAME": "Outgoing",
+      "AUTH_NUM_OF_VISITS": 1,
+      "START_DATE": "2022-12-01 00:00:00",
+      "EXP_DATE": "2024-06-03 00:00:00",
+      "SERV_AREA_ID": 18,
+      "COVERAGE_ID": 5934765,
+      "NUM_PROC": 1,
+      "SVC_DATE_REAL": 66444,
+      "PAYOR_ID": 1302,
+      "PLAN_ID": 130204,
+      "SERV_DATE": "2022-12-01 00:00:00",
+      "AUTO_APPROVED_DATE": "2022-12-01 00:00:00",
+      "AUTH_RSN_C_NAME": "No Approval Necessary - Patient Tracking",
+      "REFD_BY_LOC_POS_ID": 1700801,
+      "REFD_TO_LOC_POS_ID": 36942,
+      "PRIORITY_C_NAME": "Less than 2 months",
+      "IBNR_PAY_UNTIL_DT": "2024-09-01 00:00:00",
+      "PRIM_LOC_ID": 1700801,
+      "REQUEST_NUM_VISITS": 1,
+      "REFD_BY_DEPT_ID": 1700801002,
+      "SCHED_STATUS_C_NAME": "External - Ready to Schedule",
+      "EXT_REF_DATE": "2022-12-01 00:00:00",
+      "DECISION_DATE": "2022-12-01 00:00:00",
+      "$meta": {
+        "type": "REFERRAL"
+      }
+    },
+    {
+      "REFERRAL_ID": 16132994,
+      "EXTERNAL_ID_NUM": "16132994",
+      "PAT_ID": "Z7004242",
+      "PCP_PROV_ID": "144590",
+      "ENTRY_DATE": "2022-12-22 00:00:00",
+      "RFL_STATUS_C_NAME": "Authorized",
+      "REFERRING_PROV_ID": "144590",
+      "REFERRING_PROV_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
+      "PROV_SPEC_C_NAME": "Neurology",
+      "RFL_TYPE_C_NAME": "Referral",
+      "RSN_FOR_RFL_C_NAME": "Specialty Services Required",
+      "RFL_CLASS_C_NAME": "Outgoing",
+      "AUTH_NUM_OF_VISITS": 1,
+      "START_DATE": "2022-12-22 00:00:00",
+      "EXP_DATE": "2024-06-24 00:00:00",
+      "SERV_AREA_ID": 18,
+      "COVERAGE_ID": 5934765,
+      "NUM_PROC": 1,
+      "SVC_DATE_REAL": 66465,
+      "PAYOR_ID": 1302,
+      "PLAN_ID": 130204,
+      "SERV_DATE": "2022-12-22 00:00:00",
+      "AUTH_RSN_C_NAME": "No Approval Necessary - Patient Tracking",
+      "REFD_BY_LOC_POS_ID": 1700801,
+      "PRIORITY_C_NAME": "Less than 1 month",
+      "IBNR_PAY_UNTIL_DT": "2024-09-22 00:00:00",
+      "PRIM_LOC_ID": 1700801,
+      "REQUEST_NUM_VISITS": 1,
+      "REFD_BY_DEPT_ID": 1700801002,
+      "SCHED_STATUS_C_NAME": "External - Ready to Schedule",
+      "EXT_REF_DATE": "2022-12-22 00:00:00",
+      "DECISION_DATE": "2022-12-29 00:00:00",
+      "$meta": {
+        "type": "REFERRAL"
+      }
+    },
+    {
+      "REFERRAL_ID": 16132995,
+      "EXTERNAL_ID_NUM": "16132995",
+      "PAT_ID": "Z7004242",
+      "PCP_PROV_ID": "144590",
+      "ENTRY_DATE": "2022-12-22 00:00:00",
+      "RFL_STATUS_C_NAME": "Authorized",
+      "REFERRING_PROV_ID": "144590",
+      "REFERRING_PROV_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
+      "PROV_SPEC_C_NAME": "Neurology",
+      "RFL_TYPE_C_NAME": "Referral",
+      "RSN_FOR_RFL_C_NAME": "Specialty Services Required",
+      "RFL_CLASS_C_NAME": "Outgoing",
+      "AUTH_NUM_OF_VISITS": 1,
+      "START_DATE": "2022-12-22 00:00:00",
+      "EXP_DATE": "2024-06-24 00:00:00",
+      "SERV_AREA_ID": 18,
+      "COVERAGE_ID": 5934765,
+      "NUM_PROC": 1,
+      "SVC_DATE_REAL": 66465,
+      "PAYOR_ID": 1302,
+      "PLAN_ID": 130204,
+      "SERV_DATE": "2022-12-22 00:00:00",
+      "AUTH_RSN_C_NAME": "No Approval Necessary - Patient Tracking",
+      "REFD_BY_LOC_POS_ID": 1700801,
+      "PRIORITY_C_NAME": "Less than 1 month",
+      "IBNR_PAY_UNTIL_DT": "2024-09-22 00:00:00",
+      "PRIM_LOC_ID": 1700801,
+      "REQUEST_NUM_VISITS": 1,
+      "REFD_BY_DEPT_ID": 1700801002,
+      "SCHED_STATUS_C_NAME": "External - Ready to Schedule",
+      "EXT_REF_DATE": "2022-12-22 00:00:00",
+      "DECISION_DATE": "2022-12-29 00:00:00",
+      "$meta": {
+        "type": "REFERRAL"
+      }
+    }
+  ]
+}

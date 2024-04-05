@@ -1,0 +1,68 @@
+{
+  "name": "EXTERNAL_DEATH_REPORTS",
+  "description": "External reports of patient death information.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "EXT_DEATH_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the current status of a given external report on a patient's death.",
+      "entries": [
+        "Unconfirmed",
+        "Marked As Deceased",
+        "Declined Report",
+        "Erroneous"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EXT_DEATH_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the reported date of death of a given external report on a patient's death."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EXT_DEATH_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the source of a given external report on a patient's death.",
+      "entries": [
+        "Patient Load"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EXT_DEATH_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores an optional comment of a given external report on a patient's death."
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "$meta": {
+    "schemas": {
+      "HSP_TX_AUTH_INFO": {
+        "name": "HSP_TX_AUTH_INFO",
+        "description": "This table contains the authorization information for each hospital transaction.",
+        "primaryKey": [
+          {
+            "columnName": "TX_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "TX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the hospital billing transaction."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "AUTH_COVERAGE_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This item is the list of coverages the associated Authorization values are being applied to."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "HSP_TX_AUTH_INFO",
+            "target": "HSP_TRANSACTIONS",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HSP_TX_AUTH_INFO": [
+    {
+      "TX_ID": 672984063,
+      "LINE": 1,
+      "AUTH_COVERAGE_ID": 5934765,
+      "$meta": {
+        "type": "HSP_TX_AUTH_INFO"
+      }
+    },
+    {
+      "TX_ID": 670514272,
+      "LINE": 1,
+      "AUTH_COVERAGE_ID": 5934765,
+      "$meta": {
+        "type": "HSP_TX_AUTH_INFO"
+      }
+    },
+    {
+      "TX_ID": 670514271,
+      "LINE": 1,
+      "AUTH_COVERAGE_ID": 5934765,
+      "$meta": {
+        "type": "HSP_TX_AUTH_INFO"
+      }
+    }
+  ]
+}

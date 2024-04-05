@@ -1,0 +1,389 @@
+{
+  "name": "HSP_CLP_CMS_LINE",
+  "description": "This table contains claim line information for claims associated with the hospital account/liability bucket. For uniform medical billing (UB) claims, this table contains pre-processing charge information, which is used in the creation of UB claim lines. Post-processing claim line data for UB claims is stored in the HSP_CLP_REV_CODE table. For CMS claims, this table contains the post-processing claim line data.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_PRINT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_PRINT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the claim record associated with a single hospital account or liability bucket."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple values associated with a specific group of data within this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "REIMB_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the reimbursement amount for claim line."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "REIMB_METHOD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the reimbursement method.",
+      "entries": [
+        "Charge Entry Line Calculation",
+        "Invoice Line Calculation",
+        "Invoice Bundle Calculation",
+        "APC"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "FROM_SERV_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the from date for a claim line. For services that do not span multiple days, the service date will be held here."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "TO_SERV_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the through date for a claim line."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "POS_TYPE_PER_TX",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the place of service type per transaction."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "TOS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the type of service for the claim line.",
+      "entries": [
+        "Medical Care",
+        "Surgery",
+        "Consultation",
+        "Diagnostic Radiology",
+        "Diagnostic Laboratory",
+        "Therapeutic Radiology",
+        "Anesthesia",
+        "Assistant at Surgery",
+        "Other Medical Items or Services",
+        "Whole Blood",
+        "Used Durable Medical Equipment (DME)",
+        "Ambulatory Surgical Center (Facility usage for Surgical Services)",
+        "Hospice (Obsolete, Discontinued 1/95)",
+        "ESRD Supplies",
+        "Monthly Capitation Payment for Dialysis",
+        "Kidney Donor",
+        "Pneumococcal/Flu Vaccine",
+        "Second Opinion on Elective Surgery (Obsolete)",
+        "Third Opinion on Elective Surgery (Obsolete)",
+        "Diagnostic Medical (Obsolete)",
+        "Ancillaries, Hospital and Nursing Home (Obsolete)",
+        "Drug Services (Obsolete)",
+        "Accommodations, Hospital and Nursing Home (Obsolete)",
+        "Dental (Obsolete)",
+        "Vision Care and Cataract Lens (Obsolete)",
+        "Nuclear Medicine (Obsolete)",
+        "Diagnostic X-Ray (Professional) (Obsolete)",
+        "Rental of DME",
+        "Radiation Therapy (Professional) (Obsolete)",
+        "Diagnostic Lab (Professional) (Obsolete)",
+        "Diagnostic Medical (Professional) (Obsolete)",
+        "DME Purchase (Obsolete)",
+        "CRD Equipment (Obsolete)",
+        "Pre-Admission Testing (Obsolete)",
+        "EPSDT",
+        "High Risk Screening Mammography",
+        "Low Risk Screening Mammography",
+        "Ambulance",
+        "Enteral/Parenteral Nutrients/Supplies",
+        "Immunosuppressive Drugs",
+        "Diabetic Shoes",
+        "Hearing Items and Services",
+        "Lump Sum Purchase of DME, Prostethics, Orthotics",
+        "Vision Items or Services",
+        "Surgical Dressings or Other Medical Supplies",
+        "Psychological Therapy",
+        "Occupational Therapy",
+        "Physical Therapy",
+        "Medication (Obsolete)",
+        "Chiropractic Care",
+        "DME Prescription"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the internal procedure ID."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PROC_DESC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the procedure description."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "HCPCS_CODES",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the Healthcare Common Procedure Coding System code for the claim line."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PROF_CLM_MODIFIERS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores modifiers on the claim line."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "DX_MAP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Comma-delimited list of diagnosis pointers for the claim line."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "QUANTITY",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the quantity associated with the claim line."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "OVRD_REV_CODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the override revenue code."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "OVRD_REV_CODE_ID_REVENUE_CODE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the revenue code."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "CHARGE_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the charge amount for the claim line."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "INS_DUE_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the insurance amount due for the claim line."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PAT_DUE_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the patient amount due for the claim line."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "NON_CVD_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the non-covered amount for the claim line."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "PAYMENT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the payment amount for the claim line."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "INSURANCE_PAID_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the insurance amount paid for the claim line."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "PAT_PAID_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the patient amount paid for the claim line."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "ADJUSTMENT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the adjustment amount for the claim line."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "PRINT_DESCRIPTIO_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This controls procedure description printing for professional claims.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "REV_LOCATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Revenue location for the line."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "DEPT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Department of service for the line."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "PX_START_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Start date for timed procedures."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "PX_STOP_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stop date for timed procedures."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "PX_START_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Start time for timed procedures."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "PX_STOP_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stop time for timed procedures."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "LINE_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Comment for the line."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "LINE_POS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Place of service ID."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "CMS_CODE_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the code type for the transaction level Healthcare Common Procedure Coding System code override. If a procedure has been assigned to the line without setting the override, this column will be left blank.",
+      "entries": [
+        "CPT(R)",
+        "HCPCS",
+        "ADA",
+        "ASA",
+        "SKS",
+        "THL",
+        "CBV",
+        "VT",
+        "ZA",
+        "CCSD"
+      ]
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "CMS_REND_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the line level rendering provider for American National Standards Institute claims. Professional claims will use this value to print the claim and line rendering provider loops."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "CMS_MOLDX_TEST_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the auxiliary procedure code for a CMS line."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "CMS_AUXPX_CD_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the type of auxiliary procedure code when one is applicable to a CMS line.",
+      "entries": [
+        "Laboratory Test Code",
+        "Molecular Diagnostic Test Code"
+      ]
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "CMS_PRIOR_AUTH",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the prior-authorization number for a service line."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "CMS_REF_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the referral number for a service line."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "CMS_LINKED_AUTH_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the professional billing charge level linked authorization ID."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "CMS_MEDICARE_PAID_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "For eMedNY 150003 claims, this is the amount that Medicare paid for this service line. This appears in field 24K (SVC_LN_INFO_2.LN_MCR_PAID_AMT). The EMEDNY_MEDICARE_PLANS profile variable can be used to control which coverages count as Medicare coverages."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "INVOICE_GRP_LN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The group line number on the invoice record that corresponds to the data in INVOICE_CLM_LN."
+    }
+  ]
+}

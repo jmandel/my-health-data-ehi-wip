@@ -1,0 +1,44 @@
+{
+  "name": "ORD_EXPECTED_PERFORM_DATE",
+  "description": "This table contains the list of expected perform dates in chronological order for a standing outpatient procedure order.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "STANDING_EXPECTED_PERFORM_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the list of dates on which the orders in corresponding lines of ORD 663 are expected to be performed. Used for outpatient standing only."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "STAND_EXPECT_PERFORM_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the list of orders corresponding to the dates on which orders are expected to be performed. Typically these will be individual occurrences (child orders) of a main order (parent order), but if the order is released in an inpatient/Hospital-Outpatient-Visit(HOV) setting the intermediate parent will be stored instead. Used for outpatient standing only."
+    }
+  ]
+}

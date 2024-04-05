@@ -1,0 +1,57 @@
+{
+  "$meta": {
+    "schemas": {
+      "PERSON_PREFERENCES": {
+        "name": "PERSON_PREFERENCES",
+        "description": "This table contains items related to Person Preferences. Unlike COMM_PREF_ADDL_ITEMS which stores communication preferences, this table stores data that is relevant to a person's preferences.",
+        "primaryKey": [
+          {
+            "columnName": "PERSON_PREFERENCE_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PERSON_PREFERENCE_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier (.1 item) for the subject name record."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "PERSON_PREFERENCES",
+            "target": "COMM_PREFERENCES_APRV",
+            "joinKeys": [
+              {
+                "source": "PERSON_PREFERENCE_ID",
+                "target": "PREFERENCES_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PERSON_PREFERENCES",
+            "target": "COMMUNICATION_PREFERENCES",
+            "joinKeys": [
+              {
+                "source": "PERSON_PREFERENCE_ID",
+                "target": "PREFERENCES_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PERSON_PREFERENCES": [
+    {
+      "PERSON_PREFERENCE_ID": 1079221,
+      "$meta": {
+        "type": "PERSON_PREFERENCES"
+      }
+    }
+  ]
+}

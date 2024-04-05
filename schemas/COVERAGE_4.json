@@ -1,0 +1,864 @@
+{
+  "name": "COVERAGE_4",
+  "description": "The COVERAGE_4 table contains high-level information on both managed care and indemnity coverage records in your system. This table also contains information related to Health Insurance Marketplace and Medicare Advantage coverages.",
+  "primaryKey": [
+    {
+      "columnName": "CVG_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CVG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the coverage record"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "ALTR_ZIP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The alternate ZIP code to which claims submitted under this coverage can be sent."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ALTR_CVG_COUNTY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The alternate county to which claims submitted under this coverage can be sent."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ALTR_CVG_COUNTRY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The alternate country to which claims submitted under this coverage can be sent."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ALTR_CVG_HOUSE_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The alternate house number to which claims submitted under this coverage can be sent."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ALTR_CVG_DISTRICT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The alternate district to which claims submitted under this coverage can be sent."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ALTR_CVG_PHONE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The alternate phone number for claims submitted under this coverage."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ALTR_CVG_FAX",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The alternate fax number for claims submitted under this coverage."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CVG_HEALTH_CENTER_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number of the health center for this coverage."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "CVG_CREATOR_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who created the coverage. This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "CVG_CREATOR_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "CVG_ISOLATED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This flag is set if a coverage is isolated with regard to patient data restrictions.  Coverages created from isolated patients or isolated guarantors are flagged as isolated coverages",
+      "entries": [
+        "No",
+        "Yes",
+        "Needs review"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "SELF_VERIF_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the last self-verification date. Used by Welcome."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "CONT_FROM_CVG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Points to a coverage that is logically the same coverage. This coverage record is continuing from the specified coverage record."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "HIX_POLICY_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The exchange policy identifier"
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "MA_WORKFLOW_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Keeps track of what state of the workflow the Medicare Advantage process is in.",
+      "entries": [
+        "Applied",
+        "Eligibility Request Generated",
+        "Eligibility Denied",
+        "Eligibility Confirmed",
+        "Eligibility Needs Review",
+        "Segment Change Queued",
+        "Segment Change Generated",
+        "Segment Change Error",
+        "Enrollment Queued",
+        "Enrollment Generated",
+        "Enrollment Error",
+        "Enrollment Confirmed",
+        "Enrollment Rejected",
+        "Cancel Enrollment Initiated",
+        "Cancel Enrollment Queued",
+        "Cancel Enrollment Generated",
+        "Cancel Enrollment Error",
+        "Cancel Enrollment Confirmed",
+        "Disenrollment Initiated",
+        "Disenrollment Queued",
+        "Disenrollment Generated",
+        "Disenrollment Error",
+        "Disenrollment Confirmed",
+        "Cancel Disenrollment Initiated",
+        "Cancel Disenrollment Queued",
+        "Cancel Disenrollment Generated",
+        "Cancel Disenrollment Error",
+        "Cancel Disenrollment Confirmed"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "NUM_UNCVRD_MO",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The incremental number of uncovered months (NUNCMO). This is determined from the later of the prior part D date, last LIS date, or the member's Initial Enrollment Period (IEP) date. To get the total NUNCMO add this amount to the existing NUNCMO."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "PPO_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This value contains the premium payment option for a Medicare Advantage coverage. The premium payment option indicates whether the beneficiary has elected to withhold Part C and Part D premiums from their Social Security or Railroad Retirement Board (RRB) benefits, and if so, the type of withholding to use.  After running deferred conversion 767822, this column will be obsolete. The premium payment option will be available in table MCARE_PREMIUM_PMT_OPT.",
+      "entries": [
+        "Social Security Benefits",
+        "Railroad Retirement Board Benefits",
+        "No Premium",
+        "Direct Self-Pay"
+      ]
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PART_D_OPT_OUT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This flag indicates that the beneficiary does not want Automated Enrollment in a Part D Plan. It applies to Low Income Subsidy beneficiaries who are subject to Automated Enrollment-Facilitated Enrollment into Part D.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "MMP_OPT_OUT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This flag indicates the beneficiary does not want passive enrollment into a Medicare and Medicaid Plan (MMP)."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "ESRD_OVRIDE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This value indicates whether the End Stage Renal Disease (ESRD) override was used to enroll the beneficiary into a non-Prescription Drug Plan."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "CR_CVG_FLG_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This value indicates whether the beneficiary has creditable drug coverage in the period prior to enrollment in this Part D Prescription Plan. It is also used to reset the number of uncovered months to zero due to a new initial enrollment period (IEP) or laboratory information system (LIS) change and to remove resets that were set in error.",
+      "entries": [
+        "Beneficiary has creditable coverage",
+        "Beneficiary does not have creditable coverage",
+        "Accumulated NUNCMO is reset to zero as of the effective date on the transaction",
+        "Previous reset is removed and total uncovered month accumulation is reinstated",
+        "Uncovered months reset to zero due to a new IEP",
+        "Uncovered months reset to zero due to a beneficiary Low Income",
+        "Cumulative uncovered months reset to zero because beneficiary enrolled in Part D plan and dual eligible"
+      ]
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "EMPR_SUB_ENROLL_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This value indicates that the beneficiary is currently in a plan receiving an employer subsidy, but still wants to enroll in a Part D plan"
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "ELECTION_TYP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This value tracks the election type associated with the enrollment. The election type is associated with a particular election period, and a particular type might be limited to a certain number of usages per member. This value is only applicable to Medicare Advantage coverages.",
+      "entries": [
+        "Annual Enrollment Period",
+        "Medicare Advantage Disenrollment Period",
+        "Initial Enrollment Period",
+        "Second Initial Enrollment Period",
+        "Initial Coverage Election Period",
+        "5 Star Quality Rating Special Election Period",
+        "Other Special Election Period",
+        "Open Enrollment Period for Institutionalized Individuals",
+        "Dual/Low-Income Subsidy Special Enrollment Period",
+        "Permanent Change in Residence Special Enrollment Period",
+        "Employer Group Health Plan Special Enrollment Period",
+        "Administrative Special Enrollment Period",
+        "CMS/Case Worker Special Enrollment Period",
+        "Open Enrollment Period",
+        "Plan-Submitted Rollover SEP",
+        "Low-Income Subsidy Special Enrollment Period",
+        "Default Enrollment Mechanism",
+        "Medicare Advantage Open Enrollment Period",
+        "Open Enrollment for Newly Eligible Individuals",
+        "Auto Enrollment, Facilitated Enrollment, Reassign Enrollment, or POS enrollment"
+      ]
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "ENROLL_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This value indicates the source of enrollment, which is used only for Medicare Advantage coverages.",
+      "entries": [
+        "Automated Enrollment by CMS",
+        "Beneficiary election",
+        "Facilitated Enrollment by CMS",
+        "System generated rollover",
+        "Plan submitted Automated Enrollment",
+        "Plan submitted Facilitated Enrollment",
+        "Point of Sale (POS) submitted enrollment",
+        "Re-assignment submitted by CMS or Plan",
+        "State-submitted passive enrollment",
+        "CMS-submitted passive enrollment",
+        "MMP beneficiary election",
+        "No enrollment source code",
+        "Invalid submitted value"
+      ]
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "BEQ_RESP_F_NAM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the first name of the member as received from the CMS eligibility response file. The system checks for mismatches between this name and the first name stored in the member record (EPT)."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "BEQ_RESP_MID_INIT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the middle initial of the member as received from the CMS eligibility response file. The system checks for mismatches between this initial and the initial of the middle name stored in the member record (EPT)."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "BEQ_RESP_L_NAM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the last name of the member as received from the CMS eligibility response file. The system checks for mismatches between this name and the last name stored in the member record (EPT)."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "BEQ_RESP_GENDER_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The gender category ID for the gender of the member as received from the CMS eligibility response file. The system checks for mismatches between this value and the sex stored in the member record (EPT).",
+      "entries": [
+        "Female",
+        "Male",
+        "Unknown",
+        "Nonbinary",
+        "X",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "BEQ_RESP_DOB_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item stores the date of birth of the member as received from the CMS eligibility response file. The system checks for mismatches between this date and the date of birth stored in the member record (EPT)."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "BEQ_RESP_DOD_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item stores the date of death of the member as received from the CMS eligibility response file. An error is flagged if this is populated, since a deceased member cannot receive benefits."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "PART_A_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the status category ID for the current Medicare Part A eligibility status of the coverage.",
+      "entries": [
+        "Eligible",
+        "Not Eligible",
+        "Applied",
+        "Not Applied"
+      ]
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "PART_B_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the status category ID for the current Medicare Part B eligibility status of the coverage."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "PART_D_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the status category ID for the current Medicare Part D eligibility status of the coverage."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "PART_D_ELIG_STRT_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column identifies the date on which the beneficiary became eligible for Part D benefits."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "PEND_PPO_EFF_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column holds a future expected date on which the Pending Premium Payment Option (CVG-18566) becomes the Premium Payment Option (CVG-18567)."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "PEND_PPO_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column tracks what the new value for Premium Payment Option (see PPO_C) is expected to become as of the effective date given in PEND_PPO_EFF_DT.",
+      "entries": [
+        "Social Security Benefits",
+        "Railroad Retirement Board Benefits",
+        "No Premium",
+        "Direct Self-Pay"
+      ]
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "APCLM_CVG_VER_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date when the coverage was last verified. This data is only intended to be used when verification record (VRX) verification is used in an Accounts Payable (AP) Claims instance."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "DIS_ELECTION_TYP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This value tracks the election type associated with the disenrollment. The election type is associated with a particular election period, and a particular type might be limited to a certain number of usages per member. This value is only applicable to Medicare Advantage coverages."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "HIX_CSR_SRC_CVG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column is used to identify Cost Sharing Reduction (CSR) coverages and their corresponding source coverage (CVG) record. The value stored in this column is the ID of the source coverage of this CSR coverage. If the value is null, this coverage is not a CSR coverage."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "ADDR_CHG_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who initiated the linked address changes."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "ADDR_CHG_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "ADDR_CHG_INSTANT_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant that the linked address changes were initiated."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "ADDR_CHG_SOURCE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The source record that initiated the linked address changes."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "ENROLL_GEO_VERIF_FAIL_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Tracks coverages that have failed service/geographic area verification."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "SUB_ADDR_IS_UNDELIV_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if subscriber home address is undeliverable."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "MA_WORKFLOW_STAT_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason for the Medicare status pertaining to a coverage.",
+      "entries": [
+        "Failure to pay premiums",
+        "Relocation out of plan service area (no special provisions)",
+        "Failure to convert to risk provisions",
+        "Fraud",
+        "Loss of Part B Entitlement",
+        "Loss of Part A Entitlement (Plan-Specific)",
+        "For cause",
+        "Report of death",
+        "Termination of contract (CMS-Initiated)",
+        "Termination of contract/Plan Benefit Package (PBP)/Segment (Plan Withdrawal)",
+        "Voluntary disenrollment through plan",
+        "Voluntary disenrollment through district office",
+        "Disenrollment because of enrollment in another plan",
+        "Retroactive",
+        "Terminated in error by CMS system",
+        "End of State and County Code (SCC) conditional enrollment period",
+        "Beneficiary does not meet age criterion (Plan-Specific)",
+        "Rollover",
+        "Terminated by Social Security Administration (SSA) district office",
+        "Invalid enrollment with End Stage Renal Disease (ESRD)",
+        "Cannot travel/poor health to HMO/Plan doctors",
+        "Spouse is no longer member of HMO/Plan",
+        "Couldn't use Medicare card to see other plan",
+        "Unknowingly joined this HMO",
+        "Difficulty reaching HMO/Plan doctor by phone",
+        "Called HMO/Plan but could not get help with problem",
+        "Dissatisfied with medical care/docs or hospital",
+        "Told by plan doctors or staff to disenroll",
+        "Prefers traditional Medicare",
+        "Had other health insurance benefits available",
+        "Found HMO/Plan to be too confusing",
+        "Claims/bills were not paid",
+        "Had little or no choice of specialist",
+        "Treated discourteously by doctor/nurse/staff",
+        "Doctor couldn't improve condition",
+        "HMO/Plan medical group was located too far away",
+        "Had limited or no choice of primary doctor",
+        "Moved permanently out of area where plan provides services",
+        "Doctor or plan instructed to disenroll",
+        "Doctor didn't provide good quality care",
+        "Used up the prescription allowance",
+        "Plan cost too much",
+        "Couldn't get care when it was needed",
+        "Doctor isn't in the plan",
+        "Unknowingly signed up for this plan",
+        "Didn't like how the plan worked",
+        "Rolled over enrollment removed/audited",
+        "Part A or B start date change",
+        "Beneficiary Medicaid period received",
+        "Beneficiary hospice period received",
+        "Invalid enrollment with hospice",
+        "Beneficiary lives in USA fewer than 183 days a year",
+        "Loss of Part D eligibility",
+        "Part D disenrollment due to failure to pay IRMAA",
+        "MMP (Medicare and Medicaid Plan) opt-out after enrolled",
+        "Loss of demonstration eligibility",
+        "Loss of employer group plan eligibility",
+        "Confirmed incarceration",
+        "Not lawfully present",
+        "Disenrollment due to plan-submitted rollover",
+        "Conversion",
+        "Enrollment cancelled due to beneficiary merge",
+        "Failure to pay premium",
+        "Relocation out of plan service area",
+        "Lost specific plan eligibility (Special Needs Plan (SNP) Only)",
+        "Other (Not supplied by beneficiary)",
+        "Report of death date change",
+        "Report of death date change",
+        "Beneficiary name required",
+        "Incorrect birth date",
+        "Invalid beneficiary ID",
+        "Beneficiary ID not found",
+        "No beneficiary match",
+        "No Part A and Part B entitlement",
+        "Pace under 55",
+        "Beneficiary not entitled for Part B",
+        "Beneficiary not entitled for Part A",
+        "Beneficiary is not age 65",
+        "Beneficiary is in hospice",
+        "Beneficiary is deceased",
+        "Incorrect effective date (Enroll)",
+        "Duplicate Transaction",
+        "Blocked",
+        "Outside contract period",
+        "Beneficiary is in ESRD",
+        "Not enrolled (Disenroll)",
+        "Incorrect effective date (Disenroll)",
+        "Retroactive effective date",
+        "Demonstration enrollment rejected",
+        "Not enrolled",
+        "Incorrect or missing application date",
+        "Missing A/B entitlement date",
+        "Invalid or missing election type",
+        "Invalid effective date for election type",
+        "Transaction received with later app date",
+        "Invalid or missing PBP number",
+        "Election limits exceeded",
+        "Duplicate PBP number",
+        "No Part A and no EGHP enrollment waiver",
+        "Not AEP or OEPI",
+        "Invalid segment number",
+        "Invalid Premium Amount",
+        "Invalid PPO Code",
+        "Invalid NUNCMO",
+        "Invalid CCF",
+        "Employer subsidy status",
+        "Subsidy set: No prior transaction",
+        "Opt-Out flag not valid",
+        "Invalid secondary insurer",
+        "Transaction rejected, user not authorized for contract",
+        "Contract not authorized for transaction code",
+        "Invalid EGHP flag value",
+        "Auto enroll or facilitated enroll rejected",
+        "Reinsurance demonstration enrollment rejected",
+        "Another transaction accepted",
+        "Beneficiary is in Medicaid",
+        "Beneficiary not eligible for Part D",
+        "Rx BIN blank or not valid",
+        "Rx ID blank or not valid",
+        "Rx Group not valid",
+        "Rx PCN not valid",
+        "Re-Assignment enrollment rejected",
+        "Invalid POS enroll source code",
+        "Invalid birth date",
+        "Invalid effective date",
+        "Invalid application date",
+        "Enroll/Disenroll cancellation",
+        "Enrollment cancellation rejected",
+        "Disenrollment cancellation rejected",
+        "Was cancellation attempt",
+        "MMP passive enrollment rejected",
+        "Invalid MMP Opt-Out code",
+        "MMP enrollment cancellation rejected",
+        "Invalid Cancellation TC",
+        "Archived beneficiary",
+        "Invalid or missing MMP enrollment source code",
+        "Confirmed incarceration (TRC)",
+        "Not lawfully present period",
+        "Plan rollover not in POVER file",
+        "Plan rollover without ESC or ETC",
+        "Plan rollover impacts dual enroll",
+        "Incorrect ESC or ETC",
+        "IEP/ICEP enroll available",
+        "Invalid plan for DEM",
+        "Beneficiary without MA enrollment or ICEP",
+        "Enrollment Rejected, LIS SEP",
+        "Invalid SEP reason code",
+        "Not Entitled to Part A",
+        "Not Entitled to Part B",
+        "Not Entitled to Parts A and B",
+        "Not Eligible for Part D",
+        "Not Entitled for Part A, Not Eligible for Part D",
+        "Not Entitled for Part B, Not Eligible for Part D",
+        "Not Entitled for Parts A and B, Not Eligible for Part D",
+        "Date of Death on CMS file",
+        "Not Matched by CMS BEQ",
+        "Not Processed by CMS BEQ",
+        "Application Date Outside Election Period",
+        "Unlawfully Present",
+        "Residence is outside of service area",
+        "Lack of information",
+        "Unauthorized request",
+        "Declined due to EGHP",
+        "Incarceration",
+        "ESRD",
+        "Missing required info",
+        "Coverage already termed"
+      ]
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "IN_NON_PREFERRED_AREA_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If 'Y' then subscriber address associated with coverage was either only in a geographic area marked as \"non-preferred\" on the employer group or coverage was not in any geographic area linked to the employer group and employer group not configured to restrict enrollment by residency.  If 'N' or NULL, the subscriber address is in a geographic area linked to the employer group that is not marked as \"non-preferred\" or geographic area verification has not been run for this coverage."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "GEO_TERM_TRACK_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date that geographic area verification based termination tracking has started for a coverage.  If not populated, coverage is not being tracked for termination."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "HIX_RENEW_COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the coverage ID that this coverage is renewing."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "EFF_DT_CHNG_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The effective date change reason at the coverage level."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "HIX_RENEWAL_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The exchange renewal type for the coverage.",
+      "entries": [
+        "Passive",
+        "Active"
+      ]
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "PAYMENT_TX_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The payment transaction ID for the coverage."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "CARRIER_TO_BILL_BINDER_PMT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the carrier (exchange) is responsible for collecting the binder payment for this coverage. 'Y' indicates that the carrier is responsible for collecting the binder payment. 'N' or NULL indicate that the carrier is not responsible."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "HOUSEHOLD_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The household ID sent by the exchange for the coverage."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "MA_COVERAGE_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the types of Medicare covered by the managed Medicare coverage.",
+      "entries": [
+        "Parts A and B",
+        "Parts A, B, and D",
+        "Part B",
+        "Parts B and D"
+      ]
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "PLAN_CHANGE_VERIF_PREV_CVG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID for the original coverage in the plan change."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "PLAN_CHANGE_VERIF_COMPLETE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the plan change has completed execution for this coverage. 'Y' means the plan change has completed. 'N' means the plan change has not yet completed. NULL means this coverage is not the result of a plan change."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "ENTRY_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the coverage was created."
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "EXISTING_NUNCMO",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The cumulative number of uncovered months (NUNCMO) as of the most recent prior Part D coverage. To get the total NUNCMO add the incremental NUNCMO to this amount."
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "NUNCMO_SET_BY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Captures how the NUNCMO was set",
+      "entries": [
+        "Eligibility Process",
+        "Adjustment",
+        "Reconsideration",
+        "IEP Zero",
+        "LIS Zero",
+        "Plan Change"
+      ]
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "PRIOR_PART_D_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The end date of the Part D coverage prior to this enrollment."
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "MA_ENROLL_SEP_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The special election period reason used for enrollment on this coverage. This is required if the Enrollment Election Type is Other Special Election Period. This column can be linked to ZC_MA_ENROLL_SEP_RSN for additional information about the categories.",
+      "entries": [
+        "System Generated",
+        "Government Emergency or Disaster",
+        "Government Emergency or Disaster - COVID 19",
+        "CMS Term of Contract",
+        "Term/Contract Modified by Mutual Consent",
+        "Accessible Format Receipt Delay",
+        "Involuntary Loss of Creditable Coverage",
+        "Disenroll Due to CMS Sanction",
+        "Part D Disenroll for Other Creditable Coverage",
+        "Involuntary Disenroll from Loss of Part B",
+        "MA OEPI Disenroll from MA",
+        "PACE",
+        "Cost Plans Non-Renewals",
+        "Drop Medigap in Trial Period",
+        "Chronic Care C-SNP",
+        "Institutional Individual",
+        "Retro Entitlement Determination",
+        "Beneficiaries Age 65 (SEP65)",
+        "Part B GEP Enrollment",
+        "Loss of SNP",
+        "Cost Disenroll or Optional Supplemental Part D",
+        "Lawfully Present",
+        "Qualified / Lose SPAP Eligibility",
+        "Plan in Receivership",
+        "CMS ID Consistent Poor Performance",
+        "MA Additional Part D IEP",
+        "Part A or B SEP Enrollment for MA or MAPD",
+        "Part A or B SEP Enrollment for Part D",
+        "Misinform Creditable Status",
+        "Provider Network",
+        "Contract Violation",
+        "Other Exceptional Circumstance",
+        "Insulin SEP",
+        "Plan List Correction SEP",
+        "Marketing Misrepresentation SEP",
+        "CMS - Exceptional Circumstance",
+        "CMS - Invalid Enrollment",
+        "CMS - Provider Network",
+        "CMS - Contract Violation",
+        "CMS - Excep Circ-Market Misrep",
+        "CMS - GOVT Emergency or Disaster",
+        "CMS - GOVT Emerg/Disaster COVID19"
+      ]
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "MA_DISENROLL_SEP_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The special election period reason used for disenrollment on this coverage. This is required if the Disenrollment Election Type is Other Special Election Period. This column can be linked to ZC_MA_ENROLL_SEP_RSN for additional information about the categories."
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "MA_APPLICATION_CONFIRM_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The confirmation number associated with the Online Enrollment Center (OEC) enrollment application."
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "MA_PLAN_CHANGE_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the type of plan change that led to the creation of this coverage.",
+      "entries": [
+        "Contract Change",
+        "PBP Change",
+        "Segment Change"
+      ]
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "MA_PLAN_CHANGE_COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the previous coverage that this coverage was created as a plan change from."
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "GEO_AREA_INVEST_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the coverage begins geographic area investigation."
+    },
+    {
+      "ordinalPosition": 69,
+      "name": "GEO_AREA_TEMP_ADDR_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The subscriber temporary address start date for this coverage."
+    },
+    {
+      "ordinalPosition": 70,
+      "name": "REQ_TRM_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the original termination date requested when the advanced logic is applied to the coverage's termination date."
+    },
+    {
+      "ordinalPosition": 71,
+      "name": "TRM_NTC_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date that notice of termination was given to be used for advanced term date logic."
+    },
+    {
+      "ordinalPosition": 72,
+      "name": "CVG_PHONE2",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Payer phone number"
+    }
+  ]
+}

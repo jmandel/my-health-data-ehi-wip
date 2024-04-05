@@ -1,0 +1,77 @@
+{
+  "name": "MAMMO_HORMONES",
+  "description": "Mammography-relevant hormone history data.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "HORMONE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The mammography hormones category ID for the order, documented by the tech in the visit navigator.",
+      "entries": [
+        "Hormone replacement therapy",
+        "Tamoxifen",
+        "Raloxifene",
+        "Other",
+        "Estrogen replacement therapy",
+        "Combination hormone replacement therapy"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the patient began taking the related hormone, documented by the tech in the visit navigator."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the patient stopped taking the related hormone, documented by the tech in the visit navigator."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "COMMENT_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The note ID for free-text information about the hormone history for this order."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CURRENTLY_USING_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the patient with the order is currently using the hormone documented by the tech in the visit navigator.  'Y' indicates that the patient is using the hormone. 'N' or NULL indicates that the patient is not using the hormone.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    }
+  ]
+}

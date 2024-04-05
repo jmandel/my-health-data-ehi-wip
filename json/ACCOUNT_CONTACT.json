@@ -1,0 +1,518 @@
+{
+  "$meta": {
+    "schemas": {
+      "ACCOUNT_CONTACT": {
+        "name": "ACCOUNT_CONTACT",
+        "description": "This table contains the information recorded in billing system account contact for each account. Each row in this table contains information about one contact and is uniquely identified by the Account ID and line number combination.",
+        "primaryKey": [
+          {
+            "columnName": "ACCOUNT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID for the account record. This ID number could be encrypted if you have elected to implement enterprise reporting�s encryption security function."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "Line number to identify the account contact information within the account."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date the contact was recorded."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The ID of the system user who recorded the contact. This ID may be encrypted if you have elected to use enterprise reporting�s security utility."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "CONTACT_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value associated with the activity performed by collections staff on the account, such as No Contact, Check Mailed, Promised Payment, etc.",
+            "entries": [
+              "No Contact",
+              "Check Mailed",
+              "Promised Payment",
+              "Phone Disconnected",
+              "Letter",
+              "Billing Note",
+              "Contacted",
+              "Inquiry",
+              "Account Put on Hold",
+              "Reminder Set",
+              "Collections Write-Off Applied",
+              "Account Reassigned",
+              "Account Status Changed",
+              "Account Note Made",
+              "Account Completed",
+              "Account Transferred In",
+              "Account Transferred Out",
+              "External Agency Bad Debt Written Off",
+              "Account Sent to External Agency",
+              "Account Recalled from External Agency",
+              "Update Sent to External Agency",
+              "Payment Plan",
+              "Billing Status",
+              "Patient Flag Made",
+              "Credit WQ Info",
+              "Refund",
+              "Credit WQ Transfer",
+              "Defer in Credit WQ",
+              "Appointment Desk",
+              "Registration",
+              "Credit WQ Manual Complete",
+              "Demand Bill",
+              "Customer Relationship Management",
+              "Balance Transfer",
+              "Dismiss Tickler",
+              "Enable Paperless Billing",
+              "Disable Paperless Billing",
+              "Send Transactions to Agency",
+              "Recall Transactions from Agency",
+              "Manually Assigned",
+              "Remove Payment Plan",
+              "Edit Payment Plan",
+              "Unlock Pay as Guest",
+              "Skip in Account WQ",
+              "Defer in Account WQ",
+              "Activate in Account WQ"
+            ]
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "FOL_UP_CUR_INS_BAL",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Follow-up current insurance balance."
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "FOL_UP_CUR_PAT_BAL",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Follow-up current patient balance."
+          },
+          {
+            "ordinalPosition": 17,
+            "name": "LETTER_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The letter status category ID for the guarantor, for example \"queued\" or \"sent\".",
+            "entries": [
+              "Not yet printed",
+              "Queued",
+              "Printed",
+              "Sent",
+              "Rejected",
+              "Purged",
+              "Hidden"
+            ]
+          },
+          {
+            "ordinalPosition": 18,
+            "name": "NOTE_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The ID of the note associated with this contact."
+          },
+          {
+            "ordinalPosition": 20,
+            "name": "FOL_UP_NOTE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Each guarantor account may have a follow-up note posted to it per contact. This column holds either a system generated or custom note that further describes the contact, if a note was produced."
+          },
+          {
+            "ordinalPosition": 21,
+            "name": "LETTER_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the letter."
+          },
+          {
+            "ordinalPosition": 1,
+            "name": "ACCT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID for the account record. This ID number could be encrypted if you have elected to implement enterprise reporting�s encryption security function.",
+            "mergedFrom": "ACCOUNT_CONTACT_2"
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "PAY_PLAN_SOURCE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The source workflow category ID that set up the payment plan for the guarantor.",
+            "entries": [
+              "Hyperspace",
+              "MyChart Web",
+              "MyChart Mobile",
+              "SBO Conversion",
+              "Import Utility",
+              "Welcome",
+              "System Action",
+              "Advance Bill",
+              "Two-Way SMS",
+              "Consolidated Balances Conversion"
+            ],
+            "mergedFrom": "ACCOUNT_CONTACT_2"
+          }
+        ],
+        "merged": [
+          {
+            "name": "ACCOUNT_CONTACT_2",
+            "description": "This table contains the information recorded in billing system account contact for each account. Each row in this table contains information about one contact and is uniquely identified by the Account ID and line number combination."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ACCOUNT_CONTACT",
+            "target": "ACCOUNT",
+            "joinKeys": [
+              {
+                "source": "ACCOUNT_ID",
+                "target": "ACCOUNT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ACCOUNT_CONTACT": [
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-13 00:00:00",
+      "USER_ID": "BLB403",
+      "USER_ID_NAME": "BRIGGS, BECKY",
+      "CONTACT_STATUS_C_NAME": "Inquiry",
+      "FOL_UP_CUR_INS_BAL": 151,
+      "$meta": {
+        "type": "ACCOUNT_CONTACT",
+        "mergedFrom": [
+          "ACCOUNT_CONTACT_2"
+        ]
+      },
+      "// mergedFrom ACCOUNT_CONTACT_2": true,
+      "ACCT_ID": 1810018166
+    },
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 2,
+      "CONTACT_DATE": "2020-08-13 00:00:00",
+      "USER_ID": "BLB403",
+      "USER_ID_NAME": "BRIGGS, BECKY",
+      "CONTACT_STATUS_C_NAME": "Inquiry",
+      "FOL_UP_CUR_INS_BAL": 0,
+      "FOL_UP_CUR_PAT_BAL": 0,
+      "$meta": {
+        "type": "ACCOUNT_CONTACT",
+        "mergedFrom": [
+          "ACCOUNT_CONTACT_2"
+        ]
+      },
+      "// mergedFrom ACCOUNT_CONTACT_2": true,
+      "ACCT_ID": 1810018166,
+      "PAY_PLAN_SOURCE_C_NAME": "Hyperspace"
+    },
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 3,
+      "CONTACT_DATE": "2020-08-13 00:00:00",
+      "USER_ID": "BLB403",
+      "USER_ID_NAME": "BRIGGS, BECKY",
+      "CONTACT_STATUS_C_NAME": "Inquiry",
+      "FOL_UP_CUR_INS_BAL": 0,
+      "FOL_UP_CUR_PAT_BAL": 0,
+      "$meta": {
+        "type": "ACCOUNT_CONTACT",
+        "mergedFrom": [
+          "ACCOUNT_CONTACT_2"
+        ]
+      },
+      "// mergedFrom ACCOUNT_CONTACT_2": true,
+      "ACCT_ID": 1810018166,
+      "PAY_PLAN_SOURCE_C_NAME": "Hyperspace"
+    },
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 4,
+      "CONTACT_DATE": "2022-09-20 00:00:00",
+      "USER_ID": "LMK161",
+      "USER_ID_NAME": "MAIER, LISA M",
+      "CONTACT_STATUS_C_NAME": "Inquiry",
+      "FOL_UP_CUR_INS_BAL": 0,
+      "FOL_UP_CUR_PAT_BAL": 0,
+      "$meta": {
+        "type": "ACCOUNT_CONTACT",
+        "mergedFrom": [
+          "ACCOUNT_CONTACT_2"
+        ]
+      },
+      "// mergedFrom ACCOUNT_CONTACT_2": true,
+      "ACCT_ID": 1810018166,
+      "PAY_PLAN_SOURCE_C_NAME": "Hyperspace"
+    },
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 5,
+      "CONTACT_DATE": "2022-10-05 00:00:00",
+      "USER_ID": "LSM400",
+      "USER_ID_NAME": "MCALLISTER, LINDA S",
+      "CONTACT_STATUS_C_NAME": "Account Status Changed",
+      "FOL_UP_CUR_INS_BAL": 0,
+      "FOL_UP_CUR_PAT_BAL": 7.82,
+      "FOL_UP_NOTE": "Account status: Refer to Financial Services",
+      "$meta": {
+        "type": "ACCOUNT_CONTACT",
+        "mergedFrom": [
+          "ACCOUNT_CONTACT_2"
+        ]
+      },
+      "// mergedFrom ACCOUNT_CONTACT_2": true,
+      "ACCT_ID": 1810018166
+    },
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 6,
+      "CONTACT_DATE": "2022-10-05 00:00:00",
+      "USER_ID": "LSM400",
+      "USER_ID_NAME": "MCALLISTER, LINDA S",
+      "CONTACT_STATUS_C_NAME": "Inquiry",
+      "FOL_UP_CUR_INS_BAL": 0,
+      "FOL_UP_CUR_PAT_BAL": 7.82,
+      "$meta": {
+        "type": "ACCOUNT_CONTACT",
+        "mergedFrom": [
+          "ACCOUNT_CONTACT_2"
+        ]
+      },
+      "// mergedFrom ACCOUNT_CONTACT_2": true,
+      "ACCT_ID": 1810018166,
+      "PAY_PLAN_SOURCE_C_NAME": "Hyperspace"
+    },
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 7,
+      "CONTACT_DATE": "2022-10-06 00:00:00",
+      "USER_ID": "LSM400",
+      "USER_ID_NAME": "MCALLISTER, LINDA S",
+      "CONTACT_STATUS_C_NAME": "Demand Bill",
+      "FOL_UP_CUR_INS_BAL": 0,
+      "FOL_UP_CUR_PAT_BAL": 7.82,
+      "FOL_UP_NOTE": "Mac Apl Pb Statement",
+      "$meta": {
+        "type": "ACCOUNT_CONTACT",
+        "mergedFrom": [
+          "ACCOUNT_CONTACT_2"
+        ]
+      },
+      "// mergedFrom ACCOUNT_CONTACT_2": true,
+      "ACCT_ID": 1810018166
+    },
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 8,
+      "CONTACT_DATE": "2022-10-06 00:00:00",
+      "USER_ID": "LSM400",
+      "USER_ID_NAME": "MCALLISTER, LINDA S",
+      "CONTACT_STATUS_C_NAME": "Account Note Made",
+      "FOL_UP_CUR_INS_BAL": 0,
+      "FOL_UP_CUR_PAT_BAL": 7.82,
+      "FOL_UP_NOTE": "co-ins",
+      "$meta": {
+        "type": "ACCOUNT_CONTACT",
+        "mergedFrom": [
+          "ACCOUNT_CONTACT_2"
+        ]
+      },
+      "// mergedFrom ACCOUNT_CONTACT_2": true,
+      "ACCT_ID": 1810018166
+    },
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 9,
+      "CONTACT_DATE": "2022-10-06 00:00:00",
+      "USER_ID": "LSM400",
+      "USER_ID_NAME": "MCALLISTER, LINDA S",
+      "CONTACT_STATUS_C_NAME": "Letter",
+      "FOL_UP_CUR_INS_BAL": 0,
+      "FOL_UP_CUR_PAT_BAL": 7.82,
+      "LETTER_STATUS_C_NAME": "Printed",
+      "NOTE_ID": "3899651265",
+      "FOL_UP_NOTE": "ZAPL SMALL BALANCE LETTER",
+      "LETTER_NAME": "ZAPL SMALL BALANCE LETTER ; EAR: 1810018166",
+      "$meta": {
+        "type": "ACCOUNT_CONTACT",
+        "mergedFrom": [
+          "ACCOUNT_CONTACT_2"
+        ]
+      },
+      "// mergedFrom ACCOUNT_CONTACT_2": true,
+      "ACCT_ID": 1810018166
+    },
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 10,
+      "CONTACT_DATE": "2022-10-06 00:00:00",
+      "USER_ID": "LSM400",
+      "USER_ID_NAME": "MCALLISTER, LINDA S",
+      "CONTACT_STATUS_C_NAME": "Defer in Account WQ",
+      "FOL_UP_CUR_INS_BAL": 0,
+      "FOL_UP_CUR_PAT_BAL": 7.82,
+      "FOL_UP_NOTE": "WQ 316236 Deferred until 10/20/2022 12:00 AM",
+      "$meta": {
+        "type": "ACCOUNT_CONTACT",
+        "mergedFrom": [
+          "ACCOUNT_CONTACT_2"
+        ]
+      },
+      "// mergedFrom ACCOUNT_CONTACT_2": true,
+      "ACCT_ID": 1810018166
+    },
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 11,
+      "CONTACT_DATE": "2022-11-02 00:00:00",
+      "USER_ID": "LSM400",
+      "USER_ID_NAME": "MCALLISTER, LINDA S",
+      "CONTACT_STATUS_C_NAME": "Inquiry",
+      "FOL_UP_CUR_INS_BAL": 0,
+      "FOL_UP_CUR_PAT_BAL": 7.82,
+      "$meta": {
+        "type": "ACCOUNT_CONTACT",
+        "mergedFrom": [
+          "ACCOUNT_CONTACT_2"
+        ]
+      },
+      "// mergedFrom ACCOUNT_CONTACT_2": true,
+      "ACCT_ID": 1810018166,
+      "PAY_PLAN_SOURCE_C_NAME": "Hyperspace"
+    },
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 12,
+      "CONTACT_DATE": "2022-11-23 00:00:00",
+      "USER_ID": "LSM400",
+      "USER_ID_NAME": "MCALLISTER, LINDA S",
+      "CONTACT_STATUS_C_NAME": "Inquiry",
+      "FOL_UP_CUR_INS_BAL": 0,
+      "FOL_UP_CUR_PAT_BAL": 7.82,
+      "$meta": {
+        "type": "ACCOUNT_CONTACT",
+        "mergedFrom": [
+          "ACCOUNT_CONTACT_2"
+        ]
+      },
+      "// mergedFrom ACCOUNT_CONTACT_2": true,
+      "ACCT_ID": 1810018166,
+      "PAY_PLAN_SOURCE_C_NAME": "Hyperspace"
+    },
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 13,
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "USER_ID": "MAGGITMN",
+      "USER_ID_NAME": "MAGGIT, MARIYAH N",
+      "CONTACT_STATUS_C_NAME": "Account Status Changed",
+      "FOL_UP_CUR_INS_BAL": 0,
+      "FOL_UP_CUR_PAT_BAL": 0,
+      "FOL_UP_NOTE": "From Registration",
+      "$meta": {
+        "type": "ACCOUNT_CONTACT",
+        "mergedFrom": [
+          "ACCOUNT_CONTACT_2"
+        ]
+      },
+      "// mergedFrom ACCOUNT_CONTACT_2": true,
+      "ACCT_ID": 1810018166,
+      "PAY_PLAN_SOURCE_C_NAME": "Hyperspace"
+    },
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 14,
+      "CONTACT_DATE": "2022-12-20 00:00:00",
+      "USER_ID": "HIRZYHL",
+      "USER_ID_NAME": "HIRZY, HEIDI L",
+      "CONTACT_STATUS_C_NAME": "Inquiry",
+      "FOL_UP_CUR_INS_BAL": 315,
+      "FOL_UP_CUR_PAT_BAL": 0,
+      "$meta": {
+        "type": "ACCOUNT_CONTACT",
+        "mergedFrom": [
+          "ACCOUNT_CONTACT_2"
+        ]
+      },
+      "// mergedFrom ACCOUNT_CONTACT_2": true,
+      "ACCT_ID": 1810018166,
+      "PAY_PLAN_SOURCE_C_NAME": "Hyperspace"
+    },
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 15,
+      "CONTACT_DATE": "2022-12-20 00:00:00",
+      "USER_ID": "BURKEBD1",
+      "USER_ID_NAME": "BURKE, BRITANY D",
+      "CONTACT_STATUS_C_NAME": "Inquiry",
+      "FOL_UP_CUR_INS_BAL": 315,
+      "FOL_UP_CUR_PAT_BAL": 0,
+      "$meta": {
+        "type": "ACCOUNT_CONTACT",
+        "mergedFrom": [
+          "ACCOUNT_CONTACT_2"
+        ]
+      },
+      "// mergedFrom ACCOUNT_CONTACT_2": true,
+      "ACCT_ID": 1810018166,
+      "PAY_PLAN_SOURCE_C_NAME": "Hyperspace"
+    },
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 16,
+      "CONTACT_DATE": "2022-12-20 00:00:00",
+      "USER_ID": "LMK161",
+      "USER_ID_NAME": "MAIER, LISA M",
+      "CONTACT_STATUS_C_NAME": "Inquiry",
+      "FOL_UP_CUR_INS_BAL": 315,
+      "FOL_UP_CUR_PAT_BAL": 0,
+      "$meta": {
+        "type": "ACCOUNT_CONTACT",
+        "mergedFrom": [
+          "ACCOUNT_CONTACT_2"
+        ]
+      },
+      "// mergedFrom ACCOUNT_CONTACT_2": true,
+      "ACCT_ID": 1810018166,
+      "PAY_PLAN_SOURCE_C_NAME": "Hyperspace"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "name": "DISCH_INSTR_HISTORY",
+  "description": "This table contains information about instances where discharge instructions were reviewed, updated, or signed.",
+  "primaryKey": [
+    {
+      "columnName": "NOTE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the note record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "DISCH_INSTR_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user that updated or reviewed the discharge instructions. For discharge instructions created before web transition, this could also store the user that reviewed the discharge instructions using e-signature."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "DISCH_INSTR_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "DISCH_INSTR_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant the discharge instructions were updated or marked as reviewed. For discharge instructions created before web transition, this could also store the instant the discharge instructions were reviewed using e-signature."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "DISCH_INSTR_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant the discharge instructions were updated or marked as reviewed. For discharge instructions created before web transition, this could also store the instant the discharge instructions were reviewed using e-signature."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "DISCH_INSTR_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the action taken on discharge instructions. This is usually the same as the internal ID. If you use IntraConnect, this is the Community ID (CID).",
+      "entries": [
+        "Updated",
+        "Reviewed",
+        "Signed"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DISCH_INSTR_NOTE_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The contact serial number for the discharge instructions note contact where the action took place."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "DISCH_INSTR_DOCUMENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Document for the e-signature of the discharge instructions. This item will no longer be populated in the web version of Discharge Writer."
+    }
+  ]
+}

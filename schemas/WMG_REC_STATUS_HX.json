@@ -1,0 +1,65 @@
+{
+  "name": "WMG_REC_STATUS_HX",
+  "description": "Stores changes to the status of patient messages.",
+  "primaryKey": [
+    {
+      "columnName": "MESSAGE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "MESSAGE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the message record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SDFL_EDIT_DTTM",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "The instant when the message status was changed."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SDFL_EDIT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the user record for this row. This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SDFL_EDIT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SDFL_EDIT_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The edit action category number for the message status.",
+      "entries": [
+        "Soft Delete",
+        "Undo Delete",
+        "Hide",
+        "Unhide"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "name": "VISIT_SET_ROUTE_DAYS_WEEK",
+  "description": "This table extracts the related multiple response item VST-10022.\n\n\nEach row in this table represents a day of the week that a provider should be scheduled on for a visit set version. If a visit in this visit set falls on this day of the week, the provider will be requested for the visit.",
+  "primaryKey": [
+    {
+      "columnName": "VISIT_SET_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 3
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 4
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "VISIT_SET_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the visit set record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple values associated with a specific group of data within this contact."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ROUTE_WHICH_DAYS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The days of the week on which the corresponding provider resource should be scheduled. Category values are stored in ZC_WHICH_DAYS.",
+      "entries": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ]
+    }
+  ]
+}

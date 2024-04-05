@@ -1,0 +1,240 @@
+{
+  "name": "NEPHROLOGY_INFO",
+  "description": "The NEPHROLOGY_INFO table contains information about a patient's dialysis episode. The records included in this table are HSB records that are designated as dialysis episodes, where the episode type (HSB 35250) has a value of 35.",
+  "primaryKey": [
+    {
+      "columnName": "EPISODE_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the dialysis episode record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_TYPE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The episode type."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "EPISODE_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The episode's status.",
+      "entries": [
+        "Active",
+        "Resolved",
+        "Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the department primarily responsible for managing the episode."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "COMMENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The episode comments."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "DIALYSIS_ADMISSION_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the patient's reason for starting dialysis treatment in a facility.",
+      "entries": [
+        "New Dialysis Patient",
+        "Transfer In",
+        "Restart Dialysis",
+        "Dialysis after Transplant Failed",
+        "Dialysis in Support of Transplant"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "TRANSIENT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is used to indicate whether the patient is receiving temporary treatment at a dialysis facility.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DIALYSIS_DISCHARGE_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the patient's reason for ending dialysis treatment in a facility.",
+      "entries": [
+        "Death",
+        "Discontinue",
+        "Lost to Follow-Up",
+        "Recover Function of Original Kidney",
+        "Involuntary",
+        "Other",
+        "Transplant in US",
+        "Transplant outside US",
+        "Transfer",
+        "Acute",
+        "Move to Chronic",
+        "Delayed Function Resolved following a Transplant",
+        "Delayed Function Unresolved following a Transplant"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "TRANSFER_DESTINATION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is used to store where a patient will be getting dialysis treatment after discharging from the current facility.",
+      "entries": [
+        "Dialysis Facility",
+        "Hospice",
+        "Hospital",
+        "Long Term Care Facility",
+        "Rehab Center",
+        "Nursing Home"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "TREATMENT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is used to store a patient's type of dialysis treatment.",
+      "entries": [
+        "Hemo",
+        "Peritoneal",
+        "Continuous Arteriovenous Hemofiltration",
+        "Continuous Veno-Venous Hemofiltration",
+        "Acute-Hemo",
+        "Acute-Peritoneal",
+        "Continuous Veno-Venous Hemodialysis",
+        "Continuous Arteriovenous Hemodialysis",
+        "Maintenance (Type Unknown)",
+        "In-center Hemodialysis",
+        "Home Hemodialysis",
+        "Continuous Ambulatory Peritoneal Dialysis",
+        "Continuous Cycling Peritoneal Dialysis"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "DIALYSIS_HISTORICAL_EPISODE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is used to indicate whether the episode is a historical or external dialysis treatment episode, or an internal dialysis treatment episode.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "DIALYSIS_DISCHARGE_OTHR",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores a free text comment if a patient's dialysis discharge reason is set to Other."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "DIALYSIS_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item is used to store the start date of a patient's dialysis treatment episode."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "DIALYSIS_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item is used to store the end date of a patient's dialysis treatment episode."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "PLACE_OF_SERVICE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The episode's service area."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "MODALITY_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item stores a dialysis patient's start date of their current treatment details."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "DIALYSIS_EPISODE_PURPOSE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates the purpose of the dialysis episode.",
+      "entries": [
+        "Dialysis Tracking",
+        "SPoC Pre-Dialysis Tracking"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "NEPH_DLYS_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of dialysis. Either end stage renal disease (ESRD) or acute kidney injury (AKI). If null then the episode is assumed to be ESRD.",
+      "entries": [
+        "End Stage Renal Disease",
+        "Acute Kidney Injury"
+      ]
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "NEPH_TRANSIENT_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the patient's reason for receiving temporary treatment at a dialysis facility.",
+      "entries": [
+        "Disaster",
+        "Travel",
+        "Home Maintenance",
+        "Facility Maintenance",
+        "Dialysis in Support of Transplant",
+        "Backup Hemodialysis"
+      ]
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "TREATMENT_SESSIONS_PER_WEEK",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the most recently prescribed sessions per week of the dialysis treatments."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "TREATMENT_DURATION_MINUTES",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item stores the most recently prescribed duration of each dialysis treatment in minutes."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "EXTERNAL_FACILITY_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item is used to store a dialysis patient's external treatment facility."
+    }
+  ]
+}

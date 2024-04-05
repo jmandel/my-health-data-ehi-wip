@@ -1,0 +1,48 @@
+{
+  "name": "PAT_HX_REV_TOPIC",
+  "description": "This table contains information about where in the application the history was reviewed for a patient.\n\n\n\n\n\nThe history types (the kind of history reviewed) associated with a header (where the history was reviewed) are in PAT_HX_REV_TYPE.\n\n\n\n\n\nAdditional information about when a patient's history was reviewed and by whom is found in the PAT_HX_REVIEW table.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the associated instance of history review in this encounter. Together with PAT_ENC_CSN_ID, this forms the foreign key to the PAT_HX_REVIEW table."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple history topics that were reviewed for the associated instance of review and encounter from the PAT_HX_REVIEW table."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "HX_REVIEWED_HEADER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The header (a short title or description) and possibly, depending where in the application the history was reviewed, a unique record ID that describe where the history was reviewed."
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "name": "CHAT_PART_LIST_CHANGE",
+  "description": "Monitors participant changes in secure chat messages.",
+  "primaryKey": [
+    {
+      "columnName": "CONVERSATION_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CONVERSATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the secure chat conversation record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CM_PHY_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this record or line. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CHANGED_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This tracks which user joined or left the conversation"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CHANGED_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CHANGED_BY_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This tracks which user changed another user's status in the conversation"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CHANGED_BY_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CHANGE_INSTANT_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This tracks when a participant change happened"
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CHANGE_TYPE_5_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This tracks what sort of participant change occurred: a user joined the conversation, a user left the conversation, etc.",
+      "entries": [
+        "Participant Joined",
+        "Participant Left",
+        "Participant Auto Added",
+        "Participant Added From Group",
+        "Participant Turned Off Chat",
+        "Participant Removed From Group",
+        "Participant Added To Treatment Team",
+        "Participant Removed From Treatment Team",
+        "Group Detached"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "CHANGED_TGR_ID_UC_GROUP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This tracks which group was added or removed from the conversation"
+    }
+  ]
+}

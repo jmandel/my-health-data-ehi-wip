@@ -1,0 +1,54 @@
+{
+  "name": "RESULT_AUD_MALIG_TYPE",
+  "description": "This table contains the malignancy types that were changed during a finding record audit action. For one audit action there can be multiple malignancy types that were changed; this corresponds to the third primary key in this table, VALUE_LINE. This table will likely be joined to from RESULT_AUDIT, which holds the majority of the finding audit information.",
+  "primaryKey": [
+    {
+      "columnName": "FINDING_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "FINDING_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the finding record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the associated audit information in this finding record. Together with FINDING_ID, this forms the foreign key to the RESULT_AUDIT table."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple malignancy types that are associated with the finding audit information from the RESULT_AUDIT table."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "MALIGNANCY_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The malignancy type category ID, if any, for the action being audited.",
+      "entries": [
+        "Invasive",
+        "Non-Invasive",
+        "Other",
+        "Invasive and In Situ"
+      ]
+    }
+  ]
+}

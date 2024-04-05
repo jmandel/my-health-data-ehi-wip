@@ -1,0 +1,63 @@
+{
+  "name": "PB_DTL_TX_AR_STAT_HX",
+  "description": "The Status History table contains a history of each time the transaction's status has changed.",
+  "primaryKey": [
+    {
+      "columnName": "TRANSACTION_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TRANSACTION_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the detail transaction record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "AR_STATUS_CHANGE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant of the status change."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "AR_SYSTEM_UPDATED_STATUS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether the status change occurred automatically by the system (yes or no).",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "AR_TX_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status that the transaction was changed to.",
+      "entries": [
+        "New",
+        "Waiting to file",
+        "Filing",
+        "In Review",
+        "Filed",
+        "Voided"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "name": "STMT_PRINT",
+  "description": "The STMT_PRINT table contains information about your statement print and detail bill records.",
+  "primaryKey": [
+    {
+      "columnName": "PRINT_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PRINT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the statement print or detail bill record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GUAR_ACCT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the guarantor account that received this statement print or detail bill."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SERV_AREA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the service area of this statement print or detail bill."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "INVOICE_NUMBER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The master invoice number for a statement print or detail bill."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "INV_NUM_ASGN_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which the invoice number was generated."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "IS_DEMAND_STMT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether this is a demand statement.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "STMT_END_BATCH_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "End system batch date for the statement. Only transactions posted on or before this date can be included on the statement."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "STMT_PROC_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date statement data was populated into this print record."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "BILL_HOME_PHONE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Home phone of the guarantor."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "BILL_WORK_PHONE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Work phone of the guarantor."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "RESPONSIBLE_PARTY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Addressee of the statement. This is usually guarantor's name."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "BILL_HOUSE_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "House number of the guarantor."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "BILL_DISTRICT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "District of the guarantor."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "BILL_CITY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The city of the guarantor."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "BILL_COUNTY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "County of the guarantor."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "BILL_STATE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The state of the guarantor."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "BILL_COUNTRY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Country of the guarantor."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "BILL_ZIP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The zip code of the guarantor."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "BILL_DELIV_POINT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The billing delivery point is a two digit extension to the nine digit US zipcode, with values from 00 to 99. This is typically not seen in human readable format. This can be used when printed as a bar code on a letter to obtain a bulk mail discount."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "START_SERVICE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "If specified, professional transactions with service date before this date and hospital accounts with discharge date before this date will be excluded from statement."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "END_SERVICE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "If specified, professional transactions with service date after this date and hospital accounts with discharge date after this date will be excluded from statement."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "BILL_RUN_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of this enterprise bill print.",
+      "entries": [
+        "Statement",
+        "Hospital Account Detail Bill",
+        "Guarantor Detail Bill",
+        "Claim Detail Bill",
+        "Client Statement"
+      ]
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the linked patient serial number of the patient on the statement. If the guarantor is a patient in the system, this will be the patient for the guarantor. Otherwise if there is only one patient on the statement, it will be that patient. If there are multiple patients on the statement, this item will be blank."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "IS_MYCHART_NOTIF_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores if the statement/detail bill notification was sent via MyChart."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "HSP_BUCKET_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The liability bucket record ID that requested this bill print record."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "CLAIM_PRINT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The claim print record ID that requested this bill print record."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "ROI_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The release of information record ID that requested this bill print record."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "ROI_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The contact date of the release of information record that requested this bill print record."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "ROI_DOC_KEY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The document reference key for the release of information record that requested this bill print record."
+    }
+  ]
+}

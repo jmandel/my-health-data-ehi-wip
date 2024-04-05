@@ -1,0 +1,101 @@
+{
+  "$meta": {
+    "schemas": {
+      "ALLERGY_REACTIONS": {
+        "name": "ALLERGY_REACTIONS",
+        "description": "The ALLERGY_REACTIONS table contains the category values of the reactions associated with a given allergy. There may be multiple reactions associated with a single allergy. In this case, there will be multiple records in this table with the same ALLERGY_ID, but with different LINE values.",
+        "primaryKey": [
+          {
+            "columnName": "ALLERGY_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ALLERGY_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID used to identify the allergy record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "REACTION_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The integer category value corresponding to the type of allergy reaction. To display names and/or abbreviations, link to the associated ZC lookup table."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ALLERGY_REACTIONS",
+            "target": "ALLERGY",
+            "joinKeys": [
+              {
+                "source": "ALLERGY_ID",
+                "target": "ALLERGY_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ALLERGY_REACTIONS",
+            "target": "PROBLEM_LIST_ALL",
+            "joinKeys": [
+              {
+                "source": "ALLERGY_ID",
+                "target": "PROBLEM_LIST_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ALLERGY_REACTIONS": [
+    {
+      "ALLERGY_ID": 30689295,
+      "LINE": 1,
+      "REACTION_C_NAME": "Hives",
+      "$meta": {
+        "type": "ALLERGY_REACTIONS"
+      }
+    },
+    {
+      "ALLERGY_ID": 30689317,
+      "LINE": 1,
+      "REACTION_C_NAME": "Hives",
+      "$meta": {
+        "type": "ALLERGY_REACTIONS"
+      }
+    },
+    {
+      "ALLERGY_ID": 58599837,
+      "LINE": 1,
+      "REACTION_C_NAME": "Hives",
+      "$meta": {
+        "type": "ALLERGY_REACTIONS"
+      }
+    },
+    {
+      "ALLERGY_ID": 30689238,
+      "LINE": 1,
+      "REACTION_C_NAME": "Hives",
+      "$meta": {
+        "type": "ALLERGY_REACTIONS"
+      }
+    }
+  ]
+}

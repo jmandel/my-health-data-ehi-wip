@@ -1,0 +1,66 @@
+{
+  "name": "FILING_ORDER_HX_TERM_DATE",
+  "description": "This table extracts the related multiple response Effective Date To (I FOH 410) item. Each row of this table corresponds to one member term date on one coverage on one filing order effective date on one contact of one member's filing order history record. This should be joined with the FILING_ORDER_HX table on the record ID, to the record ID, contact date real to contact date real and group line to line. To get the full member effective range do an outer join (to include ranges without a term date) from FILING_ORDER_HX_EFF_DATE on the record ID, contact date real, group line and value line.",
+  "primaryKey": [
+    {
+      "columnName": "RECORD_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 3
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 4
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the filing order history record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple term dates."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "TERM_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the \"effective date to\" for the member on the coverage. \"Member Level Effective Date\" (I CVG 330) is stored if present, otherwise \"Coverage Effective To Date\" (I CVG 410) is used."
+    }
+  ]
+}

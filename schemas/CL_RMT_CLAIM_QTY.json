@@ -1,0 +1,61 @@
+{
+  "name": "CL_RMT_CLAIM_QTY",
+  "description": "Contains claim supplemental quantity information from the electronic remittance payment. This information is sent in the QTY segment of an ANSI 835 Health Care Claim Payment/Advice file. This segment is used to send quantity information associated with the claim being paid. These quantities are in defined categories and sent only when the quantity is non-zero. This information is stored in the remittance image record.",
+  "primaryKey": [
+    {
+      "columnName": "IMAGE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "IMAGE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "ID for the remittance image record containing the claim supplemental information."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CLM_QTY_QUAL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The quantity qualifier code for the claim supplemental quantity information. This is a standard code that indicates what the quantity represents.",
+      "entries": [
+        "Covered actual",
+        "Co-insured - Actual",
+        "Life-time reserve - Actual",
+        "Life-time reserve - Estimated",
+        "Number of non-covered days",
+        "Non-covered - Estimated",
+        "Not replaced blood units",
+        "Outlier days",
+        "Prescription",
+        "Visits",
+        "Federal medicare or medicaid payment mandate category 1",
+        "Federal medicare or medicaid payment mandate category 2",
+        "Federal medicare or medicaid payment mandate category 3",
+        "Federal medicare or medicaid payment mandate category 4",
+        "Federal medicare or medicaid payment mandate category 5"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CLAIM_SUPPL_QTY",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Quantity for the supplemental claim quantity information. The specific meaning of this quantity is indicated by the associated quantity qualifier code."
+    }
+  ]
+}

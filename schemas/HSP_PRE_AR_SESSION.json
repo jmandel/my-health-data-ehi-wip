@@ -1,0 +1,550 @@
+{
+  "name": "HSP_PRE_AR_SESSION",
+  "description": "This table stores single response items for temporary hospital billing transactions. This table is limited to charge temporary transactions that have not yet been posted to the account.",
+  "primaryKey": [
+    {
+      "columnName": "HTT_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "HTT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the transaction record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "TX_TYPE_HA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates the type of temporary transaction record. This is used by the Hospital Billing filer to determine how to process the record.",
+      "entries": [
+        "Charge",
+        "Payment",
+        "Debit Adjustment",
+        "Credit Adjustment",
+        "Placeholder - Not Used",
+        "Action - Initiate Billing",
+        "Action - Undo Billing",
+        "Action - Late Charge Replacement",
+        "Action - Next Responsible Party",
+        "Action - Undo Next Responsible Party",
+        "Action - Late Charge Write Off",
+        "Action - Interim Billing",
+        "Action - Late Charge Addition",
+        "Action - Transfer to Self Pay",
+        "Action - Undo NRP and TTSP",
+        "Action - Initiate Homing",
+        "Action - Interim Homing",
+        "Action - Initiate RAP",
+        "Action - Undo all Billing, NRP, and TTSP actions",
+        "Action - Send to Separate Billing Service Area",
+        "Action - Return from Separate Billing Service Area",
+        "Action - Initiate Notice of Hospice Election",
+        "Action - Initiate Notice of Hospice Revocation",
+        "Action - Split Mixed HAR",
+        "Action - Admission Day Billing",
+        "Action - Secondary RAP",
+        "Action - Duplicate and Send Charges",
+        "Action - Run HB Pricing Contracts",
+        "Action - Undo NRP Back to Selected Bucket",
+        "Action - DBC Send Partial Denial to Self-Pay",
+        "Action - DBC Ignore Partial Denial",
+        "Action - Evaluate Bad Debt/External AR for Bucket",
+        "Action - Automate Coverage Change",
+        "Action - Undo Billing and Sync Guarantor Coverages",
+        "Action - Undo Billing and Refresh Guarantor Coverages"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "TX_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the source for this transaction.",
+      "entries": [
+        "Transaction Import",
+        "Interface",
+        "EpicCare",
+        "Daily Charge",
+        "Bed Charge",
+        "Batch Charge Entry",
+        "Unit Charge Entry",
+        "Payment Posting",
+        "Adjustment Posting",
+        "Post Adjustment - Account Maintenance",
+        "Reverse Transaction - Account Maintenance",
+        "Reversal and Repost",
+        "Charge Correction",
+        "Order Trigger",
+        "Transfer Transaction",
+        "Combine Accounts",
+        "Electronic Remittance",
+        "HB Only Quick Payment Posting",
+        "Account Maintenance - Actions",
+        "Revenue Reclassification - Account Class Change",
+        "Revenue Reclassification - Financial Class Change",
+        "Claims Accept - Bucket Split",
+        "Small Balance Write-Off",
+        "System Auto Action",
+        "Hourly Charge",
+        "Expected Not-Allwd-Auto Write-Off",
+        "Claim Denial Payment",
+        "Willow Inpatient",
+        "Refund - Account Maintenance",
+        "OpTime",
+        "Radiant",
+        "MyChart Web",
+        "Inpatient",
+        "Resolute Professional Billing",
+        "Emergency Dept",
+        "Home Health",
+        "Lab",
+        "Cohort",
+        "Enterprise Payment Posting",
+        "Charge Router Charge Entry",
+        "Self-Pay Discount",
+        "Payment Collection",
+        "Late Fee",
+        "Tx Report - Add Corresponding Charge",
+        "Patient Refund",
+        "Welcome",
+        "Cardiology",
+        "Obstetrics",
+        "Handheld",
+        "Late Charge Write-Off",
+        "Hospice Per Diem",
+        "Hospice",
+        "Surcharge",
+        "Adjustment Import",
+        "DBC Product",
+        "DBC Accepted Invoice",
+        "Willow Ambulatory",
+        "Anesthesia",
+        "Reverse Transaction - Tx Report",
+        "Billing Activity",
+        "Web Service",
+        "HB Coding",
+        "Auto Pay Payment Plan",
+        "Distribution",
+        "Duplicated Charge",
+        "Billing Charge Write-Off",
+        "Transaction Classification Balancing",
+        "Financial Assistance",
+        "Cumulative Billing",
+        "MyChart Mobile",
+        "Pay as Guest",
+        "Unbilled Expected Write-Off",
+        "DBC Denied Invoice",
+        "Bundle Payment Distribution",
+        "DBC Denied Invoice - Ignored",
+        "Balance Transfer In",
+        "Balance Transfer Out",
+        "Balance Correct In",
+        "Balance Correct Out",
+        "Visit Auto Pay",
+        "Trust Transfer",
+        "Trust Recurring Payment",
+        "Notification Billing",
+        "Advance Billing",
+        "Two-Way SMS",
+        "Linked Procedure"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SERV_AREA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the service area associated with the transaction."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the hospital account associated with the transaction."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Patient CSN associated with the transaction."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "RESEARCH_STUDY_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The research study associated with the transaction."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "RSH_CHG_ORIG_HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the hospital account for the patient enrolled in the research study, which the charges were generated from before being billed to the study account."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "SERVICE_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the performing provider associated with the transaction."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "BILLING_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The override provider under whom these charges will be billed."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "COST_CENTER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the cost center to which this transaction is being attributed."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "COST_CENTER_ID_COST_CENTER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the cost center."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "SERVICE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of service or deposit associated with the transaction."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "REFUND_AP_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date on which the A/P system processed the transaction."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "REFUND_AP_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the action taken by the A/P system when it processed the transaction.",
+      "entries": [
+        "Approved",
+        "Rejected"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "ACCT_CLASS_HA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the account class of the account when offsetting system adjustments are created. For all other transactions, this item is not set and instead the corresponding posted transaction values are calculated at the time of filing."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "ACCT_FIN_CLASS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the financial class of the account when offsetting system adjustments are created.",
+      "entries": [
+        "Commercial",
+        "Medicare",
+        "Medicaid",
+        "Self-Pay",
+        "Worker's Comp",
+        "Tricare",
+        "Champva",
+        "Group Health Plan",
+        "FECA Black Lung",
+        "Blue Shield",
+        "Medigap",
+        "Other",
+        "DK Regional",
+        "Client",
+        "Received Self-Pay",
+        "Sent to Consolidated Self-Pay Service Area"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "PRIMARY_COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Holds the primary coverage of the account when offsetting system adjustments are created."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PRIMARY_PAYER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Holds the primary payer of the account when offsetting system adjustments are created."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "PRIMARY_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Holds the primary plan of the account when offsetting system adjustments are created."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "TOTAL_CHARGE_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the total price amount for the charges in this session."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the ID of the order associated with the charge."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "TREATMENT_PLAN_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The contact serial number of the treatment plan that generated this charge session and order."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "TREATMENT_DAY_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The contact serial number of the treatment day that generated this charge session's order."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "OPTIME_LOG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the identifier of the OpTime Log associated with this charge."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "SYS_RECLASS_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the reclassification reason for a transaction reposted for system reasons.",
+      "entries": [
+        "Financial Class Change",
+        "Account Class Change",
+        "Primary Payor or Plan Change",
+        "Mark/Unmark Account for Seperate SA Billing",
+        "Surcharge Recalculation",
+        "Pricing Contract Reprice",
+        "Forced Repost",
+        "Rev Code/Non-Covered Flag/Price Change",
+        "Bundled Episode Change",
+        "Register Number Change",
+        "Fee Decision Change",
+        "Service Decision Change"
+      ]
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "REVERSAL_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the reversal reason. This is set for all transaction types.",
+      "entries": [
+        "CCI Edit",
+        "No Supporting Documentation",
+        "Service Not Performed",
+        "Payment Received",
+        "Returned Mail",
+        "Other",
+        "Duplicate",
+        "Posted in Error",
+        "Wrong Code",
+        "Give Back"
+      ]
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "CONTEST_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the contested reason. This is set only for charges.",
+      "entries": [
+        "Account Has Contested Charges",
+        "Patient Not Seen",
+        "Bankruptcy",
+        "Legal",
+        "Deceased",
+        "Not Informed Service Not Covered",
+        "Service Not Provided",
+        "Insurance Appeal",
+        "Patient Grievance",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "CONTEST_RESOLUTION_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the resolution reason. This is set only for charges.",
+      "entries": [
+        "Transfer",
+        "All Charges Resolved",
+        "Contested in Error",
+        "Confirmed Billed Correctly",
+        "Patient No Longer Contesting",
+        "Insurance Issue Resolved",
+        "Problem Fixed"
+      ]
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "NO_PAY_CLAIM_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If this charge was posted to drive no-pay claims to be generated, this charge is intended to file and bill immediately. These claims will have different types/purposes. This column defines the type of claim that should be generated for the bucket that holds this charge.",
+      "entries": [
+        "SNF No-Pay Claim",
+        "SNF Exhaust Claim",
+        "HH No-Pay RAP",
+        "HH Notice of Admission"
+      ]
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "BAD_DEBT_FLAG_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column marks the account's A/R as belonging to bad debt.",
+      "entries": [
+        "Active AR",
+        "External Agency AR",
+        "Bad Debt",
+        "Outsourced",
+        "Received Self-Pay Active AR",
+        "Received Self-Pay External Agency AR",
+        "Received Self-Pay Bad Debt"
+      ]
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "POS_SESSION_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Point of Sale session ID."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "POS_TX_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Point of Sale transaction ID."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "POS_TX_LINENUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Point of Sale transaction line number."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "DISCOUNT_PERCENT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the discount percentage applied to the self-pay balance."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "DISCOUNT_PROGRAM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the financial assistance program that the hospital account qualified for which caused the financial assistance adjustment to be applied."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "DISCOUNT_PROGRAM_ID_PROGRAM_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the financial assistance program record."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "TAX_EFFECTIVE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date used in the system that determine when this tax line went into effect."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "TAXABLE_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the amount that the tax is applied to."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "TAX_PERCENT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Percent used to calculate the tax amount."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "TAX_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the amount used for the tax."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "SURCHARGE_CLAIM_PRINT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the claim print record associated with the surcharge amount of this transaction."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "TAX_RATE_DEF_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The tax rate definition CSN used in the tax calculation."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "DEFAULT_DEPT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the department that was defaulted in for the transaction."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "POS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The place of service ID associated with this transaction."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "EXTERN_AR_FLAG_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column marks the account's A/R as belonging to an agency."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "DISCOUNT_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the additional details on why the discount is posted on the hospital account."
+    }
+  ]
+}

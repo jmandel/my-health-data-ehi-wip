@@ -1,0 +1,89 @@
+{
+  "name": "RXA_CVG_TABLE",
+  "description": "Table that holds coverage information for an adjudication. Adjudication records are used by Ambulatory Pharmacy during prescription copay adjudication.",
+  "primaryKey": [
+    {
+      "columnName": "RECORD_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the adjudication record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique, internal contact date in decimal format. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CVG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the coverage for which the adjudication record was created."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "TX_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Transaction Type category ID of the adjudication message",
+      "entries": [
+        "Bill (B1)",
+        "Reversal (B2)",
+        "Rebill (B3)",
+        "Eligibility (E1)",
+        "Authorization",
+        "Cancellation",
+        "Claim",
+        "Information Reporting (N1)"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PAYOR_SHEET_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The payor sheet that is used during adjudication. Each time an adjudication occurs on a prescription the payor sheet to use is determined based on setup in the payor and plan records."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PAYOR_SHEET_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of this payor sheet"
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ACTION_INSTANT_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Date and time when the adjudication action was performed on the prescription fill."
+    }
+  ]
+}

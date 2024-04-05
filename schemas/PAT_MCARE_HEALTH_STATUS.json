@@ -1,0 +1,63 @@
+{
+  "name": "PAT_MCARE_HEALTH_STATUS",
+  "description": "This table stores the Medicare health status flags for a member.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "MCARE_HEALTH_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the category number for a Health Status Flag. A health status flag is an indicator that comes from CMS for Medicare Advantage members.",
+      "entries": [
+        "Long Term Institutional",
+        "ESRD",
+        "Medicaid",
+        "Hospice",
+        "Disabled",
+        "Dialysis",
+        "Institutional",
+        "Home and Community Based Services",
+        "Nursing Home Certifiable"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the start date of the corresponding health status flag."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the end date of the corresponding health status flag."
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "$meta": {
+    "schemas": {
+      "ACCT_GUAR_PAT_INFO": {
+        "name": "ACCT_GUAR_PAT_INFO",
+        "description": "This table contains information about the account guarantor - patient relationship.",
+        "primaryKey": [
+          {
+            "columnName": "ACCOUNT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID for the account. This ID number could by encrypted if you have elected to implement enterprise reporting�s encryption security function."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "Line number to uniquely identify the patient within the guarantor account."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID for the patient related to the guarantor of the account."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "GUAR_REL_TO_PAT_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The relationship of the patient to the guarantor of the account (e.g. Mother, Brother, Legal Guardian, etc.)",
+            "entries": [
+              "Aunt",
+              "Brother",
+              "Daughter",
+              "Father",
+              "Friend",
+              "Granddaughter",
+              "Grandfather",
+              "Grandmother",
+              "Grandson",
+              "Legal Guardian",
+              "Mother",
+              "Other",
+              "Step Father",
+              "Sister",
+              "Self",
+              "Step Mother",
+              "Son",
+              "Spouse",
+              "Uncle",
+              "Employer",
+              "Unverified Proxy",
+              "Transplant Recipient",
+              "Visit Contact"
+            ]
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "PATIENT_ADDR_LINKED_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates whether the patient address and the guarantor address are linked.",
+            "entries": [
+              "Yes",
+              "No"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ACCT_GUAR_PAT_INFO",
+            "target": "ACCOUNT",
+            "joinKeys": [
+              {
+                "source": "ACCOUNT_ID",
+                "target": "ACCOUNT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ACCT_GUAR_PAT_INFO": [
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 1,
+      "PAT_ID": "Z7004242",
+      "GUAR_REL_TO_PAT_C_NAME": "Self",
+      "PATIENT_ADDR_LINKED_YN": "Y",
+      "$meta": {
+        "type": "ACCT_GUAR_PAT_INFO"
+      }
+    },
+    {
+      "ACCOUNT_ID": 4793998,
+      "LINE": 1,
+      "PAT_ID": "Z7004242",
+      "GUAR_REL_TO_PAT_C_NAME": "Self",
+      "PATIENT_ADDR_LINKED_YN": "Y",
+      "$meta": {
+        "type": "ACCT_GUAR_PAT_INFO"
+      }
+    }
+  ]
+}

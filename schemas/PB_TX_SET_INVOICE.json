@@ -1,0 +1,58 @@
+{
+  "name": "PB_TX_SET_INVOICE",
+  "description": "The PB_TX_SET_INVOICE table lists invoices associated with a premium billing payment transaction set.",
+  "primaryKey": [
+    {
+      "columnName": "PB_TXSET_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PB_TXSET_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the premium billing transaction set."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line count for the invoice on the transaction set."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PB_INVC_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the invoice associated with the transaction set."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "INVOICE_PORTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The invoice portion covered by this transaction set.",
+      "entries": [
+        "Entire Invoice",
+        "Custom Portion of Invoice",
+        "Remaining Invoice",
+        "All Outstanding Txs",
+        "None. Custom PTS Advice used in PBU"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "INVOICE_BILL_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This field stores the date of the current or future invoice associated with this line."
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "name": "ERX_EVENT",
+  "description": "This table holds information about e-prescribing event and e-prescribing error resolution for Inpatient E-Prescribing.\n\n\nStarting in the May 23 version, it will also hold information about e-prescribing error resolution for Ambulatory E-Prescribing.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ERX_EVENT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the type of e-prescribing event.",
+      "entries": [
+        "New Prescription",
+        "Discontinue Prescription",
+        "Insignificant Change",
+        "Resupply",
+        "Adjust Time",
+        "Pharmacy Replace"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ERX_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the status of an e-prescribing event.",
+      "entries": [
+        "Succeeded",
+        "Manual Follow Up Needed",
+        "Manual Follow Up Completed",
+        "Not Needed",
+        "Faxed",
+        "In Progress",
+        "Printed",
+        "Done From IB",
+        "Not Responsible"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ERX_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item stores the instant of an e-prescribing event."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ERX_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the user who initiated an e-prescribing event. If no user is listed, then the event was initiated by a background job (interface, order transmittal, etc.)."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ERX_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    }
+  ]
+}

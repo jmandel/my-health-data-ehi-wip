@@ -1,0 +1,92 @@
+{
+  "name": "CDI_STAT_HX",
+  "description": "This table contains information about the status and assigned user change history for the Clinical Documentation Improvement (CDI) reviews in a hospital account.",
+  "primaryKey": [
+    {
+      "columnName": "CODING_RECORD_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CODING_RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the coding record associated with the hospital account."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this account. Each line represents a change in clinical documentation improvement (CDI) status or assigned user."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CDI_HX_ASGN_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores what the clinical documentation improvement (CDI) assigned user is changed to for this account."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CDI_HX_ASGN_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CDI_HX_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the clinical documentation improvement (CDI) status changes for this account.",
+      "entries": [
+        "Not Started",
+        "In Progress",
+        "Physician Query",
+        "All Reviews Completed"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CDI_HX_CHNG_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the user who makes the change of clinical documentation improvement (CDI) assigned user or status for this account."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CDI_HX_CHNG_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CDI_HX_CHNG_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item stores the instant when the clinical documentation improvement (CDI) status or assigned user was changed based on the UTC timezone. Data retrieval should generally occur by using the column CDI_HX_CHG_DTTM, which will return the change instant in local time."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CDI_HX_CHNG_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "This item shows the instant when the clinical documentation improvement (CDI) status or assigned user was changed based on the system local timezone."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "CDI_HX_CHNG_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comment associated with the status change in the clinical documentation improvement (CDI) status history."
+    }
+  ]
+}

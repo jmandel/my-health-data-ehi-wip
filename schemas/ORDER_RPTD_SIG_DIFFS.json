@@ -1,0 +1,63 @@
+{
+  "name": "ORDER_RPTD_SIG_DIFFS",
+  "description": "When a patient reports taking a medication differently from how it was prescribed, the specific fields (dose, frequency, etc.) that differ from the prescription are recorded as entries in this table. Sig lines in ORDER_RPTD_SIG_HX that don't indicate a variance (e.g. the line for the sig as it was first prescribed) have no entries in this table.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record, indicating where the reported sig differs."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple values associated with a specific group of where the patient sig differs from the prescribed sig within this record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "DIFFERENCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Exactly which discrete portion of the sig differs between what was prescribed and what the patient reports taking.",
+      "entries": [
+        "Dose",
+        "Dose Unit",
+        "Route",
+        "Frequency",
+        "PRN Reasons",
+        "PRN Comment",
+        "Instructions",
+        "Indications",
+        "Indications Comment",
+        "Free-Text Sig",
+        "Usage Code",
+        "Bruksomr�de",
+        "Bruksomr�de (Discrete)"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "name": "PDMP_REVIEW_INFO",
+  "description": "This item holds information on PDMP (Prescription Drug Monitoring Program) review.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "REVIEW_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This holds the ID of the user who reviewed the PDMP."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "REVIEW_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "REVIEW_USER_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item holds the instant that the PDMP was reviewed."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "REVIEW_ENC_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item holds the CSN of the encounter where the review occurred. It may be null if the PDMP was not reviewed within an encounter context."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "REVIEW_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates whether there was data to review or if the user was unable to retrieve PDMP data.",
+      "entries": [
+        "Reviewed PDMP",
+        "Unable to Review"
+      ]
+    }
+  ]
+}

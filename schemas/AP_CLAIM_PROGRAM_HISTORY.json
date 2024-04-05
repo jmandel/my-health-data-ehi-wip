@@ -1,0 +1,86 @@
+{
+  "name": "AP_CLAIM_PROGRAM_HISTORY",
+  "description": "This table tracks the history of changes to the Value Based Programs associated with medical claims.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the claim info record"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "UPDATE_PROGRAM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Value Based Program that was modified."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "UPDATE_PROGRAM_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the program record."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "UPDATE_INSTANT_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The local instant when the Value Based Program was modified."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CLAIM_PROG_HX_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The action that modified the Value Based Program.",
+      "entries": [
+        "Added",
+        "Updated",
+        "Deactivated",
+        "Removed",
+        "Sent"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "UPDATE_INSTANT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The Coordinated Universal Time (UTC) instant when the Value Based Program was modified."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "VBP_HX_SENT_DXO_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The DXO ID to which this claim was sent."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "VBP_HX_SENT_DXO_ID_EXTERNAL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Organization's external name used as the display name on forms and user interfaces."
+    }
+  ]
+}

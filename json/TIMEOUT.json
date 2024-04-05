@@ -1,0 +1,106 @@
+{
+  "$meta": {
+    "schemas": {
+      "TIMEOUT": {
+        "name": "TIMEOUT",
+        "description": "This table stores basic information about the timeout or Procedure Pass.\n\n\nFor timeouts: The answers to the timeout questions, comments, procedure info, verification info and staff info can be found in tables that start with the TIMEOUT_ prefix.\n\n\nFor Procedure Passes: the task information, review status, checkpoints, and other information can be found in tables that start with the PXPASS_ prefix.",
+        "primaryKey": [
+          {
+            "columnName": "TIMEOUT_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "TIMEOUT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the timeout record for this row."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+            "linksTo": "PATIENT"
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "PAT_CSN",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "A serial number for the encounter in which the alert was fired. This number is unique across all patients and encounters in the system."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "RECORD_CREATION_DT",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Stores the date the record was created."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "VERIF_CLASS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The type of verification data this record will have.",
+            "entries": [
+              "Timeout",
+              "Attestation",
+              "Screening Form",
+              "Organ Check-in"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "TIMEOUT",
+            "target": "FRM_STATUS",
+            "joinKeys": [
+              {
+                "source": "TIMEOUT_ID",
+                "target": "SCREENING_FORM_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "TIMEOUT",
+            "target": "TIMEOUT_ANSWERS",
+            "joinKeys": [
+              {
+                "source": "TIMEOUT_ID",
+                "target": "RECORD_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "TIMEOUT": [
+    {
+      "TIMEOUT_ID": 4137993,
+      "PAT_ID": "Z7004242",
+      "PAT_CSN": 829282937,
+      "RECORD_CREATION_DT": "2020-07-14 00:00:00",
+      "VERIF_CLASS_C_NAME": "Screening Form",
+      "$meta": {
+        "type": "TIMEOUT"
+      }
+    },
+    {
+      "TIMEOUT_ID": 4153852,
+      "PAT_ID": "Z7004242",
+      "PAT_CSN": 829996120,
+      "RECORD_CREATION_DT": "2020-07-21 00:00:00",
+      "VERIF_CLASS_C_NAME": "Screening Form",
+      "$meta": {
+        "type": "TIMEOUT"
+      }
+    }
+  ]
+}

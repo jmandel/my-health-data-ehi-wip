@@ -1,0 +1,48 @@
+{
+  "name": "V_EHI_SDD_ENTRY_INTERPRETATION",
+  "description": "This view converts the ENTRY_INTERPRETATION column in SDD_ENTRIES into an external-facing format for EHI Export. This table should be used in tandem with SDD_ENTRIES, using the SDOH_DATA_ID, CONTACT_DATE_REAL, and LINE columns to join the data together.",
+  "primaryKey": [
+    {
+      "columnName": "SDOH_DATA_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SDOH_DATA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the social determinant data record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ENTRY_INTERPRETATION_EXTERNAL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the interpretation this entry is reporting. This might be the output of a scoring rule or some other scoring value."
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "name": "RXA_ATTEMPT",
+  "description": "Contains information about adjudication records, including the user and workstation that initiated the adjudication, the National Council for Prescription Drug Programs (NCPDP) transaction type, and the date the record was created. Adjudication records are used during prescription copay adjudication.",
+  "primaryKey": [
+    {
+      "columnName": "RECORD_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the adjudication record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "RECORD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The record status category ID of the adjudication message (hidden, soft-deleted, etc...)",
+      "entries": [
+        "Soft Deleted",
+        "Hidden",
+        "Hidden and Soft Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ADJ_WORKSTATION_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The workstation's unique ID that the adjudication attempt originated from."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who initiated the adjudication."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RECORD_CREATION_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date the record was created"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "UPDATE_DATETIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the instant the record was last locked/unlocked"
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ADJ_INTENT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The overall intent category ID of the adjudication message (for example, reversal or billing).",
+      "entries": [
+        "Billing",
+        "Reversal"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "MESSAGE_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The source category ID of the adjudication message.",
+      "entries": [
+        "Pharmacy",
+        "Clinician Order Entry",
+        "Additional Coverage Information",
+        "Eligibility Query",
+        "HAAD Transaction"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ADJ_DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The login department's unique ID for the user initiating adjudication."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "TEST_CLAIM_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if the adjudication attempt is a test claim.  'N' or NULL indicate that the attempt is not a test claim.  'Y' indicates that the attempt is a test claim.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient record to which this RXA record is associated. For Eligibility checking, this identifies the patient for whom the check is being performed."
+    }
+  ]
+}

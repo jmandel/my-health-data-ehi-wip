@@ -1,0 +1,62 @@
+{
+  "name": "ACCT_HB_STMT_RSN",
+  "description": "This table contains Hospital Billing statement processing hold reasons.",
+  "primaryKey": [
+    {
+      "columnName": "ACCT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ACCT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the guarantor account record for this row."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "STMT_ERROR_LIST_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the current list of HB statement processing hold reasons at the guarantor level",
+      "entries": [
+        "No hospital account to bill",
+        "Guarantor account already on another run",
+        "Guarantor account status not to bill",
+        "Minimum days between two statements not met",
+        "Guarantor address has no ZIP code",
+        "Form not found",
+        "Credit balance on the guarantor account",
+        "Guarantor account has a hospital account with a self-pay payment/adjustment posted today",
+        "Guarantor account has a hospital account on payment plan that did not qualify",
+        "Minimum guarantor account balance not met",
+        "Charge Homing is turned on and guarantor account is not in its home",
+        "Skip guarantor account extension",
+        "Cannot demand if form requires importing images",
+        "Statement already processed this month for payment plan",
+        "SmartText and Classic forms cannot be included in the same run",
+        "Cannot send tickler to guarantor for paperless bill",
+        "Minimum days between guarantor detail bill and statement not met",
+        "Payment plan already paid for this month",
+        "Guarantor has a balance notification scheduled or recently sent",
+        "Payment plan is currently deferred, and guarantor has only plan balances",
+        "Visit auto pay scheduled",
+        "Cannot send another statement before processing auto pay from the last statement",
+        "Payment plan processing in progress"
+      ]
+    }
+  ]
+}

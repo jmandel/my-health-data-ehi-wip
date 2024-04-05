@@ -1,0 +1,180 @@
+{
+  "name": "ABN_NOTES",
+  "description": "The ABN_NOTES table contains information about Advanced Beneficiary Notice note records.",
+  "primaryKey": [
+    {
+      "columnName": "ABN_NOTE_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ABN_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the note (HNO) record that contains the Advance Beneficiary Notice (ABN) information."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "ABN_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status of the ABN record.",
+      "entries": [
+        "Notice Triggered",
+        "Notice Printed",
+        "ABN Signed, Service Accepted (Option 1 - Bill Medicare)",
+        "ABN Annotated (Patient Refused to Sign)",
+        "ABN Void (Order Canceled or Changed, ABN No Longer Applies)",
+        "ABN Signed, Service Declined",
+        "ABN Refused--Noted on form, Signed by Two Witnesses",
+        "ABN Refused--Service Not Performed",
+        "ABN Signed, Service Accepted (Option 2 - Do not bill Medicare)",
+        "Auto Voided (Order canceled or removed)",
+        "Diagnoses Reviewed",
+        "E-Signed, Document Status Not Updated",
+        "Released to Patient Portal",
+        "ABN Error--Recreated, Pending Signature"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who updated the ABN record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CREATE_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The time the ABN record was created."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "INITIAL_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who created the ABN record."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "INITIAL_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ABN_TEMPLT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ABN template used for the ABN form.",
+      "entries": [
+        "English, Provider ABN",
+        "Lab ABNs",
+        "Spanish, Provider ABN",
+        "Non-Participating ABN",
+        "Dually Eligible Beneficiaries ABN",
+        "E-Signature Template"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ABN_PAYOR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The payor record ID associated with the ABN form."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ABN_PR_EST",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The estimated price for all procedures listed on the ABN."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "ABN_COMM_BARRIER_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The communication barrier encountered with the patient involving the ABN."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ABN_UPDATE_INS_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant when the ABN was updated."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "ABN_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A comment for an ABN."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "ABN_CHECK_FROM_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the starting date of service for which the ABN checks are performed."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "ABN_CHECK_TO_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date till which the ABN checks are performed."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "ABN_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the unique ID of the linked treatment or therapy plan."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PAT_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the contact serial number (CSN) for the telephone encounter used for follow up."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "REPLACED_ABN_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If this ABN was regenerated from another ABN, this column contains the ID of the original"
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "REPLACE_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason that the ABN was regenerated.",
+      "entries": [
+        "Price Increase",
+        "Price Decrease",
+        "Department Change (same revenue location)",
+        "Department Change (different revenue location)",
+        "Procedure or Diagnosis or Order Mismatch (Px or Dx or Ord is now resolved)",
+        "Order Released",
+        "Order Resolved",
+        "Procedure or Order Mismatch (Px or Dx or Ord is now resolved)",
+        "ABN Restore Utility"
+      ]
+    }
+  ]
+}

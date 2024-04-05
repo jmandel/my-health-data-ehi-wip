@@ -1,0 +1,49 @@
+{
+  "name": "RES_RPT_VAL_PTR_RM",
+  "description": "For a given repeat component this holds all the pointers to the table that stores the multi line data.",
+  "primaryKey": [
+    {
+      "columnName": "RESULT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RESULT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the result record for this row. This column is frequently used to link to the RES_REPEAT_COMP table.",
+      "linksTo": "RES_REPEAT_COMP"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This is the repeat component line number from the RES_REPEAT_COMP table. Use the RESULT_ID to link the RES_REPEAT_COMP table to this table in addition to the GROUP_LINE."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple values that are associated with the component and the result from the RES_VAL_DATA_RM table. This column can be ignored - it is here for completeness."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RPT_MULTILINE_VALUE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores a list of lines in OVR-52201 which store data for this line in the component related group.  To link tables RES_VAL_PTR_RM to RES_VAL_DATA_RM link the following two sets of columns: - RES_RPT_VAL_PTR_RM.RESULT_ID to RES_VAL_DATA_RM.RESULT_ID, and - RES_RPT_VAL_PTR_RM.RPT_MULTILINE_VALUE to RES_VAL_DATA_RM.GROUP_LINE"
+    }
+  ]
+}

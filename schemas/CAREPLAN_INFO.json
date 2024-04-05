@@ -1,0 +1,94 @@
+{
+  "name": "CAREPLAN_INFO",
+  "description": "Contains information about care plan template records.",
+  "primaryKey": [
+    {
+      "columnName": "CARE_INTG_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CARE_INTG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the care plan record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CAREPLAN_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID of the type of the care plan record (Collaborative or Home Health).",
+      "entries": [
+        "Home Health/Hospice",
+        "Collaborative",
+        "Outpatient",
+        "Care Plan Reading"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The linked unique contact serial number for the patient. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI). This column is frequently used to link to the PAT_ENC_HSP table.",
+      "linksTo": "PAT_ENC_HSP"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PATIENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Links OP care plan (patient-level and episodic) to the associated patient"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "LINKED_PAT_CAREPLAN_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the outpatient care plan is linked at the patient level or the episode level. Yes means it is patient level, No means it is episode level."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RFL_INSTR_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the ID of the HNO record that contains the referral instructions"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "READING_CAREPLAN_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The link to the care plan reading Care Plan record."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "LAST_EDITED_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time when the care plan was last edited. This does not include documentation-only changes."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "RECORD_STATUS_2_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Record status flag. Used in conjunction with record archived flag for encounter archiving.",
+      "entries": [
+        "Soft Deleted",
+        "Hidden",
+        "Hidden and Soft Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PAT_ENROLL_DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the department which enrolled the patient in MyChart care plan."
+    }
+  ]
+}

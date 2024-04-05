@@ -1,0 +1,209 @@
+{
+  "$meta": {
+    "schemas": {
+      "PERFORMING_ORG_INFO": {
+        "name": "PERFORMING_ORG_INFO",
+        "description": "Stores the performing organization information.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the order record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PERFORMING_ORG_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the performing organization. The phone number might be a part of the organizations name as labs might send it as a part of the name."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "PERFORMING_ORG_DIRECTOR",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the medical director of the performing organization."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "PERFORMING_ORG_CITY",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The city where the performing organization is located."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "PERFORMING_ORG_STATE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The state where the performing organization is located."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "PERFORMING_ORG_ZIP_CODE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The zip code of the performing organization."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "PERFORMING_ORG_PHONE_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Phone number of the performing organization."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "PERFORMING_ORG_CLIA_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The Clinical Laboratory Improvement Amendment (CLIA) number of the performing organization. Any laboratory that is included in the CLIA legislation must obtain a CLIA certificate from the U.S. Department of Health and Human Services. The certificate will include a 10-digit number which is the CLIA number of that laboratory."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "PERFORMING_ORG_FORMAT_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item represents the format in which the performing organization medical director name is stored.",
+            "entries": [
+              "Interface",
+              "Care Everywhere"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "PERFORMING_ORG_INFO",
+            "target": "ORDER_PARENT_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "PERFORMING_ORG_INFO",
+            "target": "ORDER_PROC",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "PERFORMING_ORG_INFO",
+            "target": "ORD_PRFLST_TRK",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PERFORMING_ORG_INFO": [
+    {
+      "ORDER_ID": 772179259,
+      "LINE": 1,
+      "PERFORMING_ORG_NAME": "UWHC RADIOLOGY",
+      "PERFORMING_ORG_FORMAT_C_NAME": "Care Everywhere",
+      "$meta": {
+        "type": "PERFORMING_ORG_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 772179262,
+      "LINE": 1,
+      "PERFORMING_ORG_NAME": "Associated Physicians LLP",
+      "PERFORMING_ORG_DIRECTOR": "GOLDROSEN,MICHAEL,MD\u000f\u000f\u000f\u000f\u000f\u000f\u000f\u000fSQ\u00102.16.840.1.113883.3.697\u0010ISO\u000fL\u000f\u000f\u000fDN",
+      "PERFORMING_ORG_CITY": "Madison",
+      "PERFORMING_ORG_STATE_C_NAME": "Wisconsin",
+      "PERFORMING_ORG_ZIP_CODE": "53705",
+      "PERFORMING_ORG_FORMAT_C_NAME": "Interface",
+      "$meta": {
+        "type": "PERFORMING_ORG_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 945468370,
+      "LINE": 1,
+      "PERFORMING_ORG_NAME": "Associated Physicians LLP",
+      "PERFORMING_ORG_DIRECTOR": "GOLDROSEN,MICHAEL,MD\u000f\u000f\u000f\u000f\u000f\u000f\u000f\u000fSQ\u00102.16.840.1.113883.3.697\u0010ISO\u000fL\u000f\u000f\u000fDN",
+      "PERFORMING_ORG_CITY": "Madison",
+      "PERFORMING_ORG_STATE_C_NAME": "Wisconsin",
+      "PERFORMING_ORG_ZIP_CODE": "53705",
+      "PERFORMING_ORG_FORMAT_C_NAME": "Interface",
+      "$meta": {
+        "type": "PERFORMING_ORG_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 945468371,
+      "LINE": 1,
+      "PERFORMING_ORG_NAME": "Associated Physicians LLP",
+      "PERFORMING_ORG_DIRECTOR": "GOLDROSEN,MICHAEL,MD\u000f\u000f\u000f\u000f\u000f\u000f\u000f\u000fSQ\u00102.16.840.1.113883.3.697\u0010ISO\u000fL\u000f\u000f\u000fDN",
+      "PERFORMING_ORG_CITY": "Madison",
+      "PERFORMING_ORG_STATE_C_NAME": "Wisconsin",
+      "PERFORMING_ORG_ZIP_CODE": "53705",
+      "PERFORMING_ORG_FORMAT_C_NAME": "Interface",
+      "$meta": {
+        "type": "PERFORMING_ORG_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 945468372,
+      "LINE": 1,
+      "PERFORMING_ORG_NAME": "Meriter Laboratories",
+      "PERFORMING_ORG_DIRECTOR": "OLSON,KELLY J,MD\u000f\u000f\u000f\u000f\u000f\u000f\u000f\u000fSQ\u00102.16.840.1.113883.3.697\u0010ISO\u000fL\u000f\u000f\u000fDN",
+      "PERFORMING_ORG_CITY": "Madison",
+      "PERFORMING_ORG_STATE_C_NAME": "Wisconsin",
+      "PERFORMING_ORG_ZIP_CODE": "53715-1304",
+      "PERFORMING_ORG_FORMAT_C_NAME": "Interface",
+      "$meta": {
+        "type": "PERFORMING_ORG_INFO"
+      }
+    },
+    {
+      "ORDER_ID": 439060614,
+      "LINE": 1,
+      "PERFORMING_ORG_NAME": "EXACT SCIENCES LABORATORIES (CLIA #:52D2162828)",
+      "PERFORMING_ORG_DIRECTOR": "Jennifer\bLaffin\b\b\b\b",
+      "PERFORMING_ORG_CITY": "MADISON",
+      "PERFORMING_ORG_STATE_C_NAME": "Wisconsin",
+      "PERFORMING_ORG_ZIP_CODE": "53711",
+      "PERFORMING_ORG_PHONE_NUM": "+1-844-870-8870",
+      "PERFORMING_ORG_CLIA_NUM": "52D2072838",
+      "PERFORMING_ORG_FORMAT_C_NAME": "Care Everywhere",
+      "$meta": {
+        "type": "PERFORMING_ORG_INFO"
+      }
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "$meta": {
+    "schemas": {
+      "HSP_BKT_ADJ_TXS": {
+        "name": "HSP_BKT_ADJ_TXS",
+        "description": "This table contains the adjustment transactions applied to liability buckets.",
+        "primaryKey": [
+          {
+            "columnName": "BUCKET_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "BUCKET_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the bucket record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "ADJUSTMENT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the adjustment transaction that is associated with this liability bucket."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "HSP_ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the hospital account to which the liability bucket is linked."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "HSP_BKT_ADJ_TXS",
+            "target": "HSP_BKT_ADDTL_REC",
+            "joinKeys": [
+              {
+                "source": "BUCKET_ID",
+                "target": "BUCKET_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_BKT_ADJ_TXS",
+            "target": "HSP_BKT_NAA_HX_HTR",
+            "joinKeys": [
+              {
+                "source": "BUCKET_ID",
+                "target": "BUCKET_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_BKT_ADJ_TXS",
+            "target": "HSP_BKT_NAA_TX_TYP",
+            "joinKeys": [
+              {
+                "source": "BUCKET_ID",
+                "target": "BUCKET_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HSP_BKT_ADJ_TXS": [
+    {
+      "BUCKET_ID": 464353000,
+      "LINE": 1,
+      "ADJUSTMENT_ID": 681354880,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_BKT_ADJ_TXS"
+      }
+    },
+    {
+      "BUCKET_ID": 464353002,
+      "LINE": 1,
+      "ADJUSTMENT_ID": 678816451,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_BKT_ADJ_TXS"
+      }
+    },
+    {
+      "BUCKET_ID": 464353002,
+      "LINE": 2,
+      "ADJUSTMENT_ID": 681354878,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_BKT_ADJ_TXS"
+      }
+    },
+    {
+      "BUCKET_ID": 464353002,
+      "LINE": 3,
+      "ADJUSTMENT_ID": 681354883,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_BKT_ADJ_TXS"
+      }
+    },
+    {
+      "BUCKET_ID": 464352999,
+      "LINE": 1,
+      "ADJUSTMENT_ID": 678816450,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_BKT_ADJ_TXS"
+      }
+    }
+  ]
+}

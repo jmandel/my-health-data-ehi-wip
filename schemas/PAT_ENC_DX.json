@@ -1,0 +1,118 @@
+{
+  "name": "PAT_ENC_DX",
+  "description": "The patient encounter diagnosis table contains one record for each diagnosis associated with each encounter level of service. This table will contain all diagnoses specified on the Order Summary screen.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "This is a numeric representation of the date of this encounter in your system. The integer portion of the number specifies the date of the encounter. The digits after the decimal point indicate multiple visits on one day."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the diagnosis within the encounter. This is the second column in the primary key and uniquely identifies this diagnosis on the encounter."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The contact date of the encounter associated with this diagnosis. Note: There may be multiple encounters on the same calendar date."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "A unique serial number for this encounter. This number is unique across all patients and encounters in the system."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "DX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the diagnosis record associated with the patient encounter. Note: This is NOT the ICD9 diagnosis code. It is an internal identifier that is typically not visible to a user."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ANNOTATION",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The annotation (description) text entered for this diagnosis by the clinical system user. This field is NULL if no annotation was entered during the encounter.  Order entry in clinical system limits this field to 160 characters."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "DX_QUALIFIER_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value for the diagnosis qualifier. This field is null if no qualifier was entered."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PRIMARY_DX_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is a one character field that indicates whether this diagnosis was the primary diagnosis for the encounter. If the diagnosis was the primary this field will have a value of 'Y' otherwise it will have a value of 'N'."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "COMMENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Any text comment associated with the encounter diagnosis. This field is NULL if no comment was provided."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "DX_CHRONIC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the chronic flag for a diagnosis.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "DX_STAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The stage for the diagnosis."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "DX_UNIQUE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Unique identifier given when a diagnosis is added to the encounter diagnosis list."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "DX_ED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Definitively identifies an encounter diagnosis (I EDG 18400) as being an ED clinical impression. This is important to differentiate ED diagnoses from diagnoses filed to the same item as in the IP setting."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "DX_LINK_PROB_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the problem ID of the linked problem."
+    }
+  ]
+}

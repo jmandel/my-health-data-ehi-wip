@@ -1,0 +1,141 @@
+{
+  "name": "MDL_MD_PRBLM_LIST",
+  "description": "The MDL_MD_PRBLM_LIST table enables you to report on Medication Problem List information.",
+  "primaryKey": [
+    {
+      "columnName": "MED_PRBLM_LIST_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "MED_PRBLM_LIST_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the med problem list record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "RECORD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Status of record:  1-inactive, 2-deleted, 4-hidden, 5-inactive and hidden, or 6-deleted and hidden.",
+      "entries": [
+        "Active",
+        "Inactive",
+        "Deleted",
+        "Inactive and Deleted",
+        "Hidden",
+        "Inactive and Hidden",
+        "Deleted and Hidden",
+        "Inactive Deleted and Hidden"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PATIENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Patient ID (EPT) with which this medication problem list (MDL) record is associated."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CRRNT_LONG_TERM_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The current long-term status of this medication problem list (MDL) record.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "MEDICATION_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "ID of the note (HNO). This note applies to all patient medications that share the same simple generic medication name."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SOURCE_PAT_CID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Source patient CID during patient merge in IntraConnect environments"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "MED_ADHER_SCORE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item stores the most recently calculated medication adherence score for this simple generic. The adherence score is not updated in real time. If you need to ensure a current score for reporting on a population of patients and certain simple generics, you can use a registry with metric HFP 82099-Medication Adherence Score Data."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "MED_ADHER_CONF_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Our confidence that the dispense data used to calculate the medication adherence score is a comprehensive list of dispenses.",
+      "entries": [
+        "Low",
+        "Moderate",
+        "High"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "MED_ADHER_ACC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item stores the instant that the current score is considered accurate. This is equivalent to the end of the period that we run medication adherence calculation."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "MED_ADHER_DAYSOWNED",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item stores the number of days a patient is supposed to take medications related to this simple generic. This item is accurate to the current medication adherence score."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "MED_ADHER_COVERED",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item stores the number of days that are covered by a patient's supply. Equivalently, it means the patient is being adherent on these days. This item is accurate with the current adherence score."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "MED_ADHER_HIDDEN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the reason that the score is hidden.",
+      "entries": [
+        "PRN",
+        "OTC",
+        "No Days Supplied"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "MED_ADHER_INST_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item stores the calculation instant of the current adherence score."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "MED_ADHER_STRT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item sets the start date of the Medication adherence score measurement period"
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "MED_ADHER_ORD_INST_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item stores the earliest order instant used when calculating the adherence score."
+    }
+  ]
+}

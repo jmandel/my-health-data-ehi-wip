@@ -1,0 +1,472 @@
+{
+  "$meta": {
+    "schemas": {
+      "HSP_CLP_CMS_LINE": {
+        "name": "HSP_CLP_CMS_LINE",
+        "description": "This table contains claim line information for claims associated with the hospital account/liability bucket. For uniform medical billing (UB) claims, this table contains pre-processing charge information, which is used in the creation of UB claim lines. Post-processing claim line data for UB claims is stored in the HSP_CLP_REV_CODE table. For CMS claims, this table contains the post-processing claim line data.",
+        "primaryKey": [
+          {
+            "columnName": "CLAIM_PRINT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "CLAIM_PRINT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID of the claim record associated with a single hospital account or liability bucket."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number of one of the multiple values associated with a specific group of data within this record."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "FROM_SERV_DT",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Stores the from date for a claim line. For services that do not span multiple days, the service date will be held here."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "POS_TYPE_PER_TX",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the place of service type per transaction."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "PROC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Stores the internal procedure ID."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "PROC_DESC",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the procedure description."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "HCPCS_CODES",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the Healthcare Common Procedure Coding System code for the claim line."
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "DX_MAP",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Comma-delimited list of diagnosis pointers for the claim line."
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "QUANTITY",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Stores the quantity associated with the claim line."
+          },
+          {
+            "ordinalPosition": 15,
+            "name": "OVRD_REV_CODE_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Stores the override revenue code."
+          },
+          {
+            "ordinalPosition": 16,
+            "name": "OVRD_REV_CODE_ID_REVENUE_CODE_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the revenue code."
+          },
+          {
+            "ordinalPosition": 17,
+            "name": "CHARGE_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Stores the charge amount for the claim line."
+          },
+          {
+            "ordinalPosition": 21,
+            "name": "PAYMENT_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Stores the payment amount for the claim line."
+          },
+          {
+            "ordinalPosition": 25,
+            "name": "PRINT_DESCRIPTIO_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This controls procedure description printing for professional claims.",
+            "entries": [
+              "No",
+              "Yes"
+            ]
+          },
+          {
+            "ordinalPosition": 26,
+            "name": "REV_LOCATION_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Revenue location for the line."
+          },
+          {
+            "ordinalPosition": 27,
+            "name": "DEPT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Department of service for the line."
+          },
+          {
+            "ordinalPosition": 33,
+            "name": "LINE_POS_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Place of service ID."
+          },
+          {
+            "ordinalPosition": 34,
+            "name": "CMS_CODE_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the code type for the transaction level Healthcare Common Procedure Coding System code override. If a procedure has been assigned to the line without setting the override, this column will be left blank.",
+            "entries": [
+              "CPT(R)",
+              "HCPCS",
+              "ADA",
+              "ASA",
+              "SKS",
+              "THL",
+              "CBV",
+              "VT",
+              "ZA",
+              "CCSD"
+            ]
+          },
+          {
+            "ordinalPosition": 42,
+            "name": "INVOICE_GRP_LN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The group line number on the invoice record that corresponds to the data in INVOICE_CLM_LN."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "HSP_CLP_CMS_LINE",
+            "target": "HSP_CLP_CMS_TX_PIECES",
+            "joinKeys": [
+              {
+                "source": "CLAIM_PRINT_ID",
+                "target": "CLAIM_PRINT_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_CLP_CMS_LINE",
+            "target": "HSP_CLP_UB_TX_PIECES",
+            "joinKeys": [
+              {
+                "source": "CLAIM_PRINT_ID",
+                "target": "CLAIM_PRINT_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "HSP_CLP_CMS_LINE",
+            "target": "HSP_CLAIM_DETAIL1",
+            "joinKeys": [
+              {
+                "source": "CLAIM_PRINT_ID",
+                "target": "CLAIM_PRINT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HSP_CLP_CMS_LINE": [
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "LINE": 1,
+      "FROM_SERV_DT": "2022-03-11 00:00:00",
+      "POS_TYPE_PER_TX": "22",
+      "PROC_ID": 79022,
+      "PROC_DESC": "HC ADL/SELF CARE TRN EA 15M",
+      "HCPCS_CODES": "97535",
+      "DX_MAP": "1,2",
+      "QUANTITY": 1,
+      "OVRD_REV_CODE_ID": 430,
+      "OVRD_REV_CODE_ID_REVENUE_CODE_NAME": "OCCUPATIONAL THERAPY - GENERAL CLASSIFICATION",
+      "CHARGE_AMT": 216.27,
+      "PAYMENT_AMT": 0,
+      "PRINT_DESCRIPTIO_YN": "N",
+      "REV_LOCATION_ID": 101401,
+      "DEPT_ID": 101401044,
+      "LINE_POS_ID": 101401,
+      "CMS_CODE_TYPE_C_NAME": "CPT(R)",
+      "INVOICE_GRP_LN": "1",
+      "$meta": {
+        "type": "HSP_CLP_CMS_LINE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "LINE": 3,
+      "FROM_SERV_DT": "2022-03-22 00:00:00",
+      "POS_TYPE_PER_TX": "22",
+      "PROC_ID": 79022,
+      "PROC_DESC": "HC ADL/SELF CARE TRN EA 15M",
+      "HCPCS_CODES": "97535",
+      "DX_MAP": "1,2",
+      "QUANTITY": 4,
+      "OVRD_REV_CODE_ID": 430,
+      "OVRD_REV_CODE_ID_REVENUE_CODE_NAME": "OCCUPATIONAL THERAPY - GENERAL CLASSIFICATION",
+      "CHARGE_AMT": 865.08,
+      "PAYMENT_AMT": 0,
+      "PRINT_DESCRIPTIO_YN": "N",
+      "REV_LOCATION_ID": 101401,
+      "DEPT_ID": 101401044,
+      "LINE_POS_ID": 101401,
+      "CMS_CODE_TYPE_C_NAME": "CPT(R)",
+      "INVOICE_GRP_LN": "3",
+      "$meta": {
+        "type": "HSP_CLP_CMS_LINE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "LINE": 1,
+      "FROM_SERV_DT": "2022-03-11 00:00:00",
+      "POS_TYPE_PER_TX": "22",
+      "PROC_ID": 79022,
+      "PROC_DESC": "HC ADL/SELF CARE TRN EA 15M",
+      "HCPCS_CODES": "97535",
+      "DX_MAP": "1",
+      "QUANTITY": 1,
+      "OVRD_REV_CODE_ID": 430,
+      "OVRD_REV_CODE_ID_REVENUE_CODE_NAME": "OCCUPATIONAL THERAPY - GENERAL CLASSIFICATION",
+      "CHARGE_AMT": 216.27,
+      "PAYMENT_AMT": 0,
+      "PRINT_DESCRIPTIO_YN": "N",
+      "REV_LOCATION_ID": 101401,
+      "DEPT_ID": 101401044,
+      "LINE_POS_ID": 101401,
+      "CMS_CODE_TYPE_C_NAME": "CPT(R)",
+      "$meta": {
+        "type": "HSP_CLP_CMS_LINE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "LINE": 1,
+      "FROM_SERV_DT": "2022-03-11 00:00:00",
+      "POS_TYPE_PER_TX": "22",
+      "PROC_ID": 79022,
+      "PROC_DESC": "HC ADL/SELF CARE TRN EA 15M",
+      "HCPCS_CODES": "97535",
+      "DX_MAP": "1",
+      "QUANTITY": 1,
+      "OVRD_REV_CODE_ID": 430,
+      "OVRD_REV_CODE_ID_REVENUE_CODE_NAME": "OCCUPATIONAL THERAPY - GENERAL CLASSIFICATION",
+      "CHARGE_AMT": 216.27,
+      "PAYMENT_AMT": 0,
+      "PRINT_DESCRIPTIO_YN": "N",
+      "REV_LOCATION_ID": 101401,
+      "DEPT_ID": 101401044,
+      "LINE_POS_ID": 101401,
+      "CMS_CODE_TYPE_C_NAME": "CPT(R)",
+      "$meta": {
+        "type": "HSP_CLP_CMS_LINE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "LINE": 3,
+      "FROM_SERV_DT": "2022-03-22 00:00:00",
+      "POS_TYPE_PER_TX": "22",
+      "PROC_ID": 79022,
+      "PROC_DESC": "HC ADL/SELF CARE TRN EA 15M",
+      "HCPCS_CODES": "97535",
+      "DX_MAP": "1",
+      "QUANTITY": 4,
+      "OVRD_REV_CODE_ID": 430,
+      "OVRD_REV_CODE_ID_REVENUE_CODE_NAME": "OCCUPATIONAL THERAPY - GENERAL CLASSIFICATION",
+      "CHARGE_AMT": 865.08,
+      "PAYMENT_AMT": 0,
+      "PRINT_DESCRIPTIO_YN": "N",
+      "REV_LOCATION_ID": 101401,
+      "DEPT_ID": 101401044,
+      "LINE_POS_ID": 101401,
+      "CMS_CODE_TYPE_C_NAME": "CPT(R)",
+      "$meta": {
+        "type": "HSP_CLP_CMS_LINE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "LINE": 1,
+      "FROM_SERV_DT": "2022-03-11 00:00:00",
+      "POS_TYPE_PER_TX": "22",
+      "PROC_ID": 79022,
+      "PROC_DESC": "HC ADL/SELF CARE TRN EA 15M",
+      "HCPCS_CODES": "97535",
+      "DX_MAP": "1,2",
+      "QUANTITY": 1,
+      "OVRD_REV_CODE_ID": 430,
+      "OVRD_REV_CODE_ID_REVENUE_CODE_NAME": "OCCUPATIONAL THERAPY - GENERAL CLASSIFICATION",
+      "CHARGE_AMT": 216.27,
+      "PAYMENT_AMT": 0,
+      "PRINT_DESCRIPTIO_YN": "N",
+      "REV_LOCATION_ID": 101401,
+      "DEPT_ID": 101401044,
+      "LINE_POS_ID": 101401,
+      "CMS_CODE_TYPE_C_NAME": "CPT(R)",
+      "$meta": {
+        "type": "HSP_CLP_CMS_LINE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "LINE": 3,
+      "FROM_SERV_DT": "2022-03-22 00:00:00",
+      "POS_TYPE_PER_TX": "22",
+      "PROC_ID": 79022,
+      "PROC_DESC": "HC ADL/SELF CARE TRN EA 15M",
+      "HCPCS_CODES": "97535",
+      "DX_MAP": "1,2",
+      "QUANTITY": 4,
+      "OVRD_REV_CODE_ID": 430,
+      "OVRD_REV_CODE_ID_REVENUE_CODE_NAME": "OCCUPATIONAL THERAPY - GENERAL CLASSIFICATION",
+      "CHARGE_AMT": 865.08,
+      "PAYMENT_AMT": 0,
+      "PRINT_DESCRIPTIO_YN": "N",
+      "REV_LOCATION_ID": 101401,
+      "DEPT_ID": 101401044,
+      "LINE_POS_ID": 101401,
+      "CMS_CODE_TYPE_C_NAME": "CPT(R)",
+      "$meta": {
+        "type": "HSP_CLP_CMS_LINE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "LINE": 2,
+      "FROM_SERV_DT": "2022-03-11 00:00:00",
+      "POS_TYPE_PER_TX": "22",
+      "PROC_ID": 87356,
+      "PROC_DESC": "HC OT EVAL LOW COMPLEX",
+      "HCPCS_CODES": "97165",
+      "DX_MAP": "1,2",
+      "QUANTITY": 1,
+      "OVRD_REV_CODE_ID": 434,
+      "OVRD_REV_CODE_ID_REVENUE_CODE_NAME": "OCCUPATIONAL THERAPY - EVALUATION OR REEVALUATION",
+      "CHARGE_AMT": 557.47,
+      "PAYMENT_AMT": 0,
+      "PRINT_DESCRIPTIO_YN": "N",
+      "REV_LOCATION_ID": 101401,
+      "DEPT_ID": 101401044,
+      "LINE_POS_ID": 101401,
+      "CMS_CODE_TYPE_C_NAME": "CPT(R)",
+      "INVOICE_GRP_LN": "2",
+      "$meta": {
+        "type": "HSP_CLP_CMS_LINE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "LINE": 2,
+      "FROM_SERV_DT": "2022-03-11 00:00:00",
+      "POS_TYPE_PER_TX": "22",
+      "PROC_ID": 87356,
+      "PROC_DESC": "HC OT EVAL LOW COMPLEX",
+      "HCPCS_CODES": "97165",
+      "DX_MAP": "1",
+      "QUANTITY": 1,
+      "OVRD_REV_CODE_ID": 434,
+      "OVRD_REV_CODE_ID_REVENUE_CODE_NAME": "OCCUPATIONAL THERAPY - EVALUATION OR REEVALUATION",
+      "CHARGE_AMT": 557.47,
+      "PAYMENT_AMT": 0,
+      "PRINT_DESCRIPTIO_YN": "N",
+      "REV_LOCATION_ID": 101401,
+      "DEPT_ID": 101401044,
+      "LINE_POS_ID": 101401,
+      "CMS_CODE_TYPE_C_NAME": "CPT(R)",
+      "$meta": {
+        "type": "HSP_CLP_CMS_LINE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "LINE": 2,
+      "FROM_SERV_DT": "2022-03-11 00:00:00",
+      "POS_TYPE_PER_TX": "22",
+      "PROC_ID": 87356,
+      "PROC_DESC": "HC OT EVAL LOW COMPLEX",
+      "HCPCS_CODES": "97165",
+      "DX_MAP": "1",
+      "QUANTITY": 1,
+      "OVRD_REV_CODE_ID": 434,
+      "OVRD_REV_CODE_ID_REVENUE_CODE_NAME": "OCCUPATIONAL THERAPY - EVALUATION OR REEVALUATION",
+      "CHARGE_AMT": 557.47,
+      "PAYMENT_AMT": 0,
+      "PRINT_DESCRIPTIO_YN": "N",
+      "REV_LOCATION_ID": 101401,
+      "DEPT_ID": 101401044,
+      "LINE_POS_ID": 101401,
+      "CMS_CODE_TYPE_C_NAME": "CPT(R)",
+      "$meta": {
+        "type": "HSP_CLP_CMS_LINE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "LINE": 2,
+      "FROM_SERV_DT": "2022-03-11 00:00:00",
+      "POS_TYPE_PER_TX": "22",
+      "PROC_ID": 87356,
+      "PROC_DESC": "HC OT EVAL LOW COMPLEX",
+      "HCPCS_CODES": "97165",
+      "DX_MAP": "1,2",
+      "QUANTITY": 1,
+      "OVRD_REV_CODE_ID": 434,
+      "OVRD_REV_CODE_ID_REVENUE_CODE_NAME": "OCCUPATIONAL THERAPY - EVALUATION OR REEVALUATION",
+      "CHARGE_AMT": 557.47,
+      "PAYMENT_AMT": 0,
+      "PRINT_DESCRIPTIO_YN": "N",
+      "REV_LOCATION_ID": 101401,
+      "DEPT_ID": 101401044,
+      "LINE_POS_ID": 101401,
+      "CMS_CODE_TYPE_C_NAME": "CPT(R)",
+      "$meta": {
+        "type": "HSP_CLP_CMS_LINE"
+      }
+    }
+  ]
+}

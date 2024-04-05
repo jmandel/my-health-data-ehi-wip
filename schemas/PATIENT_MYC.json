@@ -1,0 +1,183 @@
+{
+  "name": "PATIENT_MYC",
+  "description": "This table contains web-based chart system-related data items that are stored in the Patient (EPT) master file. These items generally relate to web-based chart system account activation and account status, and also include the last verification date for different types of patient information that can be verified through the web-based chart system.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PAT_ACCESS_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient's current web-based chart system access code. This value is checked when a patient attempts to log in to the web-based chart system for the first time."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ACCESS_CODE_TM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This is a timestamp indicating when the access code in field PAT_ACCESS_CODE was created."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_ACCESS_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The access code status category number for the patient. 0 corresponds to \"Not Used\". 1 corresponds to \"Used\".",
+      "entries": [
+        "Not Used",
+        "Used"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "MYCHART_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The web-based chart system status category number for the patient.",
+      "entries": [
+        "No Status",
+        "Activated",
+        "Inactivated",
+        "Pending Activation",
+        "Non Standard MyChart Status",
+        "Patient Declined",
+        "Activation Code Generated, but Disabled"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ACCESSCODE_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The access code generation status category number for the patient.",
+      "entries": [
+        "force",
+        "Nonexist",
+        "used",
+        "expired",
+        "okexist"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "DEACT_ACCT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the patient's web-based chart system account is deactivated. Y indicates that the account is deactivated. N or a null value indicates that the account is active.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CODE_FOR_PROXY_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the access code was generated for a proxy to use on behalf of the patient. Y indicates that the access code was generated. N or a null value indicates that the access code was not generated."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "MYCHART_EXP_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The expiration date (if one has been set) of the web-based chart system account. When this date is reached, the web-based chart system user is no longer allowed to login to the system."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "MYPT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the web-based chart system patient account."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "LAST_MERGE_FROM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If this patient record is the destination of a previous merging, and the source record has web-based chart system activity, then this item stores the time instant of the merging."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ALT_WEBSTE_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The alternate website activation status category number for the patient."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "MYC_PAT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The web-based chart system patient type category number for the patient.",
+      "entries": [
+        "MyChart Only Patient for Proxy Access"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "DEM_VERIF_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date of last demographics verification by patient or his/her proxy from MyChart."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "INS_VERIF_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date of last insurance verification by patient or his/her proxy from MyChart"
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "R_E_L_PAT_VERIF_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when race, ethnicity, and language information was last verified by the patient online using the patient portal."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PCP_PAT_VERIF_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date that patients last used Welcome to verify and/or update their primary care provider."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "HCA_PAT_VERIF_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date that the patient last used MyChart or Welcome to verify and/or update their health care agents."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PAT_MYC3_ENR_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Returns the status of enrollment in MyChart Care Companion.",
+      "entries": [
+        "Enrolled"
+      ]
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "LAST_LABS_VIEW_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The last time when the patient or proxies viewed patient's result list (including IP results) in MyChart."
+    }
+  ]
+}

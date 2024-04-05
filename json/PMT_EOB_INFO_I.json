@@ -1,0 +1,867 @@
+{
+  "$meta": {
+    "schemas": {
+      "PMT_EOB_INFO_I": {
+        "name": "PMT_EOB_INFO_I",
+        "description": "The PMT_EOB_INFO_I table contains the Explanation of Benefits information given a transaction ID. It contains data that is not multiple response given a transaction ID.",
+        "primaryKey": [
+          {
+            "columnName": "TX_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "TX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier associated with the transaction for this row."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "CVD_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The covered amount for that transaction."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "NONCVD_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The non-covered amount for that transaction."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "DED_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The deducted amount for that transaction."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "COINS_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The coinsurance amount for that transaction."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "PAID_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The paid amount for that transaction."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "ICN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The internal control number for that transaction."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "DENIAL_CODES",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The denial code for the transaction."
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "PEOB_ACTION_NAME_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The Explanation Of Benefits action category ID for�the transaction.",
+            "entries": [
+              "Next Responsible Party",
+              "Resubmit Insurance"
+            ]
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "ACTION_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The action amount for this transaction."
+          },
+          {
+            "ordinalPosition": 15,
+            "name": "ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The Account Id of the transfer to self-pay action or next responsible party to self-pay action performed in insurance payment posting."
+          },
+          {
+            "ordinalPosition": 17,
+            "name": "ACTION_ASN_NAME_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The action assignment category ID for the transaction.",
+            "entries": [
+              "Yes",
+              "No",
+              "Yes, No Claim",
+              "No, Submit Claim",
+              "Yes, Cross Over"
+            ]
+          },
+          {
+            "ordinalPosition": 18,
+            "name": "COMMENTS",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The comments associated the Explanation of Benefits for a transaction."
+          },
+          {
+            "ordinalPosition": 19,
+            "name": "INFO_LINES",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The info lines in PMT_EOB_INFO_II."
+          },
+          {
+            "ordinalPosition": 22,
+            "name": "ACTION_EOB",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The Explanation of Benefits code for actions (next responsible party or resubmit) in payment posting associated with the transaction."
+          },
+          {
+            "ordinalPosition": 23,
+            "name": "INVOICE_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The invoice number for the transaction."
+          },
+          {
+            "ordinalPosition": 25,
+            "name": "TX_MATCH_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date when the charge was matched to the payment."
+          },
+          {
+            "ordinalPosition": 27,
+            "name": "NON_PRIMARY_SYS_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates whether the system determines this payment transaction as a non-primary payment at the time of payment posting based on crossover information, invoice information, and previous payments information.�Y indicates the system determines this payment transaction as a non-primary payment at the time of payment posting based on crossover information, invoice information, and previous payments information.�A null value indicates the system does not determine this payment transaction as a non-primary payment at the time of payment posting based on crossover information, invoice information, and previous payments information.",
+            "entries": [
+              "No",
+              "Yes"
+            ]
+          },
+          {
+            "ordinalPosition": 28,
+            "name": "NON_PRIMARY_USR_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates whether the user determines this payment transaction as a non-primary payment at the time of payment posting. The value of the Non-primary posting (user) is usually the same as the system determined non-primary posting value. However, users can override the system determined non-primary posting value based on the EOB information.  Y indicates the user determines this payment transaction as a non-primary payment at the time of payment posting."
+          },
+          {
+            "ordinalPosition": 29,
+            "name": "PEOB_ACTION_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates the Next Responsible Party, Resubmit Insurance or Transfer to Self-Pay action taken on the charge.",
+            "entries": [
+              "Next Responsible Party",
+              "Resubmit Insurance",
+              "Transfer to Self-Pay"
+            ]
+          },
+          {
+            "ordinalPosition": 30,
+            "name": "INV_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Invoice ID that is associated with one payment Explanation  of Benefits line. Use this field along with INV_LINE to link to the proper record in the INV_CLM_LN_ADDL table."
+          },
+          {
+            "ordinalPosition": 31,
+            "name": "INV_LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "Line count of one invoice record for internal calculation use. It is different from claim form line. Use this field along with INV_ID to link to the associated record in the INV_CLM_LN_ADDL table."
+          },
+          {
+            "ordinalPosition": 32,
+            "name": "NO_MATCHED_CHGS_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column is set to Y when all charges associated with this EOB line have been unmatched from the payment."
+          },
+          {
+            "ordinalPosition": 33,
+            "name": "PEOB_ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID of the guarantor on the invoice associated with the payment. If there is no associated invoice, this column stores the ID of the guarantor from the charge."
+          },
+          {
+            "ordinalPosition": 34,
+            "name": "PEOB_LOC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID of the revenue location on the invoice associated with the payment. If there is no associated invoice, this column stores the ID of the revenue location from the charge transaction."
+          },
+          {
+            "ordinalPosition": 35,
+            "name": "PEOB_POS_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID of the Place of Service on the invoice associated with the payment. If there is no associated invoice, this column stores the ID of the Place of Service from the charge."
+          },
+          {
+            "ordinalPosition": 36,
+            "name": "PEOB_DEPT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID of the department on the invoice associated with the payment. If there is no associated invoice, this column stores the ID of the department from the charge."
+          },
+          {
+            "ordinalPosition": 37,
+            "name": "PEOB_BILL_PROV_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The ID of the billing provider on the invoice associated with the payment. If there is no associated invoice, this column stores the ID of the billing provider from the charge."
+          },
+          {
+            "ordinalPosition": 38,
+            "name": "PEOB_PLAN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID of the benefit plan on the invoice associated with the payment. If there is no associated invoice, this column will be blank."
+          },
+          {
+            "ordinalPosition": 39,
+            "name": "PEOB_PROC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID of the procedure on the invoice associated with the payment. If there is no associated invoice, this column stores the ID of the procedure from the charge transaction."
+          },
+          {
+            "ordinalPosition": 40,
+            "name": "PEOB_MTCH_CHG_TX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID of the first matching charge transaction on the invoice associated with the payment. If there is no associated invoice, this column stores the ID of the charge from the Explanation of Benefits master file."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "PMT_EOB_INFO_I",
+            "target": "SVC_PMT_HISTORY",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "PMT_EOB_INFO_I",
+            "target": "ARPB_TX_MODERATE",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PMT_EOB_INFO_I": [
+    {
+      "TX_ID": 317165897,
+      "LINE": 1,
+      "CVD_AMT": 0,
+      "NONCVD_AMT": 315,
+      "PAID_AMT": 0,
+      "ICN": "2022341BT5497",
+      "DENIAL_CODES": "16",
+      "ACTION_ASN_NAME_C_NAME": "No",
+      "INFO_LINES": "1,2",
+      "INVOICE_NUM": "L1007201490",
+      "TX_MATCH_DATE": "2022-12-20 00:00:00",
+      "NON_PRIMARY_SYS_YN": "N",
+      "NON_PRIMARY_USR_YN": "N",
+      "INV_ID": 58319567,
+      "INV_LINE": 1,
+      "NO_MATCHED_CHGS_YN": "N",
+      "PEOB_ACCOUNT_ID": 1810018166,
+      "PEOB_LOC_ID": 1700801,
+      "PEOB_POS_ID": 1700801,
+      "PEOB_DEPT_ID": 1700801002,
+      "PEOB_BILL_PROV_ID": "144590",
+      "PEOB_PLAN_ID": 130204,
+      "PEOB_PROC_ID": 23662,
+      "PEOB_MTCH_CHG_TX_ID": 315026147,
+      "$meta": {
+        "type": "PMT_EOB_INFO_I"
+      }
+    },
+    {
+      "TX_ID": 356659643,
+      "LINE": 1,
+      "CVD_AMT": 7.19,
+      "NONCVD_AMT": 42.81,
+      "PAID_AMT": 7.19,
+      "ICN": "2023277DI2086",
+      "ACTION_ASN_NAME_C_NAME": "No",
+      "INFO_LINES": "1",
+      "INVOICE_NUM": "L1007985430",
+      "TX_MATCH_DATE": "2023-10-18 00:00:00",
+      "NON_PRIMARY_SYS_YN": "N",
+      "NON_PRIMARY_USR_YN": "N",
+      "INV_ID": 65200403,
+      "INV_LINE": 1,
+      "NO_MATCHED_CHGS_YN": "N",
+      "PEOB_ACCOUNT_ID": 1810018166,
+      "PEOB_LOC_ID": 1700801,
+      "PEOB_POS_ID": 1700801,
+      "PEOB_DEPT_ID": 1700801005,
+      "PEOB_BILL_PROV_ID": "144590",
+      "PEOB_PLAN_ID": 130204,
+      "PEOB_PROC_ID": 20302,
+      "PEOB_MTCH_CHG_TX_ID": 354336208,
+      "$meta": {
+        "type": "PMT_EOB_INFO_I"
+      }
+    },
+    {
+      "TX_ID": 356659643,
+      "LINE": 2,
+      "CVD_AMT": 9.92,
+      "NONCVD_AMT": 110.08,
+      "PAID_AMT": 9.92,
+      "ICN": "2023277DI2086",
+      "ACTION_ASN_NAME_C_NAME": "No",
+      "INFO_LINES": "2",
+      "INVOICE_NUM": "L1007985430",
+      "TX_MATCH_DATE": "2023-10-18 00:00:00",
+      "NON_PRIMARY_SYS_YN": "N",
+      "NON_PRIMARY_USR_YN": "N",
+      "INV_ID": 65200403,
+      "INV_LINE": 2,
+      "NO_MATCHED_CHGS_YN": "N",
+      "PEOB_ACCOUNT_ID": 1810018166,
+      "PEOB_LOC_ID": 1700801,
+      "PEOB_POS_ID": 1700801,
+      "PEOB_DEPT_ID": 1700801005,
+      "PEOB_BILL_PROV_ID": "144590",
+      "PEOB_PLAN_ID": 130204,
+      "PEOB_PROC_ID": 19732,
+      "PEOB_MTCH_CHG_TX_ID": 354336209,
+      "$meta": {
+        "type": "PMT_EOB_INFO_I"
+      }
+    },
+    {
+      "TX_ID": 356659643,
+      "LINE": 3,
+      "CVD_AMT": 2.14,
+      "NONCVD_AMT": 30.86,
+      "PAID_AMT": 2.14,
+      "ICN": "2023277DI2086",
+      "ACTION_ASN_NAME_C_NAME": "No",
+      "INFO_LINES": "3",
+      "INVOICE_NUM": "L1007985430",
+      "TX_MATCH_DATE": "2023-10-18 00:00:00",
+      "NON_PRIMARY_SYS_YN": "N",
+      "NON_PRIMARY_USR_YN": "N",
+      "INV_ID": 65200403,
+      "INV_LINE": 3,
+      "NO_MATCHED_CHGS_YN": "N",
+      "PEOB_ACCOUNT_ID": 1810018166,
+      "PEOB_LOC_ID": 1700801,
+      "PEOB_POS_ID": 1700801,
+      "PEOB_DEPT_ID": 1700801005,
+      "PEOB_BILL_PROV_ID": "144590",
+      "PEOB_PLAN_ID": 130204,
+      "PEOB_PROC_ID": 13199,
+      "PEOB_MTCH_CHG_TX_ID": 354336210,
+      "$meta": {
+        "type": "PMT_EOB_INFO_I"
+      }
+    },
+    {
+      "TX_ID": 356659570,
+      "LINE": 1,
+      "CVD_AMT": 21,
+      "NONCVD_AMT": 33,
+      "PAID_AMT": 21,
+      "ICN": "2023278BR8828",
+      "ACTION_ASN_NAME_C_NAME": "No",
+      "INFO_LINES": "1",
+      "INVOICE_NUM": "L1007990080",
+      "TX_MATCH_DATE": "2023-10-18 00:00:00",
+      "NON_PRIMARY_SYS_YN": "N",
+      "NON_PRIMARY_USR_YN": "N",
+      "INV_ID": 65226259,
+      "INV_LINE": 1,
+      "NO_MATCHED_CHGS_YN": "N",
+      "PEOB_ACCOUNT_ID": 1810018166,
+      "PEOB_LOC_ID": 1700801,
+      "PEOB_POS_ID": 1700801,
+      "PEOB_DEPT_ID": 1700801002,
+      "PEOB_BILL_PROV_ID": "144590",
+      "PEOB_PLAN_ID": 130204,
+      "PEOB_PROC_ID": 96431,
+      "PEOB_MTCH_CHG_TX_ID": 354520699,
+      "$meta": {
+        "type": "PMT_EOB_INFO_I"
+      }
+    },
+    {
+      "TX_ID": 356659570,
+      "LINE": 2,
+      "CVD_AMT": 17.85,
+      "NONCVD_AMT": 42.15,
+      "PAID_AMT": 17.85,
+      "ICN": "2023278BR8828",
+      "ACTION_ASN_NAME_C_NAME": "No",
+      "INFO_LINES": "2",
+      "INVOICE_NUM": "L1007990080",
+      "TX_MATCH_DATE": "2023-10-18 00:00:00",
+      "NON_PRIMARY_SYS_YN": "N",
+      "NON_PRIMARY_USR_YN": "N",
+      "INV_ID": 65226259,
+      "INV_LINE": 2,
+      "NO_MATCHED_CHGS_YN": "N",
+      "PEOB_ACCOUNT_ID": 1810018166,
+      "PEOB_LOC_ID": 1700801,
+      "PEOB_POS_ID": 1700801,
+      "PEOB_DEPT_ID": 1700801002,
+      "PEOB_BILL_PROV_ID": "144590",
+      "PEOB_PLAN_ID": 130204,
+      "PEOB_PROC_ID": 22128,
+      "PEOB_MTCH_CHG_TX_ID": 354520701,
+      "$meta": {
+        "type": "PMT_EOB_INFO_I"
+      }
+    },
+    {
+      "TX_ID": 330455164,
+      "LINE": 1,
+      "CVD_AMT": 139.97,
+      "NONCVD_AMT": 86.03,
+      "DED_AMT": 139.97,
+      "PAID_AMT": 0,
+      "ICN": "2023072DV0514",
+      "PEOB_ACTION_NAME_C_NAME": "Next Responsible Party",
+      "ACTION_AMT": 139.97,
+      "ACCOUNT_ID": 1810018166,
+      "ACTION_ASN_NAME_C_NAME": "No",
+      "INFO_LINES": "1,2",
+      "ACTION_EOB": "1",
+      "INVOICE_NUM": "L1007449820",
+      "TX_MATCH_DATE": "2023-03-28 00:00:00",
+      "NON_PRIMARY_SYS_YN": "N",
+      "NON_PRIMARY_USR_YN": "N",
+      "PEOB_ACTION_C_NAME": "Next Responsible Party",
+      "INV_ID": 60492688,
+      "INV_LINE": 1,
+      "NO_MATCHED_CHGS_YN": "N",
+      "PEOB_ACCOUNT_ID": 1810018166,
+      "PEOB_LOC_ID": 1700801,
+      "PEOB_POS_ID": 1700801,
+      "PEOB_DEPT_ID": 1700801002,
+      "PEOB_BILL_PROV_ID": "144590",
+      "PEOB_PLAN_ID": 130204,
+      "PEOB_PROC_ID": 23660,
+      "PEOB_MTCH_CHG_TX_ID": 328283034,
+      "$meta": {
+        "type": "PMT_EOB_INFO_I"
+      }
+    },
+    {
+      "TX_ID": 304446678,
+      "LINE": 1,
+      "CVD_AMT": 209.89,
+      "NONCVD_AMT": 84.11,
+      "PAID_AMT": 209.89,
+      "ICN": "2022264BT5584",
+      "ACTION_ASN_NAME_C_NAME": "No",
+      "INFO_LINES": "1",
+      "INVOICE_NUM": "L1006928390",
+      "TX_MATCH_DATE": "2022-10-04 00:00:00",
+      "NON_PRIMARY_SYS_YN": "N",
+      "NON_PRIMARY_USR_YN": "N",
+      "INV_ID": 56467923,
+      "INV_LINE": 1,
+      "NO_MATCHED_CHGS_YN": "N",
+      "PEOB_ACCOUNT_ID": 1810018166,
+      "PEOB_LOC_ID": 1700801,
+      "PEOB_POS_ID": 1700801,
+      "PEOB_DEPT_ID": 1700801002,
+      "PEOB_BILL_PROV_ID": "144590",
+      "PEOB_PLAN_ID": 130204,
+      "PEOB_PROC_ID": 23868,
+      "PEOB_MTCH_CHG_TX_ID": 302543306,
+      "$meta": {
+        "type": "PMT_EOB_INFO_I"
+      }
+    },
+    {
+      "TX_ID": 304446678,
+      "LINE": 2,
+      "CVD_AMT": 69.99,
+      "NONCVD_AMT": 152.01,
+      "COINS_AMT": 6.99,
+      "PAID_AMT": 63,
+      "ICN": "2022264BT5584",
+      "PEOB_ACTION_NAME_C_NAME": "Next Responsible Party",
+      "ACTION_AMT": 6.99,
+      "ACCOUNT_ID": 1810018166,
+      "ACTION_ASN_NAME_C_NAME": "No",
+      "INFO_LINES": "2,3",
+      "ACTION_EOB": "2",
+      "INVOICE_NUM": "L1006928390",
+      "TX_MATCH_DATE": "2022-10-04 00:00:00",
+      "NON_PRIMARY_SYS_YN": "N",
+      "NON_PRIMARY_USR_YN": "N",
+      "PEOB_ACTION_C_NAME": "Next Responsible Party",
+      "INV_ID": 56467923,
+      "INV_LINE": 2,
+      "NO_MATCHED_CHGS_YN": "N",
+      "PEOB_ACCOUNT_ID": 1810018166,
+      "PEOB_LOC_ID": 1700801,
+      "PEOB_POS_ID": 1700801,
+      "PEOB_DEPT_ID": 1700801002,
+      "PEOB_BILL_PROV_ID": "144590",
+      "PEOB_PLAN_ID": 130204,
+      "PEOB_PROC_ID": 23660,
+      "PEOB_MTCH_CHG_TX_ID": 302543307,
+      "$meta": {
+        "type": "PMT_EOB_INFO_I"
+      }
+    },
+    {
+      "TX_ID": 304446127,
+      "LINE": 1,
+      "CVD_AMT": 6.26,
+      "NONCVD_AMT": 133.74,
+      "COINS_AMT": 0.62,
+      "PAID_AMT": 5.64,
+      "ICN": "2022266BM7967",
+      "PEOB_ACTION_NAME_C_NAME": "Next Responsible Party",
+      "ACTION_AMT": 0.62,
+      "ACCOUNT_ID": 1810018166,
+      "ACTION_ASN_NAME_C_NAME": "No",
+      "INFO_LINES": "1,2",
+      "ACTION_EOB": "2",
+      "INVOICE_NUM": "L1006942840",
+      "TX_MATCH_DATE": "2022-10-04 00:00:00",
+      "NON_PRIMARY_SYS_YN": "N",
+      "NON_PRIMARY_USR_YN": "N",
+      "PEOB_ACTION_C_NAME": "Next Responsible Party",
+      "INV_ID": 56523114,
+      "INV_LINE": 1,
+      "NO_MATCHED_CHGS_YN": "N",
+      "PEOB_ACCOUNT_ID": 1810018166,
+      "PEOB_LOC_ID": 1700801,
+      "PEOB_POS_ID": 1700801,
+      "PEOB_DEPT_ID": 1700801005,
+      "PEOB_BILL_PROV_ID": "144590",
+      "PEOB_PLAN_ID": 130204,
+      "PEOB_PROC_ID": 19722,
+      "PEOB_MTCH_CHG_TX_ID": 302968774,
+      "$meta": {
+        "type": "PMT_EOB_INFO_I"
+      }
+    },
+    {
+      "TX_ID": 304446127,
+      "LINE": 2,
+      "CVD_AMT": 2.14,
+      "NONCVD_AMT": 30.86,
+      "COINS_AMT": 0.21,
+      "PAID_AMT": 1.93,
+      "ICN": "2022266BM7967",
+      "PEOB_ACTION_NAME_C_NAME": "Next Responsible Party",
+      "ACTION_AMT": 0.21,
+      "ACCOUNT_ID": 1810018166,
+      "ACTION_ASN_NAME_C_NAME": "No",
+      "INFO_LINES": "3,4",
+      "ACTION_EOB": "2",
+      "INVOICE_NUM": "L1006942840",
+      "TX_MATCH_DATE": "2022-10-04 00:00:00",
+      "NON_PRIMARY_SYS_YN": "N",
+      "NON_PRIMARY_USR_YN": "N",
+      "PEOB_ACTION_C_NAME": "Next Responsible Party",
+      "INV_ID": 56523114,
+      "INV_LINE": 2,
+      "NO_MATCHED_CHGS_YN": "N",
+      "PEOB_ACCOUNT_ID": 1810018166,
+      "PEOB_LOC_ID": 1700801,
+      "PEOB_POS_ID": 1700801,
+      "PEOB_DEPT_ID": 1700801005,
+      "PEOB_BILL_PROV_ID": "144590",
+      "PEOB_PLAN_ID": 130204,
+      "PEOB_PROC_ID": 13199,
+      "PEOB_MTCH_CHG_TX_ID": 302968775,
+      "$meta": {
+        "type": "PMT_EOB_INFO_I"
+      }
+    },
+    {
+      "TX_ID": 192508079,
+      "LINE": 1,
+      "CVD_AMT": 133.29,
+      "NONCVD_AMT": 31.71,
+      "DED_AMT": 133.29,
+      "PAID_AMT": 0,
+      "ICN": "2020010DE9628",
+      "PEOB_ACTION_NAME_C_NAME": "Next Responsible Party",
+      "ACTION_AMT": 133.29,
+      "ACCOUNT_ID": 1810018166,
+      "ACTION_ASN_NAME_C_NAME": "No",
+      "INFO_LINES": "1,2",
+      "ACTION_EOB": "1",
+      "INVOICE_NUM": "L1004236460",
+      "TX_MATCH_DATE": "2020-01-27 00:00:00",
+      "NON_PRIMARY_SYS_YN": "N",
+      "NON_PRIMARY_USR_YN": "N",
+      "PEOB_ACTION_C_NAME": "Next Responsible Party",
+      "INV_ID": 35267927,
+      "INV_LINE": 1,
+      "NO_MATCHED_CHGS_YN": "N",
+      "PEOB_ACCOUNT_ID": 1810018166,
+      "PEOB_LOC_ID": 1700801,
+      "PEOB_POS_ID": 1700801,
+      "PEOB_DEPT_ID": 1700801002,
+      "PEOB_BILL_PROV_ID": "802011",
+      "PEOB_PLAN_ID": 130204,
+      "PEOB_PROC_ID": 23660,
+      "PEOB_MTCH_CHG_TX_ID": 190635377,
+      "$meta": {
+        "type": "PMT_EOB_INFO_I"
+      }
+    },
+    {
+      "TX_ID": 132295842,
+      "LINE": 1,
+      "CVD_AMT": 230.73,
+      "NONCVD_AMT": 104.27,
+      "PAID_AMT": 230.73,
+      "ICN": "2018241CN0502",
+      "ACTION_ASN_NAME_C_NAME": "No",
+      "INFO_LINES": "1",
+      "INVOICE_NUM": "L1002834030",
+      "TX_MATCH_DATE": "2018-09-10 00:00:00",
+      "NON_PRIMARY_SYS_YN": "N",
+      "NON_PRIMARY_USR_YN": "N",
+      "INV_ID": 24873734,
+      "INV_LINE": 1,
+      "NO_MATCHED_CHGS_YN": "N",
+      "PEOB_ACCOUNT_ID": 1810018166,
+      "PEOB_LOC_ID": 1700801,
+      "PEOB_POS_ID": 1700801,
+      "PEOB_DEPT_ID": 1700801002,
+      "PEOB_BILL_PROV_ID": "802011",
+      "PEOB_PLAN_ID": 130204,
+      "PEOB_PROC_ID": 23868,
+      "PEOB_MTCH_CHG_TX_ID": 129124339,
+      "$meta": {
+        "type": "PMT_EOB_INFO_I"
+      }
+    },
+    {
+      "TX_ID": 132295742,
+      "LINE": 1,
+      "CVD_AMT": 19.52,
+      "NONCVD_AMT": 94.48,
+      "PAID_AMT": 19.52,
+      "ICN": "2018241CN0503",
+      "ACTION_ASN_NAME_C_NAME": "No",
+      "INFO_LINES": "1",
+      "INVOICE_NUM": "L1002834040",
+      "TX_MATCH_DATE": "2018-09-10 00:00:00",
+      "NON_PRIMARY_SYS_YN": "N",
+      "NON_PRIMARY_USR_YN": "N",
+      "INV_ID": 24873736,
+      "INV_LINE": 1,
+      "NO_MATCHED_CHGS_YN": "N",
+      "PEOB_ACCOUNT_ID": 1810018166,
+      "PEOB_LOC_ID": 1700801,
+      "PEOB_POS_ID": 1700801,
+      "PEOB_DEPT_ID": 1700801005,
+      "PEOB_BILL_PROV_ID": "802011",
+      "PEOB_PLAN_ID": 130204,
+      "PEOB_PROC_ID": 19732,
+      "PEOB_MTCH_CHG_TX_ID": 129124216,
+      "$meta": {
+        "type": "PMT_EOB_INFO_I"
+      }
+    },
+    {
+      "TX_ID": 132295742,
+      "LINE": 2,
+      "CVD_AMT": 4,
+      "NONCVD_AMT": 33,
+      "PAID_AMT": 4,
+      "ICN": "2018241CN0503",
+      "ACTION_ASN_NAME_C_NAME": "No",
+      "INFO_LINES": "2",
+      "INVOICE_NUM": "L1002834040",
+      "TX_MATCH_DATE": "2018-09-10 00:00:00",
+      "NON_PRIMARY_SYS_YN": "N",
+      "NON_PRIMARY_USR_YN": "N",
+      "INV_ID": 24873736,
+      "INV_LINE": 2,
+      "NO_MATCHED_CHGS_YN": "N",
+      "PEOB_ACCOUNT_ID": 1810018166,
+      "PEOB_LOC_ID": 1700801,
+      "PEOB_POS_ID": 1700801,
+      "PEOB_DEPT_ID": 1700801005,
+      "PEOB_BILL_PROV_ID": "802011",
+      "PEOB_PLAN_ID": 130204,
+      "PEOB_PROC_ID": 13199,
+      "PEOB_MTCH_CHG_TX_ID": 129124217,
+      "$meta": {
+        "type": "PMT_EOB_INFO_I"
+      }
+    },
+    {
+      "TX_ID": 357218465,
+      "LINE": 1,
+      "CVD_AMT": 223.42,
+      "NONCVD_AMT": 106.58,
+      "PAID_AMT": 223.42,
+      "ICN": "2023286CD3233",
+      "ACTION_ASN_NAME_C_NAME": "No",
+      "INFO_LINES": "1",
+      "INVOICE_NUM": "L1008016200",
+      "TX_MATCH_DATE": "2023-10-23 00:00:00",
+      "NON_PRIMARY_SYS_YN": "N",
+      "NON_PRIMARY_USR_YN": "N",
+      "INV_ID": 65425314,
+      "INV_LINE": 1,
+      "NO_MATCHED_CHGS_YN": "N",
+      "PEOB_ACCOUNT_ID": 1810018166,
+      "PEOB_LOC_ID": 1700801,
+      "PEOB_POS_ID": 1700801,
+      "PEOB_DEPT_ID": 1700801002,
+      "PEOB_BILL_PROV_ID": "144590",
+      "PEOB_PLAN_ID": 130204,
+      "PEOB_PROC_ID": 23870,
+      "PEOB_MTCH_CHG_TX_ID": 355871699,
+      "$meta": {
+        "type": "PMT_EOB_INFO_I"
+      }
+    },
+    {
+      "TX_ID": 319922979,
+      "LINE": 1,
+      "CVD_AMT": 0,
+      "NONCVD_AMT": -315,
+      "PAID_AMT": 0,
+      "ICN": "2022341BT5497",
+      "DENIAL_CODES": "16",
+      "ACTION_ASN_NAME_C_NAME": "No",
+      "COMMENTS": "Takeback matched to ETR 317165897",
+      "INFO_LINES": "1,2,3",
+      "INVOICE_NUM": "L1007233831",
+      "TX_MATCH_DATE": "2023-01-10 00:00:00",
+      "NON_PRIMARY_SYS_YN": "N",
+      "NON_PRIMARY_USR_YN": "N",
+      "INV_ID": 58660400,
+      "INV_LINE": 2,
+      "NO_MATCHED_CHGS_YN": "N",
+      "PEOB_ACCOUNT_ID": 1810018166,
+      "PEOB_LOC_ID": 1700801,
+      "PEOB_POS_ID": 1700801,
+      "PEOB_DEPT_ID": 1700801002,
+      "PEOB_BILL_PROV_ID": "144590",
+      "PEOB_PLAN_ID": 130204,
+      "PEOB_PROC_ID": 23662,
+      "PEOB_MTCH_CHG_TX_ID": 317236398,
+      "$meta": {
+        "type": "PMT_EOB_INFO_I"
+      }
+    },
+    {
+      "TX_ID": 217014433,
+      "LINE": 1,
+      "CVD_AMT": 113.3,
+      "NONCVD_AMT": 56.7,
+      "PAID_AMT": 113.3,
+      "ICN": "2020228BN6036",
+      "ACTION_ASN_NAME_C_NAME": "No",
+      "INFO_LINES": "1",
+      "INVOICE_NUM": "L1004718920",
+      "TX_MATCH_DATE": "2020-09-17 00:00:00",
+      "NON_PRIMARY_SYS_YN": "N",
+      "NON_PRIMARY_USR_YN": "N",
+      "INV_ID": 39392511,
+      "INV_LINE": 1,
+      "NO_MATCHED_CHGS_YN": "N",
+      "PEOB_ACCOUNT_ID": 1810018166,
+      "PEOB_LOC_ID": 1700801,
+      "PEOB_POS_ID": 1700801,
+      "PEOB_DEPT_ID": 1700801002,
+      "PEOB_BILL_PROV_ID": "219711",
+      "PEOB_PLAN_ID": 130204,
+      "PEOB_PROC_ID": 23660,
+      "PEOB_MTCH_CHG_TX_ID": 213432121,
+      "$meta": {
+        "type": "PMT_EOB_INFO_I"
+      }
+    },
+    {
+      "TX_ID": 319923250,
+      "LINE": 1,
+      "CVD_AMT": 198.91,
+      "NONCVD_AMT": 116.09,
+      "COINS_AMT": 19.89,
+      "PAID_AMT": 179.02,
+      "ICN": "2022341BT5497",
+      "PEOB_ACTION_NAME_C_NAME": "Next Responsible Party",
+      "ACTION_AMT": 19.89,
+      "ACCOUNT_ID": 1810018166,
+      "ACTION_ASN_NAME_C_NAME": "No",
+      "INFO_LINES": "1,2",
+      "ACTION_EOB": "2",
+      "INVOICE_NUM": "L1007233831",
+      "TX_MATCH_DATE": "2023-01-10 00:00:00",
+      "NON_PRIMARY_SYS_YN": "N",
+      "NON_PRIMARY_USR_YN": "N",
+      "PEOB_ACTION_C_NAME": "Next Responsible Party",
+      "INV_ID": 58660400,
+      "INV_LINE": 2,
+      "NO_MATCHED_CHGS_YN": "N",
+      "PEOB_ACCOUNT_ID": 1810018166,
+      "PEOB_LOC_ID": 1700801,
+      "PEOB_POS_ID": 1700801,
+      "PEOB_DEPT_ID": 1700801002,
+      "PEOB_BILL_PROV_ID": "144590",
+      "PEOB_PLAN_ID": 130204,
+      "PEOB_PROC_ID": 23662,
+      "PEOB_MTCH_CHG_TX_ID": 317236398,
+      "$meta": {
+        "type": "PMT_EOB_INFO_I"
+      }
+    }
+  ]
+}

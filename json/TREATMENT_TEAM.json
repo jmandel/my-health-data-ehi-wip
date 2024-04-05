@@ -1,0 +1,210 @@
+{
+  "$meta": {
+    "schemas": {
+      "TREATMENT_TEAM": {
+        "name": "TREATMENT_TEAM",
+        "description": "This table stores information about patient treatment teams such as relationship, specialty, department, and start/end time. Each row represents a member of a patient's treatment team.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ENC_CSN_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+            "linksTo": "PATIENT"
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "TR_TEAM_SPEC_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value corresponding to the specialty of the treatment team member to the patient."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "TR_TEAM_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the treatment team provider record."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "TR_TEAM_REL_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value corresponding to the relationship of the treatment team member to the patient."
+          },
+          {
+            "ordinalPosition": 15,
+            "name": "TR_TEAM_BEG_DTTM",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The date and time the treatment team member started for the patient."
+          },
+          {
+            "ordinalPosition": 16,
+            "name": "TR_TEAM_END_DTTM",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The date and time the treatment team member ended for the patient."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "TREATMENT_TEAM",
+            "target": "PAT_ENC_DISP",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "TREATMENT_TEAM",
+            "target": "PAT_ENC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "TREATMENT_TEAM": [
+    {
+      "PAT_ENC_CSN_ID": 720803470,
+      "LINE": 1,
+      "PAT_ID": "Z7004242",
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "TR_TEAM_SPEC_C_NAME": "Internal Medicine",
+      "TR_TEAM_ID": "802011",
+      "TR_TEAM_REL_C_NAME": "Consulting Physician",
+      "TR_TEAM_BEG_DTTM": "2018-08-09 09:44:00",
+      "TR_TEAM_END_DTTM": "2018-08-09 16:35:00",
+      "$meta": {
+        "type": "TREATMENT_TEAM"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 799951565,
+      "LINE": 1,
+      "PAT_ID": "Z7004242",
+      "CONTACT_DATE": "2020-01-09 00:00:00",
+      "TR_TEAM_SPEC_C_NAME": "Internal Medicine",
+      "TR_TEAM_ID": "802011",
+      "TR_TEAM_REL_C_NAME": "Consulting Physician",
+      "TR_TEAM_BEG_DTTM": "2020-01-09 12:29:00",
+      "TR_TEAM_END_DTTM": "2020-01-09 13:02:00",
+      "$meta": {
+        "type": "TREATMENT_TEAM"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829213099,
+      "LINE": 1,
+      "PAT_ID": "Z7004242",
+      "CONTACT_DATE": "2020-07-14 00:00:00",
+      "TR_TEAM_SPEC_C_NAME": "Internal Medicine",
+      "TR_TEAM_ID": "219711",
+      "TR_TEAM_REL_C_NAME": "Nurse Practitioner",
+      "TR_TEAM_BEG_DTTM": "2020-07-14 14:39:00",
+      "TR_TEAM_END_DTTM": "2020-07-14 14:48:00",
+      "$meta": {
+        "type": "TREATMENT_TEAM"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 948004323,
+      "LINE": 1,
+      "PAT_ID": "Z7004242",
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "TR_TEAM_SPEC_C_NAME": "Internal Medicine",
+      "TR_TEAM_ID": "144590",
+      "TR_TEAM_REL_C_NAME": "Consulting Physician",
+      "TR_TEAM_BEG_DTTM": "2022-08-29 13:32:00",
+      "TR_TEAM_END_DTTM": "2022-08-29 23:58:00",
+      "$meta": {
+        "type": "TREATMENT_TEAM"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148810,
+      "LINE": 1,
+      "PAT_ID": "Z7004242",
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "TR_TEAM_SPEC_C_NAME": "Internal Medicine",
+      "TR_TEAM_ID": "144590",
+      "TR_TEAM_REL_C_NAME": "Consulting Physician",
+      "TR_TEAM_BEG_DTTM": "2023-03-02 14:44:00",
+      "TR_TEAM_END_DTTM": "2023-03-02 15:47:00",
+      "$meta": {
+        "type": "TREATMENT_TEAM"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 974614965,
+      "LINE": 1,
+      "PAT_ID": "Z7004242",
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "TR_TEAM_SPEC_C_NAME": "Internal Medicine",
+      "TR_TEAM_ID": "144590",
+      "TR_TEAM_REL_C_NAME": "Consulting Physician",
+      "TR_TEAM_BEG_DTTM": "2022-12-01 09:35:00",
+      "TR_TEAM_END_DTTM": "2022-12-01 20:06:00",
+      "$meta": {
+        "type": "TREATMENT_TEAM"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991225117,
+      "LINE": 1,
+      "PAT_ID": "Z7004242",
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "TR_TEAM_SPEC_C_NAME": "Internal Medicine",
+      "TR_TEAM_ID": "144590",
+      "TR_TEAM_REL_C_NAME": "Consulting Physician",
+      "TR_TEAM_BEG_DTTM": "2023-09-28 09:39:00",
+      "TR_TEAM_END_DTTM": "2023-09-28 10:18:00",
+      "$meta": {
+        "type": "TREATMENT_TEAM"
+      }
+    }
+  ]
+}

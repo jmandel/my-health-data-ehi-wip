@@ -1,0 +1,308 @@
+{
+  "name": "CMGMT_EPISODE_HX",
+  "description": "The history tracks changes made to the case episode for auditing purposes.",
+  "primaryKey": [
+    {
+      "columnName": "EPISODE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the summary block record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the action taken by the user.",
+      "entries": [
+        "Update Case Types",
+        "Update Case Status",
+        "Update Enrolling Step",
+        "Update Closed Reason",
+        "Update Review Due Date",
+        "Update Review Frequency Unit",
+        "Update Review Frequency Length",
+        "Update Sensitivity",
+        "Update Start Date",
+        "Update Department",
+        "Update Tracking Status",
+        "Update Declined Reason",
+        "Update End Date",
+        "Update Linked Medications",
+        "Support & Services Provided changed",
+        "Update Enrollment Date",
+        "Update Episode Type",
+        "Update Referral Link",
+        "Update Claim Link",
+        "Update Effective Date",
+        "Update Termination Date",
+        "Update Relationship",
+        "Update Primary",
+        "Update Linked Problems",
+        "Create Case",
+        "Review Case",
+        "Converted from Tapestry Case",
+        "Updated from Case Episode Import",
+        "Update Active SDOH",
+        "Copied providers from Episode Care Team",
+        "Update from Bulk Edit"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ACTION_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the user that updated the case episode."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ACTION_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ASSOC_VALUE_RAW_DATA",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the new value or record associated with the action taken on the case episode."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "REMOVING_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the user that removed the associated value (I HSB 18440) from the case episode."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "REMOVING_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ACTION_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the date and time (UTC) on which the history action was taken."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "REMOVED_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Store the date and time (UTC) on which the associated value (I HSB 18440) was removed from the case episode."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "ACTION_LOCAL_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the date and time (system default time) on which the history action was taken."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "REMOVED_LOCAL_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the date and time (system default time) on which the associated value (I HSB 18440) was removed from the case episode."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "CASE_TEAM_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Store a line from the case team, if the history value (I HSB 18440) is associated with the case team."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "ACTION_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Case Management History Item - The encounter that set the value on the case episode, if the history value  (I HSB 18440) is associated with an encounter."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "REMOVING_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Case Management History Item - The encounter that removed the value on the case episode, if the history  value (I HSB 18440) is associated with an encounter."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "ASSOC_CMGMT_TYPE_C",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "When the action taken by the user is 1-Update Case Type, this column holds the associated case type value. This column is derived from the Assoc_Value_Raw_Data column."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "ASSOC_CMGMT_STATUS_C",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "When the action taken by the user is 2-Update Case Status, this column holds the associated case status value. This column is derived from the Assoc_Value_Raw_Data column."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "ASSOC_CMGMT_ENROLLING_STEP_C",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "When the action taken by the user is 3-Update Enrolling Step, this column holds the associated enrolling step value. This column is derived from the Assoc_Value_Raw_Data column."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "ASSOC_CMGMT_CLOSED_REASON_C",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "When the action taken by the user is 5-Update Closed Reason, this column holds the associated closed reason value. This column is derived from the Assoc_Value_Raw_Data column."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "ASSOC_REVIEW_DUE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "When the action taken by the user is 6-Update Review Due Date, this column holds the associated review due date value. This column is derived from the Assoc_Value_Raw_Data column."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "ASSOC_REV_FREQ_UNIT_C",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "When the action taken by the user is 7-Update Review Frequency Unit, this column holds the associated review frequency unit value. This column is derived from the Assoc_Value_Raw_Data column."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "ASSOC_REV_FREQ_LENGTH",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "When the action taken by the user is 8-Update Review Frequency Length, this column holds the associated review frequency length value. This column is derived from the Assoc_Value_Raw_Data column."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "ASSOC_CMGMT_SENSITIVITY_C",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "When the action taken by the user is 9-Update Sensitivity, this column holds the associated sensitivity value. This column is derived from the Assoc_Value_Raw_Data column."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "ASSOC_CMGMT_TRACKING_STATUS_C",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "When the action taken by the user is 12-Update Tracking Status, this column holds the associated tracking status value. This column is derived from the Assoc_Value_Raw_Data column."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "ASSOC_CMGMT_DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "When the action taken by the user is 11-Update Department, this column holds the associated department ID value. This column is derived from the Assoc_Value_Raw_Data column."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "ASSOC_CMGMT_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "When the action taken by the user is 14-Update End Date, this column holds the associated end date value. This column is derived from the Assoc_Value_Raw_Data column."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "ASSOC_CMGMT_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "When the action taken by the user is 10-Update Start Date, this column holds the associated start date value. This column is derived from the Assoc_Value_Raw_Data column."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "ASSOC_CMGMT_DECLINE_REASON_C",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "When the action taken by the user is 13-Update Declined Reason, this column holds the associated declined reason value. This column is derived from the Assoc_Value_Raw_Data column."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "ASSOC_CMGMT_MED_PRBLM_LIST_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "When the action taken by the user is 15-Update Linked Medications, this column holds the associated medication ID value. This column is derived from the Assoc_Value_Raw_Data column."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "ASSOC_CMGMT_SSP_CHANGED_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number in CMGMT_SUPPORT_TYPE_HX that contains a copy of the previous support & services provided. The updated support and services provided will be in the next line of CMGMT_SUPPORT_TYPE_HX, or in I HSB 64050 if there are no more lines."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "ASSOC_CMGMT_REFERRAL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "When the action taken by the user is 19-Link Referral, this column holds the associated referral."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "ASSOC_CMGMT_CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "When the action taken by the user is 20-Link Claim, this column holds the associated claim."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "ASSOC_CMGMT_EFF_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "When the action taken by the user is 21 - Update Effective Date, this column holds the associated effective date value. This column is derived from the Assoc_Value_Raw_Data column."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "ASSOC_CMGMT_TERMINATION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "When the action taken by the user is 22 - Update Termination Date, this column holds the associated termination date value. This column is derived from the Assoc_Value_Raw_Data column."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "ASSOC_CMGMT_TRTMNT_TEAM_REL_C",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "When the action taken by the user is 23 - Update Relationship, this column holds the associated case team relationship value. This column is derived from the Assoc_Value_Raw_Data column."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "ASSOC_CMGMT_IS_PRIMARY_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "When the action taken by the user is 24 - Update Primary, this column holds the associated Primary? value. This column is derived from the Assoc_Value_Raw_Data column."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "ASSOC_CMGMT_PROBLEM_LIST_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "When the action taken by the user is 25-Update Linked Problems, this column holds the associated problem ID value. This column is derived from the Assoc_Value_Raw_Data column."
+    }
+  ]
+}

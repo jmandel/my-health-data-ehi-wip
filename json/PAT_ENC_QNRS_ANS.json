@@ -1,0 +1,88 @@
+{
+  "$meta": {
+    "schemas": {
+      "PAT_ENC_QNRS_ANS": {
+        "name": "PAT_ENC_QNRS_ANS",
+        "description": "The PAT_ENC_QNRS_ANS table contains the Answer ID numbers for the Answers to all Appointment Questionnaires. An Appointment can have multiple Questionnaires that are used in conjunction with it, and each Questionnaire will have one Answer record associated with it.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ENC_CSN_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This is the Contact Serial Number. It uniquely identifies this contact across all patients and all contacts."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "This item stores the line number of each Questionnaire Answer record that exists for this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "PAT_ENC_QNRS_ANS",
+            "target": "PAT_ENC_DISP",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "PAT_ENC_QNRS_ANS",
+            "target": "PAT_ENC_HSP",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "PAT_ENC_QNRS_ANS",
+            "target": "PAT_ENC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PAT_ENC_QNRS_ANS": [
+    {
+      "PAT_ENC_CSN_ID": 922942674,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_QNRS_ANS"
+      }
+    }
+  ]
+}

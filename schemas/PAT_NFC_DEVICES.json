@@ -1,0 +1,70 @@
+{
+  "name": "PAT_NFC_DEVICES",
+  "description": "This table stores unique identifiers for each of a patient's Near-Field Communication (NFC) devices.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "DEVICE_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A unique identifier for a specific NFC tag."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "DEVICE_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "An action taken on a specific NFC device (DEVICE_IDENT).",
+      "entries": [
+        "Assigned",
+        "Removed"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ACTION_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item stores the instant at which an action (DEVICE_ACTION_C) was taken on an NFC device (DEVICE_IDENT)."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "NFC_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The record ID of the user who performed an action (DEVICE_ACTION_C) on an NFC device (DEVICE_IDENT)."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "NFC_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    }
+  ]
+}

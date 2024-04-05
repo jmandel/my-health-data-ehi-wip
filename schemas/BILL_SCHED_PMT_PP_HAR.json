@@ -1,0 +1,83 @@
+{
+  "name": "BILL_SCHED_PMT_PP_HAR",
+  "description": "This table contains information about the hospital accounts on a payment plan record.",
+  "primaryKey": [
+    {
+      "columnName": "SCHED_PMT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SCHED_PMT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the scheduled payment record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the hospital account that is associated with this payment plan."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "HAR_INITIAL_BAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The initial balance the hospital account contributes to the payment plan."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "HAR_REMAINING_BAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The remaining balance the hospital account contributes to the payment plan."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "HAR_PLAN_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID of the status for this hospital account on the payment plan.",
+      "entries": [
+        "On Plan",
+        "Paid Off",
+        "Removed",
+        "Estimated",
+        "Completed"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "HAR_PLAN_STATUS_UPDATE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the hospital account's status was updated for the payment plan."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "IS_HAR_BAL_PRORATED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column indicates that this hospital account was set up as a prorated payment plan balance. 'Y' indicates that the hospital account was added to this payment plan with custom amounts or amounts from estimate or partial self-pay balances. 'N' or NULL indicates that the hospital account's full self-pay balance was added to the payment plan.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    }
+  ]
+}

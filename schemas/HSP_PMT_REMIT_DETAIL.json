@@ -1,0 +1,111 @@
+{
+  "name": "HSP_PMT_REMIT_DETAIL",
+  "description": "This is a type of summary level of the remittance actions associated with a payment transaction. This table will summarize remittance information from Electronic Remittance and manual payment posting as stored on the transaction. This table extracts the information that displays in the remittance grid in payment posting as the end user sees it.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the transaction record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "DTL_GRP_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the group code for the reason code that is entered in the remittance grid when this batch is opened in payment posting.",
+      "entries": [
+        "Patient Responsibility",
+        "Contractual Obligation",
+        "Payor Initiated",
+        "Correction and Reversal",
+        "Other Adjustment"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "DTL_REMIT_CODE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the remit code that is entered in the remittance grid when this batch is opened in payment posting."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "DTL_REMIT_CODE_ID_REMIT_CODE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of each remittance code."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "DTL_RSN_CODE_EXTL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the external reason code that is entered in the remittance grid when this batch is opened in payment posting."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "DTL_REMIT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the amount associated with the reason code that is entered in the remittance grid when this batch is opened in payment posting."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DTL_ACTION_STRING",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the actions associated with the reason code that is entered in the remittance grid when this batch is opened in payment posting. This is a comma delimited string of actions for reason codes with multiple actions associated with them."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "DTL_CREATE_BDC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores whether a denial or remark record should be created with the reason code. If any action on the reason code creates a denial or remark, this column will be set to Yes, otherwise this column will be set to No."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "DTL_SERVICE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column stores the service line this reason code was entered in on the remittance grid when this batch was opened in payment posting. If any reason code was entered at the claim level this row will be set to -1."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "DTL_DFLTCD_MAPCOL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the mapped column of the defaulted remit code.",
+      "entries": [
+        "None",
+        "Deductible",
+        "Copay",
+        "Coinsurance",
+        "Coordination of Benefits",
+        "Non-covered",
+        "Not Allowed",
+        "Denied",
+        "Insurance Write-off"
+      ]
+    }
+  ]
+}

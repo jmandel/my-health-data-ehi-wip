@@ -1,0 +1,74 @@
+{
+  "$meta": {
+    "schemas": {
+      "HSP_BDC_PAYOR": {
+        "name": "HSP_BDC_PAYOR",
+        "description": "Table of payors attached to denial/correspondence records. Each denial/correspondence can be associated with multiple payors.",
+        "primaryKey": [
+          {
+            "columnName": "BDC_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "BDC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the denial or correspondence record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PAYOR_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the payer that is associated with a denial/correspondence record."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "HSP_BDC_PAYOR",
+            "target": "BDC_INFO",
+            "joinKeys": [
+              {
+                "source": "BDC_ID",
+                "target": "BDC_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HSP_BDC_PAYOR": [
+    {
+      "BDC_ID": 43401924,
+      "LINE": 1,
+      "PAYOR_ID": 1302,
+      "$meta": {
+        "type": "HSP_BDC_PAYOR"
+      }
+    },
+    {
+      "BDC_ID": 43401925,
+      "LINE": 1,
+      "PAYOR_ID": 1302,
+      "$meta": {
+        "type": "HSP_BDC_PAYOR"
+      }
+    }
+  ]
+}

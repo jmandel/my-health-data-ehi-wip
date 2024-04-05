@@ -1,0 +1,37 @@
+{
+  "name": "ORDER_ECONSULT_RECIPIENTS",
+  "description": "This table stores recipient information for e-Consult orders, if manual recipients are selected.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ECONSULT_RECIPIENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores manually selected recipients in an e-Consult order. If not set, the  distribution scheme routes the message. The format for this data is   ID^modifier^responsibility  If the recipient is a user, ID is the user ID, otherwise, the ID  represents the ID based on modifier: P=Pool, C=Class. Responsibility will  be 1 if the user has responsibility, 0 or \" otherwise."
+    }
+  ]
+}

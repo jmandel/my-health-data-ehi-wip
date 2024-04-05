@@ -1,0 +1,137 @@
+{
+  "$meta": {
+    "schemas": {
+      "HM_FORECAST_INFO": {
+        "name": "HM_FORECAST_INFO",
+        "description": "Health Maintenance forecast information for the next completion.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+            "linksTo": "PATIENT"
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "HM_FORECAST_TOPIC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores a Health Maintenance topic that has forecast information."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "HM_FORECAST_TOPIC_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the health maintenance topic."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "EARLIEST_VALID_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This column stores the earliest date that the current completion will be considered valid."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "HM_FORECAST_INFO",
+            "target": "PAT_REL_ADDR",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "HM_FORECAST_INFO",
+            "target": "PATIENT",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HM_FORECAST_INFO": [
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 1,
+      "HM_FORECAST_TOPIC_ID": 2100000114,
+      "HM_FORECAST_TOPIC_ID_NAME": "Tetanus/Pertussis Vaccine Teen/Adult",
+      "EARLIEST_VALID_DATE": "2019-02-05 00:00:00",
+      "$meta": {
+        "type": "HM_FORECAST_INFO"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 2,
+      "HM_FORECAST_TOPIC_ID": 80,
+      "HM_FORECAST_TOPIC_ID_NAME": "Influenza Vaccine",
+      "$meta": {
+        "type": "HM_FORECAST_INFO"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 3,
+      "HM_FORECAST_TOPIC_ID": 66,
+      "HM_FORECAST_TOPIC_ID_NAME": "COVID-19 Vaccine",
+      "EARLIEST_VALID_DATE": "2023-09-01 00:00:00",
+      "$meta": {
+        "type": "HM_FORECAST_INFO"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 4,
+      "HM_FORECAST_TOPIC_ID": 14,
+      "HM_FORECAST_TOPIC_ID_NAME": "Zoster (Shingles) Vaccine 50+",
+      "EARLIEST_VALID_DATE": "2000-10-26 00:00:00",
+      "$meta": {
+        "type": "HM_FORECAST_INFO"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 5,
+      "HM_FORECAST_TOPIC_ID": 2100000014,
+      "HM_FORECAST_TOPIC_ID_NAME": "Hepatitis B Vaccine",
+      "EARLIEST_VALID_DATE": "1982-10-26 00:00:00",
+      "$meta": {
+        "type": "HM_FORECAST_INFO"
+      }
+    }
+  ]
+}

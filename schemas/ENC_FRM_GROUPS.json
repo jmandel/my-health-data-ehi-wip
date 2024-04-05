@@ -1,0 +1,72 @@
+{
+  "name": "ENC_FRM_GROUPS",
+  "description": "This table holds the list of Form Groups that were used in this patient contact. The table holds ID and Chronicles Date (DAT) pointers to these Form Groups (from the LFG master file) because they are storing the version of that Form Group that was in use when this patient contact occurred.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This is the unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This is the line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "This is a unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This is the date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "FRM_GROUP_IDS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "To maintain an accurate history of the forms that were used to document on this patient encounter, this item holds a list of record IDs for the Form Group master file."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "FRM_GROUP_IDS_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the form group record name."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "FRM_GROUP_DATS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "To maintain an accurate history of the forms and versions of forms that were used to document on this patient encounter, this item holds a list of contact dates (DATs) that, together with column FRM_GROUP_IDS, point to the Form Groups master file."
+    }
+  ]
+}

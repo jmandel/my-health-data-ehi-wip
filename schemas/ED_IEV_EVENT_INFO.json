@@ -1,0 +1,727 @@
+{
+  "name": "ED_IEV_EVENT_INFO",
+  "description": "This table contains information about the current event records.",
+  "primaryKey": [
+    {
+      "columnName": "EVENT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "EVENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the event record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this event. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "EVENT_DISPLAY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The display name of the event."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EVENT_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant when the event occurred."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EVENT_RECORD_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant when the event was recorded."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EVENT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who initiated the event. This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "EVENT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "EVENT_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comments entered for the event."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "EVENT_DEPT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the department in which this event was fired."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ADT_EVENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the Admission, Transfer, Discharge, or Leave of Absence (ADT) event record link that is associated with this event. The following ED events have linked ADT evens: ED Roomed (A) ED Transfer (T) ED Admit to Hospital (T)"
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "STAFFED_BEDS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The number of staffed beds for a department at the time of the event. This item is populated only if you are using the Staffed Beds activity."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "EVENT_KEY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A unique key associated with this event. The key is stored in other master files in order to reference this event."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "EVENT_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the note that is associated with this event."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "EVENT_FINDING_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the result that is associated with this event. This column is frequently used to link to the ORDER_RES table.",
+      "linksTo": "ORDER_RES"
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "EVENT_IMPLANT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the implant that is associated with this event. This column is frequently used to link to the OR_IMP table.",
+      "linksTo": "OR_IMP"
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "EVENT_LINE_DATA_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The line number of the associated data stored for this event in OpTime's Log Entry activity. This column can be used to link to the OR_LNLG_GENERAL table.",
+      "linksTo": "OR_LNLG_GENERAL"
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "EVENT_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the provider record for this event. For example, an Assign Attending event stores the provider who was assigned in this column. This column is frequently used to link to the CLARITY_SER table.",
+      "linksTo": "CLARITY_SER"
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "LOCATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the patient location record that is associated with this event. This link is available only for emergency department contacts and for any location definition in the patient location facility master file that is associated with an event template master file. This column can be used to link to the CL_PLC table.",
+      "linksTo": "CL_PLC"
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "EVENT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the event's status.",
+      "entries": [
+        "Active",
+        "Inactive",
+        "Deleted",
+        "Inactive and Deleted",
+        "Hidden",
+        "Inactive and Hidden",
+        "Deleted and Hidden",
+        "Inactive Deleted and Hidden"
+      ]
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "REC_VERB_ORD_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Inpatient reconciliation verbal order type flag category number for the event.",
+      "entries": [
+        "Ordering",
+        "Cosign",
+        "Discontinuing",
+        "Pending Discontinue",
+        "Edit",
+        "Delete",
+        "Continue on Transfer",
+        "Discontinue on Transfer",
+        "New on Transfer",
+        "Unreview on Transfer",
+        "Holding",
+        "Unholding",
+        "Order and Hold",
+        "Assigning Administration Responsibility",
+        "Cancel Hold",
+        "Discontinue on Admission",
+        "Discontinue on Discharge",
+        "Sign on Admission",
+        "Sign on Discharge",
+        "Modify for Admission",
+        "Modify for Discharge",
+        "Modify for Transfer",
+        "Continue on Admission",
+        "Continue on Discharge",
+        "Do Not Order on Admission",
+        "Do Not Prescribe on Discharge",
+        "Do Not Order on Transfer",
+        "Sign on Inter-Facility Transfer",
+        "Modify for Inter-Facility Transfer",
+        "Discontinue on Inter-Facility Transfer",
+        "Continue on Inter-Facility Transfer",
+        "Do Not Order on Inter-Facility Transfer"
+      ]
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "REC_VRB_ORD_COMM_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the provider who is the Inpatient reconciliation verbal order communicator for this event. This column is frequently used to link to the CLARITY_SER table.",
+      "linksTo": "CLARITY_SER"
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "REC_VRB_SIGNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the provider who is the Inpatient reconciliation verbal order signer for this event. This column is frequently used to link to the CLARITY_SER table.",
+      "linksTo": "CLARITY_SER"
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "REC_VRB_SIGNER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "REC_VRB_ORD_MODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Inpatient reconciliation verbal order mode category number for the event.",
+      "entries": [
+        "Verbal",
+        "Standard"
+      ]
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "REC_ORD_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the provider who is the Inpatient reconciliation ordering provider for this event. This column is frequently used to link to the CLARITY_SER table.",
+      "linksTo": "CLARITY_SER"
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "REC_PROC_AUTH_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the provider who is the Inpatient reconciliation procedure authorizing provider for this event. This column is frequently used to link to the CLARITY_SER table.",
+      "linksTo": "CLARITY_SER"
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "REC_MED_AUTH_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the provider who is the Inpatient reconciliation medication authorizing provider for this event. This column is frequently used to link to the CLARITY_SER table.",
+      "linksTo": "CLARITY_SER"
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "REC_PROC_MSG_RCP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the provider who is the Inpatient reconciliation procedure cosign message recipient for this event. This column is frequently used to link to the CLARITY_SER table.",
+      "linksTo": "CLARITY_SER"
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "REC_PROC_MSG_RCP_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "REC_MED_MSG_RCP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the provider who is the Inpatient reconciliation medication cosign message recipient for this event. This column is frequently used to link to the CLARITY_SER table.",
+      "linksTo": "CLARITY_SER"
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "REC_MED_MSG_RCP_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "REC_IS_PROC_HOSP_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the Inpatient reconciliation procedure hospitalist flag is set for this event.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "REC_IS_MED_HOSP_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the Inpatient reconciliation medication hospitalist flag is set for this event."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "REC_VERB_ORD_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comments entered by the user who placed the Inpatient reconciliation verbal order associated with the event."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "REC_ADMIT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the status of the Inpatient order reconciliation associated with this event."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "IP_REC_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the order reconciliation (process of reviewing a orders when the patient moves to another level or area of care) note that is the associated with this event."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "EVENT_LOG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the surgical log that is associated with this event. This column is frequently used to link to the OR_LOG table.",
+      "linksTo": "OR_LOG"
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "EVENT_SUPPLY_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the supply that is associated with \"supply used\" events generated in Cupid \"add supply\" workflows. This column should be used to link to the OR_SPLY table.",
+      "linksTo": "OR_SPLY"
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "EVENT_SUPPLY_ID_SUPPLY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the inventory item."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "EVENT_INI_RECORD_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The master file and ID of the source of a duplicate procedure alert event. For example, this item usually holds LDG-ID (the ID of the procedure duplicate group used) or EAP-ID (the ID of the procedure used)."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "EVENT_CONTEXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "For some events, this column holds the context of the event. Lab Ordered events might store the order ID here. Duplicate procedure alert events might store information on specific user actions in response to the alert."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "SOURCE_PX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the source procedure that is associated with this duplicate procedure check."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "SOURCE_PX_INFO",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Detailed information about the duplicate procedure checked in SOURCE_PX_ID."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "MATCH_PX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the matched procedure that is associated with this duplicate procedure check."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "MATCH_PX_INFO",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Detailed information about the duplicate procedure checked in MATCH_PX_ID."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "EVENT_SIGN_OFF_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The record that contains all the sign off information for this event."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "DEPT_SCORE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the numeric department score for department-specific events records. When a department scoring system is coordinated with a department event, the score calculated is saved in this item. It groups the score to the specific event instant, type, etc. from which the score was calculated."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "STAFF_ROLE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "For a staff sign-in or sign-out event, this item holds what their role was when they signed in."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "STAFF_IS_ATTN_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "For a staff sign-in or sign-out event, this item holds whether or not the user signed in as an attending provider.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "LINKED_IEV_REC_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "When linking two events, this item holds the record ID of the linked event. Use this in combination with the line number."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "LINKED_IEV_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "When linking two events, this item holds the line number of the linked event within its respective record. Use this in combination with the record ID."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "EVENT_TYPE_VERSION",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If the data model for a particular event type changes, this item can be used to say which version of the data model is being used. Assume that blank is version 1. The version number only has meaning in relation to EVENT_TYPE."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "EVENT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the owner of the event."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "EVENT_OWNER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "PEND_ACTIVE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column shows the current pend (group of pended orders) status. Each pend type has a separate active status. A pend can also have a status of cleanup needed. A null status is used for pends that are no longer in use.",
+      "entries": [
+        "Active Public",
+        "Active Private",
+        "Cleanup Needed"
+      ]
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "PEND_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status of the pended orders.",
+      "entries": [
+        "Active Public",
+        "Active Private",
+        "Restored",
+        "Deleted",
+        "Expired",
+        "Replaced"
+      ]
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "PEND_RESTORED_BY_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Unique ID of the user who restored the pended orders."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "PEND_RESTORED_BY_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "PEND_RESTORED_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Instant the pended orders were restored."
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "PEND_DELETED_BY_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Unique ID of the user who deleted pended orders."
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "PEND_DELETED_BY_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "PEND_DELETED_I_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant pended orders were deleted."
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "PEND_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "User or autogenerated comment about the pended orders."
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "PEND_CHANGE_COUNT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Count of number of changes from a user perspective (some actions will not count as changes)"
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "PEND_INSTANT_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Instant that the pended orders were created."
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "PEND_CREATE_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Category indicating how these orders were pended such as automatically on timeout.",
+      "entries": [
+        "Normal/Default",
+        "Automatically Saved",
+        "Automatically Saved When Another User Logged In",
+        "Saved on Closing Chart",
+        "Automatically Saved on Timeout",
+        "Context Changed",
+        "Automatically Saved on Encounter Department Change"
+      ]
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "EVENT_OVRIDE_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores override reason for not scanning patient to verify the event."
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "EVENT_LABEL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The label for the value associated with an event."
+    },
+    {
+      "ordinalPosition": 69,
+      "name": "EVENT_VALUE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The value associated with an event."
+    },
+    {
+      "ordinalPosition": 70,
+      "name": "NOTIFY_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Store the current status for a bed planning notification",
+      "entries": [
+        "Active",
+        "Resolved",
+        "Resolved Through Notification",
+        "Dismissed",
+        "No Longer Valid"
+      ]
+    },
+    {
+      "ordinalPosition": 71,
+      "name": "NOTIFY_PND_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Store the status of why a bed request is being escalated",
+      "entries": [
+        "Ready to Plan",
+        "Assigned",
+        "Rejected",
+        "Approved",
+        "Requested",
+        "Preassigned",
+        "Bed Ready"
+      ]
+    },
+    {
+      "ordinalPosition": 72,
+      "name": "AN_LINKED_EVENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the record ID of an event that is linked to another Anesthesia event."
+    },
+    {
+      "ordinalPosition": 73,
+      "name": "AN_LINKED_EVENT_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "When linking an Anesthesia event to another event, this item holds the line number of the linked event within its respective record."
+    },
+    {
+      "ordinalPosition": 74,
+      "name": "ED_C_CLIENT_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This tracks from what client the user filed an ED Course event.",
+      "entries": [
+        "Hyperspace",
+        "Limerick",
+        "Haiku",
+        "Canto"
+      ]
+    },
+    {
+      "ordinalPosition": 75,
+      "name": "CT_EVENT_FILED_BY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If an event was filed automatically by a Case Tracking Event, this item holds the category ID of the case tracking event that did it"
+    },
+    {
+      "ordinalPosition": 76,
+      "name": "TRANSPORT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the ID of the transport request that triggered the event, if applicable."
+    },
+    {
+      "ordinalPosition": 77,
+      "name": "TXPORT_HLR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the logistics patient transport request (HLR) that triggered the event."
+    },
+    {
+      "ordinalPosition": 78,
+      "name": "EVENT_ORIGIN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This indicates whether the event came from an internal or external source. If blank, the event came from an internal source.",
+      "entries": [
+        "Internal",
+        "External"
+      ]
+    },
+    {
+      "ordinalPosition": 79,
+      "name": "RX_REQUEST_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If this event represents orders created from an incoming Rx request, this indicates the type of the request (New Rx, Renewal, etc.).",
+      "entries": [
+        "Refill Request",
+        "Therapeutic Change",
+        "Generic Substitution",
+        "Other Change",
+        "Medication Unavailable at Selected Pharmacy",
+        "Drug Use Evaluation Conflict",
+        "Script Clarification",
+        "Prescriber Authorization",
+        "NewRx Request"
+      ]
+    },
+    {
+      "ordinalPosition": 80,
+      "name": "RX_REQUEST_PHARMACY_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If this event represents orders created from an incoming Rx request, this indicates the pharmacy that requested the medications."
+    },
+    {
+      "ordinalPosition": 81,
+      "name": "RX_REQUEST_PHARMACY_ID_PHARMACY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the pharmacy."
+    },
+    {
+      "ordinalPosition": 82,
+      "name": "RX_REQUEST_VIEWED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If this event represents orders created from an incoming Rx request, this indicates whether any user has viewed the requested medications. Once the request has been viewed, no more orders can be added to it."
+    },
+    {
+      "ordinalPosition": 83,
+      "name": "TRANSFER_DEST_DEPT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The department where the patient is expected to reside once they are admitted or transferred (including discharge-readmits and transferring to another facility)."
+    }
+  ]
+}

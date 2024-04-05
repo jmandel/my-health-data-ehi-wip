@@ -1,0 +1,51 @@
+{
+  "name": "PAT_MYC_EVIST_PMNT",
+  "description": "During an e-visit encounter, a message may be sent to the patient containing an e-visit payment request task. This table contains a list of those messages.  Typically only one payment request will be sent per encounter, however it is possible to have multiple payment requests therefore the primary key of this table is comprised of PAT_ENC_CSN_ID, and LINE in which LINE is used to identify each payment request message associated with the encounter.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "A unique serial number for this encounter. This number is unique across all patients and encounters in the system."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line count used to identify different messages containing payment links for each encounter."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "This is a numeric representation of the date of this encounter in your system. The integer portion of the number specifies the date of the encounter. The digits after the decimal point indicate multiple visits on one day."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "ID of the deployment owner for this contact."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PMNT_RQST_MSG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the patient message records associated with this encounter that contain payment tasks."
+    }
+  ]
+}

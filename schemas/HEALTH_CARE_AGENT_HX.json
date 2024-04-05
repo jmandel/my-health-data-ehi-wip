@@ -1,0 +1,129 @@
+{
+  "name": "HEALTH_CARE_AGENT_HX",
+  "description": "This table records a history of HCA (Health Care Agent) status changes documented in SEC_ACP_HEALTH_CARE_AGENTS (LVN 44200). Whenever an agent is activated or deactivated, information about the agent is stored in this table.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ACTIVE_STATUS_YN_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column displays a history of health care agent status changes. 1 indicates that the agent was activated. 0 indicates that the agent was deactivated.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column displays the user ID (EMP ID) of the user who documented the change of status for the agent."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "UTC_INST_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This column displays the UTC instant that the change of status for the agent was documented."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "AGENT_UID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column displays an ID which uniquely identifies which emergency contact stores info about the agent."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "AGENT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column displays the name of the Health Care Agent."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "RELATIONSHIP_PERSONAL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column displays the personal relationship between the Health Care Agent and the patient at the time of the status change."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "RELATIONSHIP_AGENT_TYP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column displays what type of Health Care Agent relationship existed between the agent and the patient at the time of the status change. (Examples: Health Care Agent, First Alternate Health Care Agent, Second Alternate Health Care Agent.)",
+      "entries": [
+        "Health Care Agent",
+        "First Alternate Health Care Agent",
+        "Second Alternate Health Care Agent"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PHONE_PRIMARY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column displays the primary or preferred phone number on file for the agent at the time of the status change.",
+      "entries": [
+        "Home phone",
+        "Work phone",
+        "Mobile phone"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PHONE_HOME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column displays the home phone number on file for the agent at the time of the status change."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PHONE_WORK",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column displays the work phone number on file for the agent at the time of the status change."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "PHONE_MOBILE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column displays the mobile or cellular phone number on file for the agent at the time of the status change."
+    }
+  ]
+}

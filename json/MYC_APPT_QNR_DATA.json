@@ -1,0 +1,207 @@
+{
+  "$meta": {
+    "schemas": {
+      "MYC_APPT_QNR_DATA": {
+        "name": "MYC_APPT_QNR_DATA",
+        "description": "Table to store the general questionnaire attached to upcoming appointment.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ENC_CSN_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PAT_ENC_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "MYC_APPT_QUESR_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the ID of a questionnaire assigned to an upcoming appointment."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "MYC_APPT_QUESR_ID_FORM_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the form associated with the questionnaire."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "MYC_QUESR_START_DT",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Stores the start date of when a questionnaire can be shown for an upcoming appointment,"
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "PAT_APPT_QNR_STAT_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The status of the patient-entered appointment questionnaire.",
+            "entries": [
+              "Assigned",
+              "Started at home",
+              "Started in facility",
+              "Reviewable",
+              "Completed",
+              "Incomplete",
+              "Hidden",
+              "Temporarily hidden"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "MYC_APPT_QNR_DATA",
+            "target": "PAT_ENC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "MYC_APPT_QNR_DATA": [
+    {
+      "PAT_ENC_CSN_ID": 1028744231,
+      "LINE": 2,
+      "PAT_ENC_DATE_REAL": 67151,
+      "CONTACT_DATE": "2024-11-07 00:00:00",
+      "MYC_APPT_QUESR_ID": "21004670",
+      "MYC_APPT_QUESR_ID_FORM_NAME": "UPH AMB PHQ2",
+      "MYC_QUESR_START_DT": "2024-10-24 00:00:00",
+      "PAT_APPT_QNR_STAT_C_NAME": "Assigned",
+      "$meta": {
+        "type": "MYC_APPT_QNR_DATA"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028744231,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 67151,
+      "CONTACT_DATE": "2024-11-07 00:00:00",
+      "MYC_APPT_QUESR_ID": "31014000018",
+      "MYC_APPT_QUESR_ID_FORM_NAME": "UPH ACCIDENT RELATED/DATE OF ONSET QUESTIONNAIRE",
+      "MYC_QUESR_START_DT": "2024-10-24 00:00:00",
+      "PAT_APPT_QNR_STAT_C_NAME": "Assigned",
+      "$meta": {
+        "type": "MYC_APPT_QNR_DATA"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028743701,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66745.02,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "MYC_APPT_QUESR_ID": "31014000018",
+      "MYC_APPT_QUESR_ID_FORM_NAME": "UPH ACCIDENT RELATED/DATE OF ONSET QUESTIONNAIRE",
+      "MYC_QUESR_START_DT": "2023-09-14 00:00:00",
+      "PAT_APPT_QNR_STAT_C_NAME": "Started at home",
+      "$meta": {
+        "type": "MYC_APPT_QNR_DATA"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991225117,
+      "LINE": 2,
+      "PAT_ENC_DATE_REAL": 66745,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "MYC_APPT_QUESR_ID": "21064186",
+      "MYC_APPT_QUESR_ID_FORM_NAME": "UPH MUP TRAVEL SCREENING",
+      "MYC_QUESR_START_DT": "2023-09-27 00:00:00",
+      "PAT_APPT_QNR_STAT_C_NAME": "Completed",
+      "$meta": {
+        "type": "MYC_APPT_QNR_DATA"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991225117,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66745,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "MYC_APPT_QUESR_ID": "31014000018",
+      "MYC_APPT_QUESR_ID_FORM_NAME": "UPH ACCIDENT RELATED/DATE OF ONSET QUESTIONNAIRE",
+      "MYC_QUESR_START_DT": "2023-09-14 00:00:00",
+      "PAT_APPT_QNR_STAT_C_NAME": "Started at home",
+      "$meta": {
+        "type": "MYC_APPT_QNR_DATA"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148810,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66535,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "MYC_APPT_QUESR_ID": "21004670",
+      "MYC_APPT_QUESR_ID_FORM_NAME": "UPH AMB PHQ2",
+      "MYC_QUESR_START_DT": "2023-02-16 00:00:00",
+      "PAT_APPT_QNR_STAT_C_NAME": "Completed",
+      "$meta": {
+        "type": "MYC_APPT_QNR_DATA"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 948004323,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "MYC_APPT_QUESR_ID": "64186",
+      "MYC_APPT_QUESR_ID_FORM_NAME": "TRAVEL SCREENING",
+      "MYC_QUESR_START_DT": "2022-08-28 00:00:00",
+      "PAT_APPT_QNR_STAT_C_NAME": "Completed",
+      "$meta": {
+        "type": "MYC_APPT_QNR_DATA"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829213099,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 65574,
+      "CONTACT_DATE": "2020-07-14 00:00:00",
+      "MYC_APPT_QUESR_ID": "64186",
+      "MYC_APPT_QUESR_ID_FORM_NAME": "TRAVEL SCREENING",
+      "MYC_QUESR_START_DT": "2020-07-14 00:00:00",
+      "PAT_APPT_QNR_STAT_C_NAME": "Completed",
+      "$meta": {
+        "type": "MYC_APPT_QNR_DATA"
+      }
+    }
+  ]
+}

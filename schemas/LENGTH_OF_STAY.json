@@ -1,0 +1,55 @@
+{
+  "name": "LENGTH_OF_STAY",
+  "description": "The LENGTH_OF_STAY table contains information about the duration of the inpatient stay for a hospital encounter. It contains information for only discharged hospital encounters. Hospital encounters which have a currently admitted status are not included because their length of stay information changes every minute and will therefore not be up to date.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "LENGTH_OF_STAY_DAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column holds the length of stay for the hospital encounter measured in midnights. The length of stay is the total number of midnights or a same-day discharge a patient had as a patient base class of inpatient. This includes all leaves of absence while the patient was an inpatient."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "LENGTH_OF_STAY_MINS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column holds the length of stay for the hospital encounter measured in minutes. The length of stay is the total time a patient had a patient base class of inpatient. This includes all leaves of absence while the patient was an inpatient."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "INPATIENT_DAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column holds the patient days for the hospital encounter. Patient days include same-day discharges, census events, and days on leave of absence with a patient base class of inpatient. Only leaves of absence with a leave of absence reason configured to count towards total patient days are included."
+    }
+  ]
+}

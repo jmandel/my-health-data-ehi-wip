@@ -1,0 +1,268 @@
+{
+  "name": "ORDER_SENSITIVITY",
+  "description": "The ORDER_SENSITIVITY table contains information on the sensitivity of orders placed in clinical system.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_PROC_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "ORD_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the procedure order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the sensitivity data recorded within each procedure record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ORD_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "This is a numeric representation of the date each order was placed in your system. The integer portion of the number specifies the date the order was placed. The digits after the decimal point indicate multiple orders on one day."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ORD_END_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "This is a numeric representation of the end date for each order in your system. The integer portion of the number specifies the date the order was placed. The digits after the decimal point indicate multiple orders on one day."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RESULT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the technician ran the tests for each order"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ORGANISM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the organism that was cultured and tested for susceptibility."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ORGANISM_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the organism."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ANTIBIOTIC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value of each antibiotic that was tested on each organism culture."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "SUSCEPT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value associated with the susceptibility of the organism culture to the antibiotic. These correspond to standard HL7 susceptibilities: 1-Resistant, 2-Moderately sensitive, 3-Intermediate, and so on."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "SENSITIVITY_VALUE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is not populated by the EMR. It may be populated with the sensitivity value from an interface."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "LAB_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value associated with the status of each result, such as 1-In Progress, 2-Preliminary, 3-Final, 4-Edited.",
+      "entries": [
+        "In process",
+        "Preliminary result",
+        "Final result",
+        "Edited",
+        "Edited Result - FINAL"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "SENS_ORGANISM_SID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item will hold the sub ids for each organism helping the application to create a unique data structure for the display of microbiology results.  The unique data structure will use this item in conjunction with organism name or id as one of the key subscripts thus preventing errors with the display.   E.g. Salmonella typhi (Strain Ty2) and Salmonella typhi (Strain CT18) may have the same name (Salmonella typhi) but will have different sub ids depending on the external system sending the data. In order to display both of the above, a unique sub id is required."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "SENS_COM_ORG_RES_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the RES (Results master file) record id which stores comments related to the organisms.  The item is related to the organisms stored in item ORD 2220 and the line number of this item will match directly to the organism line number."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "SENS_OBS_INST_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Timestamp to track per micro result component when it was collected/observed."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "SENS_ANL_INST_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Timestamp to track per micro result component when it was analyzed in lab."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "SENS_START_LN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This columns contains the start line of ORD-2290 (extracted in SENS_LONG_VAL) where the long sensitivity value will begin."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "SENS_END_LN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column contains the end line of ORD-2290(extracted in SENS_LONG_VAL) where the long sensitivity value will terminate."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "SENS_COMM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains a short sensitivity note for ORD-2290 (extracted in SENS_LONG_VAL)."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "SENS_COMM_START_LN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column contains the start line in ORD-2290(extracted in SENS_LONG_VAL) of a long sensitivity comment."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "SENS_COMM_END_LN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column contains the end line in ORD-2290(extracted in SENS_LONG_VAL) of a long sensitivity comment."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "SENSITIVITY_UNITS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates units applied for antibiotics on a sensitivity test."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "SENS_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates the status of a sensitivity test.",
+      "entries": [
+        "Preliminary",
+        "Final",
+        "Corrected",
+        "Incomplete"
+      ]
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "ANTIBIO_LNC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the LOINC record indicating the Logical Observation Identifiers Names and Codes (LOINC) code for the antibiotic associated with the sensitivity."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "METHOD_LNC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Microbiology method LOINC ID."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "SENS_REF_RANGE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates the reference range for antibiotics on a sensitivity test."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "HIDE_ANTIBIOTIC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the antibiotic result is hidden from a user when viewed from within the patient�s chart.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "SENS_UNIT_UOM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Pointer to the UOM (units of measure master file) record that represents the sensitivity's unit."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "SENS_UNIT_UOM_ID_UNIT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Record name"
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "SENS_METHOD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores a procedure record ID that represents a method of testing an organism's sensitivity to an antibiotic. The value in this item is used to distinguish sensitivities obtained by different testing methods."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "RESULTING_LAB_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the resulting agency which is responsible for an antibiotic sensitivity."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "RESULTING_LAB_ID_LLB_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Interface laboratory name."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "SENS_ACCR_STAT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item determines the accreditation status of the corresponding antibiotic. If set to Y-Yes, the corresponding antibiotic is accredited. If set to N-No, the corresponding antibiotic is not accredited. If null, no evaluation was performed on the antibiotic to determine if it is accredited or not."
+    }
+  ]
+}

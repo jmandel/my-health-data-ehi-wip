@@ -1,0 +1,227 @@
+{
+  "$meta": {
+    "schemas": {
+      "CODE_INT_COMB_LN": {
+        "name": "CODE_INT_COMB_LN",
+        "description": "This table holds the combined service lines created by code integration.",
+        "primaryKey": [
+          {
+            "columnName": "HSP_ACCOUNT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "HSP_ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier (.1 item) for the hosp acct record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "CODE_INT_REV_CODE_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the revenue code for the combined service line."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "CODE_INT_REV_CODE_ID_REVENUE_CODE_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the revenue code."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "CODE_INT_CPT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item holds the CPT(R)/HCPCS code for the combined service line."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "CODE_INT_MOD_1_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the first modifier for the combined service line."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "CODE_INT_MOD_1_ID_MODIFIER_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the modifier record."
+          },
+          {
+            "ordinalPosition": 15,
+            "name": "CODE_INT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This item holds the service date for the combined service line."
+          },
+          {
+            "ordinalPosition": 16,
+            "name": "CODE_INT_QTY",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "This item holds the quantity (number of units) for the combined service line."
+          },
+          {
+            "ordinalPosition": 17,
+            "name": "CODE_INT_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This item holds the full charge amount for the combined service line. The value includes any non-covered amount for the line."
+          },
+          {
+            "ordinalPosition": 18,
+            "name": "CODE_INT_NONCVRD",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This item holds the non-covered amount for the combined service line."
+          },
+          {
+            "ordinalPosition": 19,
+            "name": "CODE_INT_LN_SRC_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item holds the source for the CPT(R)/HCPCS code and modifiers for the combined service line.",
+            "entries": [
+              "Charge",
+              "Coding",
+              "Combined",
+              "SNF HIPPS",
+              "IRF HIPPS",
+              "Extension",
+              "Edited"
+            ]
+          },
+          {
+            "ordinalPosition": 20,
+            "name": "CODE_INT_UNUSED_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item identifies lines that are not true service lines but represent coded CPT(R)/HCPCS codes that cannot be used to create actual service lines.",
+            "entries": [
+              "No",
+              "Yes"
+            ]
+          },
+          {
+            "ordinalPosition": 21,
+            "name": "CODE_INT_CHRG_CNT",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "This item holds the number of charges associated with the combined service line."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "CODE_INT_COMB_LN",
+            "target": "HAR_ALL",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "CODE_INT_COMB_LN",
+            "target": "HSP_ACCT_CLAIM_HAR",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "CODE_INT_COMB_LN",
+            "target": "HSP_ACCOUNT",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "CODE_INT_COMB_LN": [
+    {
+      "HSP_ACCOUNT_ID": 376684810,
+      "LINE": 1,
+      "CODE_INT_REV_CODE_ID": 430,
+      "CODE_INT_REV_CODE_ID_REVENUE_CODE_NAME": "OCCUPATIONAL THERAPY - GENERAL CLASSIFICATION",
+      "CODE_INT_CPT": "97535",
+      "CODE_INT_MOD_1_ID": "155",
+      "CODE_INT_MOD_1_ID_MODIFIER_NAME": "OP OCCUPATIONAL THERAPY SERV",
+      "CODE_INT_DATE": "2022-03-11 00:00:00",
+      "CODE_INT_QTY": 1,
+      "CODE_INT_AMT": 216.27,
+      "CODE_INT_NONCVRD": 0,
+      "CODE_INT_LN_SRC_C_NAME": "Charge",
+      "CODE_INT_UNUSED_YN": "N",
+      "CODE_INT_CHRG_CNT": 1,
+      "$meta": {
+        "type": "CODE_INT_COMB_LN"
+      }
+    },
+    {
+      "HSP_ACCOUNT_ID": 376684810,
+      "LINE": 2,
+      "CODE_INT_REV_CODE_ID": 430,
+      "CODE_INT_REV_CODE_ID_REVENUE_CODE_NAME": "OCCUPATIONAL THERAPY - GENERAL CLASSIFICATION",
+      "CODE_INT_CPT": "97535",
+      "CODE_INT_MOD_1_ID": "155",
+      "CODE_INT_MOD_1_ID_MODIFIER_NAME": "OP OCCUPATIONAL THERAPY SERV",
+      "CODE_INT_DATE": "2022-03-22 00:00:00",
+      "CODE_INT_QTY": 4,
+      "CODE_INT_AMT": 865.08,
+      "CODE_INT_NONCVRD": 0,
+      "CODE_INT_LN_SRC_C_NAME": "Charge",
+      "CODE_INT_UNUSED_YN": "N",
+      "CODE_INT_CHRG_CNT": 1,
+      "$meta": {
+        "type": "CODE_INT_COMB_LN"
+      }
+    },
+    {
+      "HSP_ACCOUNT_ID": 376684810,
+      "LINE": 3,
+      "CODE_INT_REV_CODE_ID": 434,
+      "CODE_INT_REV_CODE_ID_REVENUE_CODE_NAME": "OCCUPATIONAL THERAPY - EVALUATION OR REEVALUATION",
+      "CODE_INT_CPT": "97165",
+      "CODE_INT_MOD_1_ID": "155",
+      "CODE_INT_MOD_1_ID_MODIFIER_NAME": "OP OCCUPATIONAL THERAPY SERV",
+      "CODE_INT_DATE": "2022-03-11 00:00:00",
+      "CODE_INT_QTY": 1,
+      "CODE_INT_AMT": 557.47,
+      "CODE_INT_NONCVRD": 0,
+      "CODE_INT_LN_SRC_C_NAME": "Charge",
+      "CODE_INT_UNUSED_YN": "N",
+      "CODE_INT_CHRG_CNT": 1,
+      "$meta": {
+        "type": "CODE_INT_COMB_LN"
+      }
+    }
+  ]
+}

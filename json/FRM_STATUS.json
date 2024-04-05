@@ -1,0 +1,108 @@
+{
+  "$meta": {
+    "schemas": {
+      "FRM_STATUS": {
+        "name": "FRM_STATUS",
+        "description": "This table stores status and update information for screening forms, including form status and last editing user and time.",
+        "primaryKey": [
+          {
+            "columnName": "SCREENING_FORM_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "SCREENING_FORM_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the screening form record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "FRM_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The screening form status category ID for the screening form.",
+            "entries": [
+              "Created",
+              "In Progress",
+              "Pending Signatures",
+              "Completed",
+              "Nurse Doc Complete"
+            ]
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "STATUS_AUD_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The users who updated or edited the screening form."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "STATUS_AUD_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "STATUS_AUD_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "The times when the screening form was updated or edited."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "FRM_STATUS",
+            "target": "TIMEOUT",
+            "joinKeys": [
+              {
+                "source": "SCREENING_FORM_ID",
+                "target": "TIMEOUT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "FRM_STATUS": [
+    {
+      "SCREENING_FORM_ID": 4153852,
+      "LINE": 1,
+      "FRM_STATUS_C_NAME": "Created",
+      "STATUS_AUD_USER_ID": "PICONEMA",
+      "STATUS_AUD_USER_ID_NAME": "PICONE, MARY A",
+      "STATUS_AUD_DTTM": "2020-07-21 17:38:00",
+      "$meta": {
+        "type": "FRM_STATUS"
+      }
+    },
+    {
+      "SCREENING_FORM_ID": 4137993,
+      "LINE": 1,
+      "FRM_STATUS_C_NAME": "Created",
+      "STATUS_AUD_USER_ID": "PICONEMA",
+      "STATUS_AUD_USER_ID_NAME": "PICONE, MARY A",
+      "STATUS_AUD_DTTM": "2020-07-14 19:40:00",
+      "$meta": {
+        "type": "FRM_STATUS"
+      }
+    }
+  ]
+}

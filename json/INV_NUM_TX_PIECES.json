@@ -1,0 +1,282 @@
+{
+  "$meta": {
+    "schemas": {
+      "INV_NUM_TX_PIECES": {
+        "name": "INV_NUM_TX_PIECES",
+        "description": "Each line in this table corresponds to a transaction (ETR) composing a line on an invoice from item INV 381. Each line can contain a comma-delimited list of transactions composing a claim line. When a transaction is bundled, data will be split out to its own line via the TX_PIECE column.\n\n\n \n\n\nThis table is used as a bridge between transaction- and invoice- based tables.",
+        "primaryKey": [
+          {
+            "columnName": "INV_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          },
+          {
+            "columnName": "TX_PIECE",
+            "ordinalPosition": 3
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "INV_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column contains the internal invoice ID."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "This column contains the line number for any multiple-response item."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "TX_PIECE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "This column contains the position of the transaction ID in the comma-delimited list of ETR ID's for a given line of INV-381. For example, if a certain line of INV-381 has three transactions, then TX_PIECE will contain 1, 2, and 3 for that line."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "TX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column contains each individual transaction ID from the list of ETR ID's stored on each line of INV-381. So, if a given line of INV-381 has more than one transaction (separated by a comma-delimited list), then each ETR ID will appear on a separate row of the extract table. In other words, one and only one ETR ID will appear in each row of the TX_ID column."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "INV_NUM_TX_PIECES",
+            "target": "INV_CLM_LN_ADDL",
+            "joinKeys": [
+              {
+                "source": "INV_ID",
+                "target": "INVOICE_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "INV_NUM_TX_PIECES",
+            "target": "INVOICE",
+            "joinKeys": [
+              {
+                "source": "INV_ID",
+                "target": "INVOICE_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "INV_NUM_TX_PIECES": [
+    {
+      "INV_ID": 24584313,
+      "LINE": 1,
+      "TX_PIECE": 1,
+      "TX_ID": 129124339,
+      "$meta": {
+        "type": "INV_NUM_TX_PIECES"
+      }
+    },
+    {
+      "INV_ID": 24584314,
+      "LINE": 1,
+      "TX_PIECE": 1,
+      "TX_ID": 129124216,
+      "$meta": {
+        "type": "INV_NUM_TX_PIECES"
+      }
+    },
+    {
+      "INV_ID": 24584314,
+      "LINE": 2,
+      "TX_PIECE": 1,
+      "TX_ID": 129124217,
+      "$meta": {
+        "type": "INV_NUM_TX_PIECES"
+      }
+    },
+    {
+      "INV_ID": 24873734,
+      "LINE": 1,
+      "TX_PIECE": 1,
+      "TX_ID": 129124339,
+      "$meta": {
+        "type": "INV_NUM_TX_PIECES"
+      }
+    },
+    {
+      "INV_ID": 24873736,
+      "LINE": 1,
+      "TX_PIECE": 1,
+      "TX_ID": 129124216,
+      "$meta": {
+        "type": "INV_NUM_TX_PIECES"
+      }
+    },
+    {
+      "INV_ID": 24873736,
+      "LINE": 2,
+      "TX_PIECE": 1,
+      "TX_ID": 129124217,
+      "$meta": {
+        "type": "INV_NUM_TX_PIECES"
+      }
+    },
+    {
+      "INV_ID": 35267927,
+      "LINE": 1,
+      "TX_PIECE": 1,
+      "TX_ID": 190635377,
+      "$meta": {
+        "type": "INV_NUM_TX_PIECES"
+      }
+    },
+    {
+      "INV_ID": 39392511,
+      "LINE": 1,
+      "TX_PIECE": 1,
+      "TX_ID": 213432121,
+      "$meta": {
+        "type": "INV_NUM_TX_PIECES"
+      }
+    },
+    {
+      "INV_ID": 56467923,
+      "LINE": 1,
+      "TX_PIECE": 1,
+      "TX_ID": 302543306,
+      "$meta": {
+        "type": "INV_NUM_TX_PIECES"
+      }
+    },
+    {
+      "INV_ID": 56467923,
+      "LINE": 2,
+      "TX_PIECE": 1,
+      "TX_ID": 302543307,
+      "$meta": {
+        "type": "INV_NUM_TX_PIECES"
+      }
+    },
+    {
+      "INV_ID": 56523114,
+      "LINE": 1,
+      "TX_PIECE": 1,
+      "TX_ID": 302968774,
+      "$meta": {
+        "type": "INV_NUM_TX_PIECES"
+      }
+    },
+    {
+      "INV_ID": 56523114,
+      "LINE": 2,
+      "TX_PIECE": 1,
+      "TX_ID": 302968775,
+      "$meta": {
+        "type": "INV_NUM_TX_PIECES"
+      }
+    },
+    {
+      "INV_ID": 58319567,
+      "LINE": 1,
+      "TX_PIECE": 1,
+      "TX_ID": 315026147,
+      "$meta": {
+        "type": "INV_NUM_TX_PIECES"
+      }
+    },
+    {
+      "INV_ID": 58660400,
+      "LINE": 1,
+      "TX_PIECE": 1,
+      "TX_ID": 317236398,
+      "$meta": {
+        "type": "INV_NUM_TX_PIECES"
+      }
+    },
+    {
+      "INV_ID": 58660400,
+      "LINE": 2,
+      "TX_PIECE": 1,
+      "TX_ID": 317236398,
+      "$meta": {
+        "type": "INV_NUM_TX_PIECES"
+      }
+    },
+    {
+      "INV_ID": 60492688,
+      "LINE": 1,
+      "TX_PIECE": 1,
+      "TX_ID": 328283034,
+      "$meta": {
+        "type": "INV_NUM_TX_PIECES"
+      }
+    },
+    {
+      "INV_ID": 65200403,
+      "LINE": 1,
+      "TX_PIECE": 1,
+      "TX_ID": 354336208,
+      "$meta": {
+        "type": "INV_NUM_TX_PIECES"
+      }
+    },
+    {
+      "INV_ID": 65200403,
+      "LINE": 2,
+      "TX_PIECE": 1,
+      "TX_ID": 354336209,
+      "$meta": {
+        "type": "INV_NUM_TX_PIECES"
+      }
+    },
+    {
+      "INV_ID": 65200403,
+      "LINE": 3,
+      "TX_PIECE": 1,
+      "TX_ID": 354336210,
+      "$meta": {
+        "type": "INV_NUM_TX_PIECES"
+      }
+    },
+    {
+      "INV_ID": 65226259,
+      "LINE": 1,
+      "TX_PIECE": 1,
+      "TX_ID": 354520699,
+      "$meta": {
+        "type": "INV_NUM_TX_PIECES"
+      }
+    },
+    {
+      "INV_ID": 65226259,
+      "LINE": 2,
+      "TX_PIECE": 1,
+      "TX_ID": 354520701,
+      "$meta": {
+        "type": "INV_NUM_TX_PIECES"
+      }
+    },
+    {
+      "INV_ID": 65425314,
+      "LINE": 1,
+      "TX_PIECE": 1,
+      "TX_ID": 355871699,
+      "$meta": {
+        "type": "INV_NUM_TX_PIECES"
+      }
+    }
+  ]
+}

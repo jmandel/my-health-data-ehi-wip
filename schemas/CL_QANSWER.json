@@ -1,0 +1,93 @@
+{
+  "name": "CL_QANSWER",
+  "description": "This table contains general information about questionnaire answer records. For example, the questionnaire the answer record is for, the date it was answered, and whether the answer record is closed.",
+  "primaryKey": [
+    {
+      "columnName": "ANSWER_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ANSWER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the questionnaire answer record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "REC_CREATE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who created this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "REC_CREATE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PE_HX_REVIEWED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This records whether a provider has viewed the history data in this record in the MyChart\\Welcome patient history visit navigator section. It is assumed that if the provider has had a chance to look at the submitted history data, they have filed or reviewed the data. After the provider review, MyChart and Welcome will start pre-loading answers from the history section rather than the patient's previous responses.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PE_HX_DONE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This records whether a provider has completed review of the history data in this record in the MyChart\\Welcome patient history visit navigator section. After the provider review, MyChart and Welcome will start pre-loading answers from the history section rather than the patient's previous responses."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ENROLL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the research study-patient association for the questionnaire."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "IMG_PROC_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Virtual item that returns the record ID for the ORD that points to the given Questionnaire Answer"
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "WORKFLOW_DURATION",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The amount of time (in seconds) that was spent answering the patient-entered questionnaire."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "FURTHEST_QUESTION_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The furthest question in the questionnaire that was answered by the user. This is only populated for Patient-Entered Questionnaires."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PARENT_ANSWER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The parent questionnaire response that was branched from to get to this questionnaire."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "CONFIDENTIAL_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The confidential status for the questionnaire answers."
+    }
+  ]
+}

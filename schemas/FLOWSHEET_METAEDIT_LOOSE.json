@@ -1,0 +1,48 @@
+{
+  "name": "FLOWSHEET_METAEDIT_LOOSE",
+  "description": "Historical third-party metadata (e.g. from Apple's HealthKit) is split across three tables. This table holds key names from each key-value pair. The key category values, for keys that have been assigned category values, are held on table FLOWSHEET_METAEDIT_STRICT, and the values are held on FLOWSHEET_METAEDIT_VAL. Reporting on this metadata can be more easily accomplished by joining these tables on primary key (FSD_ID, GROUP_LINE, VALUE_LINE).",
+  "primaryKey": [
+    {
+      "columnName": "FSD_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "FSD_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the Flowsheets data record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple values associated with a specific group of data within this record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EDITD_3P_META_KEY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Within a line, each position represents a key in a dictionary of third-party metadata attached to the historical Flowsheets value with the corresponding line number. This item stores the key's full name as a string, and is not intended to be programmed against nor indexed."
+    }
+  ]
+}

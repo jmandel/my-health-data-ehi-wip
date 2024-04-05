@@ -1,0 +1,171 @@
+{
+  "name": "ISOLATIONS",
+  "description": "This table contains patient isolation data.",
+  "primaryKey": [
+    {
+      "columnName": "ISOLATION_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ISOLATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the isolation record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "RECORD_STATUS_2_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The record status category ID for the isolation.",
+      "entries": [
+        "Soft Deleted",
+        "Hidden",
+        "Hidden and Soft Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for the contact in which this isolation took place. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ISOLATION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The isolation type category ID for the isolation."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ISOLATION_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The isolation status category ID for the isolation.",
+      "entries": [
+        "Active",
+        "Removed",
+        "Deleted",
+        "Encounter Ended"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "HOW_ISO_ADDED_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The How Isolation Was Added category ID for the isolation.",
+      "entries": [
+        "User",
+        "Import",
+        "Interface",
+        "Conversion",
+        "Automatic (ADT Rules)",
+        "Isolation Order"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ISOLATION_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the order that added the isolation."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ADDED_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The UTC date and time when the isolation was added."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ADDED_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the user record for the user who added this isolation. This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "ADDED_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "REMOVED_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The UTC date and time when the isolation was removed."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "REMOVED_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the user record for the user who removed this isolation. This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "REMOVED_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "COMMENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user-entered comments associated with the isolation"
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "RECORD_CREATION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the isolation record was created."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "ADDED_LOCAL_DTTM",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "Local instant when isolation was added."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "REMOVED_LOCAL_DTTM",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "Local instant when isolation was removed."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "INFECTION_LINKS_CALCULATED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether all linked infections have been calculated. 'Y' indicates all linked infections have been calculated. 'N' or NULL indicates that there may be infections that would be considered linked to the isolation, but that the isolation pre-dates the linking calculation.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    }
+  ]
+}

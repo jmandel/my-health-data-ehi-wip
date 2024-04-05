@@ -1,0 +1,131 @@
+{
+  "name": "RFL_APPT_REQUEST",
+  "description": "This table stores appointment request information for home health/hospice initial and resumption visit scheduling.",
+  "primaryKey": [
+    {
+      "columnName": "CAREPLAN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CAREPLAN_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the care plan record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CM_PHY_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this record or line. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "REG_PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the CSN of the Home Health/Hospice Admission or ROC Planning encounter that generated the appointment requests."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "APPT_REQ_DISCIPLINE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the home care discipline associated with the appointment request order for the CSN."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "APPT_REQUEST_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the appointment request ORD associated with the CSN"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "REFERRAL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the referral (RFL) ID that associated with the appointment request ORD for the line."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "LCP_APPT_REQ_SUG_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the status associated with this appointment request suggestion. Categories can be found in I ECT 15520.",
+      "entries": [
+        "Suggested By System",
+        "Saved for Later",
+        "Not a Suggestion - Created by User",
+        "Sent to Scheduling"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "SUG_EDITED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Denotes whether an appointment request suggestion was edited by an end user. Backing category list is ECT 101.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "SUG_RULE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Denotes which CER rule was used to create this appointment request suggestion."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "SUG_RULE_ID_RULE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the rule."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "SUG_PRC_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the appointment request suggestion visit type. Networked to PRC."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "SUG_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The start date of the target range of this visit within the appointment request suggestion."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "SUG_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The end date of the target range of this visit within the appointment request suggestion."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "SUG_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Appointment notes for this visit within the appointment request suggestion."
+    }
+  ]
+}

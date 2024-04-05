@@ -1,0 +1,165 @@
+{
+  "name": "IB_MESSAGES_4",
+  "description": "The IB_MESSAGES_4 table contains basic information about In Basket messages.",
+  "primaryKey": [
+    {
+      "columnName": "MSG_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "MSG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the task record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PROC_ALG_LPL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "A Patient Allergy Interaction message gets triggered whenever the entered allergy interacts with an existing order. This item stores the newly entered patient's allergy ID that interacts with the existing procedure orders."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "RFL_UPD_CVG_NEWLINE_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item stores the line number of new coverage information that was updated by the most recent Care Everywhere referral update message."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RFL_UPD_CVG_OLDLINE_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item stores the line number of old coverage information that was updated by the most recent Care Everywhere referral update message."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "MYC_CONVO_THREAD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Contains the MyChart Conversation for this message."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "NOTIF_SUBJ_SMARTTEXT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The subject SmartText for the notification. Used if the Letter Review is sent as a MyChart Message."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "NOTIF_SUBJ_SMARTTEXT_ID_SMARTTEXT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the SmartText record."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "NOTIF_USE_PDF_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Determines whether the notification will be sent as a PDF.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "QUERY_TICKET_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the Care Everywhere data exchange ticket for the patient associated with this message. This column along with the QUERY_TICKET_LINE column can be used to link to the CEID_QUERY_AUDIT table.",
+      "linksTo": "CEID_QUERY_AUDIT"
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "QUERY_TICKET_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Line number of the query audit information in the Care Everywhere data exchange ticket for the patient associated with this message. This column along with the QUERY_TICKET_ID column can be used to link to the CEID_QUERY_AUDIT table.",
+      "linksTo": "CEID_QUERY_AUDIT"
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "OUTSIDE_EVENT_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The event identifier for an outside document related to this message."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "OUTSIDE_DOC_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The document identifier for the outside document related to this message."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "POC_VERSION_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Specifies the contact serial number (CSN) of the updated specialty plan of care version from which the In Basket message was generated."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "HH_EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Episode ID for the visit set associated with this message."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "HH_CONTACT_TYPE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The home care contact type ID for the visit set associated with this message."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "HH_CONTACT_TIME_UNKNOWN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether the time for the visit set associated with this message has been determined."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "HH_RECURRENCE_PATTERN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The recurrence pattern for the visit set associated with this message."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "HH_VERBAL_ORDER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The home care order ID for the visit set associated with this message."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "HH_LVO_VISIT_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the line number on the home care order for the visit set associated with this message."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "IS_AUTO_RAR_RESUBMISSION_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether this is a refill request that is automatically re-submitted by the system. 'Y' indicates that this is a refill request that is automatically re-submitted by the system. 'N' or NULL indicates this is not automatically re-submitted by the system or is not a refill request."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "FUT_TREATMENT_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This stores the future treatment plan (TPL) ID tied to a route plan In Basket message."
+    }
+  ]
+}

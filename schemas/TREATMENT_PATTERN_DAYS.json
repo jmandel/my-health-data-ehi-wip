@@ -1,0 +1,128 @@
+{
+  "name": "TREATMENT_PATTERN_DAYS",
+  "description": "Treatment day patterns in a treatment plan.",
+  "primaryKey": [
+    {
+      "columnName": "TREATMENT_PLAN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TREATMENT_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the plan record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PATTERN_DAY_TRG_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number of the TRG that this treatment day uses."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PATTERN_DAY_SORT_VALUE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the Id to identify a day in a pattern cycle. Note that multiple days can have the same Id if they are part of different pattern cycles."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PATTERN_DAY_CYCLE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The cycle pattern that this day is part of. Stored as a line in SI TPL 12000."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PATTERN_DAY_DATE_IN_CYCLE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The day in the cycle that this treatment day falls on. Will be 0 if the day falls on the cycle start date, 1 if it is the second day of the cycle, etc."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PATTERN_DAY_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The treatment day status category Id for the pattern treatment day.",
+      "entries": [
+        "Planned",
+        "Scheduled",
+        "Completed",
+        "Deleted",
+        "Started",
+        "Deferred",
+        "Canceled",
+        "Given Externally",
+        "Unscheduled",
+        "Non-Treatment Orders"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PATTERN_DAY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Tha name for this pattern day. This will be set as the name of the treatment day that will be created from this pattern day."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PATTERN_DAY_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The inpatient or outpatient category Id for the pattern treatment day.",
+      "entries": [
+        "Inpatient",
+        "Outpatient"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PATTERN_DAY_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "That day number in the cycle of a pattern day."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PATTERN_DAY_LENGTH",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The length of a treatment day. Always 1 for outpatient days but can be 1 or more for inpatient days."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PATTERN_DAY_SRC_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of day this pattern day was created from.",
+      "entries": [
+        "Created From Normal Plan Day",
+        "Created By Copying a Normal Plan Day",
+        "Created By Copying a Pattern Plan Day"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PATTERN_DAY_SOURCE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line in the source where this day was created from."
+    }
+  ]
+}

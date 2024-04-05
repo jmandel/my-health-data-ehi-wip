@@ -1,0 +1,221 @@
+{
+  "name": "MODALITY_DATA",
+  "description": "This table contains basic information about imaging data from the performing modality. It also contains cumulative radiation dose information.",
+  "primaryKey": [
+    {
+      "columnName": "IMY_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "IMY_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the modality data record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record to which the modality data pertains."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SOP_INSTANCE_UID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The DICOM SOP Instance unique identifier of the message from modality. This ID is uniquely assigned for every image in a study."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "AET_FDD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the Application Entity Title record from the FDD master file which specifies DICOM definitions for the performing modality."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "AET_FDD_ID_DICOM_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of an Application Entity (modality). This is not the AE Title."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PPS_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The PPS status category ID for the DICOM instance record.",
+      "entries": [
+        "IN PROGRESS",
+        "DISCONTINUED",
+        "COMPLETED"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PPS_START_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The DICOM Performed Procedure Step Start Date and Time."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PPS_END_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The DICOM Performed Procedure Step End Date and Time."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "SOP_CLASS_FDD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The DICOM SOP Class of the message from the performing modality. DICOM capabilities are all expressed as Service-Object Pair Classes, identified by SOP Class names and unique identifiers."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "SOP_CLASS_FDD_ID_DICOM_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of an Application Entity (modality). This is not the AE Title."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "RDSR_MFR",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The manufacturer of the machine sending the data."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "RDSR_MFR_MODEL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The model name of the machine sending the data."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "RDSR_STATION_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The station sending the data."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "RDSR_PROC_RPTD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The procedure reported category ID for the procedure reported to be performed for the DICOM instance record.",
+      "entries": [
+        "Computed Tomography X-Ray",
+        "Projection X-Ray",
+        "Mammography"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "RDSR_IRRD_STRT_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The start time of irradiation."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "RDSR_IRRD_STOP_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The end time of irradiation."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "RDSR_SCP_ACCUMLTN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The scope of accumulation category ID for the DICOM instance record.",
+      "entries": [
+        "Study",
+        "Series",
+        "Performed Procedure Step",
+        "Irradiation Event"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "RDSR_TOTAL_EFF_DOSE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The aggregate effective dose."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "RDSR_TTL_MSR_MTHD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The total dose measurement method category ID for the DICOM instance.",
+      "entries": [
+        "DLP to E conversion via MC computation",
+        "CTDIfreeair to E conversion via MC computation",
+        "DLP to E conversion via measurement",
+        "CTDIfreeair to E conversion via measurement"
+      ]
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "RDSR_PAT_MODEL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The effective does patient model."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "RDSR_REF_AUTH",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The effective dose reference authority."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "RDSR_TTL_DOSE_PHNTM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The total effective dose phantom type."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "RDSR_DOSIMETER_TYPE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The total effective dose dosimeter type."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "RDSR_DOSE_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comment associated with the accumulated radiation dose."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "RDSR_PROC_INTENT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The procedure intent category ID for the DICOM instance record.",
+      "entries": [
+        "Diagnostic Intent",
+        "Therapeutic Intent",
+        "Combined Diagnostic and Therapeutic Procedure"
+      ]
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "PPS_DESC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The DICOM Performed Procedure Step Description."
+    }
+  ]
+}

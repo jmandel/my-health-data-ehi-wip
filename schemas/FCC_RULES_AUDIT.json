@@ -1,0 +1,65 @@
+{
+  "name": "FCC_RULES_AUDIT",
+  "description": "This table can be used to recreate an audit trail for facility charge calculator rules that were modified.  Since old scores are saved into these items, a row isn't exactly a snapshot of the scores and user at that particular instant listed.  Instead, a snapshot is created by pairing a row's user and instant to the scores of the next row that has the same rule ID.  If it is the last row with that rule, the user and instant apply to the current scores in FAC_CHG_RULE_SCORE.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RULE_SCORE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The audit item for the rule score in FAC_CHG_RULE_SCORE. Whenever a rule score changes, a new row is added for each score that changed. If those changes include calculated rule scores, this item saves the original value. If the calculated score hasn't changed but the override rule score has, the current calculated value for that rule is saved to this item."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RULE_OVERRIDE_SCORE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The audit item for the override rule score in FAC_CHG_RULE_SCORE. Whenever a rule score changes, a new row is added for each score that changed. If those changes include overridden rule scores, this item saves the original value. If the rule score hasn't changed but the calculated rule score has, the current override value for that rule is stored in this item."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "EDIT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant for each rule score change. Whenever a set of rule scores change, EDIT_DTTM in FCC_SCORE_AUDIT records the current time or Override Instant from FAC_CHG_RULE_SCORE when available. This item saves that same instant on a new line for each rule score changed. Since these instants will be unique to a group of changes, this item is used to identify which rule scores were changed at the same time and what totals they are associated with."
+    }
+  ]
+}

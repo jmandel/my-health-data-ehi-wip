@@ -1,0 +1,190 @@
+{
+  "name": "PPS_INFO",
+  "description": "New table for the Hospital Accounts Receivable (HAR) to specify what assessed HIPPS code and reimbursement amount is versus the charge-based HIPPS code and reimbursement amount.",
+  "primaryKey": [
+    {
+      "columnName": "ACCT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ACCT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the hospital account record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PPS_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This category holds the data that indicates what type of data is on the row. A row can represent the pricing from the assessment or the pricing from the charges (what really happened).",
+      "entries": [
+        "PPS / Assessment-Based",
+        "Expected Final / Charge-Based"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "HIPPS_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the calculated HIPPS code.  Item HAR 680 stores if it is assessment based or charge based."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EXP_PAYMENT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Expected payment for the associated HIPPS code. Multiple responses are permitted (one per line)."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "NRS_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Non routine supply amount for the associated HIPPS code. Multiple responses are permitted (one per line)."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "EPISODE_RATE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The episode rate for the associated HIPPS code."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PAYMENT_CASE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Payment case for the associated HIPPS code.",
+      "entries": [
+        "None",
+        "Full Episode Rate",
+        "LUPA",
+        "PEP",
+        "SCIC",
+        "No-Visit RAP"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ADD_ON_LUPA",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the Low Utilization Payment Adjustment (LUPA) add on amount."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ADD_ON_RURAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the rural add on amount."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "ADD_ON_OUTLIER",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the outlier add on amount."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "LOCALE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the locale record for this row."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "LOCALE_ID_LOCALE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the locale record."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "EPISODE_TIMING_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The episode timing for this Home Health PDGM account.",
+      "entries": [
+        "Early",
+        "Late",
+        "Missing"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "ADMIT_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The admission source for this Home Health PDGM account.",
+      "entries": [
+        "Community",
+        "Institutional",
+        "Missing"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "CLINICAL_GROUP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The clinical group for this Home Health PDGM account.",
+      "entries": [
+        "MMTA - Other",
+        "Neuro/Stroke Rehabilitation",
+        "Wound Care",
+        "Complex Nursing Interventions",
+        "Musculoskeletal Rehabilitation",
+        "Behavioral Health",
+        "MMTA - Surgical Aftercare",
+        "MMTA - Cardiac",
+        "MMTA - Endocrine",
+        "MMTA - GI/GU",
+        "MMTA - Infectious",
+        "MMTA - Respiratory",
+        "Missing Primary Diagnosis",
+        "Questionable Encounter"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "FUNCTIONAL_LEVEL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The functional impairment level for this Home Health PDGM account.",
+      "entries": [
+        "Low",
+        "Medium",
+        "High"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "COMORBIDITY_ADJUSTMENT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comorbidity adjustment for this Home Health PDGM account.",
+      "entries": [
+        "No Comorbidity",
+        "Low Comorbidity",
+        "High Comorbidity"
+      ]
+    }
+  ]
+}

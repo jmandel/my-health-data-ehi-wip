@@ -1,0 +1,315 @@
+{
+  "name": "AUTH_REQUEST",
+  "description": "This table contains information about an individual authorization request.",
+  "primaryKey": [
+    {
+      "columnName": "AUTH_REQUEST_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "AUTH_REQUEST_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the authorization request."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "RECORD_STATUS_2_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Chronicles record status category ID for the authorization request.",
+      "entries": [
+        "Soft Deleted",
+        "Hidden",
+        "Hidden and Soft Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "EXTERNAL_IDENTIFIER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The external identifier of the authorization request."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "LAST_EDIT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time (UTC) of the latest published (non-draft) contact of the authorization request."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "REQUEST_CONTEXT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The request context category ID for the authorization request.",
+      "entries": [
+        "Utilization Management",
+        "Utilization Management Appeals",
+        "Utilization Management Bed Days"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient/member that this authorization request is for. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "REFERRAL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the referral record that this authorization request is associated with."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the coverage record that applies to this authorization request."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "REQUEST_CREATION_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time (UTC) that this authorization request was initiated."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "LOB_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the line of business associated with the coverage when the authorization request was processed."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "LOB_ID_LOB_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the line of business record."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PAYER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the payer associated with the coverage when the authorization request was processed."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "BENEFIT_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the plan associated with the coverage when the authorization request was processed."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "ORDER_ENTRY_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "When an authorization request is received, if any of the requested services were created during order entry, this column will be populated as a pointer back to the order."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "DECISION_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user responsible for the decision of the authorization request. In the case of medical director review, this is the person who conducted the medical director review rather than the user who changed the status in the system. This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "DECISION_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "UM_DECISION_USER_ROLE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The decision user role category ID for the user making the decision on the authorization request.",
+      "entries": [
+        "Non-Medical Director",
+        "Medical Director",
+        "Auto Status Assignment",
+        "Decision Made Externally",
+        "Auto Status Assignment Pre-Check"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "RESP_PARTY_AGENCY_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the responsibility class of the party responsible for rendering a decision for the authorization request."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "RESP_PARTY_AGENCY_ID_AGENCY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the agency."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "EXT_TRACKED_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Keeps track of the reason why this auth request's turnaround time is tracked externally.",
+      "entries": [
+        "Legacy Auth Request",
+        "Routed Through Payer Platform",
+        "Incoming 278N"
+      ]
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "APPEALED_AUTH_REQUEST_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Authorization Request that was adversely determined and is being appealed by this Request."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "REGION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The facility profile ID of the region on the coverage used for this auth request."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "MEDICAL_GROUP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The facility profile ID of the medical group on the coverage used for this auth request."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "CREATED_BY_PENDING_CVG_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item will be set to Yes if the authorization request was originally created using a non-verified coverage.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "PREVIOUS_COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "When an Authorization Request is created with a non-verified coverage, the Authorization Request is eligible for a one-time coverage change. If the coverage is changed, this item will provide a link to the previous coverage."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "CVG_CHANGE_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "When an Authorization Request is created with a pending coverage, the Authorization Request is eligible for a one-time coverage change. If the coverage is changed, this item indicates if the change was initiated manually by a user or done automatically by the system.",
+      "entries": [
+        "Manual",
+        "Automatic"
+      ]
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "CVG_CHANGE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "When an Authorization Request is created with a pending coverage, the Authorization Request is eligible for a one-time coverage change. If the coverage is changed, this item provides a link to the user that initiated the change."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "CVG_CHANGE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "CVG_CHANGE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "When an Authorization Request is created with a pending coverage, the Authorization Request is eligible for a one-time coverage change. If the coverage is changed, this item stores the instant in which the change was made."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "REQUESTING_ORGANIZATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the organization that initiated this auth request."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "REQUESTING_ORGANIZATION_ID_EXTERNAL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Organization's external name used as the display name on forms and user interfaces."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "GUIDE_REVIEW_VENDOR_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The guideline review vendor that is used for the guideline review process for the authorization request."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "GUIDE_REV_INIT_MTHD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The method used to initiate the guideline review process for the authorization request.",
+      "entries": [
+        "Automated Request",
+        "Manual Entry",
+        "Tapestry Link"
+      ]
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "GUIDE_REV_REQ_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant the guideline review request was sent to the guideline review vendor. If the guideline review was manually initiated, this item is left blank."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "GUIDE_REV_REQ_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant the guideline review request was sent to the guideline review vendor. If the guideline review was manually initiated, this item is left blank."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "EXT_EVENT_MSG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Event-level MSG data received by Payer Platform from an external system."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "EXT_EVT_REF_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "the administrative reference number received by Payer Platform from an external system for this event"
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "EXT_EVT_AUTH_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "the authorization number received by Payer Platform from an external system for this event"
+    }
+  ]
+}

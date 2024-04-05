@@ -1,0 +1,103 @@
+{
+  "name": "COVERAGE_STATUS",
+  "description": "This table stores information about the current coverage statuses of a coverage record.",
+  "primaryKey": [
+    {
+      "columnName": "COVERAGE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the coverage record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "COVERAGE_STATUS_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The coverage status type category ID for the coverage record.",
+      "entries": [
+        "Binder Payment",
+        "Enrollment Geographic Area Verification",
+        "Geographic Area Investigation"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "COVERAGE_STATUS_RESOLUTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The coverage status resolution category ID for the coverage record. This column's associated ZC table is ZC_CVD_STAT_OUTST_ACT_RES.",
+      "entries": [
+        "Not Resolved",
+        "Approved",
+        "Denied",
+        "Canceled",
+        "Paid",
+        "Failed To Pay",
+        "Geographic Area Verification Passed",
+        "Subscriber Gained Coverage",
+        "Resolved",
+        "Under Investigation",
+        "Temporary Address",
+        "In Geographic Area",
+        "Out of Geographic Area"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CREATION_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The UTC date and time when the coverage gained the coverage status."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RESOLUTION_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The UTC date and time when the resolution had its state for this coverage status set."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CREATION_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The local date and time when the coverage gained the coverage status."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "RESOLUTION_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The local date and time when the coverage had its resolution for this coverage status set."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "COVERAGE_STATE_CHANGE_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The coverage status set reason category ID for the coverage record. This column's associated ZC table is ZC_CVG_STAT_CHNG_RSN.",
+      "entries": [
+        "Geographic Area Verification Result",
+        "DTRR TRC 154 Out of Area"
+      ]
+    }
+  ]
+}

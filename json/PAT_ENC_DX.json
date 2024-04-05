@@ -1,0 +1,560 @@
+{
+  "$meta": {
+    "schemas": {
+      "PAT_ENC_DX": {
+        "name": "PAT_ENC_DX",
+        "description": "The patient encounter diagnosis table contains one record for each diagnosis associated with each encounter level of service. This table will contain all diagnoses specified on the Order Summary screen.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ENC_CSN_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ENC_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "This is a numeric representation of the date of this encounter in your system. The integer portion of the number specifies the date of the encounter. The digits after the decimal point indicate multiple visits on one day."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number of the diagnosis within the encounter. This is the second column in the primary key and uniquely identifies this diagnosis on the encounter."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The contact date of the encounter associated with this diagnosis. Note: There may be multiple encounters on the same calendar date."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "A unique serial number for this encounter. This number is unique across all patients and encounters in the system."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "DX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the diagnosis record associated with the patient encounter. Note: This is NOT the ICD9 diagnosis code. It is an internal identifier that is typically not visible to a user."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "PRIMARY_DX_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This is a one character field that indicates whether this diagnosis was the primary diagnosis for the encounter. If the diagnosis was the primary this field will have a value of 'Y' otherwise it will have a value of 'N'."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "DX_CHRONIC_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the chronic flag for a diagnosis.",
+            "entries": [
+              "No",
+              "Yes"
+            ]
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "DX_UNIQUE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Unique identifier given when a diagnosis is added to the encounter diagnosis list."
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "DX_ED_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Definitively identifies an encounter diagnosis (I EDG 18400) as being an ED clinical impression. This is important to differentiate ED diagnoses from diagnoses filed to the same item as in the IP setting."
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "DX_LINK_PROB_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Stores the problem ID of the linked problem."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "PAT_ENC_DX",
+            "target": "PAT_ENC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PAT_ENC_DX": [
+    {
+      "PAT_ENC_DATE_REAL": 66524,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-02-19 00:00:00",
+      "PAT_ENC_CSN_ID": 988126821,
+      "DX_ID": 260690,
+      "PRIMARY_DX_YN": "N",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "1",
+      "DX_ED_YN": "N",
+      "DX_LINK_PROB_ID": 90574164,
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66830,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-12-22 00:00:00",
+      "PAT_ENC_CSN_ID": 1043034397,
+      "DX_ID": 260690,
+      "PRIMARY_DX_YN": "N",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "1",
+      "DX_LINK_PROB_ID": 90574164,
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66745.02,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "PAT_ENC_CSN_ID": 1028743701,
+      "DX_ID": 15362,
+      "PRIMARY_DX_YN": "N",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "1",
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66745.02,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "PAT_ENC_CSN_ID": 1028743701,
+      "DX_ID": 187132,
+      "PRIMARY_DX_YN": "N",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "2",
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66745.02,
+      "LINE": 3,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "PAT_ENC_CSN_ID": 1028743701,
+      "DX_ID": 192858,
+      "PRIMARY_DX_YN": "N",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "3",
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66745,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "PAT_ENC_CSN_ID": 991225117,
+      "DX_ID": 187132,
+      "PRIMARY_DX_YN": "N",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "1",
+      "DX_ED_YN": "N",
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66745,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "PAT_ENC_CSN_ID": 991225117,
+      "DX_ID": 15362,
+      "PRIMARY_DX_YN": "N",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "2",
+      "DX_ED_YN": "N",
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66745,
+      "LINE": 3,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "PAT_ENC_CSN_ID": 991225117,
+      "DX_ID": 192858,
+      "PRIMARY_DX_YN": "Y",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "3",
+      "DX_ED_YN": "N",
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66745,
+      "LINE": 4,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "PAT_ENC_CSN_ID": 991225117,
+      "DX_ID": 260690,
+      "PRIMARY_DX_YN": "N",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "4",
+      "DX_ED_YN": "N",
+      "DX_LINK_PROB_ID": 90574164,
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66465,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-12-22 00:00:00",
+      "PAT_ENC_CSN_ID": 977858467,
+      "DX_ID": 260690,
+      "PRIMARY_DX_YN": "Y",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "1",
+      "DX_ED_YN": "N",
+      "DX_LINK_PROB_ID": 90574164,
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66444,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "PAT_ENC_CSN_ID": 974614965,
+      "DX_ID": 260690,
+      "PRIMARY_DX_YN": "Y",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "1",
+      "DX_ED_YN": "N",
+      "DX_LINK_PROB_ID": 90574164,
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66535,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "PAT_ENC_CSN_ID": 958148810,
+      "DX_ID": 260690,
+      "PRIMARY_DX_YN": "Y",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "1",
+      "DX_ED_YN": "N",
+      "DX_LINK_PROB_ID": 90574164,
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66350.02,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "PAT_ENC_CSN_ID": 958147754,
+      "DX_ID": 108212,
+      "PRIMARY_DX_YN": "N",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "1",
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66149,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-02-09 00:00:00",
+      "PAT_ENC_CSN_ID": 921952141,
+      "DX_ID": 284018,
+      "PRIMARY_DX_YN": "Y",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "1",
+      "DX_ED_YN": "N",
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 65575.02,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-07-15 00:00:00",
+      "PAT_ENC_CSN_ID": 829393933,
+      "DX_ID": 1177374,
+      "PRIMARY_DX_YN": "Y",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "1",
+      "DX_ED_YN": "N",
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 65575.02,
+      "LINE": 2,
+      "CONTACT_DATE": "2020-07-15 00:00:00",
+      "PAT_ENC_CSN_ID": 829393933,
+      "DX_ID": 442362,
+      "PRIMARY_DX_YN": "N",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "2",
+      "DX_ED_YN": "N",
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 64869,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "PAT_ENC_CSN_ID": 720803470,
+      "DX_ID": 444804,
+      "PRIMARY_DX_YN": "Y",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "1",
+      "DX_ED_YN": "N",
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 64869,
+      "LINE": 2,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "PAT_ENC_CSN_ID": 720803470,
+      "DX_ID": 1181154,
+      "PRIMARY_DX_YN": "N",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "2",
+      "DX_ED_YN": "N",
+      "DX_LINK_PROB_ID": 30694847,
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 64869,
+      "LINE": 3,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "PAT_ENC_CSN_ID": 720803470,
+      "DX_ID": 94362,
+      "PRIMARY_DX_YN": "N",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "3",
+      "DX_ED_YN": "N",
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66350,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "PAT_ENC_CSN_ID": 948004323,
+      "DX_ID": 108212,
+      "PRIMARY_DX_YN": "N",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "1",
+      "DX_ED_YN": "N",
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66350,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "PAT_ENC_CSN_ID": 948004323,
+      "DX_ID": 192858,
+      "PRIMARY_DX_YN": "Y",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "2",
+      "DX_ED_YN": "N",
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66350,
+      "LINE": 3,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "PAT_ENC_CSN_ID": 948004323,
+      "DX_ID": 260690,
+      "PRIMARY_DX_YN": "N",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "3",
+      "DX_ED_YN": "N",
+      "DX_LINK_PROB_ID": 90574164,
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 65591,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "PAT_ENC_CSN_ID": 832464108,
+      "DX_ID": 1177374,
+      "PRIMARY_DX_YN": "N",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "1",
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 65581,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-07-21 00:00:00",
+      "PAT_ENC_CSN_ID": 829995922,
+      "DX_ID": 1177374,
+      "PRIMARY_DX_YN": "Y",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "1",
+      "DX_ED_YN": "N",
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 65576,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-07-16 00:00:00",
+      "PAT_ENC_CSN_ID": 829467718,
+      "DX_ID": 1177374,
+      "PRIMARY_DX_YN": "Y",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "1",
+      "DX_ED_YN": "N",
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 65574,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-07-14 00:00:00",
+      "PAT_ENC_CSN_ID": 829213099,
+      "DX_ID": 1177374,
+      "PRIMARY_DX_YN": "Y",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "1",
+      "DX_ED_YN": "N",
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 65387,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-01-09 00:00:00",
+      "PAT_ENC_CSN_ID": 799951565,
+      "DX_ID": 1181154,
+      "PRIMARY_DX_YN": "Y",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "1",
+      "DX_ED_YN": "N",
+      "DX_LINK_PROB_ID": 30694847,
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 65387,
+      "LINE": 2,
+      "CONTACT_DATE": "2020-01-09 00:00:00",
+      "PAT_ENC_CSN_ID": 799951565,
+      "DX_ID": 1236545,
+      "PRIMARY_DX_YN": "N",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "2",
+      "DX_ED_YN": "N",
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 65387,
+      "LINE": 3,
+      "CONTACT_DATE": "2020-01-09 00:00:00",
+      "PAT_ENC_CSN_ID": 799951565,
+      "DX_ID": 212474,
+      "PRIMARY_DX_YN": "N",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "3",
+      "DX_ED_YN": "N",
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 64878,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-18 00:00:00",
+      "PAT_ENC_CSN_ID": 725327197,
+      "DX_ID": 1181154,
+      "PRIMARY_DX_YN": "N",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "1",
+      "DX_LINK_PROB_ID": 30694847,
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 64878,
+      "LINE": 2,
+      "CONTACT_DATE": "2018-08-18 00:00:00",
+      "PAT_ENC_CSN_ID": 725327197,
+      "DX_ID": 94362,
+      "PRIMARY_DX_YN": "N",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "2",
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 64869.03,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "PAT_ENC_CSN_ID": 724628999,
+      "DX_ID": 444804,
+      "PRIMARY_DX_YN": "N",
+      "DX_CHRONIC_YN": "N",
+      "DX_UNIQUE": "1",
+      "$meta": {
+        "type": "PAT_ENC_DX"
+      }
+    }
+  ]
+}

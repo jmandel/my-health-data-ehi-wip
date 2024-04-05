@@ -1,0 +1,253 @@
+{
+  "name": "ORDER_DISP_INFO_3",
+  "description": "This table contains dispense information for orders.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_MED_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_MED_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "RX_FILL_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Prescription fill level note from the requesting source."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ACQ_COST_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Cost code used when calculating acquisition cost for the order.",
+      "entries": [
+        "Average Wholesale Price",
+        "DP",
+        "CMS FFP",
+        "CMS FFP FOR UNIT DOSE ITEMS",
+        "WAC",
+        "Acquisition Cost",
+        "Suggested Wholesale Price",
+        "Alternative Benchmark Price",
+        "Manufacturer Suggested Retail Price",
+        "Pharmacy Retail Price"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CHARGING_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Contains the patient contact serial number (CSN) of the pharmacy visit contact to use for charge and payment posting."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EMRG_FILL_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Is the current fill an emergency fill. An emergency fill is a short term refill that is approved by a pharmacist so that a patient can stay on their therapy while waiting for a refill authorization request (RAR) to be approved.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "EMERG_FILL_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The discrete reason the user gave for creating an emergency fill."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "EMERG_FILL_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the ID for a note (HNO) containing the free text additional details given for why it is necessary to create an emergency fill."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "TAX_DUE_TOTAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column holds the rounded value for the total amount due in taxes when the medication was sold."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "FILL_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Indicates the date the patient is expected to begin taking a particular dispense of a prescription."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "TAX_EXEMPT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The column holds whether the tax was exempted when the medication was sold."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ADJUD_REVERSE_ONLY_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This indicates that an adjudication with a failed reversal should not be resubmitted once the reversal failure is corrected. This will only ever be set for adjudications from Hyperspace. It is not used for Willow Ambulatory."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "RX_FILL_NAME_BRAND",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The brand name for the prescription fill. E.g. in the name \"TYLENOL (acetaminophen) 325 mg tablets\", this would be \"TYLENOL\"."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "RX_FILL_NAME_GENERIC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The generic name for the prescription fill. E.g. in the name \"TYLENOL (acetaminophen) 325 mg tablets\", this would be \"acetaminophen\"."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "RX_FILL_IS_BRAND_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Is the fill for a brand medication. This helps determine how the medication name for the fill should be displayed. E.g. if it's a fill for a brand medication, the name would be \"TYLENOL (acetaminophen) 325 mg tablets\". If it's a fill for a generic medication, the generic medication name would display first. The default is No."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "RX_FILL_NAME_DOSAGE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The dosage for the prescription fill. E.g. in the name \"TYLENOL (acetaminophen) 325 mg tablets\", this would be \"325 mg tablets\"."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "RX_TAX_ROUNDING_METHOD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the rounding method used to calculate the total taxes for a medication sold within a transaction in an outpatient pharmacy.",
+      "entries": [
+        "Standard",
+        "Round Up"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "TAX_EXEMPTED_TOTAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column contains the rounded value for total amount of taxes exempted when the medication was sold."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "FILL_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Indicates the date the patient is expected to end taking a particular dispense of a prescription."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "FILL_EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Which therapy episode does this order fill correspond to"
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "FILL_THERAPY_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The therapy type for this order's fill"
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "FILL_LINE_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The line type for this order's fill"
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "FILL_DELIVERY_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The delivery type for this order's fill. Delivery type refers to the type of infusion pump, not which shipping carrier"
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "FILL_DOSES_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of doses included in the fill. Typically calculated from the fill start and end date, but can be manually changed"
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "SCHEDULED_FILL_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Specifies whether this is a scheduled fill."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "OVERRIDE_SERVICE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The override date of service for a prescription fill"
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "RX_REFILL_REQ_SER_ADDRESS_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique ID for the receiving provider's address on the refill request. It is used to identify an address using I SER 21000."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "FILL_WASTED_QTY",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of a dispense that was wasted in a home infusion shipment."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "HX_RX_FILL_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If set to Yes [1], then this is a historical fill on a prescription."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "HX_RX_FILL_DISP_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The dispense instant for a historical prescription fill."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "RX_FILL_NAME_PREFIX",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The medication name prefix for the prescription fill."
+    }
+  ]
+}

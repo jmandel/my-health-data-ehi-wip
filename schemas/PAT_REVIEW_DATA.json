@@ -1,0 +1,123 @@
+{
+  "name": "PAT_REVIEW_DATA",
+  "description": "Table contains patient entered clinical data review from Welcome Kiosk and MyChart.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique, internal contact date in decimal format. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PAT_REVIEW_ELG_C_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Patient allergies reviewed by the patient. The response to the prompt, \"do you have any additional allergies?\"",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PAT_REVIEW_ELG_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Additional comments, entered in a free text format by the patient in response to the prompt, \"Do you have any additional allergies?\""
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PAT_REVIEW_ORD_C_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Patient medications reviewed by the patient. The response to the prompt, \"do you have any additional medications?\""
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PAT_REVIEW_ORD_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Additional comments, entered in a free text format, by the patient in response to the prompt, \"Do you have any additional medications?\""
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PAT_REVIEW_LPL_C_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Patient problems reviewed by the patient. The response to the prompt, \"do you have any additional problems?\""
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PAT_REVIEW_LPL_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Additional comments, entered in a freetext format by the patient in response to the prompt, \"Do you have any additional problems?\""
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PAT_ALG_RVW_INFO_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient's response to the \"are these allergies correct?\" question in Welcome.",
+      "entries": [
+        "Patient indicated correct",
+        "Don't have time",
+        "Don't understand",
+        "Don't have medications with me",
+        "Can't find allergy",
+        "Can't find medication",
+        "Can't find health issue",
+        "Don't know details of allergies",
+        "Don't know details of medications",
+        "Don't know details of health issues",
+        "Exited before allergies were verified",
+        "Exited before medications were verified",
+        "Exited before health issues were verified"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PAT_MED_RVW_INFO_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient's response to the \"are these medications correct?\" question in Welcome."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PAT_PROB_RVW_INFO_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient's response to the \"are these problems correct?\" question in Welcome."
+    }
+  ]
+}

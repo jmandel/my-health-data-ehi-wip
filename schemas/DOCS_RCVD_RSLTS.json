@@ -1,0 +1,556 @@
+{
+  "name": "DOCS_RCVD_RSLTS",
+  "description": "This table stores discrete results received from outside sources.",
+  "primaryKey": [
+    {
+      "columnName": "DOCUMENT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "DOCUMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the Received Document record ID."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RESULT_INST_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Local instant for the result"
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RESULT_PROC_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Free text name of the procedure"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "RESULT_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the mapped procedure in the internal system."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PROC_LOINC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The LOINC code associated with this procedure."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "RESULT_ENC_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Link to the ordering encounter"
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "RESULT_KEY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Key to link the other result information to this order"
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "RESULT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Status for this result",
+      "entries": [
+        "Aborted",
+        "Active",
+        "Cancelled",
+        "Completed",
+        "Held",
+        "New",
+        "Suspended",
+        "Nullified",
+        "Obsolete"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "RESULT_ABNORMAL_C",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether this result was flagged as abnormal"
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "SPECIMEN_DISP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The displayable specimen name(s) for this result."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "RESULT_SOURCE_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the Document Received record contact originally storing this result."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "RSLT_LST_UPD_INST_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the last update instant of the result in UTC."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "RESULT_RESULTING_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This items stores the resulting status of the result.",
+      "entries": [
+        "In process",
+        "Preliminary result",
+        "Final result",
+        "Edited",
+        "Edited Result - FINAL"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "RSLT_ABNORMAL_ID_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the mapped result abnormality.",
+      "entries": [
+        "Abnormal",
+        "Normal"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "RESULT_LOINC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the mapped LOINC ID for a result LOINC code."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "EXTERNAL_RESULT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the type of the result.",
+      "entries": [
+        "Unknown",
+        "Medication",
+        "Code Status",
+        "Consult",
+        "Culture",
+        "Diet",
+        "ECG",
+        "Image",
+        "Immunization",
+        "Isolation",
+        "Microbiology",
+        "Nursing",
+        "Procedure",
+        "Radiology",
+        "Referral",
+        "E-Consult",
+        "Lab",
+        "Genomic Result",
+        "Microbiology - Non culture based"
+      ]
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "RESULT_INVALID_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates whether or not this line of result data is invalid.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "RESULT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the UTC instant of the moment this order was resulted."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "SPECIMEN_COLLECTION_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "UTC Instant of collection for this order's specimen(s)"
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "RSLT_UNSUCCESSFUL_FLG_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether a result was an unsuccessful attempt",
+      "entries": [
+        "Unsuccessful Attempt",
+        "Documented on Wrong Patient"
+      ]
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "RSLT_UNSUCCESS_INST_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Instant the result unsuccessful flag was set"
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "RSLT_PT_SRC_APP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If this result is a patient-entered result, this item stores the application which was used to submit it for the contact (e.g. MyChart).",
+      "entries": [
+        "MyChart",
+        "Welcome"
+      ]
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "RSLT_SRC_WPR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the ID of the MyChart user who edited the result for the contact."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "RSLT_SRC_ORG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the Data Exchange Organization record ID of the source organization for this order."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "RSLT_SRC_ORG_ID_EXTERNAL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Organization's external name used as the display name on forms and user interfaces."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "RSLT_AUTH_PROV_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The full name of the provider responsible for authorizing this result."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "RESULT_CONTACT_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the source of the result from the sending system.",
+      "entries": [
+        "Unknown",
+        "Enter/Edit Results",
+        "Result Orders Visit Navigator",
+        "Results Console Visit Navigator",
+        "Anticoag Tracker Visit Navigator",
+        "Lab Auto Verification",
+        "Lab Manual Verification",
+        "Study Review",
+        "Procedure Notes",
+        "Begin/End Exam",
+        "Media Manager",
+        "Prior Status",
+        "Update Assessment and Recommendation",
+        "Validation Queue",
+        "Change Procedure",
+        "Change Imaging Study Status",
+        "Track Result",
+        "In Basket",
+        "ED Narrator",
+        "Wet Read",
+        "External Results Entry",
+        "HH Remote Client Lab Result",
+        "Donor Organ Editor",
+        "UNOS Import",
+        "Historical Cervical Cytology",
+        "Automatically Reconciled Lab Result",
+        "Link Health Maintenance",
+        "Dermatology Exam",
+        "Automatically Reconciled Image Result",
+        "Mobile POCT Results Entry",
+        "Document Batch Editor",
+        "Imaging and Procedures",
+        "Interfaces",
+        "Transcription Utility",
+        "3rd Party Result Entry",
+        "Bulk Ordering Utility",
+        "Utilities"
+      ]
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "RSLT_IMAGE_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the type of the imaging result.",
+      "entries": [
+        "Cupid",
+        "Lumens",
+        "Stork",
+        "Radiant"
+      ]
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "RSLT_EXAM_BEGIN_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item stores the exam begin instant of the result."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "RSLT_EXAM_END_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item stores the exam end instant of the result."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "RSLT_RPT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the report type for the result.",
+      "entries": [
+        "Trendable Exception",
+        "Culture",
+        "Blood Bank Unit",
+        "Non-Trendable",
+        "Colonoscopy",
+        "EGD",
+        "EUS (Upper)",
+        "ERCP",
+        "Antegrade Enteroscopy",
+        "Sigmoidoscopy",
+        "Lower EUS",
+        "Retrograde Enteroscopy",
+        "Pouchoscopy",
+        "Ileoscopy",
+        "Bronchoscopy",
+        "Generic Lumens Procedure",
+        "Molecular",
+        "Cardiac Catheterization",
+        "Cardiac Ventriculography",
+        "Aortography Catheterization",
+        "Coronary Angiography",
+        "Coronary Catheterization",
+        "Left Heart Catheterization",
+        "Right Heart Catheterization",
+        "Transcatheter Mitral Valve Repair",
+        "Transcatheter Aortic Valve Replacement",
+        "Percutaneous Coronary Intervention",
+        "Pericardiocentesis",
+        "Cardiac Catheterization Intervention",
+        "Cardiac Catheterization Intervention with Implant",
+        "Structural Heart Procedure",
+        "Congenital Catheterization",
+        "Invasive Vascular",
+        "Invasive Vascular - Lower Extremity Arteries",
+        "Computed Tomography Angiography - Lower Extremity Arteries",
+        "Invasive Vascular - Abdominal Arteries",
+        "Computed Tomography Angiography - Abdominal Arteries",
+        "Invasive Vascular - Carotid Arteries",
+        "Computed Tomography Angiography - Carotid Arteries",
+        "Invasive Vascular - Whole Body Arteries",
+        "Computed Tomography Angiography - Whole Body Arteries",
+        "Extremity Invasive Vascular Diagnostic",
+        "Extremity Invasive Vascular Intervention",
+        "Extremity Invasive Vascular Intervention with Implant",
+        "Abdominal Invasive Vascular Diagnostic",
+        "Abdominal Invasive Vascular Intervention",
+        "Abdominal Invasive Vascular Intervention with Implant",
+        "Carotid Invasive Vascular Diagnostic",
+        "Carotid Invasive Vascular Intervention",
+        "Carotid Invasive Vascular Intervention with Implant",
+        "Whole Body Invasive Vascular Diagnostic",
+        "Whole Body Invasive Vascular Intervention",
+        "Whole Body Invasive Vascular Intervention with Implant",
+        "Electrophysiology",
+        "Electrophysiology Study",
+        "Implantable Cardiac Device",
+        "Ablation",
+        "Implantable Loop Recorder",
+        "ICD Implant/Upgrade",
+        "ICD Generator Change/Removal",
+        "Lead Implant/Replacement",
+        "Lead Revision/Removal",
+        "PPM Implant/Upgrade",
+        "PPM Generator Change/Removal",
+        "Occlusion Device Implant/Upgrade",
+        "Other Cardiac Device Implant/Replacement",
+        "Other Cardiac Device Revision/Removal",
+        "Arm Invasive Vascular Diagnostic",
+        "Arm Invasive Vascular Intervention",
+        "Arm Invasive Vascular Intervention with Implant",
+        "Echocardiography",
+        "Stress Echocardiography",
+        "Doppler Echocardiography",
+        "2D Echocardiography",
+        "Transthoracic Echocardiography",
+        "Transesophageal Echocardiography",
+        "Congenital Echocardiography",
+        "Fetal Echocardiography",
+        "Fetal Doppler Echocardiography",
+        "Fetal 2D Echocardiography",
+        "Vascular Ultrasound",
+        "Non-Invasive Peripheral Vascular",
+        "Cardiac Nuclear Medicine",
+        "Stress Nuclear Medicine",
+        "Cardiac Computed Tomography",
+        "Computed Tomography Angiography",
+        "Cardiac Magnetic Resonance Imaging",
+        "Magnetic Resonance Angiography",
+        "Multigated Acquisition Scan",
+        "Cardiac Positron Emission Tomography",
+        "Cardiac Single-Photon Emission Computed Tomography",
+        "Electrocardiogram",
+        "Cardiac X-Ray",
+        "Cardiac Event Monitoring",
+        "Holter",
+        "Tilt Table",
+        "Cardioversion",
+        "Cardiac Device Check",
+        "Cardiac Stress Test",
+        "Phonocardiogram",
+        "Generic Cardiovascular Procedure",
+        "Genomic",
+        "Tumor Profiling with Companion Biomarkers",
+        "Cardiology Non-Invasive Grouper",
+        "Cardiology Invasive Grouper",
+        "Generic Imaging Grouper"
+      ]
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "RSLT_LATERALITY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the laterality for the result."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "RSLT_READING_ACTIVITY_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the reading activity for the result."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "RSLT_READING_ACTIVITY_ID_ADV_ACTIVITY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Internal name of the Advantage Activity record"
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "LAB_RSLT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the type of lab result",
+      "entries": [
+        "Standard",
+        "Component",
+        "Free Text",
+        "Hematology - CBC",
+        "Hematology - Diff",
+        "Microbiology - Identification",
+        "Microbiology - General Workcard",
+        "Microbiology - Susceptibility",
+        "Microbiology - Stain",
+        "Microbiology - Organism Workcard",
+        "Hematology Differential",
+        "Hematology Auto",
+        "Microbiology - Culture and Workup",
+        "Anatomic Pathology - General",
+        "Anatomic Pathology - Cytology",
+        "Blood Bank",
+        "Molecular Diagnostics",
+        "Embryology"
+      ]
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "RSLT_HAS_VAR_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is set to Yes if the result has any associated Genomic Variants"
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "RSLT_STUDY_UID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The DICOM Study Instance Unique Identifier (UID) as recorded by the image archive."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "RSLT_LAB_REF_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the lab reference ID for the result."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "RSLT_SRC_ORG_HSI",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the HSI of the source organization for this order"
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "SPECIMEN_COLLECTION_INST_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Local Instant of collection for this order's specimen(s)."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "SPECIMEN_COLLECTION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date of collection for this order's specimen(s)"
+    }
+  ]
+}

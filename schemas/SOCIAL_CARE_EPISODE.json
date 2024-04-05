@@ -1,0 +1,200 @@
+{
+  "name": "SOCIAL_CARE_EPISODE",
+  "description": "This table stores episode information for Compass Rose episodes.",
+  "primaryKey": [
+    {
+      "columnName": "EPISODE_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the episode record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "EPISODE_DEF_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the episode type for the episode."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "EPI_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status category ID for the episode.",
+      "entries": [
+        "Active",
+        "Resolved",
+        "Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EPISODE_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the episode was started."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EPISODE_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the episode was ended."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EPISODE_PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for a special contact which stores Social Care information at episode-level. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "DECISION_FIN_ASST_CASE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the case which contains all the decisions created in the episode."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "RESPONSIBLE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the responsible user for the episode."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "RESPONSIBLE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "INIT_REFERRAL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the referral that initiated the episode."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PROGRAM_EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the program episode for a service episode. If the episode is voided, it will contain a link to the parent record at the time the episode was voided."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "TRACKING_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The tracking status category ID for the episode.",
+      "entries": [
+        "10 - First Activity",
+        "11 - First Activity (Active Monitoring End)",
+        "12 - First Activity (Referral from Consultant or Allied Health Professional)",
+        "20 - Subsequent Activity (Further activities anticipated)",
+        "21 - Transfer to another Health Care Provider",
+        "30 - First Definitive Treatment",
+        "31 - Start of Active Monitoring (Patient initiated)",
+        "32 - Start of Active Monitoring (Care Professional initiated)",
+        "33 - Did Not Attend",
+        "34 - Decision Not To Treat",
+        "35 - Patient Declined Offered Treatment",
+        "36 - Patient Died Before Treatment",
+        "90 - After Treatment",
+        "91 - During Active Monitoring",
+        "92 - Not Yet Referred",
+        "98 - Not Applicable",
+        "99 - Not Yet Known",
+        "11 - Waiting for investigation",
+        "12 - Waiting for treatment",
+        "13 - Waiting, redirected from other department",
+        "14 - Waiting for needed information",
+        "15 - Waiting for assistance",
+        "21 - Non waiting for investigation/treatment",
+        "22 - Non waiting, at control",
+        "23 - Non waiting, patient's wish",
+        "24 - Non waiting, ongoing treatment/investigation in other department",
+        "25 - Non waiting, ongoing investigation",
+        "26 - Non waiting, ongoing treatment",
+        "0 - No wait status",
+        "Active",
+        "Care plan / proposed treatment plan completed",
+        "Unplanned patient admission to hospital",
+        "Planned patient admission to hospital",
+        "Alteration in patient medical condition without hospital admission",
+        "Patient died",
+        "Patient has declined further services",
+        "Patient has moved from area",
+        "Patient is unable to be contacted",
+        "Patient has been referred to another service",
+        "No measurable benefit from continuing the service",
+        "Patient not complying with program",
+        "Risk to patient or staff prevents service provision",
+        "Patient/client death or bereavement phase end",
+        "Discharged to speciality palliative care provider",
+        "Discharged to other health care provider",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "EPISODE_DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the department responsible for managing the episode."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "EPISODE_SUMMARY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "An overview of a Social Care episode."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "CMGMT_ENROLL_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the episode became active. Refer to CMGMT_CALC_ENROLL_DATE for more robust reporting."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "CMGMT_ENROLL_CALC_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date that the user documented as the enrollment date or the date the status was originally changed to Active if no enrollment date is documented. If the overall episode status is Enrolling, the value will be blank."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "SOURCE_EVENT_TRIGGER_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The source event category ID for an automatically created Compass Rose episode.",
+      "entries": [
+        "Inpatient Hospital Admission",
+        "Undo Inpatient Hospital Admission",
+        "Basic Hospital Admission",
+        "Undo Basic Hospital Admission",
+        "External Hospital Admission",
+        "Hospital Discharge",
+        "Undo Hospital Discharge",
+        "External Hospital Discharge",
+        "Emergency Department Arrival",
+        "Undo Emergency Department Arrival",
+        "Emergency Department Dismissal",
+        "Undo Emergency Department Dismissal",
+        "External Emergency Department Visit",
+        "External Emergency Department Visit End"
+      ]
+    }
+  ]
+}

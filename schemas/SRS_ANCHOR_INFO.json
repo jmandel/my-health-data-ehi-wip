@@ -1,0 +1,85 @@
+{
+  "name": "SRS_ANCHOR_INFO",
+  "description": "This table stores information on anchor event option(s) a questionnaire series is related to.",
+  "primaryKey": [
+    {
+      "columnName": "SERIES_ANS_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SERIES_ANS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the series answer record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SERIES_ANCHOR_CAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the category item of the anchor event criteria that was matched.",
+      "entries": [
+        "SURGERY - GENERAL",
+        "Synvisc Injection",
+        "Case Scheduled",
+        "Patient Discharged After Case"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SERIES_ANCH_RULE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the rule that was satisfied to classify the patient into this anchor event categorization (SERIES_ANCHOR_CAT_C)."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SERIES_ANCH_RULE_ID_RULE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the rule."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SERIES_ANCH_LPP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the extension that was satisfied to classify the patient into this anchor event categorization (SERIES_ANCHOR_CAT_C)."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "SERIES_ANCH_LPP_ID_LPP_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the extension."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "SERIES_ANCH_FILE_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "To store the date when the patient is categorized into an anchor event."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "SERIES_ANCH_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores a single unique contact serial number (CSN) from the day on which an anchor event rule was satisfied for a patient's questionnaire series. An anchor event rule being satisfied will convert a patient's questionnaire series (questionnaires being asked to the patient on a specified period) to a post-anchor mode, meaning different questionnaires might now be asked to the patient than were asked before the anchor event. An anchor event might be a medication being given or a procedure being performed, for example."
+    }
+  ]
+}

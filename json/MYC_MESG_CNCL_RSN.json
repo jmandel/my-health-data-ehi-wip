@@ -1,0 +1,103 @@
+{
+  "$meta": {
+    "schemas": {
+      "MYC_MESG_CNCL_RSN": {
+        "name": "MYC_MESG_CNCL_RSN",
+        "description": "The MYC_MESG_CNCL_RSN table contains information about Secure Patient Message records sent to request the cancellation of an appointment. Specifically patients can enter comments on the reason for their cancellation request. This table allows you to report on those free text comments.",
+        "primaryKey": [
+          {
+            "columnName": "MESSAGE_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "MESSAGE_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique identifier for the message record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "CANCEL_REASON",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The reason the patient is requesting cancellation of an appointment. This field will only be populated for appointment cancellation request messages and if the patient is required or chose to write an explanation as to why they are requesting cancellation."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "MYC_MESG_CNCL_RSN",
+            "target": "MYC_MESG",
+            "joinKeys": [
+              {
+                "source": "MESSAGE_ID",
+                "target": "MESSAGE_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "MYC_MESG_CNCL_RSN": [
+    {
+      "MESSAGE_ID": "58993563",
+      "LINE": 1,
+      "CANCEL_REASON": "Joshua C Mandel would like to cancel the following appointments:",
+      "$meta": {
+        "type": "MYC_MESG_CNCL_RSN"
+      }
+    },
+    {
+      "MESSAGE_ID": "58993563",
+      "LINE": 2,
+      "$meta": {
+        "type": "MYC_MESG_CNCL_RSN"
+      }
+    },
+    {
+      "MESSAGE_ID": "58993563",
+      "LINE": 3,
+      "CANCEL_REASON": "MAC LAB APL in MAC APL LABORATORY (1700801005), 10/11/2022  3:30 PM",
+      "$meta": {
+        "type": "MYC_MESG_CNCL_RSN"
+      }
+    },
+    {
+      "MESSAGE_ID": "58993563",
+      "LINE": 4,
+      "$meta": {
+        "type": "MYC_MESG_CNCL_RSN"
+      }
+    },
+    {
+      "MESSAGE_ID": "58993563",
+      "LINE": 5,
+      "CANCEL_REASON": "Comments:",
+      "$meta": {
+        "type": "MYC_MESG_CNCL_RSN"
+      }
+    },
+    {
+      "MESSAGE_ID": "58993563",
+      "LINE": 6,
+      "$meta": {
+        "type": "MYC_MESG_CNCL_RSN"
+      }
+    }
+  ]
+}

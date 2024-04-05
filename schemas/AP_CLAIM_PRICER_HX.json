@@ -1,0 +1,69 @@
+{
+  "name": "AP_CLAIM_PRICER_HX",
+  "description": "This table contains historical information for adjudications that invoked the Epic Pricer.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the claim record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ASSOC_CONTRACT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The vendor contract associated with Epic Pricer message record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ASSOC_CONTRACT_ID_CONTRACT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the Vendor-Network contract."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "USED_FOR_PRICE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This value is set to Yes if the associated Epic Pricer message record was used to price the claim. When comparing contracts, the Epic Pricer message record may not have been used for the final pricing of the claim.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PRICER_INVOKED_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The recorded timestamp of when the Epic Pricer was invoked by adjudication."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PRICER_MSG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the Epic Pricer message record."
+    }
+  ]
+}

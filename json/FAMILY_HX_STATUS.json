@@ -1,0 +1,543 @@
+{
+  "$meta": {
+    "schemas": {
+      "FAMILY_HX_STATUS": {
+        "name": "FAMILY_HX_STATUS",
+        "description": "Family status relationship table.  Contains the relationship to the patient and the name of the family member, as well as the source of this information.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ENC_CSN_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI)."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "FAM_STAT_REL_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The family status relationship category number for the relationship between the patient and their family member."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "FAM_STAT_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The family status category number for the family member, such as 1 for \"alive\" and 2 for \"deceased\".",
+            "entries": [
+              "Other",
+              "Alive",
+              "Deceased",
+              "Unknown",
+              "Fetus - In Utero",
+              "Fetus - Stillbirth",
+              "Fetus - Ectopic Pregnancy",
+              "Fetus - Termination of Pregnancy",
+              "Fetus - Spontaneous Abortion",
+              "Fetus - Other",
+              "Fetus - Molar",
+              "Fetus - Abortion"
+            ]
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "FAM_STAT_SRC_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The family status source category number for the source of corresponding family status information.",
+            "entries": [
+              "Provider",
+              "Patient",
+              "Parent",
+              "Legal Guardian",
+              "Proxy User"
+            ]
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "HX_LNK_ENC_CSN",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The Contact Serial Number of the encounter in which the history was created/edited. If the history was created/edited outside of the context of an encounter, then this column will be blank."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "FAM_STAT_ID",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The Unique ID for the family member."
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "FAM_STAT_FATHER_ID",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "Unique ID for the Father"
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "FAM_STAT_MOTHER_ID",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "Unique ID for the mother."
+          },
+          {
+            "ordinalPosition": 19,
+            "name": "FAM_STAT_SEX_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item stores the sex of a family member of the patient.",
+            "entries": [
+              "Female",
+              "Male",
+              "Unknown",
+              "Unassigned"
+            ]
+          },
+          {
+            "ordinalPosition": 20,
+            "name": "FAM_STAT_GENDER_IDENTITY_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Gender identity for a family member.",
+            "entries": [
+              "Female",
+              "Male",
+              "Transgender Female",
+              "Transgender Male",
+              "Other",
+              "Choose not to disclose",
+              "Nonbinary",
+              "Genderqueer"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "FAMILY_HX_STATUS",
+            "target": "PAT_ENC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "FAMILY_HX_STATUS",
+            "target": "SOCIAL_HX",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "FAMILY_HX_STATUS": [
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Mother",
+      "FAM_STAT_STATUS_C_NAME": "Alive",
+      "FAM_STAT_SRC_C_NAME": "Provider",
+      "HX_LNK_ENC_CSN": 991225117,
+      "FAM_STAT_ID": 2,
+      "FAM_STAT_FATHER_ID": 9,
+      "FAM_STAT_MOTHER_ID": 8,
+      "FAM_STAT_SEX_C_NAME": "Female",
+      "FAM_STAT_GENDER_IDENTITY_C_NAME": "Female",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Father",
+      "FAM_STAT_STATUS_C_NAME": "Alive",
+      "HX_LNK_ENC_CSN": 991225117,
+      "FAM_STAT_ID": 6,
+      "FAM_STAT_FATHER_ID": 11,
+      "FAM_STAT_MOTHER_ID": 10,
+      "FAM_STAT_SEX_C_NAME": "Male",
+      "FAM_STAT_GENDER_IDENTITY_C_NAME": "Male",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "LINE": 3,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Brother",
+      "FAM_STAT_STATUS_C_NAME": "Alive",
+      "FAM_STAT_SRC_C_NAME": "Provider",
+      "HX_LNK_ENC_CSN": 991225117,
+      "FAM_STAT_ID": 5,
+      "FAM_STAT_FATHER_ID": 6,
+      "FAM_STAT_MOTHER_ID": 2,
+      "FAM_STAT_SEX_C_NAME": "Male",
+      "FAM_STAT_GENDER_IDENTITY_C_NAME": "Male",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "LINE": 4,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Maternal Grandmother",
+      "FAM_STAT_STATUS_C_NAME": "Deceased",
+      "HX_LNK_ENC_CSN": 991225117,
+      "FAM_STAT_ID": 8,
+      "FAM_STAT_SEX_C_NAME": "Female",
+      "FAM_STAT_GENDER_IDENTITY_C_NAME": "Female",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "LINE": 5,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Maternal Grandfather",
+      "FAM_STAT_STATUS_C_NAME": "Deceased",
+      "HX_LNK_ENC_CSN": 991225117,
+      "FAM_STAT_ID": 9,
+      "FAM_STAT_SEX_C_NAME": "Male",
+      "FAM_STAT_GENDER_IDENTITY_C_NAME": "Male",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "LINE": 6,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Paternal Grandmother",
+      "FAM_STAT_STATUS_C_NAME": "Deceased",
+      "HX_LNK_ENC_CSN": 991225117,
+      "FAM_STAT_ID": 10,
+      "FAM_STAT_SEX_C_NAME": "Female",
+      "FAM_STAT_GENDER_IDENTITY_C_NAME": "Female",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "LINE": 7,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Paternal Grandfather",
+      "FAM_STAT_STATUS_C_NAME": "Deceased",
+      "HX_LNK_ENC_CSN": 991225117,
+      "FAM_STAT_ID": 11,
+      "FAM_STAT_SEX_C_NAME": "Male",
+      "FAM_STAT_GENDER_IDENTITY_C_NAME": "Male",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991221485,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Mother",
+      "FAM_STAT_STATUS_C_NAME": "Alive",
+      "FAM_STAT_SRC_C_NAME": "Provider",
+      "HX_LNK_ENC_CSN": 958148810,
+      "FAM_STAT_ID": 2,
+      "FAM_STAT_FATHER_ID": 9,
+      "FAM_STAT_MOTHER_ID": 8,
+      "FAM_STAT_SEX_C_NAME": "Female",
+      "FAM_STAT_GENDER_IDENTITY_C_NAME": "Female",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991221485,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Father",
+      "FAM_STAT_STATUS_C_NAME": "Alive",
+      "HX_LNK_ENC_CSN": 958148810,
+      "FAM_STAT_ID": 6,
+      "FAM_STAT_FATHER_ID": 11,
+      "FAM_STAT_MOTHER_ID": 10,
+      "FAM_STAT_SEX_C_NAME": "Male",
+      "FAM_STAT_GENDER_IDENTITY_C_NAME": "Male",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991221485,
+      "LINE": 3,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Brother",
+      "FAM_STAT_STATUS_C_NAME": "Alive",
+      "FAM_STAT_SRC_C_NAME": "Provider",
+      "HX_LNK_ENC_CSN": 958148810,
+      "FAM_STAT_ID": 5,
+      "FAM_STAT_FATHER_ID": 6,
+      "FAM_STAT_MOTHER_ID": 2,
+      "FAM_STAT_SEX_C_NAME": "Male",
+      "FAM_STAT_GENDER_IDENTITY_C_NAME": "Male",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991221485,
+      "LINE": 4,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Maternal Grandmother",
+      "FAM_STAT_STATUS_C_NAME": "Deceased",
+      "HX_LNK_ENC_CSN": 958148810,
+      "FAM_STAT_ID": 8,
+      "FAM_STAT_SEX_C_NAME": "Female",
+      "FAM_STAT_GENDER_IDENTITY_C_NAME": "Female",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991221485,
+      "LINE": 5,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Maternal Grandfather",
+      "FAM_STAT_STATUS_C_NAME": "Deceased",
+      "HX_LNK_ENC_CSN": 958148810,
+      "FAM_STAT_ID": 9,
+      "FAM_STAT_SEX_C_NAME": "Male",
+      "FAM_STAT_GENDER_IDENTITY_C_NAME": "Male",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991221485,
+      "LINE": 6,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Paternal Grandmother",
+      "FAM_STAT_STATUS_C_NAME": "Deceased",
+      "HX_LNK_ENC_CSN": 958148810,
+      "FAM_STAT_ID": 10,
+      "FAM_STAT_SEX_C_NAME": "Female",
+      "FAM_STAT_GENDER_IDENTITY_C_NAME": "Female",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991221485,
+      "LINE": 7,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Paternal Grandfather",
+      "FAM_STAT_STATUS_C_NAME": "Deceased",
+      "HX_LNK_ENC_CSN": 958148810,
+      "FAM_STAT_ID": 11,
+      "FAM_STAT_SEX_C_NAME": "Male",
+      "FAM_STAT_GENDER_IDENTITY_C_NAME": "Male",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 802802103,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-01-09 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Mother",
+      "FAM_STAT_STATUS_C_NAME": "Alive",
+      "FAM_STAT_SRC_C_NAME": "Provider",
+      "HX_LNK_ENC_CSN": 799951565,
+      "FAM_STAT_ID": 2,
+      "FAM_STAT_SEX_C_NAME": "Female",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 802802103,
+      "LINE": 2,
+      "CONTACT_DATE": "2020-01-09 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Brother",
+      "FAM_STAT_SRC_C_NAME": "Provider",
+      "HX_LNK_ENC_CSN": 799951565,
+      "FAM_STAT_ID": 5,
+      "FAM_STAT_MOTHER_ID": 2,
+      "FAM_STAT_SEX_C_NAME": "Male",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Mother",
+      "FAM_STAT_STATUS_C_NAME": "Alive",
+      "FAM_STAT_SRC_C_NAME": "Provider",
+      "HX_LNK_ENC_CSN": 720803470,
+      "FAM_STAT_ID": 2,
+      "FAM_STAT_SEX_C_NAME": "Female",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "LINE": 2,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Brother",
+      "FAM_STAT_SRC_C_NAME": "Provider",
+      "HX_LNK_ENC_CSN": 720803470,
+      "FAM_STAT_ID": 5,
+      "FAM_STAT_MOTHER_ID": 2,
+      "FAM_STAT_SEX_C_NAME": "Male",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Mother",
+      "FAM_STAT_STATUS_C_NAME": "Alive",
+      "FAM_STAT_SRC_C_NAME": "Provider",
+      "HX_LNK_ENC_CSN": 948004323,
+      "FAM_STAT_ID": 2,
+      "FAM_STAT_FATHER_ID": 9,
+      "FAM_STAT_MOTHER_ID": 8,
+      "FAM_STAT_SEX_C_NAME": "Female",
+      "FAM_STAT_GENDER_IDENTITY_C_NAME": "Female",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Father",
+      "FAM_STAT_STATUS_C_NAME": "Alive",
+      "HX_LNK_ENC_CSN": 948004323,
+      "FAM_STAT_ID": 6,
+      "FAM_STAT_FATHER_ID": 11,
+      "FAM_STAT_MOTHER_ID": 10,
+      "FAM_STAT_SEX_C_NAME": "Male",
+      "FAM_STAT_GENDER_IDENTITY_C_NAME": "Male",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "LINE": 3,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Brother",
+      "FAM_STAT_STATUS_C_NAME": "Alive",
+      "FAM_STAT_SRC_C_NAME": "Provider",
+      "HX_LNK_ENC_CSN": 948004323,
+      "FAM_STAT_ID": 5,
+      "FAM_STAT_FATHER_ID": 6,
+      "FAM_STAT_MOTHER_ID": 2,
+      "FAM_STAT_SEX_C_NAME": "Male",
+      "FAM_STAT_GENDER_IDENTITY_C_NAME": "Male",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "LINE": 4,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Maternal Grandmother",
+      "FAM_STAT_STATUS_C_NAME": "Deceased",
+      "HX_LNK_ENC_CSN": 948004323,
+      "FAM_STAT_ID": 8,
+      "FAM_STAT_SEX_C_NAME": "Female",
+      "FAM_STAT_GENDER_IDENTITY_C_NAME": "Female",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "LINE": 5,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Maternal Grandfather",
+      "FAM_STAT_STATUS_C_NAME": "Deceased",
+      "HX_LNK_ENC_CSN": 948004323,
+      "FAM_STAT_ID": 9,
+      "FAM_STAT_SEX_C_NAME": "Male",
+      "FAM_STAT_GENDER_IDENTITY_C_NAME": "Male",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "LINE": 6,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Paternal Grandmother",
+      "FAM_STAT_STATUS_C_NAME": "Deceased",
+      "HX_LNK_ENC_CSN": 948004323,
+      "FAM_STAT_ID": 10,
+      "FAM_STAT_SEX_C_NAME": "Female",
+      "FAM_STAT_GENDER_IDENTITY_C_NAME": "Female",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "LINE": 7,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "FAM_STAT_REL_C_NAME": "Paternal Grandfather",
+      "FAM_STAT_STATUS_C_NAME": "Deceased",
+      "HX_LNK_ENC_CSN": 948004323,
+      "FAM_STAT_ID": 11,
+      "FAM_STAT_SEX_C_NAME": "Male",
+      "FAM_STAT_GENDER_IDENTITY_C_NAME": "Male",
+      "$meta": {
+        "type": "FAMILY_HX_STATUS"
+      }
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "name": "FIN_ASST_TRKR_RTE_EVT_HX",
+  "description": "This table contains a history of RTE integration for a tracker.",
+  "primaryKey": [
+    {
+      "columnName": "FIN_ASST_TRACKER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "FIN_ASST_TRACKER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the program tracker record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "EVT_INSTANT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant an event was logged in UTC"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EVT_TYP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Event type being logged",
+      "entries": [
+        "Program filter rules restricted all payers & plans",
+        "RTE configuration or internal error",
+        "Query sent",
+        "Coverage linked",
+        "Tracker approved via coverage link",
+        "Query failed due to tracker or patient data. User note logged.",
+        "Nightly processing evaluation begin",
+        "Batch evaluation begin"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EVT_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Applicable plan an event was logged against"
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EVT_PAYER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Applicable payer an event was logged against"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "EVT_RULE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Program rule that matched when the tracker query was attempted"
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "EVT_RULE_ID_RULE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the rule."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "EVT_ADDL_INFO",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Additional info regarding RTE error codes"
+    }
+  ]
+}

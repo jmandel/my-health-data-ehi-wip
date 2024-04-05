@@ -1,0 +1,86 @@
+{
+  "name": "HSP_PMT_LINE_REMIT",
+  "description": "This is a type of summary level of the remittance actions associated with a payment transaction. This table will summarize remittance information from Electronic Remittance and manual payment posting as stored on the transaction. This table is meant to hold a high level summary of line-level reason code information. Data will not be populated if a payment was posted at the invoice-level.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the transaction record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE_SVCLINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the service line number for line level payments."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "LINE_GRP_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the group code corresponding to the reason code at the line level.",
+      "entries": [
+        "Patient Responsibility",
+        "Contractual Obligation",
+        "Payor Initiated",
+        "Correction and Reversal",
+        "Other Adjustment"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "LINE_REMIT_CODE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the reason code or remark code from the service line."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "LINE_REMIT_CODE_ID_REMIT_CODE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of each remittance code."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "LINE_RSN_CODE_EXTL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the external claim level reason code or remark code from the service line."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "LINE_RMT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the amount associated with the reason code at the line level."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "LINE_RMK_CODES",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores information about the remark codes that are associated with specific reason codes at the line level. This is a comma delimited list of remark codes. The system will associate all remark codes present at any particular service line to every reason code on the same line."
+    }
+  ]
+}

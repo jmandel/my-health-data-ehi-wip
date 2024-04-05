@@ -1,0 +1,82 @@
+{
+  "name": "DEPT_PAT_CARE_SELECTION",
+  "description": "Table containing Department of Patient Care, and Department of Patient Care selection information for orders.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "DPCAR_DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the department where patient is receiving care for this order. The last line contains the current department of care, while previous lines contain historical values."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "DPCAR_PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the contact serial number (CSN) of the encounter from which the department of patient care (I ORD 77910) was chosen. The last line contains the CSN corresponding to the current department of care, while previous lines contain historical values."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "DPCAR_SEL_LOGIC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the selection logic used to determine the department of patient care (I ORD 77910) chosen for the order. The last line contains the selection logic that corresponds to the current department of care, while previous lines contain historical values.",
+      "entries": [
+        "Set by end user",
+        "Encounter where the order was signed",
+        "Most recent eligible encounter with authorizing provider",
+        "Most recent eligible encounter with ordering provider",
+        "Most recent eligible encounter with the same encounter provider",
+        "Most recent eligible encounter in the same encounter department",
+        "Most recent eligible encounter where an order in the reorder chain was signed",
+        "Patient contact department at the time of signing the order"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "DPCARE_SEL_INST_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the instant in which the department of patient care (I ORD 77910) was saved for the order. The last line contains the instant in which the current department of care was saved, while previous lines contain historical values."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "DPCARE_UPDT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the user ID of the user who caused the department of patient care (I ORD 77910) to be saved for the order. Saving of the department of patient care occurs when initially signing an order, when updating the order's authorizing or ordering provider, or when changing the encounter department for the encounter in which the order was signed. The last line contains user ID of the user who triggered the saving of the current department, while previous lines contain historical values."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DPCARE_UPDT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    }
+  ]
+}

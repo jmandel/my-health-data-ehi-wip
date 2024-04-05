@@ -1,0 +1,329 @@
+{
+  "$meta": {
+    "schemas": {
+      "PAT_ENC_DISP": {
+        "name": "PAT_ENC_DISP",
+        "description": "The PAT_ENC_DISP table contains information from the Follow-up action on the Visit Navigator tab for the ambulatory clinical system. This information specifies how and when a patient and provider should follow up with each other after an encounter. This table also contains information about the level of service (LOS) associated with the encounter.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ENC_CSN_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ENC_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "A unique, internal contact date in decimal format. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "LOS_DROPPED_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category number that indicates whether the Level of Service was dropped for this encounter. The category value will be equal to \"pending\" only while it is in the orders queue.",
+            "entries": [
+              "Yes",
+              "No",
+              "Pending"
+            ]
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "LOS_NEW_OR_EST_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category number that indicates whether the patient is a new (first time being seen) or established patient.",
+            "entries": [
+              "New",
+              "Established"
+            ]
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "LOS_NO_CHG_RSN_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The reason that a charge was not triggered for a level of service. This item being populated does not imply any issues with system integrity or system build; it will be set both for legitimate reasons that a charge was not triggered as well as non-legitimate reasons.",
+            "entries": [
+              "Unspecified reason",
+              "Charge Ready to Trigger flag not set",
+              "Order Instructions set to not trigger charges",
+              "Procedure not specified",
+              "Order class set to not trigger charges",
+              "Charge triggering disabled at resulting lab",
+              "Charge filtered through discrimination programming point",
+              "No charge triggering method specified",
+              "Order is canceled",
+              "Holding until close encounter",
+              "Patient not specified",
+              "Visit not specified",
+              "Invalid LCM build",
+              "Charge trigger failed to execute",
+              "Non-chargeable external result",
+              "Orders in transmittal"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "PAT_ENC_DISP",
+            "target": "ADDITIONAL_EM_CODE",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_ENC_DISP",
+            "target": "ASSOCIATED_REFERRALS",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_ENC_DISP",
+            "target": "HSP_ADMIT_DIAG",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_ENC_DISP",
+            "target": "HSP_ADMIT_PROC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_ENC_DISP",
+            "target": "HSP_ATND_PROV",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_ENC_DISP",
+            "target": "PAT_ADDENDUM_INFO",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_ENC_DISP",
+            "target": "PAT_CANCEL_PROC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_ENC_DISP",
+            "target": "PAT_ENC_ADMIT_DX_AUDIT",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_ENC_DISP",
+            "target": "PAT_ENC_LOS_DX",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_ENC_DISP",
+            "target": "PAT_ENC_QNRS_ANS",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_ENC_DISP",
+            "target": "PAT_REVIEW_ALLERGI",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_ENC_DISP",
+            "target": "PAT_REVIEW_PROBLEM",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_ENC_DISP",
+            "target": "TREATMENT_TEAM",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PAT_ENC_DISP": [
+    {
+      "PAT_ENC_DATE_REAL": 65574,
+      "CONTACT_DATE": "2020-07-14 00:00:00",
+      "PAT_ENC_CSN_ID": 829213099,
+      "LOS_DROPPED_C_NAME": "Yes",
+      "LOS_NEW_OR_EST_C_NAME": "Established",
+      "$meta": {
+        "type": "PAT_ENC_DISP"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 64869,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "PAT_ENC_CSN_ID": 720803470,
+      "LOS_DROPPED_C_NAME": "Yes",
+      "LOS_NEW_OR_EST_C_NAME": "New",
+      "$meta": {
+        "type": "PAT_ENC_DISP"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66745,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "PAT_ENC_CSN_ID": 991225117,
+      "LOS_DROPPED_C_NAME": "Yes",
+      "LOS_NEW_OR_EST_C_NAME": "Established",
+      "$meta": {
+        "type": "PAT_ENC_DISP"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66535,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "PAT_ENC_CSN_ID": 958148810,
+      "LOS_DROPPED_C_NAME": "Yes",
+      "LOS_NEW_OR_EST_C_NAME": "Established",
+      "$meta": {
+        "type": "PAT_ENC_DISP"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66444,
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "PAT_ENC_CSN_ID": 974614965,
+      "LOS_DROPPED_C_NAME": "Yes",
+      "LOS_NEW_OR_EST_C_NAME": "Established",
+      "$meta": {
+        "type": "PAT_ENC_DISP"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66190,
+      "CONTACT_DATE": "2022-03-22 00:00:00",
+      "PAT_ENC_CSN_ID": 922943112,
+      "$meta": {
+        "type": "PAT_ENC_DISP"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66179,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "PAT_ENC_CSN_ID": 922942674,
+      "$meta": {
+        "type": "PAT_ENC_DISP"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 65575.02,
+      "CONTACT_DATE": "2020-07-15 00:00:00",
+      "PAT_ENC_CSN_ID": 829393933,
+      "LOS_NO_CHG_RSN_C_NAME": "Orders in transmittal",
+      "$meta": {
+        "type": "PAT_ENC_DISP"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 65387,
+      "CONTACT_DATE": "2020-01-09 00:00:00",
+      "PAT_ENC_CSN_ID": 799951565,
+      "LOS_DROPPED_C_NAME": "Yes",
+      "LOS_NEW_OR_EST_C_NAME": "Established",
+      "$meta": {
+        "type": "PAT_ENC_DISP"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "PAT_ENC_CSN_ID": 948004323,
+      "LOS_DROPPED_C_NAME": "Yes",
+      "LOS_NEW_OR_EST_C_NAME": "Established",
+      "$meta": {
+        "type": "PAT_ENC_DISP"
+      }
+    }
+  ]
+}

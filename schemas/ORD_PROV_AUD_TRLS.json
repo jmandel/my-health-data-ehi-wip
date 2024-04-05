@@ -1,0 +1,99 @@
+{
+  "name": "ORD_PROV_AUD_TRLS",
+  "description": "This table stores the authorizing provider audit trail for orders.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PROV_AUDIT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique user ID of the authorizing provider from the audit trail."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PROV_AUDIT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PROV_AUDIT_INSTANT",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant that the associated authorizing provider was recorded in the order record."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PROV_AUDIT_SER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The provider ID of the authorizing provider from the audit trail."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PROV_AUDIT_POOL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for registry record representing the group of users who are responsible for a cosignature requirement on the order record."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PROV_AUDIT_POOL_ID_REGISTRY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the In Basket registry in the HIP master file."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PROV_AUDIT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of provider from the audit trail.",
+      "entries": [
+        "Authorizing Provider",
+        "Ordering Provider",
+        "Supervising Provider"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PROV_AUDIT_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The action from the audit trail.",
+      "entries": [
+        "Discontinue",
+        "Attending Assigned",
+        "Manual Correction",
+        "Order Signed",
+        "Order Pended",
+        "Update On Transfer"
+      ]
+    }
+  ]
+}

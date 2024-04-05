@@ -1,0 +1,1099 @@
+{
+  "$meta": {
+    "schemas": {
+      "ECHKIN_STEP_INFO": {
+        "name": "ECHKIN_STEP_INFO",
+        "description": "This table contains eCheck-In information for a specific appointment.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ENC_CSN_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PAT_ENC_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "INCLUDED_STEP_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The step of the eCheck-In workflow.",
+            "entries": [
+              "Payments",
+              "Personal Information",
+              "Insurance",
+              "Medications",
+              "Allergies",
+              "Health Issues",
+              "Questionnaires",
+              "Barcode",
+              "Guarantor",
+              "Guarantor with Insurance",
+              "ESign Documents",
+              "Travel History",
+              "Hardware Test",
+              "Patient Location",
+              "Patient Contacts",
+              "Primary Care Provider",
+              "Financial Assistance Screening"
+            ]
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "ECHKIN_STEP_STAT_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The status of the specific step mentioned in the eCheck-In workflow.",
+            "entries": [
+              "Not Offered",
+              "Not Yet Available",
+              "Not Started",
+              "In Progress",
+              "Completed",
+              "Not Needed",
+              "Not Completed",
+              "Filtered"
+            ]
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "STEP_COMPLETED_UTC_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "Stores the instant (in UTC) the step was completed in the eCheck-In workflow"
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "MYPT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the MyChart user ID that did the eCheck-In step."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "STEP_ACTION_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category ID for the action taken on an eCheck-In step.",
+            "entries": [
+              "Verified",
+              "Updated",
+              "Skipped",
+              "Completed",
+              "Unverified"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ECHKIN_STEP_INFO",
+            "target": "PAT_ENC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ECHKIN_STEP_INFO": [
+    {
+      "PAT_ENC_CSN_ID": 991225117,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66745,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Personal Information",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2023-09-27 17:06:06",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Completed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991225117,
+      "LINE": 2,
+      "PAT_ENC_DATE_REAL": 66745,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Patient Contacts",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Needed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991225117,
+      "LINE": 3,
+      "PAT_ENC_DATE_REAL": 66745,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Guarantor",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2023-09-27 17:06:26",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Verified",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991225117,
+      "LINE": 4,
+      "PAT_ENC_DATE_REAL": 66745,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Insurance",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2023-09-27 17:06:26",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Completed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991225117,
+      "LINE": 5,
+      "PAT_ENC_DATE_REAL": 66745,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Primary Care Provider",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Needed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991225117,
+      "LINE": 6,
+      "PAT_ENC_DATE_REAL": 66745,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Allergies",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2023-09-27 17:06:42",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Verified",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991225117,
+      "LINE": 7,
+      "PAT_ENC_DATE_REAL": 66745,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Health Issues",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2023-09-27 17:06:46",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Verified",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991225117,
+      "LINE": 8,
+      "PAT_ENC_DATE_REAL": 66745,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Travel History",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2023-09-27 17:06:48",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Completed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991225117,
+      "LINE": 9,
+      "PAT_ENC_DATE_REAL": 66745,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Questionnaires",
+      "ECHKIN_STEP_STAT_C_NAME": "In Progress",
+      "MYPT_ID": "389635",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991225117,
+      "LINE": 10,
+      "PAT_ENC_DATE_REAL": 66745,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Payments",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Needed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991225117,
+      "LINE": 11,
+      "PAT_ENC_DATE_REAL": 66745,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "INCLUDED_STEP_C_NAME": "ESign Documents",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Offered",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991225117,
+      "LINE": 12,
+      "PAT_ENC_DATE_REAL": 66745,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Patient Location",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Needed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991225117,
+      "LINE": 13,
+      "PAT_ENC_DATE_REAL": 66745,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Hardware Test",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Needed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991225117,
+      "LINE": 14,
+      "PAT_ENC_DATE_REAL": 66745,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Barcode",
+      "ECHKIN_STEP_STAT_C_NAME": "Filtered",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 974614965,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66444,
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Personal Information",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Needed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 974614965,
+      "LINE": 2,
+      "PAT_ENC_DATE_REAL": 66444,
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Patient Contacts",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2022-11-29 16:52:05",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Completed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 974614965,
+      "LINE": 3,
+      "PAT_ENC_DATE_REAL": 66444,
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Guarantor",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2022-11-29 16:52:17",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Verified",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 974614965,
+      "LINE": 4,
+      "PAT_ENC_DATE_REAL": 66444,
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Insurance",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2022-11-29 16:52:17",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Completed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 974614965,
+      "LINE": 5,
+      "PAT_ENC_DATE_REAL": 66444,
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Allergies",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2022-11-29 16:52:23",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Verified",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 974614965,
+      "LINE": 6,
+      "PAT_ENC_DATE_REAL": 66444,
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Health Issues",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2022-11-29 16:52:25",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Verified",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 974614965,
+      "LINE": 7,
+      "PAT_ENC_DATE_REAL": 66444,
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Travel History",
+      "ECHKIN_STEP_STAT_C_NAME": "Filtered",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 974614965,
+      "LINE": 8,
+      "PAT_ENC_DATE_REAL": 66444,
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Questionnaires",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Needed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 974614965,
+      "LINE": 9,
+      "PAT_ENC_DATE_REAL": 66444,
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Payments",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Needed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 974614965,
+      "LINE": 10,
+      "PAT_ENC_DATE_REAL": 66444,
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "INCLUDED_STEP_C_NAME": "ESign Documents",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Offered",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148810,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66535,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Personal Information",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2023-02-27 21:47:00",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Completed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148810,
+      "LINE": 2,
+      "PAT_ENC_DATE_REAL": 66535,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Patient Contacts",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Needed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148810,
+      "LINE": 3,
+      "PAT_ENC_DATE_REAL": 66535,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Guarantor",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2023-02-27 21:55:39",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Verified",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148810,
+      "LINE": 4,
+      "PAT_ENC_DATE_REAL": 66535,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Insurance",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2023-02-27 21:55:39",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Completed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148810,
+      "LINE": 5,
+      "PAT_ENC_DATE_REAL": 66535,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Allergies",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2023-02-27 21:55:48",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Verified",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148810,
+      "LINE": 6,
+      "PAT_ENC_DATE_REAL": 66535,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Health Issues",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2023-02-27 21:55:54",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Verified",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148810,
+      "LINE": 7,
+      "PAT_ENC_DATE_REAL": 66535,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Travel History",
+      "ECHKIN_STEP_STAT_C_NAME": "Filtered",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148810,
+      "LINE": 8,
+      "PAT_ENC_DATE_REAL": 66535,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Questionnaires",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2023-02-27 21:56:15",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Completed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148810,
+      "LINE": 9,
+      "PAT_ENC_DATE_REAL": 66535,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Payments",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Needed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148810,
+      "LINE": 10,
+      "PAT_ENC_DATE_REAL": 66535,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "INCLUDED_STEP_C_NAME": "ESign Documents",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Offered",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148226,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66393,
+      "CONTACT_DATE": "2022-10-11 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Personal Information",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Started",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148226,
+      "LINE": 2,
+      "PAT_ENC_DATE_REAL": 66393,
+      "CONTACT_DATE": "2022-10-11 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Guarantor",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Started",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148226,
+      "LINE": 3,
+      "PAT_ENC_DATE_REAL": 66393,
+      "CONTACT_DATE": "2022-10-11 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Insurance",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Started",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148226,
+      "LINE": 4,
+      "PAT_ENC_DATE_REAL": 66393,
+      "CONTACT_DATE": "2022-10-11 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Allergies",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Started",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148226,
+      "LINE": 5,
+      "PAT_ENC_DATE_REAL": 66393,
+      "CONTACT_DATE": "2022-10-11 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Health Issues",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Started",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148226,
+      "LINE": 6,
+      "PAT_ENC_DATE_REAL": 66393,
+      "CONTACT_DATE": "2022-10-11 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Travel History",
+      "ECHKIN_STEP_STAT_C_NAME": "Filtered",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148226,
+      "LINE": 7,
+      "PAT_ENC_DATE_REAL": 66393,
+      "CONTACT_DATE": "2022-10-11 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Questionnaires",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Needed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148226,
+      "LINE": 8,
+      "PAT_ENC_DATE_REAL": 66393,
+      "CONTACT_DATE": "2022-10-11 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Payments",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Needed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148226,
+      "LINE": 9,
+      "PAT_ENC_DATE_REAL": 66393,
+      "CONTACT_DATE": "2022-10-11 00:00:00",
+      "INCLUDED_STEP_C_NAME": "ESign Documents",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Offered",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 948004323,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Personal Information",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2022-08-28 18:47:56",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Completed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 948004323,
+      "LINE": 2,
+      "PAT_ENC_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Guarantor",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2022-08-28 18:48:15",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Verified",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 948004323,
+      "LINE": 3,
+      "PAT_ENC_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Insurance",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2022-08-28 18:48:15",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Completed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 948004323,
+      "LINE": 4,
+      "PAT_ENC_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Allergies",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2022-08-28 18:48:38",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Verified",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 948004323,
+      "LINE": 5,
+      "PAT_ENC_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Health Issues",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2022-08-28 18:49:56",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Updated",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 948004323,
+      "LINE": 6,
+      "PAT_ENC_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Travel History",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2022-08-28 18:50:03",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Completed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 948004323,
+      "LINE": 7,
+      "PAT_ENC_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Questionnaires",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2022-08-28 18:51:24",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Completed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 948004323,
+      "LINE": 8,
+      "PAT_ENC_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Payments",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Needed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 948004323,
+      "LINE": 9,
+      "PAT_ENC_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "INCLUDED_STEP_C_NAME": "ESign Documents",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Offered",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 922943112,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66190,
+      "CONTACT_DATE": "2022-03-22 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Personal Information",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Started",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 922943112,
+      "LINE": 2,
+      "PAT_ENC_DATE_REAL": 66190,
+      "CONTACT_DATE": "2022-03-22 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Guarantor",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Offered",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 922943112,
+      "LINE": 3,
+      "PAT_ENC_DATE_REAL": 66190,
+      "CONTACT_DATE": "2022-03-22 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Insurance",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Started",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 922943112,
+      "LINE": 4,
+      "PAT_ENC_DATE_REAL": 66190,
+      "CONTACT_DATE": "2022-03-22 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Allergies",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Started",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 922943112,
+      "LINE": 5,
+      "PAT_ENC_DATE_REAL": 66190,
+      "CONTACT_DATE": "2022-03-22 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Health Issues",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Started",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 922943112,
+      "LINE": 6,
+      "PAT_ENC_DATE_REAL": 66190,
+      "CONTACT_DATE": "2022-03-22 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Travel History",
+      "ECHKIN_STEP_STAT_C_NAME": "Filtered",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 922943112,
+      "LINE": 7,
+      "PAT_ENC_DATE_REAL": 66190,
+      "CONTACT_DATE": "2022-03-22 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Questionnaires",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Needed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 922943112,
+      "LINE": 8,
+      "PAT_ENC_DATE_REAL": 66190,
+      "CONTACT_DATE": "2022-03-22 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Payments",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Needed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 922943112,
+      "LINE": 9,
+      "PAT_ENC_DATE_REAL": 66190,
+      "CONTACT_DATE": "2022-03-22 00:00:00",
+      "INCLUDED_STEP_C_NAME": "ESign Documents",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Offered",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 922942674,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66179,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Personal Information",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Started",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 922942674,
+      "LINE": 2,
+      "PAT_ENC_DATE_REAL": 66179,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Guarantor",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Offered",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 922942674,
+      "LINE": 3,
+      "PAT_ENC_DATE_REAL": 66179,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Insurance",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Started",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 922942674,
+      "LINE": 4,
+      "PAT_ENC_DATE_REAL": 66179,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Allergies",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Started",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 922942674,
+      "LINE": 5,
+      "PAT_ENC_DATE_REAL": 66179,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Health Issues",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Started",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 922942674,
+      "LINE": 6,
+      "PAT_ENC_DATE_REAL": 66179,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Travel History",
+      "ECHKIN_STEP_STAT_C_NAME": "Filtered",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 922942674,
+      "LINE": 7,
+      "PAT_ENC_DATE_REAL": 66179,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Questionnaires",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Needed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 922942674,
+      "LINE": 8,
+      "PAT_ENC_DATE_REAL": 66179,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Payments",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Needed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 922942674,
+      "LINE": 9,
+      "PAT_ENC_DATE_REAL": 66179,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "INCLUDED_STEP_C_NAME": "ESign Documents",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Offered",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829213099,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 65574,
+      "CONTACT_DATE": "2020-07-14 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Personal Information",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2020-07-14 19:01:48",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Updated",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829213099,
+      "LINE": 2,
+      "PAT_ENC_DATE_REAL": 65574,
+      "CONTACT_DATE": "2020-07-14 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Guarantor",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2020-07-14 19:02:00",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Verified",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829213099,
+      "LINE": 3,
+      "PAT_ENC_DATE_REAL": 65574,
+      "CONTACT_DATE": "2020-07-14 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Insurance",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Offered",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829213099,
+      "LINE": 4,
+      "PAT_ENC_DATE_REAL": 65574,
+      "CONTACT_DATE": "2020-07-14 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Medications",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2020-07-14 19:02:05",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Verified",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829213099,
+      "LINE": 5,
+      "PAT_ENC_DATE_REAL": 65574,
+      "CONTACT_DATE": "2020-07-14 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Allergies",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2020-07-14 19:03:01",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Updated",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829213099,
+      "LINE": 6,
+      "PAT_ENC_DATE_REAL": 65574,
+      "CONTACT_DATE": "2020-07-14 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Health Issues",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2020-07-14 19:03:06",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Verified",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829213099,
+      "LINE": 7,
+      "PAT_ENC_DATE_REAL": 65574,
+      "CONTACT_DATE": "2020-07-14 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Travel History",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2020-07-14 19:03:13",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Verified",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829213099,
+      "LINE": 8,
+      "PAT_ENC_DATE_REAL": 65574,
+      "CONTACT_DATE": "2020-07-14 00:00:00",
+      "INCLUDED_STEP_C_NAME": "Questionnaires",
+      "ECHKIN_STEP_STAT_C_NAME": "Completed",
+      "STEP_COMPLETED_UTC_DTTM": "2020-07-14 19:03:46",
+      "MYPT_ID": "389635",
+      "STEP_ACTION_C_NAME": "Completed",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829213099,
+      "LINE": 9,
+      "PAT_ENC_DATE_REAL": 65574,
+      "CONTACT_DATE": "2020-07-14 00:00:00",
+      "INCLUDED_STEP_C_NAME": "ESign Documents",
+      "ECHKIN_STEP_STAT_C_NAME": "Not Offered",
+      "$meta": {
+        "type": "ECHKIN_STEP_INFO"
+      }
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "name": "HSP_ACCT_CDSTS_HX",
+  "description": "This table contains the history of coding status changes for each account coded.",
+  "primaryKey": [
+    {
+      "columnName": "HSP_ACCOUNT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The hospital account ID with related coding status history information."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number in the results of a query. Each coding history will have its own line number."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CDSTS_HX_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Coding status changed instant - stored in UTC time.  Data will not exist in this column for coding statuses created before UTC instant tracking was enabled for coding history."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CDSTS_HX_SVC_STS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the simple visit coding (SVC) completion status when coding status is set by simple visit coding.",
+      "entries": [
+        "Success",
+        "Fail"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CDSTS_HX_ASGN_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Item to store coding assigned user changes"
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CDSTS_HX_ASGN_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    }
+  ]
+}

@@ -1,0 +1,531 @@
+{
+  "name": "PAT_RELATIONSHIP_LIST",
+  "description": "This table includes the majority of patient contact demographic info, general relationship info, and patient-level relationship info. The records included in this table are Patient Relationships (RLA) records.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_RELATIONSHIP_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_RELATIONSHIP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the patient contact record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "RECORD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The record status category ID for the patient contact",
+      "entries": [
+        "Soft Deleted",
+        "Hidden",
+        "Hidden and Soft Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient this patient contact is added to."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_LEVEL_RELATIONSHIP_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the patient contact should be displayed at the patient level.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Patient contact's name.  This column only displays names that are stored directly on patient contact records and will be blank for patient contact records that are linked to different patient records.  Use the PAT_RELATIONSHIP_RECORD_NAME column instead if you want a single column that will display the names of both linked and unlinked patient contact records."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "GENDER_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The gender category ID for the patient contact.",
+      "entries": [
+        "Female",
+        "Male",
+        "Transgender Female",
+        "Transgender Male",
+        "Other",
+        "Choose not to disclose",
+        "Nonbinary",
+        "Genderqueer"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "BIRTH_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Patient contact's date of birth."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "HOUSE_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Patient contact's house number."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CITY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Patient contact's city of residence."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "STATE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The state category ID for the patient contact's residence."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "ZIP_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Patient contact's postal code."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "DISTRICT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The district category ID for the patient contact's residence."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "COUNTY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The county category ID for the patient contact."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "COUNTRY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The country category ID for the patient contact."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "OCCUPATION",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Patient contact's occupation."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "INTERP_NEEDED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the patient contact requires a language interpreter."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "HEARING_IMPAIRED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the patient contact is hard of hearing."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "VISUALLY_IMPAIRED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the patient contact has low vision."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "SPEC_NEED_IMPAIR_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The hearing and vision special needs category ID for the patient contact."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "RECORD_CREATION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the patient contact was created."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "PREFERRED_LANGUAGE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The preferred language category ID for the patient contact."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "DISPLAY_SEQUENCE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the order in which patient-level contacts display."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "SOCIAL_CLOSENESS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The social closeness category ID for the patient contact."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "SAME_HOUSEHOLD_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the patient contact lives in the same household as the patient."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "SUPPORT_NETWORK_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the patient contact is part of the patient's support network."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "CUSTODY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The custody category ID for the patient contact"
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "GUARDIAN_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the patient contact is the patient's legal guardian."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "PROTECTION_ORDER_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether a protection order has been filed against the patient contact."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "LAST_REV_DTTM",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "Indicates the last instant that this record's relationship information was reviewed or updated from a patient-level encounter."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "LAST_REV_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who most recently reviewed or updated this patient contact's information from a patient-level encounter."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "LAST_REV_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "NOTIFY_ON_ADMSN_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the patient contact should be notified when the patient is admitted."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "LEGAL_RELATION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The legal relationship category ID for the patient contact.",
+      "entries": [
+        "Health Care Agent",
+        "First Alternate Health Care Agent",
+        "Second Alternate Health Care Agent"
+      ]
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "ACTV_HLTHCR_AGENT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the patient contact is an active health care agent for the patient."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "GENERIC_CAT_1_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Customer-labeled category item."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "GENERIC_CAT_2_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Customer-labeled category item."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "GENERIC_CAT_3_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Customer-labeled category item."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "GENERIC_CAT_4_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Customer-labeled category item."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "GENERIC_STRING_1",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Customer-labeled string item."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "GENERIC_STRING_2",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Customer-labeled string item."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "GENERIC_STRING_3",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Customer-labeled string item."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "GENERIC_STRING_4",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Customer-labeled string item."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "AUTH_LETTER_RECIPIENT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the patient contact is authorized to receive appointment letters."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "SEND_LETTERS_BY_DEFAULT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicate whether the patient contact should receive appointment letters about the patient by default."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "LIMITATION_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The limitation code category ID for a supervisory patient contact."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "RESPONSIBILITY_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The responsibility code category ID for a supervisory patient contact."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "AUTHORITY_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The authority code category ID for a supervisory patient contact."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "BUSINESS_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the business for a supervisory patient contact."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "PENDING_PAT_LEGAL_RELATION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The pending Healthcare Agent (HCA) relationship category ID for the patient contact."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "ACP_UPD_REJECTION_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The rejection reason category ID for the advance care plan (ACP).",
+      "entries": [
+        "Invalid signature",
+        "Missing documentation",
+        "Inconsistent documentation",
+        "Illegible",
+        "Invalid form",
+        "Missing signature",
+        "Relationship doesn't match document",
+        "Relationship not supported by current documentation",
+        "Contact name and document do not match"
+      ]
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "ACP_UPD_REJECTION_REASON_TEXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient-facing rejection reason for an update to the advance care plan (ACP)."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "ACP_UPD_MYCHART_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the MyChart user who updated the advance care plan (ACP)."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "PAT_RELATIONSHIP_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the patient contact record. If the patient contact record is linked to a different patient's record, the name will come from the patient record. Otherwise, it will come from the name stored directly on the patient contact record.  If your organization does not allow users to link patient contacts to other patient records, this column will act the same as the NAME column in this table."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "ORDER_ISSUED_TASK_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The issued order category ID for the patient contact with regard to the division of tasks amongst patient guardians."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "LIVING_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The living status category ID for the patient contact. Epic releases statuses of Alive and Deceased. Missing statuses are treated as Alive.",
+      "entries": [
+        "Alive",
+        "Deceased"
+      ]
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "PAT_CONTACT_ROW_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient contact type category ID for a patient contact. This column uses 0 for Person and 1 for Organization.",
+      "entries": [
+        "Person",
+        "Organization"
+      ]
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "ORG_FACILITY_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the facility linked to a patient contact."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "ORG_RELIG_AFFL_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the religious affiliation linked to an organization patient contact."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "ORG_RELIG_AFFL_ID_RELIG_AFFIL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the religious affiliation organization."
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "ORG_WEBSITE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A website URL for the organization patient contact."
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "ORG_FAX_NUMBER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The fax number for an organization patient contact."
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "ORG_PRIMARY_CONTACT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The representative or point person for an organization contact."
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "ORG_PRIMARY_CONTACT_PHONE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The phone number for the organization primary contact."
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "ORG_DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the department linked to a patient contact."
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "MYPT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique id of the MyChart account associated with the patient contact, primarily for the purpose of granting the contact proxy access to the patient."
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "FREETEXT_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A free text comment on the contact"
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "PRIMARY_OR_FIRST_PHONE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The phone number of a patient contact. This is the primary phone number if one is marked primary, otherwise this is the first phone number listed for the patient contact. If the patient contact is linked to another record, this phone number is from the linked record, otherwise this phone number is from the patient contact record."
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "EMERG_CONTACT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether a patient contact is an emergency contact."
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "name": "ORDER_SHEET_DATA",
+  "description": "This table stores order and scheduling info for active and historical therapy protocols.",
+  "primaryKey": [
+    {
+      "columnName": "TREATMENT_PLAN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TREATMENT_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the plan record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINKED_OTP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Identifiers for order templates (OTP) present in this plan."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SESS_INTER_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Category value representing the plan level interval of an order.",
+      "entries": [
+        "Every visit",
+        "Weekly",
+        "Every two weeks",
+        "Monthly",
+        "Quarterly",
+        "PRN",
+        "Once",
+        "Every three weeks",
+        "Every four weeks",
+        "Every five weeks",
+        "Every six weeks",
+        "Twice per week",
+        "Three times per week",
+        "Selected dates",
+        "Selected treatments",
+        "Daily",
+        "Every eight weeks"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SESS_INIT_CNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Planned treatment count for an order scheduled for a fixed number of treatments."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "TX_ORD_RELEASE_CNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The number of times an order has been generated from the associated order template (OTP)."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "SESS_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the first date on which treatment with the associated order is planned (user entered or calculated from a relative offset in the protocol)."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ORDER_CAT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Category associated with the general type of order."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ORDER_ADDED_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Instant at which this order was added to the plan."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "SESS_ORDER_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Status of the order template.",
+      "entries": [
+        "Active",
+        "Signed",
+        "Removed",
+        "Completed"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "LAST_RELEASE_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Instant at which the linked order template was last released as an order."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "LAST_RELEASE_ORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Identifier for the order (ORD) created on the last release of this order template."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "MIN_TREAT_SEP",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The minimum number of days expected between treatments with the affected order."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "TREAT_DIST_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the initial treatment distribution type.  This item determines how a treatment is distributed from a chosen interval.  If weekly is the chosen interval, only two distribution types are available for selection: any day or specific days.  If any day is selected, then user's value in interval details description determine how many times a week this treatment is to be released.  If specific days is selected, interval details description displays which days are selected. If another interval type is chosen, then other treatment distribution types are available.  Currently this category only has items supporting a weekly interval.",
+      "entries": [
+        "Any Day",
+        "Specific Days",
+        "Specific Day of Month",
+        "Specific Day of Week"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "INTER_DETAILS_DESC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores information on how treatments are distributed in a specified interval."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "DUE_DATE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the next due date of the linked order."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "OTP_DISPLAY_SEQ",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the display order of an order template (OTP) within the therapy plan."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "OTP_GROUP_PRL_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the contact serial number (CSN) of the protocol contact that this order was associated with for grouping purpose."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the end date for an order after which the order should be completed."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "DEFAULT_SELECTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the default selection status of the order during ordering workflow.",
+      "entries": [
+        "Sign",
+        "Remove"
+      ]
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "ORDER_GROUP_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the source order group contact serial number (CSN) from where the order came from."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "ORDER_GROUP_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores a unique number for orders that came from the same order group."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "ORDER_GROUP_DFLT_SELECTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the default selection status of the order group during ordering workflow."
+    }
+  ]
+}

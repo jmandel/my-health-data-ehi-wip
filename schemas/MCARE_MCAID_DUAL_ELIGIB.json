@@ -1,0 +1,65 @@
+{
+  "name": "MCARE_MCAID_DUAL_ELIGIB",
+  "description": "This table contains the Medicare-Medicaid dual eligibility statuses for patients.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "MCARE_MCAID_DUAL_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Medicare and Medicaid dual eligibility status category ID for the patient.",
+      "entries": [
+        "No Medicaid status",
+        "Eligible - QMB only (partial dual)",
+        "Eligible - QMB and Medicaid (full dual)",
+        "Eligible - SLMB only (partial dual)",
+        "Eligible - SLMB and Medicaid (full dual)",
+        "Eligible - QDWI (partial dual)",
+        "Eligible - Qualifying individuals (partial dual)",
+        "Eligible - Other dual eligibles with Medicaid (full dual)",
+        "Eligible - Other dual eligibles without Medicaid (non-dual)",
+        "Other full dual",
+        "Unknown"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "MCARE_MCAID_DUAL_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the patient's Medicare and Medicaid dual eligibility status starts."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "MCARE_MCAID_DUAL_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the patient's Medicare and Medicaid dual eligibility status ends."
+    }
+  ]
+}

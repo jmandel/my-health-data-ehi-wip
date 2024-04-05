@@ -1,0 +1,119 @@
+{
+  "name": "MEDICAL_READINESS_HX",
+  "description": "This table stores historical medical readiness information for a patient encounter.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "HX_MED_READINESS_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The medical readiness date and time for this patient encounter. This date and time may be expected or confirmed, depending on whether the patient is medically ready or not."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "HX_MED_READINESS_TIMEFRAM_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The medical readiness timeframe category ID for the patient encounter",
+      "entries": [
+        "Now",
+        "Anticipated Today",
+        "Anticipated Tomorrow",
+        "Anticipated in 2-4 Days",
+        "Anticipated in 5+ Days"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "HX_MED_READINESS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether this patient encounter is medically ready for discharge. 'Y' indicates that this encounter has been marked medically ready for discharge. 'N' or NULL indicates that it has not been marked medically ready for discharge.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "HX_MED_READY_INST_ENTRY_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant at which this patient's medical readiness information was last updated"
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "HX_MED_READINESS_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who last updated medical readiness information for this patient encounter"
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "HX_MED_READINESS_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "HX_MED_READINESS_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The medical readiness source category ID for this patient encounter",
+      "entries": [
+        "SmartList",
+        "Expected Discharge Date Section",
+        "Update Order",
+        "Discharge Order",
+        "Automatic Update"
+      ]
+    }
+  ]
+}

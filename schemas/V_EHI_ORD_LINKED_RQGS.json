@@ -1,0 +1,34 @@
+{
+  "name": "V_EHI_ORD_LINKED_RQGS",
+  "description": "Placeholder view for ORD EHI data that needs to be marked as both static and dynamic.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the procedure order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUPER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of patient and coverage information for non-participatory lab referrals attached to this order.  If this is filled in, then PAT_ID and related columns in the ORDER_PROC table will not be filled in for this order.  This column is frequently used to link to the RQG_DB_MAIN table.",
+      "linksTo": "RQG_DB_MAIN"
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CM_LOG_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "ID of the logical deployment owner for this record.  Logical owners show the deployment where the record was created but doesn't represent if the record is a part of version skew."
+    }
+  ]
+}

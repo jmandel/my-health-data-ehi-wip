@@ -1,0 +1,52 @@
+{
+  "name": "SERVICE_PLAN",
+  "description": "The SERVICE_PLAN table contains high-level information about service plans. Most workflow-related information in PLN is overtime and found in the SERVICE_PLAN_VERSION table.",
+  "primaryKey": [
+    {
+      "columnName": "SERVICE_PLAN_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SERVICE_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the service plan record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "RECORD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the record status (hidden, soft-deleted, etc...). Category values are stored in table ZC_RECORD_STATUS_2.",
+      "entries": [
+        "Soft Deleted",
+        "Hidden",
+        "Hidden and Soft Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "COMMENT_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The note record that contains comments for all versions of the service plan."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RECORD_CREATION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date the record was created"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the patient to whom this plan belongs. This value is populated for plans associated with a Compass Rose episode."
+    }
+  ]
+}

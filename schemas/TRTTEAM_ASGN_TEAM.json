@@ -1,0 +1,69 @@
+{
+  "name": "TRTTEAM_ASGN_TEAM",
+  "description": "This table is used to extract the Assigned Via Team (I EPT 34107) item which represents the list of teams associated with each line in the treatment team.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the associated treatment team in this patient's contact. Together with PAT_ENC_CSN_ID, this forms the foreign key to the HSP_TRTMT_TEAM table."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple treatment team members that are associated with the patient encounter and the treatment team from the HSP_TRTMT_TEAM table."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique, internal contact date in decimal format. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ASGNING_TEAM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the Provider Care Team that is associated with this line in the patient's treatment team."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ASGNING_TEAM_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the record."
+    }
+  ]
+}

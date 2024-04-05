@@ -1,0 +1,173 @@
+{
+  "name": "ED_EVENT_HISTORY",
+  "description": "This table contains the audit trail and history of the event record.",
+  "primaryKey": [
+    {
+      "columnName": "EVENT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "EVENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the event record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the information associated with this event. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "EVENT_LINE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The line number of the original recorded event. Together with the EVENT_ID column, this forms the foreign key to ED_IEV_EVENT_INFO."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EVENT_EDITED_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time when the event was edited."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EVNT_DISP_NAME_AUD",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The display name of the edited event."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EVENT_AUDIT_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time when this edited event occurred."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "EVT_REC_AUDIT_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time when this edited event was recorded."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "EVT_AUDIT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who created this edited event."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "EVT_AUDIT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "EVT_EDITED_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who edited this event. This user might not be the user who initially created this edited event."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "EVT_EDITED_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "EVENT_CMT_AUDIT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comments associated with this edited event."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "STAFFED_BEDS_AUDIT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The number of staffed beds for a department at the time of the edited event. This item is only populated if you are using the Staffed Beds activity."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "EVENT_AUDIT_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the provider who is associated with this edited event. For example, a deleted or updated Assign Attending event stores the provider who was assigned in this column. This column is frequently used to link to the CLARITY_SER table.",
+      "linksTo": "CLARITY_SER"
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "EVENT_STAT_AUDIT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number of the status of the edited event.",
+      "entries": [
+        "Active",
+        "Inactive",
+        "Deleted",
+        "Inactive and Deleted",
+        "Hidden",
+        "Inactive and Hidden",
+        "Deleted and Hidden",
+        "Inactive Deleted and Hidden"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "EVENT_INI_REC_ID_A",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The master file and ID of the source of a edited duplicate procedure alert event. For example, this item usually holds LDG-ID (the ID of the procedure duplicate group used) or EAP-ID (the ID of the procedure used)."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "EVENT_CONTEXT_AUDIT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "For some edited events, this column holds the context of the edited event. Lab Ordered events might store the order ID here. Duplicate procedure alert events might store information on specific user actions in response to the alert."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "EVENT_NOTECSN_AUDIT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The event note contact serial number (CSN) of the event that was edited. This can be used to determine the note content at each edit."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "EVENT_AUDIT_DEPT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Audit trail for the item that stores what department an event occurred in."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "ED_C_CLIENT_SRC_A_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The audit trail for where the ED Course comment was filed from.",
+      "entries": [
+        "Hyperspace",
+        "Limerick",
+        "Haiku",
+        "Canto"
+      ]
+    }
+  ]
+}

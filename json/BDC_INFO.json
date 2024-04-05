@@ -1,0 +1,286 @@
+{
+  "$meta": {
+    "schemas": {
+      "BDC_INFO": {
+        "name": "BDC_INFO",
+        "description": "This table contains Denial/Remark/Correspondence/Variance information from the Denial/Correspondence (BDC) master file. It includes information about the denial/remark code received or correspondence text as applicable. It also includes some general information about the current state of the record. It does not include the change history information and specific denial information from the explanation of benefits (EOB).",
+        "primaryKey": [
+          {
+            "columnName": "BDC_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "BDC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the denial/correspondence record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "BDC_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "BDC Record Name - Denial/Remark/Correspondence Record Name."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "RECORD_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The record type category ID for the Denial/Remark/Correspondence.",
+            "entries": [
+              "Denial",
+              "Remark",
+              "Correspondence",
+              "Underpayment",
+              "Overpayment"
+            ]
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "RECORD_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The status category ID for the Denial/Remark/Correspondence.",
+            "entries": [
+              "Created",
+              "Transferred",
+              "Documents Need Review",
+              "Documents Created",
+              "Documents Sent",
+              "Reopened",
+              "Completed",
+              "Voided"
+            ]
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "RECORD_SOURCE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The source category ID for the Denial/Remark/Correspondence.",
+            "entries": [
+              "Payment Received",
+              "Correspondence Received",
+              "Zero Allowed Amount",
+              "Expected Allowed Amount Updated",
+              "Reserved for future use",
+              "System Auto Action Claim Denied",
+              "PB Follow-up Automatic Activity",
+              "RAC Correspondence",
+              "ADR Correspondence",
+              "HH Pre-Claim Review",
+              "Transferred In"
+            ]
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "INVOICE_NUMBER",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The invoice number associated with this denial/correspondence."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "GRP_CODE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item holds the group code associated with the reason code in a denial correspondence record.",
+            "entries": [
+              "Patient Responsibility",
+              "Contractual Obligation",
+              "Payor Initiated",
+              "Correction and Reversal",
+              "Other Adjustment"
+            ]
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "REMIT_CODE_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the remittance code associated with the record."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "REMIT_CODE_ID_REMIT_CODE_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of each remittance code."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "EXTERNAL_CODE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The external ID of the remittance code associated with this denial/correspondence."
+          },
+          {
+            "ordinalPosition": 16,
+            "name": "RESOLVE_REASON_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Resolution Category for Denial/Remark/Correspondence if it has been resolved.",
+            "entries": [
+              "Auto-Closed",
+              "No Outstanding Insurance Balance",
+              "Claim Resubmitted",
+              "PB Charges Voided",
+              "PB Charges Reposted",
+              "PB Payment Undistributed",
+              "PB Original Follow-up Completed",
+              "Variance Type Changed",
+              "Documents Sent"
+            ]
+          },
+          {
+            "ordinalPosition": 18,
+            "name": "BDC_RECEIVE_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date the Denial/Remark/Correspondence was received."
+          },
+          {
+            "ordinalPosition": 19,
+            "name": "BDC_COMPLETE_VOID_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date the Denial/Remark/Correspondence record was completed or voided."
+          },
+          {
+            "ordinalPosition": 21,
+            "name": "PB_INVOICE_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The professional invoice associated with the denial/correspondence record."
+          },
+          {
+            "ordinalPosition": 22,
+            "name": "GUARANTOR_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the guarantor associated with the denial/correspondence record."
+          },
+          {
+            "ordinalPosition": 40,
+            "name": "SOURCE_PMT_PB_TX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Professional Billing payment transaction which led to denial/correspondence record creation."
+          },
+          {
+            "ordinalPosition": 43,
+            "name": "APPEAL_DEADLINE_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This item stores the initial appeal deadline at the moment the BDC is created."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "BDC_INFO",
+            "target": "BDC_ASSOC_REMARK_CODES",
+            "joinKeys": [
+              {
+                "source": "BDC_ID",
+                "target": "BDC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "BDC_INFO",
+            "target": "BDC_PB_CHGS",
+            "joinKeys": [
+              {
+                "source": "BDC_ID",
+                "target": "BDC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "BDC_INFO",
+            "target": "HSP_BDC_DENIAL_DATA",
+            "joinKeys": [
+              {
+                "source": "BDC_ID",
+                "target": "BDC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "BDC_INFO",
+            "target": "HSP_BDC_PAYOR",
+            "joinKeys": [
+              {
+                "source": "BDC_ID",
+                "target": "BDC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "BDC_INFO",
+            "target": "HSP_BDC_RECV_TX",
+            "joinKeys": [
+              {
+                "source": "BDC_ID",
+                "target": "BDC_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "BDC_INFO": [
+    {
+      "BDC_ID": 43401924,
+      "BDC_NAME": "DENIAL RECORD FOR CHARGE 315026147",
+      "RECORD_TYPE_C_NAME": "Denial",
+      "RECORD_STATUS_C_NAME": "Completed",
+      "RECORD_SOURCE_C_NAME": "Payment Received",
+      "INVOICE_NUMBER": "L1007201490",
+      "GRP_CODE_C_NAME": "Contractual Obligation",
+      "REMIT_CODE_ID": "16",
+      "REMIT_CODE_ID_REMIT_CODE_NAME": "16-LACKS INFO NEEDED FOR ADJUDICATION.",
+      "EXTERNAL_CODE": "16",
+      "RESOLVE_REASON_C_NAME": "PB Charges Reposted",
+      "BDC_RECEIVE_DATE": "2022-12-20 00:00:00",
+      "BDC_COMPLETE_VOID_DATE": "2022-12-20 00:00:00",
+      "PB_INVOICE_ID": 58319567,
+      "GUARANTOR_ID": 1810018166,
+      "SOURCE_PMT_PB_TX_ID": 317165897,
+      "APPEAL_DEADLINE_DATE": "2023-06-18 00:00:00",
+      "$meta": {
+        "type": "BDC_INFO"
+      }
+    },
+    {
+      "BDC_ID": 43401925,
+      "BDC_NAME": "REMARK RECORD FOR CHARGE 315026147",
+      "RECORD_TYPE_C_NAME": "Remark",
+      "RECORD_STATUS_C_NAME": "Completed",
+      "RECORD_SOURCE_C_NAME": "Payment Received",
+      "INVOICE_NUMBER": "L1007201490",
+      "REMIT_CODE_ID": "6063",
+      "REMIT_CODE_ID_REMIT_CODE_NAME": "MA63 INCMPL/INV PRINCIPAL DX.",
+      "EXTERNAL_CODE": "MA63",
+      "RESOLVE_REASON_C_NAME": "PB Charges Reposted",
+      "BDC_RECEIVE_DATE": "2022-12-20 00:00:00",
+      "BDC_COMPLETE_VOID_DATE": "2022-12-20 00:00:00",
+      "PB_INVOICE_ID": 58319567,
+      "GUARANTOR_ID": 1810018166,
+      "SOURCE_PMT_PB_TX_ID": 317165897,
+      "$meta": {
+        "type": "BDC_INFO"
+      }
+    }
+  ]
+}

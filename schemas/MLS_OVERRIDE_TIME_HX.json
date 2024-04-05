@@ -1,0 +1,86 @@
+{
+  "name": "MLS_OVERRIDE_TIME_HX",
+  "description": "Contains general information on override for multiline sig",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "MULTILINE_KEY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds key to guide finding override information specific to a multiline sig period & part"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "MLS_OVRIDE_REL_LINE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds indices that will serve as guide to find override information associated with specific multiline period & part. Each index corresponds to a line in SI ORD 34635."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "MLS_EFQ_OVRIDE_DESC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds override description in human-readable format. Equivalent to ORD 34642 for a non-MLS order."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "MLS_OVRIDE_DAY_TYPE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Specifies what the numeric values in the frequency override days columns represent. If it is 1 then the listed days are relative days. If it is 2 then the listed days are weekdays. Any other value has no meaning."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "MLS_OVRIDE_CYCLE_LEN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "If there is a frequency override specified, this item will contain the length of a relative specified type cycle. For all other specified types this value will be ignored (and should be empty)."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "MLS_OVRIDE_UPD_TIME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the formatted override string for the adjusted frequency. Equivalent to ORD 34670 for non-multiline sig order."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "MLS_OVRIDE_SCHD_INST_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Override schedule time for \"adjust times\" of non-specified frequency."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "MLS_OVRIDE_SRC_DEPT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Holds ID of the department that the override information originated from. Identical to ORD 34676, but stores at the multiline sig dosage level."
+    }
+  ]
+}

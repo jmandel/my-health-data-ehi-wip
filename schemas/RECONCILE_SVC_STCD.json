@@ -1,0 +1,69 @@
+{
+  "name": "RECONCILE_SVC_STCD",
+  "description": "This table contains line-level status codes received through claims reconciliation. This information is only populated if the line-level status code was mapped to an Epic category value.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_RECON_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 3
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 4
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_RECON_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the claim reconciliation record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "This is a numeric representation of the date of this contact in your system. The integer portion of the number specifies the date of the contact. The digits after the decimal point indicate multiple visits on one day."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple values associated with a specific group of data within this contact."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The contact date of the record, in external format."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "LN_STATUS_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Line-level status code. This value is only populated if the line-level status code matches a category abbreviation inside the system.",
+      "entries": [
+        "Unmapped code received"
+      ]
+    }
+  ]
+}

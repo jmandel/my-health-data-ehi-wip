@@ -1,0 +1,248 @@
+{
+  "name": "AUTH_UM_STATUS_HX",
+  "description": "This table contains the authorization decision history for service-level authorizations.",
+  "primaryKey": [
+    {
+      "columnName": "AUTH_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "AUTH_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the authorization record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "UM_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status assigned to the service by the associated user on the specified date/time.",
+      "entries": [
+        "Authorized",
+        "Partially Authorized",
+        "Pending Review",
+        "Withdrawn",
+        "Denied",
+        "Dismissed",
+        "No Authorization Required",
+        "Closed",
+        "Pending External Review"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "UM_APPROVED_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The authorized reason assigned to the service by the associated user on the specified date/time."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "UM_PART_APRV_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The partial authorization reason assigned to the service by the associated user on the specified date/time."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "UM_DENIED_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The denied reason assigned to the service by the associated user on the specified date/time."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "UM_DISMISSED_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The dismissed reason assigned to the service by the associated user on the specified date/time."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "UM_NOT_REQUIRED_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The no auth required reason assigned to the service by the associated user on the specified date/time."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "UM_PENDING_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The pending reason assigned to the service by the associated user on the specified date/time."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "UM_CANCELED_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The canceled/withdrawn reason assigned to the service by the associated user on the specified date/time."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "CHANGED_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time (local) the associated change (for ex, setting the status and status reason) happened on the service."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "CHANGED_BY_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user that made the change (for ex., assigned the status and status reason) to the service."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "CHANGED_BY_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "NUM_SVCS_APPROVED",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of services, units, or visits approved as of the associated user's edit as of the specified date/time."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "NUM_SVCS_REQUESTED",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of services, units, or visits requested as of the associated user's edit as of the specified date/time."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "REV_CODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The procedure revenue code assigned to the authorization record as of the specified date/time. This column can be used to link to the CL_UB_REV_CODE table.",
+      "linksTo": "CL_UB_REV_CODE"
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "REV_CODE_ID_REVENUE_CODE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the revenue code."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "PROC_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The provider assigned to the authorization record as of the specified date/time. This column can be used to link to the CLARITY_SER table.",
+      "linksTo": "CLARITY_SER"
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PROC_CODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Current Procedural Terminology (CPT)/Healthcare Common Procedure Coding System (HCPCS) codes associated to the authorization record as of the specified date/time."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "INTER_NUM_SVCS_APRV",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of services approved for each interval as of the specified date/time."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "INTER_NUM_SVCS_REQ",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of services requested for each interval as of the specified date/time."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "INTER_APRV_FREQ_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the associated Frequency Record for the approved recurring authorization as of the specified date/time."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "INTER_APRV_FREQ_ID_FREQ_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the frequency record."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "INTER_REQ_FREQ_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the associated Frequency Record for the requested recurring authorization as of the specified date/time."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "INTER_REQ_FREQ_ID_FREQ_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the frequency record."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "INTER_NUM_APRV",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of times the interval has been approved to repeat as of the specified date/time."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "INTER_NUM_REQ",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of times the interval has been requested to repeat as of the specified date/time."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "UM_STATUS_CHANGE_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "When the status changes on a service authorization, this item indicates if the change was manual or done automatically by ASA.",
+      "entries": [
+        "Manual Update",
+        "Auto Status Assignment",
+        "Imported",
+        "278N",
+        "278R",
+        "INTERNAL PRIOR AUTH",
+        "Auto Status Assignment Pre-Check"
+      ]
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "UM_CLOSED_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The closed reason assigned to the service by the associated user on the specified date/time."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "PROC_FREE_TEXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Audits changes made to AUT-1115 in UM AUTs."
+    }
+  ]
+}

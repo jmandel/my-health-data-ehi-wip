@@ -1,0 +1,96 @@
+{
+  "name": "VISIT_SET_SLOT",
+  "description": "The VISIT_SET_SLOT table contains slots for visit set versions. A slot is a target for an individual visit to occur, containing an appointment request generated to achieve the visit and other information surrounding its fulfillment.",
+  "primaryKey": [
+    {
+      "columnName": "VISIT_SET_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "VISIT_SET_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the visit set record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SLOT_PERIOD",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The period within the visit set in which the slot falls. A period is the smallest repeatable date window of a visit set, or the unit of its repeating pattern. For example, if a visit set is set to be every week on Monday, Wednesday, and Friday, each period would represent a week. Period 1 is week 1, period 2 is week 2, and so on. To determine this unit, link to VISIT_SET_VERSION and look to VISIT_PATTERN_TYPE_C or FREQUENCY_FREQ_ID (one or the other is populated, not both)."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SLOT_INDEX",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The index of the slot in its period. With N being the slot index, this means the Nth slot in the period. For example, if a visit set is set to be every week on Monday, Wednesday, and Friday, index 1 identifies a slot that falls on Monday, index 2 identifies a slot that falls on Wednesday, and index 3 identifies a slot that falls on Friday. Link to VISIT_SET_VISIT_PATTERN and look to VISIT_SET_WHICH_DAYS_C to find the days of the week of a visit set. A LINE of VISIT_SET_VISIT_PATTERN contains the same day of the week on which the SLOT_INDEX of the same value identifies."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "SLOT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status of the slot",
+      "entries": [
+        "Requested",
+        "Scheduled",
+        "Paused",
+        "Canceled",
+        "Missed",
+        "Manual",
+        "Placeholder",
+        "Request Canceled",
+        "Completed",
+        "Request Error",
+        "Unused Past Slot"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "SLOT_APPT_REQUEST_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The appointment request created to fill this slot"
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "SLOT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date for the slot calculated based on the visit set recurrence, period, and index. In addition to corresponding to the requested date on the ORD appointment request, it is used to match slots during evaluation and to determine whether a slot is skipped due to episode pauses."
+    }
+  ]
+}

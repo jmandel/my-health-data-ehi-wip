@@ -1,0 +1,447 @@
+{
+  "name": "RECONCILE_CLM_OT",
+  "description": "This table contains over time single information for claim reconciliation records.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_REC_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_REC_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the claim reconciliation record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The contact date of the claim, in external format."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE_REAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The contact date of the claim, in internal format."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CLM_STATUS_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status code of the claim being tracked over time.",
+      "entries": [
+        "Unmapped code received"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PAYR_CLM_AMT_SUBMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount submitted by the payer on this claim."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PAYOR_CLM_AMT_PAID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount paid by the payer on this claim."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PAYOR_REF_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The claim's payer reference number."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PAYOR_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The payer name of the payer on the claim."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CH_REF_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the claim's clearinghouse reference number."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "CH_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the claim's clearinghouse name."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "CLAIM_STATUS_MSG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The claim's textual status message."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "STATUS_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The status date of the claim."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "FILE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the filename associated with this claim."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "ID of the deployment owner for this contact."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "CLM_CLOSED_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value for the reason the claim was closed. This value can be used to link to the ZC_CLM_CLSD_REASON table to get more information on the category values.",
+      "linksTo": "ZC_CLM_CLSD_REASON",
+      "entries": [
+        "Payment",
+        "Posting Action",
+        "External Status Change",
+        "Bucket Closed",
+        "Bucket Rejected",
+        "Bucket Replaced",
+        "Bucket Reopened",
+        "Invoice Split During Refresh"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "CLAIM_ST_CAT_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status category code of the claim being tracked over time.",
+      "entries": [
+        "Unmapped code received"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "TRANSMIT_MEDIUM_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If claim has been transmitted, this item stores the medium.",
+      "entries": [
+        "Paper",
+        "Electronic"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "ERR_FIELD",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The field a claim error is reported in."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "ERR_ITEM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The item for which the claim error was reported."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "ERR_VAL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The claim value that caused the error."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "ERR_MSG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The error message received for a claim."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "CH_SENT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date that the claim was sent out of the clearinghouse."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "PAYOR_RECV_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date that the payer received the claim."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "CLAIM_SEL_ACT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the action that was selected to be performed on the invoice.",
+      "entries": [
+        "No Action",
+        "Accept Claim",
+        "Send to WQ"
+      ]
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "CLAIM_ACT_INFO_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Can store additional information on why a given action was selected.",
+      "entries": [
+        "File payor does not match CLP payor",
+        "Billing system mismatch",
+        "Claim not on claim run",
+        "Claim run not in status of processed",
+        "Unable to lock CLP",
+        "No codes mapped to Send to WQ"
+      ]
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "TRANSMIT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the system transmission status for the claim.",
+      "entries": [
+        "Not Transmitted",
+        "Transmit Success",
+        "Transmit Failed",
+        "Retransmit Success",
+        "Retransmit Failed",
+        "Queued"
+      ]
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "EXTERNAL_REJECT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Yes/No flag indicating that the claim has been rejected by the payor or clearinghouse.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "PERFORM_ACT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Will store the action that was performed on the invoice.",
+      "entries": [
+        "No Action",
+        "Accept Claim from Run",
+        "Send to WQ from Run",
+        "Accept from WQ",
+        "Resubmit from WQ",
+        "Resend to WQ",
+        "External Test Response No Action Mapped"
+      ]
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "PERFORM_ACT_RSN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the reason for the action that was performed on the invoice."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "GROUP_CONTROL_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the group control number (GS-06) value for an American National Standards Institute (ANSI) electronic claim file."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "TRANSMIT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Records electronic claim transmission type.",
+      "entries": [
+        "Automatic Transmission",
+        "CORE Transmission"
+      ]
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "PAYOR_CONTACT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Name of contact person or department associated with an information request."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "CLAIM_BILL_TYPE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the bill type received in the claim reconciliation file."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "MRN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the medical record number (MRN) received in the claim reconciliation file."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "INTERMEDIARY_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the transmission identifier received in the claim reconciliation file."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "AGENCY_CLAIM_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the claim number received in the claim reconciliation file."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "CASE_REF_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the case reference identifier received in the claim reconciliation file."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "INFO_REQ_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the attachment request tracking number received in the claim reconciliation file."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "PRIOR_INFO_REQ_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the prior attachment request tracking number received in the claim reconciliation file."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "INFO_REQ_DUE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date the requested information is to be returned."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "RESP_CONTACT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Name used by the payer for routing the requested information within their system."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "RESP_CONTACT_CITY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "City of the mailing location for the return of attachment data."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "RESP_CONTACT_STATE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "State of the mailing location for the return of attachment data."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "RESP_CONTACT_ZIP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Postal Code of the mailing location for the return of attachment data."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "RESP_CONTACT_CNTRY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Country of the mailing location for the return of attachment data."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "RESP_CONTACT_SUBDIV",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Subdivision of the mailing location for the return of attachment data."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "SUPPORTED_ACTIONS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The claim actions supported by the interface profile at the time a claim status update is received from an external entity.",
+      "entries": [
+        "Accept Claim",
+        "Send to Workqueue",
+        "All Available Actions"
+      ]
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "TX_DEST_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The destination type when the claim is transmitted.",
+      "entries": [
+        "Payer",
+        "Clearinghouse",
+        "Other Entity"
+      ]
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "PAYER_CHECK_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Holds the payer check date from claim reconciliation."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "PAYER_CHECK_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the payer check number from claim reconciliation."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "STATUS_RESP_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This type of status response this contact represents.",
+      "entries": [
+        "Claim Acknowledgment",
+        "Claim Status Request Response",
+        "Claim Pending Status"
+      ]
+    }
+  ]
+}

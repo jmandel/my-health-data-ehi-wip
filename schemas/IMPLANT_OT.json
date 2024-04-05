@@ -1,0 +1,830 @@
+{
+  "name": "IMPLANT_OT",
+  "description": "This table contains implant information that changes over time.",
+  "primaryKey": [
+    {
+      "columnName": "IMPLANT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "IMPLANT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the implant record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_NUMBER",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The contact number of the implant record."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "LINKED_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "A link to the order record with relevant information for the implant on a contact (e.g. the interrogation report for a pacemaker)."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PACE_MODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the pacing mode of an implanted pacemaker.",
+      "entries": [
+        "AAI",
+        "AAIR",
+        "AAT",
+        "AATR",
+        "AOO",
+        "AOOR",
+        "DAD",
+        "DDD",
+        "DDDR",
+        "DDI",
+        "DDIR",
+        "DOO",
+        "DOOR",
+        "DVI",
+        "DVIR",
+        "VAT",
+        "VDD",
+        "VDDR",
+        "VOO",
+        "VOOR",
+        "VVI",
+        "VVIR",
+        "VVT",
+        "OOO",
+        "OOOR",
+        "VDI",
+        "VDIR",
+        "ODO",
+        "VVTR",
+        "DDTR",
+        "OVO",
+        "DVTR",
+        "DDT",
+        "VDTR",
+        "VDT",
+        "ADIR",
+        "ADI"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PACE_LOW_RATE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "A pacemaker's lower pacing rate."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PACE_UPPER_RATE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "A pacemaker's upper pacing rate."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PACE_VT_RATE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The VT detection rate of an implanted pacemaker."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PACE_VF_RATE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The VF detection rate of an implanted pacemaker."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PACE_LEAD_SECURE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the method used to secure the leads to the pacemaker.",
+      "entries": [
+        "1 set screw torqued",
+        "2 set screws torqued",
+        "3 set screws torqued",
+        "4 set screws torqued",
+        "5 set screws torqued",
+        "6 set screws torqued",
+        "7 set screws torqued",
+        "8 set screws torqued",
+        "Toolless connector closed"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "LEAD_SENSE_MV",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The sensing threshold of the lead in mV."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "LEAD_LOC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the anatomical location of the lead.",
+      "entries": [
+        "Anterolateral cardiac vein",
+        "Atrial septum",
+        "Cardiac vein",
+        "Coronary sinus",
+        "High RA",
+        "Innominate vein",
+        "Lateral cardiac vein",
+        "LA",
+        "Low RA",
+        "LV",
+        "LV apex",
+        "Mid RA",
+        "Pericardial phrenic vein",
+        "Posterior (middle) cardiac vein",
+        "Posterolateral cardiac vein",
+        "Pulmonary outflow tract",
+        "RA",
+        "RA appendage",
+        "RV",
+        "RV apex",
+        "RV outflow tract",
+        "RV septum",
+        "Subcutaneous/anterior chest",
+        "Subcutaneous/left lateral",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "LEAD_CAPTURE_V",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The capture threshold of the lead in V."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "LEAD_CAPTURE_MA",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The capture threshold of the lead in mA."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "LEAD_PACING_OHM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The pacing impedance of the lead in Ohms."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "LEAD_SLEW_RATE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The slew rate of the lead."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "LEAD_EXTRACT_RES_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the result of extracting the lead.",
+      "entries": [
+        "Inablilty to extract the lead, with retention of the lead",
+        "Complete removal of the lead",
+        "Removal of the lead with electrode retained in the RV",
+        "Removal of the lead with electrode retained in the SVC",
+        "Removal of the lead with electrode retained in the subclavian vein",
+        "Breakage of the lead and retention of a lead fragment",
+        "Removal of the lead with electrode tip left in the atrium",
+        "Removal of the electrode and part of the wire"
+      ]
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "ICD_HIGH_VOLT_OHMS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The high voltage impedance of the ICD in Ohms."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "CNCT_LOG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The log where this specific contact on the implant was used. For example, if an implant was implanted in log 100, this will contain the value 100 for that contact. If it is then adjusted in another log, that contact will point to that log."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "ICD_BATT_VOLT_V",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Records the battery voltage of a generator in volts."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "PACE_FAST_VT_RATE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The Fast VT detection rate of an implanted pacemaker."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "LEAD_SHOCK_OHM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The shock impedance of the lead in Ohms."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "CNCT_SURGERY_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Contact Serial Number (CSN) of the log where this specific contact on the implant was used. For example, if an implant was implanted in log 100 having CSN 120, this will contain the value 120 for that contact. If it is then adjusted in another log, that contact will point to the CSN of that log."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the implant status as of a given contact.",
+      "entries": [
+        "Received",
+        "Implanted",
+        "Explanted",
+        "Loaned",
+        "Returned",
+        "Destroyed",
+        "Recalled",
+        "Wasted",
+        "Implanted - Out of Service"
+      ]
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "REASON_EVAL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Reason why device is being evaluated.  Potential reasons would include: pre-op eval, post-op eval"
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "ICD_PRESENT_RHYTH_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the ICD behavior prior to making adjustments."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "ICD_UNDERLY_RHYTHM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores free text documenting underlying rhythm."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "ICD_MNTR_OFF_PROC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the ICD monitoring status for procedure."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "ICD_VOLT_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Free text comment to document comments regarding the voltage setting for the ICD."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "ICD_CHARGE_TIME",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Numeric value of time in seconds it takes for device to charge to full power."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "LEAD_PSA_WAVE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Numeric measurement through lead when not attached to the device."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "LEAD_PSA_THRESH",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Numeric measurement of the threshold through lead when not attached to the device."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "LEAD_PSA_DEVICE_WAV",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Numeric measurement of the Lead through the device connection"
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "LEAD_P_WAVE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Numeric value associated with lead for the P wave when connected to the device."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "LEAD_P_WAVE_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Free-text comment associated with Lead P Wave."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "LEAD_R_WAVE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Numeric value associated with lead for the R wave when connected to the device."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "LEAD_R_WAVE_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Free-text comment associated with Lead R Wave."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "ICD_MODE_SWITCH",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the mode switch parameter of ICD"
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "ICD_MODE_SWTCH_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Free-text comment associated with ICD Mode Switch value."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "ICD_V_TACH_THERAPY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores programmed therapies to treat potentially fatal rhythms"
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "ICD_FST_V_TCH_THERA",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Summary of programmed therapies to treat potentially fatal rhythms in a rate zone."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "ICD_V_TACH_MONT_ZON",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Detection rate for device to record arrhythmia"
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "ICD_V_FIB_THERAPIES",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Summary of programmed therapies to treat potentially fatal rhythms in this rate zone"
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "ICD_PARAMETER_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the comment for ICD parameters"
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "LEAD_PSA_CAP_THRESH",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the test for lead functionality separate from the device"
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "PSA_CURRENT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the test for lead current separate from device"
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "P_WAVE_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Comments for non-numeric P wave documentation"
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "R_WAVE_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Comments for non-numeric R wave documentation"
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "THRESHOLD_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the comments for non-numeric documentation for threshold testing"
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "LEAD_CAPTURE_MS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The capture threshold of the lead in ms."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "LEAD_ACCESS_LOC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the vein accessed for lead implant.",
+      "entries": [
+        "Femoral vein",
+        "Subclavian vein",
+        "Axillary vein",
+        "medial axillary vein",
+        "Cephalic vein",
+        "Internal jugular vein",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "ICD_MONITOROFF_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID that indicates if the device was turned off for comfort of care."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "ICD_EVENT_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of an event or therapy delivered by the device."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "ICD_EVENTDELIV_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the events/therapy that the ICD device delivered."
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "NUM_ATP",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Number of ATPs."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "NUM_SHOCK",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Number of shocks."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "RHYTHM_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the rhythm that the device attempted to correct."
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "APPROP_THERAPY_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if the therapy was appropriate.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "ATRIAL_IMPD",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Atrial impedance in ohms."
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "RV_IMPD",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Right ventricle impedance in ohms."
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "LV_IMPD",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "LV impedance in ohms."
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "RV_COIL_IMPD",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Right ventricle coil impedance in ohms."
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "SVC_COIL_IMPD",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "SVC coil impedance in ohms."
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "ICD_SWITCH_PERC",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Mode switch percentage."
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "DFT_ENERGY",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Minimum Defibrillation Threshold (DFT) energy in Joules."
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "AS_VS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "AS-VS percentage paced."
+    },
+    {
+      "ordinalPosition": 69,
+      "name": "AS_VP",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "AS-VP percentage paced."
+    },
+    {
+      "ordinalPosition": 70,
+      "name": "AP_VP",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "AP-VP percentage paced."
+    },
+    {
+      "ordinalPosition": 71,
+      "name": "AP_VS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "AP-VS percentage paced."
+    },
+    {
+      "ordinalPosition": 72,
+      "name": "VSR",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "VSR percentage paced."
+    },
+    {
+      "ordinalPosition": 73,
+      "name": "BIV_PACED",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Bi-ventricular paced percentage."
+    },
+    {
+      "ordinalPosition": 74,
+      "name": "VENT_PACED",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Ventricular paced percentage."
+    },
+    {
+      "ordinalPosition": 75,
+      "name": "VENT_SENSE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Ventricular sense."
+    },
+    {
+      "ordinalPosition": 76,
+      "name": "LV_PACED",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "LV paced percentage."
+    },
+    {
+      "ordinalPosition": 77,
+      "name": "LEAD_DIAM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Diameter of lead."
+    },
+    {
+      "ordinalPosition": 78,
+      "name": "LEAD_LENGTH",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Length of lead."
+    },
+    {
+      "ordinalPosition": 79,
+      "name": "MAGNET_RATE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the pacemaker magnet rate"
+    },
+    {
+      "ordinalPosition": 80,
+      "name": "REASON_PLACEMENT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the reason for the placement of an implant."
+    },
+    {
+      "ordinalPosition": 81,
+      "name": "PROGRAMMABLE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the implant is programmable.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 82,
+      "name": "NONPROG_SETTINGS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the settings of a non-programmable implant."
+    },
+    {
+      "ordinalPosition": 83,
+      "name": "SHUNT_SETTINGS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the settings related to a shunt."
+    },
+    {
+      "ordinalPosition": 84,
+      "name": "DIAPHRAGMATIC_CAP_V",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The diaphragmatic capture threshold of the lead in V."
+    },
+    {
+      "ordinalPosition": 85,
+      "name": "MATERIAL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the type of breast implant material or lumen type, populated via SmartForm, when describing an implant.",
+      "entries": [
+        "Saline",
+        "Silicone: Intact",
+        "Silicone: Ruptured",
+        "Other",
+        "Lumen type",
+        "Not Applicable"
+      ]
+    },
+    {
+      "ordinalPosition": 86,
+      "name": "LOCATION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the breast implant location, populated via SmartForm, when describing an implant.",
+      "entries": [
+        "Retroglandular",
+        "Retropectoral",
+        "Not Applicable"
+      ]
+    },
+    {
+      "ordinalPosition": 87,
+      "name": "CONTOUR_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the breast implant contour, populated via SmartForm, when describing an implant.",
+      "entries": [
+        "Focal bulge",
+        "Not Applicable"
+      ]
+    },
+    {
+      "ordinalPosition": 88,
+      "name": "RADIAL_FOLDS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether there is an intracapsular radial folds silicone finding for a breast implant. This is populated via SmartForm (R LQF 52002) and is a non-defaulted, unrequired field."
+    },
+    {
+      "ordinalPosition": 89,
+      "name": "SUBCAPSULAR_LINE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether there is an intracapsular subcapsular line silicone finding for a breast implant. This is populated via SmartForm (R LQF 52002) and is a non-defaulted, unrequired field."
+    },
+    {
+      "ordinalPosition": 90,
+      "name": "LINGUINE_SIGN_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether there is an intracapsular linguine sign silicone finding for a breast implant. This is populated via SmartForm (R LQF 52002) and is a non-defaulted, unrequired field."
+    },
+    {
+      "ordinalPosition": 91,
+      "name": "EXTRACAPSULAR_SILICONE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the breast implant extracapsular silicone findings, populated via SmartForm, when describing an implant.",
+      "entries": [
+        "Breast",
+        "Lymph Node",
+        "Not Applicable"
+      ]
+    },
+    {
+      "ordinalPosition": 92,
+      "name": "WATER_DROPLETS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the flag describing the presence of water droplets associated with breast implants. This is populated via SmartForm when describing an implant.",
+      "entries": [
+        "No",
+        "Yes",
+        "Unknown"
+      ]
+    },
+    {
+      "ordinalPosition": 93,
+      "name": "PERI_IMP_FLUID_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the flag describing the presence of peri-implant fluid associated with breast implants. This is populated via SmartForm when describing an implant."
+    },
+    {
+      "ordinalPosition": 94,
+      "name": "KEYHOLE_SIGN_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether there is an intracapsular keyhole sign silicone finding for a breast implant. This is populated via SmartForm (R LQF 52002) and is a non-defaulted, unrequired field."
+    },
+    {
+      "ordinalPosition": 95,
+      "name": "GUDID_MRI_SAFETY_INFO",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the MRI safety information obtained from the Global Unique Device Identification Database (GUDID) for an implant."
+    },
+    {
+      "ordinalPosition": 96,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the Contact Serial Number (CSN) of the patient encounter where this specific contact on the implant was created. For example, for an implant was edited in an office visit encounter with CSN 120, this item will contain a value of 120 for that contact."
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "name": "ORD_ACKNOWLEDGE",
+  "description": "This table is used to extract inpatient order acknowledge information.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line count for this table as determined by the number of times the order is acknowledged."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ACK_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The acknowledge type category number for the order. Only Hospital Outpatient Visit (HOV) appointments have a value populated for this column.",
+      "entries": [
+        "Acknowledging Order Placing",
+        "Acknowledging Order Discontinued",
+        "Acknowledging Order Modified",
+        "Acknowledging Order Held",
+        "Acknowledging Order Unheld",
+        "Acknowledging Order Expired",
+        "Acknowledging Order Cancel Hold",
+        "Undoing Order Acknowledging"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ACK_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who marked the order as acknowledged and validated they saw it, and take responsibility for it"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ACK_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ACK_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time at which a user acknowledged they had seen the order and take responsibility for it."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ACK_DETAIL_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column is used only while acknowledging modified orders. Since an order may be modified multiple times, this column saves the line number for acknowledged modifications from group ORD-35100, which stores the username of the user who modified the order."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ACK_LINKED_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the line within the Superitem that a given line is linked to."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "AUTO_ACK_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores whether or not an order automatically had a user acknowledge the order and take responsibility for it.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    }
+  ]
+}

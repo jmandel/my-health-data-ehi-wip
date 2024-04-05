@@ -1,0 +1,172 @@
+{
+  "$meta": {
+    "schemas": {
+      "EPISODE": {
+        "name": "EPISODE",
+        "description": "This table contains high-level information on the episodes recorded in the clinical system for your patients. When a provider sees a patient several times for an ongoing condition, such as prenatal care, these encounters can be linked to a single Episode of Care. It does not contain episodes linked to an inpatient encounter.",
+        "primaryKey": [
+          {
+            "columnName": "EPISODE_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "EPISODE_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the episode of care record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the episode."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "SUM_BLK_TYPE_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The episode type."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "START_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date the episode was initiated."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "END_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date the episode was resolved in calendar format. This field is called \"Resolved\" on the clinical system screen."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The status category number for the episode.",
+            "entries": [
+              "Active",
+              "Resolved",
+              "Deleted"
+            ]
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "L_UPDATE_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The ID of the last user that updated the episode of care record."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "L_UPDATE_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 35,
+            "name": "SERV_AREA_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the episode's service area. This column is used for DBC episodes, which are specific to a service area."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "EPISODE_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the episode.",
+            "mergedFrom": "EPISODE_ALL"
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the patient associated with the episode.",
+            "mergedFrom": "V_EHI_HSB_LINKED_PATS"
+          }
+        ],
+        "merged": [
+          {
+            "name": "EPISODE_2",
+            "description": "This table supplements the EPISODE table. It contains additional information about episodes. When a provider sees a patient several times for an ongoing condition, such as prenatal care, these encounters can be linked to a single Episode of Care."
+          },
+          {
+            "name": "EPISODE_ALL",
+            "description": "This table contains all episode records, regardless of the type and is intended for use with Organization Filter functionality. If used for Organization Filtering, users will be able to see an episode if they have authorization for the owning business segment on the episode or the patient associated with the episode."
+          },
+          {
+            "name": "PEF_NTFY_INSTR",
+            "description": "This table contains information on patient-entered flowsheet notification instructions and dates. Also contains settings for this episode that are related to tasks."
+          },
+          {
+            "name": "V_EHI_HSB_LINKED_PATS",
+            "description": "Placeholder view for HSB EHI data that needs to be marked as both static and dynamic."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "EPISODE",
+            "target": "ALL_EPISODE_CSN_LINKS",
+            "joinKeys": [
+              {
+                "source": "EPISODE_ID",
+                "target": "EPISODE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "EPISODE",
+            "target": "EPISODE_OT",
+            "joinKeys": [
+              {
+                "source": "EPISODE_ID",
+                "target": "SUMMARY_BLOCK_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "EPISODE": [
+    {
+      "EPISODE_ID": 200498750,
+      "NAME": "OT Neuro TBI",
+      "SUM_BLK_TYPE_ID": 151,
+      "START_DATE": "2022-03-11 00:00:00",
+      "END_DATE": "2022-04-21 00:00:00",
+      "STATUS_C_NAME": "Resolved",
+      "L_UPDATE_USER_ID": "ALG006",
+      "L_UPDATE_USER_ID_NAME": "GILMOUR, AARON K",
+      "SERV_AREA_ID": 10,
+      "$meta": {
+        "type": "EPISODE",
+        "mergedFrom": [
+          "EPISODE_2",
+          "EPISODE_ALL",
+          "PEF_NTFY_INSTR",
+          "V_EHI_HSB_LINKED_PATS"
+        ]
+      },
+      "// mergedFrom EPISODE_2": true,
+      "// mergedFrom EPISODE_ALL": true,
+      "EPISODE_NAME": "OT Neuro TBI",
+      "// mergedFrom PEF_NTFY_INSTR": true,
+      "// mergedFrom V_EHI_HSB_LINKED_PATS": true,
+      "PAT_ID": "Z7004242"
+    }
+  ]
+}

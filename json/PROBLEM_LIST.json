@@ -1,0 +1,145 @@
+{
+  "$meta": {
+    "schemas": {
+      "PROBLEM_LIST": {
+        "name": "PROBLEM_LIST",
+        "description": "The PROBLEM_LIST table contains data from patients' problem lists in the clinical system. The data in this table reflects the current status of all problems on the patient's problem list. In the clinical system, each problem is marked as active until it becomes (and is marked) Resolved or Deleted. At that point, by default, it will not be displayed in the application. However, any problem ever entered on this list is stored in the database and will exist in this table. Deleted and resolved problems can be viewed in the application by simply marking a checkbox to show them. Note that deleted and resolved problems can be restored by undeleting them (an option in the application). When a deleted problem is restored, its status is changed to active and the deleted date is returned to null.",
+        "primaryKey": [
+          {
+            "columnName": "PROBLEM_LIST_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PROBLEM_LIST_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of this Problem List entry."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "DX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the diagnosis record associated with the entry in the patient�s Problem List. Note: This is NOT the ICD9 diagnosis code. It is an internal identifier that is typically not visible to a user."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "NOTED_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Represents the first possible date that a problem could have been noted/onset on. By default, this is the problem's date of entry into the problem list. The intent of this field is to allow users to change this date to the date the problem was first diagnosed if that is different than the entry date.  A problem's noted date is documented as a fuzzy date, meaning that it can capture approximate date data (\"2012\", \"1/2012\") or exact data (\"3/5/2012\"). This column captures the earliest date of the effective range. See NOTED_END_DATE for the latest counterpart. For example, if 2012 is documented in hyperspace, then NOTED_DATE will be 1/1/2012 and NOTED_END_DATE will be 12/31/2012."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "DATE_OF_ENTRY",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This is the date the specific problem was last edited (i.e., a change was made, either in status, priority, etc.)."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "ENTRY_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the system user who last edited the problem in the patient�s Problem List. This ID may be encrypted."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "ENTRY_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "CHRONIC_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column indicates whether or not this problem is flagged as chronic.",
+            "entries": [
+              "No",
+              "Yes"
+            ]
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "SHOW_IN_MYC_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates whether this problem will be displayed in Epic's Patient Portal, MyChart.",
+            "entries": [
+              "Yes",
+              "No"
+            ]
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "PROBLEM_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value associated with the problem�s current state: Active, Resolved, or Deleted.  NOTE: Historical information regarding status changes can be viewed from within the application.",
+            "entries": [
+              "Active",
+              "Resolved",
+              "Deleted"
+            ]
+          },
+          {
+            "ordinalPosition": 25,
+            "name": "NOTED_END_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Represents the last possible date that a problem could have been noted/onset on.   A problem's noted date is documented as a fuzzy date, meaning that it can capture approximate date data (\"2012\", \"1/2012\") or exact data (\"3/5/2012\"). This column captures the latest date of the effective range. See NOTED_DATE for the earliest counterpart. For example, if 2012 is documented in hyperspace, then NOTED_DATE will be 1/1/2012 and NOTED_END_DATE will be 12/31/2012.  Note that the value may be empty, even if NOTED_DATE is populated"
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "PROBLEM_LIST",
+            "target": "PROBLEM_LIST_HX",
+            "joinKeys": [
+              {
+                "source": "PROBLEM_LIST_ID",
+                "target": "PROBLEM_LIST_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PROBLEM_LIST": [
+    {
+      "PROBLEM_LIST_ID": 90574164,
+      "DX_ID": 260690,
+      "NOTED_DATE": "2020-09-01 00:00:00",
+      "DATE_OF_ENTRY": "2022-08-29 00:00:00",
+      "ENTRY_USER_ID": "RAMMELZL",
+      "ENTRY_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "CHRONIC_YN": "N",
+      "SHOW_IN_MYC_YN": "Y",
+      "PROBLEM_STATUS_C_NAME": "Active",
+      "NOTED_END_DATE": "2020-09-01 00:00:00",
+      "$meta": {
+        "type": "PROBLEM_LIST"
+      }
+    },
+    {
+      "PROBLEM_LIST_ID": 30694847,
+      "DX_ID": 70859,
+      "NOTED_DATE": "2018-08-09 00:00:00",
+      "DATE_OF_ENTRY": "2018-08-09 00:00:00",
+      "ENTRY_USER_ID": "DHILLOPS",
+      "ENTRY_USER_ID_NAME": "DHILLON, PUNEET S",
+      "CHRONIC_YN": "N",
+      "SHOW_IN_MYC_YN": "Y",
+      "PROBLEM_STATUS_C_NAME": "Active",
+      "$meta": {
+        "type": "PROBLEM_LIST"
+      }
+    }
+  ]
+}

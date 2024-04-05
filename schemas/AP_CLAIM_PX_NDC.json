@@ -1,0 +1,79 @@
+{
+  "name": "AP_CLAIM_PX_NDC",
+  "description": "The AP_CLAIM_PX_NDC table stores items related to National Drug Code (NDC) data for AP Claim service lines. Multiple NDCs can be associated to a single claim service line.\n\n\n\n\n\nTo link this table�s service line information back to a claim header, join this table to AP_CLAIM_PROC_IDS on the TX_ID column. If you need to report on claim service lines specific to Cost Sharing Reduction (CSR), join this table instead to AP_CLAIM_PROC_IDS_CSR on the TX_ID column.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the AP Claim procedure transaction."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "NDC_CODE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the National Drug Code (NDC) for the service on an AP claim. It should be used to join to NDC tables, such as RX_NDC, to find details about the code or translate to a readable format."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "NDC_CODE_ID_NDC_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The external code for the National Drug Code (NDC). An NDC represents packages of medications."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "NDC_QUANTITY",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The quantity or amount of the National Drug Code (NDC) dispensed for the service on an AP claim."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "NDC_UNIT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unit category ID for the quantity of a National Drug Code (NDC) dispensed for a service on an AP claim. The stored values can be translated using ZC_NDC_UNITS.",
+      "entries": [
+        "Milliliters",
+        "Milligrams",
+        "Grams",
+        "International Units",
+        "Units"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "NDC_PRESCRIPTIONNUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The prescription number associated with the National Drug Code (NDC) dispensed for a service on an AP claim."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "NDC_LINK_SEQ_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The link sequence number associated with the National Drug Code (NDC) dispensed for a service on an AP claim."
+    }
+  ]
+}

@@ -1,0 +1,804 @@
+{
+  "$meta": {
+    "schemas": {
+      "ACCOUNT": {
+        "name": "ACCOUNT",
+        "description": "Accounts contain information about billing for services, while coverages contain information about insurance payors, benefits, subscribers, and members. This table contains one row for each account record in your system.",
+        "primaryKey": [
+          {
+            "columnName": "ACCOUNT_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the guarantor record. This ID number may be encrypted if you have elected to use enterprise reporting�s security utility."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "ACCOUNT_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the name for the guarantor record. The name could be hidden if you have elected to use enterprise reporting�s security utility."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "CONTACT_PERSON",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the person to contact for questions regarding the guarantor. This item could be hidden."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "BIRTHDATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The guarantor's date of birth."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "SEX",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The sex of the guarantor. This is extracted as the category abbreviation.",
+            "entries": [
+              "Female",
+              "Male",
+              "Unknown",
+              "Nonbinary",
+              "X",
+              "Other"
+            ]
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "IS_ACTIVE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column indicates whether the guarantor was active at the time of the extract.",
+            "entries": [
+              "Yes",
+              "No"
+            ]
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "CITY",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The city in which the guarantor lives."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "STATE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value of the state in which the guarantor lives."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "ZIP",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The ZIP Code area in which the guarantor lives."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "HOME_PHONE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The guarantor�s home phone number (may contain dashes)."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "ACCOUNT_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Category value associated with the type of account, such as Personal/Family, Worker�s Comp, etc.",
+            "entries": [
+              "Other",
+              "Personal/Family",
+              "Non-Employed CRNA",
+              "Case Rate",
+              "Clearing Account",
+              "Trust Account",
+              "ROI Requester",
+              "Invalid"
+            ]
+          },
+          {
+            "ordinalPosition": 15,
+            "name": "SERV_AREA_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID of the service area (EAF .1) to which this account belongs."
+          },
+          {
+            "ordinalPosition": 16,
+            "name": "FIN_CLASS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value of the primary financial class of the guarantor (i.e. commercial, Medicare, self-pay, etc.)",
+            "entries": [
+              "Commercial",
+              "Medicare",
+              "Medicaid",
+              "Self-Pay",
+              "Worker's Comp",
+              "Tricare",
+              "Champva",
+              "Group Health Plan",
+              "FECA Black Lung",
+              "Blue Shield",
+              "Medigap",
+              "Other",
+              "DK Regional",
+              "Client",
+              "Received Self-Pay",
+              "Sent to Consolidated Self-Pay Service Area"
+            ]
+          },
+          {
+            "ordinalPosition": 17,
+            "name": "TOTAL_BALANCE",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The total outstanding balance on the account as of the time of the extract."
+          },
+          {
+            "ordinalPosition": 18,
+            "name": "INSURANCE_BALANCE",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The amount of the insurance balance on the guarantor as of the time of the extract."
+          },
+          {
+            "ordinalPosition": 19,
+            "name": "PATIENT_BALANCE",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The amount of the self-pay balance on the account as of the time of the extract."
+          },
+          {
+            "ordinalPosition": 25,
+            "name": "LAST_INS_PMT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date the most recent insurance payment was received for this account before the enterprise reporting extract."
+          },
+          {
+            "ordinalPosition": 26,
+            "name": "LAST_PAT_PMT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date the most recent patient payment was received for this account before the enterprise reporting extract."
+          },
+          {
+            "ordinalPosition": 27,
+            "name": "LAST_PAT_PMT_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The amount of the most recent patient payment received for this account before the enterprise reporting extract."
+          },
+          {
+            "ordinalPosition": 28,
+            "name": "LAST_STMT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date the most recent patient statement was sent for the account."
+          },
+          {
+            "ordinalPosition": 33,
+            "name": "EPIC_ACCT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the guarantor record. This field will be hidden in a public view of the ACCOUNT table."
+          },
+          {
+            "ordinalPosition": 42,
+            "name": "HOM_CLARITY_FLG_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column indicates whether the guarantor should be extracted. If the guarantor is homed it will be extracted, otherwise not: 1-extract, 0-do not extract."
+          },
+          {
+            "ordinalPosition": 43,
+            "name": "HB_BALANCE",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This value is the Hospital Billing balance on the guarantor."
+          },
+          {
+            "ordinalPosition": 44,
+            "name": "HB_PREBILL_BALANCE",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This value is the Hospital Billing prebilled balance on the account."
+          },
+          {
+            "ordinalPosition": 45,
+            "name": "HB_INSURANCE_BALAN",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This value is the Hospital Billing insurance balance on the guarantor, but excludes hospital accounts in external AR or bad debt."
+          },
+          {
+            "ordinalPosition": 46,
+            "name": "HB_SELFPAY_BALANCE",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This value is the Hospital Billing self-pay balance on the account, but excludes hospital accounts in external AR, bad debt or that have not yet been billed to self-pay."
+          },
+          {
+            "ordinalPosition": 47,
+            "name": "HB_BADDEBT_BALANCE",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This value is the Hospital Billing bad debt balance on the guarantor."
+          },
+          {
+            "ordinalPosition": 48,
+            "name": "HB_UNDISTRIB_BAL",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This value is the Hospital Billing undistributed balance on the account, but excludes hospital accounts in external AR or bad debt."
+          },
+          {
+            "ordinalPosition": 51,
+            "name": "HB_LAST_INS_PMT_DT",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This column stores the last hospital billing insurance payment date."
+          },
+          {
+            "ordinalPosition": 52,
+            "name": "HB_LAST_SP_PMT_DT",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This column stores the last hospital billing self-pay payment date."
+          },
+          {
+            "ordinalPosition": 53,
+            "name": "SBO_HSP_ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the default hospital account of the guarantor. The item is only used in single billing office mode."
+          },
+          {
+            "ordinalPosition": 58,
+            "name": "EMPR_ID_CMT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "A free text comment that can be entered when the value that is considered to be \"Other\" is selected as the employer. This option is available only if your organization has chosen to link the account employer to the Employer (EEP) master file in the Facility Profile."
+          },
+          {
+            "ordinalPosition": 59,
+            "name": "PAT_REC_OF_GUAR_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "If the guarantor is the same person as a patient, this item contains the patient ID."
+          },
+          {
+            "ordinalPosition": 72,
+            "name": "HB_BD_SELFPAY_BAL",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Self-pay balance of accounts in bad debt that have been billed to self-pay."
+          },
+          {
+            "ordinalPosition": 73,
+            "name": "HB_BD_INSURANCE_BAL",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the total of all insurance buckets for this guarantor's hospital accounts that are in bad debt when using account-based bad debt."
+          },
+          {
+            "ordinalPosition": 74,
+            "name": "HB_BD_UNDISTRIB_BAL",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the total of all undistributed buckets for this guarantor's hospital accounts that are in bad debt when using account-based bad debt."
+          },
+          {
+            "ordinalPosition": 75,
+            "name": "COUNTY_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category number for the county of the guarantor's billing address."
+          },
+          {
+            "ordinalPosition": 76,
+            "name": "COUNTRY_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category number for the country of the guarantor's billing address."
+          },
+          {
+            "ordinalPosition": 77,
+            "name": "EMPY_STAT_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category number for the guarantor's employment status.",
+            "entries": [
+              "Full Time",
+              "Part Time",
+              "Not Employed",
+              "Self Employed",
+              "Retired",
+              "On Active Military Duty",
+              "Student - Full Time",
+              "Student - Part Time",
+              "Unknown"
+            ]
+          },
+          {
+            "ordinalPosition": 81,
+            "name": "GUAR_EMP_CNTRY_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category number for the country of the guarantor's employer."
+          },
+          {
+            "ordinalPosition": 98,
+            "name": "GUAR_VERIF_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The verification record of the guarantor."
+          },
+          {
+            "ordinalPosition": 1,
+            "name": "ACCT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the account record.",
+            "mergedFrom": "ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 18,
+            "name": "LAST_BILLED_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Last statement's billed amount",
+            "mergedFrom": "ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 19,
+            "name": "LAST_INS_BAL",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Last statement's insurance amount",
+            "mergedFrom": "ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 20,
+            "name": "LAST_CLAIM_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Last date the claim was produced",
+            "mergedFrom": "ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 29,
+            "name": "FOL_UP_LAST_LET_DT",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Date the last follow-up letter was sent.",
+            "mergedFrom": "ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 30,
+            "name": "UNDIST_CREDIT_BAL",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Total account undistributed credit balance",
+            "mergedFrom": "ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 31,
+            "name": "UNDIST_INS_CR_BAL",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Account undistributed credit balance - insurance credits only.",
+            "mergedFrom": "ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 32,
+            "name": "UNDIST_SP_CR_BAL",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Account undistributed credit balance - self-pay credits only.",
+            "mergedFrom": "ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 38,
+            "name": "DIST_LATER_COUNT",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "Number of undistributed credits that are marked as for later distribution in this account.",
+            "mergedFrom": "ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 44,
+            "name": "STMT_HOLD_DT",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The most recent date on which the account was held from the Professional Billing (PB) statement processing.",
+            "mergedFrom": "ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 48,
+            "name": "MOBILE_PHONE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Mobile phone for guarantor accounts.",
+            "mergedFrom": "ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 50,
+            "name": "PMT_PLAN_DLQ_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This is the sum of delinquent payment plan payments.",
+            "mergedFrom": "ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 51,
+            "name": "PMT_PLAN_DUE_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This includes both the delinquent amount and the amount due for the current month.",
+            "mergedFrom": "ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 52,
+            "name": "PMT_PLAN_PAID_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This is the total amount of the payment plan payments.",
+            "mergedFrom": "ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 53,
+            "name": "PMT_PLAN_REMAIN_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This is the remaining amount of the payment plan.",
+            "mergedFrom": "ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 54,
+            "name": "HB_EXT_AR_SELF_PAY_BAL",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This item stores the Hospital Billing (HB) external Accounts Receivable (AR) self-pay balance for the account.",
+            "mergedFrom": "ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 55,
+            "name": "HB_EXT_AR_INS_BAL",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This item stores the Hospital Billing (HB) external Accounts Receivable (AR) insurance balance for the account.",
+            "mergedFrom": "ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 56,
+            "name": "HB_EXT_AR_UNDIST_BAL",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This item stores the Hospital Billing (HB) external Accounts Receivable (AR) undistributed balance for the account.",
+            "mergedFrom": "ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 59,
+            "name": "ADDR_CHG_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The user who initiated the linked address changes.",
+            "mergedFrom": "ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 60,
+            "name": "ADDR_CHG_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden.",
+            "mergedFrom": "ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 61,
+            "name": "ADDR_CHG_INSTANT_DTTM",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The instant that the linked address change was initiated.",
+            "mergedFrom": "ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 62,
+            "name": "ADDR_CHG_SOURCE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The source record that initiated the linked address changes.",
+            "mergedFrom": "ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 73,
+            "name": "PB_SELF_PAY_BAL_UPDATE_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This is updated based on changes to patient balance.",
+            "mergedFrom": "ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 74,
+            "name": "HB_SELF_PAY_BAL_UPDATE_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This is updated based on changes to Hospital Billing (HB) self-pay balance (I EAR 20003).",
+            "mergedFrom": "ACCOUNT_2"
+          }
+        ],
+        "merged": [
+          {
+            "name": "ACCOUNT_2",
+            "description": "Accounts contain information about billing for services, while coverages contain information about insurance payors, benefits, subscribers, and members. This table contains one row for each account record in your system. This table is the continuation of the ACCOUNT table."
+          },
+          {
+            "name": "ACCOUNT_3",
+            "description": "Accounts contain information about billing for services, while coverages contain information about insurance payors, benefits, subscribers, and members. This table contains one row for each account record in your system."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "ACCOUNT",
+            "target": "ACCOUNT_CREATION",
+            "joinKeys": [
+              {
+                "source": "ACCOUNT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ACCOUNT",
+            "target": "ACCT_ADDR",
+            "joinKeys": [
+              {
+                "source": "ACCOUNT_ID",
+                "target": "ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ACCOUNT",
+            "target": "ACCT_COVERAGE",
+            "joinKeys": [
+              {
+                "source": "ACCOUNT_ID",
+                "target": "ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ACCOUNT",
+            "target": "ACCT_GUAR_PAT_INFO",
+            "joinKeys": [
+              {
+                "source": "ACCOUNT_ID",
+                "target": "ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ACCOUNT",
+            "target": "ACCT_HOME_PHONE_HX",
+            "joinKeys": [
+              {
+                "source": "ACCOUNT_ID",
+                "target": "ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ACCOUNT",
+            "target": "ACCT_TX",
+            "joinKeys": [
+              {
+                "source": "ACCOUNT_ID",
+                "target": "ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ACCOUNT",
+            "target": "GUAR_ACCT_STMT_HX",
+            "joinKeys": [
+              {
+                "source": "ACCOUNT_ID",
+                "target": "ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ACCOUNT",
+            "target": "GUAR_ADDR_HX",
+            "joinKeys": [
+              {
+                "source": "ACCOUNT_ID",
+                "target": "ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ACCOUNT",
+            "target": "GUAR_PMT_SCORE_PB_HX",
+            "joinKeys": [
+              {
+                "source": "ACCOUNT_ID",
+                "target": "ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ACCOUNT",
+            "target": "ACCOUNT_CONTACT",
+            "joinKeys": [
+              {
+                "source": "ACCOUNT_ID",
+                "target": "ACCOUNT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ACCOUNT": [
+    {
+      "ACCOUNT_ID": 1810018166,
+      "ACCOUNT_NAME": "MANDEL,JOSHUA C",
+      "CONTACT_PERSON": "MANDEL,JOSHUA C",
+      "BIRTHDATE": "1982-10-26 00:00:00",
+      "SEX": "M",
+      "IS_ACTIVE": "Y",
+      "CITY": "MADISON",
+      "STATE_C_NAME": "Wisconsin",
+      "ZIP": "REDACTED",
+      "HOME_PHONE": "617-894-1015",
+      "ACCOUNT_TYPE_C_NAME": "Personal/Family",
+      "SERV_AREA_ID": 18,
+      "FIN_CLASS_C_NAME": "Blue Cross",
+      "TOTAL_BALANCE": 0,
+      "INSURANCE_BALANCE": 0,
+      "PATIENT_BALANCE": 0,
+      "LAST_INS_PMT_DATE": "2023-10-23 00:00:00",
+      "LAST_PAT_PMT_DATE": "2023-05-17 00:00:00",
+      "LAST_PAT_PMT_AMT": 139.97,
+      "LAST_STMT_DATE": "2023-04-26 00:00:00",
+      "EPIC_ACCT_ID": 1810018166,
+      "HOM_CLARITY_FLG_YN": "Y",
+      "HB_BALANCE": 0,
+      "HB_PREBILL_BALANCE": 0,
+      "HB_INSURANCE_BALAN": 0,
+      "HB_SELFPAY_BALANCE": 0,
+      "HB_BADDEBT_BALANCE": 0,
+      "HB_UNDISTRIB_BAL": 0,
+      "SBO_HSP_ACCOUNT_ID": 4307315,
+      "EMPR_ID_CMT": "Microsoft",
+      "PAT_REC_OF_GUAR_ID": "Z7004242",
+      "HB_BD_SELFPAY_BAL": 0,
+      "HB_BD_INSURANCE_BAL": 0,
+      "HB_BD_UNDISTRIB_BAL": 0,
+      "COUNTY_C_NAME": "DANE",
+      "COUNTRY_C_NAME": "United States of America",
+      "EMPY_STAT_C_NAME": "Full Time",
+      "GUAR_EMP_CNTRY_C_NAME": "United States of America",
+      "GUAR_VERIF_ID": 68534786,
+      "$meta": {
+        "type": "ACCOUNT",
+        "mergedFrom": [
+          "ACCOUNT_2",
+          "ACCOUNT_3"
+        ]
+      },
+      "// mergedFrom ACCOUNT_2": true,
+      "ACCT_ID": 1810018166,
+      "LAST_BILLED_AMT": 139.97,
+      "LAST_INS_BAL": 0,
+      "LAST_CLAIM_DATE": "2023-10-13 00:00:00",
+      "FOL_UP_LAST_LET_DT": "2023-05-17 00:00:00",
+      "UNDIST_CREDIT_BAL": 0,
+      "UNDIST_INS_CR_BAL": 0,
+      "UNDIST_SP_CR_BAL": 0,
+      "DIST_LATER_COUNT": 0,
+      "STMT_HOLD_DT": "2023-01-11 00:00:00",
+      "MOBILE_PHONE": "REDACTED",
+      "PMT_PLAN_DLQ_AMT": 0,
+      "PMT_PLAN_DUE_AMT": 0,
+      "PMT_PLAN_PAID_AMT": 0,
+      "PMT_PLAN_REMAIN_AMT": 0,
+      "HB_EXT_AR_SELF_PAY_BAL": 0,
+      "HB_EXT_AR_INS_BAL": 0,
+      "HB_EXT_AR_UNDIST_BAL": 0,
+      "ADDR_CHG_USER_ID": "MYCHARTG",
+      "ADDR_CHG_USER_ID_NAME": "MYCHART, GENERIC",
+      "ADDR_CHG_INSTANT_DTTM": "2022-11-14 16:57:24",
+      "ADDR_CHG_SOURCE": "(EPT) MANDEL,JOSHUA C [  Z7004242]",
+      "PB_SELF_PAY_BAL_UPDATE_DATE": "2023-05-17 00:00:00",
+      "// mergedFrom ACCOUNT_3": true
+    },
+    {
+      "ACCOUNT_ID": 4793998,
+      "ACCOUNT_NAME": "MANDEL,JOSHUA C",
+      "CONTACT_PERSON": "MANDEL,JOSHUA C",
+      "BIRTHDATE": "1982-10-26 00:00:00",
+      "SEX": "M",
+      "IS_ACTIVE": "Y",
+      "CITY": "MADISON",
+      "STATE_C_NAME": "Wisconsin",
+      "ZIP": "REDACTED",
+      "HOME_PHONE": "617-894-1015",
+      "ACCOUNT_TYPE_C_NAME": "Personal/Family",
+      "SERV_AREA_ID": 10,
+      "FIN_CLASS_C_NAME": "Blue Cross",
+      "EPIC_ACCT_ID": 4793998,
+      "HOM_CLARITY_FLG_YN": "Y",
+      "HB_BALANCE": 0,
+      "HB_PREBILL_BALANCE": 0,
+      "HB_INSURANCE_BALAN": 0,
+      "HB_SELFPAY_BALANCE": 0,
+      "HB_BADDEBT_BALANCE": 0,
+      "HB_UNDISTRIB_BAL": 0,
+      "HB_LAST_INS_PMT_DT": "2022-04-26 00:00:00",
+      "HB_LAST_SP_PMT_DT": "2022-05-11 00:00:00",
+      "SBO_HSP_ACCOUNT_ID": 376684703,
+      "EMPR_ID_CMT": "Microsoft",
+      "PAT_REC_OF_GUAR_ID": "Z7004242",
+      "HB_BD_SELFPAY_BAL": 0,
+      "HB_BD_INSURANCE_BAL": 0,
+      "HB_BD_UNDISTRIB_BAL": 0,
+      "COUNTY_C_NAME": "DANE",
+      "COUNTRY_C_NAME": "United States of America",
+      "EMPY_STAT_C_NAME": "Full Time",
+      "GUAR_EMP_CNTRY_C_NAME": "United States of America",
+      "GUAR_VERIF_ID": 149262263,
+      "$meta": {
+        "type": "ACCOUNT",
+        "mergedFrom": [
+          "ACCOUNT_2",
+          "ACCOUNT_3"
+        ]
+      },
+      "// mergedFrom ACCOUNT_2": true,
+      "ACCT_ID": 4793998,
+      "MOBILE_PHONE": "REDACTED",
+      "PMT_PLAN_DLQ_AMT": 0,
+      "PMT_PLAN_DUE_AMT": 0,
+      "PMT_PLAN_PAID_AMT": 0,
+      "PMT_PLAN_REMAIN_AMT": 0,
+      "HB_EXT_AR_SELF_PAY_BAL": 0,
+      "HB_EXT_AR_INS_BAL": 0,
+      "HB_EXT_AR_UNDIST_BAL": 0,
+      "ADDR_CHG_USER_ID": "MYCHARTG",
+      "ADDR_CHG_USER_ID_NAME": "MYCHART, GENERIC",
+      "ADDR_CHG_INSTANT_DTTM": "2022-11-14 16:57:24",
+      "ADDR_CHG_SOURCE": "(EPT) MANDEL,JOSHUA C [  Z7004242]",
+      "HB_SELF_PAY_BAL_UPDATE_DATE": "2022-05-11 00:00:00",
+      "// mergedFrom ACCOUNT_3": true
+    }
+  ]
+}

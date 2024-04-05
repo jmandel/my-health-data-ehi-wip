@@ -1,0 +1,43 @@
+{
+  "name": "ACCT_PB_STMT_RSN",
+  "description": "Clarity table for PB Statement Processing Hold Reasons.",
+  "primaryKey": [
+    {
+      "columnName": "ACCT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ACCT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the guarantor account record for this row."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PB_STMT_ERROR_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the current list of PB statement processing errors at the guarantor level",
+      "entries": [
+        "Minimum balance not met",
+        "Credit balance on the guarantor account",
+        "Small balance write off",
+        "No transactions on guarantor account before end batch date"
+      ]
+    }
+  ]
+}

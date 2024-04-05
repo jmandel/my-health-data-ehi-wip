@@ -1,0 +1,122 @@
+{
+  "name": "PAT_ENC_BCB_HST",
+  "description": "Extracts information regarding the bed charge billing history for a patient's encounter.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique, internal contact date in decimal format. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "BED_CHARGE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The dates that bed charges have been generated for this patient."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "HTR",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Link to the transaction that represents the bed charge on the hospital account record (HAR)."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "BED_CHARGE_BCC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the cost center record associated with the bed charge."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "BED_CHARGE_BCC_ID_COST_CENTER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the cost center."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "BED_CHARGE_UNIT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the department record where the bed charge was triggered."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "BED_CHARGE_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the bed charge procedure record."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "BED_CHARGE_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Contains the instant for which the bed charge was dropped."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "BED_CHARGE_ROOM_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the room where the patient is charged for."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "BED_CHARGE_BED_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the bed where the patient is charged for."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "BED_CHARGE_BED_ID_BED_LABEL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the bed."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "BED_CHARGE_ACCOMMODATION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The accommodation code category ID the patient is charged for."
+    }
+  ]
+}

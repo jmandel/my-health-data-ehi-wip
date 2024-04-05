@@ -1,0 +1,104 @@
+{
+  "name": "TIMEOUT_LINKD_PROC",
+  "description": "This table stores information about the procedures linked to the timeout.",
+  "primaryKey": [
+    {
+      "columnName": "RECORD_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the timeout record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "LINK_PROC_SURG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the primary surgeon for a procedure linked to a timeout."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "LINK_PROC_LAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the laterality of the linked procedure.",
+      "entries": [
+        "Left",
+        "Right",
+        "Bilateral",
+        "N/A",
+        "Default"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "LINK_PROC_ORP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores a pointer to the procedure record that is linked to the timeout."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "LINK_PROC_ORP_ID_PROC_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the surgical procedure record."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "LINK_PROC_PNL_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the panel number of the linked procedure."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "LINK_PROC_FREE_TEXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the free-text name of the linked procedure when the timeout was documented. This prevents later changes in the procedure's free-text name from altering the meaning of the timeout."
+    }
+  ]
+}

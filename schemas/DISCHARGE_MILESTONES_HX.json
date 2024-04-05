@@ -1,0 +1,67 @@
+{
+  "name": "DISCHARGE_MILESTONES_HX",
+  "description": "This table contains the history of discharge milestones for a patient encounter.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "DISCH_MILEST_UPD_HX_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Instant a discharge milestones event was triggered."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "DISCH_MILEST_AUTOMANAGED_HX_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Determines if discharge milestones have had any manual intervention at the time of the event.  Discharge Milestones are considered auto-managed if the discharge order is the sole driver for kicking off and discontinuing milestones.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "DISCH_MILEST_EVENT_HX_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "History item for discharge milestone events. The possible events are Started and Canceled.  Started - This event occurs when discharge milestones are initiated with the discharge order, the Start Discharge Milestones extension, or the Discharge Milestones navigator section.  Canceled - This event occurs when the discharge milestones are canceled via the discharge order or the Discharge Milestones navigator section.",
+      "entries": [
+        "Started",
+        "Cancelled"
+      ]
+    }
+  ]
+}

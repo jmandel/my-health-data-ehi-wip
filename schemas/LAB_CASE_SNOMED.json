@@ -1,0 +1,64 @@
+{
+  "name": "LAB_CASE_SNOMED",
+  "description": "The LAB_CASE_SNOMED table stores SNOMED related information for case (REQ) records.",
+  "primaryKey": [
+    {
+      "columnName": "REQUISITION_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "REQUISITION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the case record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SNOMED_CUI",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique SNOMED SmartData Identifier (HLX-40) for the Lexicon master file that is stored on this case."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CODE_SEL_METHOD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The code selection method category number for the SNOMED code stored on the case.",
+      "entries": [
+        "Manual",
+        "Synoptic Automatic",
+        "Specimen Source Automatic",
+        "Result Component Automatic"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SNOMED_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the actual SNOMED code on the case for reporting purposes."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SOURCE_TEST",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the tests selected for the source result during automatic SNOMED code generation."
+    }
+  ]
+}

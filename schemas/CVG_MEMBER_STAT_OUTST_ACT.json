@@ -1,0 +1,95 @@
+{
+  "name": "CVG_MEMBER_STAT_OUTST_ACT",
+  "description": "This table stores the outstanding actions for the covered status of a member on a coverage record.",
+  "primaryKey": [
+    {
+      "columnName": "COVERAGE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the coverage record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CVD_STAT_OUTST_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The covered status outstanding action category ID for this member on the coverage record.",
+      "entries": [
+        "Special Enrollment Period Verification",
+        "Binder Payment",
+        "Enrollment Geographic Area Verification",
+        "Non-Covered Subscriber",
+        "Arbitration for Re-enrollment of Coverage"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CVD_STAT_OUTST_ACT_RES_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The covered status outstanding action resolution category ID for member on the coverage record.",
+      "entries": [
+        "Not Resolved",
+        "Approved",
+        "Denied",
+        "Canceled",
+        "Paid",
+        "Failed To Pay",
+        "Geographic Area Verification Passed",
+        "Subscriber Gained Coverage",
+        "Resolved",
+        "Under Investigation",
+        "Temporary Address",
+        "In Geographic Area",
+        "Out of Geographic Area"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "APN_QUAL_EVNT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The covered status outstanding action qualifying event category ID for the member on the coverage record."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "QUALIFYING_EVENT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The qualifying event date for this outstanding action for the member on the coverage record."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CVD_STAT_OUT_ACT_DENIAL_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The covered status outstanding action denial reason on the coverage. This is extracted as the category title."
+    }
+  ]
+}

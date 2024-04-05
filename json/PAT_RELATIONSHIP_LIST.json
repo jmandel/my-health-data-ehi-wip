@@ -1,0 +1,229 @@
+{
+  "$meta": {
+    "schemas": {
+      "PAT_RELATIONSHIP_LIST": {
+        "name": "PAT_RELATIONSHIP_LIST",
+        "description": "This table includes the majority of patient contact demographic info, general relationship info, and patient-level relationship info. The records included in this table are Patient Relationships (RLA) records.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_RELATIONSHIP_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_RELATIONSHIP_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the patient contact record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the patient this patient contact is added to."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "PAT_LEVEL_RELATIONSHIP_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates whether the patient contact should be displayed at the patient level.",
+            "entries": [
+              "No",
+              "Yes"
+            ]
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Patient contact's name.  This column only displays names that are stored directly on patient contact records and will be blank for patient contact records that are linked to different patient records.  Use the PAT_RELATIONSHIP_RECORD_NAME column instead if you want a single column that will display the names of both linked and unlinked patient contact records."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "CITY",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Patient contact's city of residence."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "STATE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The state category ID for the patient contact's residence."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "ZIP_CODE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Patient contact's postal code."
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "COUNTY_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The county category ID for the patient contact."
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "COUNTRY_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The country category ID for the patient contact."
+          },
+          {
+            "ordinalPosition": 20,
+            "name": "RECORD_CREATION_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date when the patient contact was created."
+          },
+          {
+            "ordinalPosition": 22,
+            "name": "DISPLAY_SEQUENCE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "Stores the order in which patient-level contacts display."
+          },
+          {
+            "ordinalPosition": 53,
+            "name": "PAT_RELATIONSHIP_RECORD_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the patient contact record. If the patient contact record is linked to a different patient's record, the name will come from the patient record. Otherwise, it will come from the name stored directly on the patient contact record.  If your organization does not allow users to link patient contacts to other patient records, this column will act the same as the NAME column in this table."
+          },
+          {
+            "ordinalPosition": 67,
+            "name": "PRIMARY_OR_FIRST_PHONE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The phone number of a patient contact. This is the primary phone number if one is marked primary, otherwise this is the first phone number listed for the patient contact. If the patient contact is linked to another record, this phone number is from the linked record, otherwise this phone number is from the patient contact record."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "PAT_RELATIONSHIP_LIST",
+            "target": "PAT_RELATIONSHIP_ADDR",
+            "joinKeys": [
+              {
+                "source": "PAT_RELATIONSHIP_ID",
+                "target": "PAT_RELATIONSHIP_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_RELATIONSHIP_LIST",
+            "target": "PAT_RELATIONSHIP_LIST_HX",
+            "joinKeys": [
+              {
+                "source": "PAT_RELATIONSHIP_ID",
+                "target": "RELATIONSHIP_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_RELATIONSHIP_LIST",
+            "target": "PAT_REL_CONTEXT",
+            "joinKeys": [
+              {
+                "source": "PAT_RELATIONSHIP_ID",
+                "target": "PAT_RELATIONSHIP_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_RELATIONSHIP_LIST",
+            "target": "PAT_REL_EMAIL_ADDR",
+            "joinKeys": [
+              {
+                "source": "PAT_RELATIONSHIP_ID",
+                "target": "PAT_RELATIONSHIP_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_RELATIONSHIP_LIST",
+            "target": "PAT_REL_LANGUAGES",
+            "joinKeys": [
+              {
+                "source": "PAT_RELATIONSHIP_ID",
+                "target": "PAT_RELATIONSHIP_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_RELATIONSHIP_LIST",
+            "target": "PAT_REL_PHONE_NUM",
+            "joinKeys": [
+              {
+                "source": "PAT_RELATIONSHIP_ID",
+                "target": "PAT_RELATIONSHIP_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_RELATIONSHIP_LIST",
+            "target": "PAT_REL_SPEC_NEEDS",
+            "joinKeys": [
+              {
+                "source": "PAT_RELATIONSHIP_ID",
+                "target": "PAT_RELATIONSHIP_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PAT_RELATIONSHIP_LIST": [
+    {
+      "PAT_RELATIONSHIP_ID": 31533870,
+      "PAT_ID": "Z7004242",
+      "PAT_LEVEL_RELATIONSHIP_YN": "Y",
+      "NAME": "REDACTED,REDACTED",
+      "CITY": "MADISON",
+      "STATE_C_NAME": "Wisconsin",
+      "ZIP_CODE": "REDACTED",
+      "COUNTY_C_NAME": "DANE",
+      "COUNTRY_C_NAME": "United States of America",
+      "RECORD_CREATION_DATE": "2019-12-21 00:00:00",
+      "PAT_RELATIONSHIP_RECORD_NAME": "REDACTED,REDACTED",
+      "PRIMARY_OR_FIRST_PHONE": "REDACTED",
+      "$meta": {
+        "type": "PAT_RELATIONSHIP_LIST"
+      }
+    },
+    {
+      "PAT_RELATIONSHIP_ID": 31533871,
+      "PAT_ID": "Z7004242",
+      "PAT_LEVEL_RELATIONSHIP_YN": "Y",
+      "NAME": "REDACTED,REDACTED",
+      "CITY": "Madison",
+      "STATE_C_NAME": "Wisconsin",
+      "ZIP_CODE": "REDACTED",
+      "COUNTY_C_NAME": "DANE",
+      "COUNTRY_C_NAME": "United States of America",
+      "RECORD_CREATION_DATE": "2024-02-15 00:00:00",
+      "DISPLAY_SEQUENCE": 1,
+      "PAT_RELATIONSHIP_RECORD_NAME": "REDACTED,REDACTED",
+      "PRIMARY_OR_FIRST_PHONE": "REDACTED",
+      "$meta": {
+        "type": "PAT_RELATIONSHIP_LIST"
+      }
+    }
+  ]
+}

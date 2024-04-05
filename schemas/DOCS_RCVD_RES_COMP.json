@@ -1,0 +1,202 @@
+{
+  "name": "DOCS_RCVD_RES_COMP",
+  "description": "The DOCS_RCVD_RES_COMP table contains information about compiled results components.",
+  "primaryKey": [
+    {
+      "columnName": "DOCUMENT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "DOCUMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of received documents."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "RES_CMP_KEY_CMP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The key which links the component with the order."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RES_COMP_NAME_CMP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The free text name of the result component."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RES_CMP_CMP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The internal ID of the component to which this result was mapped. This column links to the CLARITY_LRR table.",
+      "linksTo": "CLARITY_LRR"
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RES_CMP_CMP_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the component."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "RES_COMP_ABBR_COMP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The abbreviation for the result component."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "RES_COMP_GRP_COMP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The list of component groups that the component belongs to."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "RES_COMP_LOINC_CMP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The LOINC code identifier for the component."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "RES_VAL_COMP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The value for this result (populated if a single-line value)."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "RES_VAL_ST_LINE_CMP",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The start line for the result component's value (populated if a multi-line value). The line maps to a line in the DOCS_RCVD_RES_TEXT table."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "RES_VAL_END_LN_CMP",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The end line for the result component's value (populated if a multi-line value). The line maps to a line in the DOCS_RCVD_RES_TEXT table."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "RES_COMMENT_COMP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comment for the result value (populated if a single-line value)."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "RES_CMT_ST_LINE_CMP",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The start line for the result component's comment (populated if a multi-line value). The line maps to a line in the DOCS_RCVD_RES_TEXT table."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "RES_CMT_END_LN_CMP",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The end line for the result component's comment (populated if a multi-line value). The line maps to a line in the DOCS_RCVD_RES_TEXT table."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "RES_UNIT_COMPILED",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unit of measurement for the result."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "RES_FLAG_NAME_CMP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The free text version of the result flag."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "RES_FLAG_COMP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The result component flag category ID for the received results.",
+      "entries": [
+        "(NONE)",
+        "Abnormal",
+        "Panic",
+        "Low",
+        "High",
+        "Low Panic",
+        "High Panic",
+        "Low Off-Scale",
+        "High Off-Scale",
+        "Sig Change Up",
+        "Sig Change Down",
+        "Better",
+        "Worse",
+        "Sensitive",
+        "Resistant",
+        "Intermediate",
+        "Moderately Sensitive",
+        "Very Sensitive"
+      ]
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "RES_LOW_RNG_CMP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The low end of the normal range for the result."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "RES_HIGH_RANGE_CMP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The high end of the normal range for the result."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "RES_NORMAL_CMP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The normal range for the result."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "RES_COMP_STAT_CMP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The result component status category ID for the received results.",
+      "entries": [
+        "Aborted",
+        "Active",
+        "Cancelled",
+        "Completed",
+        "Held",
+        "New",
+        "Suspended",
+        "Nullified",
+        "Obsolete"
+      ]
+    }
+  ]
+}

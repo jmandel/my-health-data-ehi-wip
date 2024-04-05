@@ -1,0 +1,84 @@
+{
+  "name": "BILL_SCHED_PMT_PP_EST",
+  "description": "This table contains information about estimates on a payment plan.",
+  "primaryKey": [
+    {
+      "columnName": "SCHED_PMT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SCHED_PMT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the scheduled payment record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ESTIMATE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the pre-service estimate record for the payment plan."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ESTIMATE_INITIAL_BALANCE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The initial responsibility the pre-service estimate contributes to the payment plan."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ESTIMATE_REMAINING_BALANCE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The remaining responsibility the pre-service estimate contributes to the payment plan."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ESTIMATE_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID of the pre-service estimate's status on the payment plan.",
+      "entries": [
+        "On Plan",
+        "Completed",
+        "Removed"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ESTIMATE_STATUS_UPDATE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The most recent date the pre-service estimate's status on the payment plan was updated."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ESTIMATE_COVERED_BY_EST_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The portion of the pre-service estimate's initial balance that is still estimate responsibility. This amount is reduced by charges moving to Self-Pay on hospital accounts linked to the estimate."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ESTIMATE_COVERED_BY_HAR_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The portion of the pre-service estimate's initial balance that is applied to hospital accounts linked to the estimate. This amount plus the estimate responsibility remaining always equals the initial balance of the estimate."
+    }
+  ]
+}

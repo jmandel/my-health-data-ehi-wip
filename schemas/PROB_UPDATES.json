@@ -1,0 +1,87 @@
+{
+  "name": "PROB_UPDATES",
+  "description": "This table includes over-time single-response items from the Problem List (LPL) master file, such as the contact serial number (CSN), contact time, and contact user.",
+  "primaryKey": [
+    {
+      "columnName": "PROBLEM_LIST_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PROBLEM_LIST_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the problem record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time of this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_SERIAL_NUM",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The contact serial number (CSN) of the contact, which is a unique contact identifier."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EDIT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user ID of the user who made the change."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EDIT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CONTACT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the status of this contact - used by records of type \"Problem History\".",
+      "entries": [
+        "Active",
+        "Inactive"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "EPT_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Holds the patient CSN (contact serial number I.E. unique contact identifier) corresponding to the patient encounter in which related information was added to or removed from this problem, if the edit was made during a patient encounter."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "RECONCILED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains information about whether a problem has been reconciled in a given encounter.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    }
+  ]
+}

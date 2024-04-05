@@ -1,0 +1,109 @@
+{
+  "name": "REI_RES_PERSONNEL_AUDIT",
+  "description": "This table contains audit events that tracks changes made to an embryology result's personnel documentation.",
+  "primaryKey": [
+    {
+      "columnName": "RESULT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RESULT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the result record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "EMB_PRS_AUDIT_EVENT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "An audit event for changes to personnel for this embryology result.",
+      "entries": [
+        "Added with authentication",
+        "Added without authentication",
+        "Authentication added",
+        "Removed",
+        "Free-text modified",
+        "Specimen association modified",
+        "Authentication removed"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "REI_EMB_RESPONSIBILITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The embryology procedure responsibility for the associated personnel audit event.",
+      "entries": [
+        "Performed Procedure",
+        "Witnessed Procedure",
+        "Checked Patient ID",
+        "Checked Specimen IDs",
+        "Checked Plate IDs"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PERSONNEL_AUDIT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user personnel that is being modified in the associated personnel audit event."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PERSONNEL_AUDIT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PERSONNEL_AUDIT_TEXT_PREVIOUS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The previous value of the free text personnel being modified in the associated personnel audit event."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PERSONNEL_AUDIT_TEXT_NEW",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The new value of the free text personnel being modified in the associated personnel audit event."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PERSONNEL_AUDIT_EDIT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user that made an edit to this embryology result's personnel to trigger the associated personnel audit event."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PERSONNEL_AUDIT_EDIT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PERSONNEL_AUDIT_EDIT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant for the associated personnel audit event."
+    }
+  ]
+}

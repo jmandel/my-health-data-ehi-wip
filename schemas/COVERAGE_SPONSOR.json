@@ -1,0 +1,70 @@
+{
+  "name": "COVERAGE_SPONSOR",
+  "description": "This table contains information about who is sponsoring this coverage for the subscriber, such as current employment. Changes to this information are tracked over time for informational purposes, though just the latest values are actively used. Each row in this table for a coverage represents one date range with the values of the sponsor information fields effective during that date range.",
+  "primaryKey": [
+    {
+      "columnName": "CVG_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CVG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the coverage record for this row. This column is frequently used to link to the COVERAGE table.",
+      "linksTo": "COVERAGE"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SPONSR_EFF_FROM_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Covered through (I CVG 206) and Employer Size (I CVG 207) are tracked over time since they can affect filing order and MSP logic. When either of those items are changed, a new line is added to this related group using today's date for this item and the new values for the other two items."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "COVERED_THROUGH_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Covered through current employment, retirement, COBRA, or other. Affects filing order calculation and is used for Medicare Secondary Payor.",
+      "entries": [
+        "Other",
+        "Current Employment",
+        "Retirement",
+        "COBRA / Continuation of Benefits"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EMPLOYER_SIZE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Number of employees for the employer that sponsors this coverage. Used as part of Medicare Secondary Payor determination.",
+      "entries": [
+        "1-19 Employees",
+        "20-99 Employees",
+        "100+ Employees"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SPONSOR_EFF_TO_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Covered through (I CVG 206) and Employer Size (I CVG 207) are tracked over time since they can affect filing order and MSP logic. When either of those items are changed, a new line is added to this related group, and the previous line is given yesterday's date as the effective to date."
+    }
+  ]
+}

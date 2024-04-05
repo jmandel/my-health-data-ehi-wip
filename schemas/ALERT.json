@@ -1,0 +1,162 @@
+{
+  "name": "ALERT",
+  "description": "The ALERT table contains one record for every alert that was created in Hyperspace. Each record is based on the alert ID and contains key information about the alert such as the patient, patient CSN, alert type, and whether it was seen by a user.",
+  "primaryKey": [
+    {
+      "columnName": "ALT_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ALT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the alert."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "ALERT_DESC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A brief description of the alert."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique patient ID of the patient for whom the alert fired.  You could link it to PATIENT.PAT_ID to get patient specific information."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The contact serial number for the patient encounter in which the alert was fired. This number is unique across all patients and encounters in your system.  If alerts are triggered in a patient-specific encounter, they are saved in a corresponding encounter. This can be used to join to PAT_ENC.PAT_ENC_CSN_ID to get the encounter information."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PUMP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique external device ID of the pump selected in response to the warning after trying to program the pump."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PUMP_ID_DEVICE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name for this device."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "MAR_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The MAR action category ID selected in response to the warning after trying to program the pump.",
+      "entries": [
+        "Given",
+        "Missed",
+        "Refused",
+        "Canceled Entry",
+        "Held",
+        "New Bag",
+        "Restarted",
+        "Stopped",
+        "Rate Change",
+        "MAR Hold",
+        "MAR Unhold",
+        "Bolus",
+        "Push",
+        "Rate Verify",
+        "See Alternative",
+        "Paused",
+        "Prepared",
+        "Pending",
+        "Automatically Held",
+        "Due"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "MED_ALERT_SUBTYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Subtype of medication alert type.  This is currently used only for alerts of type 23 - Error while checking interactions",
+      "entries": [
+        "Too Many Warnings",
+        "Too Many Orders",
+        "API No Results",
+        "No interaction data",
+        "Mismatched Patient in Ordering Session",
+        "Too Many Signed and Held Orders - Checking Limited",
+        "Too Many Signed and Held Orders - Checking Suspended"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "NBA_LOCATOR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the action record correlated with this next best action event."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "NBA_GUARANTOR_ACCT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The guarantor account correlated with this next best action event."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "NBA_PROSPECT_RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The prospective patient correlated with this next best action event."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "BLOOD_ALERT_BUCKET_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The blood alert bucket category ID for the alert.",
+      "entries": [
+        "No Blood Bank Information",
+        "No Blood Bank for this Patient",
+        "Blood Bank Info for this Patient",
+        "Multiple Patients for Same Unit",
+        "Linked Already",
+        "Wrong Patient",
+        "Bad Status"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "RECORD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains a record status flag of soft deleted, hidden, or hidden and soft deleted. Use it in conjunction with the record archived flag (REC_ARCHIVED_YN) for encounter archiving.",
+      "entries": [
+        "Soft Deleted",
+        "Hidden",
+        "Hidden and Soft Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "EXPECTED_WKFL_ACTVTIES_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The activity which triggered the warning. Only used when the warning type is Expected Workflow Step Not Complete.",
+      "entries": [
+        "Dispense Preparation",
+        "Dispense Check",
+        "Dispense Tracking",
+        "Home Infusion Shipment Manager",
+        "Home Infusion Shipment Dashboard"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "name": "REI_NEXT_VISIT_PLAN",
+  "description": "Table containing data for a patient's fertility next visit plan. Each row corresponds to a linked patient and plan creation date.",
+  "primaryKey": [
+    {
+      "columnName": "CYCLE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CYCLE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the cycle record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "NEXT_PLAN_PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the ID of the patient that this next visit plan is for."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PLAN_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date of the plan creation date."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RETURN_TESTS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains all the tests (fertility labs and ultrasound) that the patient will return for in the next visit�s plan.",
+      "entries": [
+        "Luteinizing hormone",
+        "Follicle-stimulating hormone",
+        "Estradiol",
+        "Progesterone",
+        "Human chorionic gonadotropin",
+        "Anti-M�llerian hormone",
+        "Thyroid-stimulating hormone",
+        "Ultrasound",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RETURN_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Planned return date for the patient for this plan."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PLAN_COMMENT_VALUE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the value of the saved comment for this next visit�s plan. Comments are limited to a maximum of 4000 characters."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PLAN_UPDATE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Instant in which this next visit�s plan was added or updated."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PLAN_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "User ID of the provider that added or updated this next visit�s plan."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PLAN_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "LATEST_PLAN_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether this plan in the group is the latest plan for this patient for this day.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "REI_PLAN_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the status of this plan.",
+      "entries": [
+        "Not Started",
+        "In Progress",
+        "Ready for Review",
+        "Ready for Follow-Ups",
+        "Follow-Ups Completed",
+        "Deleted"
+      ]
+    }
+  ]
+}

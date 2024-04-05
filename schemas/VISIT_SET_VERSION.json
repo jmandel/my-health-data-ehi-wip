@@ -1,0 +1,171 @@
+{
+  "name": "VISIT_SET_VERSION",
+  "description": "The VISIT_SET_VERSION table contains overtime information about a single visit set, which are templates for recurring visits to address the care required for a patient.",
+  "primaryKey": [
+    {
+      "columnName": "VISIT_SET_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "VISIT_SET_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the visit set record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "VISIT_SET_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The contact serial number (CSN) of the contact."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CONTACT_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The contact number"
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "VISIT_TYPE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The visit type of appointments scheduled from this visit set."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The start date of the visit set."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The end date of the visit set."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "DURATION_MINUTES",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The duration, in minutes, of the visit defined by this version of the visit set."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ORDER_COMMENT_NOTE_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The CSN of the version of the note record that contains the order comment for this version of the visit set. The order comment is reviewed and approved by a physician."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "SCHED_INSTRUCTIONS_NOTE_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The CSN of the version of the note record that contains the scheduling instructions for this version of the visit set. Scheduling instructions serve to provide additional context to schedulers and are neither reviewed nor approved by a physician."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "FREQUENCY_FREQ_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The frequency record (EFQ) that defines the recurrence of visits for this version of the visit set. Only specified frequencies of type 'same time days of week' and 'relative' are supported."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "FREQUENCY_FREQ_ID_FREQ_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the frequency record."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "VISIT_RECUR_PATTERN_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of the visit pattern.",
+      "entries": [
+        "Daily",
+        "Weekly"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "VISIT_PATTERN_RECURRENCE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "How often visits defined by this version of the visit set should recur."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "TIME_WINDOW_BEGIN_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The beginning of the time window during which it is acceptable to schedule visits defined by this version of the visit set. If both start and end times are specified, visits must begin within those times. If only a start time is specified, visits must begin at that time. At least a start time is required."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "TIME_WINDOW_END_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The end of the time window during which it is acceptable to schedule visits defined by this version of the visit set. If both start and end times are specified, visits must begin within those times. If only a start time is specified, visits must begin at that time. At least a start time is required."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "TOLERANCE_BEFORE_DAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of days before the specified date that it is acceptable to schedule visits defined by this version of the visit set."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "TOLERANCE_AFTER_DAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of days after the specified date that it is acceptable to schedule visits defined by this version of the visit set."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "AUTO_GENERATED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether or not this version of the visit set was automatically generated. This is always populated with either Yes or No.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "INSTANT_OF_ENTRY_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the instant of entry when a record is edited"
+    }
+  ]
+}

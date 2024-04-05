@@ -1,0 +1,74 @@
+{
+  "$meta": {
+    "schemas": {
+      "CLM_INJURY_DESC": {
+        "name": "CLM_INJURY_DESC",
+        "description": "This table contains the injury description on the claim.",
+        "primaryKey": [
+          {
+            "columnName": "CLAIM_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "CLAIM_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the Claim Info record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "INJURY_DESC",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The claim injury description."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "CLM_INJURY_DESC",
+            "target": "CLM_ALL",
+            "joinKeys": [
+              {
+                "source": "CLAIM_ID",
+                "target": "CLAIM_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "CLM_INJURY_DESC": [
+    {
+      "CLAIM_ID": 2985948,
+      "LINE": 1,
+      "INJURY_DESC": "Head hit by bike rack",
+      "$meta": {
+        "type": "CLM_INJURY_DESC"
+      }
+    },
+    {
+      "CLAIM_ID": 4128938,
+      "LINE": 1,
+      "INJURY_DESC": "concussion to head",
+      "$meta": {
+        "type": "CLM_INJURY_DESC"
+      }
+    }
+  ]
+}

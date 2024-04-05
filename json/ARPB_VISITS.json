@@ -1,0 +1,592 @@
+{
+  "$meta": {
+    "schemas": {
+      "ARPB_VISITS": {
+        "name": "ARPB_VISITS",
+        "description": "This table contains Professional Billing visit information stored in the Hospital Accounts Receivable (HAR) master file. It doesn�t include HAR records created for Hospital Billing and Single Billing Office.",
+        "primaryKey": [
+          {
+            "columnName": "PB_VISIT_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PB_VISIT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the Professional Billing visit."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "PB_BILLING_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the Professional Billing status category ID for the visit.",
+            "entries": [
+              "Open",
+              "Billed",
+              "Voided",
+              "Closed"
+            ]
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PB_FO_OVRRD_ST_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column indicates whether the Professional Billing filing order has been overridden by a user.",
+            "entries": [
+              "Matches the default",
+              "Overridden by user",
+              "Not matching default after rejection"
+            ]
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "PB_FO_MSPQ_STATE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column indicates whether the filing order for the Professional Billing visit has been verified by Medicare Secondary Payer Questionnaire logic.",
+            "entries": [
+              "MSPQ does not apply",
+              "Validated by MSPQ responses",
+              "Overridden by user"
+            ]
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "PB_VISIT_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the PB visit number."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "PRIM_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The contact serial number associated with the primary patient contact on the Professional Billing visit."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "GUARANTOR_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Stores the guarantor ID associated with the Professional Billing visit."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "COVERAGE_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The primary coverage on the Professional Billing visit."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "SELF_PAY_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates whether the Professional Billing visit is self-pay.",
+            "entries": [
+              "No",
+              "Yes"
+            ]
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "DO_NOT_BILL_INS_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates�whether the Professional Billing visit has the Do Not Bill Insurance flag set."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "ACCT_FIN_CLASS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The financial class category ID�for the Professional Billing visit.",
+            "entries": [
+              "Commercial",
+              "Medicare",
+              "Medicaid",
+              "Self-Pay",
+              "Worker's Comp",
+              "Tricare",
+              "Champva",
+              "Group Health Plan",
+              "FECA Black Lung",
+              "Blue Shield",
+              "Medigap",
+              "Other",
+              "DK Regional",
+              "Client",
+              "Received Self-Pay",
+              "Sent to Consolidated Self-Pay Service Area"
+            ]
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "SERV_AREA_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The service area of the Professional Billing visit."
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "REVENUE_LOCATION_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The revenue location of the Professional Billing visit."
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "DEPARTMENT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The department of the Professional Billing visit."
+          },
+          {
+            "ordinalPosition": 15,
+            "name": "PB_TOTAL_BALANCE",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Contains the combined total balance of transactions on the PB visit."
+          },
+          {
+            "ordinalPosition": 16,
+            "name": "PB_TOTAL_CHARGES",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The total charges on the PB visit."
+          },
+          {
+            "ordinalPosition": 17,
+            "name": "PB_TOTAL_PAYMENTS",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The total payments on the PB visit."
+          },
+          {
+            "ordinalPosition": 18,
+            "name": "PB_TOTAL_ADJ",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Contains total adjustments on the PB visit."
+          },
+          {
+            "ordinalPosition": 19,
+            "name": "PB_INS_BALANCE",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Contains insurance balance on the PB visit."
+          },
+          {
+            "ordinalPosition": 21,
+            "name": "PB_SELFPAY_BALANCE",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Contains the self-pay balance on the Professional Billing visit."
+          },
+          {
+            "ordinalPosition": 23,
+            "name": "REC_CREATE_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The user who created the Professional Billing visit record."
+          },
+          {
+            "ordinalPosition": 24,
+            "name": "REC_CREATE_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 25,
+            "name": "FIRST_PB_CHG_TX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Contains the first valid Professional Billing charge on the Professional Billing visit."
+          },
+          {
+            "ordinalPosition": 26,
+            "name": "BAL_FULL_SELF_PAY_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item shows whether the balances for this hospital account are in full self-pay."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "ARPB_VISITS",
+            "target": "HSP_ACCT_OTHR_PROV",
+            "joinKeys": [
+              {
+                "source": "PB_VISIT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ARPB_VISITS": [
+    {
+      "PB_VISIT_ID": 9587009,
+      "PB_BILLING_STATUS_C_NAME": "Closed",
+      "PB_FO_OVRRD_ST_C_NAME": "Matches the default",
+      "PB_FO_MSPQ_STATE_C_NAME": "MSPQ does not apply",
+      "PB_VISIT_NUM": "7",
+      "PRIM_ENC_CSN_ID": 958147754,
+      "GUARANTOR_ID": 1810018166,
+      "COVERAGE_ID": 5934765,
+      "SELF_PAY_YN": "N",
+      "DO_NOT_BILL_INS_YN": "N",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "SERV_AREA_ID": 18,
+      "REVENUE_LOCATION_ID": 1700801,
+      "DEPARTMENT_ID": 1700801005,
+      "PB_TOTAL_BALANCE": 0,
+      "PB_TOTAL_CHARGES": 173,
+      "PB_TOTAL_PAYMENTS": -8.4,
+      "PB_TOTAL_ADJ": -164.6,
+      "PB_INS_BALANCE": 0,
+      "PB_SELFPAY_BALANCE": 0,
+      "REC_CREATE_USER_ID": "PAM400",
+      "REC_CREATE_USER_ID_NAME": "MANIX, PATRICIA A",
+      "FIRST_PB_CHG_TX_ID": 302968774,
+      "BAL_FULL_SELF_PAY_YN": "N",
+      "$meta": {
+        "type": "ARPB_VISITS"
+      }
+    },
+    {
+      "PB_VISIT_ID": 10685743,
+      "PB_BILLING_STATUS_C_NAME": "Closed",
+      "PB_FO_OVRRD_ST_C_NAME": "Matches the default",
+      "PB_FO_MSPQ_STATE_C_NAME": "MSPQ does not apply",
+      "PB_VISIT_NUM": "9",
+      "PRIM_ENC_CSN_ID": 958148810,
+      "GUARANTOR_ID": 1810018166,
+      "COVERAGE_ID": 5934765,
+      "SELF_PAY_YN": "N",
+      "DO_NOT_BILL_INS_YN": "N",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "SERV_AREA_ID": 18,
+      "REVENUE_LOCATION_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "PB_TOTAL_BALANCE": 0,
+      "PB_TOTAL_CHARGES": 226,
+      "PB_TOTAL_PAYMENTS": -139.97,
+      "PB_TOTAL_ADJ": -86.03,
+      "PB_INS_BALANCE": 0,
+      "PB_SELFPAY_BALANCE": 0,
+      "REC_CREATE_USER_ID": "JMS402",
+      "REC_CREATE_USER_ID_NAME": "SUTTER, JULIE M",
+      "FIRST_PB_CHG_TX_ID": 328283034,
+      "BAL_FULL_SELF_PAY_YN": "N",
+      "$meta": {
+        "type": "ARPB_VISITS"
+      }
+    },
+    {
+      "PB_VISIT_ID": 4334321,
+      "PB_BILLING_STATUS_C_NAME": "Closed",
+      "PB_FO_OVRRD_ST_C_NAME": "Matches the default",
+      "PB_FO_MSPQ_STATE_C_NAME": "MSPQ does not apply",
+      "PB_VISIT_NUM": "3",
+      "PRIM_ENC_CSN_ID": 725327197,
+      "GUARANTOR_ID": 1810018166,
+      "COVERAGE_ID": 5934765,
+      "SELF_PAY_YN": "N",
+      "DO_NOT_BILL_INS_YN": "N",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "SERV_AREA_ID": 18,
+      "REVENUE_LOCATION_ID": 1700801,
+      "DEPARTMENT_ID": 1700801005,
+      "REC_CREATE_USER_ID": "LKF175",
+      "REC_CREATE_USER_ID_NAME": "FIELD, LISA K",
+      "BAL_FULL_SELF_PAY_YN": "N",
+      "$meta": {
+        "type": "ARPB_VISITS"
+      }
+    },
+    {
+      "PB_VISIT_ID": 10686227,
+      "PB_BILLING_STATUS_C_NAME": "Closed",
+      "PB_FO_OVRRD_ST_C_NAME": "Matches the default",
+      "PB_FO_MSPQ_STATE_C_NAME": "MSPQ does not apply",
+      "PB_VISIT_NUM": "10",
+      "PRIM_ENC_CSN_ID": 991225117,
+      "GUARANTOR_ID": 1810018166,
+      "COVERAGE_ID": 5934765,
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "SERV_AREA_ID": 18,
+      "REVENUE_LOCATION_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "PB_TOTAL_BALANCE": 0,
+      "PB_TOTAL_CHARGES": 444,
+      "PB_TOTAL_PAYMENTS": -262.27,
+      "PB_TOTAL_ADJ": -181.73,
+      "PB_INS_BALANCE": 0,
+      "REC_CREATE_USER_ID": "PAM400",
+      "REC_CREATE_USER_ID_NAME": "MANIX, PATRICIA A",
+      "FIRST_PB_CHG_TX_ID": 354520699,
+      "BAL_FULL_SELF_PAY_YN": "N",
+      "$meta": {
+        "type": "ARPB_VISITS"
+      }
+    },
+    {
+      "PB_VISIT_ID": 5960354,
+      "PB_BILLING_STATUS_C_NAME": "Closed",
+      "PB_FO_OVRRD_ST_C_NAME": "Matches the default",
+      "PB_FO_MSPQ_STATE_C_NAME": "MSPQ does not apply",
+      "PB_VISIT_NUM": "4",
+      "PRIM_ENC_CSN_ID": 799951565,
+      "GUARANTOR_ID": 1810018166,
+      "COVERAGE_ID": 5934765,
+      "SELF_PAY_YN": "N",
+      "DO_NOT_BILL_INS_YN": "N",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "SERV_AREA_ID": 18,
+      "REVENUE_LOCATION_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "PB_TOTAL_BALANCE": 0,
+      "PB_TOTAL_CHARGES": 165,
+      "PB_TOTAL_PAYMENTS": -133.29,
+      "PB_TOTAL_ADJ": -31.71,
+      "PB_INS_BALANCE": 0,
+      "PB_SELFPAY_BALANCE": 0,
+      "REC_CREATE_USER_ID": "DTB400",
+      "REC_CREATE_USER_ID_NAME": "BURNS, MALAYSIA",
+      "FIRST_PB_CHG_TX_ID": 190635377,
+      "BAL_FULL_SELF_PAY_YN": "N",
+      "$meta": {
+        "type": "ARPB_VISITS"
+      }
+    },
+    {
+      "PB_VISIT_ID": 4307813,
+      "PB_BILLING_STATUS_C_NAME": "Closed",
+      "PB_FO_OVRRD_ST_C_NAME": "Matches the default",
+      "PB_FO_MSPQ_STATE_C_NAME": "MSPQ does not apply",
+      "PB_VISIT_NUM": "2",
+      "PRIM_ENC_CSN_ID": 724628999,
+      "GUARANTOR_ID": 1810018166,
+      "COVERAGE_ID": 5934765,
+      "SELF_PAY_YN": "N",
+      "DO_NOT_BILL_INS_YN": "N",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "SERV_AREA_ID": 18,
+      "REVENUE_LOCATION_ID": 1700801,
+      "DEPARTMENT_ID": 1700801005,
+      "PB_TOTAL_BALANCE": 0,
+      "PB_TOTAL_CHARGES": 151,
+      "PB_TOTAL_PAYMENTS": -23.52,
+      "PB_TOTAL_ADJ": -127.48,
+      "PB_INS_BALANCE": 0,
+      "REC_CREATE_USER_ID": "PAM400",
+      "REC_CREATE_USER_ID_NAME": "MANIX, PATRICIA A",
+      "FIRST_PB_CHG_TX_ID": 129124216,
+      "BAL_FULL_SELF_PAY_YN": "N",
+      "$meta": {
+        "type": "ARPB_VISITS"
+      }
+    },
+    {
+      "PB_VISIT_ID": 6585418,
+      "PB_BILLING_STATUS_C_NAME": "Closed",
+      "PB_FO_OVRRD_ST_C_NAME": "Matches the default",
+      "PB_FO_MSPQ_STATE_C_NAME": "MSPQ does not apply",
+      "PB_VISIT_NUM": "5",
+      "PRIM_ENC_CSN_ID": 829213099,
+      "GUARANTOR_ID": 1810018166,
+      "COVERAGE_ID": 5934765,
+      "SELF_PAY_YN": "N",
+      "DO_NOT_BILL_INS_YN": "N",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "SERV_AREA_ID": 18,
+      "REVENUE_LOCATION_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "PB_TOTAL_BALANCE": 0,
+      "PB_TOTAL_CHARGES": 170,
+      "PB_TOTAL_PAYMENTS": -113.3,
+      "PB_TOTAL_ADJ": -56.7,
+      "PB_INS_BALANCE": 0,
+      "REC_CREATE_USER_ID": "PICONEMA",
+      "REC_CREATE_USER_ID_NAME": "PICONE, MARY A",
+      "FIRST_PB_CHG_TX_ID": 213432121,
+      "BAL_FULL_SELF_PAY_YN": "N",
+      "$meta": {
+        "type": "ARPB_VISITS"
+      }
+    },
+    {
+      "PB_VISIT_ID": 9586039,
+      "PB_BILLING_STATUS_C_NAME": "Closed",
+      "PB_FO_OVRRD_ST_C_NAME": "Matches the default",
+      "PB_FO_MSPQ_STATE_C_NAME": "MSPQ does not apply",
+      "PB_VISIT_NUM": "6",
+      "PRIM_ENC_CSN_ID": 948004323,
+      "GUARANTOR_ID": 1810018166,
+      "COVERAGE_ID": 5934765,
+      "SELF_PAY_YN": "N",
+      "DO_NOT_BILL_INS_YN": "N",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "SERV_AREA_ID": 18,
+      "REVENUE_LOCATION_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "PB_TOTAL_BALANCE": 0,
+      "PB_TOTAL_CHARGES": 516,
+      "PB_TOTAL_PAYMENTS": -279.88,
+      "PB_TOTAL_ADJ": -236.12,
+      "PB_INS_BALANCE": 0,
+      "PB_SELFPAY_BALANCE": 0,
+      "REC_CREATE_USER_ID": "LEWISAR1",
+      "REC_CREATE_USER_ID_NAME": "LEWIS, ANTONIA R",
+      "FIRST_PB_CHG_TX_ID": 302543306,
+      "BAL_FULL_SELF_PAY_YN": "N",
+      "$meta": {
+        "type": "ARPB_VISITS"
+      }
+    },
+    {
+      "PB_VISIT_ID": 11825607,
+      "PB_BILLING_STATUS_C_NAME": "Open",
+      "PB_FO_OVRRD_ST_C_NAME": "Matches the default",
+      "PB_FO_MSPQ_STATE_C_NAME": "MSPQ does not apply",
+      "PB_VISIT_NUM": "12",
+      "PRIM_ENC_CSN_ID": 1028744231,
+      "GUARANTOR_ID": 1810018166,
+      "COVERAGE_ID": 5934765,
+      "SELF_PAY_YN": "N",
+      "DO_NOT_BILL_INS_YN": "N",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "SERV_AREA_ID": 18,
+      "REVENUE_LOCATION_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "REC_CREATE_USER_ID": "PAM400",
+      "REC_CREATE_USER_ID_NAME": "MANIX, PATRICIA A",
+      "BAL_FULL_SELF_PAY_YN": "N",
+      "$meta": {
+        "type": "ARPB_VISITS"
+      }
+    },
+    {
+      "PB_VISIT_ID": 4307370,
+      "PB_BILLING_STATUS_C_NAME": "Closed",
+      "PB_FO_OVRRD_ST_C_NAME": "Matches the default",
+      "PB_FO_MSPQ_STATE_C_NAME": "MSPQ does not apply",
+      "PB_VISIT_NUM": "1",
+      "PRIM_ENC_CSN_ID": 720803470,
+      "GUARANTOR_ID": 1810018166,
+      "COVERAGE_ID": 5934765,
+      "SELF_PAY_YN": "N",
+      "DO_NOT_BILL_INS_YN": "N",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "SERV_AREA_ID": 18,
+      "REVENUE_LOCATION_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "PB_TOTAL_BALANCE": 0,
+      "PB_TOTAL_CHARGES": 335,
+      "PB_TOTAL_PAYMENTS": -230.73,
+      "PB_TOTAL_ADJ": -104.27,
+      "PB_INS_BALANCE": 0,
+      "REC_CREATE_USER_ID": "JMS402",
+      "REC_CREATE_USER_ID_NAME": "SUTTER, JULIE M",
+      "FIRST_PB_CHG_TX_ID": 129124339,
+      "BAL_FULL_SELF_PAY_YN": "N",
+      "$meta": {
+        "type": "ARPB_VISITS"
+      }
+    },
+    {
+      "PB_VISIT_ID": 11825589,
+      "PB_BILLING_STATUS_C_NAME": "Closed",
+      "PB_FO_OVRRD_ST_C_NAME": "Matches the default",
+      "PB_FO_MSPQ_STATE_C_NAME": "MSPQ does not apply",
+      "PB_VISIT_NUM": "11",
+      "PRIM_ENC_CSN_ID": 1028743701,
+      "GUARANTOR_ID": 1810018166,
+      "COVERAGE_ID": 5934765,
+      "SELF_PAY_YN": "N",
+      "DO_NOT_BILL_INS_YN": "N",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "SERV_AREA_ID": 18,
+      "REVENUE_LOCATION_ID": 1700801,
+      "DEPARTMENT_ID": 1700801005,
+      "PB_TOTAL_BALANCE": 0,
+      "PB_TOTAL_CHARGES": 203,
+      "PB_TOTAL_PAYMENTS": -19.25,
+      "PB_TOTAL_ADJ": -183.75,
+      "PB_INS_BALANCE": 0,
+      "REC_CREATE_USER_ID": "PAM400",
+      "REC_CREATE_USER_ID_NAME": "MANIX, PATRICIA A",
+      "FIRST_PB_CHG_TX_ID": 354336208,
+      "BAL_FULL_SELF_PAY_YN": "N",
+      "$meta": {
+        "type": "ARPB_VISITS"
+      }
+    },
+    {
+      "PB_VISIT_ID": 10141450,
+      "PB_BILLING_STATUS_C_NAME": "Closed",
+      "PB_FO_OVRRD_ST_C_NAME": "Matches the default",
+      "PB_FO_MSPQ_STATE_C_NAME": "MSPQ does not apply",
+      "PB_VISIT_NUM": "8",
+      "PRIM_ENC_CSN_ID": 974614965,
+      "GUARANTOR_ID": 1810018166,
+      "COVERAGE_ID": 5934765,
+      "SELF_PAY_YN": "N",
+      "DO_NOT_BILL_INS_YN": "N",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "SERV_AREA_ID": 18,
+      "REVENUE_LOCATION_ID": 1700801,
+      "DEPARTMENT_ID": 1700801002,
+      "PB_TOTAL_BALANCE": 0,
+      "PB_TOTAL_CHARGES": 315,
+      "PB_TOTAL_PAYMENTS": -198.91,
+      "PB_TOTAL_ADJ": -116.09,
+      "PB_INS_BALANCE": 0,
+      "PB_SELFPAY_BALANCE": 0,
+      "REC_CREATE_USER_ID": "JONESLM1",
+      "REC_CREATE_USER_ID_NAME": "JONES, LATONYA M",
+      "FIRST_PB_CHG_TX_ID": 317236398,
+      "BAL_FULL_SELF_PAY_YN": "N",
+      "$meta": {
+        "type": "ARPB_VISITS"
+      }
+    },
+    {
+      "PB_VISIT_ID": 11393498,
+      "PB_BILLING_STATUS_C_NAME": "Closed",
+      "GUARANTOR_ID": 801244934,
+      "ACCT_FIN_CLASS_C_NAME": "Other",
+      "SERV_AREA_ID": 1001,
+      "REC_CREATE_USER_ID": "MYCHARTBGUSER",
+      "REC_CREATE_USER_ID_NAME": "MYCHARTBGUSER",
+      "BAL_FULL_SELF_PAY_YN": "N",
+      "$meta": {
+        "type": "ARPB_VISITS"
+      }
+    },
+    {
+      "PB_VISIT_ID": 4307315,
+      "PB_BILLING_STATUS_C_NAME": "Closed",
+      "GUARANTOR_ID": 1810018166,
+      "ACCT_FIN_CLASS_C_NAME": "Other",
+      "SERV_AREA_ID": 18,
+      "REC_CREATE_USER_ID": "JMS402",
+      "REC_CREATE_USER_ID_NAME": "SUTTER, JULIE M",
+      "BAL_FULL_SELF_PAY_YN": "N",
+      "$meta": {
+        "type": "ARPB_VISITS"
+      }
+    }
+  ]
+}

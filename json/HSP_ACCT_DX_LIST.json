@@ -1,0 +1,96 @@
+{
+  "$meta": {
+    "schemas": {
+      "HSP_ACCT_DX_LIST": {
+        "name": "HSP_ACCT_DX_LIST",
+        "description": "This table contains hospital account final diagnosis list information from the Hospital Accounts Receivable (HAR) master file.",
+        "primaryKey": [
+          {
+            "columnName": "HSP_ACCOUNT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "HSP_ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID number of a hospital account."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number in the results of a query. Since multiple final ICD diagnoses can be stored in one hospital account, each diagnosis will have a unique line number. The record associated with line 1 represents the principal final coded  diagnosis."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "DX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The system ID number of a final diagnosis code stored in the hospital account."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ACCT_DX_LIST",
+            "target": "HAR_ALL",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ACCT_DX_LIST",
+            "target": "HSP_ACCT_CLAIM_HAR",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ACCT_DX_LIST",
+            "target": "HSP_ACCOUNT",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HSP_ACCT_DX_LIST": [
+    {
+      "HSP_ACCOUNT_ID": 376684810,
+      "LINE": 1,
+      "DX_ID": 462273,
+      "$meta": {
+        "type": "HSP_ACCT_DX_LIST"
+      }
+    },
+    {
+      "HSP_ACCOUNT_ID": 376684810,
+      "LINE": 2,
+      "DX_ID": 468251,
+      "$meta": {
+        "type": "HSP_ACCT_DX_LIST"
+      }
+    }
+  ]
+}

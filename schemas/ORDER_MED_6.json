@@ -1,0 +1,145 @@
+{
+  "name": "ORDER_MED_6",
+  "description": "This table enables you to report on medications ordered. This table should be used with ORDER_MED.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_MED_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_MED_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the medication order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "AUTH_SER_ADDRESS_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID for the address of the order's authorizing provider. It is used to identify an address using the address unique ID (I SER 21000) stored in the provider record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ORDER_SER_ADDR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID for the address of the order's ordering provider. It is used to identify an address using the address unique ID (I SER 21000) stored in the provider record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SUP_SER_ADDRESS_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID for the address of the order's supervising provider. It is used to identify an address using the address unique ID (I SER 21000) stored in the provider record."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "TEMP_LONG_TERM_IN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the temporary long-term indicator for unsigned orders.",
+      "entries": [
+        "No",
+        "Yes in MDL",
+        "No in MDL",
+        "Yes Unsigned",
+        "No Unsigned"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PRIORITIZED_INST_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item stores the prioritized instant (date and time) for an order in UTC time zone. It represents the most relevant date and time an action was taken on an order."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PRIORITIZED_INST_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "This item stores the prioritized instant (date and time) for an order in local time zone. It represents the most relevant date and time an action was taken on an order."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "NEXT_SCH_INST_AT_DISCON_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The next scheduled date and time for the order at the time of discontinue."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "NEXT_SCH_AT_DISCON_OFF_SCH_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the next scheduled time of the order at the time of discontinue is off-schedule. 'Y' indicates that the next scheduled time was off-schedule. 'N' or NULL indicate that the next scheduled time was not off-schedule.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ORD_SIG_HAS_IOU_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether Indications of Use are present in the patient sig. 'Y' indicates Indications of Use are present in the patient sig. 'N' or NULL indicate that Indications of Use are not present in the patient sig."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "MED_DIRECTIONS_LONG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the directions for taking a medication order."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "USER_CHANGED_END_TIME_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the end time is entered by a user. This is only populated for unsigned medication orders. 'Y' indicates the end time is entered by a user. 'N' or NULL indicate that the end time is not entered by a user.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "ORIG_MED_DIRECTIONS_LONG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the original directions for taking a medication order."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "NO_REIMBURS_CODESET",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the code set of the selected reimbursement code."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "STANDING_COUNT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item stores a numeric value for the count of the order that goes along with the standing count type, indicating the number of hours, days, weeks, or occurrences for which the order will take place."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "STANDING_COUNT_TP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This count type goes along with the count from ORD-34040 to indicate the number of hours, days, weeks, or occurrences for which the order will take place.",
+      "entries": [
+        "Days",
+        "Weeks",
+        "Hours",
+        "Occurrences"
+      ]
+    }
+  ]
+}

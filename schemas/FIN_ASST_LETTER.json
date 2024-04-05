@@ -1,0 +1,187 @@
+{
+  "name": "FIN_ASST_LETTER",
+  "description": "This table contains information about letters sent as part of financial assistance workflows.",
+  "primaryKey": [
+    {
+      "columnName": "NOTE_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the note record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LETTER_PRNT_MTHD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The purpose of this item is to provide additional context for I HNO 39 - Letter Print Instant.  This item specifies whether the last print action for this letter was via the server or via the client.",
+      "entries": [
+        "Printed from server",
+        "Printed from client",
+        "Created from external system"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LETTER_PRNT_INSTANT_DTTM",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "Holds the instant the letter was last printed."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "LETTER_SENT_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item stores the date the letter was sent."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ENTRY_PERSON_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Letter printing user's ID."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ENTRY_PERSON_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "HB_LET_TEMPLT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the internal ID of the letter template used."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "HB_LET_TEMPLT_ID_SMARTTEXT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the SmartText record."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "HB_LTR_EXT_IMG_LINK",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the filename on the BLOB server for the image of the letter."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "HB_LTR_DVRY_MTD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This items stores how the letter was delivered, for example, by paper or electronic notification.",
+      "entries": [
+        "Paper, No Electronic Notification",
+        "Paperless, No Electronic Notification",
+        "Paper and Electronic Notification",
+        "Paperless, Electronic Notification"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "HB_LTR_PAPER_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the reason the letter was forced to be sent by paper.",
+      "entries": [
+        "Paperless Billing is disabled for the service area",
+        "User specified",
+        "Forced to paper because of self-pay follow-up level",
+        "Forced to paper because of guarantor rule",
+        "Forced to paper because of hospital account rule",
+        "Guarantor declined paperless billing",
+        "Financial Assistance Program Not Allowed In MyChart",
+        "Not self-pay correspondence",
+        "Form is not allowed to be displayed in MyChart",
+        "Guarantor missing associated patient or MyChart account",
+        "Guarantor is not MyChart active",
+        "Guarantor is not available in MyChart",
+        "No access to billing features in MyChart",
+        "MyChart tickler could not be sent",
+        "Professional billing letter not marked as Sent",
+        "Patient is not active on MyChart",
+        "Queued for printing based on estimate rule",
+        "Patient is deceased"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "FIN_ASST_CASE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the internal ID of the financial assistance case record  this note is linked to."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "FIN_ASST_TRACKER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the internal ID of the financial assistance program tracker linked to this note."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "REG_FA_LETTER_TYP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the type of letter being sent for a financial assistance case record.",
+      "entries": [
+        "Approval Letter",
+        "Denial Letter",
+        "Follow-Up Letter",
+        "Request Reminder Letter",
+        "Application Letter"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "REG_FA_LTR_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the source from which a letter has been generated for a financial assistance case record.",
+      "entries": [
+        "Letters activity",
+        "Case Edit activity",
+        "Batch job"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "HNO_RECORD_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Record type.",
+      "entries": [
+        "PB Guarantor Note",
+        "PB Guarantor Letter",
+        "PB Insurance Follow-up Letter",
+        "PB Hospital Account Note",
+        "CRM Letter",
+        "CRM Envelope",
+        "CRM Email",
+        "HB Guarantor Note",
+        "HB Hospital Account Note",
+        "HB Guarantor Letter",
+        "HB Hospital Account Letter",
+        "HB Liability Bucket Letter",
+        "HB Liability Bucket Note",
+        "HB Contractual History Note",
+        "EB Guarantor Note",
+        "Reg Financial Assistance Letter",
+        "Reg Financial Assistance Tracker Note",
+        "Reg Financial Assistance Case Note"
+      ]
+    }
+  ]
+}

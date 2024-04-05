@@ -1,0 +1,93 @@
+{
+  "name": "SPEC_TRANSMTL_LOG",
+  "description": "The SPEC_TRANSMTL_LOG table holds an audit log for transmitting results for specimens.",
+  "primaryKey": [
+    {
+      "columnName": "SPECIMEN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SPECIMEN_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the specimen record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "TRANSMTL_EVENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the event that caused the result transmittal to occur."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "TRANSMTL_EVENT_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the event template."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "TRANSMTL_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time of the result transmittal log entry."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "TRANSMTL_RESULT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the result record that was transmitted."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "TRANSMTL_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Additional comments for the result transmittal audit log entry."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "TRANSMTL_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status category number of the result transmittal audit log entry.",
+      "entries": [
+        "Result Transmittal: Success",
+        "Result Transmittal: Failure",
+        "Result Transmittal: Fixed",
+        "Normal Print Queue: Success",
+        "Normal Print Queue: Failure",
+        "Normal Print Queue: Fixed",
+        "STAT Print Queue: Success",
+        "STAT Print Queue: Failure",
+        "STAT Print Queue: Fixed",
+        "Interface Triggered: Success",
+        "Interface Triggered: Failure",
+        "Interface Triggered: Fixed"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "TRANSMIT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant when result transmittal occurred in UTC."
+    }
+  ]
+}

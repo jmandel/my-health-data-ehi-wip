@@ -1,0 +1,133 @@
+{
+  "$meta": {
+    "schemas": {
+      "PAT_REVIEW_PROBLEM": {
+        "name": "PAT_REVIEW_PROBLEM",
+        "description": "Table contains patient entered clinical problem data review from Welcome Kiosk and MyChart.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ENC_CSN_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI)."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+            "linksTo": "PATIENT"
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "PAT_ENC_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "A unique, internal contact date in decimal format. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "PAT_REVIEW_LPL_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Patient problem reviewed by patient."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "PAT_REVIEW_LPL_R_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Patient problem reviewed by patient response.",
+            "entries": [
+              "Yes",
+              "No"
+            ]
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "PAT_REV_LPL_EXTERN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Patient problems reviewed by the patient, entered in a free text format."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "PAT_REVIEW_PROBLEM",
+            "target": "PAT_ENC_DISP",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "PAT_REVIEW_PROBLEM",
+            "target": "PAT_ENC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PAT_REVIEW_PROBLEM": [
+    {
+      "PAT_ENC_CSN_ID": 948004323,
+      "LINE": 1,
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "PAT_REVIEW_LPL_ID": 30694847,
+      "PAT_REVIEW_LPL_R_YN": "Y",
+      "$meta": {
+        "type": "PAT_REVIEW_PROBLEM"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 948004323,
+      "LINE": 2,
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "PAT_REVIEW_LPL_R_YN": "Y",
+      "PAT_REV_LPL_EXTERN": "Post concussion syndrome",
+      "$meta": {
+        "type": "PAT_REVIEW_PROBLEM"
+      }
+    }
+  ]
+}

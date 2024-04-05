@@ -1,0 +1,157 @@
+{
+  "$meta": {
+    "schemas": {
+      "HSP_ACCT_OTHR_PROV": {
+        "name": "HSP_ACCT_OTHR_PROV",
+        "description": "This table contains hospital account other providers information from the Hospital Accounts Receivable (HAR) master file.",
+        "primaryKey": [
+          {
+            "columnName": "HSP_ACCOUNT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "HSP_ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the hospital account."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "This column stores the line number in the results of a query. As multiple \"other providers\" can be stored in one hospital account, each provider will have a unique line number."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "OTHER_PROV_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for an \"other provider\" stored in the hospital account. The hospital account can store an attending, admitting, and referring provider, plus any number of other providers. For each other provider, the user can specify a role the provider played in treatment."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ACCT_OTHR_PROV",
+            "target": "ARPB_VISITS",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "PB_VISIT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ACCT_OTHR_PROV",
+            "target": "HAR_ALL",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HSP_ACCT_OTHR_PROV": [
+    {
+      "HSP_ACCOUNT_ID": 9587009,
+      "LINE": 1,
+      "OTHER_PROV_ID": "144590",
+      "$meta": {
+        "type": "HSP_ACCT_OTHR_PROV"
+      }
+    },
+    {
+      "HSP_ACCOUNT_ID": 10685743,
+      "LINE": 1,
+      "OTHER_PROV_ID": "144590",
+      "$meta": {
+        "type": "HSP_ACCT_OTHR_PROV"
+      }
+    },
+    {
+      "HSP_ACCOUNT_ID": 10686227,
+      "LINE": 1,
+      "OTHER_PROV_ID": "621755",
+      "$meta": {
+        "type": "HSP_ACCT_OTHR_PROV"
+      }
+    },
+    {
+      "HSP_ACCOUNT_ID": 10686227,
+      "LINE": 2,
+      "OTHER_PROV_ID": "144590",
+      "$meta": {
+        "type": "HSP_ACCT_OTHR_PROV"
+      }
+    },
+    {
+      "HSP_ACCOUNT_ID": 5960354,
+      "LINE": 1,
+      "OTHER_PROV_ID": "802011",
+      "$meta": {
+        "type": "HSP_ACCT_OTHR_PROV"
+      }
+    },
+    {
+      "HSP_ACCOUNT_ID": 4307813,
+      "LINE": 1,
+      "OTHER_PROV_ID": "802011",
+      "$meta": {
+        "type": "HSP_ACCT_OTHR_PROV"
+      }
+    },
+    {
+      "HSP_ACCOUNT_ID": 6585418,
+      "LINE": 1,
+      "OTHER_PROV_ID": "219711",
+      "$meta": {
+        "type": "HSP_ACCT_OTHR_PROV"
+      }
+    },
+    {
+      "HSP_ACCOUNT_ID": 9586039,
+      "LINE": 1,
+      "OTHER_PROV_ID": "144590",
+      "$meta": {
+        "type": "HSP_ACCT_OTHR_PROV"
+      }
+    },
+    {
+      "HSP_ACCOUNT_ID": 4307370,
+      "LINE": 1,
+      "OTHER_PROV_ID": "802011",
+      "$meta": {
+        "type": "HSP_ACCT_OTHR_PROV"
+      }
+    },
+    {
+      "HSP_ACCOUNT_ID": 11825589,
+      "LINE": 1,
+      "OTHER_PROV_ID": "144590",
+      "$meta": {
+        "type": "HSP_ACCT_OTHR_PROV"
+      }
+    },
+    {
+      "HSP_ACCOUNT_ID": 10141450,
+      "LINE": 1,
+      "OTHER_PROV_ID": "144590",
+      "$meta": {
+        "type": "HSP_ACCT_OTHR_PROV"
+      }
+    }
+  ]
+}

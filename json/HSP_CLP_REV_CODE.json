@@ -1,0 +1,1201 @@
+{
+  "$meta": {
+    "schemas": {
+      "HSP_CLP_REV_CODE": {
+        "name": "HSP_CLP_REV_CODE",
+        "description": "This table contains the revenue code list for the claim print records associated with the hospital account/liability bucket.",
+        "primaryKey": [
+          {
+            "columnName": "CLAIM_PRINT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "CONTACT_DATE_REAL",
+            "ordinalPosition": 2
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 3
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "CLAIM_PRINT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the claim record associated with a single hospital account or liability bucket."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "CONTACT_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "The contact date for the creation of the record in internal format. (There is only one contact date per claim print record.)"
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "UB_MIN_SERVICE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The minimum service date for the claim print record."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "UB_MAX_SERVICE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The maximum service date for the claim print record."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "UB_CHARGES",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The uniform billing charges on the claim"
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "UB_MODIFIER",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The modifier for the claim print record."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "UB_CPT_CODE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The uniform billing current procedural terminology code on the claim print record."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "HSP_ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the hospital account associated with this claim print record."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "REV_CODE_EXT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The external uniform billing revenue code."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "UB_REV_CD_DESC",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The description of the uniform billing line."
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "UB_QTY",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The uniform billing line quality."
+          },
+          {
+            "ordinalPosition": 15,
+            "name": "UB_NON_CVD_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The non-covered amount for the uniform billing line."
+          },
+          {
+            "ordinalPosition": 16,
+            "name": "UB_LMRP_CD",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The uniform billing local coverage determination code."
+          },
+          {
+            "ordinalPosition": 17,
+            "name": "UB_HCPCS_RATE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The uniform billing healthcare common procedure coding system code and modifier or rate."
+          },
+          {
+            "ordinalPosition": 18,
+            "name": "UB_CODE_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The code type for the uniform billing claim line. If there is no code type this field will be blank.",
+            "entries": [
+              "CPT(R)",
+              "HCPCS",
+              "ADA",
+              "ASA",
+              "SKS",
+              "THL",
+              "CBV",
+              "VT",
+              "ZA",
+              "CCSD"
+            ]
+          },
+          {
+            "ordinalPosition": 22,
+            "name": "UB_LINE_SRC_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category of the line source for the uniform billing line.",
+            "entries": [
+              "Charge",
+              "Coding",
+              "Combined",
+              "SNF HIPPS",
+              "IRF HIPPS",
+              "Extension",
+              "Edited"
+            ]
+          },
+          {
+            "ordinalPosition": 25,
+            "name": "UB_SVC_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The service date of the uniform billing service line."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "HSP_CLP_REV_CODE",
+            "target": "HSP_CLAIM_PRINT",
+            "joinKeys": [
+              {
+                "source": "CLAIM_PRINT_ID",
+                "target": "CLAIM_PRINT_ID"
+              },
+              {
+                "source": "CONTACT_DATE_REAL",
+                "target": "CONTACT_DATE_REAL"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "HSP_CLP_REV_CODE",
+            "target": "HSP_CLAIM_DETAIL1",
+            "joinKeys": [
+              {
+                "source": "CLAIM_PRINT_ID",
+                "target": "CLAIM_PRINT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HSP_CLP_REV_CODE": [
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "LINE": 4,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "LINE": 5,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "LINE": 6,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "LINE": 7,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "LINE": 8,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "LINE": 9,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "LINE": 10,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "LINE": 11,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "LINE": 12,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "LINE": 13,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "LINE": 14,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "LINE": 15,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "LINE": 16,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "LINE": 17,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "LINE": 18,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "LINE": 19,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "LINE": 20,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "LINE": 21,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "LINE": 22,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "LINE": 23,
+      "UB_CHARGES": 1638.82,
+      "HSP_ACCOUNT_ID": 376684810,
+      "REV_CODE_EXT": "001",
+      "UB_QTY": "6",
+      "UB_NON_CVD_AMT": 0,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "LINE": 4,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "LINE": 5,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "LINE": 6,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "LINE": 7,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "LINE": 8,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "LINE": 9,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "LINE": 10,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "LINE": 11,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "LINE": 12,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "LINE": 13,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "LINE": 14,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "LINE": 15,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "LINE": 16,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "LINE": 17,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "LINE": 18,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "LINE": 19,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "LINE": 20,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "LINE": 21,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "LINE": 22,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "LINE": 23,
+      "UB_CHARGES": 1638.82,
+      "HSP_ACCOUNT_ID": 376684810,
+      "REV_CODE_EXT": "001",
+      "UB_QTY": "6",
+      "UB_NON_CVD_AMT": 0,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "LINE": 3,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "LINE": 4,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "LINE": 5,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "LINE": 6,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "LINE": 7,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "LINE": 8,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "LINE": 9,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "LINE": 10,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "LINE": 11,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "LINE": 12,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "LINE": 13,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "LINE": 14,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "LINE": 15,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "LINE": 16,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "LINE": 17,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "LINE": 18,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "LINE": 19,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "LINE": 20,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "LINE": 21,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "LINE": 22,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "LINE": 23,
+      "UB_CHARGES": 773.74,
+      "HSP_ACCOUNT_ID": 376684810,
+      "REV_CODE_EXT": "001",
+      "UB_QTY": "2",
+      "UB_NON_CVD_AMT": 0,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "LINE": 4,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "LINE": 5,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "LINE": 6,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "LINE": 7,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "LINE": 8,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "LINE": 9,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "LINE": 10,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "LINE": 1,
+      "UB_MIN_SERVICE": "2022-03-11 00:00:00",
+      "UB_MAX_SERVICE": "2022-03-11 00:00:00",
+      "UB_CHARGES": 216.27,
+      "UB_MODIFIER": "GO",
+      "UB_CPT_CODE": "97535",
+      "HSP_ACCOUNT_ID": 376684810,
+      "REV_CODE_EXT": "430",
+      "UB_REV_CD_DESC": "OCCUPATIONAL THERAPY - GENERAL CLASSIFICATION",
+      "UB_QTY": "1",
+      "UB_NON_CVD_AMT": 0,
+      "UB_LMRP_CD": "97535",
+      "UB_HCPCS_RATE": "97535GO",
+      "UB_CODE_TYPE_C_NAME": "CPT(R)",
+      "UB_LINE_SRC_C_NAME": "Charge",
+      "UB_SVC_DATE": "2022-03-11 00:00:00",
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "LINE": 2,
+      "UB_MIN_SERVICE": "2022-03-22 00:00:00",
+      "UB_MAX_SERVICE": "2022-03-22 00:00:00",
+      "UB_CHARGES": 865.08,
+      "UB_MODIFIER": "GO",
+      "UB_CPT_CODE": "97535",
+      "HSP_ACCOUNT_ID": 376684810,
+      "REV_CODE_EXT": "430",
+      "UB_REV_CD_DESC": "OCCUPATIONAL THERAPY - GENERAL CLASSIFICATION",
+      "UB_QTY": "4",
+      "UB_NON_CVD_AMT": 0,
+      "UB_LMRP_CD": "97535",
+      "UB_HCPCS_RATE": "97535GO",
+      "UB_CODE_TYPE_C_NAME": "CPT(R)",
+      "UB_LINE_SRC_C_NAME": "Charge",
+      "UB_SVC_DATE": "2022-03-22 00:00:00",
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "CONTACT_DATE_REAL": 66214,
+      "LINE": 3,
+      "UB_MIN_SERVICE": "2022-03-11 00:00:00",
+      "UB_MAX_SERVICE": "2022-03-11 00:00:00",
+      "UB_CHARGES": 557.47,
+      "UB_MODIFIER": "GO",
+      "UB_CPT_CODE": "97165",
+      "HSP_ACCOUNT_ID": 376684810,
+      "REV_CODE_EXT": "434",
+      "UB_REV_CD_DESC": "OCCUPATIONAL THERAPY - EVALUATION OR REEVALUATION",
+      "UB_QTY": "1",
+      "UB_NON_CVD_AMT": 0,
+      "UB_LMRP_CD": "97165",
+      "UB_HCPCS_RATE": "97165GO",
+      "UB_CODE_TYPE_C_NAME": "CPT(R)",
+      "UB_LINE_SRC_C_NAME": "Charge",
+      "UB_SVC_DATE": "2022-03-11 00:00:00",
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "LINE": 1,
+      "UB_MIN_SERVICE": "2022-03-11 00:00:00",
+      "UB_MAX_SERVICE": "2022-03-11 00:00:00",
+      "UB_CHARGES": 216.27,
+      "UB_MODIFIER": "GO",
+      "UB_CPT_CODE": "97535",
+      "HSP_ACCOUNT_ID": 376684810,
+      "REV_CODE_EXT": "430",
+      "UB_REV_CD_DESC": "OCCUPATIONAL THERAPY - GENERAL CLASSIFICATION",
+      "UB_QTY": "1",
+      "UB_NON_CVD_AMT": 0,
+      "UB_LMRP_CD": "97535",
+      "UB_HCPCS_RATE": "97535GO",
+      "UB_CODE_TYPE_C_NAME": "CPT(R)",
+      "UB_LINE_SRC_C_NAME": "Charge",
+      "UB_SVC_DATE": "2022-03-11 00:00:00",
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "LINE": 2,
+      "UB_MIN_SERVICE": "2022-03-22 00:00:00",
+      "UB_MAX_SERVICE": "2022-03-22 00:00:00",
+      "UB_CHARGES": 865.08,
+      "UB_MODIFIER": "GO",
+      "UB_CPT_CODE": "97535",
+      "HSP_ACCOUNT_ID": 376684810,
+      "REV_CODE_EXT": "430",
+      "UB_REV_CD_DESC": "OCCUPATIONAL THERAPY - GENERAL CLASSIFICATION",
+      "UB_QTY": "4",
+      "UB_NON_CVD_AMT": 0,
+      "UB_LMRP_CD": "97535",
+      "UB_HCPCS_RATE": "97535GO",
+      "UB_CODE_TYPE_C_NAME": "CPT(R)",
+      "UB_LINE_SRC_C_NAME": "Charge",
+      "UB_SVC_DATE": "2022-03-22 00:00:00",
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "CONTACT_DATE_REAL": 66194,
+      "LINE": 3,
+      "UB_MIN_SERVICE": "2022-03-11 00:00:00",
+      "UB_MAX_SERVICE": "2022-03-11 00:00:00",
+      "UB_CHARGES": 557.47,
+      "UB_MODIFIER": "GO",
+      "UB_CPT_CODE": "97165",
+      "HSP_ACCOUNT_ID": 376684810,
+      "REV_CODE_EXT": "434",
+      "UB_REV_CD_DESC": "OCCUPATIONAL THERAPY - EVALUATION OR REEVALUATION",
+      "UB_QTY": "1",
+      "UB_NON_CVD_AMT": 0,
+      "UB_LMRP_CD": "97165",
+      "UB_HCPCS_RATE": "97165GO",
+      "UB_CODE_TYPE_C_NAME": "CPT(R)",
+      "UB_LINE_SRC_C_NAME": "Charge",
+      "UB_SVC_DATE": "2022-03-11 00:00:00",
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "LINE": 1,
+      "UB_MIN_SERVICE": "2022-03-11 00:00:00",
+      "UB_MAX_SERVICE": "2022-03-11 00:00:00",
+      "UB_CHARGES": 216.27,
+      "UB_MODIFIER": "GO",
+      "UB_CPT_CODE": "97535",
+      "HSP_ACCOUNT_ID": 376684810,
+      "REV_CODE_EXT": "430",
+      "UB_REV_CD_DESC": "OCCUPATIONAL THERAPY - GENERAL CLASSIFICATION",
+      "UB_QTY": "1",
+      "UB_NON_CVD_AMT": 0,
+      "UB_LMRP_CD": "97535",
+      "UB_HCPCS_RATE": "97535GO",
+      "UB_CODE_TYPE_C_NAME": "CPT(R)",
+      "UB_LINE_SRC_C_NAME": "Charge",
+      "UB_SVC_DATE": "2022-03-11 00:00:00",
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "CONTACT_DATE_REAL": 66180,
+      "LINE": 2,
+      "UB_MIN_SERVICE": "2022-03-11 00:00:00",
+      "UB_MAX_SERVICE": "2022-03-11 00:00:00",
+      "UB_CHARGES": 557.47,
+      "UB_MODIFIER": "GO",
+      "UB_CPT_CODE": "97165",
+      "HSP_ACCOUNT_ID": 376684810,
+      "REV_CODE_EXT": "434",
+      "UB_REV_CD_DESC": "OCCUPATIONAL THERAPY - EVALUATION OR REEVALUATION",
+      "UB_QTY": "1",
+      "UB_NON_CVD_AMT": 0,
+      "UB_LMRP_CD": "97165",
+      "UB_HCPCS_RATE": "97165GO",
+      "UB_CODE_TYPE_C_NAME": "CPT(R)",
+      "UB_LINE_SRC_C_NAME": "Charge",
+      "UB_SVC_DATE": "2022-03-11 00:00:00",
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "LINE": 1,
+      "UB_MIN_SERVICE": "2022-03-11 00:00:00",
+      "UB_MAX_SERVICE": "2022-03-11 00:00:00",
+      "UB_CHARGES": 216.27,
+      "UB_MODIFIER": "GO",
+      "UB_CPT_CODE": "97535",
+      "HSP_ACCOUNT_ID": 376684810,
+      "REV_CODE_EXT": "430",
+      "UB_REV_CD_DESC": "OCCUPATIONAL THERAPY - GENERAL CLASSIFICATION",
+      "UB_QTY": "1",
+      "UB_NON_CVD_AMT": 0,
+      "UB_LMRP_CD": "97535",
+      "UB_HCPCS_RATE": "97535GO",
+      "UB_CODE_TYPE_C_NAME": "CPT(R)",
+      "UB_LINE_SRC_C_NAME": "Charge",
+      "UB_SVC_DATE": "2022-03-11 00:00:00",
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "LINE": 2,
+      "UB_MIN_SERVICE": "2022-03-22 00:00:00",
+      "UB_MAX_SERVICE": "2022-03-22 00:00:00",
+      "UB_CHARGES": 865.08,
+      "UB_MODIFIER": "GO",
+      "UB_CPT_CODE": "97535",
+      "HSP_ACCOUNT_ID": 376684810,
+      "REV_CODE_EXT": "430",
+      "UB_REV_CD_DESC": "OCCUPATIONAL THERAPY - GENERAL CLASSIFICATION",
+      "UB_QTY": "4",
+      "UB_NON_CVD_AMT": 0,
+      "UB_LMRP_CD": "97535",
+      "UB_HCPCS_RATE": "97535GO",
+      "UB_CODE_TYPE_C_NAME": "CPT(R)",
+      "UB_LINE_SRC_C_NAME": "Charge",
+      "UB_SVC_DATE": "2022-03-22 00:00:00",
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "LINE": 3,
+      "UB_MIN_SERVICE": "2022-03-11 00:00:00",
+      "UB_MAX_SERVICE": "2022-03-11 00:00:00",
+      "UB_CHARGES": 557.47,
+      "UB_MODIFIER": "GO",
+      "UB_CPT_CODE": "97165",
+      "HSP_ACCOUNT_ID": 376684810,
+      "REV_CODE_EXT": "434",
+      "UB_REV_CD_DESC": "OCCUPATIONAL THERAPY - EVALUATION OR REEVALUATION",
+      "UB_QTY": "1",
+      "UB_NON_CVD_AMT": 0,
+      "UB_LMRP_CD": "97165",
+      "UB_HCPCS_RATE": "97165GO",
+      "UB_CODE_TYPE_C_NAME": "CPT(R)",
+      "UB_LINE_SRC_C_NAME": "Charge",
+      "UB_SVC_DATE": "2022-03-11 00:00:00",
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "LINE": 11,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "LINE": 12,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "LINE": 13,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "LINE": 14,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "LINE": 15,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "LINE": 16,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "LINE": 17,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "LINE": 18,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "LINE": 19,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "LINE": 20,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "LINE": 21,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "LINE": 22,
+      "HSP_ACCOUNT_ID": 376684810,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "CONTACT_DATE_REAL": 66231,
+      "LINE": 23,
+      "UB_CHARGES": 1638.82,
+      "HSP_ACCOUNT_ID": 376684810,
+      "REV_CODE_EXT": "001",
+      "UB_QTY": "6",
+      "UB_NON_CVD_AMT": 0,
+      "$meta": {
+        "type": "HSP_CLP_REV_CODE"
+      }
+    }
+  ]
+}

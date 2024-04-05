@@ -1,0 +1,54 @@
+{
+  "name": "CAL_CHAT_ASGN_HX",
+  "description": "The CAL_CHAT_ASGN_HX table contains information about the history of a live chat. This table tracks what agent was assigned to a chat and what queue was assigned to a chat. This table also contains data on who updated the chat assignment and when it was updated.",
+  "primaryKey": [
+    {
+      "columnName": "COMM_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "COMM_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the communication record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CHAT_HX_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason for changing the assignment or queue of a chat. Categories that are below 500 will automatically be set by system in certain automated workflows that change the chat history. Users will only have the ability to select category that have an ID 500 or above.",
+      "entries": [
+        "Agent Sent Chat Back",
+        "Agent Logged Out",
+        "Automatic Assignment",
+        "Chat Ended",
+        "Documentation Completed",
+        "Assigned to Wrong Queue",
+        "New Question",
+        "Additional Support Needed"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CHAT_HX_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Comments on the change of chat history that will be shown to future users reviewing the chat history. The comment is left by the user changing the chat assignment. The comment will be the message to the next agent if the change was done during the transfer workflow."
+    }
+  ]
+}

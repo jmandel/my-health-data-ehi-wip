@@ -1,0 +1,66 @@
+{
+  "name": "HSP_ACCT_ABSTS_HX",
+  "description": "Stores the history of changes to the abstract status.",
+  "primaryKey": [
+    {
+      "columnName": "HSP_ACCT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "HSP_ACCT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The hospital account ID with related abstracting status history information."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number in the results of a query. Each coding history will have its own line number."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ABSTS_HX_STS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The abstract status category ID.",
+      "entries": [
+        "Not Started",
+        "In Progress",
+        "Waiting",
+        "Completed",
+        "Ready To Start",
+        "On Hold"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ABSTS_HX_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This column stores the abstracting status changed instant in Coordinated Universal Time (UTC). Data will not exist in this column for abstracting statuses created before UTC instant tracking was enabled for abstracting history."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ABSTS_HX_ASGN_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Item to store abstracting assigned user changes"
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ABSTS_HX_ASGN_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    }
+  ]
+}

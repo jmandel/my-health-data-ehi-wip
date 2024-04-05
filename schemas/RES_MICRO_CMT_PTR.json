@@ -1,0 +1,49 @@
+{
+  "name": "RES_MICRO_CMT_PTR",
+  "description": "This table extracts a list of lines which hold multiline comments for the isolate.",
+  "primaryKey": [
+    {
+      "columnName": "RESULT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RESULT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the result record for this row. This column is frequently used to link to the RES_MICRO_CULTURE table.",
+      "linksTo": "RES_MICRO_CULTURE"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This is the organism line number from the RES_MICRO_CULTURE table. Use the RESULT_ID to link the RES_MICRO_CULTURE table to this table in addition to the GROUP_LINE."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple values associated with a specific group of data within this row."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CUL_MLTLN_USER_CMMT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the multiline comment for this organism isolate. A single isolate can have multiple comment lines associated with it.  To link tables RES_MICRO_CMT_PTR to RES_CMT_DATA_RM link the following two sets of columns: RES_MICRO_CMT_PTR.RESULT_ID to RES_CMT_DATA_RM.RESULT_ID, and  RES_MICRO_CMT_PTR.CUL_MLTLN_USER_CMMT to RES_CMT_DATA_RM.GROUP_LINE"
+    }
+  ]
+}

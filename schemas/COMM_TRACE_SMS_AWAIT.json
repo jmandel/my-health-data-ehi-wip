@@ -1,0 +1,98 @@
+{
+  "name": "COMM_TRACE_SMS_AWAIT",
+  "description": "Information about the actions to be taken on 2-way SMS messages.",
+  "primaryKey": [
+    {
+      "columnName": "COMM_TRACE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "COMM_TRACE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the outreach record record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "AWAIT_KEYWORD",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Part of the table that contains data about how and what should trigger 2-way application actions from a message. This item contains the keyword for which we are waiting."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "AWAIT_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Part of the table that contains data about how and what should trigger 2-way application actions from a message. This item contains the action to be performed by the keyword.  We also store the action on the incoming mobile originated (MO) message where the item contains the action to be performed in response to this MO message.",
+      "entries": [
+        "Text / Make a Payment",
+        "Text / Confirm Payment",
+        "Text / Sign Up or Update Payment Plan",
+        "Text / Update Payment Plan",
+        "Text / Confirm Payment Plan",
+        "Text / See Other Options",
+        "Text / Fast Pass Response Accept",
+        "Text / Fast Pass Response Decline",
+        "Text / Fast Pass Response Remove from Wait List",
+        "Text / Confirm Appointment",
+        "Text / Cancel Appointment",
+        "Text / Arrive Appointment",
+        "Text / Reschedule Appointment",
+        "Text / Ticket Chat Start Conversation",
+        "Text / Ticket Chat Accept Time",
+        "Text / Ticket Chat Search Times",
+        "Text / Ticket Chat Decline",
+        "Text / Ticket Chat Select Location",
+        "Text / Ticket Chat Select Time Zone",
+        "Text / Arrive Appointment More Options",
+        "Text / Grant Consent",
+        "Text / Revoke Consent",
+        "Text / Help",
+        "Text / Send Grant Invitation",
+        "Text / Disable Preference",
+        "Text / Confirm Grant Consent",
+        "Text / Exit Session"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "AWAIT_LPP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Part of the table that contains data about how and what should trigger 2-way application actions from a message. This item contains the LPP to be used to handle the 2-way action. We also store the LPP on the incoming mobile originated (MO) message where the item contains the LPP to be used to handle the MO message."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "AWAIT_LPP_ID_LPP_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the extension."
+    }
+  ]
+}

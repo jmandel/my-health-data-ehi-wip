@@ -1,0 +1,37 @@
+{
+  "name": "OB_HSB_DEL_RP_DTTM",
+  "description": "The OB_HSB_DEL_RP_DTTM table contains membrane rupture date and time information recorded from the OB Delivery Summary. It uses the list of rupture dates and times stored in the patient's delivery record and combines them to create a list of date/time values.\n\n\nIf a rupture time was recorded with no corresponding date, it is considered incomplete documentation and the line is thrown out.",
+  "primaryKey": [
+    {
+      "columnName": "SUMMARY_BLOCK_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SUMMARY_BLOCK_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID assigned to the episode record (HSB .1)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "OB_DEL_RUP_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "This column extracts the date and time of rupture for a delivery record. It uses the list of rupture dates and times stored in the patient's delivery record and concatenates them to create a list of correlated date/time values.  If no time value was recorded, the default is midnight (use RUPT_TM_PRESENT_YN to determine if a midnight value is entered by the user or defaulted in)."
+    }
+  ]
+}

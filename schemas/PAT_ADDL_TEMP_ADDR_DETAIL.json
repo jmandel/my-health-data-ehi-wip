@@ -1,0 +1,57 @@
+{
+  "name": "PAT_ADDL_TEMP_ADDR_DETAIL",
+  "description": "The PAT_ADDL_TEMP_ADDR_DETAIL table contains patient temporary address geo location data like latitude and longitude.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "TEMP_ADDR_GEO_KEY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The geolocation identifier for the row's value stored in TEMP_ADDR_GEO_VAL. TEMP_ADDR_GEO_KEY_C identifies the type of data stored in the value; for instance: latitude and longitude.",
+      "entries": [
+        "Latitude",
+        "Longitude",
+        "Geocoding - Accuracy Rating",
+        "State FIPS Code",
+        "County FIPS Code",
+        "2020 Census Tract FIPS Code",
+        "2020 Census Block Group FIPS Code",
+        "2010 Census Tract FIPS Code",
+        "2010 Census Block Group FIPS Code",
+        "Exempt From Geocoding"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "TEMP_ADDR_GEO_VAL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The geolocation value for the row. The type of geolocation value is determined by the TEMP_ADDR_GEO_KEY_C column. Latitude and Longitude are limited to 6 decimals of accuracy."
+    }
+  ]
+}

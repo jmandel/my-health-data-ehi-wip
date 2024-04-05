@@ -1,0 +1,72 @@
+{
+  "name": "PAT_OCCUPN_HX",
+  "description": "This table contains descriptive occupation history for patients recorded for a given encounter.  Each row represents one line of text for occupation description and/or occupation comments for a single employer.\n\n\nIf more than one occupation is commented on or described, each related line of descriptions/comments will have the employer ID field in that line populated with that occupation's employer ID.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique system identifier of the patient encounter. Contact serial number is unique across all patients and all contacts."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "This is a numeric representation of the date of this encounter in your system. The integer portion of the number specifies the date of the encounter. The digits after the decimal point indicate multiple visits on one day."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "HX_EMPLOYER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique system identifier of the patient's employer."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "HX_EMPLOYER_ID_EMPLOYER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the employer."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "HX_OCCUPN_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Any comments listed regarding the patient's occupation."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "HISTORY_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the source of entry for this row of data (i.e. where this data came from). Some examples include:  Provider Patient Parent",
+      "entries": [
+        "Provider",
+        "Patient",
+        "Parent",
+        "Legal Guardian",
+        "Proxy User"
+      ]
+    }
+  ]
+}

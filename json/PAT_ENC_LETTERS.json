@@ -1,0 +1,153 @@
+{
+  "$meta": {
+    "schemas": {
+      "PAT_ENC_LETTERS": {
+        "name": "PAT_ENC_LETTERS",
+        "description": "The patient encounter letters table contains information about letters associated with encounters.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ENC_CSN_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line count used to identify different letters associated with an encounter."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "LTR_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value associated with the status of each letter,  such as 1- Open, 2- Deleted, 3- Sent, 4- Voided, 5-Sent by batch.",
+            "entries": [
+              "Open",
+              "Deleted",
+              "Sent",
+              "Voided",
+              "Sent by batch"
+            ]
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "LETTER_CREAT_DT",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date that the letter was created."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "LETTER_HNO_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The note (HNO) record that hold the letter text."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "LETTER_FROM_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The user ID of the user entered as the \"from\" user in the letter activity."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "LETTER_FROM_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "LETTER_REASON_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value associated with the reason for the letter."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "LTR_STATUS_CHG_TM",
+            "type": "DATETIME (Attached) ",
+            "discontinued": false,
+            "description": "The instant (date and time) the status of the letter was created or changed."
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "LTR_STAT_CH_USR_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The user that changed or created the letter status."
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "LTR_STAT_CH_USR_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 17,
+            "name": "LETTER_WORKINGDAYS",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The number of work days (excluding weekends and holidays) from the date of the letter's encounter to the date the letter was sent."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "PAT_ENC_LETTERS",
+            "target": "PAT_ENC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PAT_ENC_LETTERS": [
+    {
+      "PAT_ENC_CSN_ID": 724619887,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "LTR_STATUS_C_NAME": "Sent",
+      "LETTER_CREAT_DT": "2018-08-09 00:00:00",
+      "LETTER_HNO_ID": "1473625808",
+      "LETTER_FROM_ID": "DHILLOPS",
+      "LETTER_FROM_ID_NAME": "DHILLON, PUNEET S",
+      "LETTER_REASON_C_NAME": "MyChart Account Administration",
+      "LTR_STATUS_CHG_TM": "2018-08-09 09:29:00",
+      "LTR_STAT_CH_USR_ID": "JMS402",
+      "LTR_STAT_CH_USR_ID_NAME": "SUTTER, JULIE M",
+      "LETTER_WORKINGDAYS": 0,
+      "$meta": {
+        "type": "PAT_ENC_LETTERS"
+      }
+    }
+  ]
+}

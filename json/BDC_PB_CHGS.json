@@ -1,0 +1,83 @@
+{
+  "$meta": {
+    "schemas": {
+      "BDC_PB_CHGS": {
+        "name": "BDC_PB_CHGS",
+        "description": "This table stores PB Denial/Correspondence (BDC) denial records and the charge transactions that were denied by that denial record.",
+        "primaryKey": [
+          {
+            "columnName": "BDC_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "BDC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the Professional Billing denial record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "TX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Professional charge this denial was posted for. For panel procedures, same denial can point to multiple charges forming a single claim line."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "FOL_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Follow-up record this denial was posted for. For panel procedures, same denial can point to multiple follow-up records forming a single claim line."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "BDC_PB_CHGS",
+            "target": "BDC_INFO",
+            "joinKeys": [
+              {
+                "source": "BDC_ID",
+                "target": "BDC_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "BDC_PB_CHGS": [
+    {
+      "BDC_ID": 43401924,
+      "LINE": 1,
+      "TX_ID": 315026147,
+      "FOL_ID": 104439601,
+      "$meta": {
+        "type": "BDC_PB_CHGS"
+      }
+    },
+    {
+      "BDC_ID": 43401925,
+      "LINE": 1,
+      "TX_ID": 315026147,
+      "FOL_ID": 104439601,
+      "$meta": {
+        "type": "BDC_PB_CHGS"
+      }
+    }
+  ]
+}

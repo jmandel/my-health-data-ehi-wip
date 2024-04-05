@@ -1,0 +1,444 @@
+{
+  "name": "LNO_LAB_RECIP_INFO",
+  "description": "Recipient information for lab result report (LNO) records.",
+  "primaryKey": [
+    {
+      "columnName": "RECORD_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the LNO record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "RCPNT_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the order record for which a report will be printed or has printed for the given recipient."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RECIPIENT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the report's recipient type.",
+      "entries": [
+        "Authorizing Provider",
+        "Primary Care Physician",
+        "CC Provider",
+        "CC Employee",
+        "Free text CC",
+        "Submitter",
+        "Department",
+        "Patient",
+        "Patient/Source",
+        "CC Submitter",
+        "Ordering Provider"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RECIPIENT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the status of the report which will be printed or has printed for the given recipient.",
+      "entries": [
+        "Ready",
+        "Replaced",
+        "Printed - Ad hoc",
+        "Printed - Auto",
+        "Patient not discharged",
+        "Report not final",
+        "Printed - Manually",
+        "Delayed Recipient",
+        "Hold",
+        "Hold - Resolved",
+        "Paper report skipped: Suppressed by routing record In Basket setup",
+        "Message sent",
+        "Message sent: Extension",
+        "Recipient Removed",
+        "Message initiated",
+        "Message not sent: Submitter ineligible",
+        "Message not sent: Verification status ineligible",
+        "Message not sent: Result not reportable",
+        "Message not sent: Result source ineligible",
+        "Message not sent: Resulting agency ineligible",
+        "Message not sent: CC submitters ineligible",
+        "Message not sent: Miscellaneous failure",
+        "Message not sent: Order not linked to patient",
+        "Message not sent: Order group not ready",
+        "Message not sent: Custom interface filter",
+        "Message not sent: Consent not given",
+        "Message not sent: Interface only sends Final and Corrected",
+        "Message not sent: Interface only sends Prelim, Final, and Corrected",
+        "Message not sent: interface only sends In Process, Prelim, or Final",
+        "Message not sent: CC submitter cancel won't be sent",
+        "Message not sent: Parent orders aren't sent",
+        "Message not sent: Interface only sends electronic cancer checklists",
+        "Message not sent: Interface canceled orders aren't sent",
+        "Message not sent: Performable cancels aren't sent",
+        "Message not sent: Order suppressed",
+        "Message initiated: Sending pending results",
+        "Message not sent: Ineligible interface",
+        "Message not sent: Order filtered by rule",
+        "Message not sent: Network orders aren't sent",
+        "Message not sent: Interface does not send unsolicited cancels",
+        "Paper report skipped: Suppressed by recipient skip paper setup",
+        "Paper report skipped: Suppressed by routing record extension setup"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RECIPIENT_EVNT_INST",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the instant this line was added to the recipient's table."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "RCPT_RRT_SUB_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the sub type of the report.",
+      "entries": [
+        "End of Week Report",
+        "Final Summary Report"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "RCPNT_TYPE_DEP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the department record if the recipient is the department."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "RCPNT_TYPE_SMT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the submitter record if the recipient is the submitter."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "RCPNT_TYPE_SMT_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the submitter record."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "RCPNT_TYPE_SER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the provider record if the recipient is the provider."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "RCPNT_TYPE_RQG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the patient/source record if the recipient is a non enterprise patient."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "RCPNT_TYPE_EMP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the employee record if the recipient is the employee."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "RCPNT_TYPE_EMP_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "RCPNT_TYPE_FREE_TXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the free text name of the recipient."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "RCPNT_HOLD_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The recipient hold type category number for the recipient.",
+      "entries": [
+        "City mismatch"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "RCPNT_HOLD_OVT_LN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Contains the recipient hold test (OVT) line."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "RCPNT_HOLD_BSDON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the recipient hold based on address category.",
+      "entries": [
+        "Physician",
+        "Agency",
+        "Patient",
+        "Provider",
+        "Submitter"
+      ]
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "RCPNT_HOLD_QUAL_LN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Contains the recipient hold rule qualifier line."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "RCPNT_RSLN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The recipient hold resolution category number for the recipient.",
+      "entries": [
+        "Ignore",
+        "Added Recipient"
+      ]
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "RCPNT_RSLN_INST",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Contains the recipient hold resolution instant."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "RCPNT_RSLN_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the recipient hold resolution user."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "RCPNT_RSLN_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "RCPNT_RSLN_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Contains the line in the related group for the recipient hold resolution instant that audits the chosen CC recipient"
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "RCPNT_LPP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the programming point which added this recipient"
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "RCPNT_LPP_ID_LPP_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the extension."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "RCPNT_RPTBL_RULE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if the recipient on the row was added because of a reportable rule.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "RCPNT_CORRECTED_RPT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "If the report on the row was sent to a health agency based on a reportable rule, and the results later change such that it is no longer reportable to the health agency, this item stores the row in the LNO_LAB_RECIP_INFO table that contains the corrected report."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "RESEND_EMP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the user who resent the message. Messages sent over an interface may sometimes fail to deliver and would need to be resent. This column will have a value only for resent messages."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "RESEND_EMP_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "RESEND_RELATED_LN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the associated recipient's record. This points to the recipient line of the interface message that was resent. Messages sent over an interface may sometimes fail to deliver and would need to be resent. This column will have a value only for resent messages."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "RESEND_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number of the reason for resending an interface message. Messages sent over an interface may sometimes fail to deliver and would need to be resent. This column will have a value only for resent messages.",
+      "entries": [
+        "Others"
+      ]
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "RESULT_TRGR_LPP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the extension that triggered the result. This column will have a value only for those results that were triggered by a post event extension set up to send results over an interface."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "RESULT_TRGR_LPP_ID_LPP_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the extension."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "WHO_REMOV_RECPNT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user ID of the user who removed this recipient from result reports."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "WHO_REMOV_RECPNT_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "RECPNT_REMOV_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number of the reason for which this recipient was removed from result reports."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "RCPNT_OVRD_DEV_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The record ID of the override device that the recipient is to use when the report prints."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "RCPNT_OVRD_DEV_ID_PRINT_DEVICE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The printer name."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "RCPNT_OVRD_FAX_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The override fax number that the recipient is to use when the report prints."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "RCPNT_RPTBL_RULE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the record ID for the reporting rule that caused the recipient to be added."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "RCPNT_RPTBL_RULE_ID_RULE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the reporting rule."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "RCPNT_OVRD_ADDRESS_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The source which was used to select the destination override address for the recipient report.",
+      "entries": [
+        "Unknown",
+        "User selected",
+        "Requisition authorizing provider",
+        "Lab additional recipient extension",
+        "Lab CC List",
+        "Provider encounter submitter",
+        "Submitter",
+        "Department lab fax",
+        "Provider lab fax",
+        "Routing provider address extension",
+        "Provider primary",
+        "Provider requisition submitter",
+        "Provider CC linked submitter",
+        "Care Team",
+        "Requisition ordering provider",
+        "Order authorizing provider",
+        "Order ordering provider",
+        "Order referring provider",
+        "Radiant CC List",
+        "Order referral",
+        "Encounter referral",
+        "Encounter admitting",
+        "Current admitting",
+        "Provider secondary"
+      ]
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "RCPNT_OVRD_DEVICE_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The source which was used to select the override printing/faxing device for the recipient report.",
+      "entries": [
+        "Unknown",
+        "User selected",
+        "Lab additional recipient extension",
+        "Provider lab printer",
+        "Submitter",
+        "Lab routing fax device",
+        "Resulting lab",
+        "Department external recipient printer",
+        "Department printer class mapping",
+        "Facility"
+      ]
+    }
+  ]
+}

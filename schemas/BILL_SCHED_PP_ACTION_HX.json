@@ -1,0 +1,118 @@
+{
+  "name": "BILL_SCHED_PP_ACTION_HX",
+  "description": "This table contains information about actions performed on a payment plan.",
+  "primaryKey": [
+    {
+      "columnName": "SCHED_PMT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SCHED_PMT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the scheduled payment record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ACTION_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The UTC date and time that an action occurred on the payment plan."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ACTION_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The local date and time that an action occurred on the payment plan."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PMT_PLAN_ACTION_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID of the payment plan history action type.",
+      "entries": [
+        "Void Charge",
+        "Void Pmt/Adj",
+        "Reverse Pmt/Adj",
+        "Distribute",
+        "Undistribute",
+        "Post Plan Payment",
+        "Undistribute to Plan",
+        "Distribute From Plan",
+        "Adjust Plan Balance"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PB_PMT_ADJ_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the professional billing payment or credit adjustment associated with this payment plan history action."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PB_CHARGE_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the professional billing charge associated with this payment plan history action."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PB_MATCH_LINE_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The unique ID of the professional billing payment match line associated with this payment plan history action."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "HB_PMT_ADJ_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the hospital billing payment or credit adjustment associated with this payment plan history action."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PB_ORIG_PMT_ADJ_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the original professional billing payment or credit adjustment associated with this payment plan history action. If the hospital or professional billing payment or credit adjustment was transferred from professional billing originally, this is the original transaction. Otherwise, this is the same as the professional billing payment or credit adjustment."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "HB_ORIG_PMT_ADJ_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the original hospital billing payment or credit adjustment associated with this payment plan history action. If the hospital or professional billing payment or credit adjustment was transferred from hospital billing originally, this is the original transaction. Otherwise, this is the same as the hospital billing payment or credit adjustment."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "APPLIED_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The payment/credit adjustment amount applied to the payment plan balance. A positive number reduces the balance and a negative number increases the balance."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "APPLIED_TO_DUE_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The payment/credit adjustment amount applied to the payment plan due amount. A positive number reduces the due amount and a negative number increases the due amount."
+    }
+  ]
+}

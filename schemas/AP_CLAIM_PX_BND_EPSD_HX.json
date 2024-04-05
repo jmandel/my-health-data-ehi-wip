@@ -1,0 +1,85 @@
+{
+  "name": "AP_CLAIM_PX_BND_EPSD_HX",
+  "description": "This table holds the history of the bundled episodes that have been linked to AP claim service lines.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the transaction record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "BND_EPSD_INST_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This column indicates when the related episode was linked or unlinked from this service line."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "BND_EPSD_EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column defines which bundled episode is being linked or unlinked on this line."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "BND_EPSD_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column defines whether this history line is linking or unlinking the related episode. The categories can be referenced via Clarity table ZC_BND_EPSD_ACTION.",
+      "entries": [
+        "Link",
+        "Unlink"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "BND_EPSD_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column indicates how the link or unlink of the related episode was performed, either by a user, by the system, or by configured automation. The categories can be referenced via Clarity table ZC_BND_EPSD_SRC.",
+      "entries": [
+        "User",
+        "Visit Association",
+        "Auto Link",
+        "Auto Creation",
+        "Auto Link Via Transform",
+        "Auto Link Via Association",
+        "Auto Removal"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "BND_EPSD_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column indicates the user who linked or unlinked the episode."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "BND_EPSD_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    }
+  ]
+}

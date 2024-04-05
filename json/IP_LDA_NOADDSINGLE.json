@@ -1,0 +1,164 @@
+{
+  "$meta": {
+    "schemas": {
+      "IP_LDA_NOADDSINGLE": {
+        "name": "IP_LDA_NOADDSINGLE",
+        "description": "This table stores LDA information for a patient. A record is created in LDA for insertion of every line, drain, airway, or wound for a patient, as well as entering a trip into a patient's travel history. The no-add information for this LDA is stored in the table.",
+        "primaryKey": [
+          {
+            "columnName": "IP_LDA_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "IP_LDA_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The internal ID of the Lines/Drains/Airways (LDA) record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item stores the ID of the patient to which this line record was added."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This item stores the contact serial number of the encounter in which the record was created."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "FLO_MEAS_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item stores the Flowsheet ID that defines the structure of this record. It is the flowsheet group that is used to define the set of rows for the Line/Drain/Airway (LDA)."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "FLO_MEAS_ID_DISP_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The display name given to the flowsheet group/row."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "FSD_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item stores the flowsheet data (FSD) ID of the record that has information about the properties of the line/drain/airway (LDA)."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "DESCRIPTION",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item stores the name/description of the line/drain."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "PROPERTIES_DISPLAY",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the properties display string to be displayed in Doc Flowsheets and Reports."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "LDA_GROUP_CDR",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "This column stores the contact date real of the Line/Drain/Airway (LDA) Group contact that created this LDA.  This column is stored in Epic's datetime (DTE) format."
+          },
+          {
+            "ordinalPosition": 16,
+            "name": "TRIP_REGION_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Represents where the patient traveled for this trip"
+          },
+          {
+            "ordinalPosition": 17,
+            "name": "TRIP_REGION_ID_GEO_REGION_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The record name for the geographical region record."
+          },
+          {
+            "ordinalPosition": 18,
+            "name": "TRIP_BEGIN_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Represents when a patient began their trip"
+          },
+          {
+            "ordinalPosition": 19,
+            "name": "TRIP_END_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Represents the end of this patient trip"
+          },
+          {
+            "ordinalPosition": 20,
+            "name": "TRIP_DATE_APPROX_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Whether the dates for this trip are exact or approximate",
+            "entries": [
+              "Specified Dates",
+              "Start Date Defaulted",
+              "End Date Defaulted",
+              "Start and End Dates Defaulted"
+            ]
+          },
+          {
+            "ordinalPosition": 27,
+            "name": "RECORDED_DTTM",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The recorded time used in IP_FLWSHT_MEAS for storing the property data for this LDA."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "IP_LDA_NOADDSINGLE",
+            "target": "IP_LDA_INPS_USED",
+            "joinKeys": [
+              {
+                "source": "IP_LDA_ID",
+                "target": "IP_LDA_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "IP_LDA_NOADDSINGLE": [
+    {
+      "IP_LDA_ID": "9343309",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_CSN_ID": 974974125,
+      "FLO_MEAS_ID": "710",
+      "FLO_MEAS_ID_DISP_NAME": "Trip",
+      "FSD_ID": "118744115",
+      "DESCRIPTION": "Travel to Virgin Islands (British)",
+      "PROPERTIES_DISPLAY": "11/04/22 - 11/11/22",
+      "LDA_GROUP_CDR": 64038,
+      "TRIP_REGION_ID": 92,
+      "TRIP_REGION_ID_GEO_REGION_NAME": "Virgin Islands (British)",
+      "TRIP_BEGIN_DATE": "2022-11-04 00:00:00",
+      "TRIP_END_DATE": "2022-11-11 00:00:00",
+      "TRIP_DATE_APPROX_C_NAME": "Specified Dates",
+      "RECORDED_DTTM": "2022-12-01 00:02:00",
+      "$meta": {
+        "type": "IP_LDA_NOADDSINGLE"
+      }
+    }
+  ]
+}

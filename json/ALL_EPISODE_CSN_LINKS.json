@@ -1,0 +1,76 @@
+{
+  "$meta": {
+    "schemas": {
+      "ALL_EPISODE_CSN_LINKS": {
+        "name": "ALL_EPISODE_CSN_LINKS",
+        "description": "The ALL_EPISODE_CSN_LINKS table contains one row for each master file link added to an episode. Each row contains information associated with the master file stored in the EPISODE_LINK_INI column. It can be used with other episode tables to report on episode data whether the episode is linked to an encounter or not.",
+        "primaryKey": [
+          {
+            "columnName": "EPISODE_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "EPISODE_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the episode of care record for this row."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "This identifies the link master file."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ALL_EPISODE_CSN_LINKS",
+            "target": "EPISODE",
+            "joinKeys": [
+              {
+                "source": "EPISODE_ID",
+                "target": "EPISODE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ALL_EPISODE_CSN_LINKS",
+            "target": "CARE_PATH",
+            "joinKeys": [
+              {
+                "source": "EPISODE_ID",
+                "target": "SUMMARY_BLOCK_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ALL_EPISODE_CSN_LINKS": [
+    {
+      "EPISODE_ID": 200498750,
+      "LINE": 1,
+      "$meta": {
+        "type": "ALL_EPISODE_CSN_LINKS"
+      }
+    },
+    {
+      "EPISODE_ID": 200498750,
+      "LINE": 2,
+      "$meta": {
+        "type": "ALL_EPISODE_CSN_LINKS"
+      }
+    }
+  ]
+}

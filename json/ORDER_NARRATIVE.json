@@ -1,0 +1,547 @@
+{
+  "$meta": {
+    "schemas": {
+      "ORDER_NARRATIVE": {
+        "name": "ORDER_NARRATIVE",
+        "description": "This table stores the narrative information resulting from a procedure.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_PROC_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "ORD_DATE_REAL",
+            "ordinalPosition": 2
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 3
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_PROC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the procedure order record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record"
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "NARRATIVE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the narrative information for this order."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "ORD_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "This is a numeric representation of the date each order was placed in your system. The integer portion of the number specifies the date the order was placed. The digits after the decimal point indicate multiple orders on one day."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The calendar date that the order was placed."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "IS_ARCHIVED_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates whether the order narrative is archived. Y� indicates that the order narrative is archived. N� or NULL indicate that the order narrative is not archived."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_NARRATIVE",
+            "target": "ORDER_PARENT_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_NARRATIVE",
+            "target": "ORDER_STATUS",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "ORD_DATE_REAL",
+                "target": "ORD_DATE_REAL"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_NARRATIVE",
+            "target": "ORDER_PROC",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_NARRATIVE",
+            "target": "ORD_PRFLST_TRK",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ORDER_NARRATIVE": [
+    {
+      "ORDER_PROC_ID": 772179259,
+      "LINE": 1,
+      "NARRATIVE": "X-RAY ANKLE >= 3 VIEWS LEFT 2/8/2019",
+      "ORD_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179259,
+      "LINE": 2,
+      "ORD_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179259,
+      "LINE": 3,
+      "NARRATIVE": "INDICATION: Acute left ankle pain distal fibular fracture. Inversion injury at",
+      "ORD_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179259,
+      "LINE": 4,
+      "NARRATIVE": "6:30 pm.",
+      "ORD_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179259,
+      "LINE": 5,
+      "ORD_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179259,
+      "LINE": 6,
+      "NARRATIVE": "COMPARISON: None.",
+      "ORD_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179259,
+      "LINE": 7,
+      "ORD_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179259,
+      "LINE": 8,
+      "NARRATIVE": "TECHNIQUE: Frontal, lateral and mortise views of the left ankle.",
+      "ORD_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179259,
+      "LINE": 9,
+      "ORD_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179259,
+      "LINE": 10,
+      "NARRATIVE": "FINDINGS: No fracture or osseous lesion is evident. Joint alignment is normal.",
+      "ORD_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179259,
+      "LINE": 11,
+      "NARRATIVE": "Joint spaces are well-maintained. No ankle joint effusion is seen. Soft tissues",
+      "ORD_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179259,
+      "LINE": 12,
+      "NARRATIVE": "are unremarkable.",
+      "ORD_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179259,
+      "LINE": 13,
+      "ORD_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179259,
+      "LINE": 14,
+      "ORD_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179259,
+      "LINE": 15,
+      "NARRATIVE": "Electronically signed by: Amar Patel on 02/08/2019 08:16PM",
+      "ORD_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060614,
+      "LINE": 1,
+      "NARRATIVE": "SARS-CoV-2 (COVID-19) RNA NOT detected. Negative results do not preclude SARS-CoV-2 (COVID-19) infection and should not be used as the sole basis for treatment or other patient management decisions.",
+      "ORD_DATE_REAL": 65643,
+      "CONTACT_DATE": "2020-09-21 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060614,
+      "LINE": 2,
+      "ORD_DATE_REAL": 65643,
+      "CONTACT_DATE": "2020-09-21 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060614,
+      "LINE": 3,
+      "NARRATIVE": "TEST DESCRIPTION: The SARS-CoV-2 (N gene detection) Test is a real-time RT-PCR assay intended for the qualitative detection of nucleic acids from SARS-CoV-2 in respiratory swab specimens. Testing is limited to Exact Sciences Laboratories, certified under the Clinical Laboratory Improvement Amendments of 1988 (CLIA), 42 U.S.C. section 263a, to perform high complexity tests.",
+      "ORD_DATE_REAL": 65643,
+      "CONTACT_DATE": "2020-09-21 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060614,
+      "LINE": 4,
+      "NARRATIVE": "Results are for the detection of SARS-CoV-2 RNA.",
+      "ORD_DATE_REAL": 65643,
+      "CONTACT_DATE": "2020-09-21 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060614,
+      "LINE": 5,
+      "NARRATIVE": "Positive results are indicative of the presence of SARS-CoV-2 RNA; clinical correlation with patient history and other diagnostic information is necessary to determine patient infection status. Positive results do not rule out bacterial infection or co-infection with other viruses. The agent detected may not be the definite cause of disease.",
+      "ORD_DATE_REAL": 65643,
+      "CONTACT_DATE": "2020-09-21 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060614,
+      "LINE": 6,
+      "NARRATIVE": "Laboratories within the United States and its territories are required to report all positive results to the appropriate public health authorities.",
+      "ORD_DATE_REAL": 65643,
+      "CONTACT_DATE": "2020-09-21 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060614,
+      "LINE": 7,
+      "NARRATIVE": "Negative results do not preclude SARS-CoV-2 infection and should not be used as the sole basis for patient management decisions. Negative results must be combined with clinical observations, patient history, and epidemiological information. This assay is intended for use under the Food and Drug Administration's Emergency Use Authorization.",
+      "ORD_DATE_REAL": 65643,
+      "CONTACT_DATE": "2020-09-21 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060614,
+      "LINE": 8,
+      "ORD_DATE_REAL": 65643,
+      "CONTACT_DATE": "2020-09-21 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060614,
+      "LINE": 9,
+      "NARRATIVE": "https://cdn2.hubspot.net/hubfs/402436/EUA-LDT-SARS-CoV-2-PCR-HCP.pdf",
+      "ORD_DATE_REAL": 65643,
+      "CONTACT_DATE": "2020-09-21 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060614,
+      "LINE": 10,
+      "NARRATIVE": "https://cdn2.hubspot.net/hubfs/402436/EUA-LDT-SARS-CoV-2-PCR-Patients.pdf",
+      "ORD_DATE_REAL": 65643,
+      "CONTACT_DATE": "2020-09-21 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060613,
+      "LINE": 1,
+      "NARRATIVE": "MRI OF THE BRAIN WITHOUT CONTRAST:",
+      "ORD_DATE_REAL": 65591.01,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060613,
+      "LINE": 2,
+      "ORD_DATE_REAL": 65591.01,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060613,
+      "LINE": 3,
+      "NARRATIVE": "HISTORY:",
+      "ORD_DATE_REAL": 65591.01,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060613,
+      "LINE": 4,
+      "NARRATIVE": "37 yr old, 165lb. male who presents with minor head trauma and normal mental status.  No previous brain surgery.",
+      "ORD_DATE_REAL": 65591.01,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060613,
+      "LINE": 5,
+      "ORD_DATE_REAL": 65591.01,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060613,
+      "LINE": 6,
+      "NARRATIVE": "TECHNIQUE:",
+      "ORD_DATE_REAL": 65591.01,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060613,
+      "LINE": 7,
+      "NARRATIVE": "MRI of the brain performed using DWI/ADC mapping, T1 SE sagittal, T2 FSE axial, FLAIR axial, T1 SE axial, T2* GE axial and FLAIR coronal sequences.",
+      "ORD_DATE_REAL": 65591.01,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060613,
+      "LINE": 8,
+      "ORD_DATE_REAL": 65591.01,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060613,
+      "LINE": 9,
+      "NARRATIVE": "FINDINGS:",
+      "ORD_DATE_REAL": 65591.01,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060613,
+      "LINE": 10,
+      "NARRATIVE": "The ventricular system is unremarkable and there is no evidence of positive mass lesion, positive mass-effect, hemorrhage, or acute infarction in the cerebrum.  There is no suggestion of recent or remote injury.",
+      "ORD_DATE_REAL": 65591.01,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060613,
+      "LINE": 11,
+      "ORD_DATE_REAL": 65591.01,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060613,
+      "LINE": 12,
+      "NARRATIVE": "IMPRESSION:",
+      "ORD_DATE_REAL": 65591.01,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060613,
+      "LINE": 13,
+      "NARRATIVE": "Negative cerebral MRI.",
+      "ORD_DATE_REAL": 65591.01,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060613,
+      "LINE": 14,
+      "ORD_DATE_REAL": 65591.01,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060613,
+      "LINE": 15,
+      "NARRATIVE": "Electronically Signed:  David Kurtz, M.D.",
+      "ORD_DATE_REAL": 65591.01,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "IS_ARCHIVED_YN": "N",
+      "$meta": {
+        "type": "ORDER_NARRATIVE"
+      }
+    }
+  ]
+}

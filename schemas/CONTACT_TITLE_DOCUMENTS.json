@@ -1,0 +1,66 @@
+{
+  "name": "CONTACT_TITLE_DOCUMENTS",
+  "description": "This table contains Clinical References linked to patient education titles.",
+  "primaryKey": [
+    {
+      "columnName": "EDUCATION_RECORD_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 3
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 4
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "EDUCATION_RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the education record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the associated title in the patient's education record. Together with EDUCATION_RECORD_ID and CONTACT_DATE_REAL, this forms the foreign key to the CL_PATEDU_CNT_TITL table."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the Clinical References associated with a title in the patient's education record."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CONTACT_TITLE_DCS_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the Document Information record for a Clinical Reference document that is associated with the education title in CL_PATEDU_CNT_TITL with a LINE number that matches this row's GROUP_LINE number. This column is frequently used to link to Document Information tables like DOC_INFORMATION and DOC_INFORMATION_2."
+    }
+  ]
+}

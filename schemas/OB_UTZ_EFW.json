@@ -1,0 +1,55 @@
+{
+  "name": "OB_UTZ_EFW",
+  "description": "This table contains the estimated fetal weight (EFW) calculations. These measurements are derived from fetal measurements.",
+  "primaryKey": [
+    {
+      "columnName": "FINDING_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "FINDING_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the finding record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "OB_UTZ_EFW_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the calculation method for the estimated fetal weight (EFW) value.",
+      "entries": [
+        "Shepard 1982 (AC, BPD)",
+        "Hadlock 1984 (AC)",
+        "Hadlock 1985 (AC, FL)",
+        "Hadlock 1984 (AC, BPD)",
+        "Hadlock 1984 (AC, HC)",
+        "Hadlock 1985 (AC, FL, BPD)",
+        "Hadlock 1985 (AC, FL, HC)",
+        "Hadlock 1985 (AC, FL, BPD, HC)",
+        "Other Source"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "OB_UTZ_EFW_VAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the results, in grams, of estimated fetal weight calculations. The weight selected by the resulting clinician as definitive for the study can be found by joining on RES_FETALWEIGHT.FINDING_ID=OB_UTZ_EFW.FINDING_ID AND RES_FETALWEIGHT.OB_UTZ_EFW_SEL_C = OB_UTZ_EFW.OB_UTZ_EFW_SRC_C"
+    }
+  ]
+}

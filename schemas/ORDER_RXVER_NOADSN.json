@@ -1,0 +1,48 @@
+{
+  "name": "ORDER_RXVER_NOADSN",
+  "description": "The ORDER_RXVER_NOADSN contains medication order verification information that has one value per order.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_MED_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_MED_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the medication order (prescription) record. NOTE: This is an internal unique identifier for ORD master file records in this table and cannot be used to link to CLARITY_MEDICATION."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "RX_DC_VRFY_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user ID who verifies discontinued order."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "RX_DC_VRFY_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RX_DC_VRFY_INSTANT",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time the discontinued order was verified in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "LAST_VERIFY_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique, internal contact date in decimal format. This is the most recent verification contact for an order. This column is frequently used to link to the CONTACT_DATE_REAL column of the ORDER_DISP_INFO table.",
+      "linksTo": "CONTACT_DATE_REAL"
+    }
+  ]
+}

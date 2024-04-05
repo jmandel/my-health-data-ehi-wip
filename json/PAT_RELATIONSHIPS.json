@@ -1,0 +1,151 @@
+{
+  "$meta": {
+    "schemas": {
+      "PAT_RELATIONSHIPS": {
+        "name": "PAT_RELATIONSHIPS",
+        "description": "Demographic information for patient contacts.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+            "linksTo": "PATIENT"
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PAT_REL_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the patient's contact."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "PAT_REL_CITY",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Contact's city of residence"
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "PAT_REL_ZIP",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The ZIP code of the patient's contact."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "PAT_REL_COUNTY_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Contact's county of residence"
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "PAT_REL_COUNTRY_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Contact's country of residence"
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "PAT_REL_MOBILE_PHNE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Contact's mobile phone"
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "PAT_REL_RELATION_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Contact's relation to patient"
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "PAT_REL_PRIM_PH_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Which of the contact's phone numbers should be considered primary",
+            "entries": [
+              "Home phone",
+              "Work phone",
+              "Mobile phone"
+            ]
+          },
+          {
+            "ordinalPosition": 37,
+            "name": "PAT_REL_RLA_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Links this patient contact to the associated Patient Relationships (RLA) patient relationship record."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "PAT_RELATIONSHIPS",
+            "target": "PAT_REL_ADDR",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "PAT_RELATIONSHIPS",
+            "target": "PATIENT",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PAT_RELATIONSHIPS": [
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 1,
+      "PAT_REL_NAME": "REDACTED,REDACTED",
+      "PAT_REL_CITY": "Madison",
+      "PAT_REL_ZIP": "REDACTED",
+      "PAT_REL_COUNTY_C_NAME": "DANE",
+      "PAT_REL_COUNTRY_C_NAME": "United States of America",
+      "PAT_REL_MOBILE_PHNE": "REDACTED",
+      "PAT_REL_RELATION_C_NAME": "Spouse",
+      "PAT_REL_PRIM_PH_C_NAME": "Mobile phone",
+      "PAT_REL_RLA_ID": 31533871,
+      "$meta": {
+        "type": "PAT_RELATIONSHIPS"
+      }
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "$meta": {
+    "schemas": {
+      "ORDER_MYC_RELEASE": {
+        "name": "ORDER_MYC_RELEASE",
+        "description": "When a clinician (or interface) releases/unreleases a lab result to/from a web based chart system patient, tracking data for that action is stored in this table.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_PROC_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_PROC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the procedure order record that is released/unreleased."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "Since an order can be released/unreleased multiple times, the line number identifies a particular release instance."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "RELEASE_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The ID of the Hyperspace user who released/unreleased the lab result to the web based chart system patient."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "RELEASE_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "RELEASE_ACTION_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item indicates the action taken on the lab result. The data stored is a category value. 1 corresponds to Released. 2 corresponds to Unreleased.   A null value also corresponds to Unreleased.",
+            "entries": [
+              "Release",
+              "Unrelease",
+              "Prevent autorelease"
+            ]
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "MYC_REL_UTC_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "Contains the instant when a result was released to MyChart in UTC."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_MYC_RELEASE",
+            "target": "ORDER_MYC_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_MYC_RELEASE",
+            "target": "ORDER_PARENT_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_MYC_RELEASE",
+            "target": "ORDER_PROC",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_MYC_RELEASE",
+            "target": "ORD_PRFLST_TRK",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ORDER_MYC_RELEASE": [
+    {
+      "ORDER_PROC_ID": 439060606,
+      "LINE": 1,
+      "RELEASE_USER_ID": "DHILLOPS",
+      "RELEASE_USER_ID_NAME": "DHILLON, PUNEET S",
+      "RELEASE_ACTION_C_NAME": "Release",
+      "$meta": {
+        "type": "ORDER_MYC_RELEASE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060607,
+      "LINE": 1,
+      "RELEASE_USER_ID": "KLL403",
+      "RELEASE_USER_ID_NAME": "LOUGH, KAREN L",
+      "RELEASE_ACTION_C_NAME": "Release",
+      "$meta": {
+        "type": "ORDER_MYC_RELEASE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060613,
+      "LINE": 1,
+      "RELEASE_ACTION_C_NAME": "Release",
+      "MYC_REL_UTC_DTTM": "2020-08-02 15:03:32",
+      "$meta": {
+        "type": "ORDER_MYC_RELEASE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179262,
+      "LINE": 1,
+      "RELEASE_ACTION_C_NAME": "Release",
+      "MYC_REL_UTC_DTTM": "2022-08-29 20:42:02",
+      "$meta": {
+        "type": "ORDER_MYC_RELEASE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 945468370,
+      "LINE": 1,
+      "RELEASE_ACTION_C_NAME": "Release",
+      "MYC_REL_UTC_DTTM": "2023-09-28 15:47:49",
+      "$meta": {
+        "type": "ORDER_MYC_RELEASE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 945468371,
+      "LINE": 1,
+      "RELEASE_ACTION_C_NAME": "Release",
+      "MYC_REL_UTC_DTTM": "2023-09-28 16:19:26",
+      "$meta": {
+        "type": "ORDER_MYC_RELEASE"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 945468372,
+      "LINE": 1,
+      "RELEASE_ACTION_C_NAME": "Release",
+      "MYC_REL_UTC_DTTM": "2023-09-28 21:09:25",
+      "$meta": {
+        "type": "ORDER_MYC_RELEASE"
+      }
+    }
+  ]
+}

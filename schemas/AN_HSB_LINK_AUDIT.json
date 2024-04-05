@@ -1,0 +1,71 @@
+{
+  "name": "AN_HSB_LINK_AUDIT",
+  "description": "The AN_HSB_LINK_AUDIT table contains an audit trail of anesthesia linking operations. This table applies to episode (HSB) records of the type specified for anesthesia episodes in clinical system definitions.",
+  "primaryKey": [
+    {
+      "columnName": "SUMMARY_BLOCK_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SUMMARY_BLOCK_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID for the Episode record for this row. This column is frequently used to link to the EPISODE table.",
+      "linksTo": "EPISODE"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "AN_AUDIT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Anesthesia linking audit trail item representing the type of link being done.",
+      "entries": [
+        "Encounter",
+        "Order",
+        "Ad-hoc"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "AN_AUDIT_VALUE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Anesthesia linking audit trail item representing the value of the link. If the linking type is 1-Encounter, this will be the unique patient contact serial number (EPT CSN) of the linked procedure contact. If the linking type is 2-Order, this will be the unique order (ORD) ID of the linked order. If the linking type is 3-Unlinked, this will be the user-entered episode description."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "AN_AUDIT_INST_TM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Anesthesia linking audit trail item representing the instant the link was changed."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "AN_AUDIT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Anesthesia linking audit trail item representing the user doing the linking."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "AN_AUDIT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    }
+  ]
+}

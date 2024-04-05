@@ -1,0 +1,79 @@
+{
+  "name": "AP_CLAIM_PX_PT_BKT",
+  "description": "This table contains patient buckets involved with or affected by AP Claim service lines.\n\n\n\n\n\nTo link this table�s service line information back to a claim header, join this table to AP_CLAIM_PROC_IDS on the TX_ID column. If you need to report on claim service lines specific to Cost Sharing Reduction (CSR), join this table instead to AP_CLAIM_PROC_IDS_CSR on the TX_ID column.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the AP Claim procedure transaction."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "BEN_BKT_COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the coverage associated with the benefit accumulation bucket that was involved in the adjudication of the procedure."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "BEN_BKT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the benefit accumulation bucket that was involved in the adjudication of the procedure."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "BEN_BKT_ID_BUCKET_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the bucket."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "BEN_BKT_HX_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The benefit bucket accumulation history line number that corresponds to the state of the benefit bucket when it was used in the adjudication of the procedure. This column is often used to join to BEN_ACCUMULATION_HX_PAT.LINE."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "BEN_ACCUM_SEQUENCE_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The sequence number for the benefit accumulation associated with the procedure."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "BEN_ACCUM_PREV_TOTAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total of the benefit accumulation bucket before the benefit amounts were added for the procedure."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "BEN_BKT_LIMIT_TYPE_C",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The limit type of the benefit accumulation bucket that was involved in the adjudication of the procedure. This is only populated for benefit accumulations where a benefit bucket is not specified."
+    }
+  ]
+}

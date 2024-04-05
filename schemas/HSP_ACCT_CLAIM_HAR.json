@@ -1,0 +1,107 @@
+{
+  "name": "HSP_ACCT_CLAIM_HAR",
+  "description": "This table contains hospital account claims information extracted from hospital account records.",
+  "primaryKey": [
+    {
+      "columnName": "ACCT_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ACCT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the hospital account."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "UB92_COVEREDDAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column stores the UB92 Covered days (inpatient only): the number of days covered by the primary payer, as qualified by the payer organization."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "UB92_NONCOVEREDDAY",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column stores the UB92 Non Covered days (inpatient only): the number of days not covered by the primary payer, as qualified by the payer organization."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "UB92_COINSDAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column stores the UB92 Coinsurance days: Days covered by secondary coverage in addition to primary coverage."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "UB92_RESERVEDAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "UB92 Lifetime Reserve Days (INPATIENT ONLY):  Each beneficiary has a lifetime reserve of 60 additional days after using 90 days of inpatient hospital services during a spell of illness.  Lifetime reserve days are not renewable."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ADMISSION_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The admission type category ID for the hospital account."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ADMISSION_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The admission source (e.g., Physician Referral, Transfer from a Hospital, Information Not Available) for the patient encounter associated with this hospital account."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "UB92_TOB_OVERRIDE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the Type of Bill (TOB) override: TOB is a numeric code printed on claims that provide encounter information to a payer. Values entered here will override system settings that normally determine the TOB."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "AUTHORIZATION_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Authorization Number: Used on claims for identifying patient referrals and affected reimbursements."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PARTA_EXHAUST_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which the patient's Part A benefits are exhausted for this inpatient stay.  Part A benefits cover up to 90 inpatient days per stay (plus any lifetime reserve days the patient may opt to use after the 90th day).  After these days have been used, Part A claims will be denied.  Inpatient Part B claims may be submitted for appropriate services."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PATIENT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient status for the patient associated with this hospital account (e.g., Alive, Dead, Unknown, Discharged to Home or Self Care, Admitted as an Inpatient to this Hospital)."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "SHAREABLE_CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for a shareable claim associated with the hospital account."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "NONCVRD_SNF_STAY_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates whether the Skilled Nursing Facility (SNF) stay billed on this account is non-covered due to not having a prior qualifying inpatient stay.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    }
+  ]
+}

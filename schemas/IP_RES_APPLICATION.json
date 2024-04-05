@@ -1,0 +1,62 @@
+{
+  "name": "IP_RES_APPLICATION",
+  "description": "The IP_RES_APPLICATION table contains information about the restraint application, which is the period of time from START to DISCONTINUED. There can be multiple episodes (length of an order) within an application. The table gives the start/end date of the application and the number of episodes within the application.",
+  "primaryKey": [
+    {
+      "columnName": "INPATIENT_DATA_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "RES_TYPE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "APPLICATION_NUM",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RES_TYPE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The restraint type can be a behavioral restraint (BH) or  nonbehavioral/medical-surgical restraint (MS)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "INPATIENT_DATA_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the inpatient data store record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "APPLICATION_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The APPLICATION_NUM refers to the application number for the admission.  The application number assigned to an application increases with each new application and does not repeat until a new admission.  Each application indicates the period of time from START to DISCONTINUED of all restraints.  There can be multiple episodes (length of an order) within an application."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "APP_START_DT",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The application start date refers to the date when the initial restraint had a status of START.  There can be multiple episodes (length of an order) within an application, but the application start date is the date of the first episode in a series of episodes back to back."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "APP_END_DT",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The application end date refers to the date when the restraint had a status of DISCONTINUED.  There can be multiple episodes (length of an order) within an application, but the application end date is the date of the last episode that is being discontinued."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EPISODE_MAX_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of episodes within the restraint application."
+    }
+  ]
+}

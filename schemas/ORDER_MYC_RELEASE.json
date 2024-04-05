@@ -1,0 +1,63 @@
+{
+  "name": "ORDER_MYC_RELEASE",
+  "description": "When a clinician (or interface) releases/unreleases a lab result to/from a web based chart system patient, tracking data for that action is stored in this table.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_PROC_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the procedure order record that is released/unreleased."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Since an order can be released/unreleased multiple times, the line number identifies a particular release instance."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "RELEASE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the Hyperspace user who released/unreleased the lab result to the web based chart system patient."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RELEASE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RELEASE_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates the action taken on the lab result. The data stored is a category value. 1 corresponds to Released. 2 corresponds to Unreleased.   A null value also corresponds to Unreleased.",
+      "entries": [
+        "Release",
+        "Unrelease",
+        "Prevent autorelease"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "MYC_REL_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Contains the instant when a result was released to MyChart in UTC."
+    }
+  ]
+}

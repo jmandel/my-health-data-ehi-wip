@@ -1,0 +1,44 @@
+{
+  "name": "CANCELED_APPTS_EDI",
+  "description": "This table contains the list of visit IDs of appointments that used to be linked to an order, but were cancelled due to the order being cancelled. This item is used by the incoming orders-to-cadence interface to rebook appointments if the order is un-cancelled.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CANCEL_APPTS_EDI",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "List of appointment serial numbers (ASNs) linked to the order."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CANC_APPT_PREV_STAT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the status of the appointments before cancellation."
+    }
+  ]
+}

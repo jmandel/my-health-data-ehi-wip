@@ -1,0 +1,186 @@
+{
+  "name": "ED_FOLLOWUP_AUDIT",
+  "description": "Each record in ED_FOLLOWUP_AUDIT corresponds to a patient's edited follow-up information -- i.e. information for where and when a patient was told to follow up with other providers. This table does not include the current follow-up information.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this edit. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "This is a numeric representation of the date of this encounter in your system. The integer portion of the number specifies the date of the encounter. The digits after the decimal point indicate multiple visits on one day."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the deployment owner for this contact."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the provider record with whom the patient should follow up."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CONTACT_INFO",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The contact information for the patient's follow-up."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "SUMMARY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A summary of the patient contact."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "EDIT_COUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the number of units (days/weeks/months) for follow up associated with this contact."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ED_FUP_UNIT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores whether patient has to follow-up in days/weeks/months or on a specific day.",
+      "entries": [
+        "None specified",
+        "Days",
+        "Weeks",
+        "Months",
+        "Date"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "LOC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID number of the office location for the follow-up."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ED_FU_PRN_USED_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column shows a 1 if there is something written in the comments field.",
+      "entries": [
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "ED_FU_PRN_TEXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The free text entry from the comments field for providers to enter any other information they deem important."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Department ID associated with the department with whom the patient should follow up."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "ED_FU_OTHER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The free text entry that contains with whom the patient should follow up."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "ED_FUP_HOW_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores how the patient should follow up (Call, Make an appointment, etc.).",
+      "entries": [
+        "None specified",
+        "Call",
+        "Make Appointment",
+        "Go To"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the user record who entered this follow-up information."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "ED_FU_INST",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time when this follow-up information was filed."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "ED_FUEDIT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the history of the follow-up dates entered for an encounter."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "ED_FUEDIT_ADDR_KEY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The edit trail for the ED Follow Up Provider Address Key."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "IP_FUEDIT_ORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The edit trail of the follow-up provider order IDs specified for the encounter"
+    }
+  ]
+}

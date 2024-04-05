@@ -1,0 +1,710 @@
+{
+  "name": "PAT_ENC_HSP",
+  "description": "This table is the primary table for hospital encounter information. A hospital encounter is a contact in the patient record created through an ADT workflow such as preadmission, admission, ED Arrival, discharge, and hospital outpatient visit (HOV) contacts. These contact types have the ADT flag (I EPT 10101) set to 1. This table excludes all other contacts.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "ADT_PAT_CLASS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the patient classification for this patient contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ADT_PATIENT_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the patient status for this patient contact.",
+      "entries": [
+        "Preadmission",
+        "Admission",
+        "Discharged",
+        "Leave of Absence",
+        "Hospital Outpatient Visit"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "LEVEL_OF_CARE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the level of care for this patient contact."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PENDING_DISCH_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time of the pending discharge for this patient contact."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "DISCH_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the discharge code for this patient contact."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ADT_ATHCRT_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the authorization/certification status for this patient contact.",
+      "entries": [
+        "Incomplete",
+        "Complete",
+        "Not Needed"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PREADM_UNDO_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the preadmission undo reason for this patient contact."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "EXP_ADMISSION_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time of the expected admission for this patient contact."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "EXP_LEN_OF_STAY",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The expected length of stay in days of the admission for this patient contact."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "EXP_DISCHARGE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of expected discharge of the admission for this patient contact."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ADMIT_CATEGORY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the admission category for this patient contact."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "ADMIT_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the admission source for this patient contact."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "TYPE_OF_ROOM_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the type of room requested for this patient contact."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "TYPE_OF_BED_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the type of bed requested for this patient contact."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "RSN_FOR_BED_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the reason for the type of bed requested for this patient contact."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "DELIVERY_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the delivery type of the child for this patient contact.",
+      "entries": [
+        "Vaginal, Spontaneous",
+        "C-Section, Low Transverse",
+        "Vertical C-Section",
+        "C-Section, Unspecified",
+        "Vaginal, Vacuum (Extractor)",
+        "Vaginal, Forceps",
+        "Vaginal, Breech",
+        "Non-Spontaneous Vaginal Delivery",
+        "VBAC, Spontaneous",
+        "C-Section, Low Vertical",
+        "C-Section, Classical",
+        "Biochemical"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "LABOR_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the labor status for this patient contact.",
+      "entries": [
+        "Expected",
+        "Assessment",
+        "Admitted",
+        "Delivered",
+        "Newborn",
+        "Discharged",
+        "Reserved",
+        "Undo"
+      ]
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "ER_INJURY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Free text description of injury for this patient contact."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "ADT_ARRIVAL_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time of arrival for this patient contact."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "ADT_ARRIVAL_STS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the arrival status for this patient contact.",
+      "entries": [
+        "Expected",
+        "Waiting",
+        "Roomed",
+        "Admitted to ED",
+        "Transferred",
+        "Departed"
+      ]
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "HOSP_ADMSN_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time that the patient was first admitted to the facility, bedded in the ED, or confirmed for an HOV for this contact, regardless of patient's base patient class."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "ADMIT_CONF_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the (admission) confirmation status for this patient contact.",
+      "entries": [
+        "Confirmed",
+        "Pending",
+        "Canceled",
+        "Completed"
+      ]
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "HOSP_DISCH_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The hospital discharge date and time for this patient contact."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "HOSP_ADMSN_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the admission type for the patient contact."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "ROOM_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID number of the room for the most recent location of the patient for this patient contact."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "HOSP_SERV_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the hospital service for this patient contact."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "MEANS_OF_DEPART_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the means of departure of the patient for this patient contact."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "DISCH_DISP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the discharge disposition for this patient contact."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "DISCH_DEST_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the discharge destination for this patient contact."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "TRANSFER_FROM_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the transfer from location for this patient contact."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "MEANS_OF_ARRV_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the means of arrival of the patient for this patient contact."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "ACUITY_LEVEL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the acuity level for this patient contact."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "HOSPIST_NEEDED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether a hospitalist needs to be assigned to the patient for this contact.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "ACCOMMODATION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the room accommodation for this patient contact."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "ACCOM_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the reason for the room accommodation for this patient contact."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "INPATIENT_DATA_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the Inpatient Data Store record."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "PVT_HSP_ENC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to private encounter setting for this patient contact."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "ED_EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the Inpatient episode record for the ED visit."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "ED_DISPOSITION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The disposition of the patient when discharged from the ED."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "ED_DISP_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time that the disposition was entered."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "FOLLOWUP_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The follow-up provider for the patient."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "PROV_CONT_INFO",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The contact information for the patient's follow-up provider."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "OSHPD_ADMSN_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Office of Statewide Health Planning and Development (OSHPD) Source of Admission"
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "OSHPD_LICENSURE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Office of Statewide Health Planning and Development (OSHPD) Licensure of Site"
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "OSHPD_ROUTE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Office of Statewide Health Planning and Development (OSHPD) Route of Admission"
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "INP_ADM_DATE",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Date-time of the inpatient admission. This is the date/time during the hospital encounter when the patient first received a base patient class of inpatient. This can be different than the value for the admission date if the patient was assigned an emergency or outpatient base patient class."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "COPY_TO_PCP_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item will indicate whether the PCP effective for the patient should be notified upon a pre-determined system event."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "ADOPTION_CASE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Item to store whether the current contact is related to an adoption case."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "PREOP_TEACHING_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item describes whether a patient has been offered or given any pre-operative teaching.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "PREOP_PRN_EVAL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is a category item that describes whether a patient has been offered or given a pre-operative nurse practitioner evaluation.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "PREOP_PH_SCREEN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is a category list that describes whether a patient has been offered or given a pre-operative phone screening.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "LABOR_ACT_BIRTH_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the actual birth status of the delivery.",
+      "entries": [
+        "Live Born",
+        "Stillborn"
+      ]
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "LABOR_FEED_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the infant feeding type during the delivery process",
+      "entries": [
+        "Breast",
+        "Bottle"
+      ]
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "PROC_SERV_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Procedure Based Service Category"
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "ED_DEPARTURE_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Date and time the patient left the ED."
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "TRIAGE_DATETIME",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date and the time the patient was triaged."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "TRIAGE_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The triage status."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "INP_ADM_EVENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The event record for the hospital encounter where the patient first received a base patient class of inpatient, making them an inpatient."
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "INP_ADM_EVENT_DATE",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Instant of the event creation of the event which caused a patient to become an inpatient patient class."
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "INP_DWNGRD_EVNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Column to return the event ID of the event that last downgrades the patient from an inpatient patient class to a non-inpatient patient class."
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "INP_DWNGRD_DATE",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Column that returns the effective date and time of a patients latest downgrade from an inpatient patient class."
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "INP_DWNGRD_EVNT_DT",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Column to return the event date and time of the last event that downgrades a patient from an inpatient patient class to a non-inpatient patient class."
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "OP_ADM_DATE",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time during the hospital encounter when the patient first received a base patient class of outpatient."
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "EMER_ADM_DATE",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time during the hospital encounter when the patient first received a base patient class of emergency."
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "OP_ADM_EVENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The event record for the hospital encounter where the patient first received a base patient class of outpatient."
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "EMER_ADM_EVENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The event record for the hospital encounter where the patient first received a base patient class of emergency."
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "PREREG_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Preregistration source value."
+    },
+    {
+      "ordinalPosition": 69,
+      "name": "HOV_CONF_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores a flag to prevent HOVs from being closed by the end of day batch.",
+      "entries": [
+        "In Progress",
+        "Ready For Completion"
+      ]
+    },
+    {
+      "ordinalPosition": 70,
+      "name": "RELIG_NEEDS_VISIT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Used to track a patient's visit-specific religious needs."
+    },
+    {
+      "ordinalPosition": 71,
+      "name": "DISCHARGE_CAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "General Category Item for Discharges"
+    },
+    {
+      "ordinalPosition": 72,
+      "name": "EXP_DISCHARGE_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The time of expected discharge of the admission for this patient contact."
+    },
+    {
+      "ordinalPosition": 73,
+      "name": "BILL_ATTEND_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Billing Attending Provider - The attending provider that is or will be specified on the hospital account and claim when billed."
+    },
+    {
+      "ordinalPosition": 74,
+      "name": "OB_LD_LABORING_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the patient was in labor upon arrival at the hospital.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 75,
+      "name": "OB_LD_LABOR_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time at which labor began."
+    },
+    {
+      "ordinalPosition": 76,
+      "name": "TRIAGE_ID_TAG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The trauma identifier assigned to patient. This number is frequently associated with a pre-printed trauma packet that is used when an accident or other incident results in many patients arriving at the hospital in a short time period."
+    },
+    {
+      "ordinalPosition": 77,
+      "name": "TRIAGE_ID_TAG_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A free-text comment that can be entered along with the trauma identifier or triage ID assigned to the patient."
+    },
+    {
+      "ordinalPosition": 78,
+      "name": "TPLNT_BILL_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the Transplant Billing Status for a visit."
+    },
+    {
+      "ordinalPosition": 79,
+      "name": "ACTL_DELIVRY_METH_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates the delivery method of the last baby delivered on this encounter by this patient. For example, Spontaneous Vaginal Delivery, C-Section - Unspecified, etc."
+    },
+    {
+      "ordinalPosition": 80,
+      "name": "PRENATAL_CARE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Item used to indicate what type of prenatal care the patient has received."
+    },
+    {
+      "ordinalPosition": 81,
+      "name": "AMBULANCE_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the ambulance code."
+    },
+    {
+      "ordinalPosition": 82,
+      "name": "MSE_DATE",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Indicates the date and time of the patient's medical screening exam (MSE)."
+    },
+    {
+      "ordinalPosition": 83,
+      "name": "ADMIT_PROV_TEXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The free text admitting provider for the encounter."
+    },
+    {
+      "ordinalPosition": 84,
+      "name": "ATTEND_PROV_TEXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The free text attending provider for the encounter."
+    },
+    {
+      "ordinalPosition": 85,
+      "name": "PROV_PRIM_TEXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The free text primary care provider for the encounter"
+    },
+    {
+      "ordinalPosition": 86,
+      "name": "PROV_PRIM_TEXT_PHON",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The free text phone number for the primary care provider."
+    },
+    {
+      "ordinalPosition": 87,
+      "name": "HOSPITAL_AREA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This field identifies the hospital area associated with the hospital unit in this patient contact."
+    },
+    {
+      "ordinalPosition": 88,
+      "name": "CHIEF_COMPLAINT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This holds the category number for the chief complaint if the free text chief complaint item is not being used."
+    }
+  ]
+}

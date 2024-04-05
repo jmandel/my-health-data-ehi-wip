@@ -1,0 +1,63 @@
+{
+  "name": "EPRESCRIBE_ERROR_ACTIONS",
+  "description": "This table holds information about e-prescribing error resolution triggered before the May 23 version. E-prescribing error resolution on or after the upgrade to the May 23 version will be stored to ERX_EVENT table instead.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the referral record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "RESOLVING_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates how an e-prescribing error was resolved.",
+      "entries": [
+        "Printed",
+        "Faxed",
+        "Done"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RESOLVING_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates which user resolved an e-prescribing error."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RESOLVING_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RESOLVED_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item indicates when an e-prescribing error was resolved."
+    }
+  ]
+}

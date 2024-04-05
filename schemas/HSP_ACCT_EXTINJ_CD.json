@@ -1,0 +1,145 @@
+{
+  "name": "HSP_ACCT_EXTINJ_CD",
+  "description": "This table contains hospital account external injury codes information from the Hospital Accounts Receivable (HAR) master file.",
+  "primaryKey": [
+    {
+      "columnName": "HSP_ACCOUNT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the hospital account."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column stores the line number in the results of a query. Because multiple external injury codes can be stored in one hospital account, each code will have a unique line number."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "EXT_INJURY_DX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the system identifier of a external injury code stored in the hospital account."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EXT_INJURY_POA_YNU",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column specifies whether each External Cause of Injury Code diagnosis was present on admission. ** Note: this column was deprecated in the Spring 2008 release.",
+      "entries": [
+        "Yes",
+        "No",
+        "Unknown",
+        "Clinically Undetermined",
+        "Exempt from POA reporting"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EXT_COMORBIDITY_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column specifies whether the External Cause of Injury Code diagnosis is a non-complication/comorbidity (\"N\"), complication/comorbidity (\"Y\") or major complication/comorbidity (\"Y\"). Note that this column is extracted as an explicit \"N\" or \"Y\", where \"Y\" is used for both complication or comorbidity (CC) and major complication or comorbidity (MCC). The updated column EXT_COMORBIDITY_C can be used to distinguish between CC and MCC diagnoses.",
+      "entries": [
+        "CC",
+        "No",
+        "MCC"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EXT_DX_AFF_DRG_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column specifies whether the External Cause of Injury Code diagnosis affects the diagnosis-related group (DRG) associated with the hospital account. A null value for this column indicates no.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ECODE_DX_SOI_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "External Cause of Injury Code diagnosis severity of illness",
+      "entries": [
+        "Refinement not possible",
+        "Minor",
+        "Moderate",
+        "Major",
+        "Extreme",
+        "Principal Dx Used for SOI/ROM Calc",
+        "Excluded",
+        "Duplicate Diagnosis",
+        "Excluded Complication of Care"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ECODE_DX_ROM_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "External Cause of Injury Code diagnosis risk of mortality"
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ECODE_DX_EXCLD_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "External Cause of Injury Code diagnosis exclude from clinical reporting"
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ECD_DX_AFCT_SOI_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "External Cause of Injury Code diagnosis affects severity of illness"
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "ECD_DX_AFCT_ROM_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "External Cause of Injury Code diagnosis affects risk of mortality"
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ECODE_DX_POA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores whether each External Cause of Injury Code diagnosis was present on admission. This column links to category table ZC_DX_POA."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "EXT_COMORBIDITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Specifies if complication/comorbidity exists for each External Cause of Injury Code diagnosis on the hospital account."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "ECD_HAC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Specifies if the External Cause of Injury Code diagnosis contributed to a Hospital Acquired Condition.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    }
+  ]
+}

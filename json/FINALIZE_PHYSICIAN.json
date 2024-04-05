@@ -1,0 +1,104 @@
+{
+  "$meta": {
+    "schemas": {
+      "FINALIZE_PHYSICIAN": {
+        "name": "FINALIZE_PHYSICIAN",
+        "description": "This table contains information about the physician who finalized a study and when it was finalized.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the order record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "FINALIZE_PROV_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item stores the physician who finalized a study."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "FINALIZING_INS_DTTM",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "This item stores the instant that a study is finalized."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "FINALIZING_INST_UTC_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "CAUTION: This item stores data that must be kept in sync with Order item 52269 - Finalizing Instant UTC, Bucketed. *This means you should never set this item without setting I ORD 52269 This item captures the date and time in the Universal Time Coordinated (UTC) format that the provider listed in the Finalizing Physician (I ORD 52265) item marked the study as Final."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "FINALIZE_PHYSICIAN",
+            "target": "ORDER_PARENT_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "FINALIZE_PHYSICIAN",
+            "target": "ORDER_PROC",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "FINALIZE_PHYSICIAN",
+            "target": "ORD_PRFLST_TRK",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "FINALIZE_PHYSICIAN": [
+    {
+      "ORDER_ID": 772179259,
+      "LINE": 1,
+      "FINALIZE_PROV_ID": "8800099",
+      "FINALIZING_INS_DTTM": "2019-02-08 20:16:00",
+      "FINALIZING_INST_UTC_DTTM": "2019-02-09 02:16:03",
+      "$meta": {
+        "type": "FINALIZE_PHYSICIAN"
+      }
+    }
+  ]
+}

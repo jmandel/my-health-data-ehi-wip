@@ -1,0 +1,90 @@
+{
+  "$meta": {
+    "schemas": {
+      "ARPB_TX_STMT_DT": {
+        "name": "ARPB_TX_STMT_DT",
+        "description": "This table stores the statement dates for transactions.",
+        "primaryKey": [
+          {
+            "columnName": "TX_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "TX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the transaction record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "STATEMENT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The statement dates for the transaction."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ARPB_TX_STMT_DT",
+            "target": "ARPB_TX_MODERATE",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ARPB_TX_STMT_DT": [
+    {
+      "TX_ID": 190635377,
+      "LINE": 1,
+      "STATEMENT_DATE": "2020-01-29 00:00:00",
+      "$meta": {
+        "type": "ARPB_TX_STMT_DT"
+      }
+    },
+    {
+      "TX_ID": 328283034,
+      "LINE": 1,
+      "STATEMENT_DATE": "2023-03-29 00:00:00",
+      "$meta": {
+        "type": "ARPB_TX_STMT_DT"
+      }
+    },
+    {
+      "TX_ID": 328283034,
+      "LINE": 2,
+      "STATEMENT_DATE": "2023-04-26 00:00:00",
+      "$meta": {
+        "type": "ARPB_TX_STMT_DT"
+      }
+    },
+    {
+      "TX_ID": 317236398,
+      "LINE": 1,
+      "STATEMENT_DATE": "2023-01-11 00:00:00",
+      "$meta": {
+        "type": "ARPB_TX_STMT_DT"
+      }
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "name": "AP_CLAIM_4",
+  "description": "The AP_CLAIM_4 table contains one record for each claim in the managed care system's AP Claims module.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the claim record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "TOT_ADDL_ADJ",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the total additional adjustments for the claim."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "AP_CLAIM_IMPORT_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Used to define the type of source a claim is imported from to drive reporting on the different use cases a single workflow type may have.",
+      "entries": [
+        "Historical System",
+        "Repricing Source",
+        "Delegated Payer",
+        "Clearinghouse",
+        "Other Internal Source",
+        "Other External Source"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SOURCE_GROUP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The EAF record representing the Medical Group that sent the imported claim."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SERVICE_DATE_FROM_LINE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the service date was received at the header level, or was determined based on service lines.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    }
+  ]
+}

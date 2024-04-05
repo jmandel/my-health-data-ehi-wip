@@ -1,0 +1,122 @@
+{
+  "name": "ECHKIN_STEP_INFO",
+  "description": "This table contains eCheck-In information for a specific appointment.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "INCLUDED_STEP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The step of the eCheck-In workflow.",
+      "entries": [
+        "Payments",
+        "Personal Information",
+        "Insurance",
+        "Medications",
+        "Allergies",
+        "Health Issues",
+        "Questionnaires",
+        "Barcode",
+        "Guarantor",
+        "Guarantor with Insurance",
+        "ESign Documents",
+        "Travel History",
+        "Hardware Test",
+        "Patient Location",
+        "Patient Contacts",
+        "Primary Care Provider",
+        "Financial Assistance Screening"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ECHKIN_STEP_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status of the specific step mentioned in the eCheck-In workflow.",
+      "entries": [
+        "Not Offered",
+        "Not Yet Available",
+        "Not Started",
+        "In Progress",
+        "Completed",
+        "Not Needed",
+        "Not Completed",
+        "Filtered"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "STEP_COMPLETED_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the instant (in UTC) the step was completed in the eCheck-In workflow"
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "MYPT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the MyChart user ID that did the eCheck-In step."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "STEP_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the action taken on an eCheck-In step.",
+      "entries": [
+        "Verified",
+        "Updated",
+        "Skipped",
+        "Completed",
+        "Unverified"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "name": "PLAN_DEVIATION_INFO",
+  "description": "This table holds plan-level deviation info for oncology treatment plans, including deviation instant, deviation user, and deviation change type.",
+  "primaryKey": [
+    {
+      "columnName": "TREATMENT_PLAN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TREATMENT_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the oncology treatment plan record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "DEVIATION_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This stores the instants the plan deviated from the protocol."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "DEVIATION_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the users who made the treatment plan deviations"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "DEVIATION_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "DEVIATION_ACTION_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the change action type of the plan deviation, for example, creating a blank plan, or creating a plan that is not from a suggested protocol, etc.",
+      "entries": [
+        "Copy Cycle",
+        "Copy Day",
+        "Add/Copy Order",
+        "Delete Order",
+        "Create Blank Plan",
+        "Non-Suggested Protocol",
+        "Dose Increase",
+        "Dose Decrease",
+        "Rate Increase",
+        "Rate Decrease",
+        "Frequency Change",
+        "Route Change",
+        "Increase Target AUC",
+        "Decrease Target AUC",
+        "Change CrCl Formula",
+        "Enter Order-Specific CrCl Value",
+        "Enter Order-Specific sCr Value",
+        "Increase Frequency Per Day",
+        "Decrease Frequency Per Day",
+        "AUC to Flat Dose",
+        "Multiple Dosage Sig Change"
+      ]
+    }
+  ]
+}

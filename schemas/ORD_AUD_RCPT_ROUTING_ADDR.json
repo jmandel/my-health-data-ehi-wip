@@ -1,0 +1,48 @@
+{
+  "name": "ORD_AUD_RCPT_ROUTING_ADDR",
+  "description": "This table contains the auditing information about the recipient's routing address.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple values associated with a specific group of data within this record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "AUD_RCPT_ROUTING_ADDR",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the auditing information about the recipient's routing address. If the recipient has an SER or EMP record with multiple addresses, this item contains a dash-delimited string with the SER or EMP .1 and the ID number of the address to which the result will be routed. This item is null when the recipient has no SER or EMP record. For SER recipients, the address ID corresponds to SER 21000, which is available in Clarity. The source item is located at ORDER_RAD_RECPNT.ROUTING_ADDRESS."
+    }
+  ]
+}

@@ -1,0 +1,250 @@
+{
+  "name": "ACCOUNT_3",
+  "description": "Accounts contain information about billing for services, while coverages contain information about insurance payors, benefits, subscribers, and members. This table contains one row for each account record in your system.",
+  "primaryKey": [
+    {
+      "columnName": "ACCOUNT_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the account record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PNB_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Posted Not Billed rule type category ID for the guarantor account.",
+      "entries": [
+        "Error",
+        "Warning"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ALWAYS_SELF_PAY_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether this account should always be self-pay.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "REFERRAL_SOURCE_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comment associated with the referral source in ACCOUNT.REFERRAL_SOURCE."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "BILLING_TITLE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID of the title used to address the person associated with the guarantor account.",
+      "entries": [
+        "Ms.",
+        "Mr.",
+        "Miss",
+        "Mrs.",
+        "Dr.",
+        "Fr.",
+        "Sr.",
+        "Rev.",
+        "Lord",
+        "King",
+        "Queen",
+        "Prince",
+        "Princess",
+        "Sheikh",
+        "Sheikha"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "HB_NEXT_BAL_NOTIF_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which the next balance notification will be sent to the guarantor for their HB/SBO balances."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "HB_NEXT_AUTOPAY_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The next Auto Pay date for guarantor set up with a payment plan on Auto Pay."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PB_NEXT_BAL_NOTIF_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date on which the next balance notification will be sent to the guarantor for their PB balances."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "FAMILY_INCOME",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The annual family income for this account."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "CLEAR_FOLLOWUP_FLAG",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores whether the account should be considered for a new follow-up cycle by nightly processing."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "FOL_UP_LETTER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The follow-up letter associated with the account."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "FOL_UP_TEMPLATE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comma-delimited string of SmartText records associated with the account."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "FAMILY_SIZE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of family members associated with the account."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "OUTSTANDING_ACCT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column specifies if the account is outstanding or not.",
+      "entries": [
+        "OUTSTANDING"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "PMT_PLAN_SECOND_DUE_DT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Contains the day of the month that the second bi-monthly payment is due."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "PMT_PLAN_EXP_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The expected paid amount of the payment plan. This amount is updated by nightly processing. The amount is incremented by the monthly amount when the closed batch date equals the current due date."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PMT_PLAN_NEXT_DUE_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Next due date of the payment plan. The date is updated by nightly processing when the closed batch date is the current due date."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "PMT_PLAN_AUTOPAY_DUE_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the card will be charged for the auto-pay payment plan."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PMT_PLAN_AUTOPAY_DAY",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The day of the month when card will be automatically charged."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "STMT_HOLD_REASON_TEXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The free text information related to the reason why the account was held in PB statement processing."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "HB_IN_PROG_SP_BAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the HB self-pay balance of in progress accounts for the guarantor, excluding hospital accounts in external AR or bad debt. In progress accounts are those that have not yet been billed to self-pay."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "HB_IN_PROG_BAD_DEBT_SP_BAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the HB self-pay balance of in progress bad debt accounts for the guarantor. In progress accounts are those that have not yet been billed to self-pay."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "HB_IN_PROG_EXTERNAL_AR_SP_BAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the HB self-pay balance of in progress external AR accounts for the guarantor. In progress accounts are those that have not yet been billed to self-pay."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "HB_CONTEST_SP_BAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the HB self-pay balance of contested accounts for the guarantor, excluding hospital accounts in external AR or bad debt."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "HB_CONTEST_BAD_DEBT_SP_BAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the HB bad debt self-pay balance of contested accounts for the guarantor."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "HB_CONTEST_EXTERNAL_AR_SP_BAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the HB External AR self-pay balance of contested accounts for the guarantor."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "DECLINED_FA_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The most recent time a guarantor declined financial assistance."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "PB_CONTEST_SP_BAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total contested PB HAR balance for the guarantor"
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "PB_CONTEST_EXTERNAL_AR_SP_BAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total contested external A/R PB HAR balance for the guarantor"
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "EB_PMT_PLAN_SCHED_PMT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the HB/SBO payment plan agreement record for this guarantor."
+    }
+  ]
+}

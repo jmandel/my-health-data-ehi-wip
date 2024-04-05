@@ -1,0 +1,95 @@
+{
+  "$meta": {
+    "schemas": {
+      "PATIENT_MYC": {
+        "name": "PATIENT_MYC",
+        "description": "This table contains web-based chart system-related data items that are stored in the Patient (EPT) master file. These items generally relate to web-based chart system account activation and account status, and also include the last verification date for different types of patient information that can be verified through the web-based chart system.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+            "linksTo": "PATIENT"
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "PAT_ACCESS_STAT_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The access code status category number for the patient. 0 corresponds to \"Not Used\". 1 corresponds to \"Used\".",
+            "entries": [
+              "Not Used",
+              "Used"
+            ]
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "MYCHART_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The web-based chart system status category number for the patient.",
+            "entries": [
+              "No Status",
+              "Activated",
+              "Inactivated",
+              "Pending Activation",
+              "Non Standard MyChart Status",
+              "Patient Declined",
+              "Activation Code Generated, but Disabled"
+            ]
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "MYPT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the web-based chart system patient account."
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "DEM_VERIF_DT",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Date of last demographics verification by patient or his/her proxy from MyChart."
+          },
+          {
+            "ordinalPosition": 15,
+            "name": "INS_VERIF_DT",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Date of last insurance verification by patient or his/her proxy from MyChart"
+          },
+          {
+            "ordinalPosition": 16,
+            "name": "R_E_L_PAT_VERIF_DT",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date when race, ethnicity, and language information was last verified by the patient online using the patient portal."
+          }
+        ]
+      }
+    }
+  },
+  "PATIENT_MYC": [
+    {
+      "PAT_ID": "Z7004242",
+      "PAT_ACCESS_STAT_C_NAME": "Used",
+      "MYCHART_STATUS_C_NAME": "Activated",
+      "MYPT_ID": "389635",
+      "DEM_VERIF_DT": "2023-09-27 00:00:00",
+      "INS_VERIF_DT": "2023-09-27 00:00:00",
+      "R_E_L_PAT_VERIF_DT": "2023-09-27 00:00:00",
+      "$meta": {
+        "type": "PATIENT_MYC"
+      }
+    }
+  ]
+}

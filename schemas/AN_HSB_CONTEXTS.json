@@ -1,0 +1,63 @@
+{
+  "name": "AN_HSB_CONTEXTS",
+  "description": "This table contains information about the types of contexts that have been documented on an anesthesia record. A record can be associated with a context of Anesthesia, Sedation, or Perfusion based on the activity with which a user opened the record.",
+  "primaryKey": [
+    {
+      "columnName": "SUMMARY_BLOCK_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SUMMARY_BLOCK_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the Episode."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for episode context information associated with each anesthesia record. This includes the episode context, user ID, audit time for when the context was added to the record, and whether an automatic macro was attempted. There can be multiple contexts associated with each anesthesia record, with each entry corresponding to a different line."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "AN_EPISODE_CONTEXT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The context that has been associated with the anesthesia record. The possible contexts include Anesthesia, Sedation, and Perfusion.",
+      "entries": [
+        "Anesthesia",
+        "Sedation",
+        "Perfusion"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RECORD_AUDIT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the audit information for who caused the episode context to be added to the record."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RECORD_AUDIT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RECORD_AUDIT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the audit information for when the episode context was added to the record."
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "$meta": {
+    "schemas": {
+      "GOAL_CONTACT": {
+        "name": "GOAL_CONTACT",
+        "description": "This table contains contact specific data for the IGO (Discrete Goals) master file.",
+        "primaryKey": [
+          {
+            "columnName": "GOAL_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "CONTACT_DATE_REAL",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "GOAL_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID for the goal record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "CONTACT_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "The DTE contact date for the goal record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "EDIT_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item holds edited user ID information."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "EDIT_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "PAT_CSN",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Patient CSN (contact serial number I.E. unique contact identifier) associated with a particular IGO (goal) contact.",
+            "mergedFrom": "PT_GOALS_UPDATES"
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Current status of the goal record",
+            "entries": [
+              "Active",
+              "Done",
+              "Deleted"
+            ],
+            "mergedFrom": "PT_GOALS_UPDATES"
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "INSTNT_OF_EDIT_DTTM",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "Instant of edit for this contact.",
+            "mergedFrom": "PT_GOALS_UPDATES"
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "DISPLAY_NAME_OT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Display name for the goal",
+            "mergedFrom": "PT_GOALS_UPDATES"
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "PT_STATED_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates whether or not a goal is patient-stated.",
+            "entries": [
+              "No",
+              "Yes"
+            ],
+            "mergedFrom": "PT_GOALS_UPDATES"
+          }
+        ],
+        "merged": [
+          {
+            "name": "PT_GOALS_UPDATES",
+            "description": "This table contains data for the Discrete Goals (IGO) masterfile that is over-time data."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "GOAL_CONTACT",
+            "target": "GOAL",
+            "joinKeys": [
+              {
+                "source": "GOAL_ID",
+                "target": "GOAL_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "GOAL_CONTACT": [
+    {
+      "GOAL_ID": "19345887",
+      "CONTACT_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "EDIT_USER_ID": "RAMMELZL",
+      "EDIT_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "$meta": {
+        "type": "GOAL_CONTACT",
+        "mergedFrom": [
+          "PT_GOALS_UPDATES"
+        ]
+      },
+      "// mergedFrom PT_GOALS_UPDATES": true,
+      "PAT_CSN": 948004323,
+      "STATUS_C_NAME": "Active",
+      "INSTNT_OF_EDIT_DTTM": "2022-08-29 19:19:00",
+      "DISPLAY_NAME_OT": "Blood Pressure < 140/90",
+      "PT_STATED_YN": "N"
+    }
+  ]
+}

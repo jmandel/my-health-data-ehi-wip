@@ -1,0 +1,788 @@
+{
+  "name": "HSP_BFH_ACT_DATA_HLB",
+  "description": "This table stores billing activity history action-specific data. Every time a billing activity (ATM) is performed on a record or group of records, an activity history record (BFH) is logged. These activity history records store specific data related to each action that was performed on the activity. Each action (and its related data) is logged as a line in related group BFH 300. This table is specifically for actions performed on liability buckets (HLB).",
+  "primaryKey": [
+    {
+      "columnName": "BFH_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "BFH_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the billing activity history record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The action category ID for this row in the billing activity history. The other data in this row represent specific values associated with this action performed.",
+      "entries": [
+        "Send Breeze Letter",
+        "Send to Pre-Collect",
+        "Send to Bad Debt",
+        "Return from Agency",
+        "Write-Off Self-Pay",
+        "Update Billing/Statement Note",
+        "Change Notification Date",
+        "Add to Workqueue",
+        "Add Note",
+        "Outsource Account",
+        "Change Agency",
+        "Update Billing Indicators",
+        "Send Letter",
+        "Change Self-Pay Follow-up Date",
+        "Send to External Agency AR",
+        "Modify SNF PPS Codes",
+        "Defer",
+        "Change Self-Pay Follow-up Level",
+        "Add Charge",
+        "Reverse Transaction",
+        "Reprice Charge",
+        "Correct Charge",
+        "Update Stop Bills",
+        "Enable Paperless Billing",
+        "Disable Paperless Billing",
+        "Post Adjustment",
+        "Transfer Follow-up Record",
+        "Next Responsible Party",
+        "Transfer to Self-Pay",
+        "Undo Billing",
+        "Submit Claim Status Request",
+        "Update Guarantor Status",
+        "Post Refund",
+        "Change Bundled Episode",
+        "Duplicate and Send Charge",
+        "Initiate Informational Claim",
+        "Evaluate Pricing Contracts",
+        "Override Home Health Discharge Disposition",
+        "Change Financial Assistance",
+        "Reevaluate Self-Pay Discounts",
+        "Unlock Pay as Guest",
+        "Change Admit/Discharge Dates",
+        "Update Additional Payment Reconciliation",
+        "Change Account Class",
+        "Override Surcharge",
+        "Override Expected Reimbursement",
+        "Update Invoice Numbers",
+        "Discharge Account",
+        "Combine Account",
+        "Uncombine Account",
+        "Reopen Account",
+        "Close Account",
+        "Override Claim Sent Dates",
+        "Override Claim ICN",
+        "Create Related Account",
+        "Add Guarantor Note",
+        "Update Coding Status",
+        "Update Abstracting Status",
+        "Update CDI Review Status",
+        "Change Assigned Coder",
+        "Change Assigned Abstracter",
+        "Change Assigned CDI Specialist",
+        "Initiate Homing",
+        "Initiate Billing",
+        "Post Not Allowed Adjustment",
+        "Override Self-Pay Discount",
+        "Update Settlement Numbers",
+        "Admission Day Billing",
+        "Send Detail Bill",
+        "Send Statement",
+        "Process Late Charges",
+        "Undo All Billing",
+        "Send Guarantor Detail Bill",
+        "Undo Discharge",
+        "Override DNB Warnings",
+        "Override RAP Checks",
+        "Update Coding Flags",
+        "Override Expected Self-Pay Liability",
+        "Create Trust Account Series",
+        "Change Next Statement Date",
+        "Change Next Payment Plan Auto Pay Date",
+        "Log Denial/Remark",
+        "Defer Payment Plan",
+        "Contest Account",
+        "Complete",
+        "Transfer",
+        "Skip",
+        "Route",
+        "Reevaluate Expected Reimbursement",
+        "Reevaluate APC Grouping",
+        "Undo Informational Bucket",
+        "Initiate No-Pay Claim",
+        "Initiate Exhaust Claim",
+        "Research Review",
+        "Send Denied Amount to Self-Pay",
+        "Ignore Denied Amount",
+        "Void DBC",
+        "Undo Close DBC",
+        "Park DBC",
+        "Unpark DBC",
+        "Reprice DBC",
+        "Send In Basket Message for DBC",
+        "Flag for Review",
+        "Close DBC",
+        "Recalculate DBC Close Dates",
+        "Update Visit Auto Pay",
+        "Terminate Visit Auto Pay",
+        "Set Up Recurring Payment",
+        "Update Recurring Payment",
+        "Terminate Recurring Payment",
+        "Split Account",
+        "Update SNF Exhaust Date",
+        "Process Payment Plan Payment Now",
+        "Change Next Visit Auto Pay Date",
+        "Set Up Recurring Trust Transfer",
+        "Update Recurring Trust Transfer",
+        "Terminate Recurring Trust Transfer",
+        "Process Recurring Trust Transfer Now",
+        "Perform One-Time Trust Transfer",
+        "Close Recurring Series",
+        "Reopen Recurring Series",
+        "Override Send DBC to Grouper Checks",
+        "Send DBC to Grouper",
+        "Close Case",
+        "Refund",
+        "Log Correspondence",
+        "Log Variance",
+        "Mark for Separate Service Area Billing",
+        "Unmark for Separate Service Area Billing",
+        "Send to Billing Service Area",
+        "Return to Care Service Area",
+        "Send Claim Detail Bill",
+        "Process Visit Auto Pay Payment Now",
+        "Process Recurring Payment Now",
+        "Update Self-pay Charge Exemption Reason",
+        "Send Self-Pay to Consolidated Service Area / External Billing",
+        "Return from Consolidated Service Area / External Billing",
+        "Resubmit Charge",
+        "Perform Workqueue Action",
+        "Resubmit Claim",
+        "Print Claim",
+        "Transfer to Insurance",
+        "Void Charge",
+        "Post Split Write-off",
+        "Send Guarantor Letter",
+        "Send Invoice Letter",
+        "Initiate RAP",
+        "Initiate Secondary RAP",
+        "Initiate Notice of Election",
+        "Initiate Home Health No-Pay RAP",
+        "Initiate Home Health Notice of Admission",
+        "Transaction Reverse",
+        "Transfer Transaction",
+        "Charge Duplicate and Send",
+        "Research Correct",
+        "Client Correct",
+        "Quick Correct",
+        "Contest Charge",
+        "Post Transaction Refund",
+        "Add Corresponding Charge",
+        "Edit Refund",
+        "Update Denial/Remark",
+        "Void Denial/Remark",
+        "Reopen Denial/Remark",
+        "Update Correspondence",
+        "Void Correspondence",
+        "Reopen Correspondence",
+        "Update Variance",
+        "Void Variance",
+        "Reopen Variance",
+        "Create Release",
+        "Reset Self-Pay Aging Date",
+        "Reset Insurance Aging Date",
+        "Replace Claim",
+        "Submit Cancel Claim",
+        "Recalculate Discount",
+        "Repost",
+        "Reprint Refund Slip",
+        "Undistribute",
+        "Transfer to HB",
+        "Refund Request",
+        "Void Transaction",
+        "Send to Collection Agency",
+        "Recall from Collection Agency",
+        "Refund Review",
+        "Edit Visit Filing Order",
+        "Change AP Import Status",
+        "Edit Payment",
+        "Edit Adjustment",
+        "Post Debit Adjustment",
+        "PB Demand Claim",
+        "Transfer Visit/Invoice",
+        "PB Accept Filing Order",
+        "PB Reject Filing Order",
+        "Post PB Debit Adjustment",
+        "Turn On Automatic Self-Pay Write-Off",
+        "Turn Off Automatic Self-Pay Write-Off",
+        "PB Undistribute",
+        "Override Posted Not Billed Warnings",
+        "Retroadjudication",
+        "Create Shadow Charges",
+        "Update Payment Plan",
+        "Terminate Payment Plan",
+        "Set Reminder",
+        "Send Billing Notification",
+        "Update PB Billing Status",
+        "Demand Claim",
+        "Remove From Claim Queue",
+        "Rehome",
+        "Add to Credit Workqueue",
+        "Send Tapestry Letter"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ACT_BDC_RECORD_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the denial/correspondence record type category ID that is created as a result of this bucket action.",
+      "entries": [
+        "Denial",
+        "Remark",
+        "Correspondence",
+        "Underpayment",
+        "Overpayment"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ACT_BDC_RECEIVED_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column stores the denial/correspondence record received date that is set as a result of this bucket action."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ACT_BDC_RECORD_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the denial/correspondence record source category ID that is set as a result of this bucket action.",
+      "entries": [
+        "Payment Received",
+        "Correspondence Received",
+        "Zero Allowed Amount",
+        "Expected Allowed Amount Updated",
+        "Reserved for future use",
+        "System Auto Action Claim Denied",
+        "PB Follow-up Automatic Activity",
+        "RAC Correspondence",
+        "ADR Correspondence",
+        "HH Pre-Claim Review",
+        "Transferred In"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ACT_BDC_INVOICE_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the denial/correspondence record invoice number that is set as a result of this bucket action."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ACT_BDC_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the denial/correspondence record amount that is set as a result of this bucket action."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ACT_BDC_REMIT_CODE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the denial/correspondence record reason code ID that is set as a result of this bucket action."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ACT_BDC_REMIT_CODE_ID_REMIT_CODE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of each remittance code."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "ACT_BDC_IMAGE_MNEM_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the denial/correspondence record image mnemonic category ID that is set as a result of this bucket action."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ACT_BDC_IMAGE_KEY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the denial/correspondence record image key that is set as a result of this bucket action."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "ACT_SURCHARGE_OVERRIDE_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the type of surcharge override performed during a billing activity (ATM) action.",
+      "entries": [
+        "System",
+        "User",
+        "Ins Pmt"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "ACT_OUTLIER_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The outlier amount that is set as a result of this bucket action."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "ACT_ADDON_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The add-on amount that is set as a result of this bucket action."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "ACT_XR_OVERRIDE_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of expected reimbursement override that was performed during this bucket action.",
+      "entries": [
+        "System Calculated",
+        "Contract Overridden",
+        "Expected Amounts Overridden",
+        "Overridden by Wisdom Estimate"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "ACT_OVERRIDE_ICN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the internal control number that is set as a result of this bucket action."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "ACT_PMT_RECON_REPORT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The report type category ID that was set through this bucket action."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "ACT_SETTLMENT_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Documents the changes in the settlement number."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "ACT_NRP_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the next responsible party type performed as part of this activity.",
+      "entries": [
+        "EOB Amount",
+        "Fixed Amount",
+        "Remaining Bucket Balance"
+      ]
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "ACT_EXPECTED_ALLOWED_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The expected allowed amount used for this action."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "ACT_PAYER_ALLOWED_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The payer allowed amount used for this action."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "ACT_USE_PREV_CLAIM_DATA_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether we are using data from the previous claim for this billing activity. Yes (Y) means we are reusing previous claim data, No (N) means we are not.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "ACT_TOB",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The override Type of Bill used by the billing activity."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "ACT_PROCESS_IP_PART_B_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the billing activity processed the claim as an Inpatient Part B claim. Yes (Y) means the claim was processed as Inpatient Part B, No (N) means it was not."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "ACT_CLM_CHNG_COND_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The claim change reason code category ID for the billing activity."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "ACT_NRP_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the next responsible party amount."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "ACT_COPAY_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the copay amount"
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "ACT_DEDUCTIBLE_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the deductible amount"
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "ACT_COINSURANCE_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the coinsurance amount"
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "ACT_NON_COVERED_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the non-covered amount"
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "ACT_RESUB_CLM_AFTER_ACT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores whether the user chose to resubmit the resulting bucket's claim after the action completes"
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "ACT_PMT_RECON_REPORT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the report date"
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "ACT_PMT_RECON_TOTAL_CHG_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the total charge amount"
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "ACT_PMT_RECON_NOT_ALWD_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the not allowed amount for a bucket"
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "ACT_PMT_RECON_PAYMENT_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the payment amount"
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "ACT_CONTRACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the contract date of a contract on the bucket"
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "ACT_EXP_NOT_ALLOWED_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the expected not allowed amount"
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "ACT_SURCHARGE_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the surcharge amount"
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "ACT_TRANSFER_TO_BUCKET_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the bucket that a record was transferred to"
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "ACT_EXTERNAL_SENT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date that a claim was sent to an external source"
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "ACT_PAYER_RECEIVED_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date that a payer received a claim"
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "ACT_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the procedure code"
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "ACT_ADJUSTMENT_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the adjustment amount"
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "ACT_SURCHARGE_ASSIGNMENT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores how the surcharge is assigned",
+      "entries": [
+        "System Distribution",
+        "Surcharge Credit",
+        "Non-Surcharge"
+      ]
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "ACT_REV_EXISTING_WO_ADJ_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether to reverse existing write-offs for the bucket"
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "ACT_UNDO_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Type of undo billing that was performed on the bucket",
+      "entries": [
+        "Undo Next Responsible Party",
+        "Undo Billing"
+      ]
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "ACT_POST_CONTRACTUAL_ADJ_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores whether the user chose to post a contractual adjustment for closed buckets alongside the action"
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "ACT_REFUND_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the refund amount for the Post Refund bucket action"
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "ACT_REFUND_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the category value of the refund reason for the Post Refund bucket action",
+      "entries": [
+        "Other",
+        "Duplicate",
+        "Posted in Error",
+        "Overpayment",
+        "Financial Assistance",
+        "Left Without Being Seen",
+        "Patient Requested",
+        "Visit Canceled"
+      ]
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "ACT_REFUND_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the additional comment that goes along with the refund reason for the Post Refund bucket action"
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "ACT_REFUND_SEND_TO_OPTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the category value of the option to whom to send the refund in the Post Refund bucket action",
+      "entries": [
+        "Coverage",
+        "Guarantor",
+        "Patient",
+        "Custom Payee",
+        "Address Override",
+        "Payer",
+        "Plan",
+        "Direct Return"
+      ]
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "ACT_REFUND_CUSTOM_PAYEE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the agency record for the custom payee to whom to send the refund for the Post Refund bucket action."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "ACT_REFUND_CUSTOM_PAYEE_ID_AGENCY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the agency."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "ACT_REFUND_COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the coverage for where to send the refund for the Post Refund bucket action."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "ACT_REFUND_PAYER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the payer for where to send the refund for the Post Refund bucket action."
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "ACT_REFUND_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the plan for where to send the refund for the Post Refund bucket action."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "ACT_ADDR_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the name for an address specified in a billing activity action"
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "ACT_ADDR_LINE_1",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the first line of an address specified in a billing activity action"
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "ACT_ADDR_LINE_2",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the second line of an address specified in a billing activity action"
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "ACT_ADDR_CITY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the city of an address specified in a billing activity action"
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "ACT_ADDR_STATE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the category value of the state/province in a country for an address specified in a billing activity action"
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "ACT_ADDR_ZIP_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the zip code for an address specified in a billing activity action"
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "ACT_ADDR_HOUSE_NUMBER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the house number for an address specified in a billing activity action. This may be blank for some addresses."
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "ACT_ADDR_COUNTY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the category value of the county for an address specified in a billing activity action"
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "ACT_ADDR_DISTRICT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the category value of the district for an address specified in a billing activity action"
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "ACT_ADDR_COUNTRY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the category value of the country for an address specified in a billing activity action"
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "ACT_TRANSFER_FROM_BUCKET_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier of the source bucket when transferring a denial/correspondence record."
+    },
+    {
+      "ordinalPosition": 69,
+      "name": "ACT_PMT_RECON_NON_CVD_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the additional payment reconciliation non-covered amount"
+    },
+    {
+      "ordinalPosition": 70,
+      "name": "ACT_ADDL_NRP_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the additional NRP Amount"
+    }
+  ]
+}

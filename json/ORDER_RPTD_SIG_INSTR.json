@@ -1,0 +1,194 @@
+{
+  "$meta": {
+    "schemas": {
+      "ORDER_RPTD_SIG_INSTR": {
+        "name": "ORDER_RPTD_SIG_INSTR",
+        "description": "For each row in ORDER_RPTD_SIG_HX, this table contains the free-text instructions that were entered, if any.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "GROUP_LINE",
+            "ordinalPosition": 2
+          },
+          {
+            "columnName": "VALUE_LINE",
+            "ordinalPosition": 3
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the order record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "GROUP_LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with the instructions for this medication."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "VALUE_LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number of one of the multiple values associated with a specific group of instructions within this record."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "INSTRUCTIONS",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The additional instructions included with the medication instructions."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RPTD_SIG_INSTR",
+            "target": "MEDICATION_COST_ESTIMATES",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RPTD_SIG_INSTR",
+            "target": "ORDER_DX_MED",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_MED_ID"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RPTD_SIG_INSTR",
+            "target": "ORDER_IMAGE_AVAIL_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RPTD_SIG_INSTR",
+            "target": "ORDER_RPTD_SIG_HX",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RPTD_SIG_INSTR",
+            "target": "ORDER_SUMMARY",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RPTD_SIG_INSTR",
+            "target": "ORD_MED_ADMININSTR",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_MED_ID"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RPTD_SIG_INSTR",
+            "target": "ORD_MED_USER_ADMIN",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RPTD_SIG_INSTR",
+            "target": "ORDER_MED",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_MED_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RPTD_SIG_INSTR",
+            "target": "ORD_PRFLST_TRK",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ORDER_RPTD_SIG_INSTR": [
+    {
+      "ORDER_ID": 772179266,
+      "GROUP_LINE": 1,
+      "VALUE_LINE": 1,
+      "INSTRUCTIONS": "<!--EPICS-->Start with 10 mg at night; can increase to 20 mg after 1-2 weeks if no side effects<!--EPICE-->",
+      "$meta": {
+        "type": "ORDER_RPTD_SIG_INSTR"
+      }
+    }
+  ]
+}

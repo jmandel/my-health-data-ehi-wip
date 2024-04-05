@@ -1,0 +1,86 @@
+{
+  "name": "ED_RAD_STATUS",
+  "description": "The ED_RAD_STATUS table contains information about ED patients' \"radiology\" status. One row in this table corresponds to one ED \"radiology\" status change. If a patient's ED \"radiology\" status is changed five times in a single encounter, this table will contain five rows for that encounter.",
+  "primaryKey": [
+    {
+      "columnName": "INPATIENT_DATA_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "INPATIENT_DATA_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the Inpatient Data Store record for this row. This column is frequently used to link to PAT_ENC_HSP.INPATIENT_DATA_ID."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ED_RAD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ED radiology status category number for the ED encounter.",
+      "entries": [
+        "Rad Ordered",
+        "Rad Sent",
+        "Rad Returned",
+        "Rad Reported",
+        "Rad Resulted",
+        "Pt Ready for X-Ray",
+        "Pt at X-Ray",
+        "Pt Returned from X-Ray",
+        "Image Exam Started",
+        "Image Available",
+        "Image Ordered",
+        "Image Sent",
+        "Image Returned",
+        "Image Reported",
+        "Image Resulted",
+        "Procedure Ordered",
+        "Procedure Resulted",
+        "Procedure Completed"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RAD_STATUS_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time when the ED radiology status was set."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RAD_STATUS_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who is associated with this status change. This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RAD_STATUS_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI). This column is frequently used to link to PAT_ENC_HSP.PAT_ENC_CSN_ID."
+    }
+  ]
+}

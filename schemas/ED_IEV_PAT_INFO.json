@@ -1,0 +1,235 @@
+{
+  "name": "ED_IEV_PAT_INFO",
+  "description": "This table contains information that is useful for linking records (patient, department, etc.) to their appropriate events.",
+  "primaryKey": [
+    {
+      "columnName": "EVENT_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "EVENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the event record. This column is frequently used to link to the ED_IEV_EVENT_INFO table.",
+      "linksTo": "ED_IEV_EVENT_INFO"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this line. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ITEMS_EDITED_TIME",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date and time when this event record was last edited."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "UPDATE_DATE",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The last date and time the event record was extracted."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PAT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique, internal contact date in decimal format. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "DTE_EXTERNAL",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across patients and encounters in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique, internal patient contact date in decimal format. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "DEPT_EVENT_DEP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the department that is associated with this event record. Note: this item is populated only for department-level events."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "RECORD_STATE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The record state category number for the event record. Link this column to the ZC_PBA_REC_STAT table to look up the corresponding record state values.",
+      "entries": [
+        "Active",
+        "Inactive",
+        "Deleted",
+        "Inactive and Deleted",
+        "Hidden",
+        "Inactive and Hidden",
+        "Deleted and Hidden",
+        "Inactive Deleted and Hidden"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "TRANSFER_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The transfer status category number for medication reconciliation events.",
+      "entries": [
+        "Active",
+        "Canceled",
+        "Completed"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "CREATE_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant when the event record was created."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "CREATE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who created the event record."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "CREATE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "EVENT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the event record was created."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PAT_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across patients and encounters in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "ADT_TRANSFER_LINK",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Virtual item for the Admission, Transfer, Discharge, or Leave of Absence (ADT) event link for a medication reconciliation transfer."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "REG_CLIP_FREETEXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "User-entered patient name for patient added to clipboard. User-entered text is necessary for users without security to select real patients or for new patients."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "REG_CLIP_COMMENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Comments for the patient added to the Patients Waiting Registration Clipboard"
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "IP_ORDREC_SORT_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "This is the instant that all the orders in the event should be sorted by, instead of using their individual ordering session keys or ordering instants."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "REG_WAIT_STATE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the state of the record that holds Registration wait list info.",
+      "entries": [
+        "Unidentified Patient",
+        "Identified Patient",
+        "Identified Encounter",
+        "Removed"
+      ]
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "REG_WAIT_PAT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the user-entered patient name for a patient who is waiting but has not yet been identified."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "REG_WAIT_IS_PRI_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the priority value for a patient who is waiting to be registered.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "REG_WAIT_ARRV_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Holds the earliest event instant, which will indicate the time the patient arrived for the encounter this event list is associated with."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "AVS_COPY_FORWARD_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time that a user copied After Visit Summary documentation from another encounter into this one."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "AVS_COPY_FORWARD_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who copied After Visit Summary documentation from another encounter into this one."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "AVS_COPY_FORWARD_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    }
+  ]
+}

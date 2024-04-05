@@ -1,0 +1,658 @@
+{
+  "name": "AP_CLAIM_PROC_2",
+  "description": "This table summarizes data for AP Claims service lines, with each service line given one row.\n\n\n\n\n\nTo link this table�s service line information back to a claim header, join this table to AP_CLAIM_PROC_IDS on the TX_ID column. If you need to report on claim service lines specific to Cost Sharing Reduction (CSR), join this table instead to AP_CLAIM_PROC_IDS_CSR on the TX_ID column.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the AP Claim procedure transaction."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PAT_PAY_CMP_CMG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The component or component group used to determine the patient portion on service line of the AP claim."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_PAY_CMP_CMG_COMPONENT_INDEX_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the component index record"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_PAY_CML_LN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The line of the adjudication table that was used to determine the patient portion of the service line on the AP Claim."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PAT_PAY_NET",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The network status of the service line on the AP claim. This column can be joined to column IN_OUT_NET_C in table ZC_IN_OUT_NET in order to translate the category value to the corresponding name or abbreviation."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PAT_PAY_CMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The benefit tier that was used to determine the patient portion of the service line on the AP Claim."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PAT_PAY_CMT_COMPON_TIER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the tier record."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PAT_PAY_RFL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The referral attached to the AP claim."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PAT_PAY_CMA",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The adjudication formula used to determine the patient portion of the service on the AP claim."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PAT_PAY_CMA_ADJUD_FORMULA_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the adjudication formula"
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PAT_PAY_CMK",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The benefit package used to determine the patient portion of the service line on the AP Claim."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PAT_PAY_CMK_BENEFIT_PACKAGE_NM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the benefit package."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PAT_PAY_EPP",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The benefit plan used to determine the patient portion of the service line on the AP claim."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "PAT_PAY_COPAY_CAT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The copay category used in adjudicating the service line of the AP claim.  This column will be deprecated in a future release and replaced by the Clarity column AP_CLAIM_PROC_2.PAT_PAY_COPAY_SERVICE_TYPE_ID."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "PAT_PAY_DEP_SPEC",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The department specialty of the AP claim.  This column will be deprecated in a future release and replaced by the Clarity column AP_CLAIM_PROC_2.PAT_PAY_SPECIALTY_DEP_C."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "PAT_PAY_PT_AMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient portion for the service line on the AP claim."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PAT_PAY_SRC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The source of the copay or coinsurance value for the service line on the AP claim. If equal to 1, the value comes from the benefit plan. If equal to a value other than 1, the value comes from a coverage-level override.  This column will be deprecated in a future release and replaced by the Clarity column AP_CLAIM_PROC_2.PAT_PAY_COPAY_AMT_SRC_C."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "PAT_PAY_COPAY_FLAG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores 1 if the copay was collected at check-in.  This column will be deprecated in a future release and replaced by the Clarity column AP_CLAIM_PROC_2.PAT_PAY_COPAY_COL_SRC_C."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PAT_PAY_AUTH",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Indicates whether authorization is required for the service line on the AP Claim."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "PAT_PAY_CFR",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The benefit referral classifier record that was used to determine the patient portion of the service line on the AP Claim."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "PAT_PAY_CFR_CLASSIFIER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The title of the classifier record."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "PAT_PAY_RFL_LST",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The list of referrals associated with the service line on the AP Claim.  This column will be deprecated in a future release and replaced by the Clarity table AP_CLM_PX_PAT_PAY_RFL."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "PAT_PAY_CML",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The adjudication table used to determine the patient portion of the service line on the AP Claim."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "PAT_PAY_CML_ADJ_TABLE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the adjudication table."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "PAT_PAY_LFTM_MAX_EX",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores 1 if the patient's lifetime maximum has been exceeded and null otherwise."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "PAT_PAY_QTY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The service line quantity used to adjudicate the AP Claim."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "ALWD_AMT_ADJ_CMP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The component or component group from the contract that was used to adjudicate the allowed amount of the service on the AP Claim."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "ALWD_AMT_ADJ_CMP_COMPONENT_INDEX_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the component index record"
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "ALWD_AMT_ADJ_NCC",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The vendor contract record that was used to determine the allowed amount of the service line on the AP Claim."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "ALWD_AMT_ADJ_NCC_CONTRACT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the Vendor-Network contract."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "ALWD_AMT_NCC_DAT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The contact date of the vendor contract that was used to determine the allowed amount of the service line on the accounts payable claim record."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "ALWD_AMT_ADJ_NCC_LN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The line of the vendor contract that was used to determine the allowed amount of the service line on the AP Claim."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "ALWD_AMT_ADJ_EAP",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The procedure record used in determining the allowed amount of the service line on the AP Claim."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "ALWD_AMT_ADJ_ERX",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The medication record used to determine the allowed amount of the service line on the AP Claim."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "ALWD_AMT_ADJ_DRG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The DRG record used to determine the allowed amount of the service line on the AP Claim."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "ALWD_AMT_ADJ_DRG_DRG_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the Diagnoses Related Group name."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "ALWD_AMT_ADJ_CMC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The whole claim component group used to determine the allowed amount of the service line on the AP Claim."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "ALWD_AMT_ADJ_CMC_LN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The service line from the AP Claim that matched the whole claim component group."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "SECTION_340B_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores Y or N that indicates whether or not the drug was dispensed under the Section 340B Program for NDCs.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "COB_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The calculated Coordination of Benefits (COB) amount for the service line."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "MOB_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The calculated Maintenance of Benefits (MOB) amount for the service line."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "SRC_TYPE_OF_SVC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The data source for the type of service.",
+      "entries": [
+        "NO_TOS",
+        "TOS_FROM_PROCEDURE",
+        "TOS_FROM_MODIFIER",
+        "TOS_FROM_USER"
+      ]
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "CLM_BEN_BKT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the claim was applied to a benefit bucket."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "PRS_CRWN_INLAY_CD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the prosthesis, crown, or inlay code for the service.",
+      "entries": [
+        "I - Initial Placement",
+        "R - Replacement"
+      ]
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "PRIOR_PLACEMENT_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This stores the prior placement date (PPD) for a dental claim. The PPD is used for replacement procedures to note when the prosthesis being replaced was previously installed."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "APPLIANCE_PLACE_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date orthodontic appliances were placed."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "REPLACEMENT_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date when orthodontic appliance was replaced."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "AMBU_TXPORT_WT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The weight of the patient during ambulance transport."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "AMBU_TXPORT_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ambulance transport reason code.",
+      "entries": [
+        "Nearest Facility for Care of Symptoms, Complaints, or Both",
+        "For the Benefit of a Preferred Physician",
+        "For the Nearness of Family Members",
+        "For the Care of a Specialist or for Availability of Specialized Equipment",
+        "Rehabilitation Facility"
+      ]
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "AMBU_TXPORT_DIST",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ambulance transport distance."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "AMBU_PAT_CNT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of patients in the ambulance."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "AMBU_PICK_UP_CITY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The city of the ambulance pick-up location."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "AMBU_PICK_UP_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The state of the ambulance pick-up location."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "AMBU_PICK_UP_ZIP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The zip code of the ambulance pick-up location."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "AMBU_DROP_OFF_CITY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The city of the ambulance drop-off location."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "AMBU_DROP_OFF_STA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The state of the ambulance drop-off location."
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "AMBU_DROP_OFF_ZIP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The zip code of the ambulance drop-off location."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "AMBU_DROP_OFF_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the ambulance drop-off location."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "AMBU_PICK_UP_COUNTRY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the unique identifier for the country associated with the ambulance pick-up location. Join this column to ZC_COUNTRY_2 to translate to the country name."
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "AMBU_PICK_UP_COUNTY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the unique identifier for the county associated with the ambulance pick-up location. Join this column ZC_COUNTY_2 to translate to the county name."
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "AMBU_PICK_UP_DISTRICT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the unique identifier for the district associated with the ambulance pick-up location. Join this column to ZC_DISTRICT to translate to the district name."
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "AMBU_PICK_UP_HOUSE_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the house number associated with the ambulance pick-up location."
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "AMBU_DROP_OFF_COUNTRY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the unique identifier for the country associated with the ambulance drop-off location. Join this column to ZC_COUNTRY_2 to translate to the country name."
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "AMBU_DROP_OFF_COUNTY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the unique identifier for the county associated with the ambulance drop-off location. Join this column to ZC_COUNTY_2 to translate to the county name."
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "AMBU_DROP_OFF_DISTRICT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the unique identifier for the district associated with the ambulance drop-off location. Join this column to ZC_DISTRICT to translate to the district name."
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "AMBU_DROP_OFF_HOUSE_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the house number associated with the ambulance drop-off location."
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "CLAIM_LN_DTL_SVC_CLASS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Represents a clinical classification of the billed service.",
+      "entries": [
+        "Emergency",
+        "Durable Medical Equipment",
+        "Radiology",
+        "Anesthesia",
+        "Pharmacy",
+        "Medical/Surgical Supplies",
+        "Surgery",
+        "Observation",
+        "Nursery",
+        "Room and Board",
+        "Behavioral Health",
+        "Ambulatory Surgery Center",
+        "Oncology",
+        "Cardiology",
+        "Pulmonary",
+        "Gastrointestinal",
+        "Nuclear Medicine",
+        "Electrocardiogram",
+        "Urgent Care",
+        "Home Health",
+        "Ambulance",
+        "Skilled Nursing",
+        "Dialysis",
+        "Physical Therapy",
+        "Occupational Therapy",
+        "Speech Pathology",
+        "Rehabilitation",
+        "Transplant",
+        "Pharmacy - High Cost",
+        "Blood",
+        "Diagnostic Services",
+        "Evaluation and Management",
+        "Immunizations and Vaccines",
+        "Medicine Services and Procedures",
+        "Pathology and Laboratory Procedures",
+        "Hearing Services",
+        "Physician-Administered Medications",
+        "Telemedicine",
+        "Laboratory",
+        "Home Hospice",
+        "Inpatient Hospice",
+        "Not Classified"
+      ]
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "PAT_PAY_COPAY_SERVICE_TYPE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The copay category used in adjudicating the service line."
+    },
+    {
+      "ordinalPosition": 69,
+      "name": "PAT_PAY_COPAY_SERVICE_TYPE_ID_SERVICE_TYPE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of this benefit service type."
+    },
+    {
+      "ordinalPosition": 70,
+      "name": "PAT_PAY_SPECIALTY_DEP_C",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The specialty of the department where the service was rendered."
+    },
+    {
+      "ordinalPosition": 71,
+      "name": "PAT_PAY_COPAY_AMT_SRC_C",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The source of the copay amount as determined during adjudication."
+    },
+    {
+      "ordinalPosition": 72,
+      "name": "PAT_PAY_COPAY_COL_SRC_C",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The location where the copay was collected as determined during adjudication."
+    },
+    {
+      "ordinalPosition": 73,
+      "name": "PAT_PAY_PROC_SEQ_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The service's place in the adjudication order."
+    },
+    {
+      "ordinalPosition": 74,
+      "name": "PAT_PAY_COB_FROM_OTH_LINES_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The coordination of benefits (COB) amount for this service that was transferred from other services on the same claim."
+    },
+    {
+      "ordinalPosition": 75,
+      "name": "PAT_PAY_COB_TO_OTH_LINES_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The coordination of benefits (COB) amount for this service that was transferred to other services on the same claim."
+    },
+    {
+      "ordinalPosition": 76,
+      "name": "PAT_PAY_HRA_DEF_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the Health Reimbursement Arrangement (HRA) plan used to adjudicate the claim."
+    },
+    {
+      "ordinalPosition": 77,
+      "name": "PAT_PAY_HRA_DEF_ID_HRA_DEF_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Record name."
+    },
+    {
+      "ordinalPosition": 78,
+      "name": "PAT_PAY_HRA_ACCUMULATE_BY_C",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The family type from the Health Reimbursement Arrangement (HRA) used when adjudicating the claim."
+    },
+    {
+      "ordinalPosition": 79,
+      "name": "PAT_PAY_ADJ_BEN_CHECK_TYPE_C",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The type of benefits check performed when calculating the patient portion."
+    },
+    {
+      "ordinalPosition": 80,
+      "name": "PAT_PAY_CHECKED_FOR_AUTH_FLAG",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Indicates whether authorizations were checked during adjudication."
+    },
+    {
+      "ordinalPosition": 81,
+      "name": "PAT_PAY_MATCHED_CMG_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line of the component group that was matched during adjudication if the service was matched to a component group."
+    },
+    {
+      "ordinalPosition": 82,
+      "name": "PAT_PAY_CMP_CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The contact date of the component that was matched during adjudication if the service was matched to a component."
+    },
+    {
+      "ordinalPosition": 83,
+      "name": "PAT_PAY_BEN_PLAN_CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The contact date of the benefit plan that was used during adjudication."
+    }
+  ]
+}

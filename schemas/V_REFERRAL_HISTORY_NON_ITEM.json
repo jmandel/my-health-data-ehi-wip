@@ -1,0 +1,234 @@
+{
+  "name": "V_REFERRAL_HISTORY_NON_ITEM",
+  "description": "This view contains audited referral changes not associated with a direct item change on the Referral File (RFL) record.",
+  "primaryKey": [
+    {
+      "columnName": "REFERRAL_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "REFERRAL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID for the referral record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "HX_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user tied to the audited action on the referral."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "HX_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple values associated with a specific group of data within this record."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ACTION_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Store the UTC instant when an action took place."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "NON_ITEM_CHANGE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The non-item change category ID associated with the audit action",
+      "entries": [
+        "Create Referral",
+        "Authorize Referral",
+        "Reject Referral",
+        "Pend to Self",
+        "Pend to Director",
+        "Pend to Specified Pool",
+        "Pend to Employee",
+        "Add Procedure",
+        "Change Units Approved",
+        "Change Units Requested",
+        "Change Visit Info",
+        "Change Coverage",
+        "Assign Referral to Appointment",
+        "Unassign Referral from Appointment",
+        "ANSI 278 Message Sent",
+        "ANSI 278 Message Filing Prevented",
+        "Delete Note",
+        "In Basket Referral Message Sent",
+        "Add Revenue Code",
+        "Change Revenue Code",
+        "Questionnaire Changed",
+        "Create Note",
+        "UAE Prior Auth Request Message Sent",
+        "UAE Prior Auth Message Received",
+        "Authorization Created",
+        "Authorization Edited",
+        "Authorization Deleted",
+        "Synchronize Group Data",
+        "Receive Group Data",
+        "Change Procedure Provider",
+        "Update Questionnaire Answers",
+        "Change Completed Visits",
+        "Change Scheduled Visits",
+        "Change AP Claims Count",
+        "ANSI 278 Inquiry Message Sent",
+        "Electronic Attachment Message Sent",
+        "Electronic Attachment Message Failed to Send",
+        "Electronic Attachment Received",
+        "Use Service-Level Authorization Count in Claim",
+        "Remove Service-Level Authorization Count from Claim",
+        "Procedure Grid Modified",
+        "Communication Added",
+        "Assign Auth/Cert to Hospital Account",
+        "Unassign Auth/Cert from Hospital Account",
+        "Assign Auth/Cert to Admission",
+        "Unassign Auth/Cert from Admission",
+        "Conversion or Utility",
+        "Change Pre-Cert Status",
+        "Attached Initiating Referral",
+        "Attached Subsequent Referral",
+        "Unattached Initiating Referral",
+        "Unattached Subsequent Referral",
+        "Linked Referral to Treatment Plan",
+        "Linked Referral to Waiting List",
+        "Removed Referral from Waiting List",
+        "In Basket Message Sent",
+        "Communication Removed",
+        "Unlinked Referral from Treatment Plan",
+        "Authorization Approved",
+        "ANSI 278 Message Failed to Send",
+        "ANSI 278 Inquiry Message Failed to Send",
+        "Trigger pikaXml KAS message",
+        "Link Service Decision",
+        "Unlink Service Decision",
+        "External Document Invalidated",
+        "External Document Added",
+        "NHS eRS Triage Synced",
+        "NHS eRS Retrieved Referral For Review",
+        "Authorization Status Set to No Auth Required",
+        "Authorization Status Set to Pending",
+        "Authorization Status Set to Canceled",
+        "Authorization Status Set to Denied"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "HX_TREATMENT_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the treatment plan record associated with the audit action"
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "HX_WAITING_LIST_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the waiting list record associated with the audit action"
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "HX_EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the pathway record linked to the audit action"
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "HX_HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the hospital account record linked to the audit action"
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "HX_APPT_PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Contact Serial Number (CSN) of the appointment linked to the audit action"
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "HX_COMM_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the communication record linked to the audit action"
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "HX_AUTH_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the service level authorization record linked to the audit action"
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "HX_MSG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the In Basket message record linked to the audit action"
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "HX_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the order record associated with the audit action"
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "HX_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the note record associated with the audit action"
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "HX_FIN_ASST_TRACKER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The FNT record that corresponds to the Service Decision-based non-item change in I RFL 16140."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "HX_CLAIM_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the Accounts Receivable Transaction (ETR) associated with this audited change"
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "HX_RCV_DOCUMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The received document record that corresponds to the non-item change in referral audit history."
+    }
+  ]
+}

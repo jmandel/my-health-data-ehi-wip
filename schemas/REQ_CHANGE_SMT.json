@@ -1,0 +1,78 @@
+{
+  "name": "REQ_CHANGE_SMT",
+  "description": "Contains the auditing information for when a requisition's submitter is updated.",
+  "primaryKey": [
+    {
+      "columnName": "REQUISITION_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "REQUISITION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the requisition record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CHANGE_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The change reason category ID for the requisition submitter change.",
+      "entries": [
+        "Submitter Merge Utility",
+        "Mobile Patient Association",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CHANGING_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the user record for this requisition submitter change. This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CHANGING_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CHANGE_INSTANT_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant when the requisition's submitter was changed."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PREV_SUBMITTER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the submitter that was associated with the requisition prior to the submitter being updated."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PREV_SUBMITTER_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the submitter record."
+    }
+  ]
+}

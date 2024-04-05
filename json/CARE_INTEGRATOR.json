@@ -1,0 +1,90 @@
+{
+  "$meta": {
+    "schemas": {
+      "CARE_INTEGRATOR": {
+        "name": "CARE_INTEGRATOR",
+        "description": "This table contains the contact information for a Care Integrator record.",
+        "primaryKey": [
+          {
+            "columnName": "CARE_INTG_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "CONTACT_DATE_REAL",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "CARE_INTG_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID for the care integrator record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "CONTACT_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "The DTE contact date for the care integrator record."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "CARE_INTEGRATOR",
+            "target": "CAREPLAN_INFO",
+            "joinKeys": [
+              {
+                "source": "CARE_INTG_ID",
+                "target": "CARE_INTG_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "CARE_INTEGRATOR",
+            "target": "CAREPLAN_PT_TASK_INFO",
+            "joinKeys": [
+              {
+                "source": "CARE_INTG_ID",
+                "target": "CAREPLAN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "CARE_INTEGRATOR": [
+    {
+      "CARE_INTG_ID": "7498035",
+      "CONTACT_DATE_REAL": 66179,
+      "$meta": {
+        "type": "CARE_INTEGRATOR"
+      }
+    },
+    {
+      "CARE_INTG_ID": "7615790",
+      "CONTACT_DATE_REAL": 66190,
+      "$meta": {
+        "type": "CARE_INTEGRATOR"
+      }
+    },
+    {
+      "CARE_INTG_ID": "7498036",
+      "CONTACT_DATE_REAL": 66179,
+      "$meta": {
+        "type": "CARE_INTEGRATOR"
+      }
+    },
+    {
+      "CARE_INTG_ID": "7615791",
+      "CONTACT_DATE_REAL": 66190,
+      "$meta": {
+        "type": "CARE_INTEGRATOR"
+      }
+    }
+  ]
+}

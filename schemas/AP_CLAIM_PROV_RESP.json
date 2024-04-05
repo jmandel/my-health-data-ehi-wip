@@ -1,0 +1,65 @@
+{
+  "name": "AP_CLAIM_PROV_RESP",
+  "description": "This table contains the provider responsibility information for AP Claim procedures.\n\n\n\n\n\nTo link this table�s service line information back to a claim header, join this table to AP_CLAIM_PROC_IDS on the TX_ID column. If you need to report on claim service lines specific to Cost Sharing Reduction (CSR), join this table instead to AP_CLAIM_PROC_IDS_CSR on the TX_ID column.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the AP Claim procedure transaction."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the provider responsibility for this transaction record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PROV_RESP_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The dollar amount for a specific provider responsibility."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PRV_RESP_SRC_TP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of provider responsibility.",
+      "entries": [
+        "Submission Policy",
+        "Before Benefit Penalty",
+        "Denial Via EOB",
+        "Not Covered By Plan",
+        "Bundled Payment Adjustment"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EOB_CODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the EOB code used for denial so that the billed amount was routed to the provider responsibility amount."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PROV_RESP_OVRD_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The user-entered override to the dollar amount a specific provider responsibility. If present, the value in this column overrides the value in PRV_RESP_AMT."
+    }
+  ]
+}

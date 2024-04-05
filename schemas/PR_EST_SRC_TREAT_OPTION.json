@@ -1,0 +1,37 @@
+{
+  "name": "PR_EST_SRC_TREAT_OPTION",
+  "description": "This table stores the source treatment options for an estimate. When clinical information is updated on the estimate, then these treatment options will be included in the updated estimate. Treatments that don't have a source option will pull information from its selected option.",
+  "primaryKey": [
+    {
+      "columnName": "ESTIMATE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ESTIMATE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the patient estimate record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "TREATMENT_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The list of source treatment option records that estimates should be updated with. When estimates are updated, information from these options will be used rather than the selected options of treatments. If additional treatments are included in the estimates, then the selected option of those treatments will be used."
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "EXT_LINKED_ORD_SIGNED_SUM",
+  "description": "This table contains summary information for external orders that are in linked groups.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the order record representing an external linked group."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the linked order in this external linked group record. Together with ORDER_ID, this forms the foreign key to the EXTERNAL_ORDER_INFO table."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of this piece of the external linked order's summary information."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EXT_LINKED_SUMMARY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The summary of the linked order. All lines of this order's summary (that is, all lines with the same ORDER_ID and GROUP_LINE) should be concatenated to get the full summary text."
+    }
+  ]
+}

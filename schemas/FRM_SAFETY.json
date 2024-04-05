@@ -1,0 +1,69 @@
+{
+  "name": "FRM_SAFETY",
+  "description": "This tables stores the overall safety information for screening forms. This includes the proceed or do not proceed decision, accompanying comments, and the editing users and times.",
+  "primaryKey": [
+    {
+      "columnName": "SCREENING_FORM_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SCREENING_FORM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the screening form record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "FRM_PROCEED_DECISION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The screening form proceed with exam? category ID for the screening form.",
+      "entries": [
+        "Proceed",
+        "Do not proceed"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "FRM_PROCEED_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user-entered comment of the screening form, indicating why they will or will not proceed with the exam."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PROCEED_AUD_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who edited the proceed flag for the exam."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PROCEED_AUD_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PROCEED_AUD_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instants when the proceed flag or comment was edited."
+    }
+  ]
+}

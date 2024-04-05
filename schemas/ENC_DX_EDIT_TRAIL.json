@@ -1,0 +1,68 @@
+{
+  "name": "ENC_DX_EDIT_TRAIL",
+  "description": "This table stores the audit trail information for encounter diagnosis edits. In order to report on diagnosis edits, this table can be linked with PAT_ENC_DX. This linking can be done using the PAT_ENC_CSN_ID and DX_EDIT_UNIQUE columns in this table along with the PAT_ENC_CSN_ID and DX_UNIQUE columns in the PAT_ENC_DX table.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect this is the unique contact identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "DX_EDIT_CHRONIC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether or not the edited diagnosis is chronic. Y indicates that the edited diagnosis is  chronic. N indicates that the edited diagnosis is not chronic.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "DX_EDIT_PRIMDX_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether or not the edited diagnosis is primary. Y indicates that the edited diagnosis is primary. N indicates that the edited diagnosis is not primary."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "DX_EDIT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores category numbers for past values of the Differential diagnosis status.",
+      "entries": [
+        "Final",
+        "In Progress",
+        "Ruled Out",
+        "Inconclusive"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "DX_EDIT_ED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores audit trail information for encounter diagnosis edits, particularly the ED Diagnosis flag of the associated edit."
+    }
+  ]
+}

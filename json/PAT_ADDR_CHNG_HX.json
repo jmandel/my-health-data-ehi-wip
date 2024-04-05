@@ -1,0 +1,177 @@
+{
+  "$meta": {
+    "schemas": {
+      "PAT_ADDR_CHNG_HX": {
+        "name": "PAT_ADDR_CHNG_HX",
+        "description": "This table keeps track of changes in the patient's address.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Patient ID for whom address is changed."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "Line count in the address change history."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "ADDR_HX_LINE1",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "First line of patient's home address, current between dates recorded in columns EFF_START_DATE and EFF_END_DATE."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "CITY_HX",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Patient's home city, current between dates recorded in columns EFF_START_DATE and EFF_END_DATE."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "COUNTY_HX_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Patient's home county, current between dates recorded in columns EFF_START_DATE and EFF_END_DATE."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "ZIP_HX",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Patient's home ZIP, current between dates recorded in columns EFF_START_DATE and EFF_END_DATE."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "ADDR_CHNG_SOURCE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Source of address changes.",
+            "entries": [
+              "Bridges",
+              "EpicCare",
+              "Cadence",
+              "Professional Billing",
+              "ManageCare",
+              "Chronicles",
+              "CRM",
+              "Nurse Triage",
+              "EpicWeb",
+              "EpicCare Link",
+              "Welcome"
+            ]
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "EFF_START_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Effective start date of changed address (date when address was changed)."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "EFF_END_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Effective end date of changed address (date of the next address change or NULL if this is the last address change)."
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "SIGNIFICANT_CHANGE_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Audit trail item used to store whether the address change should be considered significant when a new address is entered or if the current primary address is edited.",
+            "entries": [
+              "No",
+              "Yes"
+            ]
+          },
+          {
+            "ordinalPosition": 19,
+            "name": "COUNTRY_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Audit trail item used to store the previous country when a new country is entered or if the current primary address is edited."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "PAT_ADDR_CHNG_HX",
+            "target": "PAT_REL_ADDR",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "PAT_ADDR_CHNG_HX",
+            "target": "PATIENT",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PAT_ADDR_CHNG_HX": [
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 1,
+      "ADDR_HX_LINE1": "REDACTED",
+      "CITY_HX": "MADISON",
+      "COUNTY_HX_C_NAME": "DANE",
+      "ZIP_HX": "REDACTED",
+      "ADDR_CHNG_SOURCE_C_NAME": "Cadence",
+      "EFF_START_DATE": "2018-07-17 00:00:00",
+      "EFF_END_DATE": "2018-08-09 00:00:00",
+      "SIGNIFICANT_CHANGE_YN": "Y",
+      "COUNTRY_C_NAME": "United States of America",
+      "$meta": {
+        "type": "PAT_ADDR_CHNG_HX"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 2,
+      "ADDR_HX_LINE1": "REDACTED",
+      "CITY_HX": "MADISON",
+      "COUNTY_HX_C_NAME": "DANE",
+      "ZIP_HX": "REDACTED",
+      "ADDR_CHNG_SOURCE_C_NAME": "Cadence",
+      "EFF_START_DATE": "2018-08-09 00:00:00",
+      "SIGNIFICANT_CHANGE_YN": "N",
+      "COUNTRY_C_NAME": "United States of America",
+      "$meta": {
+        "type": "PAT_ADDR_CHNG_HX"
+      }
+    }
+  ]
+}

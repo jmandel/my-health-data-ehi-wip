@@ -1,0 +1,696 @@
+{
+  "name": "PEND_ACTION",
+  "description": "The PEND_ACTION table lists pending admission, transfer, and discharge actions to be taken.",
+  "primaryKey": [
+    {
+      "columnName": "PEND_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PEND_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the pending action record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PEND_EVENT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The event type for the pending action.",
+      "entries": [
+        "Admission",
+        "Discharge",
+        "Transfer",
+        "Leave of Absence Out",
+        "Leave of Absence Return",
+        "Leave of Absence Update Out",
+        "Leave of Absence Update Return"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PEND_RECRD_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The record type for the pending action.",
+      "entries": [
+        "ED Arrival",
+        "Hospital Outpatient"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "IS_DELETED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the pending action record is inactive or deleted.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "DELETE_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time the pending action record was deleted."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "This is a numeric representation of the date of this contact in your system. The integer portion of the number specifies the date of the contact. The digits after the decimal point indicate multiple contacts on one day."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "A unique serial number for the patient contact of the pending action record. This number is unique across all patient contacts in the system."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "REQ_GROUPER",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The numeric index used to group pending action records."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "START_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time the pending action is to start."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "END_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time the pending action is to end."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PEND_PRIORITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The priority of the pending action.",
+      "entries": [
+        "Preference",
+        "Reserved",
+        "Hold",
+        "None"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PEND_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason for the pending action."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "PEND_CMNT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comments for the pending action."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "UNIT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the unit in which the pending action will occur."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "ROOM_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the room in which the pending action will occur."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "BED_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the bed in which the pending action will occur."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "BED_ID_BED_LABEL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the bed."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PAT_SERVICE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The service of the patient for whom the pending action will occur."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "LOC_KEY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique key identifying the unit-room-bed of the pending action."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "PAT_CLASS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient type of the patient for whom the pending action will occur."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "PEND_ATND_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the attending provider for the patient at the time the pending action will occur. This ID may be encrypted."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "PEND_ATND_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The effective date for the attending provider during the pending action."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "LVL_OF_CARE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The level of care for the patient for whom the pending action will occur."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "ACCOMMODATION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The accommodation code of the room for the pending action."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "ACCOM_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The accommodation reason for the room for the pending action."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "INCOMING_OK_USR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The authorizing user for the incoming patient of the pending transfer. This ID may be encrypted."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "INCOMING_OK_USR_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "OUTGOING_OK_USR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The authorizing user for the outgoing patient of the pending transfer. This ID may be encrypted."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "OUTGOING_OK_USR_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "DX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID number of the diagnosis associated with the pending action. This is not the ICD-9 code of the diagnosis."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "ADM_COND_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The admission condition of the patient for whom the pending action will occur."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "RES_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the resident provider for the patient at the time the pending action will occur. This ID may be encrypted."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "INTERN_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the intern provider for the patient at the time the pending action will occur. This ID may be encrypted."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "EXPECT_LEN_OF_STAY",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The expected length of stay in days of the pending admission for this patient contact."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "EXPECT_DISCHRG_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The expected discharge date for the pending discharge of this patient contact."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "PEND_DISP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The disposition for the pending action.",
+      "entries": [
+        "Release",
+        "Keep",
+        "Remove"
+      ]
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "ON_LIST_TIME",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date and time the pending action is good until."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "SVC_PRIORITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The bed service priority to use when the pending action is completed."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "ADT_TRANSFER_RSN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A single line freetext reason for the transfer pending action."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "PEND_TRANSFER_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time of the transfer pending action."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "OLD_BED_PRIORITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The priority to use for a pending action to the patient's old bed."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "PEND_REQ_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The pending bed assignment request status for a pending admission or transfer.  I.e., 1-Requested, 2-Assigned, 3-Rejected, 4-Approved.",
+      "entries": [
+        "Ready to Plan",
+        "Assigned",
+        "Rejected",
+        "Approved",
+        "Requested",
+        "Preassigned",
+        "Bed Ready"
+      ]
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "REQUEST_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time that the pending bed assignment was requested."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "REQ_BY_USR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the user requesting the pending bed assignment."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "REQ_BY_USR_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "ASSIGNED_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time that the pending bed assignment was assigned."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "REJECTED_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time that the pending bed assignment was rejected."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "APPROVED_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time that the pending bed assignment was approved."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "REQ_STATUS_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The pending bed assignment request status reason for a pending admission or transfer."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "TYPE_OF_ROOM_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of room category number for the pend record. This is extracted as the category title."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "ROOM_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number of the reason for the type of room requested for the pend record. This is extracted as the category title."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "TYPE_OF_BED_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of bed category number for the pend record. This is extracted as the category title."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "BED_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number of the reason for the type of bed requested for the pend record. This is extracted as the category title."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "CREATED_BY_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who created this PND record."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "CREATED_BY_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "ADT_PND_ADMITNG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Admitting provider associated with the PND."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "ACUITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number of the acuity level that will be assigned upon confirmation of the pending event record. This is extracted as the category title."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "COMPLETED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates whether the pending event was used to complete an action."
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "LINKED_EVENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item holds a link to the Admission, Discharge, Transfer, or Leave of Absence (ADT) event that caused the pending event to become deleted.",
+      "linksTo": "A"
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "DELETE_CAUSE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates the reason that a pending event record is marked as deleted.",
+      "entries": [
+        "Manually Freed",
+        "Event Performed",
+        "Encounter Canceled",
+        "Encounter Dismissed",
+        "Interface",
+        "Event Undone",
+        "Purged by batch",
+        "Order Canceled",
+        "Action Canceled",
+        "Batch Cancel",
+        "Encounter Rescheduled",
+        "Surgical Admit Criteria Failed",
+        "HOV Admit Criteria Failed",
+        "Duplicate Bed Request",
+        "Auto Transfer Failed",
+        "New Bed Requested",
+        "Moved from ED to L&D"
+      ]
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "EXPECT_DLVR_METH_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the expected delivery method for a mother who is going to deliver.",
+      "entries": [
+        "Vaginal, Spontaneous",
+        "C-Section, Low Transverse",
+        "Vertical C-Section",
+        "C-Section, Unspecified",
+        "Vaginal, Vacuum (Extractor)",
+        "Vaginal, Forceps",
+        "Vaginal, Breech",
+        "Non-Spontaneous Vaginal Delivery",
+        "VBAC, Spontaneous",
+        "C-Section, Low Vertical",
+        "C-Section, Classical",
+        "Biochemical"
+      ]
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "TRAN_LD_STAT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Flag to denote if the encounter is for a mother who will deliver"
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "REQUEST_URGENCY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The urgency for the pending bed assignment.  I.e., A-High, B-Medium, or C-Low.",
+      "entries": [
+        "A-High",
+        "B-Medium",
+        "C-Low"
+      ]
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "ADT_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Networked to an order ID when the pending event record was created by an order"
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "HOSPITAL_AREA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the hospital area that is associated with the pending action."
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "LOA_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The leave of absence reason category ID for the pending event."
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "READ_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Instant when the request was first marked as read."
+    },
+    {
+      "ordinalPosition": 69,
+      "name": "READY_TO_PLAN_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Instant when the request status reached Ready to Plan."
+    },
+    {
+      "ordinalPosition": 70,
+      "name": "PREASSIGNED_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Instant when the request status reached Pre-assigned."
+    },
+    {
+      "ordinalPosition": 71,
+      "name": "BED_READY_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Instant when the request status reached Bed Ready."
+    },
+    {
+      "ordinalPosition": 72,
+      "name": "DELAY_UNTIL_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Time when the current delay expires. At that time, this item is cleared."
+    },
+    {
+      "ordinalPosition": 73,
+      "name": "REQUEST_DIVISION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the division for which this request falls, if any. The request division is used to divide bed requests into different groups which can be worked and managed independently."
+    },
+    {
+      "ordinalPosition": 74,
+      "name": "BP_REQ_READY_MOVE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Is the bed request currently marked ready to move?"
+    },
+    {
+      "ordinalPosition": 75,
+      "name": "BP_REQ_R2M_MANUAL_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Was this bed request marked ready to move set manually?"
+    },
+    {
+      "ordinalPosition": 76,
+      "name": "BP_R2M_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Timestamp of the last time this bed request was marked Ready to Move."
+    },
+    {
+      "ordinalPosition": 77,
+      "name": "BP_R2M_SET_BY_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "User who last marked this bed request Ready to Move."
+    },
+    {
+      "ordinalPosition": 78,
+      "name": "BP_R2M_SET_BY_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 79,
+      "name": "PROJ_R2M_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date when we expect the patient to be ready to move."
+    },
+    {
+      "ordinalPosition": 80,
+      "name": "PROJ_R2M_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Time when we expect the patient to be ready to move."
+    },
+    {
+      "ordinalPosition": 81,
+      "name": "EVENT_RECORD_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "References the event record for use in bed planning notifications"
+    },
+    {
+      "ordinalPosition": 82,
+      "name": "BED_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item tracks the type of bed a patient will need when a transfer is completed.",
+      "entries": [
+        "Empty",
+        "Standard",
+        "Crib",
+        "Telemetry",
+        "Bariatric"
+      ]
+    },
+    {
+      "ordinalPosition": 83,
+      "name": "OFF_SERVICE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column tracks if the bed request was completed as off service or off level of care."
+    },
+    {
+      "ordinalPosition": 84,
+      "name": "CANCEL_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This holds the reason the user indicated when cancelling a pending event record.",
+      "entries": [
+        "Created in Error",
+        "No Longer Necessary",
+        "No Longer Happening Today"
+      ]
+    },
+    {
+      "ordinalPosition": 85,
+      "name": "REJ_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the reason the bed request was rejected."
+    }
+  ]
+}

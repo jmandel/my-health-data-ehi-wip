@@ -1,0 +1,209 @@
+{
+  "$meta": {
+    "schemas": {
+      "PROBLEM_LIST_HX": {
+        "name": "PROBLEM_LIST_HX",
+        "description": "This table contains data relating to the history of problems from patients' problem lists in the clinical system.",
+        "primaryKey": [
+          {
+            "columnName": "PROBLEM_LIST_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PROBLEM_LIST_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of this Problem List entry."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "Used to identify the particular problem within the historical problems"
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "HX_PROBLEM_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "ID of the diagnosis associated with this historical problem"
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "HX_DATE_NOTED",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Represents the historical value of the first possible date that a problem could have been noted/onset on.    A problem's noted date is documented as a fuzzy date, meaning that it can capture approximate date data (\"2012\", \"1/2012\") or exact data (\"3/5/2012\"). This column captures the earliest date of the effective range. See HX_NOTED_END_DATE for the latest counterpart. For example, if 2012 is documented in hyperspace, then HX_NOTED_DATE will be 1/1/2012 and HX_NOTED_END_DATE will be 12/31/2012."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "HX_DATE_OF_ENTRY",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date that the problem was added to or updated on the patient's Problem List in calendar format."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "HX_ENTRY_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The ID of the user who edited this problem on the patient's Problem List. This ID may be encrypted."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "HX_ENTRY_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "HX_MYCHART_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates this problem was visible on web based chart system when this historical action was recorded.",
+            "entries": [
+              "Yes",
+              "No"
+            ]
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "HX_CHRONIC_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column indicates whether or not this problem was flagged as chronic as of this historical event.",
+            "entries": [
+              "No",
+              "Yes"
+            ]
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "HX_PRINCIPAL_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column indicates whether or not this problem was flagged as the principal problem as of this historical event.",
+            "entries": [
+              "Yes",
+              "No"
+            ]
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "HX_IS_HOSP_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column indicates whether or not this problem was flagged as a hospital problem as of this historical event."
+          },
+          {
+            "ordinalPosition": 15,
+            "name": "HX_PROBLEM_EPT_CSN",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Contact Serial Number (CSN) of the patient encounter where this historical problem list was documented."
+          },
+          {
+            "ordinalPosition": 16,
+            "name": "HX_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value associated with the problem's state: Active, Resolved, or Deleted as of this historical event.",
+            "entries": [
+              "Active",
+              "Resolved",
+              "Deleted"
+            ]
+          },
+          {
+            "ordinalPosition": 19,
+            "name": "HX_ENTRY_INST",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The date and time when the problem was updated on the patient's problem list."
+          },
+          {
+            "ordinalPosition": 22,
+            "name": "HX_NOTED_END_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Represents the historical value of the last possible date that a problem could have been noted/onset on.    A problem's noted date is documented as a fuzzy date, meaning that it can capture approximate date data (\"2012\", \"1/2012\") or exact data (\"3/5/2012\"). This column captures the latest date of the effective range. See HX_NOTED_DATE for the latest counterpart. For example, if 2012 is documented in hyperspace, then HX_NOTED_DATE will be 1/1/2012 and HX_NOTED_END_DATE will be 12/31/2012.  Note that the value may be empty, even if HX_NOTED_DATE is populated"
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "PROBLEM_LIST_HX",
+            "target": "PROBLEM_LIST_ALL",
+            "joinKeys": [
+              {
+                "source": "PROBLEM_LIST_ID",
+                "target": "PROBLEM_LIST_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "PROBLEM_LIST_HX",
+            "target": "PROBLEM_LIST",
+            "joinKeys": [
+              {
+                "source": "PROBLEM_LIST_ID",
+                "target": "PROBLEM_LIST_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PROBLEM_LIST_HX": [
+    {
+      "PROBLEM_LIST_ID": 30694847,
+      "LINE": 1,
+      "HX_PROBLEM_ID": 70859,
+      "HX_DATE_NOTED": "2018-08-09 00:00:00",
+      "HX_DATE_OF_ENTRY": "2018-08-09 00:00:00",
+      "HX_ENTRY_USER_ID": "DHILLOPS",
+      "HX_ENTRY_USER_ID_NAME": "DHILLON, PUNEET S",
+      "HX_MYCHART_YN": "Y",
+      "HX_CHRONIC_YN": "N",
+      "HX_PRINCIPAL_YN": "N",
+      "HX_IS_HOSP_YN": "N",
+      "HX_PROBLEM_EPT_CSN": 720803470,
+      "HX_STATUS_C_NAME": "Active",
+      "HX_ENTRY_INST": "2018-08-09 11:10:00",
+      "$meta": {
+        "type": "PROBLEM_LIST_HX"
+      }
+    },
+    {
+      "PROBLEM_LIST_ID": 90574164,
+      "LINE": 1,
+      "HX_PROBLEM_ID": 260690,
+      "HX_DATE_NOTED": "2020-09-01 00:00:00",
+      "HX_DATE_OF_ENTRY": "2022-08-29 00:00:00",
+      "HX_ENTRY_USER_ID": "RAMMELZL",
+      "HX_ENTRY_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "HX_MYCHART_YN": "Y",
+      "HX_CHRONIC_YN": "N",
+      "HX_PRINCIPAL_YN": "N",
+      "HX_IS_HOSP_YN": "N",
+      "HX_PROBLEM_EPT_CSN": 948004323,
+      "HX_STATUS_C_NAME": "Active",
+      "HX_ENTRY_INST": "2022-08-29 13:47:00",
+      "HX_NOTED_END_DATE": "2020-09-01 00:00:00",
+      "$meta": {
+        "type": "PROBLEM_LIST_HX"
+      }
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "name": "CLAIM_INVOICE_STATUS_HX",
+  "description": "Stores the status change history for an AP claim invoice.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_INVC_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_INVC_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the invoice record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CHANGED_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores instant when status was changed in UTC time."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PREV_INV_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the category identifier of the status the invoice was changed from.",
+      "entries": [
+        "Created",
+        "Printed",
+        "Payment Received",
+        "Closed",
+        "Cancelled",
+        "Approved",
+        "Rejected",
+        "Released",
+        "Disputed",
+        "Not Printed - Paperless"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "NEW_INV_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the category identifier of the status the invoice was changed to."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CHANGE_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores a comment related to the status change."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CHANGED_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores instant when status was changed in local time for the extracting deployment."
+    }
+  ]
+}

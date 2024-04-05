@@ -1,0 +1,1717 @@
+{
+  "$meta": {
+    "schemas": {
+      "IMM_DUE": {
+        "name": "IMM_DUE",
+        "description": "The IMM_DUE table contains information about when an immunization is due. The rows included in this table are items from DXR (Document) masterfile which include information on type of immunization, due date, earliest date and next dose number for the due immunization.",
+        "primaryKey": [
+          {
+            "columnName": "DOCUMENT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "CONTACT_DATE_REAL",
+            "ordinalPosition": 2
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 3
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "DOCUMENT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the document record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "CONTACT_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "IMM_DUE_TYPE_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The type ID of immunization that is due. This column is frequently used to link to the table CLARITY_IMMUNZATN."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "IMM_DUE_TYPE_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the immunization."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "IMM_DUE_TYPE_FT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The free text description of the type of immunization that is due."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "IMM_DUE_DUE_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The due date for immunization that is due."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "IMM_DUE_EARLIEST_DT",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The earliest date of immunization that is due."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "IMM_DUE_NEXT_DOSE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The next dose number of immunization that is due."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "IMM_DUE_SCHED_ID_FT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Immunization schedule ID used for the recommended vaccination."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "IMM_DUE_SCHED_NM_FT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Immunization schedule name used for the recommended vaccination."
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "IMM_DUE_SCHED_CD_FT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Immunization schedule coding system used for the recommended vaccination."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "IMM_DUE",
+            "target": "IMM_ADMIN_GROUPS_FT",
+            "joinKeys": [
+              {
+                "source": "DOCUMENT_ID",
+                "target": "DOCUMENT_ID"
+              },
+              {
+                "source": "CONTACT_DATE_REAL",
+                "target": "CONTACT_DATE_REAL"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "IMM_DUE",
+            "target": "IMM_ADMIN_GROUPS",
+            "joinKeys": [
+              {
+                "source": "DOCUMENT_ID",
+                "target": "DOCUMENT_ID"
+              },
+              {
+                "source": "CONTACT_DATE_REAL",
+                "target": "CONTACT_DATE_REAL"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "IMM_DUE": [
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64868,
+      "LINE": 5,
+      "CONTACT_DATE": "2018-08-08 00:00:00",
+      "IMM_DUE_TYPE_ID": 9,
+      "IMM_DUE_TYPE_ID_NAME": "VARICELLA (VARIVAX) VAR",
+      "IMM_DUE_TYPE_FT": "Varicella",
+      "IMM_DUE_DUE_DATE": "1995-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1995-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64869,
+      "LINE": 5,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "IMM_DUE_TYPE_ID": 9,
+      "IMM_DUE_TYPE_ID_NAME": "VARICELLA (VARIVAX) VAR",
+      "IMM_DUE_TYPE_FT": "Varicella",
+      "IMM_DUE_DUE_DATE": "1995-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1995-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64869.01,
+      "LINE": 5,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "IMM_DUE_TYPE_ID": 9,
+      "IMM_DUE_TYPE_ID_NAME": "VARICELLA (VARIVAX) VAR",
+      "IMM_DUE_TYPE_FT": "Varicella",
+      "IMM_DUE_DUE_DATE": "1995-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1995-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64878,
+      "LINE": 5,
+      "CONTACT_DATE": "2018-08-18 00:00:00",
+      "IMM_DUE_TYPE_ID": 9,
+      "IMM_DUE_TYPE_ID_NAME": "VARICELLA (VARIVAX) VAR",
+      "IMM_DUE_TYPE_FT": "Varicella",
+      "IMM_DUE_DUE_DATE": "1995-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1995-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 65387,
+      "LINE": 5,
+      "CONTACT_DATE": "2020-01-09 00:00:00",
+      "IMM_DUE_TYPE_ID": 9,
+      "IMM_DUE_TYPE_ID_NAME": "VARICELLA (VARIVAX) VAR",
+      "IMM_DUE_TYPE_FT": "Varicella",
+      "IMM_DUE_DUE_DATE": "1995-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1995-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 65574,
+      "LINE": 5,
+      "CONTACT_DATE": "2020-07-14 00:00:00",
+      "IMM_DUE_TYPE_ID": 9,
+      "IMM_DUE_TYPE_ID_NAME": "VARICELLA (VARIVAX) VAR",
+      "IMM_DUE_TYPE_FT": "Varicella",
+      "IMM_DUE_DUE_DATE": "1995-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1995-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 65591,
+      "LINE": 5,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "IMM_DUE_TYPE_ID": 9,
+      "IMM_DUE_TYPE_ID_NAME": "VARICELLA (VARIVAX) VAR",
+      "IMM_DUE_TYPE_FT": "Varicella",
+      "IMM_DUE_DUE_DATE": "1995-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1995-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66122,
+      "LINE": 5,
+      "CONTACT_DATE": "2022-01-13 00:00:00",
+      "IMM_DUE_TYPE_ID": 9,
+      "IMM_DUE_TYPE_ID_NAME": "VARICELLA (VARIVAX) VAR",
+      "IMM_DUE_TYPE_FT": "Varicella",
+      "IMM_DUE_DUE_DATE": "1995-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1995-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66133,
+      "LINE": 5,
+      "CONTACT_DATE": "2022-01-24 00:00:00",
+      "IMM_DUE_TYPE_ID": 9,
+      "IMM_DUE_TYPE_ID_NAME": "VARICELLA (VARIVAX) VAR",
+      "IMM_DUE_TYPE_FT": "Varicella",
+      "IMM_DUE_DUE_DATE": "1995-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1995-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66179,
+      "LINE": 5,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "IMM_DUE_TYPE_ID": 9,
+      "IMM_DUE_TYPE_ID_NAME": "VARICELLA (VARIVAX) VAR",
+      "IMM_DUE_TYPE_FT": "Varicella",
+      "IMM_DUE_DUE_DATE": "1995-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1995-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66190,
+      "LINE": 5,
+      "CONTACT_DATE": "2022-03-22 00:00:00",
+      "IMM_DUE_TYPE_ID": 9,
+      "IMM_DUE_TYPE_ID_NAME": "VARICELLA (VARIVAX) VAR",
+      "IMM_DUE_TYPE_FT": "Varicella",
+      "IMM_DUE_DUE_DATE": "1995-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1995-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66350,
+      "LINE": 5,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IMM_DUE_TYPE_ID": 9,
+      "IMM_DUE_TYPE_ID_NAME": "VARICELLA (VARIVAX) VAR",
+      "IMM_DUE_TYPE_FT": "Varicella",
+      "IMM_DUE_DUE_DATE": "1995-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1995-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66350.01,
+      "LINE": 5,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IMM_DUE_TYPE_ID": 9,
+      "IMM_DUE_TYPE_ID_NAME": "VARICELLA (VARIVAX) VAR",
+      "IMM_DUE_TYPE_FT": "Varicella",
+      "IMM_DUE_DUE_DATE": "1995-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1995-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66384,
+      "LINE": 5,
+      "CONTACT_DATE": "2022-10-02 00:00:00",
+      "IMM_DUE_TYPE_ID": 9,
+      "IMM_DUE_TYPE_ID_NAME": "VARICELLA (VARIVAX) VAR",
+      "IMM_DUE_TYPE_FT": "Varicella",
+      "IMM_DUE_DUE_DATE": "1995-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1995-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66444,
+      "LINE": 5,
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "IMM_DUE_TYPE_ID": 9,
+      "IMM_DUE_TYPE_ID_NAME": "VARICELLA (VARIVAX) VAR",
+      "IMM_DUE_TYPE_FT": "Varicella",
+      "IMM_DUE_DUE_DATE": "1995-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1995-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66535,
+      "LINE": 6,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "IMM_DUE_TYPE_ID": 9,
+      "IMM_DUE_TYPE_ID_NAME": "VARICELLA (VARIVAX) VAR",
+      "IMM_DUE_TYPE_FT": "Varicella",
+      "IMM_DUE_DUE_DATE": "1995-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1995-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66745,
+      "LINE": 6,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "IMM_DUE_TYPE_ID": 9,
+      "IMM_DUE_TYPE_ID_NAME": "VARICELLA (VARIVAX) VAR",
+      "IMM_DUE_TYPE_FT": "Varicella",
+      "IMM_DUE_DUE_DATE": "1995-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1995-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64868,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-08 00:00:00",
+      "IMM_DUE_TYPE_ID": 40821,
+      "IMM_DUE_TYPE_ID_NAME": "INFLUENZA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Influenza",
+      "IMM_DUE_DUE_DATE": "2018-08-01 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2018-08-01 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "3",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64868,
+      "LINE": 2,
+      "CONTACT_DATE": "2018-08-08 00:00:00",
+      "IMM_DUE_TYPE_ID": 44,
+      "IMM_DUE_TYPE_ID_NAME": "MEASLES-MUMPS-RUBELLA (M-M-R II) MMR",
+      "IMM_DUE_TYPE_FT": "MMR",
+      "IMM_DUE_DUE_DATE": "1983-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1983-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64868,
+      "LINE": 3,
+      "CONTACT_DATE": "2018-08-08 00:00:00",
+      "IMM_DUE_TYPE_ID": 61,
+      "IMM_DUE_TYPE_ID_NAME": "TDAP",
+      "IMM_DUE_TYPE_FT": "Pertussis",
+      "IMM_DUE_DUE_DATE": "1993-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1992-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64868,
+      "LINE": 4,
+      "CONTACT_DATE": "2018-08-08 00:00:00",
+      "IMM_DUE_TYPE_FT": "Td",
+      "IMM_DUE_DUE_DATE": "1989-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1989-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64869,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "IMM_DUE_TYPE_ID": 40821,
+      "IMM_DUE_TYPE_ID_NAME": "INFLUENZA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Influenza",
+      "IMM_DUE_DUE_DATE": "2018-08-01 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2018-08-01 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "3",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64869,
+      "LINE": 2,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "IMM_DUE_TYPE_ID": 44,
+      "IMM_DUE_TYPE_ID_NAME": "MEASLES-MUMPS-RUBELLA (M-M-R II) MMR",
+      "IMM_DUE_TYPE_FT": "MMR",
+      "IMM_DUE_DUE_DATE": "1983-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1983-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64869,
+      "LINE": 3,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "IMM_DUE_TYPE_ID": 61,
+      "IMM_DUE_TYPE_ID_NAME": "TDAP",
+      "IMM_DUE_TYPE_FT": "Pertussis",
+      "IMM_DUE_DUE_DATE": "1993-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1992-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64869,
+      "LINE": 4,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "IMM_DUE_TYPE_FT": "Td",
+      "IMM_DUE_DUE_DATE": "1989-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1989-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64869.01,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "IMM_DUE_TYPE_ID": 40821,
+      "IMM_DUE_TYPE_ID_NAME": "INFLUENZA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Influenza",
+      "IMM_DUE_DUE_DATE": "2018-08-01 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2018-08-01 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "3",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64869.01,
+      "LINE": 2,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "IMM_DUE_TYPE_ID": 44,
+      "IMM_DUE_TYPE_ID_NAME": "MEASLES-MUMPS-RUBELLA (M-M-R II) MMR",
+      "IMM_DUE_TYPE_FT": "MMR",
+      "IMM_DUE_DUE_DATE": "1983-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1983-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64869.01,
+      "LINE": 3,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "IMM_DUE_TYPE_ID": 61,
+      "IMM_DUE_TYPE_ID_NAME": "TDAP",
+      "IMM_DUE_TYPE_FT": "Pertussis",
+      "IMM_DUE_DUE_DATE": "1993-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1992-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64869.01,
+      "LINE": 4,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "IMM_DUE_TYPE_FT": "Td",
+      "IMM_DUE_DUE_DATE": "1989-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1989-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64878,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-18 00:00:00",
+      "IMM_DUE_TYPE_ID": 40821,
+      "IMM_DUE_TYPE_ID_NAME": "INFLUENZA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Influenza",
+      "IMM_DUE_DUE_DATE": "2018-08-01 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2018-08-01 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "3",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64878,
+      "LINE": 2,
+      "CONTACT_DATE": "2018-08-18 00:00:00",
+      "IMM_DUE_TYPE_ID": 44,
+      "IMM_DUE_TYPE_ID_NAME": "MEASLES-MUMPS-RUBELLA (M-M-R II) MMR",
+      "IMM_DUE_TYPE_FT": "MMR",
+      "IMM_DUE_DUE_DATE": "1983-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1983-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64878,
+      "LINE": 3,
+      "CONTACT_DATE": "2018-08-18 00:00:00",
+      "IMM_DUE_TYPE_ID": 61,
+      "IMM_DUE_TYPE_ID_NAME": "TDAP",
+      "IMM_DUE_TYPE_FT": "Pertussis",
+      "IMM_DUE_DUE_DATE": "1993-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1992-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64878,
+      "LINE": 4,
+      "CONTACT_DATE": "2018-08-18 00:00:00",
+      "IMM_DUE_TYPE_FT": "Td",
+      "IMM_DUE_DUE_DATE": "1989-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1989-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 65387,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-01-09 00:00:00",
+      "IMM_DUE_TYPE_ID": 98,
+      "IMM_DUE_TYPE_ID_NAME": "HEPATITIS A, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "HepA",
+      "IMM_DUE_DUE_DATE": "2019-08-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2019-08-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "2",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 65387,
+      "LINE": 2,
+      "CONTACT_DATE": "2020-01-09 00:00:00",
+      "IMM_DUE_TYPE_ID": 40821,
+      "IMM_DUE_TYPE_ID_NAME": "INFLUENZA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Influenza",
+      "IMM_DUE_DUE_DATE": "2020-08-01 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2020-08-01 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "3",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 65387,
+      "LINE": 3,
+      "CONTACT_DATE": "2020-01-09 00:00:00",
+      "IMM_DUE_TYPE_ID": 44,
+      "IMM_DUE_TYPE_ID_NAME": "MEASLES-MUMPS-RUBELLA (M-M-R II) MMR",
+      "IMM_DUE_TYPE_FT": "MMR",
+      "IMM_DUE_DUE_DATE": "1983-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1983-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 65387,
+      "LINE": 4,
+      "CONTACT_DATE": "2020-01-09 00:00:00",
+      "IMM_DUE_TYPE_ID": 109,
+      "IMM_DUE_TYPE_ID_NAME": "TETANUS-DIPHTHERIA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Td",
+      "IMM_DUE_DUE_DATE": "2029-02-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2024-02-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "4",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 65574,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-07-14 00:00:00",
+      "IMM_DUE_TYPE_ID": 98,
+      "IMM_DUE_TYPE_ID_NAME": "HEPATITIS A, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "HepA",
+      "IMM_DUE_DUE_DATE": "2019-08-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2019-08-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "2",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 65574,
+      "LINE": 2,
+      "CONTACT_DATE": "2020-07-14 00:00:00",
+      "IMM_DUE_TYPE_ID": 40821,
+      "IMM_DUE_TYPE_ID_NAME": "INFLUENZA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Influenza",
+      "IMM_DUE_DUE_DATE": "2020-08-01 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2020-08-01 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "3",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 65574,
+      "LINE": 3,
+      "CONTACT_DATE": "2020-07-14 00:00:00",
+      "IMM_DUE_TYPE_ID": 44,
+      "IMM_DUE_TYPE_ID_NAME": "MEASLES-MUMPS-RUBELLA (M-M-R II) MMR",
+      "IMM_DUE_TYPE_FT": "MMR",
+      "IMM_DUE_DUE_DATE": "1983-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1983-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 65574,
+      "LINE": 4,
+      "CONTACT_DATE": "2020-07-14 00:00:00",
+      "IMM_DUE_TYPE_ID": 109,
+      "IMM_DUE_TYPE_ID_NAME": "TETANUS-DIPHTHERIA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Td",
+      "IMM_DUE_DUE_DATE": "2029-02-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2024-02-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "4",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 65591,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "IMM_DUE_TYPE_ID": 98,
+      "IMM_DUE_TYPE_ID_NAME": "HEPATITIS A, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "HepA",
+      "IMM_DUE_DUE_DATE": "2019-08-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2019-08-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "2",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 65591,
+      "LINE": 2,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "IMM_DUE_TYPE_ID": 40821,
+      "IMM_DUE_TYPE_ID_NAME": "INFLUENZA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Influenza",
+      "IMM_DUE_DUE_DATE": "2020-08-01 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2020-08-01 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "3",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 65591,
+      "LINE": 3,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "IMM_DUE_TYPE_ID": 44,
+      "IMM_DUE_TYPE_ID_NAME": "MEASLES-MUMPS-RUBELLA (M-M-R II) MMR",
+      "IMM_DUE_TYPE_FT": "MMR",
+      "IMM_DUE_DUE_DATE": "1983-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1983-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 65591,
+      "LINE": 4,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "IMM_DUE_TYPE_ID": 109,
+      "IMM_DUE_TYPE_ID_NAME": "TETANUS-DIPHTHERIA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Td",
+      "IMM_DUE_DUE_DATE": "2029-02-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2024-02-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "4",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66122,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-01-13 00:00:00",
+      "IMM_DUE_TYPE_ID": 98,
+      "IMM_DUE_TYPE_ID_NAME": "HEPATITIS A, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "HepA",
+      "IMM_DUE_DUE_DATE": "2019-08-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2019-08-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "2",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66122,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-01-13 00:00:00",
+      "IMM_DUE_TYPE_ID": 40821,
+      "IMM_DUE_TYPE_ID_NAME": "INFLUENZA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Influenza",
+      "IMM_DUE_DUE_DATE": "2022-08-01 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2022-08-01 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "3",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66122,
+      "LINE": 3,
+      "CONTACT_DATE": "2022-01-13 00:00:00",
+      "IMM_DUE_TYPE_ID": 44,
+      "IMM_DUE_TYPE_ID_NAME": "MEASLES-MUMPS-RUBELLA (M-M-R II) MMR",
+      "IMM_DUE_TYPE_FT": "MMR",
+      "IMM_DUE_DUE_DATE": "1983-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1983-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66122,
+      "LINE": 4,
+      "CONTACT_DATE": "2022-01-13 00:00:00",
+      "IMM_DUE_TYPE_ID": 109,
+      "IMM_DUE_TYPE_ID_NAME": "TETANUS-DIPHTHERIA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Td",
+      "IMM_DUE_DUE_DATE": "2029-02-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2024-02-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "4",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66133,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-01-24 00:00:00",
+      "IMM_DUE_TYPE_ID": 98,
+      "IMM_DUE_TYPE_ID_NAME": "HEPATITIS A, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "HepA",
+      "IMM_DUE_DUE_DATE": "2019-08-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2019-08-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "2",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66133,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-01-24 00:00:00",
+      "IMM_DUE_TYPE_ID": 40821,
+      "IMM_DUE_TYPE_ID_NAME": "INFLUENZA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Influenza",
+      "IMM_DUE_DUE_DATE": "2022-08-01 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2022-08-01 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "3",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66133,
+      "LINE": 3,
+      "CONTACT_DATE": "2022-01-24 00:00:00",
+      "IMM_DUE_TYPE_ID": 44,
+      "IMM_DUE_TYPE_ID_NAME": "MEASLES-MUMPS-RUBELLA (M-M-R II) MMR",
+      "IMM_DUE_TYPE_FT": "MMR",
+      "IMM_DUE_DUE_DATE": "1983-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1983-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66133,
+      "LINE": 4,
+      "CONTACT_DATE": "2022-01-24 00:00:00",
+      "IMM_DUE_TYPE_ID": 109,
+      "IMM_DUE_TYPE_ID_NAME": "TETANUS-DIPHTHERIA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Td",
+      "IMM_DUE_DUE_DATE": "2029-02-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2024-02-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "4",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66179,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "IMM_DUE_TYPE_ID": 98,
+      "IMM_DUE_TYPE_ID_NAME": "HEPATITIS A, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "HepA",
+      "IMM_DUE_DUE_DATE": "2019-08-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2019-08-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "2",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66179,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "IMM_DUE_TYPE_ID": 40821,
+      "IMM_DUE_TYPE_ID_NAME": "INFLUENZA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Influenza",
+      "IMM_DUE_DUE_DATE": "2022-08-01 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2022-08-01 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "3",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66179,
+      "LINE": 3,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "IMM_DUE_TYPE_ID": 44,
+      "IMM_DUE_TYPE_ID_NAME": "MEASLES-MUMPS-RUBELLA (M-M-R II) MMR",
+      "IMM_DUE_TYPE_FT": "MMR",
+      "IMM_DUE_DUE_DATE": "1983-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1983-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66179,
+      "LINE": 4,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "IMM_DUE_TYPE_ID": 109,
+      "IMM_DUE_TYPE_ID_NAME": "TETANUS-DIPHTHERIA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Td",
+      "IMM_DUE_DUE_DATE": "2029-02-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2024-02-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "4",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66190,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-03-22 00:00:00",
+      "IMM_DUE_TYPE_ID": 98,
+      "IMM_DUE_TYPE_ID_NAME": "HEPATITIS A, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "HepA",
+      "IMM_DUE_DUE_DATE": "2019-08-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2019-08-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "2",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66190,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-03-22 00:00:00",
+      "IMM_DUE_TYPE_ID": 40821,
+      "IMM_DUE_TYPE_ID_NAME": "INFLUENZA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Influenza",
+      "IMM_DUE_DUE_DATE": "2022-08-01 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2022-08-01 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "3",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66190,
+      "LINE": 3,
+      "CONTACT_DATE": "2022-03-22 00:00:00",
+      "IMM_DUE_TYPE_ID": 44,
+      "IMM_DUE_TYPE_ID_NAME": "MEASLES-MUMPS-RUBELLA (M-M-R II) MMR",
+      "IMM_DUE_TYPE_FT": "MMR",
+      "IMM_DUE_DUE_DATE": "1983-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1983-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66190,
+      "LINE": 4,
+      "CONTACT_DATE": "2022-03-22 00:00:00",
+      "IMM_DUE_TYPE_ID": 109,
+      "IMM_DUE_TYPE_ID_NAME": "TETANUS-DIPHTHERIA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Td",
+      "IMM_DUE_DUE_DATE": "2029-02-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2024-02-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "4",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66350,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IMM_DUE_TYPE_ID": 98,
+      "IMM_DUE_TYPE_ID_NAME": "HEPATITIS A, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "HepA",
+      "IMM_DUE_DUE_DATE": "2019-08-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2019-08-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "2",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66350,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IMM_DUE_TYPE_ID": 40821,
+      "IMM_DUE_TYPE_ID_NAME": "INFLUENZA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Influenza",
+      "IMM_DUE_DUE_DATE": "2022-08-01 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2022-08-01 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "3",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66350,
+      "LINE": 3,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IMM_DUE_TYPE_ID": 44,
+      "IMM_DUE_TYPE_ID_NAME": "MEASLES-MUMPS-RUBELLA (M-M-R II) MMR",
+      "IMM_DUE_TYPE_FT": "MMR",
+      "IMM_DUE_DUE_DATE": "1983-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1983-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66350,
+      "LINE": 4,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IMM_DUE_TYPE_ID": 109,
+      "IMM_DUE_TYPE_ID_NAME": "TETANUS-DIPHTHERIA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Td",
+      "IMM_DUE_DUE_DATE": "2029-02-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2024-02-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "4",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66350.01,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IMM_DUE_TYPE_ID": 98,
+      "IMM_DUE_TYPE_ID_NAME": "HEPATITIS A, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "HepA",
+      "IMM_DUE_DUE_DATE": "2019-08-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2019-08-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "2",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66350.01,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IMM_DUE_TYPE_ID": 40821,
+      "IMM_DUE_TYPE_ID_NAME": "INFLUENZA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Influenza",
+      "IMM_DUE_DUE_DATE": "2022-08-01 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2022-08-01 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "3",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66350.01,
+      "LINE": 3,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IMM_DUE_TYPE_ID": 44,
+      "IMM_DUE_TYPE_ID_NAME": "MEASLES-MUMPS-RUBELLA (M-M-R II) MMR",
+      "IMM_DUE_TYPE_FT": "MMR",
+      "IMM_DUE_DUE_DATE": "1983-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1983-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66350.01,
+      "LINE": 4,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "IMM_DUE_TYPE_ID": 109,
+      "IMM_DUE_TYPE_ID_NAME": "TETANUS-DIPHTHERIA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Td",
+      "IMM_DUE_DUE_DATE": "2029-02-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2024-02-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "4",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66384,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-10-02 00:00:00",
+      "IMM_DUE_TYPE_ID": 98,
+      "IMM_DUE_TYPE_ID_NAME": "HEPATITIS A, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "HepA",
+      "IMM_DUE_DUE_DATE": "2019-08-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2019-08-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "2",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66384,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-10-02 00:00:00",
+      "IMM_DUE_TYPE_ID": 40821,
+      "IMM_DUE_TYPE_ID_NAME": "INFLUENZA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Influenza",
+      "IMM_DUE_DUE_DATE": "2022-08-01 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2022-08-01 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "3",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66384,
+      "LINE": 3,
+      "CONTACT_DATE": "2022-10-02 00:00:00",
+      "IMM_DUE_TYPE_ID": 44,
+      "IMM_DUE_TYPE_ID_NAME": "MEASLES-MUMPS-RUBELLA (M-M-R II) MMR",
+      "IMM_DUE_TYPE_FT": "MMR",
+      "IMM_DUE_DUE_DATE": "1983-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1983-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66384,
+      "LINE": 4,
+      "CONTACT_DATE": "2022-10-02 00:00:00",
+      "IMM_DUE_TYPE_ID": 109,
+      "IMM_DUE_TYPE_ID_NAME": "TETANUS-DIPHTHERIA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Td",
+      "IMM_DUE_DUE_DATE": "2029-02-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2024-02-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "4",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66444,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "IMM_DUE_TYPE_ID": 98,
+      "IMM_DUE_TYPE_ID_NAME": "HEPATITIS A, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "HepA",
+      "IMM_DUE_DUE_DATE": "2019-08-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2019-08-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "2",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66444,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "IMM_DUE_TYPE_ID": 40821,
+      "IMM_DUE_TYPE_ID_NAME": "INFLUENZA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Influenza",
+      "IMM_DUE_DUE_DATE": "2023-08-01 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2023-08-01 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "3",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66444,
+      "LINE": 3,
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "IMM_DUE_TYPE_ID": 44,
+      "IMM_DUE_TYPE_ID_NAME": "MEASLES-MUMPS-RUBELLA (M-M-R II) MMR",
+      "IMM_DUE_TYPE_FT": "MMR",
+      "IMM_DUE_DUE_DATE": "1983-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1983-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66444,
+      "LINE": 4,
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "IMM_DUE_TYPE_ID": 109,
+      "IMM_DUE_TYPE_ID_NAME": "TETANUS-DIPHTHERIA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Td",
+      "IMM_DUE_DUE_DATE": "2029-02-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2024-02-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "4",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66535,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "IMM_DUE_TYPE_ID": 98,
+      "IMM_DUE_TYPE_ID_NAME": "HEPATITIS A, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "HepA",
+      "IMM_DUE_DUE_DATE": "2019-08-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2019-08-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "2",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66535,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "IMM_DUE_TYPE_ID": 99,
+      "IMM_DUE_TYPE_ID_NAME": "HEPATITIS B, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "HepB",
+      "IMM_DUE_DUE_DATE": "2001-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2001-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66535,
+      "LINE": 3,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "IMM_DUE_TYPE_ID": 40821,
+      "IMM_DUE_TYPE_ID_NAME": "INFLUENZA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Influenza",
+      "IMM_DUE_DUE_DATE": "2023-08-01 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2023-08-01 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "3",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66535,
+      "LINE": 4,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "IMM_DUE_TYPE_ID": 44,
+      "IMM_DUE_TYPE_ID_NAME": "MEASLES-MUMPS-RUBELLA (M-M-R II) MMR",
+      "IMM_DUE_TYPE_FT": "MMR",
+      "IMM_DUE_DUE_DATE": "1983-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1983-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66535,
+      "LINE": 5,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "IMM_DUE_TYPE_ID": 109,
+      "IMM_DUE_TYPE_ID_NAME": "TETANUS-DIPHTHERIA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Td",
+      "IMM_DUE_DUE_DATE": "2029-02-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2024-02-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "4",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66745,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "IMM_DUE_TYPE_ID": 98,
+      "IMM_DUE_TYPE_ID_NAME": "HEPATITIS A, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "HepA",
+      "IMM_DUE_DUE_DATE": "2019-08-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2019-08-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "2",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66745,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "IMM_DUE_TYPE_ID": 99,
+      "IMM_DUE_TYPE_ID_NAME": "HEPATITIS B, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "HepB",
+      "IMM_DUE_DUE_DATE": "2001-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2001-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66745,
+      "LINE": 3,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "IMM_DUE_TYPE_ID": 40821,
+      "IMM_DUE_TYPE_ID_NAME": "INFLUENZA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Influenza",
+      "IMM_DUE_DUE_DATE": "2023-08-01 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2023-08-01 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "3",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66745,
+      "LINE": 4,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "IMM_DUE_TYPE_ID": 44,
+      "IMM_DUE_TYPE_ID_NAME": "MEASLES-MUMPS-RUBELLA (M-M-R II) MMR",
+      "IMM_DUE_TYPE_FT": "MMR",
+      "IMM_DUE_DUE_DATE": "1983-10-26 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "1983-10-26 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "1",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 66745,
+      "LINE": 5,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "IMM_DUE_TYPE_ID": 109,
+      "IMM_DUE_TYPE_ID_NAME": "TETANUS-DIPHTHERIA, UNSPECIFIED FORMULATION",
+      "IMM_DUE_TYPE_FT": "Td",
+      "IMM_DUE_DUE_DATE": "2029-02-05 00:00:00",
+      "IMM_DUE_EARLIEST_DT": "2024-02-05 00:00:00",
+      "IMM_DUE_NEXT_DOSE": "4",
+      "IMM_DUE_SCHED_ID_FT": "VXC16",
+      "IMM_DUE_SCHED_NM_FT": "ACIP Schedule",
+      "IMM_DUE_SCHED_CD_FT": "CDCPHINVS",
+      "$meta": {
+        "type": "IMM_DUE"
+      }
+    }
+  ]
+}

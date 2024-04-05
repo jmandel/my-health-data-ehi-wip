@@ -1,0 +1,226 @@
+{
+  "name": "INFECTIONS",
+  "description": "This table contains basic information about patient infections.",
+  "primaryKey": [
+    {
+      "columnName": "INFECTION_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "INFECTION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the infection record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "RECORD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The record status category ID for the infection.",
+      "entries": [
+        "Soft Deleted",
+        "Hidden",
+        "Hidden and Soft Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "INFECTION_RECORD_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The record type category ID for the infection.",
+      "entries": [
+        "Encounter Level",
+        "Patient Level"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "INFECTION_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The infection type category ID for the infection."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "INF_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The infection status category ID for the infection.",
+      "entries": [
+        "Active",
+        "Resolved",
+        "Infection Expired",
+        "Deleted",
+        "Rule-Out Test Resulted",
+        "Encounter Ended",
+        "Rule-Out Test Canceled",
+        "Patient Deceased"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "HOW_ADDED_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The how added category ID for the infection. This indicates the method by which the infection was added to the patient chart.",
+      "entries": [
+        "User",
+        "Import",
+        "Auto-Update (Result)",
+        "Rule-Out (Order Placed)",
+        "Interface",
+        "Conversion",
+        "BPA Follow-Up (Manual)",
+        "BPA Follow-Up (Automatic)",
+        "Bulk Action - Add Infection",
+        "Bulk Action - Contact Trace Add Infection",
+        "User - From External"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ADD_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The UTC date and time that the infection was added to the patient chart."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ADD_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the user who added the infection. This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "ADD_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "RESOLVE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The UTC date and time that the infection was resolved in the patient chart."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "RESOLVE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the user who resolved the infection. This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "RESOLVE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "EXPIRATION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the infection is set to automatically expire."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "DOESNT_EXPIRE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the infection should not automatically expire. 'Y' indicates that the infection requires clinical judgement to be marked as resolved. 'N' or NULL indicates that it is safe for the infection to expire automatically if an expiration date is given.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "REVIEW_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date that the infection should be reviewed."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "ONSET_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date that the infection began."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "COMMENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "User-entered comments associated with the infection."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "SPECIMEN_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The specimen type category ID for the infection."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "SPECIMEN_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The specimen source category ID for the infection."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "RECORD_CREATION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the infection record was created."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "ADD_LOCAL_DTTM",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "The local date and time that the infection was added to the patient chart."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "RESOLVE_LOCAL_DTTM",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "The local date and time that the infection was resolved in the patient chart."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "ISOLATION_LINKS_CALCULATED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether all linked isolations have been calculated. 'Y' indicates all linked isolations have been calculated. 'N' or NULL indicates that there may be isolations that would be considered linked to the infection, but that pre-date the linking calculation."
+    }
+  ]
+}

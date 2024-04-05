@@ -1,0 +1,72 @@
+{
+  "name": "DTREE_NODES_USED",
+  "description": "Table containing the nodes used in a decision tree run.",
+  "primaryKey": [
+    {
+      "columnName": "DTREE_ANSWER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "DTREE_ANSWER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the answer record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "NODE_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the status of the decision tree node based on the actions taken by the user when completing the decision tree. For example, if a user answers a question in a decision tree, the status of the question node will be set to Completed.",
+      "entries": [
+        "Completed",
+        "In-Progress",
+        "Skipped",
+        "Clinician Only",
+        "Throttled"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CREATED_PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The encounter ID number of the record used to store information generated as a result of the user taking an action in a decision tree."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CREATED_APPT_REQUEST_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID number of the record used to store the  appointment requests created as a result of the user taking an action in a decision tree."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CHILD_DTREE_ANS_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID number of the record used to store the answers to a child decision tree created by a decision tree node in a decision tree."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "NODE_ETX_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format for the contact viewed by the patient during self-triage. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 references the first (or only) contact, .01 references the second contact, etc."
+    }
+  ]
+}

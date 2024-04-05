@@ -1,0 +1,163 @@
+{
+  "name": "TREATMENT_TEAM",
+  "description": "This table stores information about patient treatment teams such as relationship, specialty, department, and start/end time. Each row represents a member of a patient's treatment team.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "TR_TEAM_BILL_PR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the billing provider record."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "TR_TEAM_EM_CODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The evaluation and management code for billing within the treatment team."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "TR_TEAM_EM_REQ_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Used to determine if the evaluation and management code is required or not for use in the treatment team.",
+      "entries": [
+        "Required",
+        "Not Applicable"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "TR_TEAM_SPEC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the specialty of the treatment team member to the patient."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "TR_TEAM_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comment for the treatment team."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "TR_TEAM_ISDE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether or not this provider was deleted.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "TR_TEAM_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the treatment team provider record."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "TR_TEAM_REL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the relationship of the treatment team member to the patient."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "TR_TEAM_COMM_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Relates to communication being sent to the treatment team members.",
+      "entries": [
+        "Yes",
+        "No",
+        "Sent"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "TR_TEAM_INFO_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Additional information related to the treatment team members."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "TR_TEAM_BEG_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time the treatment team member started for the patient."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "TR_TEAM_END_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time the treatment team member ended for the patient."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "TR_TEAM_ED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether or not this provider was on the treatment team in the ED."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "TR_TEAM_TEAM_ADD_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the assignment was added by the team."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "TR_TEAM_SRC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the contact serial number corresponding to the encounter responsible for assigning a specific member of the treatment team. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    }
+  ]
+}

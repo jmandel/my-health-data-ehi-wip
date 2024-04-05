@@ -1,0 +1,58 @@
+{
+  "name": "PAT_INCAP_HX",
+  "description": "This table holds the history of patient capacity status changes. The row with the largest LINE value is the most recently documented status for the associated patient.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_INCAP_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the patient's incapacity status and a history of previous incapacity statuses.",
+      "entries": [
+        "Full capacity",
+        "Incapacitated",
+        "Determination in progress",
+        "Needs review"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_INCAP_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the UTC instant when a user documented the patient's incapacity status. This column also stores a history of previous UTC instants when prior statuses were documented."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PAT_INCAP_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the free text comment documented on the patient's incapacity status and a history of previous comments documented on prior statuses."
+    }
+  ]
+}

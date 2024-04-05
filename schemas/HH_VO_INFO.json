@@ -1,0 +1,227 @@
+{
+  "name": "HH_VO_INFO",
+  "description": "Contains Home Health verbal orders noadd single items information.",
+  "primaryKey": [
+    {
+      "columnName": "VERBAL_ORDER_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "VERBAL_ORDER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the verbal order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "ORDER_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Local date for home care order. Since this a local date, it will not always match the date in ORDER_INSTANT_UTC_DTTM."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PROVIDER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Unique identifier for the provider who is the referring provider for the verbal order. Links to table REFERRAL_SOURCE. The unique ID associated with the provider record for this row. This column is frequently used to link to the REFERRAL_SOURCE table.",
+      "linksTo": "REFERRAL_SOURCE"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PROVIDER_ID_REFERRING_PROV_NAM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the referral source."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "USER_RECEIVED_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "User ID of the verbal order receiving user.  Links to table CLARITY_EMP."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "USER_RECEIVED_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CREATE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date on which the verbal order was created."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PATIENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Patient ID of the patient for whom the verbal order is created.  Links to table PATIENT."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Verbal order status. Includes: not submitted, submitted, signed, sent, responded. Links to category table ZC_LVO_STATUS.",
+      "entries": [
+        "Not Submitted",
+        "Submitted",
+        "Signed",
+        "Sent",
+        "Responded",
+        "Entered",
+        "Resubmitted",
+        "Waiting for Review",
+        "Retracted",
+        "Canceled"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "POC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number of the patient associated with the hospice plan of care that generated the order."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PLAN_OF_CARE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the hospice plan of care ID associated with this verbal order."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "COSIGN_PROVIDER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the cosign provider."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "COSIGN_PROVIDER_ID_REFERRING_PROV_NAM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the referral source."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "IS_COSIGN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item contains whether the verbal order has been cosigned."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "ORDER_MODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates how the order was communicated. This helps distinguish between orders sent in by the physician unsolicited, orders communicated verbally from the physician to the clinician, and orders sent to the physician by the clinician without prior verbal communication.",
+      "entries": [
+        "Verbal",
+        "Physician Initiated",
+        "Clinician Initiated",
+        "Automatically Created"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "AUTH_LAST_EVENT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The last event for the authorizing provider (in HH_VO_INFO.PROVIDER_ID). Use this column when an order is sent to multiple providers and to differentiate between orders that are signed electronically and manually.",
+      "entries": [
+        "Submit",
+        "Received Signature",
+        "Sent",
+        "Replied With Changes",
+        "Printed",
+        "Faxed to Provider",
+        "Retract",
+        "Resent",
+        "Received Order",
+        "Admin Closed",
+        "Reviewed",
+        "Electronically Signed",
+        "Automatically Canceled",
+        "Waiting for Review",
+        "Failed Fax",
+        "POC Update Sent - No Signature Required",
+        "Removed Provider from Finalized POC"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PHY_CERT_CHARGE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the physician certification or recertification charge."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "AUTO_CREATION_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores how the home care order was automatically created.",
+      "entries": [
+        "Created at sync",
+        "Created when HH POC was sent",
+        "Created by utility"
+      ]
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "ORDER_INSTANT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "UTC date and time at which a home care order was placed. For orders created before we captured order time explicitly, the time saved here is equivalent to midnight local time."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "FACE_TO_FACE_ENC_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item stores the encounter date for Face to Face orders.  It is not used for other order types."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "CODE_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Document the type of code status this order placed (Full Code, DNR, etc.).",
+      "entries": [
+        "<Disabled>",
+        "Full Code",
+        "DNR",
+        "Partial Code"
+      ]
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "PLAN_OF_CARE_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number of the hospice plan of care that generated the order. This is used to identify the version of the plan that was sent with the order."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "RECORD_STATUS_2_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Record status flag. Used in conjunction with record archived flag for encounter archiving.",
+      "entries": [
+        "Soft Deleted",
+        "Hidden",
+        "Hidden and Soft Deleted"
+      ]
+    }
+  ]
+}

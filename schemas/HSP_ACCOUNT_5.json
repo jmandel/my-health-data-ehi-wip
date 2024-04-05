@@ -1,0 +1,134 @@
+{
+  "name": "HSP_ACCOUNT_5",
+  "description": "This table contains hospital account information from the Hospital Accounts Receivable (HAR) master file. It excludes Professional Billing HARs created by visit filing order in non-single billing office service areas. This fifth hospital account table has the same basic structure as HSP_ACCOUNT, HSP_ACCOUNT_2, HSP_ACCOUNT_3, and HSP_ACCOUNT_4.",
+  "primaryKey": [
+    {
+      "columnName": "HSP_ACCOUNT_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the hospital account record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "AR_CLASSIFICATION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the A/R classification of this account.",
+      "entries": [
+        "Active AR",
+        "External Agency AR",
+        "Bad Debt",
+        "Outsourced",
+        "Received Self-Pay Active AR",
+        "Received Self-Pay External Agency AR",
+        "Received Self-Pay Bad Debt"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LAST_SP_LEVEL_UPDATE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Retrieves the last date when the self-pay follow-up cycle was updated."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "INITIAL_EXPECTED_ALLOWED_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The sum of the expected allowed amounts for the primary claims initially sent."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CURRENT_EXPECTED_ALLOWED_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The sum of the expected allowed amounts for the primary claims last sent."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CHANGE_IN_EXPECTED_ALLOWED_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The difference between the sums of the expected allowed amounts of the primary claims initially sent and of the primary claims last sent."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "INITIAL_CLM_CLASS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The claim class used when sending the initial primary claims. Represented with a patient class category ID for the hospital account."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "INITIAL_CLM_BASE_CLASS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The claim base class used when sending the initial primary claims. Represented with an account base class category ID for the hospital account.",
+      "entries": [
+        "Inpatient",
+        "Outpatient",
+        "Emergency"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CUR_CLM_CLASS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The claim class used for currently sent or closed primary claims. Represented with a patient class category ID for the hospital account."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "CUR_CLM_BASE_CLASS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The claim base class used for currently sent or closed primary claims. Represented with an account base class category ID for the hospital account."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "DAYS_FROM_INIT_TO_CUR_CLM_ACPT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The maximum of the number of days between the accept dates for the first and last claim sent on each payer billing thread for this hospital account. Null for any account without multiple claims sent on the same payer billing thread."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PAYER_DOWNGRADE_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The payer downgrade request type category ID for the hospital account. This category is the type of downgrade requested when the primary payer tries to dispute the level of care of the HAR. NULL if no such attempt was made.",
+      "entries": [
+        "No Downgrade",
+        "Inpatient to Observation"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PAYER_DOWNGRADE_BDC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the follow-up record that is the primary payer's attempt to lower the level of care of the account. NULL if no such attempt was made by the primary payer. This column is frequently used to link to the BDC_INFO table.",
+      "linksTo": "BDC_INFO"
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "PAYER_DOWNGRADE_OUTCOME_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether the primary payer's attempt to lower the level of care of the account was appropriate and whether it was overturned or led to a downgrade. NULL if no such attempt was made by the Primary Payer.",
+      "entries": [
+        "Appropriate & Downgraded",
+        "Inappropriate & Overturned",
+        "Inappropriate & Downgraded"
+      ]
+    }
+  ]
+}

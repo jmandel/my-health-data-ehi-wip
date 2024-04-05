@@ -1,0 +1,59 @@
+{
+  "name": "PAT_ENC_DOCS",
+  "description": "The PAT_ENC_DOCS table contains information about each document that is attached to a patient encounter, including scanned and electronically signed documents.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique, internal contact date in decimal format. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "DOC_INFO_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the document for this patient encounter."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ADT_CONTACT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "States whether or not the document is attached to an Admission, Discharge, Transfer, or Leave of Absence (ADT) Contact."
+    }
+  ]
+}

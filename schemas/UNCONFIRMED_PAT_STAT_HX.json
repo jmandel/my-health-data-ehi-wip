@@ -1,0 +1,133 @@
+{
+  "name": "UNCONFIRMED_PAT_STAT_HX",
+  "description": "Clarity table for historical information regarding unconfirmed patient statuses.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "UNCNFRM_HX_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the historical information regarding the patient unconfirmed status (EPT 2023).",
+      "entries": [
+        "Duplicate Review Needed",
+        "Identity Verification Needed",
+        "Patient Creation in Progress",
+        "Flagged as Suspicious"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "UNCNFRM_HX_STAT_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores whether the patient status from EPT 2043 was added or removed.",
+      "entries": [
+        "Added",
+        "Removed",
+        "Modified"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "UNCNFRM_HX_WKFW_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds historical information regarding the unconfirmed patient source workflow in EPT 2044.",
+      "entries": [
+        "MyChart - On My Way",
+        "MyChart - Unverified Proxy Video Visit",
+        "Welcome",
+        "MyChart - Self-Signup",
+        "MyChart - Open Scheduling",
+        "MyChart - Symptom Checker",
+        "Unconfirmed Identity Activity",
+        "Web Service",
+        "MyChart - SAML Login",
+        "MyChart - Guest Proxy",
+        "MyChart - Provider Finder"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "UNCNFRM_HX_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Historical information regarding the instant the patient unconfirmed status changed."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "UNCNFRM_HX_CLI_DTTM",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "Historical information regarding the client instant of the patient's unconfirmed status."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "UNCNFRM_HX_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Historical information regarding the server instant of the patient's unconfirmed status."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "UNCNFRM_HX_MYPT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds historical information regarding the patient's unconfirmed status. This item holds the MyChart user linked to the patient's unconfirmed status change."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "UNCNFRM_HX_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds historical information regarding the patient's unconfirmed status. This item holds the Hyperspace user linked to the patient's unconfirmed status change."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "UNCNFRM_HX_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "UNCNFRM_HX_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds historical information regarding the patient's unconfirmed status. This item holds the reason linked to the patient's unconfirmed status change.",
+      "entries": [
+        "Fake Demographics",
+        "Identity Theft",
+        "No Identification",
+        "Patient Not Present",
+        "Patient Cannot Communicate",
+        "Other"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "name": "HSP_ACCT_COD_ERROR_HX",
+  "description": "This table contains the coding-related error history for external system errors.",
+  "primaryKey": [
+    {
+      "columnName": "ACCT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ACCT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the hospital account record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "COD_ERROR_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Lists the type of error for each error that occurred for the hospital account.",
+      "entries": [
+        "External System Error",
+        "Coding Validation Error",
+        "Coding Validation Warning"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ERROR_START_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Lists the UTC instant for when each error first appeared for the hospital account."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ERROR_END_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Lists the UTC instant for when each error was resolved for the hospital account."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EXT_ERROR_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Lists the external error code for each external error that occurred for the hospital account."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ERROR_IS_ACTIVE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Lists whether or not each error is currently applicable for the hospital account. If the error is not active then there will also be an end time for the error.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ERROR_MESSAGE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Lists the error message for each error that occurred for the hospital account."
+    }
+  ]
+}

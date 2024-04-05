@@ -1,0 +1,99 @@
+{
+  "name": "HSP_CLP_BND_EPSD_HX",
+  "description": "Holds a history of bundled episodes linked to or unlinked from the claim; also includes line-level link information.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_PRINT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_PRINT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the claim print record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "BND_EPSD_INST_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Instant that this episode was linked/unlinked."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "BND_EPSD_EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Bundled episode record associated with this history line."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "BND_EPSD_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The action performed on the corresponding episode (link/unlink).",
+      "entries": [
+        "Link",
+        "Unlink"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "BND_EPSD_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The source of the action performed on this claim to the related bundled episode (user/system/automation).",
+      "entries": [
+        "User",
+        "Visit Association",
+        "Auto Link",
+        "Auto Creation",
+        "Auto Link Via Transform",
+        "Auto Link Via Association",
+        "Auto Removal"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "BND_EPSD_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the user who performed the corresponding action on the related episode."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "BND_EPSD_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "BND_EPSD_LINKED_INCL_CLM_LNS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds a comma-delimited string of claim lines linked to the related episode if only part of the claim should be linked and if the number of lines to link is <= 50% of the claim line count."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "BND_EPSD_LINKED_EXCL_CLM_LNS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds a comma-delimited string of claim lines excluded from the related episode if only part of the claim should be linked and if the number of lines to link is > 50% of the claim line count."
+    }
+  ]
+}

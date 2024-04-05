@@ -1,0 +1,42 @@
+{
+  "name": "MYC_PATIENT",
+  "description": "The MYC_PATIENT table contains one row for each web-based chart system account. The data contained in each row consists of basic account information related to logins and passwords, as well as data that the patient has entered and stored in web-based chart system.",
+  "primaryKey": [
+    {
+      "columnName": "MYPT_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "MYPT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient's web-based chart system account record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SEX_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the sex for non-patient users. Sex for patients should be obtained from column SEX_C in table PATIENT.",
+      "entries": [
+        "Female",
+        "Male",
+        "Unknown",
+        "Nonbinary",
+        "X",
+        "Other"
+      ]
+    }
+  ]
+}

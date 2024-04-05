@@ -1,0 +1,56 @@
+{
+  "name": "ENROLL_INFO_HX_1",
+  "description": "The ENROLL_INFO_HX_1 contains a history of changes to the study coordinators assigned to a patient's enrollment in a research study. This table should be linked to ENROLL_INFO_HX in order to determine additional information like when the change was made and who made the change.",
+  "primaryKey": [
+    {
+      "columnName": "ENROLL_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ENROLL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the patient enrollment record for this row. This column is frequently used to link to the ENROLL_INFO table.",
+      "linksTo": "ENROLL_INFO"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the associated study coordinators history in this enrollment record. Together with ENROLL_ID, this forms the foreign key to the ENROLL_INFO_HX table."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple study coordinators that are associated with the enrollment modification from the ENROLL_INFO_HX table."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "HX_MOD_COORD_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user ID of the study coordinators for the enrollment."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "HX_MOD_COORD_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    }
+  ]
+}

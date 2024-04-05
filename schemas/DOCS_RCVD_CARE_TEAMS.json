@@ -1,0 +1,121 @@
+{
+  "name": "DOCS_RCVD_CARE_TEAMS",
+  "description": "External Care Team information.",
+  "primaryKey": [
+    {
+      "columnName": "DOCUMENT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "DOCUMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the Received Document record ID."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CTM_REFERENCE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Reference ID of an external care team member."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CTM_PCP_TYPE_ID_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Care Team Member PCP Type ID which links to the internal Care Team Member PCP Type.",
+      "entries": [
+        "General"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CTM_PCPTYPE_RELATIONSHIP_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Care Team Member's functional role. This value is a string that might be the display name of the mapped value from an external system. This value could also be the name of the original value from an external system before it was mapped. The actual mapped values are found in Care Team Member PCP Type and Relationship to Patient."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CTM_RELATIONSHIP_ID_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID for the Care Team Member's relationship to patient that maps to an internal relationship to patient value."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CTM_EFFECT_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Care team member effective or start date."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "CTM_TERM_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Care team member termination or end date."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "CTM_SOURCE_DXR_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The contact serial number of the received document which contains the Care Team Member data."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "CTM_HIST_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates whether the care team member is current or historical or a more specific subset of historical.",
+      "entries": [
+        "Current",
+        "Historical",
+        "Inactive",
+        "Discontinued",
+        "Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "CTM_HIST_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item stores the date that the historical status for this care team member is valid through. After this date, the historical status needs to be  rechecked."
+    }
+  ]
+}

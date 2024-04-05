@@ -1,0 +1,311 @@
+{
+  "name": "RXA_DUR_TABLE",
+  "description": "Contains information relating to Drug Utilization Review (DUR) conflicts in adjudication records. Adjudication records are used by Ambulatory Pharmacy during prescription copay adjudication.",
+  "primaryKey": [
+    {
+      "columnName": "RECORD_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the adjudication record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique, internal contact date in decimal format. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "REASON_FOR_SERV_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "NCPDP code identifying the type of utilization conflict detected or the reason for the pharmacist's professional service.",
+      "entries": [
+        "Additional Drug Needed",
+        "Prescription Authentication",
+        "Adverse Drug Reaction",
+        "Additive Toxicity",
+        "Chronic Disease Management",
+        "Call Help Desk",
+        "Patient Complaint/Symptom",
+        "Drug-Allergy",
+        "Drug-Disease (Inferred)",
+        "Drug-Drug Interaction",
+        "Drug-Food Interaction",
+        "Drug Incompatibility",
+        "Drug-Lab Conflict",
+        "Apparent Drug Misuse",
+        "Tobacco Use",
+        "Patient Education/Instruction",
+        "Overuse",
+        "Excessive Quantity",
+        "High Dose",
+        "Iatrogenic Condition",
+        "Ingredient Duplication",
+        "Low Dose",
+        "Lock In Recipient",
+        "Underuse",
+        "Drug-Disease (Reported)",
+        "Insufficient Duration",
+        "Missing Information/Clarification",
+        "Excessive Duration",
+        "Drug Not Available",
+        "Non-covered Drug Purchase",
+        "New Disease/Diagnosis",
+        "Non-Formulary Drug",
+        "Unnecessary Drug",
+        "New Patient Processing",
+        "Lactation/Nursing Interaction",
+        "Insufficient Quantity",
+        "Alcohol Conflict",
+        "Drug-Age",
+        "Patient Question/Concern",
+        "Drug-Pregnancy",
+        "Preventive Health Care",
+        "Prescriber Consultation",
+        "Plan Protocol",
+        "Prior Adverse Reaction",
+        "Product Selection Opportunity",
+        "Suspected Environmental Risk",
+        "Health Provider Referral",
+        "Suboptimal Compliance",
+        "Suboptimal Drug/Indication",
+        "Side Effect",
+        "Suboptimal Dosage Form",
+        "Suboptimal Regimen",
+        "Drug-Sex",
+        "Therapeutic",
+        "Laboratory Test Needed",
+        "Payor/Processor Question"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CLINICAL_SIGN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "NCPDP code identifying the significance or severity level of a clinical event.",
+      "entries": [
+        "Major",
+        "Moderate",
+        "Minor"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "OTHER_PHR_IND_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "NCPDP code indicating the pharmacy responsible for the previous event involved in the DUR conflict.",
+      "entries": [
+        "Not Specified",
+        "Your Pharmacy",
+        "Other Pharmacy in Same Chain",
+        "Other Pharmacy"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PREV_FILL_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date that the prescription was previously filled"
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "QUANT_OF_PREV_FILL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Amount of the conflicting agent that was previously filled (in metric decimal units)."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "DATABASE_INDICAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "NCPDP code identifying the source of drug information used for DUR processing.",
+      "entries": [
+        "First Databank",
+        "Medi-Span",
+        "Micromedix/Medical Economics",
+        "Processor Developed",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "OTH_PRSCRBR_IND_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "NCPDP code comparing the prescriber of the current prescription to the prescriber of the previously filled conflicting prescription.",
+      "entries": [
+        "Not Specified",
+        "Same Prescriber",
+        "Other Prescriber"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "DUR_FREE_TXT_MSG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Text that provides additional detail regarding a DUR conflict."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "PROF_SERVICE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "NCPDP code identifying the type of utilization conflict detected or the reason for the pharmacist's professional service.",
+      "entries": [
+        "No intervention",
+        "Patient assessment",
+        "Coordination of care",
+        "Dosing evaluation/determination",
+        "Formulary enforcement",
+        "Generic product selection",
+        "Medication administration",
+        "Prescriber consulted",
+        "Medication review",
+        "Patient education/instruction",
+        "Patient medication history",
+        "Patient monitoring",
+        "Patient consulted",
+        "Perform laboratory test",
+        "Pharmacist consulted other source",
+        "Recommend laboratory test",
+        "Self-care consultation",
+        "Literature search/review",
+        "Payor/processor consulted",
+        "Therapeutic product interchange"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "SERVICE_RESULT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Action taken by a pharmacist in response to a conflict or the result of a pharmacist�s professional service.",
+      "entries": [
+        "Not Specified",
+        "Filled As Is, False Positive",
+        "Filled Prescription As Is",
+        "Filled With Different Dose",
+        "Filled With Different Directions",
+        "Filled With Different Drug",
+        "Filled With Different Quantity",
+        "Filled With Prescriber Approval",
+        "Brand-to-Generic Change",
+        "Rx-to-OTC Change",
+        "Filled with Different Dosage Form",
+        "Prescription Not Filled",
+        "Not Filled, Directions Clarified",
+        "Recommendation Accepted",
+        "Recommendation Not Accepted",
+        "Discontinued Drug",
+        "Regimen Changed",
+        "Therapy Changed",
+        "Therapy Changed-Cost Increased Acknowledged",
+        "Drug Therapy Unchanged",
+        "Follow-Up/Report",
+        "Patient Referral",
+        "Instructions Understood",
+        "Compliance Aid Provided",
+        "Medication Administered"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "EFFORT_LEVEL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The level of service for the DUR. Indicates how much effort and time was spent by the pharmacist dealing with the DUR or PPS.",
+      "entries": [
+        "Not Specified",
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "COAGENT_QUALIFIER_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "NCPDP code qualifying the value in �DUR Co-Agent ID� when a pharmacist when resolving an DUR when doing an Rx Adjudication.",
+      "entries": [
+        "Universal Product Code",
+        "Health Related Item",
+        "National Drug Code",
+        "Universal Product Number",
+        "Department of Defense",
+        "Common Procedure Terminology (CPT4)",
+        "Common Procedure Terminology (CPT5)",
+        "Health Care Financing Administration Common Procedural Coding System",
+        "National Pharmaceutical Product Interface Code",
+        "International Article Numbering System",
+        "Drug Identification Number",
+        "Medi-Span GPI",
+        "First DataBank GCN",
+        "Medical Economics GPO",
+        "Medi-Span DDID",
+        "First DataBank SmartKey",
+        "Medical Economics GM",
+        "International Classification of Diseases (ICD9)",
+        "International Classification of Diseases (ICD10)",
+        "Medi-Span Diagnosis Code",
+        "National Criteria Care Institute",
+        "The Systematized Nomenclature of Human and Veterinary Medicine",
+        "Common Dental Terminology",
+        "American Psychiatric Association Diagnostic Statistical Manual of Mental Disorders",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "COAGENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The field used to respond to DURs for prescription adjudication"
+    }
+  ]
+}

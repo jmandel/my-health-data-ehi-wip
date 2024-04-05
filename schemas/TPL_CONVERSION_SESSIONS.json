@@ -1,0 +1,90 @@
+{
+  "name": "TPL_CONVERSION_SESSIONS",
+  "description": "This table contains information about treatment plan conversion sessions.",
+  "primaryKey": [
+    {
+      "columnName": "TREATMENT_PLAN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TREATMENT_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the plan record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONVSESS_FROM_DAY",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line in Treatment Day ID (I TPL 5000) of the first day in this conversion session."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONVSESS_TO_DAY",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line in  Treatment Day ID (I TPL 5000) of the day after the last day in this session. This can be blank if the session includes the last day in the plan."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CONVSESS_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status of a conversion session for this plan.",
+      "entries": [
+        "Accepted",
+        "Discarded",
+        "Started",
+        "Active - Step 1",
+        "Active - Step 2"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CONVSESS_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of a conversion session for a plan, whether inpatient or outpatient.",
+      "entries": [
+        "Inpatient",
+        "Outpatient"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CONVSESS_ACT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant this conversion session action was done."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CONVSESS_ACT_USR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who took this conversion session action."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CONVSESS_ACT_USR_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    }
+  ]
+}

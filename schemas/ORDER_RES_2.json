@@ -1,0 +1,1307 @@
+{
+  "name": "ORDER_RES_2",
+  "description": "The ORDER_RES_2 table contains result finding information for an order. Result findings include mammography pathology results, cardiovascular palette findings, and other result findings.",
+  "primaryKey": [
+    {
+      "columnName": "FINDING_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "FINDING_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the finding record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "EXTERNAL_RESULT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if the biopsy or surgery for a pathology result was performed outside of the organization. 'Y' indicates it was performed externally. Typically used to exclude these result findings from measures that evaluate the quality of an organization's pathology resulting.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "EXTERNAL_LOC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The location definitions (EAF) record of the external location where the pathology was resulted."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EXTERNAL_LOC_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The free-text name of the external location that resulted the pathology. Used in cases where the location does not have a location definitions (EAF) record."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PATH_SPECIMEN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Links to the specimen that this pathology finding is documenting."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "FIRST_DOCUMENTED_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which a mammography lesion was first documented."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "FINDING_INCLUDED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether this finding has been marked as included on an imaging study.  Y indicates that the finding is included.  N indicates that the finding is not included on the study.  A null value indicates data from before the 2014 release and should be considered the same as Y."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "LESION_NAME",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "A unique identifier for a lesion on a patient to track its changes."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "LESION_ASSESSMENT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The mammography assessment category ID for the lesion.",
+      "entries": [
+        "Need Additional Imaging Evaluation",
+        "Negative",
+        "Benign",
+        "Probably Benign",
+        "Suspicious",
+        "Highly Suggestive of Malignancy",
+        "Known Biopsy-Proven Malignancy",
+        "Low Suspicion for Malignancy",
+        "Moderate Suspicion for Malignancy",
+        "High Suspicion for Malignancy"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "REM_LET_SUPPRESS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if an automated process for reminder letters should suppress the creation of a reminder letters for this record. 'Y' indicates that automatic reminder letters should be suppressed for this recommendation."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "REM_LET_SUPP_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the reason why reminder letters were suppressed for a particular recommendation record. For example, letters may be suppressed due to an import of recommendations from a legacy system, or they may be suppressed due to logic in the reminder letter batch.",
+      "entries": [
+        "Utility",
+        "Batch"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PRIMARY_TUMOR_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The primary tumor category ID, as defined in NMD 3.0., for a result.",
+      "entries": [
+        "TX",
+        "T0",
+        "Tis",
+        "Tis (DCIS)",
+        "Tis (LCIS)",
+        "Tis (Paget's)",
+        "T1",
+        "T1mi",
+        "T1a",
+        "T1b",
+        "T1c",
+        "T2",
+        "T3",
+        "T4",
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "REGIONAL_LYMPH_ND_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The regional lymph nodes category ID, as defined in NMD 3.0, for a result.",
+      "entries": [
+        "NX",
+        "N0",
+        "N1",
+        "N2",
+        "N2a",
+        "N2b",
+        "N3",
+        "N3a",
+        "N3b",
+        "N3c"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "DIST_METASTASES_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The distant metastases category ID of a result, as defined for NMD 3.0",
+      "entries": [
+        "M0",
+        "cM0(i+)",
+        "M1"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "VESSEL_PROC_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The procedure type category ID for a vessel result finding.",
+      "entries": [
+        "Cath",
+        "CT Angiography"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "CLOSEST_MRGN_NAME_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The closest margin category ID for a breast legion.",
+      "entries": [
+        "Anterior",
+        "Posterior",
+        "Superior",
+        "Inferior",
+        "Medial",
+        "Lateral"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "CLOSEST_MARGIN_DIST",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The closest margin measurement for a breast lesion"
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "LESION_PRE_ST_GRD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The pre-stenosis value category ID for the lesion, when the value is saved as a grade.",
+      "entries": [
+        "Normal",
+        "Minimal (1-24%)",
+        "Mild (25-49%)",
+        "Moderate (50-69%)",
+        "Severe (70-99%)",
+        "Occluded"
+      ]
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "LESION_POS_ST_GRD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The post-stenosis value category ID for the lesion, when the value is saved as a grade."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "LAST_SX_PROG_REC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The recommendation category ID for the most recent type of this follow-up recommendation, which should be associated with a study for a screening program.",
+      "entries": [
+        "Follow Up LDCT in 1 Year",
+        "Follow Up LDCT in 6 Months",
+        "Follow Up LDCT in 3 Months",
+        "Biopsy",
+        "Obtain Prior Studies for Comparison",
+        "Additional Imaging",
+        "Await pathology results",
+        "No further screening colonoscopies necessary",
+        "Repeat screening colonoscopy in 10 years",
+        "Repeat colonoscopy in 7 years",
+        "Repeat colonoscopy in 5 years",
+        "Repeat colonoscopy in 3 years",
+        "Repeat colonoscopy in 1 year",
+        "Schedule repeat colonoscopy",
+        "Follow up with me in clinic",
+        "Follow up with PCP",
+        "Await pathology results",
+        "Repeat sigmoidoscopy in 10 years",
+        "Repeat sigmoidoscopy in 5 years",
+        "Schedule repeat sigmoidoscopy",
+        "Schedule full colonoscopy",
+        "No further screening sigmoidoscopies necessary",
+        "Follow up with me in clinic",
+        "Follow up with PCP",
+        "Await pathology results",
+        "Follow up with me in clinic",
+        "Follow up with PCP",
+        "Schedule repeat EGD",
+        "Schedule follow-up procedure for continued treatment",
+        "Await pathology results",
+        "Follow up with me in clinic",
+        "Follow up with PCP",
+        "Schedule repeat upper EUS",
+        "Schedule follow-up procedure for continued treatment",
+        "Await pathology results",
+        "Follow up with me in clinic",
+        "Follow up with PCP",
+        "Schedule repeat ERCP",
+        "Schedule follow-up procedure for continued treatment",
+        "Await pathology results",
+        "Follow up with me in clinic",
+        "Follow up with PCP",
+        "Schedule repeat LEUS",
+        "Schedule follow-up procedure for continued treatment",
+        "Await pathology results",
+        "Follow up with me in clinic",
+        "Follow up with PCP",
+        "Schedule repeat enteroscopy",
+        "Schedule follow-up procedure for continued treatment",
+        "Await pathology results",
+        "Follow up with me in clinic",
+        "Follow up with PCP",
+        "Follow up with referring physician",
+        "Follow up EBUS",
+        "Schedule repeat bronchoscopy",
+        "Follow up bronchoscopy",
+        "Follow up PFT",
+        "Await pathology results",
+        "Follow up with me in clinic",
+        "Follow up with PCP",
+        "Schedule repeat retrograde enteroscopy",
+        "Schedule follow-up procedure for continued treatment",
+        "Follow up LDCT in 1 Month",
+        "Diagnostic CT Chest",
+        "Await pathology results",
+        "Repeat pouchoscopy in 10 years",
+        "Repeat pouchoscopy in 5 years",
+        "Schedule repeat pouchoscopy",
+        "No further recurring pouchoscopies necessary",
+        "Follow up with me in clinic",
+        "Follow up with PCP",
+        "Await pathology results",
+        "Follow up with me in clinic",
+        "Follow up with PCP",
+        "Schedule repeat ileoscopy",
+        "Schedule follow-up procedure for continued treatment",
+        "Follow up with me in clinic",
+        "Follow up with PCP",
+        "Ablation",
+        "Excision",
+        "Endometrial biopsy",
+        "Endocervical curettage",
+        "Colposcopy",
+        "Colposcopy in 4 months",
+        "Colposcopy in 6 months",
+        "Colposcopy in 12 months",
+        "Colposcopy post-partum",
+        "HPV testing",
+        "HPV testing in 6 months",
+        "HPV testing in 12 months",
+        "HPV testing in 2 years",
+        "HPV testing in 3 years",
+        "HPV testing in 5 years",
+        "HPV typing",
+        "HPV typing 16/18",
+        "Cotesting",
+        "Pap",
+        "Pap in 6 months",
+        "Pap in 12 months",
+        "Pap in 2 years",
+        "Pap in 3 years",
+        "Pap in 5 years",
+        "Pap post-partum",
+        "Refer to GYN",
+        "Refer to GYN ONC",
+        "Screening no longer indicated",
+        "Other Cervical Cancer Screen Follow-up",
+        "Start screening colonoscopies at appropriate age per current guidelines",
+        "Colposcopy in 2 years",
+        "Colposcopy in 3 years",
+        "Colposcopy in 5 years",
+        "Colposcopy immediately",
+        "HPV testing in 4 months",
+        "HPV testing immediately",
+        "Pap in 4 months",
+        "Pap immediately",
+        "Referral for further clinical evaluation",
+        "PET/CT",
+        "Pulmonology Consult",
+        "Historic Follow-up Documentation for CCS Screening"
+      ]
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "LST_SX_PG_REC_LOC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The location of the body category ID for the most recent location associated with this follow-up recommendation.",
+      "entries": [
+        "Right",
+        "Left",
+        "Bilateral",
+        "Right Upper Lobe",
+        "Right Middle Lobe",
+        "Right Lower Lobe",
+        "Left Upper Lobe",
+        "Lingula",
+        "Left Lower Lobe",
+        "Left Hilum",
+        "Right Hilum",
+        "Right Middle and Right Lower Lobes",
+        "Right Upper and Right Middle Lobes",
+        "Lingula",
+        "Other",
+        "Unknown"
+      ]
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "SX_PROGRAM_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The screening program type category ID associated with this finding.",
+      "entries": [
+        "Lung Screening",
+        "Breast Screening",
+        "Colorectal Follow-up",
+        "EGD Follow-up",
+        "Upper EUS Follow-up",
+        "ERCP Follow-up",
+        "Diabetic Retinopathy Screening",
+        "Sigmoidoscopy Follow-up",
+        "Lower EUS Follow-up",
+        "Antegrade Enteroscopy Follow-up",
+        "Bronchoscopy Follow-up",
+        "Retrograde Enteroscopy Follow-up",
+        "Pouchoscopy Follow-Up",
+        "Ileoscopy Follow-Up",
+        "Actionable Finding",
+        "Cervical Cancer Screening"
+      ]
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "PATH_LOCATION_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Lung cancer location comment for a pathology finding."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "PATH_LOCATION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The location of the body category ID for a pathology result finding."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "LUNG_STAGE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The lung cancer staging category ID for a pathology finding.",
+      "entries": [
+        "Stage 1A",
+        "Stage 1B",
+        "Stage 2A",
+        "Stage 2B",
+        "Stage 3A",
+        "Stage 3B",
+        "Stage 4",
+        "Stage 4A",
+        "Stage 4B",
+        "Stage 0",
+        "Stage IA1",
+        "Stage IA2",
+        "Stage IA3",
+        "Stage IIIC",
+        "Unknown"
+      ]
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "LUNG_HISTOLOGY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The lung cancer histology category ID for a pathology finding.",
+      "entries": [
+        "Non-small cell cancer",
+        "Small cell lung cancer",
+        "Carcinoid",
+        "Atypical carcinoid",
+        "Other",
+        "Unknown"
+      ]
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "LUNG_NON_SMALL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The lung cancer histology category ID for a non small cell cancer pathology finding.",
+      "entries": [
+        "Invasive adenocarcinoma",
+        "Squamous cell carcinoma",
+        "Adenosquamous cell carcinoma",
+        "Large cell carcinoma",
+        "Undifferentiated carcinoma",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "LUNG_NON_SMALL_COMM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Lung cancer histology comment for a non small cell cancer pathology finding."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "LUNG_MALIG_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The lung malignancy type category ID for a pathology finding.",
+      "entries": [
+        "Adenocarcinoma in situ",
+        "Minimally invasive",
+        "Invasive",
+        "Carcinoid",
+        "Non-invasive",
+        "Invasive status unknown"
+      ]
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "LUNG_PERIOD_FU_MON",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Lung cancer period of follow-up for a pathology finding."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "LUNG_DX_METHOD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The lung cancer tissue diagnosis method category ID for a pathology finding.",
+      "entries": [
+        "Percutaneous",
+        "Bronchoscopic",
+        "Surgical",
+        "Unknown"
+      ]
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "LUNG_T_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The lung cancer histology T status category ID for a pathology finding.",
+      "entries": [
+        "T1a",
+        "T1b",
+        "T2a",
+        "T2b",
+        "T3",
+        "T4",
+        "Tis",
+        "T0",
+        "T1c",
+        "T1mi",
+        "Unknown",
+        "TX"
+      ]
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "LUNG_N_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The lung cancer histology N status category ID for a pathology finding.",
+      "entries": [
+        "N0",
+        "N1",
+        "N2",
+        "N3",
+        "NX"
+      ]
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "LUNG_M_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The lung cancer histology M status category ID for a pathology finding.",
+      "entries": [
+        "M0",
+        "M1a",
+        "M1b",
+        "M1c",
+        "MX"
+      ]
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "LUNG_STAGE_METHOD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The lung cancer staging method category ID for a pathology finding.",
+      "entries": [
+        "Clinical",
+        "Pathologic",
+        "Unknown"
+      ]
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "LESION_INCOMP_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The incomplete reason category ID for the breast imaging finding. Only radiologist findings that have an assessment of incomplete (0) have a value populated for this column.",
+      "entries": [
+        "Incomplete",
+        "Negative",
+        "Benign appearance or behavior",
+        "Probably benign",
+        "Suspicious - 4A",
+        "Suspicious - 4B",
+        "Suspicious - 4X",
+        "Clinically significant findings",
+        "Prior lung cancer",
+        "Incomplete coverage",
+        "Noise",
+        "Respiratory motion",
+        "Expiration",
+        "Obscured by acute abnormality",
+        "Unknown",
+        "Unable to complete",
+        "Inflammatory or infectious process",
+        "Additional images for evaluation",
+        "Priors for comparison",
+        "Technical repeat",
+        "Version 1.0",
+        "Version 1.1",
+        "Version 2.0"
+      ]
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "SEGMENT_LOCATION_ID",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The location of an annotation within the vessel segment if there are multiple annotations in the same segment."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "ORIGIN_GRAFT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The specific branch and sequence of the current graft that this branch comes off of."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "GRAFT_BRANCH_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The branch identifier of the graft."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "INST_EXAM_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant (in UTC) when the Audiology exam was administered."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "AUDIO_RELIABILITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reliability category ID for the audiogram results. The possible responses are Good, Fair, or Poor.",
+      "entries": [
+        "Good",
+        "Fair",
+        "Poor"
+      ]
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "PROBE_TONE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The probe tone frequency in Hz."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "RES_LINK_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the order with which the result finding is associated."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "FINDING_SUBTYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The finding subtype category ID for the procedural finding.",
+      "entries": [
+        "Asymmetry",
+        "Global Asymmetry",
+        "Focal Asymmetry",
+        "Developing Asymmetry"
+      ]
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "OB_US_EDD_ASOF_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The patient's working estimated date of delivery at the time the ultrasound exam started."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "OB_US_EDD_BASIS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the basis for the patient's estimated date of delivery (EDD), at the time when the ultrasound started.",
+      "entries": [
+        "Other Basis",
+        "Last Menstrual Period",
+        "Est. Date of Conception",
+        "Embryo Transfer",
+        "Ultrasound",
+        "Uterus Size",
+        "Quickening",
+        "Fundal Ht. at Umbil.",
+        "FHR with Doppler",
+        "FHR with Fetoscope",
+        "Patient Reported",
+        "Alternate EDD Entry"
+      ]
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "REPORTING_CAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the reporting category to use for a finding.",
+      "entries": [
+        "Mole",
+        "Lump",
+        "Pain",
+        "Tenderness",
+        "Redness",
+        "Mass",
+        "Calcifications",
+        "Architectural Distortion",
+        "Special Cases",
+        "Nipple Discharge",
+        "Skin Changes",
+        "Implants",
+        "Scar",
+        "Tattoo",
+        "Asymmetric Density",
+        "Clip",
+        "Post-Surgical Finding",
+        "Wall Score",
+        "Myocardial Finding",
+        "Nuclear Perfusion",
+        "Congenital Heart Disease",
+        "Vasculature Record",
+        "Vessel Finding",
+        "Vessel Annotation",
+        "Intervention",
+        "Complication",
+        "Lesion Complication",
+        "Right Atrium",
+        "Tricuspid Valve",
+        "Right Heart Pressures",
+        "Left Ventricle",
+        "Left Atrium",
+        "Mitral Valve",
+        "Aortic Valve",
+        "Left Heart Pressures",
+        "Aorta",
+        "Right Ventricle",
+        "Pericardium",
+        "Pulmonic Valve",
+        "Ergonovine",
+        "Endomyocardial Biopsy",
+        "Percutaneous Procedure",
+        "Peripheral Angiography",
+        "Temporary Pacemaker",
+        "Fluoroscopy of Chest",
+        "Pulmonary Angiography",
+        "ECG",
+        "Stress Findings",
+        "Response to Stress",
+        "Nuclear Measurements",
+        "Nuclear Ejection Fraction",
+        "Nuclear Study Quality",
+        "Study Impression",
+        "Perfusion Defect",
+        "Perfusion Defect 2",
+        "Perfusion Defect 3",
+        "Perfusion Defect 4",
+        "Perfusion Defect 5",
+        "Lymph Node",
+        "Solitary Dilated Duct",
+        "Focus",
+        "Non-mass Enhancement",
+        "Skin Lesion",
+        "Asymmetry",
+        "Inverted Nipple",
+        "Fat Containing",
+        "Non-enhancing",
+        "Associated Features",
+        "Cyst",
+        "Thrombectomy",
+        "Impella Insertion",
+        "ABI",
+        "Abdominal Aorta",
+        "Abdominal Aorta Graft",
+        "Axillary Femoral Graft",
+        "Left Groin",
+        "Right Groin",
+        "Left Lower Arterial",
+        "Right Lower Arterial",
+        "Upper Arterial",
+        "Renal",
+        "Lower Venous",
+        "Upper Venous",
+        "Left Carotid",
+        "Right Carotid",
+        "Prior Study",
+        "Cardiac Protocol",
+        "Study Details",
+        "Electrophysiology Finding",
+        "Drawing Template",
+        "Endoscopy Finding",
+        "Right Ablation Vein Mapping",
+        "Left Ablation Vein Mapping",
+        "Right Venous Insufficiency Duplex",
+        "Left Venous Insufficiency Duplex",
+        "Right Hemodialysis Access",
+        "Left Hemodialysis Access",
+        "Inferior Vena Cava",
+        "Right Upper Vein Mapping",
+        "Left Upper Vein Mapping",
+        "Right Lower Vein Mapping",
+        "Left Lower Vein Mapping",
+        "Right Lower Bypass Graft",
+        "Left Lower Bypass Graft",
+        "Superior Mesenteric Artery",
+        "Transcutaneous Oximetry",
+        "Right Transcranial Doppler",
+        "Right Upper Extremity Arterial Doppler",
+        "Left Upper Extremity Arterial Doppler",
+        "Right Renal Transplant",
+        "Left Renal Transplant",
+        "Right Penile",
+        "Left Penile",
+        "Pulse Volume Recordings",
+        "Left Transcranial Doppler",
+        "Aortic Root",
+        "Ascending Aorta",
+        "Aortic Arch",
+        "Descending Aorta",
+        "Additional Aorta Findings",
+        "Perfusion Comments",
+        "Perfusion Defect Conclusion",
+        "Absolute Flow",
+        "Stress Function Comments",
+        "Stress Function Defect",
+        "Rest Function Comments",
+        "Rest Function Defect",
+        "Stress Combined Conclusion",
+        "Metabolic Viability Defect",
+        "Metabolic Viability Conclusion",
+        "Metabolic Other Findings",
+        "Sarcoid Defect",
+        "CT Findings",
+        "Stress Hemodynamics",
+        "Stress Symptoms",
+        "Stress Post Impression",
+        "Echo Post Stress",
+        "Isotope Administration",
+        "Viability Isotope Administration",
+        "Perfusion Isotope Administration",
+        "Sarcoid Study Prep",
+        "Metabolic Study Prep",
+        "Nuclear Prior Study",
+        "Sarcoid Isotope Administration",
+        "Segmental Anatomy",
+        "Bubble Study",
+        "Right Lower Venous",
+        "Left Lower Venous",
+        "Right Upper Venous",
+        "Left Upper Venous",
+        "Right Renal",
+        "Left Renal",
+        "Kidneys",
+        "Right ABI",
+        "Left ABI",
+        "ABI Exercise",
+        "Left Upper Arterial",
+        "Right Upper Arterial",
+        "Abdominal Aorta Additional Findings",
+        "Gynecomastia",
+        "Duct Ectasia",
+        "Upper Pulse Volume Recording",
+        "Lower Pulse Volume Recording",
+        "Resting ECG",
+        "Stress ECG",
+        "Reason for Procedure",
+        "Procedure Details",
+        "PYP History",
+        "PYP Technical Details",
+        "PYP Findings",
+        "PYP Conclusion",
+        "Pulmonary Function Test",
+        "Hemodynamic Data",
+        "Hemodynamic Information",
+        "Breast Implant",
+        "Parent Wall Score",
+        "2D Measurement",
+        "M-Mode Measurement",
+        "Doppler Measurement",
+        "Tissue Doppler Imaging Measurement",
+        "Stress Echo Measurements",
+        "Endoscopy Procedure Details",
+        "Abscess",
+        "Palpable Mass",
+        "Generic Finding",
+        "Tympanogram",
+        "Audiogram",
+        "Speech Audiometry",
+        "Acoustic Reflex",
+        "Calcium Scoring",
+        "Noncardiac",
+        "LCSR Aortic Aneurysm Found",
+        "LCSR Coronary Arterial Calcification Found",
+        "LCSR Pulmonary Fibrosis Found",
+        "LCSR Mass Found",
+        "LCSR Other Interstitial Lung Disease Found",
+        "LCSR Other Clinically Significant Abnormalities Found",
+        "LCSR Emphysema Found",
+        "LCSR No Clinically Significant Abnormalities Found",
+        "LCSR Unknown Finding",
+        "Normal Tissue",
+        "Technical Details",
+        "Technical Quality"
+      ]
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "LESION_FINDING_RSLT_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The rich text format result text for this lesion finding."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "ANTERIOR_MARGIN_DIST",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The distance for anterior margin in millimeters (mm)."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "POSTERIOR_MARGIN_DIST",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The distance for posterior margin in millimeters (mm)."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "SUPERIOR_MARGIN_DIST",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The distance for superior margin in millimeters (mm)."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "INFERIOR_MARGIN_DIST",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The distance for inferior margin in millimeters (mm)."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "MEDIAL_MARGIN_DIST",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The distance for medial margin in millimeters (mm)."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "LATERAL_MARGIN_DIST",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The distance for lateral margin in millimeters (mm)."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "REMAINING_MARGINS_GT_DIST",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The greater than distance for the remaining margins (mm)."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "LAST_STATUS_CHNG_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status change reason category ID for the recommendation.",
+      "entries": [
+        "Patient Not Reachable",
+        "Patient Refused",
+        "Utility",
+        "Patient Deceased",
+        "Patient Unmarked Deceased",
+        "Pathology Entered",
+        "Closed via BPA Acknowledgement",
+        "Interim Order",
+        "External Interim Order",
+        "Verified",
+        "Created",
+        "Deleted",
+        "System"
+      ]
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "RECORD_STATUS_2_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The record status category ID for the result finding.",
+      "entries": [
+        "Soft Deleted",
+        "Hidden",
+        "Hidden and Soft Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "RADIOLOGIST_FINDING_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the associated order for the radiologist finding. Null means that the finding is not on the latest version of the order and has been replaced by another result finding record."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "LAST_INCLUDED_FINDING_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the last finding documented for a breast lesion that was included in a study. This column represents the finding where a radiologist last documented on the lesion. Null means that the lesion was created but all associated findings were deleted and all associated orders were cancelled. This item will also be null for technologist findings."
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "FINDING_TEXT_HAS_EDITS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the finding text generated automatically (from a SmartForm) has been manually edited by users. 'Y' indicates there have been manual edits."
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "MAMMO_NEOADJUVANT_CHEMO_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the patient has had neoadjuvant chemotherapy. 'Y' indicates that neoadjuvant chemotherapy was administered."
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "OB_US_CLASS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The OB ultrasound classification category ID for the order.",
+      "entries": [
+        "Standard",
+        "Limited",
+        "Specialized",
+        "Follow Up"
+      ]
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "LUNG_DX_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The diagnosis comment for the patient's pathology result."
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "LUNG_OTHER_ILD_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The interstitial lung disease type category ID for the finding.",
+      "entries": [
+        "UIP/IPF",
+        "ILD, Other",
+        "ILD, Unknown"
+      ]
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "LUNG_LCSR_SPECIFICATION",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The specified details entered by the user for the finding."
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "OB_UTZ_USERDEF_GA",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "User defined GA for an ultrasound."
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "OB_UTZ_EDD_ON_SAVE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The working estimated date of delivery that was used to calculate the ultrasound study's gestational age. This item is not set if a Fetus GA was selected as the Study GA."
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "RES_ORDER_RADIOLOGY_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The imaging study status category ID for the order associated with the RES record.",
+      "entries": [
+        "Ordered",
+        "No Show",
+        "Scheduled",
+        "Arrived",
+        "Exam Begun",
+        "Procedure Started",
+        "Discontinued",
+        "Procedure Finished",
+        "Exam Ended",
+        "----- BEGIN READING PALETTE STATUSES -----",
+        "Tech Complete",
+        "Tech Revise",
+        "Resident Revise",
+        "Saved",
+        "Queued In Trans",
+        "In Transcription",
+        "Incomplete Transcription",
+        "Transcribed",
+        "Wet Read",
+        "Queued Prelim",
+        "Preliminary",
+        "Queued Needs Review",
+        "Needs Review",
+        "Revised",
+        "Queued Final",
+        "Final",
+        "Cadence Non-Imaging Order"
+      ]
+    },
+    {
+      "ordinalPosition": 69,
+      "name": "SIDE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": true,
+      "description": "The documented side of the mark.",
+      "entries": [
+        "Right",
+        "Left"
+      ]
+    },
+    {
+      "ordinalPosition": 70,
+      "name": "MARK_SIZE",
+      "type": "NUMERIC",
+      "discontinued": true,
+      "description": "The size of the mark."
+    },
+    {
+      "ordinalPosition": 71,
+      "name": "MARK1_POSX",
+      "type": "INTEGER",
+      "discontinued": true,
+      "description": "The X coordinate for mark 1."
+    },
+    {
+      "ordinalPosition": 72,
+      "name": "MARK1_POSY",
+      "type": "INTEGER",
+      "discontinued": true,
+      "description": "The Y coordinate for mark 1."
+    },
+    {
+      "ordinalPosition": 73,
+      "name": "MARK2_POSX",
+      "type": "INTEGER",
+      "discontinued": true,
+      "description": "The X coordinate for mark 2."
+    },
+    {
+      "ordinalPosition": 74,
+      "name": "MARK2_POSY",
+      "type": "INTEGER",
+      "discontinued": true,
+      "description": "The Y coordinate for mark 2."
+    },
+    {
+      "ordinalPosition": 75,
+      "name": "DRAW1_COORDS",
+      "type": "VARCHAR",
+      "discontinued": true,
+      "description": "The coordinates of the drawing in view 1 of the breast image."
+    },
+    {
+      "ordinalPosition": 76,
+      "name": "DRAW2_COORDS",
+      "type": "VARCHAR",
+      "discontinued": true,
+      "description": "The coordinates of the drawing in view 2 of the breast image."
+    },
+    {
+      "ordinalPosition": 77,
+      "name": "OLD_LOCATION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": true,
+      "description": "The location of a mark.",
+      "entries": [
+        "1 O'Clock",
+        "2 O'Clock",
+        "3 O'Clock",
+        "4 O'Clock",
+        "5 O'Clock",
+        "6 O'Clock",
+        "7 O'Clock",
+        "8 O'Clock",
+        "9 O'Clock",
+        "10 O'Clock",
+        "11 O'Clock",
+        "12 O'Clock"
+      ]
+    },
+    {
+      "ordinalPosition": 78,
+      "name": "OLD_DEPTH",
+      "type": "NUMERIC",
+      "discontinued": true,
+      "description": "The depth of a mark."
+    },
+    {
+      "ordinalPosition": 79,
+      "name": "MARK1_X_POS",
+      "type": "INTEGER",
+      "discontinued": true,
+      "description": "The X position of the mark in view 1 of the breast image."
+    },
+    {
+      "ordinalPosition": 80,
+      "name": "MARK1_Y_POS",
+      "type": "INTEGER",
+      "discontinued": true,
+      "description": "The Y position of the mark in view 1 of the breast image."
+    },
+    {
+      "ordinalPosition": 81,
+      "name": "MARK2_X_POS",
+      "type": "INTEGER",
+      "discontinued": true,
+      "description": "The X position of the mark in view 2 of the breast image."
+    },
+    {
+      "ordinalPosition": 82,
+      "name": "MARK2_Y_POS",
+      "type": "INTEGER",
+      "discontinued": true,
+      "description": "The Y position of the mark in view 2 of the breast image."
+    },
+    {
+      "ordinalPosition": 83,
+      "name": "VIEW1_COORDS",
+      "type": "VARCHAR",
+      "discontinued": true,
+      "description": "The coordinates of the drawing in view 1 of the breast image."
+    },
+    {
+      "ordinalPosition": 84,
+      "name": "VIEW2_COORDS",
+      "type": "VARCHAR",
+      "discontinued": true,
+      "description": "The coordinates of the drawing in view 2 of the breast image."
+    },
+    {
+      "ordinalPosition": 85,
+      "name": "BI_LESION_REVIEW_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates whether there is currently review needed on this finding, which can be used to drive notifications in Study Review and before-signing warnings.",
+      "entries": [
+        "No Review Needed",
+        "Review Recommended",
+        "Review Required"
+      ]
+    },
+    {
+      "ordinalPosition": 86,
+      "name": "RES_NOTE_TAG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Used to uniquely identify the sentence that corresponds to the findings from a note."
+    },
+    {
+      "ordinalPosition": 87,
+      "name": "STDY_LVL_FINDING_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores a unique identifier for a breast imaging finding on an individual study."
+    },
+    {
+      "ordinalPosition": 88,
+      "name": "MAMMO_PATH_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the order ID that the mammo pathology result is attached to."
+    },
+    {
+      "ordinalPosition": 89,
+      "name": "AUTOLINK_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Earliest date for general recommendations where auto-linking is allowed."
+    },
+    {
+      "ordinalPosition": 90,
+      "name": "AUTOLINK_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Latest date for general recommendations where auto-linking is allowed."
+    },
+    {
+      "ordinalPosition": 91,
+      "name": "AJCC_VERSION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The AJCC Version category ID for the pathology result.",
+      "entries": [
+        "7th Edition",
+        "8th Edition",
+        "Unknown"
+      ]
+    }
+  ]
+}

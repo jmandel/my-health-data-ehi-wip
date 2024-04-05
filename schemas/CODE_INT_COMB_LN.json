@@ -1,0 +1,194 @@
+{
+  "name": "CODE_INT_COMB_LN",
+  "description": "This table holds the combined service lines created by code integration.",
+  "primaryKey": [
+    {
+      "columnName": "HSP_ACCOUNT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the hosp acct record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CODE_INT_REV_CODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the revenue code for the combined service line."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CODE_INT_REV_CODE_ID_REVENUE_CODE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the revenue code."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CODE_INT_CPT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the CPT(R)/HCPCS code for the combined service line."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CODE_INT_MOD_1_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the first modifier for the combined service line."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CODE_INT_MOD_1_ID_MODIFIER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the modifier record."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CODE_INT_MOD_2_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the second modifier for the combined service line."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CODE_INT_MOD_2_ID_MODIFIER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the modifier record."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "CODE_INT_MOD_3_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the third modifier for the combined service line."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "CODE_INT_MOD_3_ID_MODIFIER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the modifier record."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "CODE_INT_MOD_4_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the fourth modifier for the combined service line."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "CODE_INT_MOD_4_ID_MODIFIER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the modifier record."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "CODE_INT_RATE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item holds the daily rate for the combined service line. The rate is only set for accommodation (room charge) revenue codes."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "CODE_INT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item holds the service date for the combined service line."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "CODE_INT_QTY",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item holds the quantity (number of units) for the combined service line."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "CODE_INT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item holds the full charge amount for the combined service line. The value includes any non-covered amount for the line."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "CODE_INT_NONCVRD",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item holds the non-covered amount for the combined service line."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "CODE_INT_LN_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the source for the CPT(R)/HCPCS code and modifiers for the combined service line.",
+      "entries": [
+        "Charge",
+        "Coding",
+        "Combined",
+        "SNF HIPPS",
+        "IRF HIPPS",
+        "Extension",
+        "Edited"
+      ]
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "CODE_INT_UNUSED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item identifies lines that are not true service lines but represent coded CPT(R)/HCPCS codes that cannot be used to create actual service lines.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "CODE_INT_CHRG_CNT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item holds the number of charges associated with the combined service line."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "CODE_INT_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item identifies the reason the coded CPT(R)/HCPCS code could not be used in an actual service line.  This item is only set when the unused coded CPT(R)/HCPCS flag (CODE_INT_UNUSED_YN) is Yes.",
+      "entries": [
+        "No revenue code assigned",
+        "User skipped",
+        "No charge with same revenue code",
+        "Inpatient claim",
+        "CMG code on non-inpatient claim",
+        "HCPCS/CPT� code suppressed by claim definitions",
+        "Accommodation revenue code",
+        "Grouped revenue code",
+        "Unspecified"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "name": "FLOWSHEET_METAEDIT_STRICT",
+  "description": "Historical third-party metadata (e.g. from Apple's HealthKit) is split across three tables. This table holds category values used to represent keys from each key-value pair. The corresponding key names are held on table FLOWSHEET_METAEDIT_LOOSE, and the values are held on FLOWSHEET_METAEDIT_VAL. Reporting on this metadata can be more easily accomplished by joining these tables on primary key (FSD_ID, GROUP_LINE, VALUE_LINE).",
+  "primaryKey": [
+    {
+      "columnName": "FSD_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "FSD_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the Flowsheets data record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple values associated with a specific group of data within this record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EDITD_3P_META_KEY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Within a line, each non-null position represents a key in a dictionary of third-party metadata attached to the historical Flowsheets value with the corresponding line number. Keys are represented with category values, allowing them to be more easily programmed against and indexed. If a key does not have a representative category value, it is left null in this item.",
+      "entries": [
+        "UUID",
+        "Blood Glucose Meal Time",
+        "Insulin Delivery Reason",
+        "App Orchard Client ID",
+        "VO2 Max Test Type"
+      ]
+    }
+  ]
+}

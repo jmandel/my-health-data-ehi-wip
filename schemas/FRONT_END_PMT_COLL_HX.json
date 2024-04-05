@@ -1,0 +1,290 @@
+{
+  "name": "FRONT_END_PMT_COLL_HX",
+  "description": "This table stores information about front-end collection actions taken through point of sale (POS) payment posting or refund workflows.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "COLL_INSTANT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant that this event occurred."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "COLL_WORKFLOW_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The workflow in which this event took place.",
+      "entries": [
+        "Other",
+        "Registration",
+        "Pre-Admission",
+        "Admission",
+        "Discharge",
+        "Sign-In",
+        "Check-In",
+        "Check-Out",
+        "Update Admission",
+        "Update Discharge",
+        "HOV",
+        "Scheduling Registration",
+        "L&D Assessment",
+        "L&D Update Admission",
+        "ED Update Admission",
+        "Newborn Admission",
+        "Newborn Update Admission",
+        "ED Admission",
+        "ED Discharge"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "LOGIN_DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the department which a user was logged into at the time of this event."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ENC_DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the encounter department associated with this event."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "RSN_NON_COLL_AMT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The non-collection reason category ID for this event.",
+      "entries": [
+        "Other (Requires Comment)",
+        "Unable to Pay",
+        "Refused To Pay",
+        "Payment Processing Error",
+        "Disputed Amount",
+        "Needed Urgent Care",
+        "Eligibility Issue",
+        "Financial Assistance",
+        "Requested Bill",
+        "Unavailable for Payment",
+        "Has Secondary Insurance",
+        "Waived Amount",
+        "Visit Auto Pay Declined"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "RSN_NON_COLL_AMT_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The free text non-collection comment explaining why some portion of a due amount was not collected."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "GUARANTOR_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the guarantor who is associated with this event."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "EVENT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The event type category ID that defines the type of payment event data that is stored in this row.",
+      "entries": [
+        "Collection Event",
+        "Reason Storage Line",
+        "Give-Back",
+        "Reversal",
+        "Visit Auto Pay Cancellation"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PB_COPAY_COLL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of professional billing copay that a user collected during this event."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PB_COPAY_PAID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of professional billing copay that had already been paid towards an encounter at the time of this event."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "PB_COPAY_DUE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total amount of professional billing copay that is required for this visit at the time of this event."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "HB_COPAY_COLL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of hospital billing copay that a user collected during this event."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "HB_COPAY_PAID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of hospital billing copay that had already been paid towards an encounter at the time of this event."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "HB_COPAY_DUE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total amount of hospital billing copay that is required for this visit at the time of this event."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "PB_PREPAY_COLL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of professional billing prepayment that a user collected."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PB_PREPAY_PAID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of professional billing prepayment that had already been paid towards an encounter at the time of this event."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "PB_PREPAY_DUE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total amount of professional billing prepayment that is required for this visit at the time of this event."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "HB_PREPAY_COLL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of hospital billing prepayment that a user collected during this event."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "HB_PREPAY_PAID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of hospital billing prepayment that had already been paid towards an encounter at the time of this event."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "HB_PREPAY_DUE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total amount of hospital billing prepayment that is required for this visit at the time of this event."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "PB_PREV_BAL_COLL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of professional billing previous balance that a user collected during this event."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "PB_PREV_BAL_PAID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of professional billing previous balance that had already been paid towards this guarantor's outstanding balance during the day of this event."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "PB_PREV_BAL_DUE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of self-pay professional billing outstanding balance that a guarantor owed at the time of this event."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "HB_PREV_BAL_COLL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of hospital billing previous balance that a user collected during this event."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "HB_PREV_BAL_PAID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of hospital billing previous balance that had already been paid towards this guarantor's outstanding balance during the day of this event."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "HB_PREV_BAL_DUE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of self-pay hospital billing outstanding balance that a guarantor owed at the time of this event."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "PREPAY_DISCOUNT_OFFERED",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total amount of the prepay discount that was offered for this visit at the time of this event."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "VIS_BAL_COLL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of visit balance that a user collected during this event."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "VIS_BAL_PAID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of the visit balance that had already been paid towards an encounter at the time of this event."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "VIS_BAL_DUE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total amount of the visit balance that is required for this visit at the time of this event."
+    }
+  ]
+}

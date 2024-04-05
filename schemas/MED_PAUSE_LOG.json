@@ -1,0 +1,140 @@
+{
+  "name": "MED_PAUSE_LOG",
+  "description": "This table holds a log of all changes made to the medication reminders pause anchor event items for the patient's encounter.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ACTION_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item is part of a related group of items that logs all actions conducted on the medication pause anchor events items. This item holds the UTC instant value of when an action was performed."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is part of a related group of items that logs all actions conducted on the medication pause anchor events items. This item holds the action that was performed.",
+      "entries": [
+        "Event Added via Event Trigger",
+        "Event Updated via Event Trigger",
+        "Event Removed via Event Trigger",
+        "Medication Reminder Pause Completed",
+        "Medication Reminder Resume Completed",
+        "Medication Reminder Pause Skipped",
+        "Medication Reminder Resume Skipped",
+        "Event Added via Medication Reminders Started",
+        "Event Updated via Medication Reminders Started",
+        "Event Removed via Medication Reminders Started",
+        "Event Added via Medication Reminders Removed",
+        "Event Updated via Medication Reminders Removed",
+        "Event Removed via Medication Reminders Removed",
+        "Event Added via Medication Reminder Resume Action",
+        "Event Updated via Medication Reminder Resume Action",
+        "Event Removed via Medication Reminder Resume Action",
+        "Event Added via Utility",
+        "Event Updated via Utility",
+        "Event Removed via Utility",
+        "Event Added via Chart Sync Event Trigger",
+        "Event Updated via Chart Sync Event Trigger",
+        "Event Removed via Chart Sync Event Trigger"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "EVENT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is part of a related group of items that logs all actions conducted on the medication pause anchor events items. This item holds the type of event.",
+      "entries": [
+        "Surgery",
+        "Pregnancy",
+        "Appointment",
+        "Hospital Discharge",
+        "Rule Defined Date - Encounter Level",
+        "Rule Defined Date - Patient Level"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "EVENT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item is part of a related group of items that logs all actions conducted on the medication pause anchor events items. This item holds the UTC instant value of when the event was scheduled."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PAUSE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item is part of a related group of items that logs all actions conducted on the medication pause anchor events items. This item holds the UTC instant value for when all medication reminders have been paused."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "RESUME_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item is part of a related group of items that logs all actions conducted on the medication pause anchor events items. This item holds the UTC instant value for when all medication reminders have been resumed."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "LPP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item is part of a related group of items that logs all actions conducted on the medication pause anchor events items. This item holds a reference to the anchor event extension used to identify this encounter."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "LPP_ID_LPP_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the extension."
+    }
+  ]
+}

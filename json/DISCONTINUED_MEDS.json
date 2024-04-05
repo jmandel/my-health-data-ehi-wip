@@ -1,0 +1,102 @@
+{
+  "$meta": {
+    "schemas": {
+      "DISCONTINUED_MEDS": {
+        "name": "DISCONTINUED_MEDS",
+        "description": "This table contains a list of medications that have been discontinued for a patient during an encounter.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ENC_CSN_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier of the patient encounter. Contact serial number is unique across all patients and all contacts."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The Line Count"
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PAT_ENC_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "This is a numeric representation of the date of this encounter in your system. The integer portion of the number specifies the date of the encounter. The digits after the decimal point indicate multiple visits on one day."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date on which the patient encounter occurred."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "MEDS_DISCONTINUED",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column contains medications that were discontinued for the patient during the associated patient encounter."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "DISCONTINUED_MEDS",
+            "target": "PAT_ENC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "DISCONTINUED_MEDS": [
+    {
+      "PAT_ENC_CSN_ID": 991225117,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66745,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "MEDS_DISCONTINUED": 772179261,
+      "$meta": {
+        "type": "DISCONTINUED_MEDS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 988126821,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66524,
+      "CONTACT_DATE": "2023-02-19 00:00:00",
+      "MEDS_DISCONTINUED": 772179266,
+      "$meta": {
+        "type": "DISCONTINUED_MEDS"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1043034397,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66830,
+      "CONTACT_DATE": "2023-12-22 00:00:00",
+      "MEDS_DISCONTINUED": 772179269,
+      "$meta": {
+        "type": "DISCONTINUED_MEDS"
+      }
+    }
+  ]
+}

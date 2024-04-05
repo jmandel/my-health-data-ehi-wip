@@ -1,0 +1,167 @@
+{
+  "name": "PAT_SURG_DATA",
+  "description": "This table contains information about items related to surgery, including: primary surgeon, procedure, location, and case and log status.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique, internal contact date in decimal format. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is populated only if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CS_SURG_SURGEON_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the primary surgeon for the surgery, stored here so that it can be synched across deployments to be shown in the chart review."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CS_SURG_PROC_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the primary procedure for the surgery, stored here so that it can be synched across deployments to be shown in the chart review."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CS_SURG_PROC_ID_PROC_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the surgical procedure record."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CS_SURG_LOCATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the surgery location, stored here so that it can be synched across deployments to be shown in the chart review."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CS_SURG_CASE_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The case status category number for the associated surgery, stored here so that it can be synched across deployments to be shown in the chart review.",
+      "entries": [
+        "Scheduled",
+        "Canceled",
+        "Not Scheduled",
+        "Missing Information",
+        "Voided",
+        "Pending",
+        "Arrived",
+        "Completed",
+        "No Show",
+        "Pending Unscheduled"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "CS_SURG_LOG_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The log status category number for the associated surgery, stored here so that it can be synched across deployments to be shown in the chart review.",
+      "entries": [
+        "Missing Information",
+        "Posted",
+        "Unposted",
+        "Voided",
+        "Completed",
+        "Canceled"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "CS_SURG_EAP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the primary procedure for the surgery, stored here so that it can be synced across deployments to be shown in the chart review."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "CS_SURG_PROC_FRTXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The procedure name as exactly ordered by the surgeon/provider, stored here so that it can be synced across deployments to be shown in the chart review."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "CS_SURG_PROC_LAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The procedure laterality, stored here so that it can be synced across deployments to be shown in the chart review.",
+      "entries": [
+        "Left",
+        "Right",
+        "Bilateral",
+        "N/A",
+        "Default"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "CS_SURG_SCHED_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The procedure scheduled time, stored here so that it can be synced across deployments to be shown in the chart review."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "CS_SURG_PROC_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The procedure comments, stored here so that it can be synced across deployments to be shown in the chart review."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "CS_SURG_NOT_PERF_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The flag determining if the surgery was marked as procedure not performed, stored here so that it can be synced across deployments.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "CS_SURG_CASE_CLASS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the class of the case (either Inpatient or Outpatient), stored here so that the class of the case can be determined across deployments.",
+      "entries": [
+        "Inpatient",
+        "Outpatient",
+        "Cannot Be Determined"
+      ]
+    }
+  ]
+}

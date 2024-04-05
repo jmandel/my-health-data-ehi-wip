@@ -1,0 +1,205 @@
+{
+  "$meta": {
+    "schemas": {
+      "MEDS_REV_HX": {
+        "name": "MEDS_REV_HX",
+        "description": "This table lists all of the times that a user reviewed a patient's medication list. \n\n\n\n\n\nThe list of medications current at each review instance is in the MEDS_REV_HX_LIST table.\n\n\n\n\n\nReviewing user and other information about the most recent review of medications is in the PATIENT table in columns MEDS_LAST_REV_TM, MEDS_LST_REV_USR_ID, and MEDS_LAST_REV_CSN.\n\n\n\n\n\nThe list of medications at the most recent review instance is in the MEDS_REV_LAST_LIST table.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE_COUNT",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the patient record for this row."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE_COUNT",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "MEDS_HX_REV_INSTANT",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The date and time that the patient's medication list was marked as reviewed."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "MEDS_HX_REV_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID associated with the user that marked the patient's medication list as reviewed."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "MEDS_HX_REV_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "MEDS_HX_REV_CSN",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique contact serial number of the contact in which the patient's medication list was reviewed. This number is unique across all patient encounters in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI)."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "MEDS_HX_REV_COUNT",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "Count of how many meds are found in the medication history review list (I EPT 17229)."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "MEDS_REV_HX",
+            "target": "PAT_REL_ADDR",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              },
+              {
+                "source": "LINE_COUNT",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "MEDS_REV_HX",
+            "target": "PATIENT",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "MEDS_REV_HX": [
+    {
+      "PAT_ID": "Z7004242",
+      "LINE_COUNT": 1,
+      "MEDS_HX_REV_INSTANT": "2018-08-09 09:46:15",
+      "MEDS_HX_REV_USER_ID": "WENTZTC",
+      "MEDS_HX_REV_USER_ID_NAME": "IRELAND, TRACY C",
+      "MEDS_HX_REV_CSN": 720803470,
+      "MEDS_HX_REV_COUNT": 0,
+      "$meta": {
+        "type": "MEDS_REV_HX"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE_COUNT": 2,
+      "MEDS_HX_REV_INSTANT": "2018-08-09 09:55:35",
+      "MEDS_HX_REV_USER_ID": "DHILLOPS",
+      "MEDS_HX_REV_USER_ID_NAME": "DHILLON, PUNEET S",
+      "MEDS_HX_REV_CSN": 720803470,
+      "$meta": {
+        "type": "MEDS_REV_HX"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE_COUNT": 3,
+      "MEDS_HX_REV_INSTANT": "2020-01-09 12:29:50",
+      "MEDS_HX_REV_USER_ID": "SMITHAM28",
+      "MEDS_HX_REV_USER_ID_NAME": "THOMAS, ANGELA M",
+      "MEDS_HX_REV_CSN": 799951565,
+      "$meta": {
+        "type": "MEDS_REV_HX"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE_COUNT": 4,
+      "MEDS_HX_REV_INSTANT": "2020-07-14 14:35:05",
+      "MEDS_HX_REV_USER_ID": "PICONEMA",
+      "MEDS_HX_REV_USER_ID_NAME": "PICONE, MARY A",
+      "MEDS_HX_REV_CSN": 829213099,
+      "$meta": {
+        "type": "MEDS_REV_HX"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE_COUNT": 5,
+      "MEDS_HX_REV_INSTANT": "2022-08-29 13:31:21",
+      "MEDS_HX_REV_USER_ID": "MBS403",
+      "MEDS_HX_REV_USER_ID_NAME": "SMITH, MARY B",
+      "MEDS_HX_REV_CSN": 948004323,
+      "$meta": {
+        "type": "MEDS_REV_HX"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE_COUNT": 6,
+      "MEDS_HX_REV_INSTANT": "2022-08-29 13:47:22",
+      "MEDS_HX_REV_USER_ID": "RAMMELZL",
+      "MEDS_HX_REV_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "MEDS_HX_REV_CSN": 948004323,
+      "MEDS_HX_REV_COUNT": 0,
+      "$meta": {
+        "type": "MEDS_REV_HX"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE_COUNT": 7,
+      "MEDS_HX_REV_INSTANT": "2022-12-01 09:35:02",
+      "MEDS_HX_REV_USER_ID": "MBS403",
+      "MEDS_HX_REV_USER_ID_NAME": "SMITH, MARY B",
+      "MEDS_HX_REV_CSN": 974614965,
+      "MEDS_HX_REV_COUNT": 1,
+      "$meta": {
+        "type": "MEDS_REV_HX"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE_COUNT": 8,
+      "MEDS_HX_REV_INSTANT": "2023-03-02 14:43:35",
+      "MEDS_HX_REV_USER_ID": "MBS403",
+      "MEDS_HX_REV_USER_ID_NAME": "SMITH, MARY B",
+      "MEDS_HX_REV_CSN": 958148810,
+      "MEDS_HX_REV_COUNT": 2,
+      "$meta": {
+        "type": "MEDS_REV_HX"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE_COUNT": 9,
+      "MEDS_HX_REV_INSTANT": "2023-09-28 09:38:53",
+      "MEDS_HX_REV_USER_ID": "MBS403",
+      "MEDS_HX_REV_USER_ID_NAME": "SMITH, MARY B",
+      "MEDS_HX_REV_CSN": 991225117,
+      "MEDS_HX_REV_COUNT": 1,
+      "$meta": {
+        "type": "MEDS_REV_HX"
+      }
+    }
+  ]
+}

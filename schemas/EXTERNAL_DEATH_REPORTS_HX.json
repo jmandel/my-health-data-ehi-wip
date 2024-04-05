@@ -1,0 +1,72 @@
+{
+  "name": "EXTERNAL_DEATH_REPORTS_HX",
+  "description": "Stores audit trail data for updates to external death status.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "EXT_DEATH_HX_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the link to the relevant line in EPT-85500 that this row is referring to."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EXT_DEATH_STAT_HX_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the status that a given report was updated to.",
+      "entries": [
+        "Unconfirmed",
+        "Marked As Deceased",
+        "Declined Report",
+        "Erroneous"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EXT_DEATH_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the user who was responsible for updating the external death status of a given report."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EXT_DEATH_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "EXT_DEATH_UPD_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the instant at which a user updated the external death status of a given report."
+    }
+  ]
+}

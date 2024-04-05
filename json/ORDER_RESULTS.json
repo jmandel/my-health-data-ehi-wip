@@ -1,0 +1,1188 @@
+{
+  "$meta": {
+    "schemas": {
+      "ORDER_RESULTS": {
+        "name": "ORDER_RESULTS",
+        "description": "This table contains information on results from clinical system orders. This table extracts only the last Orders (ORD) contact for each ORD record.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_PROC_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "ORD_DATE_REAL",
+            "ordinalPosition": 2
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 3
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_PROC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the procedure order record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number of each result component within each ordered procedure."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "ORD_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "This is a numeric representation of the date each order was placed in your system. The integer portion of the number specifies the date the order was placed. The digits after the decimal point indicate multiple orders on one day."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "ORD_END_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "This is a numeric representation of the end date for each order in your system. The integer portion of the number specifies the date the order was placed. The digits after the decimal point indicate multiple orders on one day."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "RESULT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date the technician ran the tests for each order in calendar format."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "COMPONENT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of each result component for each result."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "COMPONENT_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the component."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "A unique serial number for the associated patient encounter. This number is unique across all patients and encounters in the system."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "ORD_VALUE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The value returned for each result component, in short free text format. NOTE:  This is how the data is stored in the database; as string format. Interface data may come in with alpha characters and this field is designed to store exactly what is stored in the database. This field stores numeric and structured numeric values in M internal format, using a period as the decimal separator irrespective of locale."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "ORD_NUM_VALUE",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "A numeric representation of the value returned for each component where applicable. If the value contains any non-numeric characters, the value will display as 9999999."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "RESULT_FLAG_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value associated with a standard HL7 flag code to mark each component result as abnormal. Any value in this field not equal to 1 is considered abnormal.",
+            "entries": [
+              "(NONE)",
+              "Abnormal",
+              "Panic",
+              "Low",
+              "High",
+              "Low Panic",
+              "High Panic",
+              "Low Off-Scale",
+              "High Off-Scale",
+              "Sig Change Up",
+              "Sig Change Down",
+              "Better",
+              "Worse",
+              "Sensitive",
+              "Resistant",
+              "Intermediate",
+              "Moderately Sensitive",
+              "Very Sensitive"
+            ]
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "REFERENCE_LOW",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The lowest acceptable value for each result component. If the value in this column is a number or structured numeric, the numbers will be stored in M internal format, using a period as the decimal separator."
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "REFERENCE_HIGH",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The highest acceptable value for each result component. If the value in this column is a number or structured numeric, the numbers will be stored in M internal format, using a period as the decimal separator."
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "REFERENCE_UNIT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The units for each result component value."
+          },
+          {
+            "ordinalPosition": 15,
+            "name": "RESULT_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value corresponding to the status of each result record, such as 2-Preliminary, 3-Final, 4-Corrected, 5-Incomplete.",
+            "entries": [
+              "Preliminary",
+              "Final",
+              "Corrected",
+              "Incomplete"
+            ]
+          },
+          {
+            "ordinalPosition": 16,
+            "name": "RESULT_SUB_IDN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item is populated with the unique organism identifier (OVR 700 or interface) when the component of an order result is an organism and can be joined to ORDER_SENSITIVITY.SENS_ORGANISM_SID to identify details about this organism."
+          },
+          {
+            "ordinalPosition": 17,
+            "name": "LAB_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value associated with the status of each result, such as 1-In Progress, 2-Preliminary, 3-Final, 4-Edited.",
+            "entries": [
+              "In process",
+              "Preliminary result",
+              "Final result",
+              "Edited",
+              "Edited Result - FINAL"
+            ]
+          },
+          {
+            "ordinalPosition": 18,
+            "name": "INTERFACE_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This Yes/No flag identifies whether each order was resulted through an interface. The field will display \"Y\" if the result came through an interface, otherwise the field will display \"N\".",
+            "entries": [
+              "Yes",
+              "No"
+            ]
+          },
+          {
+            "ordinalPosition": 19,
+            "name": "RESULTING_LAB_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The Unique ID of the Lab running the test."
+          },
+          {
+            "ordinalPosition": 20,
+            "name": "RESULTING_LAB_ID_LLB_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Interface laboratory name."
+          },
+          {
+            "ordinalPosition": 21,
+            "name": "COMPONENT_COMMENT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Contains the comments associated with a order COMPONENT_ID, i.e. this is the comments associated with a specific order component's results. If comment data is too long to fit in this item, then the comments will be found in the ORDER_RES_COMMENT table."
+          },
+          {
+            "ordinalPosition": 22,
+            "name": "RESULT_IN_RANGE_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "A Yes/No category value to indicate whether a result has been verified to be within its reference range.  This item is set by the interface when the result is sent. A null value is equivalent to a \"no\"  value.",
+            "entries": [
+              "No",
+              "Yes"
+            ]
+          },
+          {
+            "ordinalPosition": 23,
+            "name": "REF_NORMAL_VALS",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This is a free-text item which allows you to enter a reference range without tying it to a \"low\" or \"high\" value. For example, it could be a string (\"negative\"), a list of choices (\"Yellow, orange\"), or a descriptive range (\"Less than 20\"). The values entered in this range should always represent the \"normal\" values. This item will be displayed in Results Review as the reference range, superseding any values in the low or high items. It may also be displayed in reports, if the print groups are configured to use it. Multiple responses are permitted (one per line). If the value in this column is a number or structured numeric, the numbers will be stored in M internal format using a period as the decimal separator."
+          },
+          {
+            "ordinalPosition": 26,
+            "name": "COMP_RES_TECHNICIA",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "ID of the Resulting Lab Technician."
+          },
+          {
+            "ordinalPosition": 27,
+            "name": "VALUE_NORMALIZED",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Will contain the structured numeric result value in a delimited structured numeric format. Numbers will be in M internal format. The delimited structured numeric value is the user entered structured numeric value converted to a delimited format. Valid structured numeric formats are range, operator followed by number, and number followed by operator the value stored in this item is of the format:    operator1_$c(16)_number1_$c(16)_operator2_$c(16)_number2."
+          },
+          {
+            "ordinalPosition": 29,
+            "name": "COMP_OBS_INST_TM",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "Timestamp to track per non-micro result component when it was collected/observed."
+          },
+          {
+            "ordinalPosition": 30,
+            "name": "COMP_ANL_INST_TM",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "Timestamp to track per non-micro result component when it was analyzed in lab."
+          },
+          {
+            "ordinalPosition": 33,
+            "name": "RESULT_CMT_START_LN",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "For multi-line results holds the starting line number of RESULTS_CMT column from ORDER_RES_COMMENT table, where the result values begin.  This column is simply an indicator of the line number(s) where a result is stored."
+          },
+          {
+            "ordinalPosition": 34,
+            "name": "RESULT_CMT_END_LN",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "For multi-line results holds the ending line number of RESULTS_CMT column from ORDER_RES_COMMENT table, where the result values begin.  This column is simply an indicator of the line number(s) where a result is stored."
+          },
+          {
+            "ordinalPosition": 41,
+            "name": "COMPON_LNC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Logical Observation Identifiers Names and Codes (LOINC) ID of the component."
+          },
+          {
+            "ordinalPosition": 42,
+            "name": "COMPON_LNC_SRC_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Source of the component Logical Observation Identifiers Names and Codes (LOINC) ID.",
+            "entries": [
+              "Reported",
+              "Inferred"
+            ]
+          },
+          {
+            "ordinalPosition": 43,
+            "name": "COMP_SNOMED_SRC_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Source of the Systemized Nomenclature of Medicine � Clinical Terms (SNOMED) code (reported vs inferred)."
+          },
+          {
+            "ordinalPosition": 49,
+            "name": "PERFORMING_ORG_INFO_LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "This is used to indicate the performing organization information for the component. This item stores the line number of the ORD related group which is used to save the performing organization information."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RESULTS",
+            "target": "ORDER_PARENT_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_RESULTS",
+            "target": "ORDER_RES_COMMENT",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "ORD_DATE_REAL",
+                "target": "CONTACT_DATE_REAL"
+              },
+              {
+                "source": "LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_RESULTS",
+            "target": "ORD_RSLT_COMPON_ID",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "ORD_DATE_REAL",
+                "target": "CONTACT_DATE_REAL"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RESULTS",
+            "target": "ORDER_STATUS",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "ORD_DATE_REAL",
+                "target": "ORD_DATE_REAL"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RESULTS",
+            "target": "ORDER_PROC",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RESULTS",
+            "target": "ORD_PRFLST_TRK",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ORDER_RESULTS": [
+    {
+      "ORDER_PROC_ID": 945468372,
+      "LINE": 1,
+      "ORD_DATE_REAL": 66745.01,
+      "ORD_END_DATE_REAL": 66745.01,
+      "RESULT_DATE": "2023-09-28 00:00:00",
+      "COMPONENT_ID": 1180011095,
+      "COMPONENT_ID_NAME": "HEPATITIS C AB",
+      "PAT_ENC_CSN_ID": 1028743701,
+      "ORD_VALUE": "NONREACTIVE",
+      "ORD_NUM_VALUE": 9999999,
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "REF_NORMAL_VALS": "NR",
+      "COMP_RES_TECHNICIA": "40000",
+      "COMP_OBS_INST_TM": "2023-09-28 10:10:00",
+      "COMP_ANL_INST_TM": "2023-09-28 16:09:00",
+      "RESULT_CMT_START_LN": 1,
+      "RESULT_CMT_END_LN": 1,
+      "COMPON_LNC_ID": 6827,
+      "COMPON_LNC_SRC_C_NAME": "Reported",
+      "COMP_SNOMED_SRC_C_NAME": "Reported",
+      "PERFORMING_ORG_INFO_LINE": 1,
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060614,
+      "LINE": 1,
+      "ORD_DATE_REAL": 65643,
+      "ORD_END_DATE_REAL": 65643,
+      "RESULT_DATE": "2020-09-17 00:00:00",
+      "COMPONENT_ID": 9642,
+      "COMPONENT_ID_NAME": "SARS-COV-2 INTERP (ES) EXT",
+      "PAT_ENC_CSN_ID": 839256727,
+      "ORD_VALUE": "Negative",
+      "ORD_NUM_VALUE": 9999999,
+      "RESULT_FLAG_C_NAME": "(NONE)",
+      "RESULT_STATUS_C_NAME": "Final",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "N",
+      "REF_NORMAL_VALS": "Negative",
+      "COMPON_LNC_ID": 91394,
+      "COMPON_LNC_SRC_C_NAME": "Reported",
+      "PERFORMING_ORG_INFO_LINE": 1,
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 945468371,
+      "LINE": 1,
+      "ORD_DATE_REAL": 66745.01,
+      "ORD_END_DATE_REAL": 66745.01,
+      "RESULT_DATE": "2023-09-28 00:00:00",
+      "COMPONENT_ID": 1557760,
+      "COMPONENT_ID_NAME": "CHOLESTEROL",
+      "PAT_ENC_CSN_ID": 1028743701,
+      "ORD_VALUE": "156",
+      "ORD_NUM_VALUE": 156,
+      "REFERENCE_LOW": "0",
+      "REFERENCE_HIGH": "199",
+      "REFERENCE_UNIT": "mg/dL",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "RESULTING_LAB_ID": 422,
+      "RESULTING_LAB_ID_LLB_NAME": "ASSOCIATED PHYSICIANS LLP",
+      "COMPONENT_COMMENT": "PATIENT WAS NOT FASTING",
+      "RESULT_IN_RANGE_YN": "Y",
+      "COMP_RES_TECHNICIA": "100315",
+      "COMP_OBS_INST_TM": "2023-09-28 10:10:00",
+      "COMP_ANL_INST_TM": "2023-09-28 11:18:00",
+      "COMPON_LNC_ID": 12010,
+      "COMPON_LNC_SRC_C_NAME": "Reported",
+      "PERFORMING_ORG_INFO_LINE": 1,
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 945468371,
+      "LINE": 2,
+      "ORD_DATE_REAL": 66745.01,
+      "ORD_END_DATE_REAL": 66745.01,
+      "RESULT_DATE": "2023-09-28 00:00:00",
+      "COMPONENT_ID": 1552156,
+      "COMPONENT_ID_NAME": "TRIGLYCERIDES",
+      "PAT_ENC_CSN_ID": 1028743701,
+      "ORD_VALUE": "92",
+      "ORD_NUM_VALUE": 92,
+      "REFERENCE_LOW": "0",
+      "REFERENCE_HIGH": "149",
+      "REFERENCE_UNIT": "mg/dL",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "RESULTING_LAB_ID": 422,
+      "RESULTING_LAB_ID_LLB_NAME": "ASSOCIATED PHYSICIANS LLP",
+      "RESULT_IN_RANGE_YN": "Y",
+      "COMP_RES_TECHNICIA": "100315",
+      "COMP_OBS_INST_TM": "2023-09-28 10:10:00",
+      "COMP_ANL_INST_TM": "2023-09-28 11:18:00",
+      "COMPON_LNC_ID": 17167,
+      "COMPON_LNC_SRC_C_NAME": "Reported",
+      "PERFORMING_ORG_INFO_LINE": 1,
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 945468371,
+      "LINE": 3,
+      "ORD_DATE_REAL": 66745.01,
+      "ORD_END_DATE_REAL": 66745.01,
+      "RESULT_DATE": "2023-09-28 00:00:00",
+      "COMPONENT_ID": 1726268,
+      "COMPONENT_ID_NAME": "HDL",
+      "PAT_ENC_CSN_ID": 1028743701,
+      "ORD_VALUE": "44",
+      "ORD_NUM_VALUE": 44,
+      "REFERENCE_LOW": "40",
+      "REFERENCE_HIGH": "125",
+      "REFERENCE_UNIT": "mg/dL",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "RESULTING_LAB_ID": 422,
+      "RESULTING_LAB_ID_LLB_NAME": "ASSOCIATED PHYSICIANS LLP",
+      "RESULT_IN_RANGE_YN": "Y",
+      "COMP_RES_TECHNICIA": "100315",
+      "COMP_OBS_INST_TM": "2023-09-28 10:10:00",
+      "COMP_ANL_INST_TM": "2023-09-28 11:18:00",
+      "COMPON_LNC_ID": 11865,
+      "COMPON_LNC_SRC_C_NAME": "Reported",
+      "PERFORMING_ORG_INFO_LINE": 1,
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 945468371,
+      "LINE": 4,
+      "ORD_DATE_REAL": 66745.01,
+      "ORD_END_DATE_REAL": 66745.01,
+      "RESULT_DATE": "2023-09-28 00:00:00",
+      "COMPONENT_ID": 1557762,
+      "COMPONENT_ID_NAME": "LDL, CALCULATED",
+      "PAT_ENC_CSN_ID": 1028743701,
+      "ORD_VALUE": "94",
+      "ORD_NUM_VALUE": 94,
+      "REFERENCE_LOW": "60",
+      "REFERENCE_HIGH": "129",
+      "REFERENCE_UNIT": "mg/dL",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "RESULTING_LAB_ID": 422,
+      "RESULTING_LAB_ID_LLB_NAME": "ASSOCIATED PHYSICIANS LLP",
+      "RESULT_IN_RANGE_YN": "Y",
+      "COMP_RES_TECHNICIA": "100315",
+      "COMP_OBS_INST_TM": "2023-09-28 10:10:00",
+      "COMP_ANL_INST_TM": "2023-09-28 11:18:00",
+      "RESULT_CMT_START_LN": 1,
+      "RESULT_CMT_END_LN": 1,
+      "COMPON_LNC_ID": 3873,
+      "COMPON_LNC_SRC_C_NAME": "Reported",
+      "PERFORMING_ORG_INFO_LINE": 1,
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 945468371,
+      "LINE": 5,
+      "ORD_DATE_REAL": 66745.01,
+      "ORD_END_DATE_REAL": 66745.01,
+      "RESULT_DATE": "2023-09-28 00:00:00",
+      "COMPONENT_ID": 1557763,
+      "COMPONENT_ID_NAME": "CHOLESTEROL/HDL RATIO",
+      "PAT_ENC_CSN_ID": 1028743701,
+      "ORD_VALUE": "3.5",
+      "ORD_NUM_VALUE": 3.5,
+      "REFERENCE_LOW": "0.0",
+      "REFERENCE_HIGH": "5.0",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "RESULTING_LAB_ID": 422,
+      "RESULTING_LAB_ID_LLB_NAME": "ASSOCIATED PHYSICIANS LLP",
+      "COMPONENT_COMMENT": "Testing performed at Associated Physicians LLP, 4410 Regent Street, Madison, WI 53705",
+      "RESULT_IN_RANGE_YN": "Y",
+      "COMP_RES_TECHNICIA": "100315",
+      "COMP_OBS_INST_TM": "2023-09-28 10:10:00",
+      "COMP_ANL_INST_TM": "2023-09-28 11:18:00",
+      "COMPON_LNC_ID": 80688,
+      "COMPON_LNC_SRC_C_NAME": "Reported",
+      "PERFORMING_ORG_INFO_LINE": 1,
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060606,
+      "LINE": 1,
+      "ORD_DATE_REAL": 64869.01,
+      "ORD_END_DATE_REAL": 64869.01,
+      "RESULT_DATE": "2018-08-09 00:00:00",
+      "COMPONENT_ID": 1557760,
+      "COMPONENT_ID_NAME": "CHOLESTEROL",
+      "PAT_ENC_CSN_ID": 724628999,
+      "ORD_VALUE": "159",
+      "ORD_NUM_VALUE": 159,
+      "REFERENCE_LOW": "0",
+      "REFERENCE_HIGH": "199",
+      "REFERENCE_UNIT": "mg/dL",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "COMPONENT_COMMENT": "PATIENT FASTING",
+      "RESULT_IN_RANGE_YN": "Y",
+      "COMP_RES_TECHNICIA": "111617-VIRA X CORNELL",
+      "COMP_OBS_INST_TM": "2018-08-09 11:58:00",
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060606,
+      "LINE": 2,
+      "ORD_DATE_REAL": 64869.01,
+      "ORD_END_DATE_REAL": 64869.01,
+      "RESULT_DATE": "2018-08-09 00:00:00",
+      "COMPONENT_ID": 1552156,
+      "COMPONENT_ID_NAME": "TRIGLYCERIDES",
+      "PAT_ENC_CSN_ID": 724628999,
+      "ORD_VALUE": "88",
+      "ORD_NUM_VALUE": 88,
+      "REFERENCE_LOW": "0",
+      "REFERENCE_HIGH": "149",
+      "REFERENCE_UNIT": "mg/dL",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "RESULT_IN_RANGE_YN": "Y",
+      "COMP_RES_TECHNICIA": "111617-VIRA X CORNELL",
+      "COMP_OBS_INST_TM": "2018-08-09 11:58:00",
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060606,
+      "LINE": 3,
+      "ORD_DATE_REAL": 64869.01,
+      "ORD_END_DATE_REAL": 64869.01,
+      "RESULT_DATE": "2018-08-09 00:00:00",
+      "COMPONENT_ID": 1557761,
+      "COMPONENT_ID_NAME": "HIGH DENSITY CHOLESTEROL",
+      "PAT_ENC_CSN_ID": 724628999,
+      "ORD_VALUE": "52",
+      "ORD_NUM_VALUE": 52,
+      "REFERENCE_LOW": "40",
+      "REFERENCE_HIGH": "125",
+      "REFERENCE_UNIT": "mg/dL",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "RESULT_IN_RANGE_YN": "Y",
+      "COMP_RES_TECHNICIA": "111617-VIRA X CORNELL",
+      "COMP_OBS_INST_TM": "2018-08-09 11:58:00",
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060606,
+      "LINE": 4,
+      "ORD_DATE_REAL": 64869.01,
+      "ORD_END_DATE_REAL": 64869.01,
+      "RESULT_DATE": "2018-08-09 00:00:00",
+      "COMPONENT_ID": 1557762,
+      "COMPONENT_ID_NAME": "LDL, CALCULATED",
+      "PAT_ENC_CSN_ID": 724628999,
+      "ORD_VALUE": "89",
+      "ORD_NUM_VALUE": 89,
+      "REFERENCE_LOW": "60",
+      "REFERENCE_HIGH": "129",
+      "REFERENCE_UNIT": "mg/dL",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "RESULT_IN_RANGE_YN": "Y",
+      "COMP_RES_TECHNICIA": "111617-VIRA X CORNELL",
+      "COMP_OBS_INST_TM": "2018-08-09 11:58:00",
+      "RESULT_CMT_START_LN": 1,
+      "RESULT_CMT_END_LN": 1,
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060606,
+      "LINE": 5,
+      "ORD_DATE_REAL": 64869.01,
+      "ORD_END_DATE_REAL": 64869.01,
+      "RESULT_DATE": "2018-08-09 00:00:00",
+      "COMPONENT_ID": 1557763,
+      "COMPONENT_ID_NAME": "CHOLESTEROL/HDL RATIO",
+      "PAT_ENC_CSN_ID": 724628999,
+      "ORD_VALUE": "3.1",
+      "ORD_NUM_VALUE": 3.1,
+      "REFERENCE_LOW": "0.0",
+      "REFERENCE_HIGH": "5.0",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "COMPONENT_COMMENT": "Testing performed at Associated Physicians LLP, 4410 Regent Street, Madison, WI 53705",
+      "RESULT_IN_RANGE_YN": "Y",
+      "COMP_RES_TECHNICIA": "111617-VIRA X CORNELL",
+      "COMP_OBS_INST_TM": "2018-08-09 11:58:00",
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179262,
+      "LINE": 1,
+      "ORD_DATE_REAL": 66350.01,
+      "ORD_END_DATE_REAL": 66350.01,
+      "RESULT_DATE": "2022-08-29 00:00:00",
+      "COMPONENT_ID": 1534098,
+      "COMPONENT_ID_NAME": "SODIUM",
+      "PAT_ENC_CSN_ID": 958147754,
+      "ORD_VALUE": "142",
+      "ORD_NUM_VALUE": 142,
+      "REFERENCE_LOW": "136",
+      "REFERENCE_HIGH": "145",
+      "REFERENCE_UNIT": "mmol/L",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "RESULTING_LAB_ID": 422,
+      "RESULTING_LAB_ID_LLB_NAME": "ASSOCIATED PHYSICIANS LLP",
+      "RESULT_IN_RANGE_YN": "Y",
+      "COMP_RES_TECHNICIA": "100315",
+      "COMP_OBS_INST_TM": "2022-08-29 14:32:00",
+      "COMP_ANL_INST_TM": "2022-08-29 15:41:00",
+      "COMPON_LNC_ID": 21291,
+      "COMPON_LNC_SRC_C_NAME": "Reported",
+      "PERFORMING_ORG_INFO_LINE": 1,
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179262,
+      "LINE": 2,
+      "ORD_DATE_REAL": 66350.01,
+      "ORD_END_DATE_REAL": 66350.01,
+      "RESULT_DATE": "2022-08-29 00:00:00",
+      "COMPONENT_ID": 1534081,
+      "COMPONENT_ID_NAME": "POTASSIUM",
+      "PAT_ENC_CSN_ID": 958147754,
+      "ORD_VALUE": "5.0",
+      "ORD_NUM_VALUE": 5,
+      "REFERENCE_LOW": "3.5",
+      "REFERENCE_HIGH": "5.1",
+      "REFERENCE_UNIT": "mmol/L",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "RESULTING_LAB_ID": 422,
+      "RESULTING_LAB_ID_LLB_NAME": "ASSOCIATED PHYSICIANS LLP",
+      "RESULT_IN_RANGE_YN": "Y",
+      "COMP_RES_TECHNICIA": "100315",
+      "COMP_OBS_INST_TM": "2022-08-29 14:32:00",
+      "COMP_ANL_INST_TM": "2022-08-29 15:41:00",
+      "COMPON_LNC_ID": 19932,
+      "COMPON_LNC_SRC_C_NAME": "Reported",
+      "PERFORMING_ORG_INFO_LINE": 1,
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179262,
+      "LINE": 3,
+      "ORD_DATE_REAL": 66350.01,
+      "ORD_END_DATE_REAL": 66350.01,
+      "RESULT_DATE": "2022-08-29 00:00:00",
+      "COMPONENT_ID": 1534101,
+      "COMPONENT_ID_NAME": "CHLORIDE",
+      "PAT_ENC_CSN_ID": 958147754,
+      "ORD_VALUE": "102",
+      "ORD_NUM_VALUE": 102,
+      "REFERENCE_LOW": "98",
+      "REFERENCE_HIGH": "107",
+      "REFERENCE_UNIT": "mmol/L",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "RESULTING_LAB_ID": 422,
+      "RESULTING_LAB_ID_LLB_NAME": "ASSOCIATED PHYSICIANS LLP",
+      "RESULT_IN_RANGE_YN": "Y",
+      "COMP_RES_TECHNICIA": "100315",
+      "COMP_OBS_INST_TM": "2022-08-29 14:32:00",
+      "COMP_ANL_INST_TM": "2022-08-29 15:41:00",
+      "COMPON_LNC_ID": 11751,
+      "COMPON_LNC_SRC_C_NAME": "Reported",
+      "PERFORMING_ORG_INFO_LINE": 1,
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179262,
+      "LINE": 4,
+      "ORD_DATE_REAL": 66350.01,
+      "ORD_END_DATE_REAL": 66350.01,
+      "RESULT_DATE": "2022-08-29 00:00:00",
+      "COMPONENT_ID": 1526212,
+      "COMPONENT_ID_NAME": "CO2",
+      "PAT_ENC_CSN_ID": 958147754,
+      "ORD_VALUE": "30",
+      "ORD_NUM_VALUE": 30,
+      "RESULT_FLAG_C_NAME": "High",
+      "REFERENCE_LOW": "22",
+      "REFERENCE_HIGH": "29",
+      "REFERENCE_UNIT": "mmol/L",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "RESULTING_LAB_ID": 422,
+      "RESULTING_LAB_ID_LLB_NAME": "ASSOCIATED PHYSICIANS LLP",
+      "COMP_RES_TECHNICIA": "100315",
+      "COMP_OBS_INST_TM": "2022-08-29 14:32:00",
+      "COMP_ANL_INST_TM": "2022-08-29 15:41:00",
+      "COMPON_LNC_ID": 11223,
+      "COMPON_LNC_SRC_C_NAME": "Reported",
+      "PERFORMING_ORG_INFO_LINE": 1,
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179262,
+      "LINE": 5,
+      "ORD_DATE_REAL": 66350.01,
+      "ORD_END_DATE_REAL": 66350.01,
+      "RESULT_DATE": "2022-08-29 00:00:00",
+      "COMPONENT_ID": 1510655,
+      "COMPONENT_ID_NAME": "GLUCOSE",
+      "PAT_ENC_CSN_ID": 958147754,
+      "ORD_VALUE": "97",
+      "ORD_NUM_VALUE": 97,
+      "REFERENCE_LOW": "74",
+      "REFERENCE_HIGH": "100",
+      "REFERENCE_UNIT": "mg/dL",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "RESULTING_LAB_ID": 422,
+      "RESULTING_LAB_ID_LLB_NAME": "ASSOCIATED PHYSICIANS LLP",
+      "RESULT_IN_RANGE_YN": "Y",
+      "COMP_RES_TECHNICIA": "100315",
+      "COMP_OBS_INST_TM": "2022-08-29 14:32:00",
+      "COMP_ANL_INST_TM": "2022-08-29 15:41:00",
+      "COMPON_LNC_ID": 14739,
+      "COMPON_LNC_SRC_C_NAME": "Reported",
+      "PERFORMING_ORG_INFO_LINE": 1,
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179262,
+      "LINE": 6,
+      "ORD_DATE_REAL": 66350.01,
+      "ORD_END_DATE_REAL": 66350.01,
+      "RESULT_DATE": "2022-08-29 00:00:00",
+      "COMPONENT_ID": 1558175,
+      "COMPONENT_ID_NAME": "BUN BLOOD",
+      "PAT_ENC_CSN_ID": 958147754,
+      "ORD_VALUE": "14",
+      "ORD_NUM_VALUE": 14,
+      "REFERENCE_LOW": "7",
+      "REFERENCE_HIGH": "20",
+      "REFERENCE_UNIT": "mg/dL",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "RESULTING_LAB_ID": 422,
+      "RESULTING_LAB_ID_LLB_NAME": "ASSOCIATED PHYSICIANS LLP",
+      "RESULT_IN_RANGE_YN": "Y",
+      "COMP_RES_TECHNICIA": "100315",
+      "COMP_OBS_INST_TM": "2022-08-29 14:32:00",
+      "COMP_ANL_INST_TM": "2022-08-29 15:41:00",
+      "COMPON_LNC_ID": 22904,
+      "COMPON_LNC_SRC_C_NAME": "Reported",
+      "PERFORMING_ORG_INFO_LINE": 1,
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179262,
+      "LINE": 7,
+      "ORD_DATE_REAL": 66350.01,
+      "ORD_END_DATE_REAL": 66350.01,
+      "RESULT_DATE": "2022-08-29 00:00:00",
+      "COMPONENT_ID": 1510379,
+      "COMPONENT_ID_NAME": "CREATININE",
+      "PAT_ENC_CSN_ID": 958147754,
+      "ORD_VALUE": "0.94",
+      "ORD_NUM_VALUE": 0.94,
+      "REFERENCE_LOW": "0.70",
+      "REFERENCE_HIGH": "1.20",
+      "REFERENCE_UNIT": "mg/dL",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "RESULTING_LAB_ID": 422,
+      "RESULTING_LAB_ID_LLB_NAME": "ASSOCIATED PHYSICIANS LLP",
+      "RESULT_IN_RANGE_YN": "Y",
+      "COMP_RES_TECHNICIA": "100315",
+      "COMP_OBS_INST_TM": "2022-08-29 14:32:00",
+      "COMP_ANL_INST_TM": "2022-08-29 15:41:00",
+      "COMPON_LNC_ID": 12716,
+      "COMPON_LNC_SRC_C_NAME": "Reported",
+      "PERFORMING_ORG_INFO_LINE": 1,
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179262,
+      "LINE": 8,
+      "ORD_DATE_REAL": 66350.01,
+      "ORD_END_DATE_REAL": 66350.01,
+      "RESULT_DATE": "2022-08-29 00:00:00",
+      "COMPONENT_ID": 1558170,
+      "COMPONENT_ID_NAME": "CALCIUM",
+      "PAT_ENC_CSN_ID": 958147754,
+      "ORD_VALUE": "10.3",
+      "ORD_NUM_VALUE": 10.3,
+      "REFERENCE_LOW": "8.5",
+      "REFERENCE_HIGH": "10.4",
+      "REFERENCE_UNIT": "mg/dL",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "RESULTING_LAB_ID": 422,
+      "RESULTING_LAB_ID_LLB_NAME": "ASSOCIATED PHYSICIANS LLP",
+      "RESULT_IN_RANGE_YN": "Y",
+      "COMP_RES_TECHNICIA": "100315",
+      "COMP_OBS_INST_TM": "2022-08-29 14:32:00",
+      "COMP_ANL_INST_TM": "2022-08-29 15:41:00",
+      "COMPON_LNC_ID": 7800,
+      "COMPON_LNC_SRC_C_NAME": "Reported",
+      "PERFORMING_ORG_INFO_LINE": 1,
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179262,
+      "LINE": 9,
+      "ORD_DATE_REAL": 66350.01,
+      "ORD_END_DATE_REAL": 66350.01,
+      "RESULT_DATE": "2022-08-29 00:00:00",
+      "COMPONENT_ID": 1525828,
+      "COMPONENT_ID_NAME": "ANION GAP",
+      "PAT_ENC_CSN_ID": 958147754,
+      "ORD_VALUE": "10",
+      "ORD_NUM_VALUE": 10,
+      "REFERENCE_LOW": "5",
+      "REFERENCE_HIGH": "14",
+      "REFERENCE_UNIT": "mmol/L",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "RESULTING_LAB_ID": 422,
+      "RESULTING_LAB_ID_LLB_NAME": "ASSOCIATED PHYSICIANS LLP",
+      "RESULT_IN_RANGE_YN": "Y",
+      "COMP_RES_TECHNICIA": "100315",
+      "COMP_OBS_INST_TM": "2022-08-29 14:32:00",
+      "COMP_ANL_INST_TM": "2022-08-29 15:41:00",
+      "COMPON_LNC_ID": 25260,
+      "COMPON_LNC_SRC_C_NAME": "Reported",
+      "PERFORMING_ORG_INFO_LINE": 1,
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179262,
+      "LINE": 10,
+      "ORD_DATE_REAL": 66350.01,
+      "ORD_END_DATE_REAL": 66350.01,
+      "RESULT_DATE": "2022-08-29 00:00:00",
+      "COMPONENT_ID": 1510194,
+      "COMPONENT_ID_NAME": "BUN / CREAT RATIO",
+      "PAT_ENC_CSN_ID": 958147754,
+      "ORD_VALUE": "14.9",
+      "ORD_NUM_VALUE": 14.9,
+      "REFERENCE_LOW": "8.0",
+      "REFERENCE_HIGH": "26.0",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "RESULTING_LAB_ID": 422,
+      "RESULTING_LAB_ID_LLB_NAME": "ASSOCIATED PHYSICIANS LLP",
+      "RESULT_IN_RANGE_YN": "Y",
+      "COMP_RES_TECHNICIA": "100315",
+      "COMP_OBS_INST_TM": "2022-08-29 14:32:00",
+      "COMP_ANL_INST_TM": "2022-08-29 15:41:00",
+      "COMPON_LNC_ID": 22930,
+      "COMPON_LNC_SRC_C_NAME": "Reported",
+      "PERFORMING_ORG_INFO_LINE": 1,
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179262,
+      "LINE": 11,
+      "ORD_DATE_REAL": 66350.01,
+      "ORD_END_DATE_REAL": 66350.01,
+      "RESULT_DATE": "2022-08-29 00:00:00",
+      "COMPONENT_ID": 1555053,
+      "COMPONENT_ID_NAME": "OSMOLALITY CALCULATED",
+      "PAT_ENC_CSN_ID": 958147754,
+      "ORD_VALUE": "294",
+      "ORD_NUM_VALUE": 294,
+      "REFERENCE_LOW": "275",
+      "REFERENCE_HIGH": "295",
+      "REFERENCE_UNIT": "mosm/kg",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "RESULTING_LAB_ID": 422,
+      "RESULTING_LAB_ID_LLB_NAME": "ASSOCIATED PHYSICIANS LLP",
+      "RESULT_IN_RANGE_YN": "Y",
+      "COMP_RES_TECHNICIA": "100315",
+      "COMP_OBS_INST_TM": "2022-08-29 14:32:00",
+      "COMP_ANL_INST_TM": "2022-08-29 15:41:00",
+      "COMPON_LNC_ID": 9081,
+      "COMPON_LNC_SRC_C_NAME": "Reported",
+      "PERFORMING_ORG_INFO_LINE": 1,
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179262,
+      "LINE": 12,
+      "ORD_DATE_REAL": 66350.01,
+      "ORD_END_DATE_REAL": 66350.01,
+      "RESULT_DATE": "2022-08-29 00:00:00",
+      "COMPONENT_ID": 1180010753,
+      "COMPONENT_ID_NAME": "EGFR NON-AFR/AMER",
+      "PAT_ENC_CSN_ID": 958147754,
+      "ORD_VALUE": ">90",
+      "ORD_NUM_VALUE": 9999999,
+      "REFERENCE_UNIT": "mL/min/[1.73_m2]",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "RESULTING_LAB_ID": 422,
+      "RESULTING_LAB_ID_LLB_NAME": "ASSOCIATED PHYSICIANS LLP",
+      "REF_NORMAL_VALS": ">60",
+      "COMP_RES_TECHNICIA": "100315",
+      "VALUE_NORMALIZED": ">\u001090",
+      "COMP_OBS_INST_TM": "2022-08-29 14:32:00",
+      "COMP_ANL_INST_TM": "2022-08-29 15:41:00",
+      "RESULT_CMT_START_LN": 1,
+      "RESULT_CMT_END_LN": 1,
+      "COMPON_LNC_ID": 73346,
+      "COMPON_LNC_SRC_C_NAME": "Reported",
+      "PERFORMING_ORG_INFO_LINE": 1,
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060607,
+      "LINE": 1,
+      "ORD_DATE_REAL": 64878.01,
+      "ORD_END_DATE_REAL": 64878.01,
+      "RESULT_DATE": "2018-08-18 00:00:00",
+      "COMPONENT_ID": 1805459,
+      "COMPONENT_ID_NAME": "H PYLORI ANTIGEN STOOL",
+      "PAT_ENC_CSN_ID": 725327197,
+      "ORD_VALUE": "NEGATIVE FOR H PYLORI STOOL ANTIGEN",
+      "ORD_NUM_VALUE": 9999999,
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "COMPONENT_COMMENT": "Testing performed at Meriter Laboratories, 36 S Brooks St Madison, WI 53715, unless otherwise stated in result.",
+      "REF_NORMAL_VALS": "NEGATIVE FOR H PYLORI STOOL ANTIGEN",
+      "COMP_RES_TECHNICIA": "041518-ALEESA L SHAW",
+      "COMP_OBS_INST_TM": "2018-08-18 14:25:00",
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 945468370,
+      "LINE": 1,
+      "ORD_DATE_REAL": 66745.01,
+      "ORD_END_DATE_REAL": 66745.01,
+      "RESULT_DATE": "2023-09-28 00:00:00",
+      "COMPONENT_ID": 1526664,
+      "COMPONENT_ID_NAME": "HEMOGLOBIN A1C",
+      "PAT_ENC_CSN_ID": 1028743701,
+      "ORD_VALUE": "5.4",
+      "ORD_NUM_VALUE": 5.4,
+      "REFERENCE_LOW": "4.0",
+      "REFERENCE_HIGH": "6.0",
+      "REFERENCE_UNIT": "%",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "RESULTING_LAB_ID": 422,
+      "RESULTING_LAB_ID_LLB_NAME": "ASSOCIATED PHYSICIANS LLP",
+      "RESULT_IN_RANGE_YN": "Y",
+      "COMP_RES_TECHNICIA": "100315",
+      "COMP_OBS_INST_TM": "2023-09-28 10:10:00",
+      "COMP_ANL_INST_TM": "2023-09-28 10:47:00",
+      "COMPON_LNC_ID": 38841,
+      "COMPON_LNC_SRC_C_NAME": "Reported",
+      "PERFORMING_ORG_INFO_LINE": 1,
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 945468370,
+      "LINE": 2,
+      "ORD_DATE_REAL": 66745.01,
+      "ORD_END_DATE_REAL": 66745.01,
+      "RESULT_DATE": "2023-09-28 00:00:00",
+      "COMPONENT_ID": 1180010806,
+      "COMPONENT_ID_NAME": "ESTIMATED AVG GLUC",
+      "PAT_ENC_CSN_ID": 1028743701,
+      "ORD_VALUE": "108",
+      "ORD_NUM_VALUE": 108,
+      "REFERENCE_UNIT": "mg/dL",
+      "RESULT_STATUS_C_NAME": "Final",
+      "RESULT_SUB_IDN": "1",
+      "LAB_STATUS_C_NAME": "Final result",
+      "INTERFACE_YN": "Y",
+      "RESULTING_LAB_ID": 422,
+      "RESULTING_LAB_ID_LLB_NAME": "ASSOCIATED PHYSICIANS LLP",
+      "COMP_RES_TECHNICIA": "100315",
+      "COMP_OBS_INST_TM": "2023-09-28 10:10:00",
+      "COMP_ANL_INST_TM": "2023-09-28 10:47:00",
+      "RESULT_CMT_START_LN": 1,
+      "RESULT_CMT_END_LN": 1,
+      "COMPON_LNC_ID": 18994,
+      "COMPON_LNC_SRC_C_NAME": "Reported",
+      "PERFORMING_ORG_INFO_LINE": 1,
+      "$meta": {
+        "type": "ORDER_RESULTS"
+      }
+    }
+  ]
+}

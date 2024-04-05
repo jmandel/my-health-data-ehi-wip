@@ -1,0 +1,400 @@
+{
+  "name": "ORDER_MED_7",
+  "description": "This table enables you to report on medications ordered. This table should be used with ORDER_MED.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "MED_DOSAGE_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the calculated end date of the order when using the wide end date feature"
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "FIRST_DOSE_EDU_PATIENT_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number of the patient encounter associated with first-dose education."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PENDED_PREV_SIG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "For a pended medication order, this holds the contents (if any) of the \"Sig (Previous)\" display item from the order composer.  If populated, this is the sig (ORD 7055) of the source order at the time the reorder was created."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "DOSE_ADJ_ACCEPTED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores whether the dose adjustment is accepted.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "MED_DOSE_CALCULATION_DESC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores medication dose override dose programming point calculation."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "NUM_DOSES_TO_SCHED",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the number of doses that should actually be scheduled after reconciling a pre-existing OP order into an encounter which schedules OP meds"
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DO_NOT_SCHED_PAST_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the last date on which it is OK to schedule an OP order that has been reconciled into an encounter that schedules OP meds"
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "SCHED_FROM_PERIOD",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the period to start scheduling from for an OP order that has been reconciled into an encounter that schedules OP meds"
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "SCHED_FROM_PERIOD_DURATION",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the remaning number of days in the period to start scheduling from for an OP order that has been reconciled into an encounter that schedules OP meds"
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "SEND_TO_PHARM_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Reasons for sending a prescription directly to a pharmacy. For Australia e-prescribing.",
+      "entries": [
+        "Provided to Patient",
+        "Dosing Point",
+        "Staged Supply",
+        "Repeats Kept on File"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "RX_MOBILE_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Patient's mobile phone number. For Australia e-prescribing."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "MED_PROV_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Links to the shadow order containing provisional verify data"
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "TAPER_TRIMMING_INCOMPLETE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Set to Yes if the taper trimming UI's decision hasn't been made yet",
+      "entries": [
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "STARTED_TAKING_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the patient reports they started taking a medication"
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "RX_REQ_SUBTYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item specifies the subtype of the external change request this order represents. It is only set on orders created by external pharmacies, and is used in conjunction with ORD 7499.",
+      "entries": [
+        "Site Verification Notification",
+        "Unverified Site Reminder",
+        "Deactivated User/Provider Notification",
+        "Initiate Patient Outreach Encounter",
+        "Anticoagulation Enrollment",
+        "Anticoagulation Update",
+        "Communications",
+        "Chart Review",
+        "CC'd Charts",
+        "Ad Hoc Bed Planning Page",
+        "Order not released, PA complete",
+        "Waiting for PA, no recent updates",
+        "Generic Diagnosis",
+        "E-Prescribing Cancel Response",
+        "Call Pharmacy",
+        "New INR",
+        "Edited INR",
+        "Subsequent INR",
+        "Coverage PCP Change Review",
+        "FMK Refill Request",
+        "FMK Message Notice",
+        "Care Team Message",
+        "Infection Notification",
+        "Case Audit Message",
+        "Return to OR",
+        "Encounter After Schedule",
+        "Encounter After Check-In",
+        "Encounter After Check-Out",
+        "Encounter After Cancel",
+        "Encounter After Cancel Check-In/Out",
+        "Admission",
+        "Discharge",
+        "HOV Confirm",
+        "Preadmission",
+        "ED Arrival",
+        "ED Dismiss",
+        "LD Assessment",
+        "LD Newborn Admission",
+        "Undo Admission",
+        "Undo Discharge",
+        "HOV Cancel",
+        "Undo Preadmission",
+        "New Managed Access Patient",
+        "Lab Result - Abnormal",
+        "Lab Result - Normal",
+        "Close Encounter",
+        "ED Discharge",
+        "Undo ED Dismiss",
+        "Undo ED Discharge",
+        "Undo ED Arrival",
+        "Encounter Addendum Signed",
+        "Note Signed",
+        "Note Addendum Signed",
+        "Note Deleted",
+        "Study Signed",
+        "Study Edited",
+        "Study Canceled",
+        "Imaging Result",
+        "Other Result",
+        "Encounter After No-Show",
+        "Transfer to Inpatient",
+        "Undo Transfer to Inpatient",
+        "Referral Authorized",
+        "Referral Denied",
+        "Remittance Advice Received",
+        "Referral Appointment Scheduled",
+        "Referral Appointment Canceled",
+        "Referral Appointment No-Show",
+        "Premium Billing Invoice Received",
+        "Patient Deceased",
+        "Patient Not Deceased",
+        "Referral Triage Info Request",
+        "Unsigned Plan Orders",
+        "Deviation Request",
+        "Home Care - Close Visit Validation",
+        "Kanta Renewal Request",
+        "Therapy Plan Scheduling Failure",
+        "Referral Created",
+        "Referral Note Added",
+        "Procedure-Allergy Interaction message",
+        "Deferred Medication Warning",
+        "Therapy Plan Expiration",
+        "Therapy Plan Order Expiration",
+        "Therapy Plan Inactive Orders",
+        "RxRenewalRequest - Patient Error",
+        "RxRenewalRequest - Med Error",
+        "RxRenewalRequest - Other Error",
+        "RxChange-Equivalent Medication Requested",
+        "RxChange-No Medication Requested",
+        "RxChange - DEA License Status in Prescribing State",
+        "RxChange - DEA Class",
+        "RxChange - DEA License Status/Class",
+        "NewRxRequest - Other Error",
+        "NewRxRequest",
+        "NewRxRequest - Patient Error",
+        "NewRxRequest - Med Error",
+        "Retracted incoming referral message",
+        "Retracted outgoing referral message",
+        "Rejected Direct Message",
+        "CE Referrals Scheduling Errors",
+        "CE Referrals Update Message",
+        "CE Incoming Reject Message",
+        "CE Referral Conflict Message",
+        "Anticoagulation Enroll Error",
+        "CE Referral Disconnect Message",
+        "Order Sign Notification",
+        "Release Request",
+        "Upcoming Unused OR Time",
+        "Release Notification",
+        "Block Message",
+        "E-Prescribing Cancel Response Follow Up Needed",
+        "Utilization Notification - Error",
+        "OR Time Available",
+        "Block Hold Notification",
+        "CE Referral Appointment Review",
+        "Waitlist Block Request",
+        "Multidose - Pharmacy Questions",
+        "Multidose - Change",
+        "Multidose - Registration",
+        "Multidose - Failed PLL Update",
+        "Multidose - New Responsible Provider",
+        "Community Resource Broadcast Message",
+        "New Account Broadcast Message",
+        "Block Request",
+        "Treatment Complete",
+        "Treatment Resumed",
+        "Death Notification",
+        "Discharge Report",
+        "Epikrise",
+        "Municipal Care Report",
+        "Municipal Summary of Care Report",
+        "SLV Application Refused",
+        "Outpatient Visit from External Hospital",
+        "CCSC Selection Notification",
+        "Order Not Collected",
+        "Medication Management",
+        "KoGu status update",
+        "Insurer inquiry",
+        "Appointment Notification - Multiple",
+        "Genomic Indicator Added",
+        "Genomic Variant BPA",
+        "Patient Information Update Request",
+        "Patient Preferences Update Request",
+        "Patient History Questionnaire Submission",
+        "Patient General Questionnaire Submission",
+        "Patient Insurance Update Request",
+        "Patient Questionnaire Series Submission",
+        "Patient Questionnaire Submission CC",
+        "Administrator WPR Merge - UnMerge Status",
+        "Patient Submitted Data Failed Validation Notification",
+        "Patient Entered Flowsheet Notification",
+        "Patient Clinical Update Notification",
+        "Proxy Access Level Transition Error",
+        "Patient Admin Login Alert",
+        "Patient Unviewed Labs Notification",
+        "Patient Unread Message Notification",
+        "Patient Screening With Questionnaire Submission",
+        "Patient-Entered COVID-19 Vaccination",
+        "COVID-19 Vaccination Reconciliation Request",
+        "MyChart Blocked Lab Notification"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "RESCARE_REORDER_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Response to a question that a user is shown when reordering or modifying an outpatient order while the patient is admitted to a residential care facility.",
+      "entries": [
+        "Start After Original Order Ends",
+        "Discontinue Original and Start Now",
+        "Discontinue Original and Specify Start Date",
+        "Prompt Shown But No Response",
+        "Default Start After Original Order Ends"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "DISCRETE_SIG_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The discrete sig source category ID for the order.",
+      "entries": [
+        "Codified Sig",
+        "Copied from Source Order",
+        "Sig Mapping Table"
+      ]
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "MED_ORIG_DOSAGE_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the original dosage end date for a medication order when using the wide end date feature if it was changed after the order was signed"
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "SCHED_FIRST_DOSE_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the date and time that the first dose in an admission should be scheduled"
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "LAST_REFILL_REQUEST_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The datetime of when the patient last requested a refill for this medication order through MyChart. Used to determine when another refill can be requested for medications filled through non-integrated pharmacies."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "SCHEDULE_PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number of the Patient contact for when Low Acuity scheduling information is saved to an order (SI 34570)."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "SOURCE_SCHED_IN_PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for the low-acuity admission contact if the source order is schedulable in that admission when the current order is signed or released. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "SCHEDULE_USING_METHOD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The schedule using method category ID for the order. This determines how the medication should schedule administration due times in an encounter that supports scheduling outpatient medications on the MAR.",
+      "entries": [
+        "Remaining Doses",
+        "Stop Taking On Date",
+        "Until Discontinued"
+      ]
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "NEED_INTAKE_SCHED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores whether the medication needs intake to be scheduled, even if it was ordered directly on the low acuity encounter."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "RX_WRITTEN_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The UTC instant of when the prescription was written"
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "REMAINING_DOSES_BEFORE_INTAKE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The system will track the number of doses remaining for the order prior to the most recent intake into a low acuity medication management encounter."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "MED_CHG_REPLACE_YN_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Flag to determine if I ORD 7088 - Med change reorder ID is actually a replacement ID."
+    }
+  ]
+}

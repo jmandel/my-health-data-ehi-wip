@@ -1,0 +1,182 @@
+{
+  "$meta": {
+    "schemas": {
+      "PAT_ACCT_CVG": {
+        "name": "PAT_ACCT_CVG",
+        "description": "The PAT_ACCT_CVG table contains information about a patient�s accounts and coverages. The table will contain one record for each account for a patient. The record will also contain the patient�s primary coverage for that account.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID assigned to the patient record. This ID may be encrypted if you have elected to use enterprise reporting�s security utility."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number. A patient id can be associated with multiple rows of accounts and coverages."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique account record ID for an account associated with this patient. This ID number may be encrypted if you have elected to use enterprise reporting�s security utility."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "ACCOUNT_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Category value associated with the type of account, such as Personal/Family, Worker�s Comp, etc.",
+            "entries": [
+              "Other",
+              "Personal/Family",
+              "Non-Employed CRNA",
+              "Case Rate",
+              "Clearing Account",
+              "Trust Account",
+              "ROI Requester",
+              "Invalid"
+            ]
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "ACCOUNT_ACTIVE_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Is the account active at the time of the extract: Y or N.",
+            "entries": [
+              "Yes",
+              "No"
+            ]
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "FIN_CLASS_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The financial class category number for the patient's primary coverage on the account.  If there is no coverage, it is the account's financial class.",
+            "entries": [
+              "Commercial",
+              "Medicare",
+              "Medicaid",
+              "Self-Pay",
+              "Worker's Comp",
+              "Tricare",
+              "Champva",
+              "Group Health Plan",
+              "FECA Black Lung",
+              "Blue Shield",
+              "Medigap",
+              "Other",
+              "DK Regional",
+              "Client",
+              "Received Self-Pay",
+              "Sent to Consolidated Self-Pay Service Area"
+            ]
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "GUAR_PAT_REL_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Relation between the guarantor and patient.",
+            "entries": [
+              "Aunt",
+              "Brother",
+              "Daughter",
+              "Father",
+              "Friend",
+              "Granddaughter",
+              "Grandfather",
+              "Grandmother",
+              "Grandson",
+              "Legal Guardian",
+              "Mother",
+              "Other",
+              "Step Father",
+              "Sister",
+              "Self",
+              "Step Mother",
+              "Son",
+              "Spouse",
+              "Uncle",
+              "Employer",
+              "Unverified Proxy",
+              "Transplant Recipient",
+              "Visit Contact"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "PAT_ACCT_CVG",
+            "target": "PAT_REL_ADDR",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "PAT_ACCT_CVG",
+            "target": "PATIENT",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PAT_ACCT_CVG": [
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 1,
+      "ACCOUNT_ID": 1810018166,
+      "ACCOUNT_TYPE_C_NAME": "Personal/Family",
+      "ACCOUNT_ACTIVE_YN": "Y",
+      "FIN_CLASS_NAME": "Blue Cross",
+      "GUAR_PAT_REL_NAME": "Self",
+      "$meta": {
+        "type": "PAT_ACCT_CVG"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 2,
+      "ACCOUNT_ID": 4793998,
+      "ACCOUNT_TYPE_C_NAME": "Personal/Family",
+      "ACCOUNT_ACTIVE_YN": "Y",
+      "FIN_CLASS_NAME": "Blue Cross",
+      "GUAR_PAT_REL_NAME": "Self",
+      "$meta": {
+        "type": "PAT_ACCT_CVG"
+      }
+    }
+  ]
+}

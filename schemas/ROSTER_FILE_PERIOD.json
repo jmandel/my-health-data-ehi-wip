@@ -1,0 +1,59 @@
+{
+  "name": "ROSTER_FILE_PERIOD",
+  "description": "Contains a list of changes to a patient's roster status over time. The current values are also stored in the ROSTER_PERIOD table.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ROSTER_IDENTIFIER_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The identifier of the roster file that included this patient."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ROSTER_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The effective date of the roster period as indicated by the roster file."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ROSTER_TERM_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The termination date of the roster period as indicated by the roster file."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ROSTER_UPDATE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The UTC instant when this roster line was added/updated."
+    }
+  ]
+}

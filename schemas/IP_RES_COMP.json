@@ -1,0 +1,88 @@
+{
+  "name": "IP_RES_COMP",
+  "description": "The IP_RES_COMP table contains information about the restraint assessments that must be documented. The information includes details about the order, assessment, and frequent monitoring.",
+  "primaryKey": [
+    {
+      "columnName": "INPATIENT_DATA_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "RES_TYPE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "EPISODE_NUM",
+      "ordinalPosition": 3
+    },
+    {
+      "columnName": "DOC_TYPE",
+      "ordinalPosition": 4
+    },
+    {
+      "columnName": "ROW_TYPE_BH",
+      "ordinalPosition": 5
+    },
+    {
+      "columnName": "ROW_TYPE_MS",
+      "ordinalPosition": 6
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RES_TYPE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Displays the restraint type.  The restraint can be a behavioral (BH) or nonbehavioral/medical-surgical (MS) restraint."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "INPATIENT_DATA_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the inpatient data store record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "EPISODE_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Displays the episode number for the admission.  The number assigned to an episode increases with each new episode and does not repeat until a new admission.  An episode is the length of a restraint order.  A value of '0' represents that there were errors for the corresponding restraint type in the current inpatient data record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "DOC_TYPE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Displays whether the restraint documentation is done once per episode or periodically during a restraint episode.  The one-time documentation will have a DOC_TYPE of INFO and the periodic documentation will have a DOC_TYPE of MONITOR."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "COMPLIANT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Determines whether the compliance measure for the particular episode is compliant by displaying a \"Y\" or \"N\".  If it cannot be determined a \"-\" will be displayed."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "COMP_VALS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Displays the compliant data that was filed for the compliance measures that are only documented once per episode."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ROW_TYPE_BH",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Displays ID number of the value of compliance measure being reported on within the \"Violent Restraint Monitoring Row Type\" category list.  If the row does not apply to a Violent Restraint, then a value of 999 will be displayed."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ROW_TYPE_MS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Displays ID number of the value of compliance measure being reported on within the \"Non Violent Restraint Monitoring Row Type\" category list.  If the row does not apply to a Non Violent Restraint, then a value of 999 will be displayed."
+    }
+  ]
+}

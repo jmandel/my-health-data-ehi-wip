@@ -1,0 +1,128 @@
+{
+  "name": "OTP_AUDIT_TRAIL",
+  "description": "Stores the audit trail information.",
+  "primaryKey": [
+    {
+      "columnName": "OTP_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "OTP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the patient order template record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "UPDATED_BY_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "User who updated the order."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "UPDATED_BY_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "UPDATE_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Time instant at which the order was updated."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "UPDATE_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Action taken on the order.",
+      "entries": [
+        "Added",
+        "Deleted",
+        "Post-release modify",
+        "Pre-release start time change",
+        "Free text sig changed",
+        "Unsigned",
+        "External order added",
+        "Dose change",
+        "Other order change",
+        "AUC - Target AUC change",
+        "AUC - GFR source change",
+        "AUC - CrCl formula change",
+        "AUC - GFR order-specific value change",
+        "AUC - sCr source change",
+        "AUC - sCr order-specific value change",
+        "ERX replaced by Medication Replacer",
+        "Maximum BSA Change",
+        "AUC - Use AUC Dose",
+        "Conversion Status - Set to Unspecified",
+        "Conversion Status - Set to Kept",
+        "Conversion Status - Set to Removed",
+        "Conversion Status - Set to Replaced",
+        "Conversion Status - Set to Replacement",
+        "Pharmacy Changed",
+        "Sig Type Changed",
+        "Scheduling Evaluated"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "UPDATE_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Reason for updating the order.",
+      "entries": [
+        "Order created with treatment plan",
+        "Initial Value",
+        "Deferred",
+        "Order created for plan conversion",
+        "Build updated"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "UPDATE_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Any additional comment for the updating the order."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "UPDATE_VALUE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the value of the item that changed (e.g. free text sig, start time) in the order."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "UPDATE_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the ID of the order that this action refers to."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "SOURCE_OTP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Holds the order template ID that is the source for this audit line."
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "name": "ORD_AUD_BILLING_MODS",
+  "description": "This table contains audit information about the modifiers associated with an imaging order which will impact downstream billing.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "BILLING_MODIFIERS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Audit information about modifiers (category values) that will satisfy billing requirements. The values are delimited by \"^\". The source item is located at ORDER_RAD_MODS.MODIFIER_ID."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "BILLING_MODIFIERS_EXT_VALS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Audit information about modifiers (external category values) that will satisfy billing requirements. The values are delimited by \"^\". The source item is located at ORDER_RAD_MODS.MODIFIER_ID. This column shows the translated external value as of when the column was last extracted."
+    }
+  ]
+}

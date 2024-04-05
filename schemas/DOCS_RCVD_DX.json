@@ -1,0 +1,185 @@
+{
+  "name": "DOCS_RCVD_DX",
+  "description": "This table stores discrete diagnosis information received from outside sources.",
+  "primaryKey": [
+    {
+      "columnName": "DOCUMENT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "DOCUMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the Received Document record ID."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "DX_REF_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Reference ID for this diagnosis."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "DX_ENC_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Reference ID of the encounter associated with this diagnosis."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "DX_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Display name of this diagnosis."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DX_CONTEXT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of diagnosis.",
+      "entries": [
+        "Admitting Diagnosis",
+        "Discharge Diagnosis",
+        "Encounter Diagnosis",
+        "Result Order"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "DX_SRC_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Contains the Contact Serial Number (CSN) of the source external document record that has the external diagnosis information."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "DX_START_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Start time for this diagnosis."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "DX_END_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "End time for this diagnosis."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "DX_EDG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Diagnosis ID of this diagnosis."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "DX_LST_UPD_INST_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the last update instant of the diagnosis in UTC."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "DX_PRIMARY_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Denotes if this diagnosis is the primary diagnosis.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "DX_FILTER_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the reason why an external diagnosis should be filtered from the composite external document record",
+      "entries": [
+        "Claim Derivation: Procedure Code Inclusion/Exclusion List",
+        "Claim Derivation: Missing Provider",
+        "Claim Derivation: Sensitive Diagnosis",
+        "Claim Derivation: Missing Procedure Start Date",
+        "Claim Derivation: Excluded Procedure Modifier",
+        "Source Organization Unknown",
+        "Source Organization Mismatch",
+        "Source Organization Is Self",
+        "Clinical Note Type Exclusion List",
+        "Clinical Note Missing Service Instant",
+        "Clinical Note Missing Last Filed Instant",
+        "Clinical Note Missing Author Name",
+        "Dispense Cancellation",
+        "Same Day as Internal Encounter",
+        "Missing or Invalid Binary URL",
+        "Filtered or Missing Source Note",
+        "DocumentReference Status not Current",
+        "Claim Derivation: Excluded Linked Diagnoses",
+        "Claim Derivation: Missing Encounter Start Date",
+        "Entered In Error",
+        "FHIR resource contained an invalid category",
+        "Condition verification status is no longer confirmed",
+        "Condition is no longer valid for this patient due to age or sex",
+        "FHIR resource has an invalid start date",
+        "Encounter FHIR resource is missing the type element",
+        "FHIR resource is missing the status element",
+        "Encounter FHIR resource is missing the class element",
+        "Encounter FHIR resource contained an unrecognized status code",
+        "Encounter FHIR resource contained a status code for a future encounter",
+        "Encounter FHIR resource contained a class code for a future encounter",
+        "FHIR resource has a future start date",
+        "FHIR resource does not have a status of completed",
+        "FHIR resource is missing the code element",
+        "Diagnosis is missing a link to an encounter",
+        "FHIR resource contains a reference to encounter not in the system",
+        "FHIR resource contained a patient reference not matching the searched for patient",
+        "Immunization FHIR Resource is missing the vaccineCode element or did not contain a CVX code",
+        "FHIR Resource is missing an effective date/time",
+        "FHIR resource contained an invalid status",
+        "Observation FHIR resource is linked to a filtered Condition FHIR resource",
+        "SDOH Assessment contains no questions"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "DX_IS_ED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Denotes if this diagnosis was made in the ED."
+    }
+  ]
+}

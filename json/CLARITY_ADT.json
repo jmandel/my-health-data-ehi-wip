@@ -1,0 +1,292 @@
+{
+  "$meta": {
+    "schemas": {
+      "CLARITY_ADT": {
+        "name": "CLARITY_ADT",
+        "description": "The CLARITY_ADT table is the master table for ADT event history information. This table contains several foreign keys for other ADT tables.",
+        "primaryKey": [
+          {
+            "columnName": "EVENT_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "EVENT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID number of the ADT event record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "EVENT_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value corresponding to the type of the event record.",
+            "entries": [
+              "Admission",
+              "Discharge",
+              "Transfer In",
+              "Transfer Out",
+              "Patient Update",
+              "Census",
+              "Hospital Outpatient",
+              "Leave of Absence Out",
+              "Leave of Absence Return",
+              "Leave of Absence Census"
+            ]
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "EVENT_SUBTYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value indicating whether the event record has been changed or deleted.",
+            "entries": [
+              "Original",
+              "Canceled",
+              "Update"
+            ]
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "DEPARTMENT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID number of the unit of the event record at the effective time."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "EFFECTIVE_TIME",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The instant when the event was supposed to have happened."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The ID of the patient of the event record at the effective time."
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "PAT_ENC_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "This is a numeric representation of the date of this encounter in your system. The integer portion of the number specifies the date of the encounter. The digits after the decimal point indicate multiple visits on one day."
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+          },
+          {
+            "ordinalPosition": 15,
+            "name": "EVENT_TIME",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The instant when the event record was actually created."
+          },
+          {
+            "ordinalPosition": 16,
+            "name": "USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The ID number of the user who created the event record."
+          },
+          {
+            "ordinalPosition": 17,
+            "name": "USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 18,
+            "name": "PAT_CLASS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value corresponding to the classification for the patient of the event record at the effective time."
+          },
+          {
+            "ordinalPosition": 29,
+            "name": "ORIG_EVENT_TIME",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The instant when the original subtype record for this event was actually created."
+          },
+          {
+            "ordinalPosition": 31,
+            "name": "ORIG_EFF_TIME",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The instant when the original subtype record for this event was supposed to have happened."
+          },
+          {
+            "ordinalPosition": 34,
+            "name": "NEXT_OUT_EVENT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID number of the next 'transfer out' or 'discharge' type record for this bed for the patient CSN of these records."
+          },
+          {
+            "ordinalPosition": 35,
+            "name": "LAST_IN_EVENT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID number of the last 'transfer in' or 'admission' type record for this bed for the patient CSN of these records."
+          },
+          {
+            "ordinalPosition": 37,
+            "name": "BASE_PAT_CLASS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value corresponding to the base classification for the patient of the event record at the effective time.",
+            "entries": [
+              "Inpatient",
+              "Outpatient",
+              "Emergency"
+            ]
+          },
+          {
+            "ordinalPosition": 38,
+            "name": "OUT_EVENT_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column contains the outgoing event type as it would currently be interpreted"
+          },
+          {
+            "ordinalPosition": 39,
+            "name": "FROM_BASE_CLASS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column contains the base patient class that the patient had prior to this event.",
+            "entries": [
+              "Direct",
+              "Inpatient",
+              "Outpatient",
+              "Emergency",
+              "Observation"
+            ]
+          },
+          {
+            "ordinalPosition": 40,
+            "name": "TO_BASE_CLASS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column contains the base patient class that the patient had after this event."
+          },
+          {
+            "ordinalPosition": 50,
+            "name": "ORIGINAL_EVENT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the original event that this event record replaces. If this event record has not been canceled or updated, this column will be equal to the EVENT_ID column. This column is not necessarily equal to the CANC_EVENT_ID column. If the original event has been updated multiple times, then this column will show the ID of the original event, not the ID of the event that was most recently replaced by this record."
+          }
+        ]
+      }
+    }
+  },
+  "CLARITY_ADT": [
+    {
+      "EVENT_ID": 133758524,
+      "EVENT_TYPE_C_NAME": "Hospital Outpatient",
+      "EVENT_SUBTYPE_C_NAME": "Original",
+      "DEPARTMENT_ID": 101401044,
+      "EFFECTIVE_TIME": "2022-03-11 14:41:00",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66179,
+      "PAT_ENC_CSN_ID": 922942674,
+      "EVENT_TIME": "2022-03-11 14:41:00",
+      "USER_ID": "KLF403",
+      "USER_ID_NAME": "FALDUTO, KAITLYN L",
+      "PAT_CLASS_C_NAME": "Therapies Series",
+      "ORIG_EVENT_TIME": "2022-03-11 14:41:00",
+      "ORIG_EFF_TIME": "2022-03-11 14:41:00",
+      "NEXT_OUT_EVENT_ID": 133792913,
+      "BASE_PAT_CLASS_C_NAME": "Outpatient",
+      "FROM_BASE_CLASS_C_NAME": "Direct",
+      "TO_BASE_CLASS_C_NAME": "Outpatient",
+      "ORIGINAL_EVENT_ID": 133758524,
+      "$meta": {
+        "type": "CLARITY_ADT"
+      }
+    },
+    {
+      "EVENT_ID": 133792913,
+      "EVENT_TYPE_C_NAME": "Discharge",
+      "EVENT_SUBTYPE_C_NAME": "Original",
+      "DEPARTMENT_ID": 101401044,
+      "EFFECTIVE_TIME": "2022-03-11 23:59:00",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66179,
+      "PAT_ENC_CSN_ID": 922942674,
+      "EVENT_TIME": "2022-03-12 02:55:00",
+      "USER_ID": "REGBATCH",
+      "USER_ID_NAME": "PRELUDE, BATCH JOB",
+      "PAT_CLASS_C_NAME": "Therapies Series",
+      "ORIG_EVENT_TIME": "2022-03-12 02:55:00",
+      "ORIG_EFF_TIME": "2022-03-11 23:59:00",
+      "LAST_IN_EVENT_ID": 133758524,
+      "OUT_EVENT_TYPE_C_NAME": "Hospital Outpatient",
+      "FROM_BASE_CLASS_C_NAME": "Outpatient",
+      "TO_BASE_CLASS_C_NAME": "Direct",
+      "ORIGINAL_EVENT_ID": 133792913,
+      "$meta": {
+        "type": "CLARITY_ADT"
+      }
+    },
+    {
+      "EVENT_ID": 134253794,
+      "EVENT_TYPE_C_NAME": "Hospital Outpatient",
+      "EVENT_SUBTYPE_C_NAME": "Original",
+      "DEPARTMENT_ID": 101401044,
+      "EFFECTIVE_TIME": "2022-03-22 16:42:00",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66190,
+      "PAT_ENC_CSN_ID": 922943112,
+      "EVENT_TIME": "2022-03-22 16:42:00",
+      "USER_ID": "KLF403",
+      "USER_ID_NAME": "FALDUTO, KAITLYN L",
+      "PAT_CLASS_C_NAME": "Therapies Series",
+      "ORIG_EVENT_TIME": "2022-03-22 16:42:00",
+      "ORIG_EFF_TIME": "2022-03-22 16:42:00",
+      "NEXT_OUT_EVENT_ID": 134287607,
+      "BASE_PAT_CLASS_C_NAME": "Outpatient",
+      "FROM_BASE_CLASS_C_NAME": "Direct",
+      "TO_BASE_CLASS_C_NAME": "Outpatient",
+      "ORIGINAL_EVENT_ID": 134253794,
+      "$meta": {
+        "type": "CLARITY_ADT"
+      }
+    },
+    {
+      "EVENT_ID": 134287607,
+      "EVENT_TYPE_C_NAME": "Discharge",
+      "EVENT_SUBTYPE_C_NAME": "Original",
+      "DEPARTMENT_ID": 101401044,
+      "EFFECTIVE_TIME": "2022-03-22 23:59:00",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66190,
+      "PAT_ENC_CSN_ID": 922943112,
+      "EVENT_TIME": "2022-03-23 03:26:00",
+      "USER_ID": "REGBATCH",
+      "USER_ID_NAME": "PRELUDE, BATCH JOB",
+      "PAT_CLASS_C_NAME": "Therapies Series",
+      "ORIG_EVENT_TIME": "2022-03-23 03:26:00",
+      "ORIG_EFF_TIME": "2022-03-22 23:59:00",
+      "LAST_IN_EVENT_ID": 134253794,
+      "OUT_EVENT_TYPE_C_NAME": "Hospital Outpatient",
+      "FROM_BASE_CLASS_C_NAME": "Outpatient",
+      "TO_BASE_CLASS_C_NAME": "Direct",
+      "ORIGINAL_EVENT_ID": 134287607,
+      "$meta": {
+        "type": "CLARITY_ADT"
+      }
+    }
+  ]
+}

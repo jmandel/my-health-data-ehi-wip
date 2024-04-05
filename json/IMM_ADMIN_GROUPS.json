@@ -1,0 +1,169 @@
+{
+  "$meta": {
+    "schemas": {
+      "IMM_ADMIN_GROUPS": {
+        "name": "IMM_ADMIN_GROUPS",
+        "description": "This table extracts the related multiple response Vaccine Group (I DXR 4220) item.",
+        "primaryKey": [
+          {
+            "columnName": "DOCUMENT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "CONTACT_DATE_REAL",
+            "ordinalPosition": 2
+          },
+          {
+            "columnName": "GROUP_LINE",
+            "ordinalPosition": 3
+          },
+          {
+            "columnName": "VALUE_LINE",
+            "ordinalPosition": 4
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "DOCUMENT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier (.1 item) for the document record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "CONTACT_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "GROUP_LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this contact."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "VALUE_LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number of one of the multiple values associated with a specific group of data within this contact."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "IMM_GROUPS_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Stores the discrete value for a vaccine group for an immunization administration received from an external system. This can be either the component or the family of a vaccine. The corresponding free-text value received from registry is stored in DXR 4221."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "IMM_GROUPS_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the immunization."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "IMM_ADMIN_GROUPS",
+            "target": "IMM_ADMIN",
+            "joinKeys": [
+              {
+                "source": "DOCUMENT_ID",
+                "target": "DOCUMENT_ID"
+              },
+              {
+                "source": "CONTACT_DATE_REAL",
+                "target": "CONTACT_DATE_REAL"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "IMM_ADMIN_GROUPS",
+            "target": "IMM_DUE",
+            "joinKeys": [
+              {
+                "source": "DOCUMENT_ID",
+                "target": "DOCUMENT_ID"
+              },
+              {
+                "source": "CONTACT_DATE_REAL",
+                "target": "CONTACT_DATE_REAL"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "IMM_ADMIN_GROUPS": [
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64868,
+      "GROUP_LINE": 1,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2018-08-08 00:00:00",
+      "IMM_GROUPS_ID": 40821,
+      "IMM_GROUPS_ID_NAME": "INFLUENZA, UNSPECIFIED FORMULATION",
+      "$meta": {
+        "type": "IMM_ADMIN_GROUPS"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64869,
+      "GROUP_LINE": 1,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "IMM_GROUPS_ID": 40821,
+      "IMM_GROUPS_ID_NAME": "INFLUENZA, UNSPECIFIED FORMULATION",
+      "$meta": {
+        "type": "IMM_ADMIN_GROUPS"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64869.01,
+      "GROUP_LINE": 1,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "IMM_GROUPS_ID": 40821,
+      "IMM_GROUPS_ID_NAME": "INFLUENZA, UNSPECIFIED FORMULATION",
+      "$meta": {
+        "type": "IMM_ADMIN_GROUPS"
+      }
+    },
+    {
+      "DOCUMENT_ID": 37763216,
+      "CONTACT_DATE_REAL": 64878,
+      "GROUP_LINE": 1,
+      "VALUE_LINE": 1,
+      "CONTACT_DATE": "2018-08-18 00:00:00",
+      "IMM_GROUPS_ID": 40821,
+      "IMM_GROUPS_ID_NAME": "INFLUENZA, UNSPECIFIED FORMULATION",
+      "$meta": {
+        "type": "IMM_ADMIN_GROUPS"
+      }
+    }
+  ]
+}

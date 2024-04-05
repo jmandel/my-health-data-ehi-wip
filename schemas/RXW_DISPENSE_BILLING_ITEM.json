@@ -1,0 +1,119 @@
+{
+  "name": "RXW_DISPENSE_BILLING_ITEM",
+  "description": "This table contains information about payments made for outpatient pharmacy prescription fills.",
+  "primaryKey": [
+    {
+      "columnName": "RECORD_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the work request record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "BILL_ITEM_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the type of billing item this line contains.",
+      "entries": [
+        "Payment",
+        "Adjustment",
+        "Non-Payment",
+        "Refund"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the currency value amount for the billing item."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "BILLING_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the comments for a pharmacy dispense billing item."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CHECK_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the check number for a pharmacy dispense payment of type \"Check\"."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ADJUSTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the procedure (EAP) record associated with the adjustment."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "COMP_INST_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item contains the instant when the billing item was completed."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "NON_PAY_REASON_C",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item contains the non-payment reason for a pharmacy dispense billing item of type of \"Non-Payment\"."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PMT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the payment type for pharmacy dispense billing items of type \"payment\".",
+      "entries": [
+        "Cash",
+        "Check",
+        "Credit Card",
+        "EOB",
+        "Voucher",
+        "Bank Account",
+        "Trust Account"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ASSOCIATED_PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient associated with a billing item. Currently, this is only used for the Non-Payment payment type. The unpaid amount will only be associated with prescriptions and merchandise charges associated with that patient. This item will not be set if Professional Billing integration is not enabled for the pharmacy."
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "name": "ARPB_TX_CHG_REV_HX",
+  "description": "Charge Review History Related Information.  This information is copied from the TAR (temporary transaction) record when a charge in charge review is filed to ETR (permanent transaction).",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the transaction record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CR_HX_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Charge Review History User ID.  This is the user that performs the activity reflected in this line in the charge review history."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CR_HX_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CR_HX_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The charge review history date."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CR_HX_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Displays the date the recall must be made by."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CR_HX_ACTIVITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The charge review history activity category ID for the transaction. Examples include Entry, Review, Resubmit, etc.",
+      "entries": [
+        "Entry",
+        "Review",
+        "Reentry",
+        "Force Resubmit",
+        "Transfer",
+        "Deletion",
+        "Automatic Transfer",
+        "Automatic Reentry",
+        "Resubmit",
+        "Automatic Filing",
+        "Defer",
+        "Activate",
+        "Charge Homed",
+        "Automatic Update",
+        "Retroadjudication",
+        "Pre Charge Review Extension",
+        "Request for Billing Information",
+        "Skip"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CR_HX_CONT_LINE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Charge Review History Continuation Flag.  This flag is set to yes if this line is a continuation of the previous line",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CR_HX_USER_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comment associated to a Charge Review history action."
+    }
+  ]
+}

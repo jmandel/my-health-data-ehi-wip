@@ -1,0 +1,131 @@
+{
+  "name": "HH_VO_EVENTS",
+  "description": "Contains Home Health verbal order events information.",
+  "primaryKey": [
+    {
+      "columnName": "VERBAL_ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "VERBAL_ORDER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the verbal order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "EVENT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Verbal order event type. Types are: submit, received signature, sent to physician, replied with changes. Links to category table ZC_LVO_EVENT_TYPES.",
+      "entries": [
+        "Submit",
+        "Received Signature",
+        "Sent",
+        "Replied With Changes",
+        "Printed",
+        "Faxed to Provider",
+        "Retract",
+        "Resent",
+        "Received Order",
+        "Admin Closed",
+        "Reviewed",
+        "Electronically Signed",
+        "Automatically Canceled",
+        "Waiting for Review",
+        "Failed Fax",
+        "POC Update Sent - No Signature Required",
+        "Removed Provider from Finalized POC"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EVENT_DATE",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Verbal order event date."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EVENT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "User ID of user who created verbal order event.  Links to table CLARITY_EMP."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EVENT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "EVENT_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Text of the verbal order event comment entered by the user."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "EVENT_PROVIDER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Provider ID for the verbal order event.  Links to table CLARITY_SER."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "EVENTS_ORDER_HX",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the order history for the verbal order."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "EVENT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the status that this order was changed to when this event occurred.",
+      "entries": [
+        "Not Submitted",
+        "Submitted",
+        "Signed",
+        "Sent",
+        "Responded",
+        "Entered",
+        "Resubmitted",
+        "Waiting for Review",
+        "Retracted",
+        "Canceled"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "EVENT_RCV_SIGN_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date on which signature was received from the provider."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "EVENT_NOTE_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number of the note contact that is associated with the verbal order event."
+    }
+  ]
+}

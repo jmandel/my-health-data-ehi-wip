@@ -1,0 +1,140 @@
+{
+  "name": "ARPB_TX_VOID",
+  "description": "This table contains information on transactions that were either: * Transferred * Voided * Reversed * Retroadjudicated",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the transaction record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "OLD_ETR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item holds a pointer for a transaction that was reposted retroactively to the original transaction."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "REPOSTED_ETR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores a pointer to the old transaction in the case of charge correction or repost."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "REPOST_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This indicates the type of repost on the source transaction.  This is either set to repost or correction.",
+      "entries": [
+        "Repost",
+        "Correction"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "IS_RETRO_TX",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item serves as a flag to determine if this transaction was voided as a result of retroadjudication."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "TRANS_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores a pointer to the transaction ID that this transaction was transferred from. This item is only populated if a transaction was transferred from another transaction."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "TRANS_FROM_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the void status of the transferred from transaction for this transaction.  This item is only populated if this transaction was transferred from a different account.",
+      "entries": [
+        "VOID-SAME BATCH",
+        "VOID-DIFFERENT BATCH",
+        "REVERSED"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "RETRO_CHARGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the transaction ID for the reposted transaction caused by the retroadjudication of this transaction."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "DEL_REVERSE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This is the date that the transaction was voided or reversed."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "DEL_CHARGE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the user who voided this transaction."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "DEL_CHARGE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "DEL_CHARGE_INSTANT",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "This item stores the instant that a transaction was voided."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "IS_REVERSED_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This flag determines if a transaction has been reversed.",
+      "entries": [
+        "YES"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "VOIDED_BY_MSG_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This flag is set if the charge was voided as a result of a Charge Router message.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "VOID_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason for voiding/reversing category ID for the transaction"
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "VOIDED_BY_CGR_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates that a charge is voided by charge router."
+    }
+  ]
+}

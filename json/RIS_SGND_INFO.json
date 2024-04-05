@@ -1,0 +1,96 @@
+{
+  "$meta": {
+    "schemas": {
+      "RIS_SGND_INFO": {
+        "name": "RIS_SGND_INFO",
+        "description": "This table contains the physicians/radiologists that signed off on an imaging order and dates/times that the study was signed.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_PROC_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_PROC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the procedure order record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "SIGNED_PROV_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the provider record indicated as the signing physician of an imaging study."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "SIGNED_UTC_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "The date and time that an imaging order is signed by a physician/radiologist, and is stored in the Universal Time Coordinated (UTC) format."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "RIS_SGND_INFO",
+            "target": "ORDER_PARENT_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "RIS_SGND_INFO",
+            "target": "ORDER_PROC",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "RIS_SGND_INFO",
+            "target": "ORD_PRFLST_TRK",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "RIS_SGND_INFO": [
+    {
+      "ORDER_PROC_ID": 772179259,
+      "LINE": 1,
+      "SIGNED_PROV_ID": "8800099",
+      "SIGNED_UTC_DTTM": "2019-02-09 02:16:03",
+      "$meta": {
+        "type": "RIS_SGND_INFO"
+      }
+    }
+  ]
+}

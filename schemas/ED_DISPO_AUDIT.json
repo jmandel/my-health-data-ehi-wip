@@ -1,0 +1,87 @@
+{
+  "name": "ED_DISPO_AUDIT",
+  "description": "Each record in the ED_DISPO_AUDIT table corresponds to a patient's edited ED disposition. This may not reflect the current values of the disposition, as the records correspond to previous versions of ED disposition information. The fields also capture the instant the ED disposition was initially saved and the user who made the initial entry. It links with a unique contact ID to the previous versions of the note.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this edit. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "This is a numeric representation of the date of this encounter in your system. The integer portion of the number specifies the date of the encounter. The digits after the decimal point indicate multiple visits on one day."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the deployment owner for this contact."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ED_DISPOSITION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ED disposition of the patient."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "NOTE_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this edited note. This number is unique across all notes in your system, and this column is used to link to the NOTES_HISTORY_LOG table.",
+      "linksTo": "NOTES_HISTORY_LOG"
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the user record who entered this disposition."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ED_DISP_INST",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time when this ED disposition was filed."
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "name": "ORD_RES_BLOOD",
+  "description": "Contains information about a prepared unit of blood.  These fields will be populated via an interface.",
+  "primaryKey": [
+    {
+      "columnName": "FINDING_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "FINDING_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of a finding (RES) that contains the information that matches blood to a certain patient. This record holds information like the unit number, product, expiration, and blood type."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "BLOOD_UNIT_NUMBER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The primary identifier for the blood product. This is not necessarily unique. Populated via interface for the 'Prepare' order of blood."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "BLOOD_CODING_SYS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Specifies the coding system used for the Unit Number.",
+      "entries": [
+        "ISBT 128",
+        "ABC CODABAR"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "BLOOD_PRODUCT_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Secondary identifier to be paired with unit number (when dealing with divisions of a unit of blood)."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "BLOOD_CODABAR_REG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The CODABAR registration number from the bag of blood associated with this record."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "BLOOD_CODABAR_MAP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the two-digit mapping of the CODABAR registration number that appears in the external unit number."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "BLOOD_EXP_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The expiration date for a unit of blood (from the interface)."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "BLOOD_UNIT_TYPE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The blood type (barcode data) of a unit of blood (from the interface)."
+    }
+  ]
+}

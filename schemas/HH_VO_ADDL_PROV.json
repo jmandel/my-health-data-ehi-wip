@@ -1,0 +1,70 @@
+{
+  "name": "HH_VO_ADDL_PROV",
+  "description": "Verbal orders are sent to at least one primary signing provider. Certain verbal order types, such as hospice certificates of terminal illness, can be sent to additional signing providers. The additional signing providers are extracted to this table.",
+  "primaryKey": [
+    {
+      "columnName": "VERBAL_ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "VERBAL_ORDER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the verbal order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ADDL_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Providers to whom the verbal order was sent in addition to the provider in HH_VO_INFO.PROVIDER_ID."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ADDL_PROV_ID_REFERRING_PROV_NAM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the referral source."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ADD_PROV_LAST_EVT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Providers to whom the verbal order was sent in addition to the provider in HH_VO_INFO.PROVIDER_ID. This item stores the last event of each of the additional providers. It can be used to track the status of the different providers and to differentiate between orders that are signed electronically and manually.",
+      "entries": [
+        "Submit",
+        "Received Signature",
+        "Sent",
+        "Replied With Changes",
+        "Printed",
+        "Faxed to Provider",
+        "Retract",
+        "Resent",
+        "Received Order",
+        "Admin Closed",
+        "Reviewed",
+        "Electronically Signed",
+        "Automatically Canceled",
+        "Waiting for Review",
+        "Failed Fax",
+        "POC Update Sent - No Signature Required",
+        "Removed Provider from Finalized POC"
+      ]
+    }
+  ]
+}

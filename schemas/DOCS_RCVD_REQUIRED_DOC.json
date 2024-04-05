@@ -1,0 +1,67 @@
+{
+  "name": "DOCS_RCVD_REQUIRED_DOC",
+  "description": "This table stores information about the documentation required by the resulting agency for the related order.",
+  "primaryKey": [
+    {
+      "columnName": "DOCUMENT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "DOCUMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the Received Document record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "REQ_INFO_QUESTION_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the Questions (LQL) records assigned to the order related to this Document (DXR) record. The Question type (I LQL 30) of these records is 70-Required Order Documentation."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "REQUIREMENT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The numeric category value of the fulfillment status of the requirement in the REQ_INFO_QUESTION_ID column on the corresponding line. The possible values are: 0-Incomplete, 1-Complete, or 2-Not Applicable.",
+      "entries": [
+        "Incomplete",
+        "Complete",
+        "Not Applicable"
+      ]
+    }
+  ]
+}

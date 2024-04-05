@@ -1,0 +1,87 @@
+{
+  "name": "HSPC_HIS_SUBM_RESP",
+  "description": "This table extracts information about Hospice Item Set (HIS) data set responses as obtained from CMS through validation files.",
+  "primaryKey": [
+    {
+      "columnName": "DATASET_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "DATASET_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the data set record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "HIS_RESP_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The response status of an individual dataset submission. This could be \"Accepted\" or \"Rejected\".",
+      "entries": [
+        "Accepted",
+        "Rejected"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "HIS_VALD_MRK_INST_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant when a dataset submission response status is changed."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "HIS_RES_MRK_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the user record associated with an update to the status of a dataset submission. If the batch process updated the submission status, this user ID is stored as \"."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "HIS_RES_MRK_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "HIS_RESP_HNO_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of a note associated with the data set."
+    }
+  ]
+}

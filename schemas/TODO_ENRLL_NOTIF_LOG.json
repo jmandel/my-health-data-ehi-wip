@@ -1,0 +1,56 @@
+{
+  "name": "TODO_ENRLL_NOTIF_LOG",
+  "description": "This table contains information regarding the first ad hoc task notifications that were sent.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ENRLL_NOTIF_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The timestamp in UTC instant when the To Do enrollment notification was sent."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "NOTIF_TODO_SEND_MTHD_C",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The send method of the To Do enrollment notification sent.",
+      "entries": [
+        "Email",
+        "SMS"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "NOTIF_RECIP_MYPT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "WPR ID of the recipient of the To Do enrollment notification."
+    }
+  ]
+}

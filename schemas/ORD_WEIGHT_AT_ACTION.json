@@ -1,0 +1,63 @@
+{
+  "name": "ORD_WEIGHT_AT_ACTION",
+  "description": "Extracts the values in the Patient weight (I ORD 8030) Patient body surface area (BSA) (I ORD 8031), and Area Under the Curve (AUC) order dose (I ORD 8032) items as measured when certain actions stored in the Order Action (I ORD 8033) item were taken on the order.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_WEIGHT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the patient weight when an action (verify or release) was taken on the linked order."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_BSA",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the patient's body surface area (BSA) when an action (verify or release) was taken on the linked order."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "AUC_DOSE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the area under the curve (AUC) dose when an action (verify or release) was taken on the linked order. AUC dosing is used for a specific chemotherapy drug: carboplatin. The curve refers to a concentration-over-time graph in which the concentration of the drug in a patient's blood is measured against the time when the sample was taken."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ORDER_ACT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores what order action (Verify, Release) the patient weight, patient BSA, or order dose was saved at.",
+      "entries": [
+        "Sign",
+        "Release",
+        "Verify"
+      ]
+    }
+  ]
+}

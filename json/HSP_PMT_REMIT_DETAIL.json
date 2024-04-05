@@ -1,0 +1,189 @@
+{
+  "$meta": {
+    "schemas": {
+      "HSP_PMT_REMIT_DETAIL": {
+        "name": "HSP_PMT_REMIT_DETAIL",
+        "description": "This is a type of summary level of the remittance actions associated with a payment transaction. This table will summarize remittance information from Electronic Remittance and manual payment posting as stored on the transaction. This table extracts the information that displays in the remittance grid in payment posting as the end user sees it.",
+        "primaryKey": [
+          {
+            "columnName": "TX_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "TX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the transaction record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "DTL_GRP_CODE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the group code for the reason code that is entered in the remittance grid when this batch is opened in payment posting.",
+            "entries": [
+              "Patient Responsibility",
+              "Contractual Obligation",
+              "Payor Initiated",
+              "Correction and Reversal",
+              "Other Adjustment"
+            ]
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "DTL_REMIT_CODE_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the remit code that is entered in the remittance grid when this batch is opened in payment posting."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "DTL_REMIT_CODE_ID_REMIT_CODE_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of each remittance code."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "DTL_RSN_CODE_EXTL",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the external reason code that is entered in the remittance grid when this batch is opened in payment posting."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "DTL_REMIT_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the amount associated with the reason code that is entered in the remittance grid when this batch is opened in payment posting."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "DTL_ACTION_STRING",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the actions associated with the reason code that is entered in the remittance grid when this batch is opened in payment posting. This is a comma delimited string of actions for reason codes with multiple actions associated with them."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "DTL_CREATE_BDC_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores whether a denial or remark record should be created with the reason code. If any action on the reason code creates a denial or remark, this column will be set to Yes, otherwise this column will be set to No."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "DTL_SERVICE_LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "This column stores the service line this reason code was entered in on the remittance grid when this batch was opened in payment posting. If any reason code was entered at the claim level this row will be set to -1."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "HSP_PMT_REMIT_DETAIL",
+            "target": "HSP_TRANSACTIONS",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HSP_PMT_REMIT_DETAIL": [
+    {
+      "TX_ID": 681354876,
+      "LINE": 1,
+      "DTL_GRP_CODE_C_NAME": "Other Adjustment",
+      "DTL_REMIT_CODE_ID": "94",
+      "DTL_REMIT_CODE_ID_REMIT_CODE_NAME": "94-PROCESSED IN EXCESS OF CHARGES.",
+      "DTL_RSN_CODE_EXTL": "94",
+      "DTL_REMIT_AMT": -121.73,
+      "DTL_ACTION_STRING": "1",
+      "DTL_CREATE_BDC_YN": "N",
+      "DTL_SERVICE_LINE": 1,
+      "$meta": {
+        "type": "HSP_PMT_REMIT_DETAIL"
+      }
+    },
+    {
+      "TX_ID": 681354876,
+      "LINE": 2,
+      "DTL_GRP_CODE_C_NAME": "Patient Responsibility",
+      "DTL_REMIT_CODE_ID": "1",
+      "DTL_REMIT_CODE_ID_REMIT_CODE_NAME": "1-DEDUCTIBLE AMOUNT",
+      "DTL_RSN_CODE_EXTL": "1",
+      "DTL_REMIT_AMT": 216.27,
+      "DTL_ACTION_STRING": "2",
+      "DTL_CREATE_BDC_YN": "N",
+      "DTL_SERVICE_LINE": 1,
+      "$meta": {
+        "type": "HSP_PMT_REMIT_DETAIL"
+      }
+    },
+    {
+      "TX_ID": 681354876,
+      "LINE": 3,
+      "DTL_GRP_CODE_C_NAME": "Contractual Obligation",
+      "DTL_REMIT_CODE_ID": "97",
+      "DTL_REMIT_CODE_ID_REMIT_CODE_NAME": "97-PMT INCL IN PMT FOR OTHR SVC/PX.",
+      "DTL_RSN_CODE_EXTL": "97",
+      "DTL_REMIT_AMT": 557.47,
+      "DTL_ACTION_STRING": "1",
+      "DTL_CREATE_BDC_YN": "N",
+      "DTL_SERVICE_LINE": 2,
+      "$meta": {
+        "type": "HSP_PMT_REMIT_DETAIL"
+      }
+    },
+    {
+      "TX_ID": 681354876,
+      "LINE": 4,
+      "DTL_GRP_CODE_C_NAME": "Contractual Obligation",
+      "DTL_REMIT_CODE_ID": "45",
+      "DTL_REMIT_CODE_ID_REMIT_CODE_NAME": "45-CHGS EXCD FEE SCH/MAX ALLOWABLE.",
+      "DTL_RSN_CODE_EXTL": "45",
+      "DTL_REMIT_AMT": 527.08,
+      "DTL_ACTION_STRING": "1",
+      "DTL_CREATE_BDC_YN": "N",
+      "DTL_SERVICE_LINE": 3,
+      "$meta": {
+        "type": "HSP_PMT_REMIT_DETAIL"
+      }
+    },
+    {
+      "TX_ID": 681354876,
+      "LINE": 5,
+      "DTL_GRP_CODE_C_NAME": "Patient Responsibility",
+      "DTL_REMIT_CODE_ID": "1",
+      "DTL_REMIT_CODE_ID_REMIT_CODE_NAME": "1-DEDUCTIBLE AMOUNT",
+      "DTL_RSN_CODE_EXTL": "1",
+      "DTL_REMIT_AMT": 338,
+      "DTL_ACTION_STRING": "2",
+      "DTL_CREATE_BDC_YN": "N",
+      "DTL_SERVICE_LINE": 3,
+      "$meta": {
+        "type": "HSP_PMT_REMIT_DETAIL"
+      }
+    }
+  ]
+}

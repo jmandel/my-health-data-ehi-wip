@@ -1,0 +1,89 @@
+{
+  "$meta": {
+    "schemas": {
+      "PAT_CVG_FILE_ORDER": {
+        "name": "PAT_CVG_FILE_ORDER",
+        "description": "The PAT_CVG_FILE_ORDER table contains information about the filing order of each member's coverages. Since members can have multiple coverages, each row of coverage filing order information in this table is identified by the patient ID and a line number.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID assigned to the patient record. This ID may be encrypted if you have elected to use enterprise reporting�s encryption utility."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number used to identify each line of filing order information for the patient."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "COVERAGE_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID assigned to the coverage record. This ID may be encrypted if you have elected to use enterprise reporting�s encryption utility."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "FILING_ORDER",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The coverage filing order, as determined manually by a user or automatically using the automatic filing order rules."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "PAT_CVG_FILE_ORDER",
+            "target": "PAT_REL_ADDR",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "PAT_CVG_FILE_ORDER",
+            "target": "PATIENT",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PAT_CVG_FILE_ORDER": [
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 1,
+      "COVERAGE_ID": 5934765,
+      "FILING_ORDER": 1,
+      "$meta": {
+        "type": "PAT_CVG_FILE_ORDER"
+      }
+    }
+  ]
+}

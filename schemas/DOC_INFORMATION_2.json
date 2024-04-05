@@ -1,0 +1,413 @@
+{
+  "name": "DOC_INFORMATION_2",
+  "description": "The DOC_INFORMATION table contains information about documents, including scanned and electronically signed documents.",
+  "primaryKey": [
+    {
+      "columnName": "DOCUMENT_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "DOCUMENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the document record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "DOC_RDI_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the linked form (RDI) that contains key-value pairs."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "COMM_ORIG_RDI_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the original form (RDI) ID when a form is converted to a PDF."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RSH_LAST_UPDATE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The last user who updated the research data capture form."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RSH_LAST_UPDATE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RSH_LAST_UPDATE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The last instant this data capture form was updated."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "RSH_FORM_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Used to indicate whether or not all of the required fields on an esignature document's smartform have been completed.",
+      "entries": [
+        "New",
+        "In Progress",
+        "Void",
+        "Complete",
+        "Error",
+        "Rejected"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DOC_SPEC_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The document specialty for a document (DCS) record."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "DOC_SUBSPECIALTY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the document subspecialty for a document (DCS) record"
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "TMPLT_SF_FORM_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the SmartForm used to collect information for this document. Should be used in conjunction with DOC_INFORMATION.TMPLT_SF_CNTCT to identify the SmartForm Record."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "TMPLT_SF_FORM_ID_FORM_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the form associated with the questionnaire."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "RSH_FORM_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The instance name for the research data capture form."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "DOCUMENT_USAGE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The document usage category ID for the document record.",
+      "entries": [
+        "Financial Assistance Patient",
+        "Financial Assistance Case"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "BLOB_CATEGORY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The blob category for the document.",
+      "entries": [
+        "SCAN",
+        "VOICE",
+        "ANNOTATION",
+        "VIDEO",
+        "RAW DEPTH MAP",
+        "ECG",
+        "SPIRO",
+        "HOLTER RESULT",
+        "HOLTER ANALYSIS",
+        "WAVEFORM STRIP",
+        "ESIG",
+        "Virtual Authorization",
+        "PHOTO",
+        "LINK",
+        "DOCUMENT",
+        "REPORT VIEWER",
+        "CHF",
+        "DICOM Study",
+        "DICOM Series",
+        "DICOM Image",
+        "TEMPORARY"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "RX_CUST_ID_OWNER_NAM_RECORD_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains a pointer to the name record of the owner of the customer ID used to pick up the prescriptions for the patient from outpatient pharmacies."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "ESIG_ACCESSIBLE_PDF_FILE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the file name for the accessible PDF of this document on the BLOB."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "SERIES_SEQ_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The sequence number of the series in a DICOM study (attribute 0020,0011)."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "PS_SERIES_UID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The instance UID of the series that has the presentation state for the image."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PS_UID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The presentation state instance UID for the image."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "IMAGE_SEQUENCE_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The image sequence number within the series (attribute 0020,0013)."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "IMG_SLCT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID indicating how the DICOM image associated with the record was selected, including if it was computer selected or marked as a key image.",
+      "entries": [
+        "None",
+        "Computer Selected",
+        "Key Image"
+      ]
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "FILE_CREATION_TIME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the timestamp in HL7 format of when the file was created on the blob or DMS server."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "FILE_LAST_UPD_TIME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Timestamp in HL7 format of when the image was last updated."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "FILE_TYPE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Mime type of the image/document."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "CLN_DOC_SRC_APT_PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The appointment that a Document Information (DCS) record was attached to before it was moved to a Clinical Documentation Only encounter."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "ENROLL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the research study association that has been linked to this document."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "FILE_CREATION_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the file creation time of the document on the Web Blob Server (WBS)"
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "DEFERRED_GEN_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The deferred generation status category ID for the document. This field is only used for deferred generation documents.",
+      "entries": [
+        "Not Started",
+        "In Progress",
+        "Complete",
+        "Failed"
+      ]
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "DOC_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores ETR ID for the service-line on a claim that the document is associated with, used by Tapestry"
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "START_DOC_PERIOD_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Start date of document period."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "END_DOC_PERIOD_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "End date of document period."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "CLM_ATTACH_CTL_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Attachment control number for electronic attachments. This is used to identify electronic attachments for a claim in an ANSI X12 275."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "CLM_PROV_ACCT_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Provider submitted account number for electronic attachments. This is used to identify electronic attachments for a claim in an ANSI X12 275."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "CLAIM_VENDOR_NPI",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "NPI of the vendor sent in ANSI X12 275. This is used to identify electronic attachments for a claim in an ANSI X12 275."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "COPIED_FROM_DOCUMENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item links to the original DCS record that this record was copied from."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "DOCUMENT_IDENT_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the identifier for this document, which is stored in item 350, is a native Epic identifier, or an identifier assigned by external system. When this item is set to 1-Native, the identifier refers to binary data that was uploaded through the Blob service. If the identifier was generated by an external system, this item is set to 2-External. If this item is set to 0-Unknown or not set, then other items must be used to determine if item 350 is a Blob or external identifier.",
+      "entries": [
+        "Unknown",
+        "Native",
+        "External"
+      ]
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "EOB_MEMBER_SHARE_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Total amount a member is responsible for, for all the claims included in an Explanation of Benefits document."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "DOC_SOURCE_ROI_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the ROI ID used to generate a composite document (DCS). A composite document represents one or more contexts which is included in the ROI."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "CREATED_BY_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who created the document."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "CREATED_BY_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "CREATED_INST_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time the document was created."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "INDEXED_BY_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who indexed the document."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "INDEXED_BY_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "INDEXED_INST_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time the document was indexed."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "DEPTH_CAPT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether depth information was captured on an image, or why depth was unable to be obtained. Only applies to images.",
+      "entries": [
+        "None",
+        "Not depth capable",
+        "Depth captured",
+        "No depth, but depth capable device"
+      ]
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "LINK_DEPTH_DCS_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the ID for the DCS record of the depth map taken with the image."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "DEPTH_ACCURACY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Depth map accuracy measured on mobile when taking a wound image.",
+      "entries": [
+        "Relative",
+        "Absolute"
+      ]
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "DEPTH_QUALITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Depth map quality measured on mobile when taking a wound image.",
+      "entries": [
+        "Low",
+        "High"
+      ]
+    }
+  ]
+}

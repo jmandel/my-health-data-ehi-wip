@@ -1,0 +1,495 @@
+{
+  "$meta": {
+    "schemas": {
+      "IP_DATA_STORE": {
+        "name": "IP_DATA_STORE",
+        "description": "This table contains generic information related to a patient's inpatient stay, including data on patient education, notes, and other topics.",
+        "primaryKey": [
+          {
+            "columnName": "INPATIENT_DATA_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "INPATIENT_DATA_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the inpatient data store record."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "RECORD_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The current status of the Inpatient Data record: active or resolved.",
+            "entries": [
+              "Active",
+              "Resolved",
+              "Deleted"
+            ]
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "EPT_CSN",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Link to Contact Serial Number in EPT for associated encounter."
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "UPDATE_DATE",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The date and time this row was last updated (the last time it was extracted or this column was backfilled)."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "IP_DATA_STORE",
+            "target": "ED_PAT_STATUS",
+            "joinKeys": [
+              {
+                "source": "INPATIENT_DATA_ID",
+                "target": "INPATIENT_DATA_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "IP_DATA_STORE",
+            "target": "IP_FLOW_DATERNG",
+            "joinKeys": [
+              {
+                "source": "INPATIENT_DATA_ID",
+                "target": "INPATIENT_DATA_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "IP_DATA_STORE",
+            "target": "IP_FLOWSHEET_ROWS",
+            "joinKeys": [
+              {
+                "source": "INPATIENT_DATA_ID",
+                "target": "INPATIENT_DATA_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "IP_DATA_STORE",
+            "target": "IP_ORD_UNACK_PLAC",
+            "joinKeys": [
+              {
+                "source": "INPATIENT_DATA_ID",
+                "target": "INPATIENT_DATA_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "IP_DATA_STORE": [
+    {
+      "INPATIENT_DATA_ID": "100502738",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 720803470,
+      "UPDATE_DATE": "2021-10-14 21:30:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "100507110",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 724628999,
+      "UPDATE_DATE": "2021-10-14 21:30:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "100818106",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 725327197,
+      "UPDATE_DATE": "2021-10-14 21:40:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "106780037",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 750474644,
+      "UPDATE_DATE": "2021-10-15 18:43:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "123583502",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 799951565,
+      "UPDATE_DATE": "2021-10-16 18:10:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "138966497",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 829213099,
+      "UPDATE_DATE": "2021-10-16 22:36:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "138960728",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 829273579,
+      "UPDATE_DATE": "2021-10-16 22:36:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "138914724",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 829212157,
+      "UPDATE_DATE": "2021-10-16 22:36:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "139173146",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 829385742,
+      "UPDATE_DATE": "2021-10-16 22:39:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "139057851",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 829393933,
+      "UPDATE_DATE": "2021-10-16 22:36:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "139550385",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 829467718,
+      "UPDATE_DATE": "2021-10-16 22:47:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "139563612",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 829995922,
+      "UPDATE_DATE": "2021-10-16 22:47:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "139603017",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 830043848,
+      "UPDATE_DATE": "2021-10-16 22:47:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "139602801",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 830047706,
+      "UPDATE_DATE": "2021-10-16 22:47:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "140482886",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 832464108,
+      "UPDATE_DATE": "2021-10-17 18:13:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "143491637",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 833901305,
+      "UPDATE_DATE": "2021-10-17 18:50:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "145187795",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 837844366,
+      "UPDATE_DATE": "2021-10-17 19:09:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "191678947",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 921952141,
+      "UPDATE_DATE": "2022-02-13 16:09:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "192169826",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 922943525,
+      "UPDATE_DATE": "2022-02-17 15:07:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "192169229",
+      "RECORD_STATUS_C_NAME": "Resolved",
+      "EPT_CSN": 922942674,
+      "UPDATE_DATE": "2022-03-12 10:09:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "194315318",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 927200229,
+      "UPDATE_DATE": "2022-03-11 15:08:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "192169541",
+      "RECORD_STATUS_C_NAME": "Resolved",
+      "EPT_CSN": 922943112,
+      "UPDATE_DATE": "2022-03-23 10:43:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "195279240",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 928532643,
+      "UPDATE_DATE": "2022-03-22 17:07:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "205519277",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 948002801,
+      "UPDATE_DATE": "2022-07-07 13:51:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "210524328",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 957995289,
+      "UPDATE_DATE": "2022-08-28 14:08:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "205520385",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 948004323,
+      "UPDATE_DATE": "2022-08-29 14:08:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "210637199",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 958147754,
+      "UPDATE_DATE": "2022-08-29 15:08:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "210637533",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 958148226,
+      "UPDATE_DATE": "2022-08-29 15:08:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "219723875",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 974452422,
+      "UPDATE_DATE": "2022-11-28 13:09:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "219843747",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 974614965,
+      "UPDATE_DATE": "2022-12-01 10:12:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "220126277",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 974974125,
+      "UPDATE_DATE": "2022-12-01 10:12:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "222347119",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 977858467,
+      "UPDATE_DATE": "2022-12-22 12:09:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "228068197",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 988126821,
+      "UPDATE_DATE": "2023-02-20 14:09:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "210637955",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 958148810,
+      "UPDATE_DATE": "2023-03-02 15:08:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "229205870",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 991215738,
+      "UPDATE_DATE": "2023-03-02 15:08:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "234301558",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 996534320,
+      "UPDATE_DATE": "2023-04-22 09:14:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "246294080",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 1020583168,
+      "UPDATE_DATE": "2023-08-23 10:15:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "249865900",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 1028606559,
+      "UPDATE_DATE": "2023-09-27 13:08:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "229212487",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 991225117,
+      "UPDATE_DATE": "2023-09-28 10:13:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "249977281",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 1028743701,
+      "UPDATE_DATE": "2023-09-28 11:13:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "252260169",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 1028766353,
+      "UPDATE_DATE": "2023-10-20 11:11:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "252286210",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 1031703883,
+      "UPDATE_DATE": "2023-10-20 10:13:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "258687093",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 1043034397,
+      "UPDATE_DATE": "2023-12-22 16:06:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    },
+    {
+      "INPATIENT_DATA_ID": "249977653",
+      "RECORD_STATUS_C_NAME": "Active",
+      "EPT_CSN": 1028744231,
+      "UPDATE_DATE": "2023-09-28 11:13:00",
+      "$meta": {
+        "type": "IP_DATA_STORE"
+      }
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "name": "PR_EST_AP_CLAIM_PROC",
+  "description": "This table stores service line information for managed care estimates.",
+  "primaryKey": [
+    {
+      "columnName": "ESTIMATE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ESTIMATE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the patient estimate record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTEXT_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The LINE in the PR_EST_AP_CLAIM table that stores the claim information that this service line is associated with."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PROC_MODS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The modifiers associated with the service line."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PROC_QTY",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The procedure quantity associated with the service line."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CHG_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The billed amount associated with the service line."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "SYS_CHG_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The system-calculated billed amount associated with the service line detail."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ALLOW_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The allowed amount associated with the service line."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "SYS_ALLOW_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The system-calculated allowed amount associated with the service line detail."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "SELF_PAY_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The self-pay amount associated with the service line."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "SYS_SELF_PAY_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The system-calculated self-pay amount associated with the service line detail."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "MC_ADDL_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The LINE in the PR_EST_ADDL_INFO table that stores additional information about the service line."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The AP Claims transaction (ETR) ID associated with this estimate procedure line."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "AUTH_REQUIRED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Identifies if an authorization is required for the procedure line to be covered.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "DRG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Diagnosis Related Group (DRG) associated with the service line detail."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "DRG_ID_DRG_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the Diagnoses Related Group name."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "MC_NETWORK_LEVELS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if the service is priced to be In or Out of network.",
+      "entries": [
+        "In",
+        "Out",
+        "Out of Area",
+        "N/A"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "MC_CLICKED_ON_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Signals if the line was clicked on by the member"
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "MC_IS_ANCHOR_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This indicates whether the associated procedure is what the member searched for in Cost Calc (Aka. Anchor)"
+    }
+  ]
+}

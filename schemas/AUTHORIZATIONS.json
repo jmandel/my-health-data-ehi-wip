@@ -1,0 +1,629 @@
+{
+  "name": "AUTHORIZATIONS",
+  "description": "This table contains information about authorization records. This includes links to the patient, referral, and coverage/payer.",
+  "primaryKey": [
+    {
+      "columnName": "AUTH_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "AUTH_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The authorization ID for the authorization record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "AUTH_FROM_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Authorization start date"
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "AUTH_TO_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Authorization end date"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient for whom the authorization record was created.  This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "REFERRAL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Referral associated with this authorization. If this is a UM owned service-level authorization, this column is not populated and, instead, column UM_REFERRAL_ID will be populated. This column is frequently used to link to the REFERRAL table.",
+      "linksTo": "REFERRAL"
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "AUTH_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Authorization type category value",
+      "entries": [
+        "Procedure",
+        "Bed Days",
+        "Shell"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "NUM_SVCS_APPROVED",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Number of services, units or visits approved."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "NUM_SVCS_REQUESTED",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Number of services, units, or visits requested."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CVG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Linked coverage record. This column is frequently used to link to the COVERAGE table.",
+      "linksTo": "COVERAGE"
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "AUTH_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Authorization number"
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "AUTH_COMMENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Free text authorization comment."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "RECORD_CREATION_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Record creation date."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "CHARGE_COUNTS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Keeps track of number of counts used by charges."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "AUTH_REF_NUMBER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reference number given to us by the payer for this service-level authorization (AUT)."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "AP_CLAIM_COUNT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Number of services, units, or visits used for AP Claims."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "INTER_NUM_SVCS_APRV",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of services approved for each interval."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "INTER_NUM_SVCS_REQ",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of services requested for each interval."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "INTER_APRV_FREQ_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the associated Frequency Record for the approved recurring authorization."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "INTER_APRV_FREQ_ID_FREQ_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the frequency record."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "INTER_REQ_FREQ_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the associated Frequency Record for the requested recurring authorization."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "INTER_REQ_FREQ_ID_FREQ_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the frequency record."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "INTER_NUM_APRV",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of times the interval has been approved to repeat."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "INTER_NUM_REQ",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of times the interval has been requested to repeat."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "PARENT_AUTH_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Parent Authorization that this authorization (AUT) inherits from."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "AP_CLAIM_COUNT_METHOD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The counting method for the AP Claim counts.",
+      "entries": [
+        "Counts not tracked",
+        "Once per day",
+        "By service quantity"
+      ]
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "UM_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The utilization management authorization decision status for the requested service.",
+      "entries": [
+        "Authorized",
+        "Partially Authorized",
+        "Pending Review",
+        "Withdrawn",
+        "Denied",
+        "Dismissed",
+        "No Authorization Required",
+        "Closed",
+        "Pending External Review"
+      ]
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "UM_APPROVED_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason the authorized status was assigned to this service."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "UM_PART_APRV_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason the partial authorization status was assigned to this service."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "UM_DENIED_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason the denied status was assigned to this service."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "UM_DISMISSED_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason the dismissed status was assigned to this service."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "UM_NOT_REQUIRED_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason the no auth required status was assigned to this service."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "UM_PENDING_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason the pending status was assigned to this service."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "UM_CANCELED_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason the canceled/withdrawn status was assigned to this service."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "UM_DECISION_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time the authorization decision was set on the service level authorization."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "NON_UM_AUTH_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Service authorizations that are created as part of UM workflows will only appear in UM workflows. If the authorization details are needed outside the UM department, then corresponding non-UM service-level authorizations are created. This separation is required to ensure non-UM staff cannot alter authorization decisions rendered by UM staff. This column provides a link between the UM service authorizations and non-UM service-level authorizations. There is a 1-to-1 link between UM and non-UM service-level authorizations."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "UM_AUTH_REQUEST_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If this is a UM-owned service authorization, this column serves as the pointer to the authorization request record. UM-owned service authorizations do not have direct pointers to referral and coverage. They must be accessed through the authorization request."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "NON_UM_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This is a link between a UM service authorization and an order on the referral."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "ORDER_ENTRY_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "When the service is created as part of order entry, this column will be populated as a pointer back to the order."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "UM_CLOSED_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason the closed status was assigned to this service."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "UM_FINALIZE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the user record that finalized this authorization. This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "UM_FINALIZE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "FINAL_UM_STATUS_CHANGE_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The change source category ID that resulted in the finalized status of the service.",
+      "entries": [
+        "Manual Update",
+        "Auto Status Assignment",
+        "Imported",
+        "278N",
+        "278R",
+        "INTERNAL PRIOR AUTH",
+        "Auto Status Assignment Pre-Check"
+      ]
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "AUTH_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The provider-side authorization status category ID for the service.",
+      "entries": [
+        "Authorized",
+        "No Auth Required",
+        "Pending",
+        "Canceled",
+        "Denied"
+      ]
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "UM_MED_DIR_REV_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who set the pending review status reason for a medical director review."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "UM_MED_DIR_REV_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "UM_PEND_MED_DIRECTOR_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The local date and time of when the authorization pended for review with a reason of medical director review."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "UM_PEND_MED_DIRECTOR_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time in UTC of when the authorization pended for review with a reason of medical director review."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "FIRST_PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Ths CSN of the encounter linked to the service level authorization with the earliest encounter instant. If the service level authorization doesn't have any encounters linked directly, it will search the linked referral or auth/cert."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "LAST_PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The CSN of the encounter linked to the service level authorization with the latest encounter instant. If the service level authorization doesn't have any encounters linked directly, it will search the linked referral or auth/cert."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "APPEALED_SERVICE_AUTH_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the service that this service was created to appeal."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "LAST_CVG_GUIDANCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "When we receive a Coverage Requirements Discovery response message pertaining to this authorization, this item will store the coverage guidance value from that message.",
+      "entries": [
+        "Not Covered",
+        "No Auth Required",
+        "Auth Required",
+        "Clinical Info Needed",
+        "Administrative Info Needed"
+      ]
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "UM_CVG_GUIDANCE_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The coverage guidance source category ID for the coverage guidance request.",
+      "entries": [
+        "Payer Platform",
+        "Internal Request",
+        "Link Portal Request"
+      ]
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "UM_CVG_GDNC_REALTIME_TX_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number of the real-time transaction that originated the Coverage Requirements Discovery request."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "UM_CVG_GUIDANCE_PA_SVC_LN_IDNT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the service from the real-time transaction that originated the Coverage Requirements Discovery service request."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "UM_CVG_GUIDANCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The coverage guidance determination category ID for the requested service."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "UM_CVG_GUIDANCE_FROM_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the provider record of the provider that is requesting coverage guidance for a service for this row. This column is frequently used to link to the CLARITY_SER table.",
+      "linksTo": "CLARITY_SER"
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "UM_CVG_GUIDANCE_REQ_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of the requested service for which guidance is being requested. If no date was provided with the request, the date of the request creation is used."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "UM_CVG_GUIDANCE_REQ_LOC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the location at which the requested service for a coverage guidance request is to occur."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "UM_CVG_GUIDANCE_REQ_VENDOR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the vendor with which the requested service for a coverage guidance request is to occur."
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "UM_CVG_GUIDANCE_REQ_VENDOR_ID_VENDOR_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the vendor."
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "UM_CVG_GUIDANCE_REQ_DEPT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the department at which the requested service for a coverage guidance request is to occur."
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "UM_CVG_GUIDANCE_REQUEST_NOTE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The free-text note text associated with the coverage guidance request."
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "UM_CVG_GUIDANCE_LOB_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the line of business associated with the requested coverage guidance."
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "UM_CVG_GUIDANCE_LOB_ID_LOB_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the line of business record."
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "UM_CVG_GUIDANCE_PAYER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the payer associated with the requested coverage guidance."
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "UM_CVG_GUIDANCE_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the plan associated with the requested coverage guidance."
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "UM_CVG_GUIDANCE_CREATE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who created the coverage guidance request, if known."
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "UM_CVG_GUIDANCE_CREATE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 69,
+      "name": "DENIAL_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If this authorization's status is Denied, then this item will contain the rationale given for that denial.",
+      "entries": [
+        "Not Medically Necessary",
+        "Retroactive Referral Request",
+        "Not a Covered Benefit",
+        "Not in Network",
+        "Duplicate Referral Request",
+        "System Automatically Denied",
+        "Does Not Meet 3rd Party Guidelines",
+        "DOES NOT MEET INTERNAL GUIDELINES",
+        "Member not covered",
+        "Authorized Quantity Exceeded",
+        "Exceeds Plan Maximums",
+        "No Prior Approval",
+        "Requested Information Not Received",
+        "Service Inconsistent With Diagnosis",
+        "Pre-Existing Condition",
+        "Patient is Restricted to Specific Provider",
+        "Plan/Contractual Guidelines Not Followed",
+        "Plan/Contractual Geographic Restriction",
+        "Inappropriate Facility Type",
+        "Once in a Lifetime Restriction Applies",
+        "Transport Request Denied",
+        "Errors in the Request",
+        "Excluded Benefit",
+        "Appeal Denied",
+        "Not Primary Care Physician",
+        "Level of Care Not Appropriate",
+        "Denial Response Needs Review",
+        "Requires Medical Review",
+        "Experimental Service or Procedure"
+      ]
+    },
+    {
+      "ordinalPosition": 70,
+      "name": "AUTH_BED_DAY_TYPE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The type of day (TOD record) approved by the payer."
+    },
+    {
+      "ordinalPosition": 71,
+      "name": "AUTH_BED_DAY_TYPE_ID_BED_DAY_TYPE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the bed day type record (i.e. ICU or non-authorized.)"
+    },
+    {
+      "ordinalPosition": 72,
+      "name": "NUM_DAYS_APPROVED",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of days approved by the payer for a bed day type. This is calculated as End Date - Start Date + 1."
+    },
+    {
+      "ordinalPosition": 73,
+      "name": "NUM_NIGHTS_APPROVED",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of nights approved by the payer for a bed day type. This is calculated as : End Date - Start Date."
+    },
+    {
+      "ordinalPosition": 74,
+      "name": "EXT_SVC_MSG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Service-level MSG data received by Payer Platform from an external system."
+    },
+    {
+      "ordinalPosition": 75,
+      "name": "EXT_SVC_REF_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "the administrative reference number received by Payer Platform from an external system for this service"
+    },
+    {
+      "ordinalPosition": 76,
+      "name": "EXT_SVC_AUTH_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "the authorization number received by Payer Platform from an external system for this service"
+    }
+  ]
+}

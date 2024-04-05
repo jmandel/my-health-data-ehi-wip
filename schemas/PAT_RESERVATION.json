@@ -1,0 +1,129 @@
+{
+  "name": "PAT_RESERVATION",
+  "description": "The PAT_RESERVATION table contains reservation-related information for a patient.  The table will contain one row per patient encounter.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RES_CALLER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The person who called to make a reservation for the patient."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RES_CALLER_PHONE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The phone number of the person who called to make a reservation for the patient."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "RES_DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the department where the reservation call was received."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "RES_CALLED_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time when the reservation request was received."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "RES_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who received the reservation request."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "RES_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "RES_ADM_APRV_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the admission for the patient was approved.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "RES_DENIAL_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the admission denial reason."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "RES_TRANS_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the reason behind the transfer request."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "RES_EXP_PAT_CLS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the patient's expected patient class."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "RES_EXP_LOC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the patient's expected level of care."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "RES_DECISION_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time when the decision on whether to accept the reservation was made."
+    }
+  ]
+}

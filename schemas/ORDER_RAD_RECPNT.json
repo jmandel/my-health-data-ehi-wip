@@ -1,0 +1,74 @@
+{
+  "name": "ORDER_RAD_RECPNT",
+  "description": "This table contains the recipients who were carbon copied on the imaging order results, along with ad hoc info, routing method, and address.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CC_RECIPIENTS_LIST",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The recipient of results of this order. The data is in a carat delimited string of the form, \"INI^ID^Recipient Name^System Flag\". If the recipient is found in an Epic database, the INI and ID will be filled in. If the recipient is ad hoc (not in an Epic database), the INI and ID will be left blank. The System Flag contains settings used internally."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CC_AD_HOC_INFO",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ad hoc recipient contact info in a \"|\" delimited list. The format of this string is \"Fax number|Phone number|Address|City|State ID|ZIP|Country ID\". If the Address is on multiple lines, it is delimited by two spaces. This item is null when the recipient is not ad hoc."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CC_ROUTE_METH_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The results routing communication method category number for the order. This field describes how the result should be communicated out (ex. mail, fax, etc.).",
+      "entries": [
+        "In Basket",
+        "Fax",
+        "Mail",
+        "Phone Call",
+        "MyChart",
+        "Network Printer",
+        "Courier Service",
+        "Outside Provider Messaging",
+        "Print Locally",
+        "EDI",
+        "Opt Out",
+        "E-mail",
+        "FHIR",
+        "Save to File"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ROUTING_ADDRESS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the recipient has an SER or EMP record with multiple addresses, this item contains a dash-delimited string with the SER or EMP .1 and the ID number of the address to which the result will be routed. This item is null when the recipient has no SER or EMP record. For SER recipients, the address ID corresponds to SER 21000, which is available in Clarity."
+    }
+  ]
+}

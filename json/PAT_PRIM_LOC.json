@@ -1,0 +1,89 @@
+{
+  "$meta": {
+    "schemas": {
+      "PAT_PRIM_LOC": {
+        "name": "PAT_PRIM_LOC",
+        "description": "The PAT_PRIM_LOC table contains the Primary Location information for your patients over time.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID assigned to the patient record. This ID may be encrypted if you have elected to use enterprise reporting�s encryption utility."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number used to identify each line of Primary Location information for the patient."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "LOC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the location record for the Primary Location."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "EFF_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date from which the location is in effect as the member�s Primary Location."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "PAT_PRIM_LOC",
+            "target": "PAT_REL_ADDR",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "PAT_PRIM_LOC",
+            "target": "PATIENT",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PAT_PRIM_LOC": [
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 1,
+      "LOC_ID": 1700801,
+      "EFF_DATE": "2018-07-17 00:00:00",
+      "$meta": {
+        "type": "PAT_PRIM_LOC"
+      }
+    }
+  ]
+}

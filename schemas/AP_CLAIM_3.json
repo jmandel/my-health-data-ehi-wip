@@ -1,0 +1,573 @@
+{
+  "name": "AP_CLAIM_3",
+  "description": "The AP_CLAIM_3 table contains one record for each claim in Tapestry's Accounts Payable module.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the claim record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "TOT_PRIM_PAT_NOTCOV",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Displays the amount the primary payors adjudicated as the not covered patient portion. This is applicable only if the claim has been submitted to your facility as the non primary payor (secondary, tertiary, 4th, etc.)"
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "TOT_PRIM_PAT_DED",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Displays the amount the primary payors adjudicated as the deductible patient portion. This is applicable only if the claim has been submitted to your facility as the non primary payor (secondary, tertiary, 4th, etc.)"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "TOT_PRIM_PAT_COPAY",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Displays the amount the primary payors adjudicated as the copay patient portion. This is applicable only if the claim has been submitted to your facility as the non primary payor (secondary, tertiary, 4th, etc.)"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "TOT_PRIM_PAT_COINS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Displays the amount the primary payors adjudicated as the co-insurance patient portion. This is applicable only if the claim has been submitted to your facility as the non primary payor (secondary, tertiary, 4th, etc.)"
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SUBMITTER_CREAT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date that the original submitter created the claim file from their business application system. This date is received in the Beginning of Hierarchical Transaction (BHT) segment on an incoming ANSI 837 file."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "INTERCHANGE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date of interchange. This date is received in the Interchange Control Header (ISA) segment on an incoming ANSI 837 file."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "FUNC_GROUP_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Functional group creation date. This date is received in the Function Group Header (GS) segment on an incoming ANSI 837 file."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "TOTAL_RESP_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total responsible amount on the claim from Coordination of Benefits (COB) calculations."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "TOTAL_ADJ_PAT_OOP",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Amount that the patient out of pocket would have been on a capitated secondary claim had the claim not been capitated according to the contract."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "TERMED_CVG_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Flag used to determine if the coverage used to pay the claim was termed at the time.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "IS_INPATIENT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Defines if claim is inpatient/outpatient."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "DRG_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the Diagnosis Related Group (DRG) code on the claim."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "DRG_ID_TYPE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Contains the Diagnosis Related Group (DRG) ID type used for the claims."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "DRG_ID_TYPE_ID_ID_TYPE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the ID Type."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "PERM_ORIG_OF_REV_CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the unique identifier of the original claim for reversal claims. The value will always persist, even if the claim is voided. If the claim is not a reversal claim, no value will be stored."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PERM_ORIG_OF_CORR_CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the unique identifier of the original claim for corrected claims. The value will always persist, even if the claim is voided. If the claim is not a corrected claim, no value will be stored."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "PERM_ORIG_OF_ADJST_CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the unique identifier of the original claim for adjustment claims. The value will always persist, even if the claim is voided. If the claim is not an adjustment claim, no value will be stored."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "INVOICE_AMT_REM",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of the claim the system needs to generate invoice for."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "ADJST_ACTION_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the category identifier indicating why the claim was adjusted.",
+      "entries": [
+        "Coverage Change",
+        "Group Change",
+        "Global Payment",
+        "Check Change",
+        "Filing Order Change",
+        "Deferred Status Change",
+        "Contract Change",
+        "Benefit Change",
+        "Referral Change",
+        "Member Change",
+        "Bundled Payment Change",
+        "Report Trigger"
+      ]
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "CLAIM_EFFECTIVE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the effective date of the claim at the time of adjudication. This date is calculated during adjudication based on other days (e.g. service date) and is used to price the claim when a single claim-level date is required, such as to find the correct vendor contract contact."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "VENDOR_TAXONOMY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the vendor taxonomy code submitted in a claim."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "PROVIDER_TAXONOMY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the provider taxonomy code submitted in a claim. It is the rendering provider taxonomy for CMS claims and attending provider taxonomy for UB claims."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "ADJST_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The adjustment reason category ID. Entered by a user when adjusting a claim.",
+      "entries": [
+        "Bundled Payment Adjustment"
+      ]
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "AMBU_PICK_UP_COUNTY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the unique identifier for the county associated with the ambulance pick-up location. Join this column to ZC_COUNTY_2 to translate to the county name."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "AMBU_PICK_UP_DISTRICT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the unique identifier for the district associated with the ambulance pick-up location. Join this column to ZC_DISTRICT to translate to the district name."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "AMBU_PICK_UP_HOUSE_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the house number associated with the ambulance pick-up location."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "AMBU_DROP_OFF_COUNTY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the unique identifier for the county associated with the ambulance drop-off location. Join this column to ZC_COUNTY_2 to translate to the county name."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "AMBU_DROP_OFF_DISTRICT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the unique identifier for the district associated with the ambulance drop-off location. Join this column to ZC_DISTRICT to translate to the district name."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "AMBU_DROP_OFF_HOUSE_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the unique identifier for the house number associated with the ambulance drop-off location."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "SUPERVISING_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID for the supervising provider on the claim record."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "CLAIM_SVC_CLASS_CTX_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Represents the high-level clinical classification context for the services billed on this claim.",
+      "entries": [
+        "Inpatient",
+        "Outpatient",
+        "Professional Services",
+        "Pharmacy",
+        "Lab Services",
+        "Hospice",
+        "Not Classified"
+      ]
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "CLAIM_SVC_CLASS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Represents the clinical classification for the services billed on this claim.",
+      "entries": [
+        "Acute Inpatient",
+        "Other Inpatient",
+        "Skilled Nursing",
+        "Inpatient Psychiatric Care",
+        "Inpatient Rehabilitation Care",
+        "Hospice",
+        "Home Health",
+        "Outpatient",
+        "Emergency",
+        "Specimen Only",
+        "Pharmacy",
+        "Observation",
+        "Urgent Care",
+        "Surgery",
+        "Nursing Facility",
+        "Residential Facility Services",
+        "Office Visit",
+        "Substance Abuse and Behavioral Health Services",
+        "Ambulance",
+        "Telemedicine",
+        "Home Visit",
+        "Outpatient Rehabilitation Services",
+        "Independent Laboratory",
+        "Inpatient Part B",
+        "Inpatient Part B Preventive Services",
+        "Skilled Nursing Part B",
+        "Skilled Nursing Part B Preventive Services",
+        "Not Classified"
+      ]
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "IS_SUBROGATION_DEMAND_CLAIM_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Flag whether the claim is a subrogation demand claim from another payer."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "TOT_SUBROGATION_DEMAND_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the total subrogation demand amount from another payer."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "TOT_SUBROGATION_ADJ_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the total amount on the claim that was not paid due to subrogation demand being less than net payable."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "CONTRACT_SEL_MTHD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This selection method was used to select the contract used to price the claim from the configured Vendor Contract and Comparison Contracts.",
+      "entries": [
+        "Minimum Price",
+        "Maximum Price"
+      ]
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "IS_CLINICALLY_VALID_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores whether a claim is considered valid for the purpose of clinical data derivation"
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "PRIM_PAYOR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID for the primary payor record."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "BCDA_GROUP_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Claim group identifier provided by BCDA (Beneficiary Claims Data API)"
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "CLIA_NUMBER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Identification of a Clinical Laboratory Improvement Amendment (CLIA) certified facility that performed CLIA covered laboratory services."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "CLIN_FILTER_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Last UTC instant data derivation clinical filters (I CLM 18625) were updated or calculated without changes for this claim."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "CLIN_FILTER_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Last local instant data derivation clinical filters (I CLM 18625) were updated or calculated without changes for this claim. Calculated using EPIC_UTC_TO_LOCAL on I CLM 18626."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "TOT_PI_REDUCT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Total Payer Initiated Billed Amount Reduction from EDC Analyzer."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "MOST_RECENT_INCOMING_CEV_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The most recent incoming Claim External Value (CEV) record ID."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "PAT_REL_TO_COVERED_MEM_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient's relation to the covered (insured) member that the claim is paid under. If the patient is the member, this is not set. If it is set, this value defines the relation to the covered member for the patient who received the services.",
+      "entries": [
+        "Donor",
+        "Newborn"
+      ]
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "CLIN_FILTER_TXP_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Tracks whether this claim is considered as having transplant services for the purposes of clinical derivation from claims."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "KLCTCEV_RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Holds the CEV ID containing the KLCT metadata for a reversal claim."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "SOURCE_ORG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The source organization of the external record."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "SOURCE_ORG_ID_EXTERNAL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Organization's external name used as the display name on forms and user interfaces."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "LOOP_OR_SPLIT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether a claim is part of an adjustment sequence that contains a split claim or an adjustment sequence loop. This CLM does not have to be in the split or loop istelf, just a part of the adjustment sequence."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "IS_INVLD_ADJ_SEQ_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether a claim is part of an adjustment sequence that is not valid. An adjustment sequence can be invalid for a number of reasons, such as the sequence ending in a cancellation or the sequence having gaps."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "CLAIM_PAID_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date that the claim was paid, which is determined by the date the claim reaches the AP Status EOB Generated"
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "CLAIM_NAT_KEY_HASH",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The hashed value of the mapped claim natural key."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "CLAIM_NAT_KEY_ORDER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ordering value for the claim natural key."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "CLM_ADJ_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Claim Adjustment Type Code",
+      "entries": [
+        "Original",
+        "Adjustment",
+        "Reversal"
+      ]
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "NAT_KEY_FINAL_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether a claim is the final action of an adjustment sequence that is tracking adjustments via natural keys. Natural key adjustments are tracked using superitem CLM 18690. A claim is the final action of its natural key if it has the maximum order value (item 18692) for a given natural key (item 18691). If there is a tie, the claim with the largest claim header id (item 18681) is deemed the final action."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "TTL_APL_U_AND_C_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total of the usual and customary amounts from all lines on the claim."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "TTL_APL_CNTRCT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total of the contractual amounts from all lines on the claim."
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "SUBMITTER_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The person or entity that submitted the claim.",
+      "entries": [
+        "Member",
+        "Provider",
+        "Authorized Representative"
+      ]
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "SUBMITTER_AUTHORIZED_REP_GUID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The GUID of the authorized representative who submitted the claim."
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "TOTAL_DENIED_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This tracks the total denied amount across all claim services. It is currently only used for display purposes in the claim workspace."
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "TOTAL_DENIED_TO_PAT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This tracks the total amount denied to the patient across all claim services. It is currently only used for display purposes in the claim workspace."
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "REC_OWN_BUS_SEGMENT_POS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The owning business segment received for this claim. This might differ from the Owning Business Segment (I CLM 18026) based on the adjustment sequence that this claim is in."
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "REGION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The attributed region on the member's coverage at the time of the claim service"
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "MEDICAL_GROUP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The attributed medical group on the member's coverage at the time of the claim service"
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "PRICER_MSG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The most recent Epic Pricer message record that was used to price the claim."
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "OUT_NET_ADJUD_OV_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason for overriding a claim's adjudication network level to Out of Network."
+    },
+    {
+      "ordinalPosition": 69,
+      "name": "RECV_CLAIM_RECON_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This claim reconciliation record (CRD) for the claim."
+    }
+  ]
+}

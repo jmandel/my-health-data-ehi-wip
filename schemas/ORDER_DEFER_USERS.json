@@ -1,0 +1,51 @@
+{
+  "name": "ORDER_DEFER_USERS",
+  "description": "This table contains information about users who have clicked the Defer Order button in Verification. The records included in this table are ORD records, and each line contains a user ID  and instant.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "RX_DEFERRAL_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Users who have deferred this order to a pharmacist for review. Will record each user who clicks the \"Defer Order\" button in Verification. Only relevant if Manual Defer in Verification is enabled (RXD 1270)."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RX_DEFERRAL_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RX_DEFER_INST_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Instants at which this order was deferred to a pharmacist for review. New values will be added each time a user clicks the \"Defer Order\" button in Verification. Only relevant if Manual Defer in Verification is enabled (RXD 1270)."
+    }
+  ]
+}

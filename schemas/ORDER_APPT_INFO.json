@@ -1,0 +1,108 @@
+{
+  "name": "ORDER_APPT_INFO",
+  "description": "This table stores appointment-level exam information.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the order record associated with this procedure order."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "APPT_STUDY_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The imaging study status category ID for an order linked to an appointment (Ordered, No Show, Scheduled, etc).",
+      "entries": [
+        "Ordered",
+        "No Show",
+        "Scheduled",
+        "Arrived",
+        "Exam Begun",
+        "Procedure Started",
+        "Discontinued",
+        "Procedure Finished",
+        "Exam Ended",
+        "----- BEGIN READING PALETTE STATUSES -----",
+        "Tech Complete",
+        "Tech Revise",
+        "Resident Revise",
+        "Saved",
+        "Queued In Trans",
+        "In Transcription",
+        "Incomplete Transcription",
+        "Transcribed",
+        "Wet Read",
+        "Queued Prelim",
+        "Preliminary",
+        "Queued Needs Review",
+        "Needs Review",
+        "Revised",
+        "Queued Final",
+        "Final",
+        "Cadence Non-Imaging Order"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "APPT_EXAM_BGN_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The beginning date for an appointment exam."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "APPT_EXAM_BGN_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The beginning time for an appointment exam."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "APPT_EXAM_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The exam end date for multiple appointments scheduled with a single order (such as in nuclear medicine, where a single order would be associated with two exams, for an image and a delayed image)."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "APPT_EXAM_END_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The exam end time for multiple appointments scheduled with a single order (such as in nuclear medicine, where a single order would be associated with two exams, for an image and a delayed image)."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "APPT_TECH_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the lead technologist for multiple appointments scheduled with a single order (such as in nuclear medicine, where a single order would be associated with two exams, for an image and a delayed image)."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "APPT_TECH_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    }
+  ]
+}

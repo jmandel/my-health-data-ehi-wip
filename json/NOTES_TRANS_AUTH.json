@@ -1,0 +1,82 @@
+{
+  "$meta": {
+    "schemas": {
+      "NOTES_TRANS_AUTH": {
+        "name": "NOTES_TRANS_AUTH",
+        "description": "This table contains transcription authorization info.",
+        "primaryKey": [
+          {
+            "columnName": "NOTE_CSN_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "NOTE_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The contact serial number (CSN) of the contact."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "AUTH_DTTM",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "Date and time the transcription was authenticated"
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "DICTATION_TIME",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "This is the dictation date and time in datetime format.  Please note that this only contains information for authorized transcriptions."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "CHR_CNT_DTTM",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The date and time in which the transcription character count was recorded."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "NOTES_TRANS_AUTH",
+            "target": "ABN_FOLLOW_UP",
+            "joinKeys": [
+              {
+                "source": "NOTE_CSN_ID",
+                "target": "NOTE_CSN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "NOTES_TRANS_AUTH": [
+    {
+      "NOTE_CSN_ID": 3298373754,
+      "LINE": 1,
+      "AUTH_DTTM": "2022-02-09 16:05:56",
+      "DICTATION_TIME": "2022-02-09 16:03:00",
+      "CHR_CNT_DTTM": "2022-02-09 16:05:00",
+      "$meta": {
+        "type": "NOTES_TRANS_AUTH"
+      }
+    }
+  ]
+}

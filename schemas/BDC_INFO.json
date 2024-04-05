@@ -1,0 +1,384 @@
+{
+  "name": "BDC_INFO",
+  "description": "This table contains Denial/Remark/Correspondence/Variance information from the Denial/Correspondence (BDC) master file. It includes information about the denial/remark code received or correspondence text as applicable. It also includes some general information about the current state of the record. It does not include the change history information and specific denial information from the explanation of benefits (EOB).",
+  "primaryKey": [
+    {
+      "columnName": "BDC_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "BDC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the denial/correspondence record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "BDC_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "BDC Record Name - Denial/Remark/Correspondence Record Name."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "RECORD_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The record type category ID for the Denial/Remark/Correspondence.",
+      "entries": [
+        "Denial",
+        "Remark",
+        "Correspondence",
+        "Underpayment",
+        "Overpayment"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "BUCKET_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Hospital Liability Bucket that the Denial/Remark/Correspondence record is linked to."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RECORD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status category ID for the Denial/Remark/Correspondence.",
+      "entries": [
+        "Created",
+        "Transferred",
+        "Documents Need Review",
+        "Documents Created",
+        "Documents Sent",
+        "Reopened",
+        "Completed",
+        "Voided"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RECORD_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The source category ID for the Denial/Remark/Correspondence.",
+      "entries": [
+        "Payment Received",
+        "Correspondence Received",
+        "Zero Allowed Amount",
+        "Expected Allowed Amount Updated",
+        "Reserved for future use",
+        "System Auto Action Claim Denied",
+        "PB Follow-up Automatic Activity",
+        "RAC Correspondence",
+        "ADR Correspondence",
+        "HH Pre-Claim Review",
+        "Transferred In"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CLAIM_PRINT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the claim print record for the invoice of the denied payment."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "INVOICE_NUMBER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The invoice number associated with this denial/correspondence."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "GRP_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the group code associated with the reason code in a denial correspondence record.",
+      "entries": [
+        "Patient Responsibility",
+        "Contractual Obligation",
+        "Payor Initiated",
+        "Correction and Reversal",
+        "Other Adjustment"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "REMIT_CODE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the remittance code associated with the record."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "REMIT_CODE_ID_REMIT_CODE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of each remittance code."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "EXTERNAL_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The external ID of the remittance code associated with this denial/correspondence."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "INV_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Ending Date on the invoice linked to the denial/remark."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "SOURCE_PMT_HB_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "ID of the Hospital Billing payment transaction that the denial/remark was linked to."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "EXP_ALLOW_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Expected allowed amount on denial/remark/correspondence record."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "RESOLVE_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Resolution Category for Denial/Remark/Correspondence if it has been resolved.",
+      "entries": [
+        "Auto-Closed",
+        "No Outstanding Insurance Balance",
+        "Claim Resubmitted",
+        "PB Charges Voided",
+        "PB Charges Reposted",
+        "PB Payment Undistributed",
+        "PB Original Follow-up Completed",
+        "Variance Type Changed",
+        "Documents Sent"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "RESOLVE_COMMENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Comments entered with resolution category."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "BDC_RECEIVE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the Denial/Remark/Correspondence was received."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "BDC_COMPLETE_VOID_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the Denial/Remark/Correspondence record was completed or voided."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "BDC_REOPEN_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the Denial/Remark/Correspondence record was re-opened after being completed."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "PB_INVOICE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The professional invoice associated with the denial/correspondence record."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "GUARANTOR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the guarantor associated with the denial/correspondence record."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "DOC_INFO_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the document that is associated with the denial/correspondence record."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "WRITE_OFF_AMT_SYS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The write off amount calculated by the system."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "WRITE_OFF_AMT_CALC",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The write off amount entered by the user. If that is blank, this is the write off amount calculated by the system."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "DISCREPANCY_AMT_SYS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The difference between the expected allowed amount on the correspondence record and the actual allowed amount."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "CLM_EXT_VAL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Claim External Value ID of the Claim Print ID that was denied."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "BILLING_DRG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the billing DRG sent on the claim or coded on the account. The billing DRG is looked up first from the claim and then from the account. It can be manually overridden."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "PAYER_RECOMMENDED_DRG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user recorded payer recommended DRG from the payment that created the follow-up record."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "FINAL_RESOLUTION_DRG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user recorded final resolution DRG."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "EXPECTED_RECOVERY_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the amount of the expected payment as a result of resubmitting the claim associated with this denial."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "ACTUAL_RECOVERY_AMT_USER",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the amount actually paid as a result of resubmitting the claim associated with this denial. This can be overridden."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "WRITE_OFF_AMT_USER",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the amount of this denial that was written off."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "EXT_PAT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is used to record the patient name if the record of the patient is in an external system."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "EXT_PAT_MRN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is used to record the patient's medical record number if the record of the patient is in an external system."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "EXT_ADMIT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item is used to record the patient admit date if the record of the patient is in an external system."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "EXT_DISCHARGE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item is used to record the patient discharge date if the record of the patient is in an external system."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "EXT_CLAIM_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is used to record the claim number if the record of the patient is in an external system."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "EXT_PAT_BIRTH_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item is used to record the patient's date of birth if the record of the patient is in an external system."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "SOURCE_PMT_PB_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Professional Billing payment transaction which led to denial/correspondence record creation."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "DFLT_CLASS_USES_REMARK_CODE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the highest priority associated remark code for denials if this remark was used to get default classification items. Default classification items include priority, preventable, owning area, source area, and code category."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "DFLT_CLASS_USES_REMARK_CODE_ID_REMIT_CODE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of each remittance code."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "APPEAL_DEADLINE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item stores the initial appeal deadline at the moment the BDC is created."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "PAYER_DOWNGRADE_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of downgrade requested via this BDC when the primary payer tries to dispute the level of care of the HAR.",
+      "entries": [
+        "No Downgrade",
+        "Inpatient to Observation"
+      ]
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "PAYER_DOWNGRADE_OUTCOME_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether the primary payer's attempt to lower the level of care of the account via this BDC was appropriate and whether it was overturned or led to a downgrade. This item is null if no such attempt was made by the Primary Payer.",
+      "entries": [
+        "Appropriate & Downgraded",
+        "Inappropriate & Overturned",
+        "Inappropriate & Downgraded"
+      ]
+    }
+  ]
+}

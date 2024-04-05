@@ -1,0 +1,230 @@
+{
+  "name": "PR_EST_INFO_2",
+  "description": "General information about the price estimate. Split from PR_EST_INFO.",
+  "primaryKey": [
+    {
+      "columnName": "ESTIMATE_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ESTIMATE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the patient estimate record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "MATCHING_TREATMENT_ESTIMATE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This items stores the treatment estimate matched to the associated visit grouper estimate. It is only populated for dental estimates."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PREPAY_UPDATE_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The source of prepay amount for the estimate.",
+      "entries": [
+        "System Calculated",
+        "User Override",
+        "Copy From Visit",
+        "Template",
+        "Matched Treatment Estimate",
+        "Parent Estimate",
+        "Copy Amounts",
+        "Video Visit Maximum",
+        "Calculated by Visit Auto Pay"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PREPAY_UPDATE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user that last updated the prepay amount."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PREPAY_UPDATE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PREPAY_UPDATE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant at which the prepay amount was last updated."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "VAP_PROPOSED_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The proposed consent amount for visit auto pay that should be applied to the encounter."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "VAP_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The source of the visit auto pay proposed amount value. If the source is set to 1 - System Calculated - Visit, the visit auto pay amount is calculated based on configuration when the estimate is finalized. A user may override the visit auto pay amount at that point as well. If the source is set to 2 - User Override, a user specified an amount to use as the visit auto pay consent amount for the estimate's encounter.",
+      "entries": [
+        "System Calculated - Visit",
+        "User Override"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "VAP_PROPOSAL_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The last user who updated the visit auto pay proposal on the estimate."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "VAP_PROPOSAL_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "VAP_PROPOSAL_DTTM",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "The last instant the visit auto pay proposal associated with the estimate was updated, formatted with time zone attached."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "GROUP_NUMBER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The group number for the coverage associated with this estimate."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PAT_SEX_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient's legal sex.",
+      "entries": [
+        "Female",
+        "Male",
+        "Unknown",
+        "Nonbinary",
+        "X",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "PAT_BIRTH_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date of birth of the patient."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "HB_SP_DSCNT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total of all hospital billing self-pay discount amounts on an estimate."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "PB_SP_DSCNT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total of all professional billing self-pay discount amounts on an estimate."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "TOT_SP_DSCNT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total of all self-pay discount amounts on an estimate."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "HB_FIN_ASST_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total of all hospital billing financial assistance discount amounts on an estimate."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PB_FIN_ASST_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total of all professional billing financial assistance discount amounts on an estimate."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "TOT_FIN_ASST_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total of all financial assistance discount amounts on an estimate."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "MYCHART_REQ_LOC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The location for this estimate selected from MyChart."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "MYCHART_REQ_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The provider for this estimate selected from MyChart."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "NOTIF_CONTENT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores what notification content was available when they are sent after an estimate was finalized.",
+      "entries": [
+        "No notification sent",
+        "Notification sent with no hyperlinks",
+        "Notification sent with view estimate hyperlink only",
+        "Notification sent with prepay hyperlink only",
+        "Notification sent with both estimate and prepay hyperlinks",
+        "Notification sent with letter hyperlink",
+        "Notification sent with letter and prepay hyperlinks"
+      ]
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "IS_EXTERNAL_ADJUDICATION_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether the estimate was adjudicated by an external payer or not.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "PRIMARY_CVG_ORGANIZATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the organization record associated with the primary coverage on the estimate."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "PRIMARY_CVG_ORGANIZATION_ID_EXTERNAL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Organization's external name used as the display name on forms and user interfaces."
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "name": "CL_RMT_CLM_ENTITY",
+  "description": "Contains identifying information for entities (persons or organizations) from an electronic remittance payment. This information is sent in the NM1 segment of an ANSI 835 Health Care Claim Payment/Advice file. This information is stored in the remittance image record.",
+  "primaryKey": [
+    {
+      "columnName": "IMAGE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "IMAGE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "ID for the remittance image record containing the claim related entity information."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ID_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The entity identifier code for the claim related entity. This is a standard code that indicates what type of individual or organization is being identified.",
+      "entries": [
+        "Patient",
+        "Insured or subscriber",
+        "Corrected insured",
+        "Rendering provider",
+        "Transfer to",
+        "Payer",
+        "Other Insured"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ENT_QUAL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Code indicating whether this information is for a person or a non-person entity.",
+      "entries": [
+        "Person",
+        "Non-Person entity"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "LAST_NAME_ORG_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the individual last name or organization name."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "FIRST_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The individual first name."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "MIDDLE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The individual middle name or initial."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "NAME_SUFFIX",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The suffix to individual name."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "IDEN_CODE_QUALF_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The identification code qualifier. This is a standard code that indicates what type of ID is used to identify the specific individual or organization.",
+      "entries": [
+        "Social security number",
+        "Health insurance claim number",
+        "United states national individual identifer",
+        "Member identification number",
+        "Medicaid recipient identification number",
+        "Insured's changed unique identification number",
+        "Blue cross provider number",
+        "Blue shield provider number",
+        "Federal taxpayer's identification number",
+        "Medicaid provider number",
+        "Provider commercial number",
+        "State license number",
+        "Unique physician identification number",
+        "Health care financing administration national provider identifier",
+        "Blue cross blue shield association plan code",
+        "National association of insurance commissioners (NAIC) identification",
+        "Payor Identification",
+        "Pharmacy processor number",
+        "Health care financing administration national planID"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "IDEN_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID associated with the specific individual or organization."
+    }
+  ]
+}

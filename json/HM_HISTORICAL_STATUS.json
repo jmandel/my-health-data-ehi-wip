@@ -1,0 +1,704 @@
+{
+  "$meta": {
+    "schemas": {
+      "HM_HISTORICAL_STATUS": {
+        "name": "HM_HISTORICAL_STATUS",
+        "description": "Records Health Maintenance status over time.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+            "linksTo": "PATIENT"
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "HM_TOPIC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The Health Maintenance topic that applied to the patient at the time the snapshot was taken."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "HM_TOPIC_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the health maintenance topic."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "HM_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates the patient's due status for the Health Maintenance topic at the time the snapshot was taken.",
+            "entries": [
+              "Not Due",
+              "Due Soon",
+              "Due On",
+              "Overdue",
+              "Postponed",
+              "Completed",
+              "Addressed",
+              "Aged Out",
+              "Discontinued",
+              "Hidden"
+            ]
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "NEXT_DUE_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The patient's next due date for this Health Maintenance topic at the time the snapshot was taken."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "LAST_COMPLETED_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date this patient last had a completion for the Health Maintenance topic, as of the time the snapshot was taken."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "HM_HISTORICAL_STATUS",
+            "target": "PAT_REL_ADDR",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "HM_HISTORICAL_STATUS",
+            "target": "PATIENT",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HM_HISTORICAL_STATUS": [
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 1,
+      "HM_TOPIC_ID": 4,
+      "HM_TOPIC_ID_NAME": "Meningococcal B Vaccine",
+      "HM_STATUS_C_NAME": "Hidden",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 2,
+      "HM_TOPIC_ID": 12,
+      "HM_TOPIC_ID_NAME": "Japanese Encephalitis Vaccine",
+      "HM_STATUS_C_NAME": "Hidden",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 3,
+      "HM_TOPIC_ID": 13,
+      "HM_TOPIC_ID_NAME": "Cholera Vaccine",
+      "HM_STATUS_C_NAME": "Hidden",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 4,
+      "HM_TOPIC_ID": 15,
+      "HM_TOPIC_ID_NAME": "Rabies Vaccine",
+      "HM_STATUS_C_NAME": "Hidden",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 5,
+      "HM_TOPIC_ID": 16,
+      "HM_TOPIC_ID_NAME": "Yellow Fever Vaccine",
+      "HM_STATUS_C_NAME": "Hidden",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 6,
+      "HM_TOPIC_ID": 19,
+      "HM_TOPIC_ID_NAME": "Meningococcal Conjugate Vaccine",
+      "HM_STATUS_C_NAME": "Aged Out",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 7,
+      "HM_TOPIC_ID": 22,
+      "HM_TOPIC_ID_NAME": "Typhoid Vaccine",
+      "HM_STATUS_C_NAME": "Hidden",
+      "LAST_COMPLETED_DATE": "2019-02-05 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 8,
+      "HM_TOPIC_ID": 25,
+      "HM_TOPIC_ID_NAME": "Pneumococcal Vaccines 0-64 yo",
+      "HM_STATUS_C_NAME": "Aged Out",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 9,
+      "HM_TOPIC_ID": 80,
+      "HM_TOPIC_ID_NAME": "Influenza Vaccine",
+      "HM_STATUS_C_NAME": "Due On",
+      "NEXT_DUE_DATE": "2020-09-01 00:00:00",
+      "LAST_COMPLETED_DATE": "2019-11-13 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 10,
+      "HM_TOPIC_ID": 2100000013,
+      "HM_TOPIC_ID_NAME": "HIB Vaccine",
+      "HM_STATUS_C_NAME": "Aged Out",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 11,
+      "HM_TOPIC_ID": 2100000014,
+      "HM_TOPIC_ID_NAME": "Hepatitis B Vaccine",
+      "HM_STATUS_C_NAME": "Aged Out",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 12,
+      "HM_TOPIC_ID": 2100000015,
+      "HM_TOPIC_ID_NAME": "IPV Vaccine",
+      "HM_STATUS_C_NAME": "Aged Out",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 13,
+      "HM_TOPIC_ID": 2100000033,
+      "HM_TOPIC_ID_NAME": "Hepatitis A Vaccine",
+      "HM_STATUS_C_NAME": "Aged Out",
+      "LAST_COMPLETED_DATE": "2019-02-05 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 14,
+      "HM_TOPIC_ID": 2100000111,
+      "HM_TOPIC_ID_NAME": "HPV Vaccine (F:9-26YO,M: 9-22)",
+      "HM_STATUS_C_NAME": "Aged Out",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 15,
+      "HM_TOPIC_ID": 2100000114,
+      "HM_TOPIC_ID_NAME": "Tetanus/Pertussis Vaccine Teen/Adult",
+      "HM_STATUS_C_NAME": "Not Due",
+      "NEXT_DUE_DATE": "2029-02-05 00:00:00",
+      "LAST_COMPLETED_DATE": "2019-02-05 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 16,
+      "HM_TOPIC_ID": 50,
+      "HM_TOPIC_ID_NAME": "Annual Wellness Visit",
+      "HM_STATUS_C_NAME": "Overdue",
+      "NEXT_DUE_DATE": "2019-08-09 00:00:00",
+      "LAST_COMPLETED_DATE": "2018-08-09 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 17,
+      "HM_TOPIC_ID": 80,
+      "HM_TOPIC_ID_NAME": "Influenza Vaccine",
+      "HM_STATUS_C_NAME": "Overdue",
+      "NEXT_DUE_DATE": "2020-09-01 00:00:00",
+      "LAST_COMPLETED_DATE": "2019-11-13 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 18,
+      "HM_TOPIC_ID": 66,
+      "HM_TOPIC_ID_NAME": "COVID-19 Vaccine",
+      "HM_STATUS_C_NAME": "Overdue",
+      "NEXT_DUE_DATE": "1998-10-26 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 19,
+      "HM_TOPIC_ID": 66,
+      "HM_TOPIC_ID_NAME": "COVID-19 Vaccine",
+      "HM_STATUS_C_NAME": "Completed",
+      "LAST_COMPLETED_DATE": "2021-05-16 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 20,
+      "HM_TOPIC_ID": 80,
+      "HM_TOPIC_ID_NAME": "Influenza Vaccine",
+      "HM_STATUS_C_NAME": "Not Due",
+      "NEXT_DUE_DATE": "2021-09-01 00:00:00",
+      "LAST_COMPLETED_DATE": "2019-11-13 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 21,
+      "HM_TOPIC_ID": 80,
+      "HM_TOPIC_ID_NAME": "Influenza Vaccine",
+      "HM_STATUS_C_NAME": "Due On",
+      "NEXT_DUE_DATE": "2021-09-01 00:00:00",
+      "LAST_COMPLETED_DATE": "2019-11-13 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 22,
+      "HM_TOPIC_ID": 80,
+      "HM_TOPIC_ID_NAME": "Influenza Vaccine",
+      "HM_STATUS_C_NAME": "Overdue",
+      "NEXT_DUE_DATE": "2021-09-01 00:00:00",
+      "LAST_COMPLETED_DATE": "2019-11-13 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 23,
+      "HM_TOPIC_ID": 64,
+      "HM_TOPIC_ID_NAME": "Lab-Cholesterol Screening",
+      "HM_STATUS_C_NAME": "Not Due",
+      "NEXT_DUE_DATE": "2023-08-09 00:00:00",
+      "LAST_COMPLETED_DATE": "2018-08-09 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 24,
+      "HM_TOPIC_ID": 66,
+      "HM_TOPIC_ID_NAME": "COVID-19 Vaccine",
+      "HM_STATUS_C_NAME": "Overdue",
+      "NEXT_DUE_DATE": "2021-11-16 00:00:00",
+      "LAST_COMPLETED_DATE": "2021-05-16 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 25,
+      "HM_TOPIC_ID": 66,
+      "HM_TOPIC_ID_NAME": "COVID-19 Vaccine",
+      "HM_STATUS_C_NAME": "Overdue",
+      "NEXT_DUE_DATE": "1987-10-26 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 26,
+      "HM_TOPIC_ID": 66,
+      "HM_TOPIC_ID_NAME": "COVID-19 Vaccine",
+      "HM_STATUS_C_NAME": "Completed",
+      "LAST_COMPLETED_DATE": "2021-12-03 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 27,
+      "HM_TOPIC_ID": 80,
+      "HM_TOPIC_ID_NAME": "Influenza Vaccine",
+      "HM_STATUS_C_NAME": "Completed",
+      "LAST_COMPLETED_DATE": "2021-10-24 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 28,
+      "HM_TOPIC_ID": 14,
+      "HM_TOPIC_ID_NAME": "Zoster (Shingles) Vaccine 50+",
+      "HM_STATUS_C_NAME": "Not Due",
+      "NEXT_DUE_DATE": "2032-10-26 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 29,
+      "HM_TOPIC_ID": 80,
+      "HM_TOPIC_ID_NAME": "Influenza Vaccine",
+      "HM_STATUS_C_NAME": "Not Due",
+      "NEXT_DUE_DATE": "2022-09-01 00:00:00",
+      "LAST_COMPLETED_DATE": "2021-10-24 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 30,
+      "HM_TOPIC_ID": 2100000014,
+      "HM_TOPIC_ID_NAME": "Hepatitis B Vaccine",
+      "HM_STATUS_C_NAME": "Overdue",
+      "NEXT_DUE_DATE": "1982-10-26 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 31,
+      "HM_TOPIC_ID": 50,
+      "HM_TOPIC_ID_NAME": "Annual Wellness Visit",
+      "HM_STATUS_C_NAME": "Not Due",
+      "NEXT_DUE_DATE": "2023-08-29 00:00:00",
+      "LAST_COMPLETED_DATE": "2022-08-29 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 32,
+      "HM_TOPIC_ID": 80,
+      "HM_TOPIC_ID_NAME": "Influenza Vaccine",
+      "HM_STATUS_C_NAME": "Due On",
+      "NEXT_DUE_DATE": "2022-09-01 00:00:00",
+      "LAST_COMPLETED_DATE": "2021-10-24 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 33,
+      "HM_TOPIC_ID": 66,
+      "HM_TOPIC_ID_NAME": "COVID-19 Vaccine",
+      "HM_STATUS_C_NAME": "Overdue",
+      "NEXT_DUE_DATE": "2022-01-28 00:00:00",
+      "LAST_COMPLETED_DATE": "2021-12-03 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 34,
+      "HM_TOPIC_ID": 66,
+      "HM_TOPIC_ID_NAME": "COVID-19 Vaccine",
+      "HM_STATUS_C_NAME": "Completed",
+      "LAST_COMPLETED_DATE": "2022-09-25 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 35,
+      "HM_TOPIC_ID": 9,
+      "HM_TOPIC_ID_NAME": "Lab-Diabetes Screening",
+      "HM_STATUS_C_NAME": "Not Due",
+      "NEXT_DUE_DATE": "2023-08-29 00:00:00",
+      "LAST_COMPLETED_DATE": "2022-08-29 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 36,
+      "HM_TOPIC_ID": 92,
+      "HM_TOPIC_ID_NAME": "Orthopoxvirus Immunization",
+      "HM_STATUS_C_NAME": "Hidden",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 37,
+      "HM_TOPIC_ID": 80,
+      "HM_TOPIC_ID_NAME": "Influenza Vaccine",
+      "HM_STATUS_C_NAME": "Overdue",
+      "NEXT_DUE_DATE": "2022-09-01 00:00:00",
+      "LAST_COMPLETED_DATE": "2021-10-24 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 38,
+      "HM_TOPIC_ID": 80,
+      "HM_TOPIC_ID_NAME": "Influenza Vaccine",
+      "HM_STATUS_C_NAME": "Completed",
+      "LAST_COMPLETED_DATE": "2022-10-26 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 39,
+      "HM_TOPIC_ID": 80,
+      "HM_TOPIC_ID_NAME": "Influenza Vaccine",
+      "HM_STATUS_C_NAME": "Not Due",
+      "NEXT_DUE_DATE": "2023-09-01 00:00:00",
+      "LAST_COMPLETED_DATE": "2022-10-26 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 40,
+      "HM_TOPIC_ID": 50,
+      "HM_TOPIC_ID_NAME": "Annual Wellness Visit",
+      "HM_STATUS_C_NAME": "Due Soon",
+      "NEXT_DUE_DATE": "2023-08-29 00:00:00",
+      "LAST_COMPLETED_DATE": "2022-08-29 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 41,
+      "HM_TOPIC_ID": 46,
+      "HM_TOPIC_ID_NAME": "Lab-Hepatitis C Screening",
+      "HM_STATUS_C_NAME": "Overdue",
+      "NEXT_DUE_DATE": "1982-10-26 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 42,
+      "HM_TOPIC_ID": 64,
+      "HM_TOPIC_ID_NAME": "Lab-Cholesterol Screening",
+      "HM_STATUS_C_NAME": "Due On",
+      "NEXT_DUE_DATE": "2023-08-09 00:00:00",
+      "LAST_COMPLETED_DATE": "2018-08-09 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 43,
+      "HM_TOPIC_ID": 64,
+      "HM_TOPIC_ID_NAME": "Lab-Cholesterol Screening",
+      "HM_STATUS_C_NAME": "Overdue",
+      "NEXT_DUE_DATE": "2023-08-09 00:00:00",
+      "LAST_COMPLETED_DATE": "2018-08-09 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 44,
+      "HM_TOPIC_ID": 9,
+      "HM_TOPIC_ID_NAME": "Lab-Diabetes Screening",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 45,
+      "HM_TOPIC_ID": 50,
+      "HM_TOPIC_ID_NAME": "Annual Wellness Visit",
+      "HM_STATUS_C_NAME": "Due On",
+      "NEXT_DUE_DATE": "2023-08-29 00:00:00",
+      "LAST_COMPLETED_DATE": "2022-08-29 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 46,
+      "HM_TOPIC_ID": 80,
+      "HM_TOPIC_ID_NAME": "Influenza Vaccine",
+      "HM_STATUS_C_NAME": "Due On",
+      "NEXT_DUE_DATE": "2023-09-01 00:00:00",
+      "LAST_COMPLETED_DATE": "2022-10-26 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 47,
+      "HM_TOPIC_ID": 9,
+      "HM_TOPIC_ID_NAME": "Lab-Diabetes Screening",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 48,
+      "HM_TOPIC_ID": 80,
+      "HM_TOPIC_ID_NAME": "Influenza Vaccine",
+      "HM_STATUS_C_NAME": "Completed",
+      "LAST_COMPLETED_DATE": "2023-09-28 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 49,
+      "HM_TOPIC_ID": 50,
+      "HM_TOPIC_ID_NAME": "Annual Wellness Visit",
+      "HM_STATUS_C_NAME": "Not Due",
+      "NEXT_DUE_DATE": "2024-09-28 00:00:00",
+      "LAST_COMPLETED_DATE": "2023-09-28 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 50,
+      "HM_TOPIC_ID": 64,
+      "HM_TOPIC_ID_NAME": "Lab-Cholesterol Screening",
+      "HM_STATUS_C_NAME": "Not Due",
+      "NEXT_DUE_DATE": "2028-09-28 00:00:00",
+      "LAST_COMPLETED_DATE": "2023-09-28 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 51,
+      "HM_TOPIC_ID": 46,
+      "HM_TOPIC_ID_NAME": "Lab-Hepatitis C Screening",
+      "HM_STATUS_C_NAME": "Completed",
+      "LAST_COMPLETED_DATE": "2023-09-28 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 52,
+      "HM_TOPIC_ID": 66,
+      "HM_TOPIC_ID_NAME": "COVID-19 Vaccine",
+      "HM_STATUS_C_NAME": "Overdue",
+      "NEXT_DUE_DATE": "2023-09-01 00:00:00",
+      "LAST_COMPLETED_DATE": "2022-09-25 00:00:00",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 53,
+      "HM_TOPIC_ID": 95,
+      "HM_TOPIC_ID_NAME": "RSV < 20 Months",
+      "HM_STATUS_C_NAME": "Aged Out",
+      "$meta": {
+        "type": "HM_HISTORICAL_STATUS"
+      }
+    }
+  ]
+}

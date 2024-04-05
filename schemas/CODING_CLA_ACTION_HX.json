@@ -1,0 +1,130 @@
+{
+  "name": "CODING_CLA_ACTION_HX",
+  "description": "The table contains information about actions taken by users on a query (coding, Clinical Documentation Improvement, or missing doc).",
+  "primaryKey": [
+    {
+      "columnName": "NOTE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the note record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ACTION_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Displays the IDs of all users who have taken action on the query."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ACTION_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ACTION_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item stores the corresponding time when users take action on the query."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ACTION_LOCAL_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "This item stores the corresponding local time when users take action on the query."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CCR_STATUS_AUDIT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Displays the action taken on the query.",
+      "entries": [
+        "Query Pending",
+        "Query Sent",
+        "Response Received",
+        "Completed",
+        "Deleted",
+        "Reassigned",
+        "Deactivated"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ACTION_ACCT_LOC_DTTM",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "The date and time of the user action in the local time zone of the location of the hospital account associated with the query.   This is similar to item HNO 41082, which stores the local time zone of the location of the encounter associated with the query. Both items will store identical data except where the time zone of the encounter's location differs from the time zone of the hospital account's location. If the hospital account is combined with an account in another location, this item will be updated to the time zone of the location of the target hospital account."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ACTION_END_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "To store the instant when the current action has ended and the next action has started."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ACTION_RECIP_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "To store the IDs of the users in the recipient list when an action was taken place by either a CDIS/Coder or a provider. In the multiple recipient case, there will be one recipient per line."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "ACTION_RECIP_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "CCR_USR_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "To store the action a user takes on a query. A query's status of completed meaning the query has been marked with an outcome of being done.",
+      "entries": [
+        "Pending",
+        "Initial Sent",
+        "Response Received",
+        "Completed",
+        "Deleted",
+        "Edited",
+        "Deactivated",
+        "Replied"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "CCR_USR_SUBACT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This stores the list of sub-actions that better explains the value in I HNO 41087.",
+      "entries": [
+        "No",
+        "Reassignment"
+      ]
+    }
+  ]
+}

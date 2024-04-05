@@ -1,0 +1,88 @@
+{
+  "$meta": {
+    "schemas": {
+      "SPEC_SOURCE_SNOMED": {
+        "name": "SPEC_SOURCE_SNOMED",
+        "description": "This table contains the SNOMED codes for the specimen type.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the order record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "SOURCE_SNOMED_CT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "SNOMED code associated w/ the specimen source"
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "SPEC_SOURCE_SNOMED",
+            "target": "ORDER_PARENT_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "SPEC_SOURCE_SNOMED",
+            "target": "ORDER_PROC",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "SPEC_SOURCE_SNOMED",
+            "target": "ORD_PRFLST_TRK",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "SPEC_SOURCE_SNOMED": [
+    {
+      "ORDER_ID": 439060614,
+      "LINE": 1,
+      "SOURCE_SNOMED_CT": "260540009",
+      "$meta": {
+        "type": "SPEC_SOURCE_SNOMED"
+      }
+    }
+  ]
+}

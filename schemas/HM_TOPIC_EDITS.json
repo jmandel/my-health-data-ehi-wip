@@ -1,0 +1,87 @@
+{
+  "name": "HM_TOPIC_EDITS",
+  "description": "The HM_TOPIC_EDITS table includes all Health Maintenance topics that have overridden information specific to this patient. For example, a user may specify a frequency to use for a given patient instead of the defaults coming from the Health Maintenance topic or Health Maintenance plan records.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "HM_EDIT_TOPIC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains all of the Health Maintenance Topics that this patient has edits for. Any edits to a topic for a patient will supersede the automatic defaults from the HMT or HMP record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "HM_EDIT_TOPIC_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the health maintenance topic."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "HM_EDIT_FREQ",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the edited frequency for a given Health Maintenance topic for this patient. Any edits to a topic for a patient will supersede the automatic defaults from the HMT or HMP record."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "HM_EDIT_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the reasons for each edited frequency of an HM Topic for this patient."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "HM_EDIT_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains comments for each edited frequency of an HM Topic for this patient."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "HM_EDIT_RECOM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the Recommendation record ID that is driving the associated Health Maintenance Topic patient specific frequency."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "HM_EDIT_DUE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item contains the specified due date of the associated Health Maintenance Topic. This due date will supersede any due date calculated from the patient specific frequency."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "HM_EDIT_MSG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the In Basket message record ID that is driving the associated Health Maintenance topic patient specific frequency."
+    }
+  ]
+}

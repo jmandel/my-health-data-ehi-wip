@@ -1,0 +1,73 @@
+{
+  "name": "HSB_MED_SIGN_AUDIT",
+  "description": "Contains the list of all actions taken during the medication sign off process.",
+  "primaryKey": [
+    {
+      "columnName": "SUMMARY_BLOCK_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SUMMARY_BLOCK_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the Episode."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "AUD_MED_RVWR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the ID of the user who took the corresponding action (like signing off on the report) during the medication review process."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "AUD_MED_RVWR_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "AUD_MED_RVW_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the action (such as updates sent or sign off received) that took place.",
+      "entries": [
+        "Message Sent",
+        "Sign Off Received",
+        "Reviewed - Updates Needed",
+        "Retracted - Under Review",
+        "Sent Updates",
+        "No Signoff Needed"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "AUD_ACTION_INS_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Contains the instant when this action occurred during the medication review process."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "AUD_MED_RVW_DEV_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the device used when the user signed off on the medications."
+    }
+  ]
+}

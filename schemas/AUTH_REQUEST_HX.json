@@ -1,0 +1,502 @@
+{
+  "name": "AUTH_REQUEST_HX",
+  "description": "This table contains a snapshot of information about an individual authorization request as of a point in time.",
+  "primaryKey": [
+    {
+      "columnName": "AUTH_REQUEST_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "AUTH_REQUEST_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the authorization request."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "AUTH_REQUEST_CNCT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The contact type category ID for the authorization request.",
+      "entries": [
+        "Published",
+        "Draft",
+        "Historic",
+        "Resolved Chart Sync Conflict",
+        "Ignored Chart Sync Remote Draft"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "UM_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status category ID for the authorization request.",
+      "entries": [
+        "Authorized",
+        "Partially Authorized",
+        "Pending Review",
+        "Withdrawn",
+        "Denied",
+        "Dismissed",
+        "No Authorization Required",
+        "Closed",
+        "Pending External Review"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CONTACT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time (UTC) of the authorization request contact. If this contact is a draft, this column holds the date and time that this draft contact was created. If this contact is published, this column holds the date and time that it was published."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "HISTORY_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user record of the user who created this contact. This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "HISTORY_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "AUTH_REQUEST_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The request type category ID for the authorization request.",
+      "entries": [
+        "Proactive",
+        "Preservice",
+        "Concurrent",
+        "Retro",
+        "Externally Tracked",
+        "Appeal"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "INSTANT_OF_ENTRY_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time (UTC) of when the authorization request contact was edited."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "FINALIZED_STATUS_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time (UTC) the finalized status was made on the authorizations in this request."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "SUBMISSION_OVRIDE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time (UTC) of the user-override value for the authorization request submission."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "SUBMISSION_RPT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The reported submission date and time (UTC) of the authorization request. If an override value is set, the override value is shown. Otherwise, this is the system-calculated value."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "DECISION_OVRIDE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time (UTC) of the user-override value for the authorization request decision."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "DECISION_RPT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The reported decision date and time (UTC) of the authorization request. If an override value is set, the override value is shown. Otherwise, this is the system-calculated value."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "ADDL_INFO_REQ_SYS_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time (UTC) of the system-calculated value of the additional information request."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "ADDL_INFO_REQ_OVRIDE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time (UTC) of the user-override value of the additional information request."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "ADDL_INFO_RCPT_SYS_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The system-calculated date and time (UTC) of the additional information receipt."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "ADDL_INFO_RCPT_OVRIDE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The user-override date and time (UTC) of the additional information receipt instant."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PEER_TO_PEER_OFFER_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time (UTC) that the peer-to-peer review was offered."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "PEER_TO_PEER_COMPLETE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time (UTC) that the peer-to-peer review was completed."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "PRIORITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the priority of the authorization request.",
+      "entries": [
+        "Routine",
+        "Urgent",
+        "Emergency",
+        "Elective",
+        "Two Week Wait",
+        "See Details"
+      ]
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "RFL_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the type of the authorization request."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "SERVICE_REQUESTER_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the requester of the authorization request.",
+      "entries": [
+        "Contracted Provider",
+        "Non-Contracted Provider",
+        "Enrollee",
+        "Enrollee's Representative"
+      ]
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "MEM_RESP_GUID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A unique key representing the authorized representative associated with the authorization request. This can be used to join to table MEMBER_RESP_PERSON on MEM_RESP_GUID to report on demographic information associated with the authorized representative."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "REF_BY_IS_CONTRACTED_SYS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The system-calculated value of whether the referred by entity is contracted or not.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "REF_BY_IS_CONTRACTED_OVRIDE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user-override value of whether the referred by entity is contracted or not."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "REF_TO_IS_CONTRACTED_SYS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The system-calculated value of whether the referred to entity is contracted or not."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "REF_TO_IS_CONTRACTED_OVRIDE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user-override value of whether the referred to entity is contracted or not."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "MED_DIRECTOR_REVIEW_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether medical director review was performed on this authorization request."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "MED_DIRECTOR_REVIEW_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who performed medical director review."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "MED_DIRECTOR_REVIEW_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "DENIED_FOR_LACK_OF_MED_NEC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether the authorization request was denied for lack of medical necessity."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "PEER_TO_PEER_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the status of the peer-to-peer review offer.",
+      "entries": [
+        "Offered",
+        "Offered - Didn't Occur",
+        "Not Offered",
+        "Completed",
+        "N/A"
+      ]
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "ADDL_INFO_EXTENSION_TAKEN_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether an additional information request extension was taken for the authorization request."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "MANUAL_EXTENSION_DAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of manual extension days taken for the authorization request."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "SUBMISSION_SYS_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time (UTC) of the system-calculated value for the authorization request submission instant, based on associated communications with a purpose of Request for Authorization."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "DECISN_UM_STATUS_CHANGE_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The change source category ID that resulted in the decision status being set for the authorization request.",
+      "entries": [
+        "Manual Update",
+        "Auto Status Assignment",
+        "Imported",
+        "278N",
+        "278R",
+        "INTERNAL PRIOR AUTH",
+        "Auto Status Assignment Pre-Check"
+      ]
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "HISTORY_EDIT_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Where the contact (authorization request edit) was created from.",
+      "entries": [
+        "End User Workflow",
+        "Import",
+        "Post-Processing",
+        "Chart Sync",
+        "UM Submission",
+        "Configuration Update Utility",
+        "Workqueue",
+        "Networked Record Audit Batch",
+        "Turnaround Time Refresh",
+        "Automatic Coverage Update",
+        "Tapestry Link Submission",
+        "UM Response",
+        "Background Queue"
+      ]
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "ADDL_INFO_REQ_EXT_TKN_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time (UTC) of when additional information request extension was taken for the authorization request."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "ADDL_INFO_REQ_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who made the additional info request."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "ADDL_INFO_REQ_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "MED_DIRECTOR_REVIEW_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the medical director review note."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "MAN_EXT_DAYS_TKN_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time (local) of when manual extension days were taken."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "MAN_EXT_DAYS_TKN_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time (UTC) of when manual extension days were taken."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "MAN_EXT_DAYS_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who has taken the manual extension days."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "MAN_EXT_DAYS_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "EXPEDITED_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The expedite status of the authorization request.",
+      "entries": [
+        "Standard",
+        "Expedited"
+      ]
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "RQST_TO_EXPEDITE_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant of the request to expedite communication in local time zone."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "RQST_TO_EXPEDITE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant of the request to expedite communication in UTC time zone."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "RQST_TO_EXPEDITE_COMM_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the communication record that represents the request to expedite."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "PRIORITY_UPGRADE_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant the priority of a standard authorized request changed to a priority that is part of the expedited/urgent priorities list in the system setting in local time zone."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "PRIORITY_UPGRADE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant the priority of a standard authorized request changed to a priority that is part of the expedited/urgent priorities list in the system setting in UTC time zone."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "PRIORITY_UPGRADE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who changed the priority of a standard authorization request to a priority part of the expedited/urgent priorities list in the system settting."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "PRIORITY_UPGRADE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "PRIORITY_DOWNGRADE_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant the priority of an expedited authorization request changed to a priority not part of the expedited/urgent priorities list in the system setting in local time zone."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "PRIORITY_DOWNGRADE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant the priority of an expedited authorization request changed to a priority not part of the expedited/urgent priorities list in the system setting in UTC time zone."
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "PRIORITY_DOWNGRADE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who changed the priority of an expedited authorization request to a priority not part of the expedited/urgent priorities list in the system settting."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "PRIORITY_DOWNGRADE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    }
+  ]
+}

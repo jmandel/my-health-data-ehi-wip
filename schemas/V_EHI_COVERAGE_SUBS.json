@@ -1,0 +1,509 @@
+{
+  "name": "V_EHI_COVERAGE_SUBS",
+  "description": "This view contains information about a coverage's subscriber. Used for Electronic Health Information (EHI) export.",
+  "primaryKey": [
+    {
+      "columnName": "COVERAGE_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID assigned to the coverage record. This ID may be encrypted if you have elected to use enterprise reporting�s encryption utility."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "SUBSCRIBER_PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the subscriber is the same person as a patient, this item contains the patient ID."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SUBSCRIBER_CONFDENTIAL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the confidential name of the associated patient, if it exists. The name is used to determine the confidential nature of the subscriber."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SUBSCRIBER_NUMBER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The identification number assigned to the subscriber for the coverage. When the subscriber is also a member on the coverage, this is the same as the subscriber�s member number. This column may be hidden if you have elected to use enterprise reporting�s security utility."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SUBSCRIBER_ID_FROM_SOURCE_FILE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Subscriber ID received on the source file for the subscriber on the coverage."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SUBSCRIBER_MEDICARE_NUMBER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the subscriber's Medicare number, if applicable. This will be a Medicare Beneficiary Number (MBI) if available, or a Health Insurance Claim Number (HICN) if not."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "SUBSCRIBER_MEDICARE_HIC_NUMBER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the subscriber Health Insurance Claim Number (HICN) once it has been replaced by the Medicare Beneficiary Number (MBI)."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "SUBSCRIBER_SEX_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The sex of the subscriber on the coverage.",
+      "entries": [
+        "Female",
+        "Male",
+        "Unknown",
+        "Nonbinary",
+        "X",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "SUBSCRIBER_GENDER_IDENTITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the category ID of the subscriber's gender identity as stored on the coverage. This value may not be the same as the gender identity stored on the subscriber's patient record.",
+      "entries": [
+        "Female",
+        "Male",
+        "Transgender Female",
+        "Transgender Male",
+        "Other",
+        "Choose not to disclose",
+        "Nonbinary",
+        "Genderqueer"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "SUBSCRIBER_RACE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The race of the subscriber."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "SUBSCRIBER_PREFERRED_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the preferred name of the subscriber as present on the coverage record at the time of coverage creation. This value may not be the same as the preferred name stored on the subscriber's patient record."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "SUBSCRIBER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the subscriber for the coverage. This column may be hidden if you have elected to use enterprise reporting�s security utility."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "SUBSCRIBER_EMPLOYER_COUNTY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The county of the subscriber's employer's address on a coverage"
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "SUBSCRIBER_REL_TO_GUAR_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the subscriber's relationship to the guarantor.",
+      "entries": [
+        "Aunt",
+        "Brother",
+        "Daughter",
+        "Father",
+        "Friend",
+        "Granddaughter",
+        "Grandfather",
+        "Grandmother",
+        "Grandson",
+        "Legal Guardian",
+        "Mother",
+        "Other",
+        "Step Father",
+        "Sister",
+        "Self",
+        "Step Mother",
+        "Son",
+        "Spouse",
+        "Uncle",
+        "Employer",
+        "Unverified Proxy",
+        "Transplant Recipient",
+        "Visit Contact"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "SUBSCRIBER_EMPLOYER_HOUSE_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The house number of the subscriber's employer's address on a coverage"
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "SUBSCRIBER_EMPLOYER_DISTRICT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The district of the subscriber's employer's address on a coverage"
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "SUBSCRIBER_EMPLOYER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the unique ID of the employer of the patient subscribing to the coverage if EAF 6410 is set to 1. This is free text if EAF 6410 is set to 2."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "SUBSCRIBER_EMPLOYER_ID_EMPLOYER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the employer."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "SUBSCRIBER_EMPLOYER_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A free text comment that can be entered when the value that is considered to be \"Other\" is selected as the employer. This option is available only if your organization has chosen to link the subscriber employer to the Employer (EEP) master file in the Facility Profile."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "SUBSCRIBER_EMPLOYER_CITY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The City field of the subscriber's employer's address on the coverage."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "SUBSCRIBER_EMPLOYER_STATE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The state of the subscriber's employer's address on a coverage."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "SUBSCRIBER_EMPLOYER_ZIP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The zip code of the subscriber's employer's address on a coverage"
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "SUBSCRIBER_EMPLOYMENT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The employment status of the subscriber's employer on a coverage (i.e. full, part, etc.).",
+      "entries": [
+        "Full Time",
+        "Part Time",
+        "Not Employed",
+        "Self Employed",
+        "Retired",
+        "On Active Military Duty",
+        "Student - Full Time",
+        "Student - Part Time",
+        "Unknown"
+      ]
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "SUBSCRIBER_EMPLOYER_COUNTRY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the country of the subscriber's employer."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "SUBSCRIBER_EMPLOYER_PHONE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The phone number of the subscriber's employer on a coverage"
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "SUBSCRIBER_EMPLOYER_FAX",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The fax number of the coverage subscriber's employer."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "SUBSCRIBER_EMPLOYEE_ID_NUMBER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The coverage subscriber's employee ID number."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "SUBSCRIBER_ADDR_IS_UNDELIV_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if subscriber home address is undeliverable.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "SUBSCRIBER_HOUSE_NUMBER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Subscriber House Number for non-US locales"
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "SUBSCRIBER_CITY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The city of the mailing address for the subscriber on the coverage."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "SUBSCRIBER_STATE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The state of the mailing address for the subscriber on the coverage."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "SUBSCRIBER_SUBDIVISION_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Capture the subscriber's country subdivision code."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "SUBSCRIBER_ZIP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The postal code of the mailing address for the subscriber on the coverage."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "SUBSCRIBER_COUNTRY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The country of the mailing address for the subscriber on the coverage."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "SUBSCRIBER_COUNTY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The county of the mailing address for the subscriber on the coverage."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "SUBSCRIBER_IS_US_CITIZEN_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the subscriber is a U.S. citizen.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "SUBSCRIBER_DISTRICT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The district of the mailing address for the subscriber on the coverage."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "SUBSCRIBER_PHONE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The home phone number for the subscriber on the coverage."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "SUBSCRIBER_FAX",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The fax number for the subscriber on the coverage."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "SUBSCRIBER_WORK_PHONE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The work phone number for the subscriber on the coverage."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "SUBSCRIBER_BIRTH_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of birth for the subscriber on the coverage."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "SUBSCRIBER_MARITAL_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The marital status of the subscriber.",
+      "entries": [
+        "Single",
+        "Married",
+        "Divorced"
+      ]
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "SUBSCRIBER_SSN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The SSN number of the subscriber on a coverage"
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "SUBSCRIBER_OCCUPATION",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The coverage subscriber's occupation."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "SUBSCRIBER_RETIRE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the coverage subscriber retired."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "SUBSCRIBER_SPOUSE_RETIRE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the coverage subscriber's spouse retired."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "SUBSCRIBER_ADDRESS_IS_VALID_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID which indicates whether the subscriber address has been validated.",
+      "entries": [
+        "Not Validated",
+        "Valid",
+        "Invalid",
+        "Could not validate (System Error)"
+      ]
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "SUBSCRIBER_ADDR_VALID_MTHD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID which indicates the validation method by which the subscriber address was validated.",
+      "entries": [
+        "Manually by end user",
+        "System-validated"
+      ]
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "SUBSCRIBER_ADDR_VALID_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The UTC date and time when the subscriber address was last validated."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "SUBSCRIBER_BNK_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Banking details of the subscriber."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "SUBSCRIBER_ALT_BILL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The alternate billing name for the coverage subscriber."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "SUBSCRIBER_ALT_BIRTH_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The alternate subscriber date of birth override for use with interfaces."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "SUBSCRIBER_ALT_SEX_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The subscriber's sex as known to the payor."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "SUBSCRIBER_CHAMPUS_STATUS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The CHAMPUS/Tricare subscriber status."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "SUBSCRIBER_EMPLOYMENT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which the subscriber began working for the employer associated with the employer group."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "SUBSCRIBER_APPLICATION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which the subscriber applied for coverage."
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "MEDICARE_SUBSCRIBER_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the subscriber that will be used for supplemental claims."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "RQG_REL_TO_SUBSCRIBER_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient to subscriber relationship category number for this coverage.",
+      "entries": [
+        "Self",
+        "Spouse",
+        "Child",
+        "Employee",
+        "Unknown"
+      ]
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "SUBSCRIBER_HAS_ICHRA_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicator for whether the subscriber is enrolled in an individual coverage HRA."
+    }
+  ]
+}

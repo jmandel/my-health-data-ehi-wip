@@ -1,0 +1,177 @@
+{
+  "name": "RX_RXW",
+  "description": "This table contains no add single response data for ambulatory pharmacy work requests. \n\n\n\n\n\nEach work request is associated with a set of fill requests. \n\n\n\n\n\nA fill request is a contact on the order record which contains information about the specific dispense of the attached order. The patient, the order, and the order DAT is stored on the order record of the work request, which also links the work request to its associated fill request. This value lives in table RX_RXW_ORDER_INFO. \n\n\n\n\n\nEach work request is also linked to a master patient, for which the work request was originally created. Pickup priority and contact information is also stored in this record to assist in prescription filling and dispensing.",
+  "primaryKey": [
+    {
+      "columnName": "RECORD_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Work request ID. This is the primary key for the work request table."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "MASTER_PATIENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the main patient in a work request. Additional patients attached to the work request are reported in the RXW_ORDER_INFO table in association with the specific fill request for that patient. This column can be linked to the PATIENT table in order to report on any patient noadd information."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PLANNED_PICKUP_INST",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time the patient plans to pick up the fills associated with this work request. Used in conjunction with the fill priority to determine the overall priority of the work request for filling."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "WAITING_SINCE_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant when the work request was marked as waiting."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "DELIVERY_METHOD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The prescription delivery method for the work request. Pickup and mail order are two examples of this.",
+      "entries": [
+        "Pickup",
+        "Mail",
+        "Courier",
+        "Room Delivery"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "DELIVERY_HOUSE_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The house number of the prescription delivery address."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "DELIVERY_CITY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The city of the prescription delivery address."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DELIVERY_STATE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The state of the prescription delivery address."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "DELIVERY_ZIP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ZIP code of the prescription delivery address."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "DELIVERY_DIST_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The district of the prescription delivery address."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "DELIVERY_COUNTY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The county of the prescription delivery address."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "DELIVERY_COUNTRY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The country of the prescription delivery address."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "DELIVERY_ADDRTYP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of address from the patient that is used for the prescription delivery address on the work request. For example, the patient's home address will commonly be used as the ship to address.",
+      "entries": [
+        "Home Address",
+        "Temporary Address",
+        "Other Address"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "RX_PMT_GUARANTOR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If Professional Billing integration is enabled, this contains the guarantor account associated with the sale of merchandise products."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "DELIVERY_PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column contains the CSN of the patient encounter associated with a room delivery work request."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "DELIVERY_DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column contains the unit (DEP) record that represents the unit the patient occupied at the time of delivery of a room delivery work request."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "DELIVERY_ROOM_RECORD_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the ADT room (ROM) record that represents the room the patient occupied at the time of delivery of a room delivery work request."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "DELIVERY_EXAM_ROOM_NUMBER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The column contains the free-text room number that represents the exam room the patient occupied at the time of delivery of room delivery work request."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "DELIVERY_BED_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the ADT bed (BED) record that represents the physical bed the patient occupied at the time of delivery of a room delivery work request."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "DELIVERY_BED_ID_BED_LABEL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the bed."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "CREATION_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user that created the work request."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "CREATION_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    }
+  ]
+}

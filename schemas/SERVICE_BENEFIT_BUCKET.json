@@ -1,0 +1,86 @@
+{
+  "name": "SERVICE_BENEFIT_BUCKET",
+  "description": "This table stores benefit bucket information relevant to or caused by AP Claim service lines.\n\n\n\n\n\nTo link this table�s service line information back to a claim header, join this table to AP_CLAIM_PROC_IDS on the TX_ID column. If you need to report on claim service lines specific to Cost Sharing Reduction (CSR), join this table instead to AP_CLAIM_PROC_IDS_CSR on the TX_ID column.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the AP Claim procedure transaction."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "BENEFIT_BUCKET_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the unique identifier of the benefit bucket affected by this service."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "BENEFIT_BUCKET_ID_BUCKET_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the bucket."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "BENEFIT_BUCKET_MAX",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the maximum number of units allowed for this benefit bucket level."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "BENEFIT_BUCKET_USED",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the number of units used for this benefit bucket level."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "BENEFIT_BCKT_REMAIN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the number of units remaining for this benefit bucket level."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "BUCKET_LEVEL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the benefit bucket level used."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "BENEFIT_BUCKET_COMPUTED",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The original amount that the system computed to be accumulated to the bucket."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ROLL_PRD_STR",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The roll period that the benefit bucket accumulation used."
+    }
+  ]
+}

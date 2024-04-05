@@ -1,0 +1,139 @@
+{
+  "name": "TRG_INFO",
+  "description": "This table stores treatment day or pathway step information that is contact-independent, such as the treatment day/pathway step status, the reason for canceling or deferring the day/step, the ID of the treatment plan (TPL) record that contains this treatment day or the ID of the pathway (TPL) record that contains this step, etc.",
+  "primaryKey": [
+    {
+      "columnName": "REGIMEN_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "REGIMEN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The treatment day ID."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "REGIMEN_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the treatment day in this row."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "DEFER_DAY_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason for deferring the treatment day in this row."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CANCEL_DAY_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason for canceling the treatment day in this row."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "STATUS_COMMENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status change comments for the treatment day in this row."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "TRG_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the status of the treatment day.",
+      "entries": [
+        "New",
+        "Released",
+        "Discontinued"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "REC_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The record type associated with this record.",
+      "entries": [
+        "Treatment Day",
+        "Regimen",
+        "Section",
+        "SmartGroup",
+        "Phase",
+        "Dental Visit",
+        "BMT Mobilization",
+        "BMT GVHD",
+        "BMT Conditioning",
+        "BMT Infusion",
+        "Dental Pending Section",
+        "IEC Cell Manufacturing",
+        "IEC Bridging Therapy",
+        "IEC Post-Infusion Treatment",
+        "Orthodontic"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "SG_PATHWAY_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the pathway (TPL) containing the smart group in this record."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "GIVEN_EXTER_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the category value for marking a day as having been given externally to Epic.",
+      "entries": [
+        "Given Externally"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "REC_EVENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the ID of the event used to track reconciliation actions for this day"
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "NEEDS_REC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains whether or not the day needs reconciliation",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "IS_TREATMENT_DAY_DELETED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Virtual item that determines if a treatment day (TRG) has been deleted or not. A treatment day is considered deleted if it's associated with a deleted treatment plan (VI TPL 10120), it's associated with a deleted treatment cycle (I TPL 1020), it's deleted through a normal workflow (I TPL 5050), it's no longer associated with a treatment plan, or it was soft-deleted by system administrator (I TRG 14).  If it's a BMT treatment and at least one of the treatment plans associated with it is not deleted, the treatment is not deleted."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "IS_TRT_DAY_DEL_BY_PLAN_CONV_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Virtual item that determines if a treatment day (TRG) has been deleted by treatment plan conversion or not. A treatment day is deleted by treatment plan conversion if it was replaced or discarded in a conversion (I TPL 5052, 5053), or if it's in a snapshot cycle (I TPL 1020)."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient associated with this treatment plan, therapy plan, dental plan, BMT plan, or pathway."
+    }
+  ]
+}

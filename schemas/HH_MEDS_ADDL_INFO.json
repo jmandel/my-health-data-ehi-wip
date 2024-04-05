@@ -1,0 +1,109 @@
+{
+  "name": "HH_MEDS_ADDL_INFO",
+  "description": "The HH_MEDS_ADDL_INFO table contains information specific to Home Health/Hospice medications. This includes the hospice coverage status of a medication.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The item stores the patient (EPT) contact serial number (CSN) associated with the update to the order's additional info."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ENTRY_EMP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the user that updated an order's additional info"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ENTRY_EMP_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ENTRY_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the instant that the additional information was synchronized from the Remote Client"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "HSPC_CVG_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the hospice coverage status of a medication which helps to determine if the Hospice is responsible for paying for a medication",
+      "entries": [
+        "Hospice Covered",
+        "Not Hospice Covered"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "TAKING_DIFF_POC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores whether or not for this order (ORD) that the patient taking different sig should be pulled on to the Plan of Care (POC).",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "HSPC_NONCVRD_MED_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the reason why a medication is not covered by the hospice benefit.",
+      "entries": [
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "HSPC_NONCVRD_MED_RSN_C_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the comment for the reason why a medication isn't covered by the hospice benefit."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "WHICH_SIG_ON_POC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores which sigs to show on the plan of care.",
+      "entries": [
+        "Prescribed Sig",
+        "Taking Differently Or Not Taking",
+        "Both"
+      ]
+    }
+  ]
+}

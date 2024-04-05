@@ -1,0 +1,102 @@
+{
+  "name": "PAT_INDICATOR",
+  "description": "The PAT_INDICATOR table contains information about your patient genomic indicator records. These include disease-related and drug-related genomic indicators linked to patients.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_INDICATOR_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_INDICATOR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column contains the unique identifier (.1 item) for the pt indicators record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GENOMIC_INDICATR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column contains the Genomic Indicator linked to this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "GENOMIC_INDICATR_ID_RESOLVED_PAT_FRIENDLY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column provides an always populated name column that prioritizes the patient friendly name and if there is none specified, falls back to the clinical name."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The column contains the unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "OVERVIEW_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the overview note for the genomic indicator as linked to the patient. Patient-specific details about the genomic indicator are stored in the note networked to this item."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RECORD_CREATION_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column contains the date the record was created."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "INSTANT_OF_UPD_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "This column contains the instant the record was last locked/unlocked."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CREATION_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The creation source for this patient genomic indicator. Blank values are treated as manually created indicators by the translation engine.",
+      "entries": [
+        "Manual Entry",
+        "Translation Engine",
+        "Import",
+        "Translation Utility",
+        "Problem List Utility"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ACT_SCORE_LOWER",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item represents the lower bound of the manually entered activity score for the patient genomic indicator."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ACT_SCORE_UPPER",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item represents the upper bound of the manually entered activity score for the patient genomic indicator."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "ACT_SCORE_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item represents whether the activity score in PGI 1040/1041 was sourced from manual entry, genotype-activity score mapping tables, or directly from a variant result.",
+      "entries": [
+        "Resulted on a linked variant",
+        "Interpreted from a mapping table",
+        "Manually entered"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,487 @@
+{
+  "$meta": {
+    "schemas": {
+      "ORDER_PROC_5": {
+        "name": "ORDER_PROC_5",
+        "description": "The ORDER_PROC_5 table enables you to report on the procedures ordered in the clinical system. This procedure table has the same basic structure as ORDER_PROC, but was created as a fifth table to prevent ORDER_PROC_4 from getting any larger.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the order record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "FUTURE_RELATIVE_EXPECTED_DT_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Holds a category value for the expected completion date. This may be subtly different from the expected date (ORDER_PROC.FUT_EXPECT_COMP_DT) for things like \"in 3 months\", which could be Start Date+90 days (S+90), Start date+91 days (S+91), or Start date + 92 days (S+92) depending on the current date.",
+            "entries": [
+              "On Date",
+              "Other (specify)",
+              "Today",
+              "Tomorrow",
+              "1 Week",
+              "2 Weeks",
+              "3 Weeks",
+              "4 Weeks",
+              "5 Weeks",
+              "6 Weeks",
+              "1 Month",
+              "2 Months",
+              "3 Months",
+              "4 Months",
+              "5 Months",
+              "6 Months",
+              "7 Months",
+              "8 Months",
+              "9 Months",
+              "10 Months",
+              "11 Months",
+              "12 Months",
+              "13 Months",
+              "14 Months",
+              "15 Months",
+              "16 Months",
+              "17 Months",
+              "18 Months",
+              "1 Year",
+              "2 Years",
+              "3 Years",
+              "4 Years",
+              "Before Surgery",
+              "Before Surgery",
+              "Before Next Appt"
+            ]
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "ORDER_INST_UTC_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "The instant when the order was created in UTC."
+          },
+          {
+            "ordinalPosition": 17,
+            "name": "IMG_PUBLIC_RSLT_DTTM",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The instant in local time at which the imaging result was made public, as defined by the order's study status (e.g. physician finalized the exam) as configured by the imaging analyst team (I RDF 192)."
+          },
+          {
+            "ordinalPosition": 39,
+            "name": "ACTIVE_PROC_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item holds the category type of the active procedure order. Only active procedure type orders will be contained in this item. Medications are excluded. The categories separate order type in parent/child/normal and IP/OP order type.",
+            "entries": [
+              "Active OP Parent Order",
+              "Active OP Child Order",
+              "Active OP Normal Order",
+              "Active IP Parent Order",
+              "Active IP Child Order"
+            ]
+          },
+          {
+            "ordinalPosition": 45,
+            "name": "RAD_EXAM_END_UTC_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "The date and time an order's exam is ended in the Universal Time Coordinated (UTC) format."
+          },
+          {
+            "ordinalPosition": 47,
+            "name": "PAT_AGE_AT_EXAM",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The age of the patient (in years) as of the date of the exam. If the exam has ended, this will be the age as of end exam. If not, this will be the age as of the scheduled appointment date. If an appointment has not been scheduled for this exam, this value will be null."
+          },
+          {
+            "ordinalPosition": 48,
+            "name": "PRIORITIZED_UTC_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "Stores the prioritized instant for the result in UTC"
+          },
+          {
+            "ordinalPosition": 49,
+            "name": "RESULT_UPDATE_UTC_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "Stores the last update instant for a result in UTC"
+          },
+          {
+            "ordinalPosition": 51,
+            "name": "PERFORMED_IN_ISO_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores whether the imaging exam was performed in isolation."
+          },
+          {
+            "ordinalPosition": 60,
+            "name": "HAS_LAB_SPEC_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates whether the order or any of the linked performable orders have a lab specimen. 'Y' indicates that the order or one of the linked performable orders has a lab specimen. 'N' indicates that the order does not have a linked lab specimen and no linked performable order has a lab specimen."
+          },
+          {
+            "ordinalPosition": 61,
+            "name": "HAS_RSLT_CNCT_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates whether the order has a resulted contact.  'Y' indicates that the order has at least one contact of type 2-Resulted.  'N' indicates that the order does not have any contacts of type 2-Resulted."
+          },
+          {
+            "ordinalPosition": 62,
+            "name": "HAS_CORR_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates whether the order has a correction. 'Y' indicates that the order has at least one contact with procedure result status equal to 4-Edited or 5-Edited Result - FINAL.  'N' indicates that the order does not have any contacts with procedure result status equal to 4-Edited or 5-Edited Result - FINAL."
+          },
+          {
+            "ordinalPosition": 66,
+            "name": "LAST_RSLT_LAB_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the resulting lab from the last contact where the procedure result status is not null."
+          },
+          {
+            "ordinalPosition": 67,
+            "name": "LAST_RSLT_LAB_ID_LLB_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Interface laboratory name."
+          }
+        ]
+      }
+    }
+  },
+  "ORDER_PROC_5": [
+    {
+      "ORDER_ID": 945468369,
+      "FUTURE_RELATIVE_EXPECTED_DT_C_NAME": "Today",
+      "ORDER_INST_UTC_DTTM": "2023-09-28 15:02:03",
+      "PRIORITIZED_UTC_DTTM": "2023-09-28 15:10:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "N",
+      "HAS_CORR_YN": "N",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 945468368,
+      "FUTURE_RELATIVE_EXPECTED_DT_C_NAME": "Today",
+      "ORDER_INST_UTC_DTTM": "2023-09-28 15:02:03",
+      "PRIORITIZED_UTC_DTTM": "2023-09-28 15:10:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "N",
+      "HAS_CORR_YN": "N",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 945468367,
+      "ORDER_INST_UTC_DTTM": "2023-09-28 14:47:20",
+      "PRIORITIZED_UTC_DTTM": "2023-09-28 14:47:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "N",
+      "HAS_CORR_YN": "N",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 945468370,
+      "ORDER_INST_UTC_DTTM": "2023-09-28 15:10:53",
+      "PRIORITIZED_UTC_DTTM": "2023-09-28 15:10:00",
+      "RESULT_UPDATE_UTC_DTTM": "2023-09-28 15:47:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "Y",
+      "HAS_CORR_YN": "N",
+      "LAST_RSLT_LAB_ID": 359,
+      "LAST_RSLT_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 945468371,
+      "ORDER_INST_UTC_DTTM": "2023-09-28 15:10:53",
+      "PRIORITIZED_UTC_DTTM": "2023-09-28 15:10:00",
+      "RESULT_UPDATE_UTC_DTTM": "2023-09-28 16:19:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "Y",
+      "HAS_CORR_YN": "N",
+      "LAST_RSLT_LAB_ID": 359,
+      "LAST_RSLT_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 945468372,
+      "ORDER_INST_UTC_DTTM": "2023-09-28 15:10:53",
+      "PRIORITIZED_UTC_DTTM": "2023-09-28 15:10:00",
+      "RESULT_UPDATE_UTC_DTTM": "2023-09-28 21:09:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "Y",
+      "HAS_CORR_YN": "N",
+      "LAST_RSLT_LAB_ID": 359,
+      "LAST_RSLT_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 763403909,
+      "ORDER_INST_UTC_DTTM": "2022-02-09 21:26:05",
+      "ACTIVE_PROC_TYPE_C_NAME": "Active OP Normal Order",
+      "PAT_AGE_AT_EXAM": 39,
+      "PRIORITIZED_UTC_DTTM": "2022-02-09 21:26:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "N",
+      "HAS_CORR_YN": "N",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 772179264,
+      "FUTURE_RELATIVE_EXPECTED_DT_C_NAME": "On Date",
+      "ORDER_INST_UTC_DTTM": "2022-08-30 04:57:21",
+      "PRIORITIZED_UTC_DTTM": "2023-09-28 15:10:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "N",
+      "HAS_CORR_YN": "N",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 772179263,
+      "FUTURE_RELATIVE_EXPECTED_DT_C_NAME": "On Date",
+      "ORDER_INST_UTC_DTTM": "2022-08-30 04:57:21",
+      "PRIORITIZED_UTC_DTTM": "2022-08-30 04:57:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "N",
+      "HAS_CORR_YN": "N",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 772179260,
+      "FUTURE_RELATIVE_EXPECTED_DT_C_NAME": "Today",
+      "ORDER_INST_UTC_DTTM": "2022-08-29 19:23:02",
+      "PRIORITIZED_UTC_DTTM": "2022-08-29 19:32:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "N",
+      "HAS_CORR_YN": "N",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 772179259,
+      "ORDER_INST_UTC_DTTM": "2019-02-09 02:05:25",
+      "IMG_PUBLIC_RSLT_DTTM": "2019-02-08 20:16:03",
+      "RAD_EXAM_END_UTC_DTTM": "2019-02-09 02:05:25",
+      "PAT_AGE_AT_EXAM": 36,
+      "PRIORITIZED_UTC_DTTM": "2019-02-09 02:05:00",
+      "RESULT_UPDATE_UTC_DTTM": "2022-08-29 18:23:00",
+      "PERFORMED_IN_ISO_YN": "N",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "Y",
+      "HAS_CORR_YN": "Y",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 439060606,
+      "ORDER_INST_UTC_DTTM": "2018-08-09 15:16:42",
+      "PRIORITIZED_UTC_DTTM": "2018-08-09 15:16:00",
+      "RESULT_UPDATE_UTC_DTTM": "2018-08-09 16:59:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "Y",
+      "HAS_CORR_YN": "N",
+      "LAST_RSLT_LAB_ID": 359,
+      "LAST_RSLT_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 772179262,
+      "ORDER_INST_UTC_DTTM": "2022-08-29 19:32:43",
+      "PRIORITIZED_UTC_DTTM": "2022-08-29 19:32:00",
+      "RESULT_UPDATE_UTC_DTTM": "2022-08-29 20:42:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "Y",
+      "HAS_CORR_YN": "N",
+      "LAST_RSLT_LAB_ID": 359,
+      "LAST_RSLT_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 439060614,
+      "ORDER_INST_UTC_DTTM": "2020-09-15 22:08:00",
+      "PRIORITIZED_UTC_DTTM": "2020-09-15 22:08:00",
+      "RESULT_UPDATE_UTC_DTTM": "2020-09-21 14:50:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "Y",
+      "HAS_CORR_YN": "N",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 439060605,
+      "FUTURE_RELATIVE_EXPECTED_DT_C_NAME": "Today",
+      "ORDER_INST_UTC_DTTM": "2018-08-09 15:13:21",
+      "PRIORITIZED_UTC_DTTM": "2018-08-18 14:30:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "N",
+      "HAS_CORR_YN": "N",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 439060604,
+      "FUTURE_RELATIVE_EXPECTED_DT_C_NAME": "Today",
+      "ORDER_INST_UTC_DTTM": "2018-08-09 15:13:21",
+      "PRIORITIZED_UTC_DTTM": "2018-08-09 15:16:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "N",
+      "HAS_CORR_YN": "N",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 439060607,
+      "ORDER_INST_UTC_DTTM": "2018-08-18 14:30:47",
+      "PRIORITIZED_UTC_DTTM": "2018-08-18 14:30:00",
+      "RESULT_UPDATE_UTC_DTTM": "2018-08-28 13:54:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "Y",
+      "HAS_CORR_YN": "N",
+      "LAST_RSLT_LAB_ID": 359,
+      "LAST_RSLT_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 439060613,
+      "ORDER_INST_UTC_DTTM": "2020-07-31 14:16:57",
+      "PRIORITIZED_UTC_DTTM": "2020-07-29 15:30:00",
+      "RESULT_UPDATE_UTC_DTTM": "2020-07-31 14:19:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "Y",
+      "HAS_CORR_YN": "N",
+      "LAST_RSLT_LAB_ID": 21030,
+      "LAST_RSLT_LAB_ID_LLB_NAME": "MISC REFERENCE LAB",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 439060609,
+      "FUTURE_RELATIVE_EXPECTED_DT_C_NAME": "Today",
+      "ORDER_INST_UTC_DTTM": "2020-07-14 19:40:00",
+      "PRIORITIZED_UTC_DTTM": "2020-07-14 19:40:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "N",
+      "HAS_CORR_YN": "N",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 772179267,
+      "ORDER_INST_UTC_DTTM": "2022-12-22 17:29:25",
+      "ACTIVE_PROC_TYPE_C_NAME": "Active OP Normal Order",
+      "PRIORITIZED_UTC_DTTM": "2022-12-22 17:29:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "N",
+      "HAS_CORR_YN": "N",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 772179268,
+      "ORDER_INST_UTC_DTTM": "2022-12-22 17:29:25",
+      "ACTIVE_PROC_TYPE_C_NAME": "Active OP Normal Order",
+      "PRIORITIZED_UTC_DTTM": "2022-12-22 17:29:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "N",
+      "HAS_CORR_YN": "N",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 439060608,
+      "ORDER_INST_UTC_DTTM": "2020-01-09 18:53:43",
+      "ACTIVE_PROC_TYPE_C_NAME": "Active OP Normal Order",
+      "PRIORITIZED_UTC_DTTM": "2020-01-09 18:53:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "N",
+      "HAS_CORR_YN": "N",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 439060610,
+      "FUTURE_RELATIVE_EXPECTED_DT_C_NAME": "Today",
+      "ORDER_INST_UTC_DTTM": "2020-07-15 17:22:10",
+      "PRIORITIZED_UTC_DTTM": "2020-07-15 17:22:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "N",
+      "HAS_CORR_YN": "N",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 772179265,
+      "ORDER_INST_UTC_DTTM": "2022-12-01 16:15:06",
+      "ACTIVE_PROC_TYPE_C_NAME": "Active OP Normal Order",
+      "PRIORITIZED_UTC_DTTM": "2022-12-01 16:15:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "N",
+      "HAS_CORR_YN": "N",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    },
+    {
+      "ORDER_ID": 439060612,
+      "FUTURE_RELATIVE_EXPECTED_DT_C_NAME": "Today",
+      "ORDER_INST_UTC_DTTM": "2020-07-21 17:38:33",
+      "PRIORITIZED_UTC_DTTM": "2020-07-31 14:16:00",
+      "HAS_LAB_SPEC_YN": "N",
+      "HAS_RSLT_CNCT_YN": "N",
+      "HAS_CORR_YN": "N",
+      "$meta": {
+        "type": "ORDER_PROC_5"
+      }
+    }
+  ]
+}

@@ -1,0 +1,277 @@
+{
+  "name": "CODING_CLA_NOTES",
+  "description": "This table contains information on queries sent during coding (including documentation queries) and clinical documentation improvement (CDI) reviews.",
+  "primaryKey": [
+    {
+      "columnName": "NOTE_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the notes record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PATIENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient associated with the coding query."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CCR_EMP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who created the coding query."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CCR_EMP_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CCR_NOTE_DT_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time the coding query created."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CCR_NOTE_SUMMARY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The subject line (free text) of the coding query."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CCR_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status of the coding query.",
+      "entries": [
+        "Query Pending",
+        "Query Sent",
+        "Response Received",
+        "Completed",
+        "Deleted",
+        "Reassigned",
+        "Deactivated"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CCR_HOSP_ACCT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The hospital account associated with the coding query."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "QUERY_WORKFLOW_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The workflow type category number for the query. NULL or 0 is returned for a coding query.",
+      "entries": [
+        "Coding Query",
+        "CDI Query",
+        "Coding Documentation Deficiency",
+        "PB Coding Query"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for the patient contact associated with this coding query. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "COD_QRY_HNO_TYP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The coding query type category number for the query.",
+      "entries": [
+        "All Other"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "CDI_QRY_HNO_TYP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The clinical documentation improvement (CDI) query type category number for the query.",
+      "entries": [
+        "All Other"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "CODING_DOC_DFI_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the deficiency which is associated with a documentation query. This column is frequently used to link to the DFI_DETAILS table.",
+      "linksTo": "DFI_DETAILS"
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "CODING_DOC_CREATE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The creation method category ID for the documentation query.",
+      "entries": [
+        "Automatic Deficiency Creation",
+        "Manual Deficiency Creation",
+        "Added to Existing Deficiency"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "CCR_ASSN_TO_POOL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The pool to whom the documentation query was sent."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "CCR_ASSN_TO_POOL_ID_REGISTRY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the In Basket registry in the HIP master file."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "CCR_OUTCOME_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The query outcome category ID for the query. This indicates the conclusion of the query (recipient agrees, disagrees, or doesn't respond).",
+      "entries": [
+        "Recipient Agreed � Documentation Updated",
+        "Recipient Agreed � Documentation Not Updated",
+        "Recipient Disagreed",
+        "Recipient Did Not Respond",
+        "Auto Completed - Provider Response Received",
+        "Auto Completed - Query Still Outstanding"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "RESP_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "To store the provider's ID whose response to a query satisfies the query sender."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "RESP_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "QRY_RESP_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the note ID of the note used to respond to a coding/CDI query."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "QRY_RESP_SMRTTXT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Specifies the smart text to use to populate a new note in response to a query."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "QRY_RESP_SMRTTXT_ID_SMARTTEXT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the SmartText record."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "DOC_QRY_REP_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates the reporting workflow of the query based on the presence of an attached deficiency. Use this instead of workflow value when breaking CDI and Coding queries out by whether they are a documentation query as well.",
+      "entries": [
+        "Coding Query",
+        "CDI Query",
+        "Coding Documentation Query",
+        "CDI Documentation Query"
+      ]
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "CCR_UPD_INST_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant that the query was updated, in UTC time."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "CCR_NOTE_INST_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time the coding query was created, in UTC time."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "QRY_SUGG_RESP_NOTE_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number (CSN) of the suggested response note linked to the query."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "QRY_PEND_NOTE_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number (CSN) of the note pended by the provider responding to a query."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "QRY_SUGG_REJECT_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason a query suggestion was rejected and not shown to a provider.",
+      "entries": [
+        "Other",
+        "Not Supported",
+        "Low Impact",
+        "Already Documented",
+        "Not Acted On"
+      ]
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "QRY_IS_AI_SUGG_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether this query is suggested by an AI.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "PB_CODING_QUERY_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the actual type of PB coding query, which the user can choose when composing a new PB coding query.",
+      "entries": [
+        "All Other"
+      ]
+    }
+  ]
+}

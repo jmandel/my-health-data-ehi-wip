@@ -1,0 +1,69 @@
+{
+  "name": "IP_FLOWSHEET_ROWS",
+  "description": "This table contains flowsheet row (FLO) data for an encounter. This table is a key table in tying LDA assessment row lines in flowsheet data records to the LDAs, and the necessary joins are:\n\n\n \n\n\nIP_FLOWSHEET_ROWS.IP_LDA_ID with IP_LDA_NOADDSINGLE.IP_LDA_ID\n\n\nIP_FLOWSHEET_ROWS.INPATIENT_DATA_ID with IP_FLWSHT_REC.INPATIENT_DATA_ID\n\n\nIP_FLOWSHEET_ROWS.LINE with IP_FLWSHT_MEAS.OCCURANCE\n\n\nIP_FLWSHT_REC.FSD_ID with IP_FLWSHT_MEAS.FSD_ID.",
+  "primaryKey": [
+    {
+      "columnName": "INPATIENT_DATA_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "INPATIENT_DATA_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the inpatient data store record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line count for the item."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "FLO_MEAS_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the flowsheet group/row."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "FLO_MEAS_ID_DISP_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The display name given to the flowsheet group/row."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "FLOWSHT_ROW_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The flowsheet row name. Especially comes into play when a custom name is given to a duplicable row/group, either by a user typing it upon manually adding a row/group or from the order that fired the task template which added the duplicable row/group."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "IP_LDA_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the Lines/Drains/Airways (LDA) ID for the flowsheet group."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ROW_VARIANCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The flowsheet row variance.",
+      "entries": [
+        "Add",
+        "Remove"
+      ]
+    }
+  ]
+}

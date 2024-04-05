@@ -1,0 +1,133 @@
+{
+  "$meta": {
+    "schemas": {
+      "PAT_ADDENDUM_INFO": {
+        "name": "PAT_ADDENDUM_INFO",
+        "description": "This table contains the encounter addendum information from the Addendum Added Date (I EPT 18123) and Addendum Added User (I EPT 18129) items.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ENC_CSN_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ENC_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "A unique serial number for this encounter. This number is unique across all patients and encounters in the system."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line count for the items."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "ADDENDUM_DATE_TIME",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The date and time when the addendum of the patient encounter is created."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "ADDENDUM_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the system user who has created the addendum for the patient encounter."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "ADDENDUM_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "PAT_ADDENDUM_INFO",
+            "target": "PAT_ENC_DISP",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "PAT_ADDENDUM_INFO",
+            "target": "PAT_ENC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PAT_ADDENDUM_INFO": [
+    {
+      "PAT_ENC_DATE_REAL": 66745,
+      "PAT_ENC_CSN_ID": 991225117,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "LINE": 1,
+      "ADDENDUM_DATE_TIME": "2023-09-28 11:29:00",
+      "ADDENDUM_USER_ID": "MSF400",
+      "ADDENDUM_USER_ID_NAME": "FARGEN, MEGAN",
+      "$meta": {
+        "type": "PAT_ADDENDUM_INFO"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 66444,
+      "PAT_ENC_CSN_ID": 974614965,
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "LINE": 1,
+      "ADDENDUM_DATE_TIME": "2022-12-05 12:14:00",
+      "ADDENDUM_USER_ID": "PAM400",
+      "ADDENDUM_USER_ID_NAME": "MANIX, PATRICIA A",
+      "$meta": {
+        "type": "PAT_ADDENDUM_INFO"
+      }
+    },
+    {
+      "PAT_ENC_DATE_REAL": 65574,
+      "PAT_ENC_CSN_ID": 829213099,
+      "CONTACT_DATE": "2020-07-14 00:00:00",
+      "LINE": 1,
+      "ADDENDUM_DATE_TIME": "2020-07-16 12:15:00",
+      "ADDENDUM_USER_ID": "BUDZBANL",
+      "ADDENDUM_USER_ID_NAME": "BUDZBAN, NICOLE L",
+      "$meta": {
+        "type": "PAT_ADDENDUM_INFO"
+      }
+    }
+  ]
+}

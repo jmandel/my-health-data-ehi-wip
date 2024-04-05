@@ -1,0 +1,115 @@
+{
+  "name": "DOCS_RCVD_ACT_AUD",
+  "description": "This table contains data on actions that a user took on a direct message. For example, information about linking messages to patients, routing and creating referrals are all discretely audited in this table.",
+  "primaryKey": [
+    {
+      "columnName": "DOCUMENT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "DOCUMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the Received Document record ID."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "MSG_ACT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains granular actions that were performed on a Provide and Register message (or incoming group of external documents). Such actions may include how the patient was linked to the message, routing, and referral creation that occurred. These actions are shown to the user on an audit trail on the Incoming Messages Report or the International Review Report.",
+      "entries": [
+        "Received",
+        "Pended",
+        "Manually linked to patient",
+        "Automatically linked to matching patient",
+        "Created patient",
+        "Automatically routed to In Basket",
+        "Manually routed to In Basket",
+        "Manually created a referral",
+        "Automatically created a referral",
+        "Rejected",
+        "Processed",
+        "Routing to In Basket",
+        "Released Documents",
+        "No patient match",
+        "No routing needed",
+        "No referral needed",
+        "In Basket routing failure",
+        "Reply sent",
+        "Reply received",
+        "External encounter linked to originating referral",
+        "Automatically created patient",
+        "Automatically linked due to known referral",
+        "Conversation reviewed",
+        "Encounter invalidated",
+        "Linked patient does not match source referral patient",
+        "Message comment added",
+        "Message received to place external order",
+        "Message received to update external order",
+        "Message received to cancel external order",
+        "External order message timed out",
+        "External order message resubmitted",
+        "Resolved associated external chart correction notice",
+        "Routing decision reset",
+        "Referral decision reset",
+        "Source Patient Id discarded",
+        "Automatically linked due to matching external patient ID",
+        "Share Everywhere Message Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "MSG_ACT_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains comments for actions that were performed on a Provide and Register message (or incoming group of external documents). Such actions may include how the patient was linked to the message, routing, and referral creation that occurred. These actions are shown to the user on an audit trail on the Incoming Messages Report or the International Review Report. Comments can be user entered or hard coded."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "MSG_ACT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Contains the time of actions that were performed on a Provide and Register message (or incoming group of external documents). Such actions may include how the patient was linked to the message, routing, and referral creation that occurred. These actions are shown to the user on an audit trail on the Incoming Messages Report or the International Review Report."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "MSG_ACT_EXTERNAL_ORDER_UID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the identifier of an external order associated with an event such as receiving an interface message to place an order, to update an order, or to cancel an order."
+    }
+  ]
+}

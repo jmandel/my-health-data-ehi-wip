@@ -1,0 +1,48 @@
+{
+  "name": "ORDER_CHG_DXMOD_1",
+  "description": "This table stores billing diagnoses associated with a charge entered at end exam (from the related multiple Charge Billing Diagnoses (I ORD 52407) item).",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the order record associated with this procedure order."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the associated charge in this billing diagnosis record. Together with ORDER_ID, this forms the foreign key to the ORD_PROC_CHG_EAPS table."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple billing diagnoses that are associated with the charge and the order id from the ORD_PROC_CHG_EAPS table."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CHARGE_DIAGNOSES_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the billing diagnoses for charges entered when ending an exam."
+    }
+  ]
+}

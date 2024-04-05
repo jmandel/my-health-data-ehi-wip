@@ -1,0 +1,416 @@
+{
+  "$meta": {
+    "schemas": {
+      "HM_HISTORY": {
+        "name": "HM_HISTORY",
+        "description": "The HM_HISTORY table records information about completed and manually overridden clinical system health maintenance topics that apply to each patient. This information is found in your system by the following path: clinical system Supervisor Menu > Supervisor's menu > Patient Health Maint option, or by clicking the clinical system client Health Maintenance button.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID assigned to the patient record. This ID may be encrypted if you have elected to use enterprise reporting�s encryption utility."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "Identifies the health maintenance topic within the patient�s record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "HM_COMP_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the type of Health Maintenance completion",
+            "entries": [
+              "Procedure or Medication Order",
+              "Result Component",
+              "Immunization",
+              "Problem List",
+              "Hospital Diagnosis",
+              "Encounter Diagnosis",
+              "LOS Code",
+              "E/M Code",
+              "Surgical History",
+              "Patient SDE",
+              "Note SDE",
+              "Encounter SDE",
+              "Manual Completion",
+              "External Procedure",
+              "External Immunization",
+              "External LOS",
+              "Registry Metric"
+            ]
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "HM_COMP_UTC_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "Instant of Health Maintenance completion."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "HM_HISTORY",
+            "target": "PAT_REL_ADDR",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "HM_HISTORY",
+            "target": "PATIENT",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HM_HISTORY": [
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 1,
+      "HM_COMP_TYPE_C_NAME": "Immunization",
+      "HM_COMP_UTC_DTTM": "2019-02-05 06:00:00",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 2,
+      "HM_COMP_TYPE_C_NAME": "Result Component",
+      "HM_COMP_UTC_DTTM": "2018-08-09 16:59:09",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 3,
+      "HM_COMP_TYPE_C_NAME": "Immunization",
+      "HM_COMP_UTC_DTTM": "2019-02-05 06:00:00",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 4,
+      "HM_COMP_TYPE_C_NAME": "Immunization",
+      "HM_COMP_UTC_DTTM": "2019-02-05 06:00:00",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 5,
+      "HM_COMP_TYPE_C_NAME": "Immunization",
+      "HM_COMP_UTC_DTTM": "2021-04-18 05:00:00",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 6,
+      "HM_COMP_TYPE_C_NAME": "Immunization",
+      "HM_COMP_UTC_DTTM": "2021-05-16 05:00:00",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 7,
+      "HM_COMP_TYPE_C_NAME": "LOS Code",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 8,
+      "HM_COMP_TYPE_C_NAME": "Immunization",
+      "HM_COMP_UTC_DTTM": "2021-12-03 06:00:00",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 9,
+      "HM_COMP_TYPE_C_NAME": "Immunization",
+      "HM_COMP_UTC_DTTM": "2017-10-25 05:00:00",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 10,
+      "HM_COMP_TYPE_C_NAME": "Immunization",
+      "HM_COMP_UTC_DTTM": "2018-10-08 05:00:00",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 11,
+      "HM_COMP_TYPE_C_NAME": "Result Component",
+      "HM_COMP_UTC_DTTM": "2018-08-09 16:59:09",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 12,
+      "HM_COMP_TYPE_C_NAME": "Immunization",
+      "HM_COMP_UTC_DTTM": "2019-11-13 06:00:00",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 13,
+      "HM_COMP_TYPE_C_NAME": "Immunization",
+      "HM_COMP_UTC_DTTM": "2019-02-05 06:00:00",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 14,
+      "HM_COMP_TYPE_C_NAME": "Immunization",
+      "HM_COMP_UTC_DTTM": "2019-02-05 06:00:00",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 15,
+      "HM_COMP_TYPE_C_NAME": "Immunization",
+      "HM_COMP_UTC_DTTM": "2019-02-05 06:00:00",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 16,
+      "HM_COMP_TYPE_C_NAME": "Immunization",
+      "HM_COMP_UTC_DTTM": "2021-10-24 05:00:00",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 17,
+      "HM_COMP_TYPE_C_NAME": "Immunization",
+      "HM_COMP_UTC_DTTM": "2018-10-08 05:00:00",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 18,
+      "HM_COMP_TYPE_C_NAME": "Result Component",
+      "HM_COMP_UTC_DTTM": "2022-08-29 20:42:02",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 19,
+      "HM_COMP_TYPE_C_NAME": "Result Component",
+      "HM_COMP_UTC_DTTM": "2022-08-29 20:42:02",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 20,
+      "HM_COMP_TYPE_C_NAME": "Result Component",
+      "HM_COMP_UTC_DTTM": "2022-08-29 20:42:02",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 21,
+      "HM_COMP_TYPE_C_NAME": "LOS Code",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 22,
+      "HM_COMP_TYPE_C_NAME": "Immunization",
+      "HM_COMP_UTC_DTTM": "2022-09-25 05:00:00",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 23,
+      "HM_COMP_TYPE_C_NAME": "Result Component",
+      "HM_COMP_UTC_DTTM": "2018-08-09 16:59:09",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 24,
+      "HM_COMP_TYPE_C_NAME": "Immunization",
+      "HM_COMP_UTC_DTTM": "2022-10-26 05:00:00",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 25,
+      "HM_COMP_TYPE_C_NAME": "LOS Code",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 26,
+      "HM_COMP_TYPE_C_NAME": "E/M Code",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 27,
+      "HM_COMP_TYPE_C_NAME": "LOS Code",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 28,
+      "HM_COMP_TYPE_C_NAME": "LOS Code",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 29,
+      "HM_COMP_TYPE_C_NAME": "Immunization",
+      "HM_COMP_UTC_DTTM": "2023-09-28 05:00:00",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 30,
+      "HM_COMP_TYPE_C_NAME": "LOS Code",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 31,
+      "HM_COMP_TYPE_C_NAME": "Result Component",
+      "HM_COMP_UTC_DTTM": "2023-09-28 15:47:49",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 32,
+      "HM_COMP_TYPE_C_NAME": "Result Component",
+      "HM_COMP_UTC_DTTM": "2023-09-28 15:47:49",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 33,
+      "HM_COMP_TYPE_C_NAME": "Result Component",
+      "HM_COMP_UTC_DTTM": "2023-09-28 16:19:26",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 34,
+      "HM_COMP_TYPE_C_NAME": "Result Component",
+      "HM_COMP_UTC_DTTM": "2023-09-28 16:19:26",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 35,
+      "HM_COMP_TYPE_C_NAME": "Result Component",
+      "HM_COMP_UTC_DTTM": "2023-09-28 16:19:26",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 36,
+      "HM_COMP_TYPE_C_NAME": "Result Component",
+      "HM_COMP_UTC_DTTM": "2023-09-28 21:09:25",
+      "$meta": {
+        "type": "HM_HISTORY"
+      }
+    }
+  ]
+}

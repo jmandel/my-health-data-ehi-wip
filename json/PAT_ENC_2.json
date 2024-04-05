@@ -1,0 +1,1181 @@
+{
+  "$meta": {
+    "schemas": {
+      "PAT_ENC_2": {
+        "name": "PAT_ENC_2",
+        "description": "This table supplements the PAT_ENC table. It contains additional information related to patient encounters or appointments.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ENC_CSN_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique system identifier of the patient encounter. Contact serial number is unique across all patients and all contacts."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date on which this patient encounter took place."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "CAN_LET_C_NAME",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column links to the type of canceled appointment letter sent for this patient encounter. Some examples are \"No Letter\", \"No Show\",\"Cancelation Letter\", etc. This category column is linked to ZC_LET.LET_C.",
+            "entries": [
+              "No Letter"
+            ]
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "SUP_PROV_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column links to information about the Type of Supervising provider.",
+            "entries": [
+              "No Supervision"
+            ]
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "SUP_PROV_REV_TM",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "This column contains the date and time when the supervising provider submitted his or her review"
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "MEDS_REQUEST_PHR_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The pharmacy identifier from which the medications were requested."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "MEDS_REQUEST_PHR_ID_PHARMACY_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the pharmacy."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "PHYS_BP",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This contains the patient's blood pressure that was entered during the patient encounter."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "VITALS_TAKEN_TM",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "Holds the time the vitals were taken"
+          },
+          {
+            "ordinalPosition": 22,
+            "name": "DOC_HX_SOURCE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the source of entry for the history documentation.  This category column is linked to ZC_HISTORY_SOURCE.HISTORY_SOURCE_C.",
+            "entries": [
+              "Provider",
+              "Patient",
+              "Parent",
+              "Legal Guardian",
+              "Proxy User"
+            ]
+          },
+          {
+            "ordinalPosition": 23,
+            "name": "APPT_LET_C_NAME",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column links to the type of appointment letter that was sent to this patient for this patient encounter. Some examples are \"No Letter\", \"Appt Letter\", etc.  This category column is linked to ZC_LET.LET_C."
+          },
+          {
+            "ordinalPosition": 26,
+            "name": "APPTMT_LET_INST",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "If an appointment letter has been printed for this patient encounter, this column will list the date and time it was printed. If multiple letters were printed, we'll list the date and time of the most recent one."
+          },
+          {
+            "ordinalPosition": 33,
+            "name": "ADT_PAT_CLASS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value corresponding to the Admission/Discharge/Transfer (ADT) patient classification for this patient contact."
+          },
+          {
+            "ordinalPosition": 34,
+            "name": "OTHER_BLOCK_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Stores \"Other\" Summary Blocks (non-IP, ED, OpTime)"
+          },
+          {
+            "ordinalPosition": 35,
+            "name": "OTHER_BLOCK_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates the specific type of the episode summary, whose ID is stored in I EPT 1970.",
+            "entries": [
+              "Ambulatory",
+              "Leader Rounds",
+              "Travel"
+            ]
+          },
+          {
+            "ordinalPosition": 49,
+            "name": "HSP_ACCT_ADV_DTTM",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "If the Hospital Account Advisor is turned on, this item records the date and time that the advisor's recommendation was accepted or rejected."
+          },
+          {
+            "ordinalPosition": 67,
+            "name": "TEL_ENC_MSG_RGRDING",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Free-text field containing user entered information regarding a telephone encounter message."
+          },
+          {
+            "ordinalPosition": 68,
+            "name": "MSG_PRIORITY_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates the priority of the routed message.",
+            "entries": [
+              "High",
+              "Normal",
+              "Low"
+            ]
+          },
+          {
+            "ordinalPosition": 71,
+            "name": "MSG_CALLER_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the caller who left this message"
+          },
+          {
+            "ordinalPosition": 76,
+            "name": "AVS_LAST_PRINT_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "Records the instant the After Visit Summary was last printed"
+          },
+          {
+            "ordinalPosition": 77,
+            "name": "MED_LIST_UPDATE_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "If a patient's prescriptions or Facility-Administered Medications (FAMs) are updated (signed, modified, or discontinued; or other med reconciliation actions are changed) after the After Visit Summary (AVS) has been printed, this item is updated to hold a timestamp indicating the last time that such updates were made. It is left blank if no AVS has been printed yet."
+          }
+        ]
+      }
+    }
+  },
+  "PAT_ENC_2": [
+    {
+      "PAT_ENC_CSN_ID": 1049332896,
+      "CONTACT_DATE": "2024-01-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1043034397,
+      "CONTACT_DATE": "2023-12-22 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 64981,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "COSTCO PHARMACY # 1020 - MIDDLETON, WI - 2150 DEMING WAY",
+      "OTHER_BLOCK_ID": 265615343,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "MSG_PRIORITY_C_NAME": "Normal",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1033522365,
+      "CONTACT_DATE": "2023-10-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1031703883,
+      "CONTACT_DATE": "2023-10-20 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "OTHER_BLOCK_ID": 259129381,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "TEL_ENC_MSG_RGRDING": "FW: Appointment Request",
+      "MSG_CALLER_NAME": "617-500-3253",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028766353,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "OTHER_BLOCK_ID": 259103168,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1016759309,
+      "CONTACT_DATE": "2023-07-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 973908013,
+      "CONTACT_DATE": "2022-11-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1054605204,
+      "CONTACT_DATE": "2024-02-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1044290224,
+      "CONTACT_DATE": "2023-12-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1039066378,
+      "CONTACT_DATE": "2023-11-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1022460205,
+      "CONTACT_DATE": "2023-08-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1018439080,
+      "CONTACT_DATE": "2023-08-03 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1000825434,
+      "CONTACT_DATE": "2023-04-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991221485,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "DOC_HX_SOURCE_C_NAME": "Provider",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991215738,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "OTHER_BLOCK_ID": 235786114,
+      "OTHER_BLOCK_TYPE_C_NAME": "Travel",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 984606712,
+      "CONTACT_DATE": "2023-01-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 979218048,
+      "CONTACT_DATE": "2022-12-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 977858467,
+      "CONTACT_DATE": "2022-12-22 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "OTHER_BLOCK_ID": 228866224,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "MSG_PRIORITY_C_NAME": "Normal",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 974974125,
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "OTHER_BLOCK_ID": 226626424,
+      "OTHER_BLOCK_TYPE_C_NAME": "Travel",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 974614965,
+      "CONTACT_DATE": "2022-12-01 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 64308,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "WALGREENS DRUG STORE #06130 - MADISON, WI - 3700 UNIVERSITY AVE AT NEC OF MIDVALE & UNIVERSITY",
+      "PHYS_BP": "142/74",
+      "VITALS_TAKEN_TM": "2022-12-01 09:38:00",
+      "APPT_LET_C_NAME": null,
+      "OTHER_BLOCK_ID": 226341458,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "AVS_LAST_PRINT_DTTM": "2022-12-01 16:18:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 974452422,
+      "CONTACT_DATE": "2022-11-28 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "OTHER_BLOCK_ID": 226220630,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "MSG_PRIORITY_C_NAME": "Normal",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 962603110,
+      "CONTACT_DATE": "2022-09-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148810,
+      "CONTACT_DATE": "2023-03-02 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "PHYS_BP": "134/80",
+      "VITALS_TAKEN_TM": "2023-03-02 14:46:00",
+      "APPT_LET_C_NAME": null,
+      "OTHER_BLOCK_ID": 217053487,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958148226,
+      "CONTACT_DATE": "2022-10-11 00:00:00",
+      "CAN_LET_C_NAME": null,
+      "APPT_LET_C_NAME": null,
+      "OTHER_BLOCK_ID": 217053055,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958147754,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "APPT_LET_C_NAME": null,
+      "OTHER_BLOCK_ID": 217052717,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 958134730,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "DOC_HX_SOURCE_C_NAME": "Provider",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 957995289,
+      "CONTACT_DATE": "2022-08-28 00:00:00",
+      "OTHER_BLOCK_ID": 216938713,
+      "OTHER_BLOCK_TYPE_C_NAME": "Travel",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 957265560,
+      "CONTACT_DATE": "2022-08-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 951207510,
+      "CONTACT_DATE": "2022-07-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 948004323,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "PHYS_BP": "138/76",
+      "VITALS_TAKEN_TM": "2022-08-29 13:36:00",
+      "APPT_LET_C_NAME": null,
+      "OTHER_BLOCK_ID": 211890374,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "AVS_LAST_PRINT_DTTM": "2022-08-29 19:32:00",
+      "MED_LIST_UPDATE_DTTM": "2023-09-28 15:02:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 948002801,
+      "CONTACT_DATE": "2022-08-11 00:00:00",
+      "CAN_LET_C_NAME": null,
+      "APPT_LET_C_NAME": null,
+      "OTHER_BLOCK_ID": 211889245,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 946189306,
+      "CONTACT_DATE": "2022-06-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 940919045,
+      "CONTACT_DATE": "2022-05-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 935515793,
+      "CONTACT_DATE": "2022-04-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 927200229,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "OTHER_BLOCK_ID": 200567245,
+      "OTHER_BLOCK_TYPE_C_NAME": "Travel",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 924936761,
+      "CONTACT_DATE": "2022-02-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 922943525,
+      "CONTACT_DATE": "2022-02-17 00:00:00",
+      "OTHER_BLOCK_ID": 198399642,
+      "OTHER_BLOCK_TYPE_C_NAME": "Travel",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 922943112,
+      "CONTACT_DATE": "2022-03-22 00:00:00",
+      "APPT_LET_C_NAME": null,
+      "ADT_PAT_CLASS_C_NAME": "Therapies Series",
+      "OTHER_BLOCK_ID": 198399346,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "HSP_ACCT_ADV_DTTM": "2022-02-17 14:04:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 922942674,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "APPT_LET_C_NAME": null,
+      "APPTMT_LET_INST": "2022-02-25 03:11:00",
+      "ADT_PAT_CLASS_C_NAME": "Therapies Series",
+      "OTHER_BLOCK_ID": 198399030,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "HSP_ACCT_ADV_DTTM": "2022-02-17 14:04:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 921952141,
+      "CONTACT_DATE": "2022-02-09 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "OTHER_BLOCK_ID": 197903946,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 898794674,
+      "CONTACT_DATE": "2021-09-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 893473416,
+      "CONTACT_DATE": "2021-08-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 888227767,
+      "CONTACT_DATE": "2021-07-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 883637721,
+      "CONTACT_DATE": "2021-06-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 878774242,
+      "CONTACT_DATE": "2021-05-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 873928397,
+      "CONTACT_DATE": "2021-04-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 869002878,
+      "CONTACT_DATE": "2021-03-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 864389217,
+      "CONTACT_DATE": "2021-02-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 859392791,
+      "CONTACT_DATE": "2021-01-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 854992547,
+      "CONTACT_DATE": "2020-12-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 845590414,
+      "CONTACT_DATE": "2020-10-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 840888730,
+      "CONTACT_DATE": "2020-09-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 839256727,
+      "CONTACT_DATE": "2020-09-21 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 837844366,
+      "CONTACT_DATE": "2020-09-08 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "OTHER_BLOCK_ID": 150990300,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "MSG_PRIORITY_C_NAME": "Normal",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 836036457,
+      "CONTACT_DATE": "2020-08-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 833901305,
+      "CONTACT_DATE": "2020-08-14 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "OTHER_BLOCK_ID": 149020998,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "MSG_PRIORITY_C_NAME": "Normal",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 832464108,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "OTHER_BLOCK_ID": 145409876,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 831452662,
+      "CONTACT_DATE": "2020-07-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 830047706,
+      "CONTACT_DATE": "2020-07-21 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "OTHER_BLOCK_ID": 144354602,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "MSG_PRIORITY_C_NAME": "Normal",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 830043848,
+      "CONTACT_DATE": "2020-07-21 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "OTHER_BLOCK_ID": 144354846,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "MSG_PRIORITY_C_NAME": "Normal",
+      "MSG_CALLER_NAME": "self",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829996120,
+      "CONTACT_DATE": "2020-07-21 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829995922,
+      "CONTACT_DATE": "2020-07-21 00:00:00",
+      "SUP_PROV_C_NAME": "No Supervision",
+      "SUP_PROV_REV_TM": "2020-07-21 12:38:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "OTHER_BLOCK_ID": 144307064,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "MSG_PRIORITY_C_NAME": "Normal",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829467718,
+      "CONTACT_DATE": "2020-07-16 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "OTHER_BLOCK_ID": 144291904,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "MSG_PRIORITY_C_NAME": "Normal",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829393933,
+      "CONTACT_DATE": "2020-07-15 00:00:00",
+      "SUP_PROV_C_NAME": "No Supervision",
+      "SUP_PROV_REV_TM": "2020-07-15 12:22:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "OTHER_BLOCK_ID": 143701646,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "MSG_PRIORITY_C_NAME": "Normal",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829385742,
+      "CONTACT_DATE": "2020-07-15 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "OTHER_BLOCK_ID": 143839638,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "MSG_PRIORITY_C_NAME": "Normal",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829282937,
+      "CONTACT_DATE": "2020-07-14 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829273579,
+      "CONTACT_DATE": "2020-07-14 00:00:00",
+      "OTHER_BLOCK_ID": 143584777,
+      "OTHER_BLOCK_TYPE_C_NAME": "Travel",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829213099,
+      "CONTACT_DATE": "2020-07-14 00:00:00",
+      "SUP_PROV_C_NAME": "No Supervision",
+      "SUP_PROV_REV_TM": "2020-07-14 12:06:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "APPT_LET_C_NAME": null,
+      "OTHER_BLOCK_ID": 143591789,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 829212157,
+      "CONTACT_DATE": "2020-07-15 00:00:00",
+      "CAN_LET_C_NAME": null,
+      "APPT_LET_C_NAME": null,
+      "OTHER_BLOCK_ID": 143528733,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 725327197,
+      "CONTACT_DATE": "2018-08-18 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "OTHER_BLOCK_ID": 102373522,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028744231,
+      "CONTACT_DATE": "2024-11-07 00:00:00",
+      "APPT_LET_C_NAME": null,
+      "OTHER_BLOCK_ID": 256794819,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028743701,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "APPT_LET_C_NAME": null,
+      "OTHER_BLOCK_ID": 256794442,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028739468,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "DOC_HX_SOURCE_C_NAME": "Provider",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1028606559,
+      "CONTACT_DATE": "2023-09-27 00:00:00",
+      "OTHER_BLOCK_ID": 256681705,
+      "OTHER_BLOCK_TYPE_C_NAME": "Travel",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1027863229,
+      "CONTACT_DATE": "2023-09-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1020583168,
+      "CONTACT_DATE": "2023-08-21 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "OTHER_BLOCK_ID": 253066154,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "TEL_ENC_MSG_RGRDING": "FW: Appointment Request",
+      "MSG_PRIORITY_C_NAME": "Normal",
+      "MSG_CALLER_NAME": "617-500-3253",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1011533066,
+      "CONTACT_DATE": "2023-06-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1006342664,
+      "CONTACT_DATE": "2023-05-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 996534320,
+      "CONTACT_DATE": "2023-03-31 00:00:00",
+      "OTHER_BLOCK_ID": 240927629,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 995315871,
+      "CONTACT_DATE": "2023-03-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 991225117,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "PHYS_BP": "132/64",
+      "VITALS_TAKEN_TM": "2023-09-28 11:27:00",
+      "APPT_LET_C_NAME": null,
+      "OTHER_BLOCK_ID": 235792802,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "AVS_LAST_PRINT_DTTM": "2023-09-28 15:12:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 990151874,
+      "CONTACT_DATE": "2023-02-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 988126821,
+      "CONTACT_DATE": "2023-02-19 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 64308,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "WALGREENS DRUG STORE #06130 - MADISON, WI - 3700 UNIVERSITY AVE AT NEC OF MIDVALE & UNIVERSITY",
+      "OTHER_BLOCK_ID": 234638436,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "MSG_PRIORITY_C_NAME": "Normal",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 968143108,
+      "CONTACT_DATE": "2022-10-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 930010268,
+      "CONTACT_DATE": "2022-03-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 928532643,
+      "CONTACT_DATE": "2022-03-22 00:00:00",
+      "OTHER_BLOCK_ID": 201541239,
+      "OTHER_BLOCK_TYPE_C_NAME": "Travel",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 927098738,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 850593484,
+      "CONTACT_DATE": "2020-11-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 827277205,
+      "CONTACT_DATE": "2020-06-29 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 802802103,
+      "CONTACT_DATE": "2020-01-09 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 799951565,
+      "CONTACT_DATE": "2020-01-09 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "PHYS_BP": "136/83",
+      "VITALS_TAKEN_TM": "2020-01-09 12:31:00",
+      "APPT_LET_C_NAME": null,
+      "OTHER_BLOCK_ID": 125992570,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "AVS_LAST_PRINT_DTTM": "2020-01-09 18:56:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 797089043,
+      "CONTACT_DATE": "2019-11-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 791983409,
+      "CONTACT_DATE": "2019-10-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 787137346,
+      "CONTACT_DATE": "2019-09-28 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 781842097,
+      "CONTACT_DATE": "2019-08-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 777174829,
+      "CONTACT_DATE": "2019-07-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 772693619,
+      "CONTACT_DATE": "2019-06-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 768007053,
+      "CONTACT_DATE": "2019-05-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 763443168,
+      "CONTACT_DATE": "2019-04-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 758599939,
+      "CONTACT_DATE": "2019-03-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 754166145,
+      "CONTACT_DATE": "2019-02-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 750474644,
+      "CONTACT_DATE": "2019-02-01 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "OTHER_BLOCK_ID": 108480108,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "MSG_PRIORITY_C_NAME": "Normal",
+      "MSG_CALLER_NAME": "self",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 749745972,
+      "CONTACT_DATE": "2019-01-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 745238411,
+      "CONTACT_DATE": "2018-12-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 740764099,
+      "CONTACT_DATE": "2018-11-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 736485409,
+      "CONTACT_DATE": "2018-10-25 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 727947624,
+      "CONTACT_DATE": "2018-08-28 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "MSG_PRIORITY_C_NAME": "Normal",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724628999,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "OTHER_BLOCK_ID": 102055618,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724623985,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 724619887,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 720803470,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "MEDS_REQUEST_PHR_ID": 65096,
+      "MEDS_REQUEST_PHR_ID_PHARMACY_NAME": "CVS 17622 IN TARGET - MADISON, WI - 750 HILLDALE WAY",
+      "PHYS_BP": "122/70",
+      "VITALS_TAKEN_TM": "2018-08-09 09:52:00",
+      "OTHER_BLOCK_ID": 102051113,
+      "OTHER_BLOCK_TYPE_C_NAME": "Ambulatory",
+      "AVS_LAST_PRINT_DTTM": "2018-08-09 15:16:00",
+      "$meta": {
+        "type": "PAT_ENC_2"
+      }
+    }
+  ]
+}

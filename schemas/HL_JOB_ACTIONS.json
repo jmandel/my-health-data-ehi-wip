@@ -1,0 +1,158 @@
+{
+  "name": "HL_JOB_ACTIONS",
+  "description": "Hospital Logistics Requests Actions.",
+  "primaryKey": [
+    {
+      "columnName": "HLR_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "HLR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the request record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "HL_ACTION_HL_REQ_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status that triggered the corresponding action.",
+      "entries": [
+        "Unplanned",
+        "Planned",
+        "Assigned",
+        "Acknowledged",
+        "At Start Location",
+        "In Progress",
+        "At End Location",
+        "Completed",
+        "Canceled"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "HL_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The action that was triggered when this Request reached the corresponding status.",
+      "entries": [
+        "Update Patient Location",
+        "Request Bed Clean for Patient's Bed",
+        "Update Bed Status",
+        "Print Ticket To Ride",
+        "Complete Pending Discharge",
+        "Complete Pending Transfer",
+        "Cancel Linked Bed Clean",
+        "Update Bed Blocks",
+        "Update Bed Type",
+        "Revert Bed Status"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "HL_ACTION_RESULT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The result of the corresponding action. If the action failed, this will include the reason for failure.",
+      "entries": [
+        "Success",
+        "Not Executed - Patient Bed Not Changing",
+        "Not Executed - Patient Not Admitted",
+        "Not Executed - Patient Does Not Have a Bed",
+        "Not Executed - Back to Bed End Location Isn't Patient's Bed",
+        "Not Executed - Patient Discharged and Readmitted",
+        "Not Executed - Patient Admitted While on LOA",
+        "Not Executed - Patient Location Update Not Required",
+        "Not Executed - Feature Not Enabled",
+        "Not Executed - No Linked Pending Event",
+        "Not Executed - Missing Required Parameter",
+        "Not Executed - No Bed Associated with Location",
+        "Not Executed - Unknown Action",
+        "Not Executed - Unknown Print TTR Location",
+        "Not Executed - No Location",
+        "Not Executed - No Patient",
+        "Not Executed - Prevented By Exclusion Rule",
+        "Not Executed - Patient Discharged or On LOA",
+        "Not Executed - Linked Pending Event Canceled",
+        "Not Executed - Linked Pending Event Completed",
+        "Not Executed - Bed Already Dirty",
+        "Not Executed - No Linked Bed Clean",
+        "Not Executed - No Protocols on Bed Clean",
+        "Not Executed - No Bed Block Types are Resolved by EVS",
+        "Not Executed - No Bed Type Update",
+        "Not Executed - Bed Not Valid for EVS",
+        "Not Executed - Linked Bed Clean Linked to ADT Event",
+        "Not Executed - Linked Bed Clean is Assigned",
+        "Not Executed - Linked Bed Clean is Complete",
+        "Not Executed - Skipped by System",
+        "Not Executed - Prevented By Inclusion Rule",
+        "Not Executed - Protocol Not in Mapping Table",
+        "Not Executed - Linked Patient Does Not Have a Contact",
+        "Not Executed - Action Hasn't Finished Running",
+        "Failed - Unknown Bed Status",
+        "Failed - Patient Record Locked",
+        "Failed - Confirmation Errors",
+        "Failed - Transported Patient Success, L&D Linked Patients Failed",
+        "Failed - Transported Patient Failed, L&D Linked Patients Success",
+        "Failed - Transported and L&D Linked Patients Failed",
+        "Failed - Patient has Earlier Pending Transfers",
+        "Failed - Unexpected Error",
+        "Failed - Enqueuing Background Job Failed",
+        "Failed - Request or Job Record Locked",
+        "Failed - Request Already Completed",
+        "Failed - Bed Record Locked",
+        "Failed - Legacy Bed Clean Not Created",
+        "Failed - Logistics Validation Error",
+        "Failed - Action Not Yet Implemented"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "HL_ACTION_SOURCE_HLR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Logistics Request or Job (HLR) that was the source of this action. For single-stage Requests, this will always be this Job. For multi-stage Requests, this will either be this Job or this Job's parent Request. If a Job has the same Task as its parent Request, only actions sourced from the parent request will be triggered by that Job; the Job's actions will be ignored."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "HL_ACTION_HL_REQ_STATUS_MOD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status modifier that triggered the corresponding action.",
+      "entries": [
+        "Delay",
+        "Hold"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "HL_ACTION_HL_REQ_HOLD_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The hold type that triggered the corresponding action when Job Action Status Modifier (I HLR 276) equals 2 - Hold.",
+      "entries": [
+        "Postpone",
+        "Multistage",
+        "Stat Interrupt",
+        "Protocols",
+        "Hold for Bed Request",
+        "Working on Another Assignment"
+      ]
+    }
+  ]
+}

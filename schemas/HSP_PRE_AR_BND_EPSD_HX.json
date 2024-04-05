@@ -1,0 +1,92 @@
+{
+  "name": "HSP_PRE_AR_BND_EPSD_HX",
+  "description": "This table contains bundled episode history for Hospital Billing temporary transactions. This table is limited to charge temporary transactions that have not yet been posted to the account.",
+  "primaryKey": [
+    {
+      "columnName": "HTT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "HTT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the transaction record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "HTT_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Holds the line number in the charge data related group that this line corresponds to."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ACTION_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time that this transaction was linked/unlinked to the bundled episode."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Holds bundled episode records linked to this transaction."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The current state of this transaction and episode, whether it is linked or unlinked.",
+      "entries": [
+        "Link",
+        "Unlink"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The source of the link or unlink of this bundled episode to this transaction.",
+      "entries": [
+        "User",
+        "Visit Association",
+        "Auto Link",
+        "Auto Creation",
+        "Auto Link Via Transform",
+        "Auto Link Via Association",
+        "Auto Removal"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who performed the link or unlink of this episode to the transaction line."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    }
+  ]
+}

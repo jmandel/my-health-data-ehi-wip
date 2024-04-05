@@ -1,0 +1,58 @@
+{
+  "name": "SOCIAL_HX_ALC_USE",
+  "description": "The SOCIAL_HX_ALC_USE  table contains social alcohol history data entered in clinical system patient encounters. Note: Typically, only the most recent social history data for a patient is extracted. However, you may elect to extract all social history contacts if you wish. In this case, since one patient encounter may contain multiple social history contacts, each contact is uniquely identified by a combination of the patient encounter serial number and a line number.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "A unique serial number for this encounter. This number is unique across all patients and encounters in the system."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The contact date on which the history information was collected."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ALCOHOL_DRINKS_WK",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the alcohol history of drinks per week."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "HX_DRINK_TYPES_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the type of alcohol consumed for alcohol history.",
+      "entries": [
+        "Glasses of wine",
+        "Cans of beer",
+        "Shots of liquor",
+        "Drinks containing 0.5 oz of alcohol",
+        "Standard drinks or equivalent"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "$meta": {
+    "schemas": {
+      "HSP_ACCT_CHG_LIST": {
+        "name": "HSP_ACCT_CHG_LIST",
+        "description": "This table contains the hospital account charge list, which is the transaction list associated with the account.",
+        "primaryKey": [
+          {
+            "columnName": "HSP_ACCOUNT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "HSP_ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the hospital account."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line count for the hospital account charge list related group."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "TX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the charge in the charge list on this hospital account."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ACCT_CHG_LIST",
+            "target": "HAR_ALL",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ACCT_CHG_LIST",
+            "target": "HSP_ACCT_CLAIM_HAR",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ACCT_CHG_LIST",
+            "target": "HSP_ACCOUNT",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HSP_ACCT_CHG_LIST": [
+    {
+      "HSP_ACCOUNT_ID": 376684810,
+      "LINE": 1,
+      "TX_ID": 670514271,
+      "$meta": {
+        "type": "HSP_ACCT_CHG_LIST"
+      }
+    },
+    {
+      "HSP_ACCOUNT_ID": 376684810,
+      "LINE": 2,
+      "TX_ID": 670514272,
+      "$meta": {
+        "type": "HSP_ACCT_CHG_LIST"
+      }
+    },
+    {
+      "HSP_ACCOUNT_ID": 376684810,
+      "LINE": 3,
+      "TX_ID": 672984063,
+      "$meta": {
+        "type": "HSP_ACCT_CHG_LIST"
+      }
+    }
+  ]
+}

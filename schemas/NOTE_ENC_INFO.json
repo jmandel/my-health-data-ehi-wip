@@ -1,0 +1,656 @@
+{
+  "name": "NOTE_ENC_INFO",
+  "description": "This table contains information from overtime single-response items about General Use Notes (HNO) records. Contact creation logic for clinical notes is as follows: 1. If a note doesn't exist, a new note is created. This represents the first contact on that note. 2. If a revision is filed by the incoming transcription interface, a new contact is created on the note being revised regardless of note status.",
+  "primaryKey": [
+    {
+      "columnName": "CONTACT_SERIAL_NUM",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the note record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_SERIAL_NUM",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The contact serial number (CSN) of the contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique, internal contact date in decimal format. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "COSIGN_INSTANT_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant when the note was cosigned."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "COSIGNUSER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who cosigned the note."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "COSIGNUSER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "COSIGN_NOTE_LINK",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "A note contact serial number (CSN) that points to the attending's note that cosigned this one."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "COSIGN_REQUIRED_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The cosign requirement for the current note contact.",
+      "entries": [
+        "Cosign Required",
+        "Cosign Not Required",
+        "Cosigned"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "AUTH_LNKED_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The author's linked provider record."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "AUTHOR_SERVICE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The author's clinical service."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "ENTRY_INSTANT_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "UTC formatted instant of entry for a note."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "UPD_AUTHOR_INS_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "UTC instant of update by a specific user."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "SPEC_NOTE_TIME_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The note's specified date paired with the specified time."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "NOTE_FILE_TIME_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "UTC formatted instant of when a note is filed."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "AUTHOR_PRVD_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Author's provider type on a specific contact.",
+      "entries": [
+        "Resource",
+        "Physician"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "NOTE_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status of the note.",
+      "entries": [
+        "Incomplete",
+        "Signed",
+        "Addendum",
+        "Deleted",
+        "Revised",
+        "Cosigned",
+        "Finalized",
+        "Unsigned",
+        "Cosign Needed",
+        "Incomplete Revision",
+        "Cosign Needed Addendum",
+        "Shared"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "UPDATE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The id of the user who updated this contact of the note."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "UPDATE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "TRN_DOC_AVAIL_STA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The availability status of the transcription.",
+      "entries": [
+        "Available",
+        "Unavailable",
+        "Obsolete",
+        "Deleted",
+        "Obsolete/Available",
+        "Obsolete/Unavailable",
+        "Soft Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "TRN_DOC_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The document type of the transcription."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "SENSITIVE_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Sensitive status of a note.",
+      "entries": [
+        "Sensitive",
+        "Not Sensitive"
+      ]
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "AUTHOR_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the user who is the author of the note."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "AUTHOR_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "NOTE_FORMAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The format of the note text like Plain Text, Rich Text, HTML etc.",
+      "entries": [
+        "Plain Text",
+        "Rich Text",
+        "HTML",
+        "Epic HTML",
+        "EpicML"
+      ]
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "UPD_BY_AUTH_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant when the note is updated by the author."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "ACTIVITY_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The activity date and time of the partial dictation/transcription."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "AUTH_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The authentication status category number for this activity if this note is a transcription. This is also known as the completion status.",
+      "entries": [
+        "Dictated",
+        "In Progress",
+        "Incomplete",
+        "Pre-authenticated",
+        "Authenticated",
+        "Legally Authenticated"
+      ]
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "CONTACT_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contact number for the record."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "UPD_AUT_LOCAL_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Update by author instant in local format."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "ENT_INST_LOCAL_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Note entry instant in local format."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "SPEC_TIME_LOC_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Note specified instant in local format."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "NOT_FILETM_LOC_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Note file time in local format."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "EDIT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the user record who edited the note for this particular contact. This is populated for notes with note type 76-Simple Med Note, 77-Medication History, etc. This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "EDIT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "DOCUMENT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the name of the multi-part document."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "UMRG_SRC_MEDPROB_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the Med Problem List record."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "ECG_COMMENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Comments about the Electrocardiogram (ECG/EKG)."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "ECG_EDITED_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The person who edited the Electrocardiogram (ECG/EKG)."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "ECG_DIASTOLIC_BP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The diastolic blood pressure taken from the Electrocardiogram (ECG/EKG)."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "ECG_SYSTOLIC_BP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The systolic blood pressure taken from the Electrocardiogram (ECG/EKG)."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "ECG_HEARTRATE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The heartrate from the Electrocardiogram (ECG/EKG)."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "ECG_PR_INTERVAL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The interval from the beginning of the P wave to the beginning of the QRS wave on the Electrocardiogram (ECG/EKG)."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "ECG_PWAVEAXIS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The P wave axis on the Electrocardiogram (ECG/EKG)."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "ECG_QRS_DURATION",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The duration of the QRS complex/wave on the Electrocardiogram (ECG/EKG)."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "ECG_QRS_WAVEAXIS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The QRS complex/wave axis on the Electrocardiogram (ECG/EKG)."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "ECG_QT_INTERVAL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The interval from the start of the QRS complex/wave to the end of the T wave on the Electrocardiogram (ECG/EKG)."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "ECG_QTC_INTERVAL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The corrected QT interval for the Electrocardiogram (ECG/EKG)."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "ECG_T_WAVEAXIS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The T wave axis for the Electrocardiogram (ECG/EKG)."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "SPIRO_BRON",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the type of bronchodilator given to the patient (ex: Albuterol)."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "CARE_PLAN_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Link to care plan contact.  Used to recreate historic versions of care plan."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "PROGRESS_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Progress note ID for the careplan goal note."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "PRE_UCN_NOTE_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This virtual item is populated with a category value from the note type (I HNO 50) according to the following logic:   * if the note type (I HNO 50) is populated, use the value directly * if the note type (I HNO 50) is null and the note is not ambulatory, return null   * if the note type (I HNO 50) is null and the note has an ambulatory encounter context, obtain a category from the UCN note type (I HNO 34033) and map that value to an equivalent category from the note type (I HNO 50), if possible",
+      "entries": [
+        "General",
+        "Phone Message",
+        "Letter",
+        "Message",
+        "Telephone Encounter",
+        "Provider Comments",
+        "RTF Letter",
+        "Routing Comments",
+        "Specialty Comments",
+        "Charting Text",
+        "MyChart Message",
+        "Eligibility Message",
+        "Criteria Review",
+        "AP Claim Code Edit",
+        "Patient Flag",
+        "Dental Soft Tissue Note",
+        "ABN INFORMATION",
+        "Progress Note",
+        "Nursing Note",
+        "Consult/Results - Findings",
+        "Consult/Results - Impression",
+        "Consult/Results - Recommendations/Plans",
+        "Chart Sync Patient Summary Report",
+        "Chart Sync Admission Summary Report",
+        "H&P Note",
+        "Procedure Note",
+        "Communication Body",
+        "Anesthesia",
+        "Department Message",
+        "Assessment & Plan Note",
+        "Problem Overview",
+        "Subjective & Objective",
+        "Care Coordination",
+        "Home Care Admit",
+        "Home Care Non-Admit",
+        "CTI Order",
+        "Bookmark",
+        "Hospice Discharge Remarks",
+        "Charge Homing Guarantor Inquiry",
+        "Patient Genomic Indicator Overview Note",
+        "Home Health Face to Face Attestation",
+        "Hospice Face to Face Attestation",
+        "Sticky Note",
+        "Coding Query",
+        "Address Verification Message",
+        "Intake Communication",
+        "Pharmacy Enrollment Note",
+        "Patient Instructions",
+        "Discharge Attachment",
+        "Previous Reports",
+        "Result Order Report",
+        "Home Care Intervention",
+        "Home Health Plan of Care Header",
+        "Dermatology Finding Description",
+        "Specimen Tracking Comments",
+        "Radiology Study Results",
+        "Auth/Cert Update",
+        "VECOZO Authorization Update",
+        "OR Instructions",
+        "In Basket Conversation",
+        "Incoming Message Pend Notes",
+        "Xtenity Patient Portal Message",
+        "Outside Organization Note",
+        "Outside Organization Update",
+        "Outside Organization Document",
+        "Cosign with Attestation Text",
+        "Simple Med Note",
+        "Medication History",
+        "ANSI 278 Information",
+        "History Overview",
+        "ED Disposition Edit Trail",
+        "Lab",
+        "Intervention Data from External System",
+        "Event Note",
+        "Treatment Summary",
+        "Rehabilitation Potential",
+        "Discharge Plans",
+        "History Event Details",
+        "Referral Transaction Record",
+        "Happy Together Result Transcription",
+        "Group Note",
+        "Care Advice Text",
+        "Infection Case",
+        "Clinical Note Summary",
+        "Transplant",
+        "Organ",
+        "Reg History Event",
+        "Interfaced Result",
+        "Outside Organization Coverage Information"
+      ]
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "TRANSCRIPTION_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The transcription date and time."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "CSGN_RECPNT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the user who is supposed to cosign the note."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "CSGN_RECPNT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "TREAT_SUMM_PAT_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This column stores the UTC instant that a treatment summary note is given to the patient."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "TREAT_SUMM_PROV_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This column stores the UTC instant that a treatment summary note is given to the follow-up provider."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "TREAT_SUMM_CPLT_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This column saves the UTC instant that a treatment summary note is marked as complete."
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the patient encounter contact serial number (CSN) in which the note was edited. Used for persistent notes to determine in which encounter the note was edited."
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "END_OF_TREAT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column saves the end of treatment date for a treatment summary."
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "UNMERGE_SRC_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The source note ID before patient merge."
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "NOTE_SHARED_W_PAT_HX_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Was this note contact marked as eligible for sharing with the patient when it was last saved?  Notes will only be displayed in MyChart if their most recent contact is marked for sharing. If you want to determine if a note is currently shared, use the NOTE_SHARED_W_PAT_YN column in the HNO_INFO table instead of this one.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "NOTE_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Identifies what type of note this record is."
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "POC_NOTE_DISC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the hospice Plan of Care note discipline."
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "COSIGN_INST_LOCAL_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant in local time when the note was cosigned."
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "IS_PRECHARTED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This indicates whether or not the note is currently a pre-charted note (in appointment encounter)."
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "LINK_DXR_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Link to the DXR contact that holds the NoteReader data for this note's contact."
+    },
+    {
+      "ordinalPosition": 69,
+      "name": "CLINICAL_NOTE_SUMMARY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores a plain text summary of the note contents."
+    },
+    {
+      "ordinalPosition": 70,
+      "name": "BLOCK_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores a discrete reason why a note was blocked from the patient."
+    },
+    {
+      "ordinalPosition": 71,
+      "name": "BLOCK_REASON_TXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores a free text comment with additional information about why a note was blocked from the patient."
+    }
+  ]
+}

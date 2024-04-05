@@ -1,0 +1,161 @@
+{
+  "$meta": {
+    "schemas": {
+      "GUAR_ACCT_STMT_HX": {
+        "name": "GUAR_ACCT_STMT_HX",
+        "description": "This table contains statement history information for the guarantor account.",
+        "primaryKey": [
+          {
+            "columnName": "ACCOUNT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the account record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "STMT_HX_STMT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date on which statement was generated."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "STMT_HX_INVOICE_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The invoice number of the invoice that was sent to the guarantor on this date."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "STMT_HX_NEW_CHARGE",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The original amount of all new charges on this invoice. New charges are those that were not on the last invoice sent."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "STMT_HX_NEW_BALANCE",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The new balance on the statement."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "STMT_HX_TTL_AMT_HLD",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Total amount held on the statement."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "STMT_HX_TTL_AMT_VD",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Total amount voided since last statement."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "STMT_HX_DVRY_MTHD_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The statement delivery method category ID for the guarantor.",
+            "entries": [
+              "Paper, No Electronic Notification",
+              "Paperless, No Electronic Notification",
+              "Paper and Electronic Notification",
+              "Paperless, Electronic Notification"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "GUAR_ACCT_STMT_HX",
+            "target": "ACCOUNT",
+            "joinKeys": [
+              {
+                "source": "ACCOUNT_ID",
+                "target": "ACCOUNT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "GUAR_ACCT_STMT_HX": [
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 1,
+      "STMT_HX_STMT_DATE": "2020-01-29 00:00:00",
+      "STMT_HX_INVOICE_NUM": "107147",
+      "STMT_HX_NEW_CHARGE": 165,
+      "STMT_HX_NEW_BALANCE": 133.29,
+      "STMT_HX_TTL_AMT_HLD": 0,
+      "STMT_HX_TTL_AMT_VD": -31.71,
+      "STMT_HX_DVRY_MTHD_C_NAME": "Paper, No Electronic Notification",
+      "$meta": {
+        "type": "GUAR_ACCT_STMT_HX"
+      }
+    },
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 2,
+      "STMT_HX_STMT_DATE": "2023-01-11 00:00:00",
+      "STMT_HX_INVOICE_NUM": "187621",
+      "STMT_HX_NEW_CHARGE": 315,
+      "STMT_HX_NEW_BALANCE": 19.89,
+      "STMT_HX_TTL_AMT_HLD": 0,
+      "STMT_HX_TTL_AMT_VD": -428.4,
+      "STMT_HX_DVRY_MTHD_C_NAME": "Paper, No Electronic Notification",
+      "$meta": {
+        "type": "GUAR_ACCT_STMT_HX"
+      }
+    },
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 3,
+      "STMT_HX_STMT_DATE": "2023-03-29 00:00:00",
+      "STMT_HX_INVOICE_NUM": "193828",
+      "STMT_HX_NEW_CHARGE": 226,
+      "STMT_HX_NEW_BALANCE": 139.97,
+      "STMT_HX_TTL_AMT_HLD": 0,
+      "STMT_HX_TTL_AMT_VD": -105.92,
+      "STMT_HX_DVRY_MTHD_C_NAME": "Paper, No Electronic Notification",
+      "$meta": {
+        "type": "GUAR_ACCT_STMT_HX"
+      }
+    },
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 4,
+      "STMT_HX_STMT_DATE": "2023-04-26 00:00:00",
+      "STMT_HX_INVOICE_NUM": "196069",
+      "STMT_HX_NEW_BALANCE": 139.97,
+      "STMT_HX_TTL_AMT_HLD": 0,
+      "STMT_HX_TTL_AMT_VD": 0,
+      "STMT_HX_DVRY_MTHD_C_NAME": "Paper, No Electronic Notification",
+      "$meta": {
+        "type": "GUAR_ACCT_STMT_HX"
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "PAT_REL_ADDR",
+  "description": "This table extracts the related multiple-response item Pat Rel Address (I EPT 1701) item, which stores the addresses of each emergency contact for a given patient. In this table, each GROUP_LINE value represents a different patient contact, and each VALUE_LINE value represents a different line of that contact's address. You can use PAT_ID and GROUP_LINE to join this table with the PAT_RELATIONSHIPS table.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple values associated with a specific group of data within this record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_REL_ADDRESS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Patient emergency contact's address. Here, each GROUP_LINE value represents a different patient contact, and each VALUE_LINE value represents a different line of that contact's address. You can use PAT_ID and GROUP_LINE to join this table with the PAT_RELATIONSHIPS table."
+    }
+  ]
+}

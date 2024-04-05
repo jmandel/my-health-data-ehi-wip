@@ -1,0 +1,65 @@
+{
+  "name": "APP_RECEIPT_STATUS_AUDIT",
+  "description": "This table contains the application receipt status changes and audit information for an order.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "APP_RECPT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Application receipt status for order e-messages",
+      "entries": [
+        "Pending",
+        "Acknowledged",
+        "Failure",
+        "Timeout",
+        "User Done"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "APP_RECPT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user associated with the application receipt status update for a given order"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "APP_RECPT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "APP_RECPT_STATUS_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Instant of update for application receipt status of an order"
+    }
+  ]
+}

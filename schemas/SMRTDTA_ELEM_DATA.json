@@ -1,0 +1,112 @@
+{
+  "name": "SMRTDTA_ELEM_DATA",
+  "description": "The SMRTDTA_ELEM_DATA table stores metadata (context, linked records, time of entry, etc.) concerning SmartData element values entered by users through SmartForms, SmartTools or other documentation tools that file discrete data to SmartData elements. The actual element values entered by end users are stored in the SMRTDTA_ELEM_VALUE table.",
+  "primaryKey": [
+    {
+      "columnName": "HLV_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "HLV_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the SmartData element value."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "ELEMENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The SmartData identifier (SDI) for this row."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CUR_VALUE_DATETIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time when the SmartData element value was entered by a user through a SmartForm, SmartTool or other documentation tool that files discrete data to SmartData elements."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CUR_VALUE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who entered the SmartData element value for this row. This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CUR_VALUE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CONTEXT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the context associated with this row. Contexts organize SmartData element data into different categories and determine under what circumstances data is stored. Examples of contexts include \"Patient\" and \"Episode\"."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CONTACT_SERIAL_NUM",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for a contact this record is linked to. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "RECORD_ID_VARCHAR",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the linked record that is associated with the SmartData element value of the current row. The type of linked record (patient, order, note, etc.) is determined by the context specified in the CONTEXT_NAME column of the current row. This column will be populated with a varchar version of the numeric ID if the type is numeric."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PAT_LINK_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record linked to the SmartData element. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "SRC_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Links to the note record that created the current value."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "SRC_NOTE_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status of the source note.",
+      "entries": [
+        "Incomplete",
+        "Signed",
+        "Addendum",
+        "Deleted",
+        "Revised",
+        "Cosigned",
+        "Finalized",
+        "Unsigned",
+        "Cosign Needed",
+        "Incomplete Revision",
+        "Cosign Needed Addendum",
+        "Shared"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "CUR_VAL_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "UTC version of HLV 70"
+    }
+  ]
+}

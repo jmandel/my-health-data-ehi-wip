@@ -1,0 +1,380 @@
+{
+  "name": "REG_HX_NOTES",
+  "description": "This table contains information for tracking registration history event notes.",
+  "primaryKey": [
+    {
+      "columnName": "NOTE_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the note record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "REG_HX_EVENT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Reg History event type category number for the Reg History event being tracked.",
+      "entries": [
+        "Patient created",
+        "Patient encounter created",
+        "Patient encounter deleted",
+        "Visit hospital account assigned",
+        "Visit account assigned",
+        "Guarantor added to patient",
+        "Coverage added to patient",
+        "Guarantor removed from patient",
+        "Coverage removed from patient",
+        "Visit account removed",
+        "Visit coverage assigned",
+        "Visit coverage removed",
+        "Hospital account created",
+        "Patient verified",
+        "Encounter verified",
+        "Guarantor verified",
+        "Coverage verified",
+        "Coverage member verified",
+        "Hospital account verified",
+        "Hospital account verified - second stamp",
+        "Benefits verified for encounter",
+        "Coverage benefits verified for encounter",
+        "Guarantor created",
+        "Coverage added to guarantor",
+        "Coverage removed from guarantor",
+        "PB visit created",
+        "PB visit coverage list change",
+        "Coverage created",
+        "Coverage member line added",
+        "Coverage member line removed",
+        "Coverage effective date change",
+        "Professional filing order change",
+        "MSPQ filing order change",
+        "Hospital filing order change",
+        "Hospital account coverage list change",
+        "Member effective date change",
+        "Member lines merged",
+        "Address change",
+        "Confirmation error"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "REG_HX_OPEN_PAT_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for the contact of the open patient encounter at the time of the note creation."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "REG_HX_ENTRY_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time when the note was created. If the date is null, the default value is 01/01/1900. If the time is null, the default value is 00:00."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "REG_HX_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user logged in when the note was generated."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "REG_HX_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "REG_HX_LOGIN_DEP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the login department where the note was generated."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "REG_HX_SRC_EAR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the account where an address change occurred in an address change event."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "REG_HX_SRC_CVG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the coverage for which the subscriber's address changed in an address change event."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "REG_HX_CITY_OLD",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The previous city for an address change event."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "REG_HX_STATE_OLD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The previous state for an address change event."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "REG_HX_ZIP_OLD",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The previous ZIP/postal code for an address change event."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "REG_HX_CNTRY_OLD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The previous country for an address change event."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "REG_HX_CNTY_OLD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The previous county for an address change event."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "REG_HX_HN_OLD",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The previous house number for an address change event."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "REG_HX_DSTRCT_OLD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The previous district for an address change event."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "CONFRM_ERR_FINIS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the confirmation record that triggered a warning or error was a finish confirmation record.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "REG_HX_OLD_EFFFR_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The old effective-from date when a coverage-level effective date was changed.  If the date is null, the default value is 01/01/1900."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "REG_HX_NEW_EFFFR_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The new effective-from date when a coverage-level effective date was changed.  If the date is null, the default value is 01/01/1900."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "REG_HX_OLD_EFFTO_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The old effective-to date when a coverage-level effective date was changed.  If the date is null, the default value is 01/01/1900."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "REG_HX_NEW_EFFTO_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The new effective-to date when a coverage-level effective date was changed.  If the date is null, the default value is 01/01/1900."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "REG_HX_CITY_NEW",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The new city for an address change event."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "REG_HX_STATE_NEW_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The new state for an address change event."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "REG_HX_ZIP_NEW",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The new ZIP/postal code for an address change event."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "REG_HX_CNTRY_NEW_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The new country for an address change event."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "REG_HX_CNTY_NEW_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The new county for an address change event."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "REG_HX_HN_NEW",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The new house number for an address change event."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "REG_HX_DSTRCT_NEW_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The new district for an address change event."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "REG_HX_VERF_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the verification record associated with the verification event for this row.  This column is frequently used to link to the VERIFICATION table.",
+      "linksTo": "VERIFICATION"
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "REG_HX_FO_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The source of a filing order change.",
+      "entries": [
+        "User Edit",
+        "MSPQ Responses",
+        "Manual Accept From WQ",
+        "Manual Reject From WQ",
+        "System Accept",
+        "System Reject",
+        "Manual Edit From WQ",
+        "Initial Population",
+        "Conversion",
+        "Hospital Account data push",
+        "Coverage updated at place of service"
+      ]
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "REG_HX_FO_REV_ACC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason that a filing order change was accepted when it was reviewed.",
+      "entries": [
+        "Other",
+        "Charges Not Triggered",
+        "Primary Coverage Unchanged",
+        "Self-Pay to Coverage",
+        "No Claims Sent to Original Payor"
+      ]
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "REG_HX_FO_REV_REJ_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason that a filing order change was rejected when it was reviewed.",
+      "entries": [
+        "Not a Charge Transaction",
+        "Voided Transaction",
+        "Out Of Max Days Range",
+        "Already Retroadjudicated",
+        "Retroadjudication Not Needed",
+        "No Open System Batch",
+        "In Accepted Queue",
+        "In Rejected Queue",
+        "Orig Cvg Eff On Svc Dt",
+        "Same Cvg, Same Pln/Pln Grp",
+        "Same Payor",
+        "Supplemental Charge",
+        "CRNA Charge",
+        "Attached Insurance Payment/Adjustment",
+        "Patient Due and Paid Off",
+        "Same Payor, Same Plan",
+        "Retro Extension Error",
+        "Charge Bundled",
+        "Small Balance Due",
+        "Service Date Too Old",
+        "Small Insurance Due",
+        "Insufficient Security for Retro",
+        "Zero Charge",
+        "Matched Credit > 0",
+        "Invalid Acct Type",
+        "Reject All Chg Extension",
+        "Claim Submitted For Orig Payor",
+        "Do Not Bill Insurance Charge",
+        "Same Payor, Subscriber ID",
+        "Invalid Account Status",
+        "Dental Payment Plan Charge",
+        "Ambulatory Pharmacy Charge",
+        "Dental Predetermination Charge",
+        "No Effective Date",
+        "Bad Debt Transaction",
+        "Already Self-Pay",
+        "Charge Paid Off",
+        "Auto Profile Reject",
+        "Tax Charge",
+        "Auto Reject due to VFO Conversion",
+        "Home Infusion Adjudicated Charge"
+      ]
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "REG_HX_FO_RV_CER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The rule (CER) ID that an automatic filing order change was associated with."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "REG_HX_FO_RV_CER_ID_RULE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the rule."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "REG_HX_FO_WQ_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The workqueue (WQF) ID that a filing order review change was associated with."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "REG_HX_FO_WQ_ID_WORKQUEUE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the workqueue"
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "REG_HX_FO_REV_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The free-text reason given by the user that a filing order change was made."
+    }
+  ]
+}

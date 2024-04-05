@@ -1,0 +1,133 @@
+{
+  "$meta": {
+    "schemas": {
+      "OTHER_COMMUNCTN": {
+        "name": "OTHER_COMMUNCTN",
+        "description": "This table stores miscellaneous communication devices that can be used to reach the patient. Examples are mobile phone and pager.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique identifier for the patient record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "OTHER_COMMUNIC_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Other communication devices such as: 1) MOBILE: Mobile 2) PAGER: Pager 3) HOME FAX: Home Fax 4) OTH FAX: Other Fax 5) ASTNT: Assistant 6) TTY/TDP: TTY/TDP 7) HOME PH: Home Phone 8) WORK PH: Work Phone",
+            "entries": [
+              "Mobile",
+              "Pager",
+              "Home Fax",
+              "Other Fax",
+              "Assistant",
+              "TTY",
+              "Home Phone",
+              "Work Phone",
+              "Video Phone"
+            ]
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "OTHER_COMMUNIC_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Different kinds of communication numbers such as Home Phone, Work Phone, Fax, Pager, etc, that correspond to the type of device stored in OTHER_COMMUNIC_C."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "CONTACT_PRIORITY",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "Priorities are numbers, and are used to set a calling preference for phone numbers.  1 is the highest priority."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "OTHER_COMMUNCTN",
+            "target": "PAT_REL_ADDR",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "OTHER_COMMUNCTN",
+            "target": "PATIENT",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "OTHER_COMMUNCTN": [
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 1,
+      "OTHER_COMMUNIC_C_NAME": "Home Phone",
+      "OTHER_COMMUNIC_NUM": "617-894-1015",
+      "$meta": {
+        "type": "OTHER_COMMUNCTN"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 2,
+      "OTHER_COMMUNIC_C_NAME": "Work Phone",
+      "$meta": {
+        "type": "OTHER_COMMUNCTN"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 3,
+      "OTHER_COMMUNIC_C_NAME": "Mobile",
+      "OTHER_COMMUNIC_NUM": "REDACTED",
+      "CONTACT_PRIORITY": 1,
+      "$meta": {
+        "type": "OTHER_COMMUNCTN"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 4,
+      "OTHER_COMMUNIC_C_NAME": "Text Reminder",
+      "$meta": {
+        "type": "OTHER_COMMUNCTN"
+      }
+    }
+  ]
+}

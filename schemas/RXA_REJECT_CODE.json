@@ -1,0 +1,83 @@
+{
+  "name": "RXA_REJECT_CODE",
+  "description": "Stores reject codes for adjudication records. Reject codes may be used when an adjudication fails, for example, due to missing prior authorization. Adjudication records are used by Ambulatory Pharmacy during prescription copay adjudication.",
+  "primaryKey": [
+    {
+      "columnName": "RECORD_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the adjudication record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique, internal contact date in decimal format. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "REJECT_CODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "NCPDP code indicating the error encountered using a record from the flag master file."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "REJECT_CODE_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The flag name."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "REJECT_FIELD_OCCUR",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Code indicating the error encountered."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "RJCT_CODE_FREE_TXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A free-text description of the reject code."
+    }
+  ]
+}

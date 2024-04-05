@@ -1,0 +1,50 @@
+{
+  "name": "RES_CMT_DATA_RM",
+  "description": "Stores data for multi line comment item. For a given line data may be spread across multiple lines.",
+  "primaryKey": [
+    {
+      "columnName": "RESULT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RESULT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the result record for this row. This column is frequently used to link to the RES_COMPONENTS table or the RES_MICRO_CULTURE table through the RES_CMT_PTR_RM table.  For component repeats, link from RES_REPEAT_COMP through the RES_RPT_CMT_PTR_RM table.",
+      "linksTo": "RES_COMPONENTS"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This contains a link to the RES_CMT_PTR_RM.CMP_MLTLN_USER_CMMT clarity column.",
+      "linksTo": "RES_CMT_PTR_RM"
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple values that are associated with the result and the component/organism from the RES_CMT_PTR_RM or RES_RPT_CMT_PTR_RM table. This column can be ignored - it is here for completeness."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "MULTLINE_UC_STG_RAW",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the user comments for a given component.  For a category value this would be the ID. Each component can list multiple lines in OVR-51202 (Component Multiline User Comment Pointer) or OVR-53202 (Repeat Component Multiline User Comment Pointer) which are the lines of this item."
+    }
+  ]
+}

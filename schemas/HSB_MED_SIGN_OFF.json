@@ -1,0 +1,80 @@
+{
+  "name": "HSB_MED_SIGN_OFF",
+  "description": "Contains information about the users involved in medication sign off \n\n\nworkflows, the actions they took, and when it occurred.",
+  "primaryKey": [
+    {
+      "columnName": "SUMMARY_BLOCK_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SUMMARY_BLOCK_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the Episode."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "AN_MED_REVIEWER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the ID of the user who was involved in the medication review process."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "AN_MED_REVIEWER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "MED_REVIEW_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the current status of the medication review.",
+      "entries": [
+        "Message Sent",
+        "Sign Off Received",
+        "Reviewed - Updates Needed",
+        "Retracted - Under Review",
+        "Sent Updates",
+        "No Signoff Needed"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "STATUS_UPDATED_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the instant that the status was last updated."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "MED_RVW_MSG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the message ID for the message that was sent for medication sign off."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "MED_RVW_DEV_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the device used when the user signed off on the medications."
+    }
+  ]
+}

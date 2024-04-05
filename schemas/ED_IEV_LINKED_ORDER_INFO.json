@@ -1,0 +1,48 @@
+{
+  "name": "ED_IEV_LINKED_ORDER_INFO",
+  "description": "This table extracts the link between orders and events. An event can have multiple orders linked in this table. This table can be used to link to other orders tables with the order ID.",
+  "primaryKey": [
+    {
+      "columnName": "EVENT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "EVENT_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "ORDER_LINK_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "EVENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the event record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "EVENT_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the event associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ORDER_LINK_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Events may be triggered by multiple orders and when this occurs, each order is stored on its own line. This column stores the line number associated with each order that triggered the event."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EVENT_LINKED_ORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the order IDs linked to this event line indicating the orders that triggered the event"
+    }
+  ]
+}

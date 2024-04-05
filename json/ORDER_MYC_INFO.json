@@ -1,0 +1,177 @@
+{
+  "$meta": {
+    "schemas": {
+      "ORDER_MYC_INFO": {
+        "name": "ORDER_MYC_INFO",
+        "description": "When sharing a lab result with a web-based chart system patient, the clinician may choose to attach a Result Comment. Data for the Result Comment patient note is stored in this table.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_PROC_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_PROC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the procedure order record that is being released/unreleased."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "RELEASED_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Whether a result is released to a patient on MyChart.",
+            "entries": [
+              "No",
+              "Yes"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "ORDER_MYC_INFO",
+            "target": "OBS_MTHD_ID",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_MYC_INFO",
+            "target": "ORD_CLIN_IND",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_MYC_INFO",
+            "target": "ORDER_DOCUMENTS",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_MYC_INFO",
+            "target": "ORDER_MYC_RELEASE",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_MYC_INFO",
+            "target": "ORDER_READ_ACK",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_MYC_INFO",
+            "target": "ORDER_RES_COMMENT",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_MYC_INFO",
+            "target": "ORDER_REVIEW",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_MYC_INFO",
+            "target": "ORD_RSLT_COMPON_ID",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ORDER_MYC_INFO": [
+    {
+      "ORDER_PROC_ID": 439060606,
+      "RELEASED_YN": "Y",
+      "$meta": {
+        "type": "ORDER_MYC_INFO"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179262,
+      "RELEASED_YN": "Y",
+      "$meta": {
+        "type": "ORDER_MYC_INFO"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060607,
+      "RELEASED_YN": "Y",
+      "$meta": {
+        "type": "ORDER_MYC_INFO"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 439060613,
+      "RELEASED_YN": "Y",
+      "$meta": {
+        "type": "ORDER_MYC_INFO"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 945468370,
+      "RELEASED_YN": "Y",
+      "$meta": {
+        "type": "ORDER_MYC_INFO"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 945468371,
+      "RELEASED_YN": "Y",
+      "$meta": {
+        "type": "ORDER_MYC_INFO"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 945468372,
+      "RELEASED_YN": "Y",
+      "$meta": {
+        "type": "ORDER_MYC_INFO"
+      }
+    }
+  ]
+}

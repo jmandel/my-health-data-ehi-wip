@@ -1,0 +1,64 @@
+{
+  "name": "PAT_EDU_STATUS_HX",
+  "description": "This table stores information to track the record status changes made to patient education records. Since a record's status may change multiple times, a record's status-change information may occupy multiple rows in the table.",
+  "primaryKey": [
+    {
+      "columnName": "EDUCATION_RECORD_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "EDUCATION_RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the education record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SDFL_EDIT_DTTM",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "The date and time when the record's status was changed."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SDFL_EDIT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who changed the record's status."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SDFL_EDIT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SDFL_EDIT_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The edit action category number that indicates how the record's status was changed.",
+      "entries": [
+        "Soft Delete",
+        "Undo Delete",
+        "Hide",
+        "Unhide"
+      ]
+    }
+  ]
+}

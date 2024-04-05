@@ -1,0 +1,478 @@
+{
+  "$meta": {
+    "schemas": {
+      "COVERAGE_BENEFITS": {
+        "name": "COVERAGE_BENEFITS",
+        "description": "The COVERAGE_BENEFITS table contains coverage-level benefit information for the encounter or estimate to which this benefit record is attached.",
+        "primaryKey": [
+          {
+            "columnName": "RECORD_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "RECORD_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier (.1 item) for the benefit record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "CVG_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Each line in this related group contains benefit information for a coverage that is or was in use for this visit."
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "CVG_BEN_VERIF_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The verification record for visit-specific coverage benefits."
+          },
+          {
+            "ordinalPosition": 17,
+            "name": "DEDUCTIBLE_AMOUNT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Deductible for this coverage."
+          },
+          {
+            "ordinalPosition": 19,
+            "name": "DEDUCT_REMAIN_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The amount of the deductible for this coverage that has yet to be paid."
+          },
+          {
+            "ordinalPosition": 22,
+            "name": "OUT_OF_POCKET_MAX",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The maximum out-of-pocket payment for this coverage."
+          },
+          {
+            "ordinalPosition": 23,
+            "name": "OUT_OF_PCKT_REMAIN",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The remaining out-of-pocket payment for this coverage."
+          },
+          {
+            "ordinalPosition": 43,
+            "name": "CVG_UPDATE_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "This item contains the last instant that data related to this coverage was written to the record. This includes changes to general benefits, changes to service type specific benefits, and copying from another benefits record."
+          },
+          {
+            "ordinalPosition": 44,
+            "name": "CVG_UPDATE_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item contains the ID of the user who last saved data related to this coverage to the record, or whose actions caused the system to save that data. Updates when general benefits or service type specific benefits are saved or when benefits are copied from one benefit record to this one."
+          },
+          {
+            "ordinalPosition": 45,
+            "name": "CVG_UPDATE_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 46,
+            "name": "CVG_UPDATE_SRC_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The method that was last used to make changes to the general benefits values. This reflects the original entry of the benefits, even if the entry was made on a different benefits record and the benefits were later copied to the current one. This only tracks changes to the general benefits, not to service type benefits.",
+            "entries": [
+              "Manual Update",
+              "Eligibility Query",
+              "Automatic copy from canceled encounter",
+              "Automatic copy from related encounter",
+              "Automatic copy from current encounter",
+              "Previous Eligibility Query",
+              "Automatic population from benefits engine",
+              "Reference BEN for Estimates",
+              "Automatic copy from related estimate",
+              "Sync from coverage level benefit tracking"
+            ]
+          },
+          {
+            "ordinalPosition": 52,
+            "name": "FAMILY_TIER_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Family tier for this line's coverage.",
+            "entries": [
+              "N/A",
+              "Individual",
+              "Family"
+            ]
+          },
+          {
+            "ordinalPosition": 56,
+            "name": "NET_LVL_CVG_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Network level for this line's coverage.",
+            "entries": [
+              "In",
+              "Out",
+              "Out of Area",
+              "N/A"
+            ]
+          },
+          {
+            "ordinalPosition": 57,
+            "name": "CALC_NET_LVL_CVG_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the most recently calculated network level for this coverage."
+          },
+          {
+            "ordinalPosition": 58,
+            "name": "CALC_NET_SRC_CVG_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the source of the most recently calculated network level for this coverage.",
+            "entries": [
+              "Selected",
+              "NET Definition",
+              "Plan Default",
+              "Payor Default",
+              "BEN Settings",
+              "System Default"
+            ]
+          },
+          {
+            "ordinalPosition": 63,
+            "name": "RTE_DEDUCT_AMOUNT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Stores the last deductible amount filed by RTE at the coverage level"
+          },
+          {
+            "ordinalPosition": 65,
+            "name": "RTE_DEDUCT_REMAIN",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Stores the last deductible remaining amount filed by RTE at the coverage level"
+          },
+          {
+            "ordinalPosition": 67,
+            "name": "RTE_OOP_MAX",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Stores the last OOP max amount filed by RTE at the coverage level"
+          },
+          {
+            "ordinalPosition": 68,
+            "name": "RTE_OOP_REMAIN",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Stores the last OOP remaining amount filed by RTE at the coverage level"
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "COVERAGE_BENEFITS",
+            "target": "BENEFITS",
+            "joinKeys": [
+              {
+                "source": "RECORD_ID",
+                "target": "RECORD_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "COVERAGE_BENEFITS": [
+    {
+      "RECORD_ID": 9963531,
+      "LINE": 1,
+      "CVG_ID": 5934765,
+      "CALC_NET_LVL_CVG_C_NAME": "Network Level 1",
+      "CALC_NET_SRC_CVG_C_NAME": "NET Definition",
+      "$meta": {
+        "type": "COVERAGE_BENEFITS"
+      }
+    },
+    {
+      "RECORD_ID": 51143791,
+      "LINE": 2,
+      "CVG_ID": 5934765,
+      "OUT_OF_POCKET_MAX": 1000,
+      "OUT_OF_PCKT_REMAIN": 966.92,
+      "FAMILY_TIER_C_NAME": "Family",
+      "NET_LVL_CVG_C_NAME": "N/A",
+      "RTE_OOP_MAX": 1000,
+      "RTE_OOP_REMAIN": 966.92,
+      "$meta": {
+        "type": "COVERAGE_BENEFITS"
+      }
+    },
+    {
+      "RECORD_ID": 51143791,
+      "LINE": 1,
+      "CVG_ID": 5934765,
+      "DEDUCTIBLE_AMOUNT": 1500,
+      "DEDUCT_REMAIN_AMT": 0,
+      "OUT_OF_POCKET_MAX": 1000,
+      "OUT_OF_PCKT_REMAIN": 966.92,
+      "FAMILY_TIER_C_NAME": "Individual",
+      "NET_LVL_CVG_C_NAME": "N/A",
+      "RTE_DEDUCT_AMOUNT": 1500,
+      "RTE_DEDUCT_REMAIN": 0,
+      "RTE_OOP_MAX": 1000,
+      "RTE_OOP_REMAIN": 966.92,
+      "$meta": {
+        "type": "COVERAGE_BENEFITS"
+      }
+    },
+    {
+      "RECORD_ID": 51143791,
+      "LINE": 3,
+      "CVG_ID": 5934765,
+      "CVG_BEN_VERIF_ID": 168240478,
+      "CVG_UPDATE_DTTM": "2022-12-01 08:44:00",
+      "CVG_UPDATE_USER_ID": "RTEUSER",
+      "CVG_UPDATE_USER_ID_NAME": "RTE, USER",
+      "CVG_UPDATE_SRC_C_NAME": "Eligibility Query",
+      "FAMILY_TIER_C_NAME": "N/A",
+      "NET_LVL_CVG_C_NAME": "N/A",
+      "CALC_NET_LVL_CVG_C_NAME": "In",
+      "CALC_NET_SRC_CVG_C_NAME": "BEN Settings",
+      "$meta": {
+        "type": "COVERAGE_BENEFITS"
+      }
+    },
+    {
+      "RECORD_ID": 18603114,
+      "LINE": 1,
+      "CVG_ID": 5934765,
+      "CVG_BEN_VERIF_ID": 94350188,
+      "CALC_NET_LVL_CVG_C_NAME": "In",
+      "CALC_NET_SRC_CVG_C_NAME": "BEN Settings",
+      "$meta": {
+        "type": "COVERAGE_BENEFITS"
+      }
+    },
+    {
+      "RECORD_ID": 54045560,
+      "LINE": 1,
+      "CVG_ID": 5934765,
+      "DEDUCTIBLE_AMOUNT": 1500,
+      "DEDUCT_REMAIN_AMT": 1474.06,
+      "OUT_OF_POCKET_MAX": 1000,
+      "OUT_OF_PCKT_REMAIN": 1000,
+      "FAMILY_TIER_C_NAME": "Individual",
+      "NET_LVL_CVG_C_NAME": "N/A",
+      "RTE_DEDUCT_AMOUNT": 1500,
+      "RTE_DEDUCT_REMAIN": 1474.06,
+      "RTE_OOP_MAX": 1000,
+      "RTE_OOP_REMAIN": 1000,
+      "$meta": {
+        "type": "COVERAGE_BENEFITS"
+      }
+    },
+    {
+      "RECORD_ID": 42759240,
+      "LINE": 2,
+      "CVG_ID": 5934765,
+      "OUT_OF_POCKET_MAX": 1000,
+      "OUT_OF_PCKT_REMAIN": 1000,
+      "FAMILY_TIER_C_NAME": "Family",
+      "NET_LVL_CVG_C_NAME": "N/A",
+      "RTE_OOP_MAX": 1000,
+      "RTE_OOP_REMAIN": 1000,
+      "$meta": {
+        "type": "COVERAGE_BENEFITS"
+      }
+    },
+    {
+      "RECORD_ID": 42759240,
+      "LINE": 1,
+      "CVG_ID": 5934765,
+      "DEDUCTIBLE_AMOUNT": 1500,
+      "DEDUCT_REMAIN_AMT": 1286.58,
+      "OUT_OF_POCKET_MAX": 1000,
+      "OUT_OF_PCKT_REMAIN": 1000,
+      "FAMILY_TIER_C_NAME": "Individual",
+      "NET_LVL_CVG_C_NAME": "N/A",
+      "RTE_DEDUCT_AMOUNT": 1500,
+      "RTE_DEDUCT_REMAIN": 1286.58,
+      "RTE_OOP_MAX": 1000,
+      "RTE_OOP_REMAIN": 1000,
+      "$meta": {
+        "type": "COVERAGE_BENEFITS"
+      }
+    },
+    {
+      "RECORD_ID": 42759240,
+      "LINE": 3,
+      "CVG_ID": 5934765,
+      "CVG_BEN_VERIF_ID": 150762857,
+      "CVG_UPDATE_DTTM": "2022-03-04 17:02:00",
+      "CVG_UPDATE_USER_ID": "RTEUSER",
+      "CVG_UPDATE_USER_ID_NAME": "RTE, USER",
+      "CVG_UPDATE_SRC_C_NAME": "Eligibility Query",
+      "FAMILY_TIER_C_NAME": "N/A",
+      "NET_LVL_CVG_C_NAME": "N/A",
+      "CALC_NET_LVL_CVG_C_NAME": "In",
+      "CALC_NET_SRC_CVG_C_NAME": "BEN Settings",
+      "$meta": {
+        "type": "COVERAGE_BENEFITS"
+      }
+    },
+    {
+      "RECORD_ID": 54045560,
+      "LINE": 2,
+      "CVG_ID": 5934765,
+      "CVG_BEN_VERIF_ID": 174326665,
+      "CVG_UPDATE_DTTM": "2023-03-02 09:04:00",
+      "CVG_UPDATE_USER_ID": "RTEUSER",
+      "CVG_UPDATE_USER_ID_NAME": "RTE, USER",
+      "CVG_UPDATE_SRC_C_NAME": "Eligibility Query",
+      "FAMILY_TIER_C_NAME": "N/A",
+      "NET_LVL_CVG_C_NAME": "N/A",
+      "CALC_NET_LVL_CVG_C_NAME": "In",
+      "CALC_NET_SRC_CVG_C_NAME": "BEN Settings",
+      "$meta": {
+        "type": "COVERAGE_BENEFITS"
+      }
+    },
+    {
+      "RECORD_ID": 48067901,
+      "LINE": 2,
+      "CVG_ID": 5934765,
+      "OUT_OF_POCKET_MAX": 1000,
+      "OUT_OF_PCKT_REMAIN": 988.14,
+      "FAMILY_TIER_C_NAME": "Family",
+      "NET_LVL_CVG_C_NAME": "N/A",
+      "RTE_OOP_MAX": 1000,
+      "RTE_OOP_REMAIN": 988.14,
+      "$meta": {
+        "type": "COVERAGE_BENEFITS"
+      }
+    },
+    {
+      "RECORD_ID": 48067901,
+      "LINE": 1,
+      "CVG_ID": 5934765,
+      "DEDUCTIBLE_AMOUNT": 1500,
+      "DEDUCT_REMAIN_AMT": 0,
+      "OUT_OF_POCKET_MAX": 1000,
+      "OUT_OF_PCKT_REMAIN": 988.14,
+      "FAMILY_TIER_C_NAME": "Individual",
+      "NET_LVL_CVG_C_NAME": "N/A",
+      "RTE_DEDUCT_AMOUNT": 1500,
+      "RTE_DEDUCT_REMAIN": 0,
+      "RTE_OOP_MAX": 1000,
+      "RTE_OOP_REMAIN": 988.14,
+      "$meta": {
+        "type": "COVERAGE_BENEFITS"
+      }
+    },
+    {
+      "RECORD_ID": 62064878,
+      "LINE": 1,
+      "CVG_ID": 5934765,
+      "DEDUCTIBLE_AMOUNT": 1500,
+      "DEDUCT_REMAIN_AMT": 1241.96,
+      "OUT_OF_POCKET_MAX": 1000,
+      "OUT_OF_PCKT_REMAIN": 1000,
+      "FAMILY_TIER_C_NAME": "Individual",
+      "NET_LVL_CVG_C_NAME": "N/A",
+      "RTE_DEDUCT_AMOUNT": 1500,
+      "RTE_DEDUCT_REMAIN": 1241.96,
+      "RTE_OOP_MAX": 1000,
+      "RTE_OOP_REMAIN": 1000,
+      "$meta": {
+        "type": "COVERAGE_BENEFITS"
+      }
+    },
+    {
+      "RECORD_ID": 62105347,
+      "LINE": 1,
+      "CVG_ID": 5934765,
+      "CVG_BEN_VERIF_ID": 190941055,
+      "CALC_NET_LVL_CVG_C_NAME": "In",
+      "CALC_NET_SRC_CVG_C_NAME": "BEN Settings",
+      "$meta": {
+        "type": "COVERAGE_BENEFITS"
+      }
+    },
+    {
+      "RECORD_ID": 62105543,
+      "LINE": 1,
+      "CVG_ID": 5934765,
+      "CALC_NET_LVL_CVG_C_NAME": "In",
+      "CALC_NET_SRC_CVG_C_NAME": "BEN Settings",
+      "$meta": {
+        "type": "COVERAGE_BENEFITS"
+      }
+    },
+    {
+      "RECORD_ID": 62064878,
+      "LINE": 2,
+      "CVG_ID": 5934765,
+      "CVG_BEN_VERIF_ID": 190929513,
+      "CVG_UPDATE_DTTM": "2023-09-27 17:54:00",
+      "CVG_UPDATE_USER_ID": "RTEUSER",
+      "CVG_UPDATE_USER_ID_NAME": "RTE, USER",
+      "CVG_UPDATE_SRC_C_NAME": "Eligibility Query",
+      "FAMILY_TIER_C_NAME": "N/A",
+      "NET_LVL_CVG_C_NAME": "N/A",
+      "CALC_NET_LVL_CVG_C_NAME": "In",
+      "CALC_NET_SRC_CVG_C_NAME": "BEN Settings",
+      "$meta": {
+        "type": "COVERAGE_BENEFITS"
+      }
+    },
+    {
+      "RECORD_ID": 48067901,
+      "LINE": 3,
+      "CVG_ID": 5934765,
+      "CVG_BEN_VERIF_ID": 161800341,
+      "CVG_UPDATE_DTTM": "2022-08-29 07:28:00",
+      "CVG_UPDATE_USER_ID": "RTEUSER",
+      "CVG_UPDATE_USER_ID_NAME": "RTE, USER",
+      "CVG_UPDATE_SRC_C_NAME": "Eligibility Query",
+      "FAMILY_TIER_C_NAME": "N/A",
+      "NET_LVL_CVG_C_NAME": "N/A",
+      "CALC_NET_LVL_CVG_C_NAME": "In",
+      "CALC_NET_SRC_CVG_C_NAME": "BEN Settings",
+      "$meta": {
+        "type": "COVERAGE_BENEFITS"
+      }
+    },
+    {
+      "RECORD_ID": 23788360,
+      "LINE": 1,
+      "CVG_ID": 5934765,
+      "CVG_BEN_VERIF_ID": 105528040,
+      "CALC_NET_LVL_CVG_C_NAME": "In",
+      "CALC_NET_SRC_CVG_C_NAME": "BEN Settings",
+      "$meta": {
+        "type": "COVERAGE_BENEFITS"
+      }
+    }
+  ]
+}

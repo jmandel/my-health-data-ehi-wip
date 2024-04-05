@@ -1,0 +1,74 @@
+{
+  "$meta": {
+    "schemas": {
+      "PAT_RSN_VISIT_DX": {
+        "name": "PAT_RSN_VISIT_DX",
+        "description": "All values associated with a claim are stored in the Claim External Value record.  The PAT_RSN_VISIT_DX table holds the diagnoses that document the patient's reason for an outpatient visit.",
+        "primaryKey": [
+          {
+            "columnName": "RECORD_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "RECORD_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the claim record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PAT_RSN_VISIT_QUAL",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item holds the qualifier identifying the code set for the patient reason for visit diagnoses."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "PAT_RSN_VISIT_DX",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item holds the diagnoses representing the patient's reason for the visit."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "PAT_RSN_VISIT_DX",
+            "target": "CLM_VALUES",
+            "joinKeys": [
+              {
+                "source": "RECORD_ID",
+                "target": "RECORD_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PAT_RSN_VISIT_DX": [
+    {
+      "RECORD_ID": 127795413,
+      "LINE": 1,
+      "PAT_RSN_VISIT_QUAL": "APR",
+      "PAT_RSN_VISIT_DX": "S06.9X9S",
+      "$meta": {
+        "type": "PAT_RSN_VISIT_DX"
+      }
+    }
+  ]
+}

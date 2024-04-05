@@ -1,0 +1,423 @@
+{
+  "name": "AP_CLAIM_PROC_4",
+  "description": "This table summarizes data for AP Claims service lines, with each service line given one row.\n\n\n\n\n\nTo link this table�s service line information back to a claim header, join this table to AP_CLAIM_PROC_IDS on the TX_ID column. If you need to report on claim service lines specific to Cost Sharing Reduction (CSR), join this table instead to AP_CLAIM_PROC_IDS_CSR on the TX_ID column.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the transaction record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "REPRICED_ALLOWED_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The allowed amount for the procedure that was received from the most recent repricer."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "REPRICED_DISALLOWED_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The disallowed amount for the procedure that was received from the most recent repricer."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "UPN_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "UPN (Universal Product Number) code for the procedure on a claim."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "UPN_QTY",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Quantity of UPN code for the procedure on a claim."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "UPN_DESC",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Description of the UPN code for the procedure on a claim."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "UPN_QUAL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Qualifier code of the UPN code for the procedure on a claim.",
+      "entries": [
+        "EAN/UCC-13",
+        "EAN/UCC-8",
+        "HIBC (Health Care Industry Bar Code)",
+        "Customer Order Number",
+        "GTIN-14",
+        "UCC-12"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "UPN_UNIT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Unit of measurement for UPN code for the procedure on a claim.",
+      "entries": [
+        "Milliliters",
+        "Milligrams",
+        "Grams",
+        "International Units",
+        "Units"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PAID_CLM_FILE_NOT_CVD_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The not covered amount from the claim's source file. This is only populated for externally-paid claims loaded from claims files."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PAID_CLM_FILE_DEDUCT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The deductible amount from the claim's source file. This is only populated for externally-paid claims loaded from claims files."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PAID_CLM_FILE_COINS_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The coinsurance amount from the claim's source file. This is only populated for externally-paid claims loaded from claims files."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PAID_CLM_FILE_COPAY_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The copay amount from the claim's source file. This is only populated for externally-paid claims loaded from claims files."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PAID_CLM_FILE_INS_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The insurance amount from the claim's source file. This is only populated for externally-paid claims loaded from claims files."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Patient associated with the transaction."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "RECORD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column displays the transaction record status.",
+      "entries": [
+        "Active",
+        "Inactive",
+        "Deleted",
+        "Inactive and Deleted",
+        "Hidden",
+        "Inactive and Hidden",
+        "Deleted and Hidden",
+        "Inactive Deleted and Hidden"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "QUAL_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Amount used for computing benefits for limiting patient portion."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "QUAL_AMT_FEE_SCHEDULE_MAP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Fee schedule map used for limiting patient portion."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "QUAL_AMT_FEE_SCHEDULE_MAP_ID_FEE_SCHEDULE_MAP_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name for the fee schedule map record."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "QUAL_AMT_FEE_SCHEDULE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Fee schedule used for limiting patient portion."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "QUAL_AMT_FEE_SCHEDULE_ID_FEE_SCHEDULE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of each fee schedule."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "QUAL_AMT_NETWORK_LEVELS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Network level used for limiting patient portion.",
+      "entries": [
+        "Not Leveled"
+      ]
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "QUAL_AMT_SKIP_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether to skip this service for limiting the patient portion.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "QUAL_AMT_NETWORK_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Network ID used for limiting patient portion."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "QUAL_AMT_NETWORK_ID_NETWORK_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the network."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "QUAL_AMT_OVERRIDE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Override for the qualifying amount for computing benefits for limiting patient portion."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "INVOICE_EXTERNAL_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The service line price that is manually entered by an end user based on an invoice or externally calculated amount."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "SUB_PEN_ADJ_DATE_TYPE_C",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The date type used when calculating timely filing (submission penalty)."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "OVERRIDE_CONTRACTUAL_VALUE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The override contractual allowed amount. This is only used in Adjudication review for display and calculations in pricing card."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "HIPPS_PROC_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Service-line HIPPS Code."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "HIPPS_CODE_PC_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Service-line HIPPS Code Type. This qualifies the HIPPS Code to a Prospective Payment System (PPS).",
+      "entries": [
+        "Ambulatory Payment Classification",
+        "Home Health",
+        "CPT",
+        "Ambulatory Patient Grouping",
+        "MDS RUG Code",
+        "Inpatient Rehabilitation Facility"
+      ]
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "PRICER_MSG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The most recent Epic Pricer message record that was used to price the service."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "PRICER_DISTRIBUTION_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "For HIPPS-based pricing, Epic Pricer will return a claim-level allowed amount. This amount is then distributed to Room & Board service lines, based on the billed amount."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "ALWD_AMT_STOP_LOSS_CNCT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column stores the contact date associated with the stop loss term record (NSL) that was used in determining the allowed amount of this service line."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "ALWD_AMT_ADJ_CMP_CNCT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The contact date of the component record used to calculate the allowed amount of the service line on the AP Claim."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "ALWD_AMT_TIERED_CMP_INDEX_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The CMP & CMG Index (CMI) record of the tiered component used to calculate the allowed amount of the service line on the AP Claim."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "ALWD_AMT_TIERED_CMP_INDEX_ID_COMPONENT_INDEX_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the component index record"
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "ALWD_AMT_TIERED_PX_LN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line of the matched tiered procedure used to calculate the allowed amount of the service line on the AP Claim."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "SUB_PEN_ADJ_PCT_USED",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The reimbursement percentage used to calculate timely filing (submission penalty)."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "SUB_PEN_ADJ_CNTRCT_OR_PRFL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether vendor contracts (\"Contract\") or the Tapestry Profile (\"Profile\") was used to calculate timely filing (submission penalty)."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "SUB_PEN_ADJ_LAG_DAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The difference in days between date received and date serviced for calculating timely filing (submission penalty)."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "SUB_PEN_ADJ_DISCNT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The discounted amount used in calculating timely filing (submission penalty)."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "SUB_PEN_ADJ_RULE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The rule ID used if timely filing (submission penalty) setting was used and a rule was matched."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "SUB_PEN_ADJ_RULE_ID_RULE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the rule."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "SUB_PEN_ADJ_TMLY_FILE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Set to \"Y\" if timely filing (submission penalty) setting was used but no rule matched. Otherwise, set to \"N\"."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "ALWD_AMT_ADJ_CMG_LN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line of the component group used to calculate the allowed amount of the service line on the AP Claim."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "ADDL_ADJ_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the total additional adjustments that apply to the allowed amount on a service."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "ORIGINAL_DOWNCODED_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The original HCPCS code that was downcoded by the EDC analyzer."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "ORIGINAL_DOWNCODED_QUAL_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Qualifying payment amount for the original code before it went through EDC downcoding."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "AUTH_REQ_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether a service required authorization when it was last adjudicated."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "SUGGESTED_AUTH_FOUND_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether a service found a suggested authorization when it was last adjudicated."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "IS_CONTRACT_CAPITATED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Whether the contract line matched to this service during adjudication has a service type of capitated."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "COMPUTED_PRIOR_INS_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Prior insurance amount computed based on the claim-level prior insurance amount and allocated to this service."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "COMPUTED_PRIOR_PAT_PORTION",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Prior patient portion computed based on the claim-level prior patient portion and allocated to this service."
+    }
+  ]
+}

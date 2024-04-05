@@ -1,0 +1,70 @@
+{
+  "name": "AP_CLAIM_PROGRAM_INFO",
+  "description": "This table contains information about the program that a medical claim is associated with.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the claim info record"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PROGRAM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the external ID of a Value Based Program (VBP) record or records representing the programs that the claim is associated with."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PROGRAM_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the program record."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CLAIM_PROG_LINK_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates the current status of the Value Based Program, whether it is active, inactive, or planned to be removed (loaded in error).",
+      "entries": [
+        "Active",
+        "Inactive",
+        "Removed"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PROGRAM_MOD_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The local instant when the claim was last modified for the Value Based Plan."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PROGRAM_MOD_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The UTC instant when the claim was last modified for the Value Based Plan."
+    }
+  ]
+}

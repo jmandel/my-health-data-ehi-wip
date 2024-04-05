@@ -1,0 +1,64 @@
+{
+  "name": "PRESC_PA_REORD_ACT",
+  "description": "This table holds the history of actions taken after the medication being authorized was reordered.",
+  "primaryKey": [
+    {
+      "columnName": "REFERRAL_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "REFERRAL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the referral record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "REORD_ACT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the history of decisions made about continuing with this prior authorization after a reorder of the associated order occurred.",
+      "entries": [
+        "Prescription Reordered",
+        "Continue with Prior Authorization Request",
+        "Cancel Prior Authorization Request",
+        "Send a New Request"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "REORD_ACT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the ID of the user who made the decision about the reorder status."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "REORD_ACT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "REORD_ACT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item holds the instant the decision was made about the reorder status."
+    }
+  ]
+}

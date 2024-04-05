@@ -1,0 +1,49 @@
+{
+  "name": "FIN_ASST_TRKR_MED_UPD_HX",
+  "description": "This table contains a history of the edits made to the list of medications attached to a medication assistance program tracker.",
+  "primaryKey": [
+    {
+      "columnName": "FIN_ASST_TRACKER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "FIN_ASST_TRACKER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the program tracker record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the associated update for the tracker. Along with FIN_ASST_TRACKER_ID, this forms the foreign key link to the FIN_ASST_TRKR_UPDATE_HX table.",
+      "linksTo": "FIN_ASST_TRKR_UPDATE_HX"
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple medication lines associated with the tracker and update from the FIN_ASST_TRKR_UPDATE_HX table."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "MEDICATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "History of the list of medications that the medication assistance program covers after an update is made to the tracker."
+    }
+  ]
+}

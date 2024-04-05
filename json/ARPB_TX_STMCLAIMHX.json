@@ -1,0 +1,600 @@
+{
+  "$meta": {
+    "schemas": {
+      "ARPB_TX_STMCLAIMHX": {
+        "name": "ARPB_TX_STMCLAIMHX",
+        "description": "This table contains information about the statement and claim history for professional billing transactions.",
+        "primaryKey": [
+          {
+            "columnName": "TX_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "TX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the transaction record"
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "BC_HX_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item stores whether the current line is a bill or claim entry.  A category value of 1 means claim and 2 means bill.",
+            "entries": [
+              "Claim",
+              "Bill"
+            ]
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "BC_HX_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date the statement or claim was processed. This can be NULL when an insurance payment posts and it can�t find a matching claim with that payer in the history."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "BC_HX_COVERAGE_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the coverage that is associated with the bill or claim run"
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "BC_HX_ASSIGNED_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates whether or not the coverage is assigned to insurance for this transaction. Y indicates the coverage is assigned.",
+            "entries": [
+              "Yes",
+              "No"
+            ]
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "BC_HX_AMOUNT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The amount of the transaction on the bill or claim."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "BC_HX_INVOICE_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The invoice number for the bill or claim."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "BC_HX_PAYMENT_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Payment amount for payment associated with this invoice.  This field applies to claims only."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "BC_HX_PAYMENT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Payment date for payment associated with this invoice.  This field applies to claims only."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "BC_HX_PAYOR_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the payor for this claim. This field applies to claims only."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "BC_HX_RESUBMIT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Resubmit date for this claim.  This field applies to claims only."
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "BC_HX_CLM_DB_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the claim information record for this claim. This field applies to claims only."
+          },
+          {
+            "ordinalPosition": 15,
+            "name": "BC_HX_BO_PROC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The internal record ID for the procedure billed out on the claim. This item only applies to claims."
+          },
+          {
+            "ordinalPosition": 17,
+            "name": "BC_HX_ACCEPT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Accept date for bill or claim"
+          },
+          {
+            "ordinalPosition": 18,
+            "name": "BC_HX_FIRST_CLM_FLG",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item is set to 0 for accepted claims where all previous lines in the statement-claim history are claims. This item is set to 1 for accepted claims where there is at least one previous line in the statement-claim history that was a statement.  This item is only populated for claims."
+          },
+          {
+            "ordinalPosition": 20,
+            "name": "BC_HX_ACCEPT_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "The UTC date and time the statement or claim was accepted."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ARPB_TX_STMCLAIMHX",
+            "target": "ARPB_TX_MODERATE",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ARPB_TX_STMCLAIMHX": [
+    {
+      "TX_ID": 355871699,
+      "LINE": 1,
+      "BC_HX_TYPE_C_NAME": "Claim",
+      "BC_HX_DATE": "2023-10-13 00:00:00",
+      "BC_HX_COVERAGE_ID": 5934765,
+      "BC_HX_ASSIGNED_YN": "Y",
+      "BC_HX_AMOUNT": 330,
+      "BC_HX_INVOICE_NUM": "L1008016200",
+      "BC_HX_PAYMENT_AMT": 330,
+      "BC_HX_PAYMENT_DATE": "2023-10-23 00:00:00",
+      "BC_HX_PAYOR_ID": 1302,
+      "BC_HX_BO_PROC_ID": 23870,
+      "BC_HX_ACCEPT_DATE": "2023-10-13 00:00:00",
+      "BC_HX_ACCEPT_DTTM": "2023-10-13 13:06:00",
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    },
+    {
+      "TX_ID": 129124216,
+      "LINE": 1,
+      "BC_HX_TYPE_C_NAME": "Claim",
+      "BC_HX_DATE": "2018-08-29 00:00:00",
+      "BC_HX_COVERAGE_ID": 5934765,
+      "BC_HX_ASSIGNED_YN": "Y",
+      "BC_HX_AMOUNT": 114,
+      "BC_HX_INVOICE_NUM": "L1002834040",
+      "BC_HX_PAYMENT_AMT": 114,
+      "BC_HX_PAYMENT_DATE": "2018-09-10 00:00:00",
+      "BC_HX_PAYOR_ID": 1302,
+      "BC_HX_BO_PROC_ID": 19732,
+      "BC_HX_ACCEPT_DATE": "2018-08-30 00:00:00",
+      "BC_HX_ACCEPT_DTTM": "2018-08-30 13:05:00",
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    },
+    {
+      "TX_ID": 129124217,
+      "LINE": 1,
+      "BC_HX_TYPE_C_NAME": "Claim",
+      "BC_HX_DATE": "2018-08-29 00:00:00",
+      "BC_HX_COVERAGE_ID": 5934765,
+      "BC_HX_ASSIGNED_YN": "Y",
+      "BC_HX_AMOUNT": 37,
+      "BC_HX_INVOICE_NUM": "L1002834040",
+      "BC_HX_PAYMENT_AMT": 37,
+      "BC_HX_PAYMENT_DATE": "2018-09-10 00:00:00",
+      "BC_HX_PAYOR_ID": 1302,
+      "BC_HX_BO_PROC_ID": 13199,
+      "BC_HX_ACCEPT_DATE": "2018-08-30 00:00:00",
+      "BC_HX_ACCEPT_DTTM": "2018-08-30 13:05:00",
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    },
+    {
+      "TX_ID": 129124339,
+      "LINE": 1,
+      "BC_HX_TYPE_C_NAME": "Claim",
+      "BC_HX_DATE": "2018-08-29 00:00:00",
+      "BC_HX_COVERAGE_ID": 5934765,
+      "BC_HX_ASSIGNED_YN": "Y",
+      "BC_HX_AMOUNT": 335,
+      "BC_HX_INVOICE_NUM": "L1002834030",
+      "BC_HX_PAYMENT_AMT": 335,
+      "BC_HX_PAYMENT_DATE": "2018-09-10 00:00:00",
+      "BC_HX_PAYOR_ID": 1302,
+      "BC_HX_BO_PROC_ID": 23868,
+      "BC_HX_ACCEPT_DATE": "2018-08-30 00:00:00",
+      "BC_HX_ACCEPT_DTTM": "2018-08-30 13:05:00",
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    },
+    {
+      "TX_ID": 328283034,
+      "LINE": 1,
+      "BC_HX_TYPE_C_NAME": "Claim",
+      "BC_HX_DATE": "2023-03-13 00:00:00",
+      "BC_HX_COVERAGE_ID": 5934765,
+      "BC_HX_ASSIGNED_YN": "Y",
+      "BC_HX_AMOUNT": 226,
+      "BC_HX_INVOICE_NUM": "L1007449820",
+      "BC_HX_PAYMENT_AMT": 86.03,
+      "BC_HX_PAYMENT_DATE": "2023-03-28 00:00:00",
+      "BC_HX_PAYOR_ID": 1302,
+      "BC_HX_BO_PROC_ID": 23660,
+      "BC_HX_ACCEPT_DATE": "2023-03-13 00:00:00",
+      "BC_HX_ACCEPT_DTTM": "2023-03-13 12:02:00",
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    },
+    {
+      "TX_ID": 328283034,
+      "LINE": 2,
+      "BC_HX_TYPE_C_NAME": "Bill",
+      "BC_HX_DATE": "2023-03-29 00:00:00",
+      "BC_HX_ASSIGNED_YN": "N",
+      "BC_HX_AMOUNT": 139.97,
+      "BC_HX_INVOICE_NUM": "193828",
+      "BC_HX_ACCEPT_DATE": "2023-03-30 00:00:00",
+      "BC_HX_ACCEPT_DTTM": "2023-03-30 15:44:00",
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    },
+    {
+      "TX_ID": 328283034,
+      "LINE": 3,
+      "BC_HX_TYPE_C_NAME": "Bill",
+      "BC_HX_DATE": "2023-04-26 00:00:00",
+      "BC_HX_ASSIGNED_YN": "N",
+      "BC_HX_AMOUNT": 139.97,
+      "BC_HX_INVOICE_NUM": "196069",
+      "BC_HX_ACCEPT_DATE": "2023-04-27 00:00:00",
+      "BC_HX_ACCEPT_DTTM": "2023-04-27 15:43:00",
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    },
+    {
+      "TX_ID": 354336208,
+      "LINE": 1,
+      "BC_HX_TYPE_C_NAME": "Claim",
+      "BC_HX_DATE": "2023-10-04 00:00:00",
+      "BC_HX_COVERAGE_ID": 5934765,
+      "BC_HX_ASSIGNED_YN": "Y",
+      "BC_HX_AMOUNT": 50,
+      "BC_HX_INVOICE_NUM": "L1007985430",
+      "BC_HX_PAYMENT_AMT": 50,
+      "BC_HX_PAYMENT_DATE": "2023-10-18 00:00:00",
+      "BC_HX_PAYOR_ID": 1302,
+      "BC_HX_BO_PROC_ID": 20302,
+      "BC_HX_ACCEPT_DATE": "2023-10-04 00:00:00",
+      "BC_HX_ACCEPT_DTTM": "2023-10-04 13:07:00",
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    },
+    {
+      "TX_ID": 354336209,
+      "LINE": 1,
+      "BC_HX_TYPE_C_NAME": "Claim",
+      "BC_HX_DATE": "2023-10-04 00:00:00",
+      "BC_HX_COVERAGE_ID": 5934765,
+      "BC_HX_ASSIGNED_YN": "Y",
+      "BC_HX_AMOUNT": 120,
+      "BC_HX_INVOICE_NUM": "L1007985430",
+      "BC_HX_PAYMENT_AMT": 120,
+      "BC_HX_PAYMENT_DATE": "2023-10-18 00:00:00",
+      "BC_HX_PAYOR_ID": 1302,
+      "BC_HX_BO_PROC_ID": 19732,
+      "BC_HX_ACCEPT_DATE": "2023-10-04 00:00:00",
+      "BC_HX_ACCEPT_DTTM": "2023-10-04 13:07:00",
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    },
+    {
+      "TX_ID": 354336210,
+      "LINE": 1,
+      "BC_HX_TYPE_C_NAME": "Claim",
+      "BC_HX_DATE": "2023-10-04 00:00:00",
+      "BC_HX_COVERAGE_ID": 5934765,
+      "BC_HX_ASSIGNED_YN": "Y",
+      "BC_HX_AMOUNT": 33,
+      "BC_HX_INVOICE_NUM": "L1007985430",
+      "BC_HX_PAYMENT_AMT": 33,
+      "BC_HX_PAYMENT_DATE": "2023-10-18 00:00:00",
+      "BC_HX_PAYOR_ID": 1302,
+      "BC_HX_BO_PROC_ID": 13199,
+      "BC_HX_ACCEPT_DATE": "2023-10-04 00:00:00",
+      "BC_HX_ACCEPT_DTTM": "2023-10-04 13:07:00",
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    },
+    {
+      "TX_ID": 354520699,
+      "LINE": 1,
+      "BC_HX_TYPE_C_NAME": "Claim",
+      "BC_HX_DATE": "2023-10-05 00:00:00",
+      "BC_HX_COVERAGE_ID": 5934765,
+      "BC_HX_ASSIGNED_YN": "Y",
+      "BC_HX_AMOUNT": 54,
+      "BC_HX_INVOICE_NUM": "L1007990080",
+      "BC_HX_PAYMENT_AMT": 54,
+      "BC_HX_PAYMENT_DATE": "2023-10-18 00:00:00",
+      "BC_HX_PAYOR_ID": 1302,
+      "BC_HX_BO_PROC_ID": 96431,
+      "BC_HX_ACCEPT_DATE": "2023-10-05 00:00:00",
+      "BC_HX_ACCEPT_DTTM": "2023-10-05 13:05:00",
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    },
+    {
+      "TX_ID": 354520701,
+      "LINE": 1,
+      "BC_HX_TYPE_C_NAME": "Claim",
+      "BC_HX_DATE": "2023-10-05 00:00:00",
+      "BC_HX_COVERAGE_ID": 5934765,
+      "BC_HX_ASSIGNED_YN": "Y",
+      "BC_HX_AMOUNT": 60,
+      "BC_HX_INVOICE_NUM": "L1007990080",
+      "BC_HX_PAYMENT_AMT": 60,
+      "BC_HX_PAYMENT_DATE": "2023-10-18 00:00:00",
+      "BC_HX_PAYOR_ID": 1302,
+      "BC_HX_BO_PROC_ID": 22128,
+      "BC_HX_ACCEPT_DATE": "2023-10-05 00:00:00",
+      "BC_HX_ACCEPT_DTTM": "2023-10-05 13:05:00",
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    },
+    {
+      "TX_ID": 302968774,
+      "LINE": 1,
+      "BC_HX_TYPE_C_NAME": "Claim",
+      "BC_HX_DATE": "2022-09-23 00:00:00",
+      "BC_HX_COVERAGE_ID": 5934765,
+      "BC_HX_ASSIGNED_YN": "Y",
+      "BC_HX_AMOUNT": 140,
+      "BC_HX_INVOICE_NUM": "L1006942840",
+      "BC_HX_PAYMENT_AMT": 139.38,
+      "BC_HX_PAYMENT_DATE": "2022-10-04 00:00:00",
+      "BC_HX_PAYOR_ID": 1302,
+      "BC_HX_BO_PROC_ID": 19722,
+      "BC_HX_ACCEPT_DATE": "2022-09-23 00:00:00",
+      "BC_HX_ACCEPT_DTTM": "2022-09-23 12:02:00",
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    },
+    {
+      "TX_ID": 302968775,
+      "LINE": 1,
+      "BC_HX_TYPE_C_NAME": "Claim",
+      "BC_HX_DATE": "2022-09-23 00:00:00",
+      "BC_HX_COVERAGE_ID": 5934765,
+      "BC_HX_ASSIGNED_YN": "Y",
+      "BC_HX_AMOUNT": 33,
+      "BC_HX_INVOICE_NUM": "L1006942840",
+      "BC_HX_PAYMENT_AMT": 32.79,
+      "BC_HX_PAYMENT_DATE": "2022-10-04 00:00:00",
+      "BC_HX_PAYOR_ID": 1302,
+      "BC_HX_BO_PROC_ID": 13199,
+      "BC_HX_ACCEPT_DATE": "2022-09-23 00:00:00",
+      "BC_HX_ACCEPT_DTTM": "2022-09-23 12:02:00",
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    },
+    {
+      "TX_ID": 315026147,
+      "LINE": 1,
+      "BC_HX_TYPE_C_NAME": "Claim",
+      "BC_HX_DATE": "2022-12-07 00:00:00",
+      "BC_HX_COVERAGE_ID": 5934765,
+      "BC_HX_ASSIGNED_YN": "Y",
+      "BC_HX_AMOUNT": 315,
+      "BC_HX_INVOICE_NUM": "L1007201490",
+      "BC_HX_PAYMENT_AMT": 0,
+      "BC_HX_PAYMENT_DATE": "2022-12-20 00:00:00",
+      "BC_HX_PAYOR_ID": 1302,
+      "BC_HX_BO_PROC_ID": 23662,
+      "BC_HX_ACCEPT_DATE": "2022-12-07 00:00:00",
+      "BC_HX_ACCEPT_DTTM": "2022-12-07 13:01:00",
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    },
+    {
+      "TX_ID": 317236398,
+      "LINE": 1,
+      "BC_HX_TYPE_C_NAME": "Claim",
+      "BC_HX_COVERAGE_ID": 5934765,
+      "BC_HX_ASSIGNED_YN": "Y",
+      "BC_HX_AMOUNT": 315,
+      "BC_HX_PAYMENT_AMT": 0,
+      "BC_HX_PAYMENT_DATE": "2022-12-20 00:00:00",
+      "BC_HX_PAYOR_ID": 1302,
+      "BC_HX_CLM_DB_ID": 4128938,
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    },
+    {
+      "TX_ID": 317236398,
+      "LINE": 2,
+      "BC_HX_TYPE_C_NAME": "Claim",
+      "BC_HX_DATE": "2022-12-20 00:00:00",
+      "BC_HX_COVERAGE_ID": 5934765,
+      "BC_HX_ASSIGNED_YN": "Y",
+      "BC_HX_AMOUNT": 315,
+      "BC_HX_INVOICE_NUM": "L1007233830",
+      "BC_HX_PAYOR_ID": 1302,
+      "BC_HX_RESUBMIT_DATE": "2022-12-20 00:00:00",
+      "BC_HX_CLM_DB_ID": 4128938,
+      "BC_HX_BO_PROC_ID": 23662,
+      "BC_HX_ACCEPT_DATE": "2022-12-20 00:00:00",
+      "BC_HX_FIRST_CLM_FLG": "0",
+      "BC_HX_ACCEPT_DTTM": "2022-12-20 21:11:00",
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    },
+    {
+      "TX_ID": 317236398,
+      "LINE": 3,
+      "BC_HX_TYPE_C_NAME": "Claim",
+      "BC_HX_DATE": "2022-12-21 00:00:00",
+      "BC_HX_COVERAGE_ID": 5934765,
+      "BC_HX_ASSIGNED_YN": "Y",
+      "BC_HX_AMOUNT": 315,
+      "BC_HX_INVOICE_NUM": "L1007233831",
+      "BC_HX_PAYMENT_AMT": 295.11,
+      "BC_HX_PAYMENT_DATE": "2023-01-10 00:00:00",
+      "BC_HX_PAYOR_ID": 1302,
+      "BC_HX_CLM_DB_ID": 4128938,
+      "BC_HX_BO_PROC_ID": 23662,
+      "BC_HX_ACCEPT_DATE": "2022-12-21 00:00:00",
+      "BC_HX_FIRST_CLM_FLG": "0",
+      "BC_HX_ACCEPT_DTTM": "2022-12-21 13:01:00",
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    },
+    {
+      "TX_ID": 317236398,
+      "LINE": 4,
+      "BC_HX_TYPE_C_NAME": "Bill",
+      "BC_HX_DATE": "2023-01-11 00:00:00",
+      "BC_HX_ASSIGNED_YN": "N",
+      "BC_HX_AMOUNT": 19.89,
+      "BC_HX_INVOICE_NUM": "187621",
+      "BC_HX_ACCEPT_DATE": "2023-01-12 00:00:00",
+      "BC_HX_ACCEPT_DTTM": "2023-01-12 19:57:00",
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    },
+    {
+      "TX_ID": 302543306,
+      "LINE": 1,
+      "BC_HX_TYPE_C_NAME": "Claim",
+      "BC_HX_DATE": "2022-09-21 00:00:00",
+      "BC_HX_COVERAGE_ID": 5934765,
+      "BC_HX_ASSIGNED_YN": "Y",
+      "BC_HX_AMOUNT": 294,
+      "BC_HX_INVOICE_NUM": "L1006928390",
+      "BC_HX_PAYMENT_AMT": 294,
+      "BC_HX_PAYMENT_DATE": "2022-10-04 00:00:00",
+      "BC_HX_PAYOR_ID": 1302,
+      "BC_HX_BO_PROC_ID": 23868,
+      "BC_HX_ACCEPT_DATE": "2022-09-21 00:00:00",
+      "BC_HX_ACCEPT_DTTM": "2022-09-21 12:02:00",
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    },
+    {
+      "TX_ID": 302543307,
+      "LINE": 1,
+      "BC_HX_TYPE_C_NAME": "Claim",
+      "BC_HX_DATE": "2022-09-21 00:00:00",
+      "BC_HX_COVERAGE_ID": 5934765,
+      "BC_HX_ASSIGNED_YN": "Y",
+      "BC_HX_AMOUNT": 222,
+      "BC_HX_INVOICE_NUM": "L1006928390",
+      "BC_HX_PAYMENT_AMT": 215.01,
+      "BC_HX_PAYMENT_DATE": "2022-10-04 00:00:00",
+      "BC_HX_PAYOR_ID": 1302,
+      "BC_HX_BO_PROC_ID": 23660,
+      "BC_HX_ACCEPT_DATE": "2022-09-21 00:00:00",
+      "BC_HX_ACCEPT_DTTM": "2022-09-21 12:02:00",
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    },
+    {
+      "TX_ID": 190635377,
+      "LINE": 1,
+      "BC_HX_TYPE_C_NAME": "Claim",
+      "BC_HX_DATE": "2020-01-10 00:00:00",
+      "BC_HX_COVERAGE_ID": 5934765,
+      "BC_HX_ASSIGNED_YN": "Y",
+      "BC_HX_AMOUNT": 165,
+      "BC_HX_INVOICE_NUM": "L1004236460",
+      "BC_HX_PAYMENT_AMT": 31.71,
+      "BC_HX_PAYMENT_DATE": "2020-01-27 00:00:00",
+      "BC_HX_PAYOR_ID": 1302,
+      "BC_HX_BO_PROC_ID": 23660,
+      "BC_HX_ACCEPT_DATE": "2020-01-13 00:00:00",
+      "BC_HX_ACCEPT_DTTM": "2020-01-13 14:05:00",
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    },
+    {
+      "TX_ID": 190635377,
+      "LINE": 2,
+      "BC_HX_TYPE_C_NAME": "Bill",
+      "BC_HX_DATE": "2020-01-29 00:00:00",
+      "BC_HX_ASSIGNED_YN": "N",
+      "BC_HX_AMOUNT": 133.29,
+      "BC_HX_INVOICE_NUM": "107147",
+      "BC_HX_ACCEPT_DATE": "2020-01-30 00:00:00",
+      "BC_HX_ACCEPT_DTTM": "2020-01-30 13:37:00",
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    },
+    {
+      "TX_ID": 213432121,
+      "LINE": 1,
+      "BC_HX_TYPE_C_NAME": "Claim",
+      "BC_HX_DATE": "2020-08-14 00:00:00",
+      "BC_HX_COVERAGE_ID": 5934765,
+      "BC_HX_ASSIGNED_YN": "Y",
+      "BC_HX_AMOUNT": 170,
+      "BC_HX_INVOICE_NUM": "L1004718920",
+      "BC_HX_PAYMENT_AMT": 170,
+      "BC_HX_PAYMENT_DATE": "2020-09-17 00:00:00",
+      "BC_HX_PAYOR_ID": 1302,
+      "BC_HX_CLM_DB_ID": 2985948,
+      "BC_HX_BO_PROC_ID": 23660,
+      "BC_HX_ACCEPT_DATE": "2020-08-17 00:00:00",
+      "BC_HX_ACCEPT_DTTM": "2020-08-17 13:05:00",
+      "$meta": {
+        "type": "ARPB_TX_STMCLAIMHX"
+      }
+    }
+  ]
+}

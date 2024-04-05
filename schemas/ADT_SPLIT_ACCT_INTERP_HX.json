@@ -1,0 +1,176 @@
+{
+  "name": "ADT_SPLIT_ACCT_INTERP_HX",
+  "description": "The ADT_SPLIT_ACCT_INTERP_HX table extracts the history of the reporting interpretations of the Encounter Series billing items for ADT events. This table contains a foreign key to the CLARITY_ADT table for linking to other ADT tables.",
+  "primaryKey": [
+    {
+      "columnName": "EVENT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "EVENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the event record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "START_INSTANT_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The starting instant for this interpretation."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "END_INSTANT_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The ending instant for this interpretation."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "OUTGOING_FIN_CLASS_EVENT_TYP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The event type interpretation category for outgoing events for financial class.",
+      "entries": [
+        "Admission",
+        "Discharge",
+        "In",
+        "Out",
+        "Patient Update",
+        "Census",
+        "Leave of Absence Out",
+        "Leave of Absence Return",
+        "Leave of Absence Census"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "INCOMING_FIN_CLASS_EVENT_TYP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The event type interpretation category for incoming events for financial class."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "FROM_FINANCIAL_CLASS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number of the financial class that the patient had prior to the event.",
+      "entries": [
+        "Commercial",
+        "Medicare",
+        "Medicaid",
+        "Self-Pay",
+        "Worker's Comp",
+        "Tricare",
+        "Champva",
+        "Group Health Plan",
+        "FECA Black Lung",
+        "Blue Shield",
+        "Medigap",
+        "Other",
+        "DK Regional",
+        "Client",
+        "Received Self-Pay",
+        "Sent to Consolidated Self-Pay Service Area"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "TO_FINANCIAL_CLASS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number of the financial class that the patient had after the event."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "OUTGOING_PAYER_EVENT_TYP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The event type interpretation category for outgoing events for the payer."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "INCOMING_PAYER_EVENT_TYP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The event type interpretation category for incoming events for the payer."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "FROM_PAYER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the primary payer that the patient had prior to the event. This column is frequently used to link to the CLARITY_EPM table.",
+      "linksTo": "CLARITY_EPM"
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "TO_PAYER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the primary payer that the patient had after the event. This column is frequently used to link to the CLARITY_EPM table.",
+      "linksTo": "CLARITY_EPM"
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "OUTGOING_PLAN_EVENT_TYP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The event type interpretation category for outgoing events for the plan."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "INCOMING_PLAN_EVENT_TYP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The event type interpretation category for incoming events for the plan."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "FROM_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the primary plan that the patient had prior to the event. This column is frequently used to link to the CLARITY_EPP table.",
+      "linksTo": "CLARITY_EPP"
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "TO_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the primary plan that the patient had after the event. This column is frequently used to link to the CLARITY_EPP table.",
+      "linksTo": "CLARITY_EPP"
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PREVIOUS_ENC_EVENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the event prior to this line's event ID."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "SPLIT_ACCT_HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the hospital account that was active during this line in the interpretation history. This column is frequently used to link to the HSP_ACCOUNT table.",
+      "linksTo": "HSP_ACCOUNT"
+    }
+  ]
+}

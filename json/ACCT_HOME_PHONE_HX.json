@@ -1,0 +1,100 @@
+{
+  "$meta": {
+    "schemas": {
+      "ACCT_HOME_PHONE_HX": {
+        "name": "ACCT_HOME_PHONE_HX",
+        "description": "This table contains the guarantor's home phone history.",
+        "primaryKey": [
+          {
+            "columnName": "ACCOUNT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the account record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "CHANGE_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date the home phone number was changed."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "PHONE_NUMBER",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The home phone number on the account."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "CHANGE_SOURCE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The source of the change of the home phone number.",
+            "entries": [
+              "Bridges",
+              "EpicCare",
+              "Cadence",
+              "Professional Billing",
+              "ManagedCare",
+              "Chronicles"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ACCT_HOME_PHONE_HX",
+            "target": "ACCOUNT",
+            "joinKeys": [
+              {
+                "source": "ACCOUNT_ID",
+                "target": "ACCOUNT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ACCT_HOME_PHONE_HX": [
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 1,
+      "CHANGE_DATE": "2022-11-14 00:00:00",
+      "PHONE_NUMBER": "617-894-1015",
+      "CHANGE_SOURCE_C_NAME": "Chronicles",
+      "$meta": {
+        "type": "ACCT_HOME_PHONE_HX"
+      }
+    },
+    {
+      "ACCOUNT_ID": 4793998,
+      "LINE": 1,
+      "CHANGE_DATE": "2022-11-14 00:00:00",
+      "PHONE_NUMBER": "617-894-1015",
+      "CHANGE_SOURCE_C_NAME": "Chronicles",
+      "$meta": {
+        "type": "ACCT_HOME_PHONE_HX"
+      }
+    }
+  ]
+}

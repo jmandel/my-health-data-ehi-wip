@@ -1,0 +1,111 @@
+{
+  "$meta": {
+    "schemas": {
+      "PAT_ADDL_ADDR_INFO": {
+        "name": "PAT_ADDL_ADDR_INFO",
+        "description": "Additional Patient Address Information.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+            "linksTo": "PATIENT"
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "ADDL_ADDR_FIELD_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The type of additional address data (floor, unit, building name, etc.) stored in the related field (I EPT 66).",
+            "entries": [
+              "Street address",
+              "City",
+              "State",
+              "ZIP code",
+              "County",
+              "Country",
+              "House number",
+              "District",
+              "Building name",
+              "Floor",
+              "Unit"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "PAT_ADDL_ADDR_INFO",
+            "target": "PAT_REL_ADDR",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "PAT_ADDL_ADDR_INFO",
+            "target": "PATIENT",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PAT_ADDL_ADDR_INFO": [
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 1,
+      "ADDL_ADDR_FIELD_C_NAME": "Building name",
+      "$meta": {
+        "type": "PAT_ADDL_ADDR_INFO"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 2,
+      "ADDL_ADDR_FIELD_C_NAME": "Floor",
+      "$meta": {
+        "type": "PAT_ADDL_ADDR_INFO"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 3,
+      "ADDL_ADDR_FIELD_C_NAME": "Unit",
+      "$meta": {
+        "type": "PAT_ADDL_ADDR_INFO"
+      }
+    }
+  ]
+}

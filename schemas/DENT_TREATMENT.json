@@ -1,0 +1,151 @@
+{
+  "name": "DENT_TREATMENT",
+  "description": "This contains dental treatment plan information which is not expected to change over time.",
+  "primaryKey": [
+    {
+      "columnName": "TREATMENT_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TREATMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the treatment plan record"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "DENTAL_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Type of dental treatment",
+      "entries": [
+        "Treatment",
+        "Procedure-Only",
+        "Subtemplate"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "COMPLETED_DTTM_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Date and time the dental treatment was completed"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "TR_STATUS_NOADD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This keeps track of the latest status of a treatment.",
+      "entries": [
+        "Planned",
+        "Completed",
+        "Canceled",
+        "Draft",
+        "Discontinued"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "DENTAL_DEPT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The department that a treatment is created for."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "TR_SUG_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The suggested start date for a treatment."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "TR_SEQUENCE_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Keep track of relative orders for a treatment within a treatment plan"
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DENTAL_TREAT_SER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the provider that is considered the owner of the dental treatment. This is used for reporting and scheduling."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "DENT_PARENT_TRMT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This points to the parent treatment of which this treatment is part."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "DENT_OPTION_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status of an option for treatment within a dental treatment.",
+      "entries": [
+        "Selected",
+        "Unselected",
+        "Removed"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "DENTAL_ESTIMATE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The linked patient estimate record detailing cost information for the procedures in this treatment."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "TR_APRV_DTTM",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "The date and time when the dental treatment was last approved."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "TR_APRV_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who last approved the treatment."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "TR_APRV_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "TR_APRV_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The approval status category ID for the treatment.",
+      "entries": [
+        "Unapproved",
+        "Submitted",
+        "Approved",
+        "Rescinded"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "TR_RESCIND_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The rescind reason category ID for the treatment.",
+      "entries": [
+        "Approved in Error",
+        "Change in Patient Condition"
+      ]
+    }
+  ]
+}

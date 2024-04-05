@@ -1,0 +1,98 @@
+{
+  "name": "IP_RES_TYPEEPISODE",
+  "description": "The IP_RES_TYPEEPISODE table contains information about the restraint type episodes within a restraint episode. A restraint type episode is defined as the period during which a patient has a single type of restraint applied. The information includes start/end dates, length, and starting department.",
+  "primaryKey": [
+    {
+      "columnName": "INPATIENT_DATA_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "RES_TYPE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "EPISODE_NUM",
+      "ordinalPosition": 3
+    },
+    {
+      "columnName": "RES_ROW_ID",
+      "ordinalPosition": 4
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 5
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RES_TYPE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The restraint type can be a behavioral restraint (BH) or  nonbehavioral/medical-surgical restraint (MS)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "INPATIENT_DATA_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the inpatient data store record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "EPISODE_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The EPISODE_NUM refers to the episode number for the admission.  The episode number assigned to an episode increases with each new episode and does not repeat until a new admission.  An episode is the length of a restraint order.  A value of '0' here represents that there were errors for the corresponding restraint type in the current inpatient data record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RES_ROW_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the flowsheet row record for the type of restraint used."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RES_ROW_ID_DISP_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The display name given to the flowsheet group/row."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "TYPE_START_DT",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The type episode start date refers to the instant for which the flowsheet row for that restraint type had a START documented."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "TYPE_END_DT",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The type episode end date refers to the instant for which the flowsheet row for that restraint type had a DISCONTINUED documented."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "TYPE_DEPT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the department where the restraint type episode began."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "TYPE_LENGTH",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "The length of time in hours that the restraint documentation indicates that the restraint type has been on for."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column contains a number to uniquely identify different restraint type episodes that have the same episode and restraint row ID."
+    }
+  ]
+}

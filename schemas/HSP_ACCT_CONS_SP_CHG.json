@@ -1,0 +1,155 @@
+{
+  "name": "HSP_ACCT_CONS_SP_CHG",
+  "description": "The HSP_ACCT_CONS_SP_CHG table contains information about the charge documentation lines associated with a received self-pay hospital account. As a partial example, this includes common charge information like the service date, description, revenue code, quantity, and amount.",
+  "primaryKey": [
+    {
+      "columnName": "HSP_ACCOUNT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the hosp acct record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CHG_UNIQUE_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "An identifier unique to this charge documentation line related group at the HAR level.  No other charge documentation lines on the same HAR should share this identifier."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CHG_SERVICE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The service date for a consolidated self-pay charge.  This date is when the service occurred in the source system."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CHG_POST_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The original post date for a consolidated self-pay charge.  This date is when the charge was posted in the source system."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CHG_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The procedure code for a consolidated self-pay charge."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CHG_DESCRIPTION",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A description of a consolidated self-pay charge. Can be supplied by the source system as an override for the procedure description."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CHG_REV_CODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The revenue code for a consolidated self-pay charge. If this was not supplied by the source system, it should be set to the procedure code's alternate revenue code."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CHG_REV_CODE_ID_REVENUE_CODE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the revenue code."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "CHG_HCPCS_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The HCPCS or CPT code for a consolidated self-pay charge."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "CHG_MODIFIER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A comma delimited string of modifiers on a consolidated self-pay charge."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "CHG_QUANTITY",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The quantity for a consolidated self-pay charge."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "CHG_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The credit or debit amount for a consolidated self-pay charge."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "CHG_NDC_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The NDC code for a consolidated self-pay charge."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "CHG_SERV_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The service provider for a consolidated self-pay charge."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "CHG_REVERSAL_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date that this charge documentation line was reversed.  This date is set to the day the documentation line was marked as reversed by the source system.  If this item is blank, then the charge has not been reversed."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "CHG_ORIG_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "An identifier for a received self-pay charge used by the source. If this is from another system, this is the ID the source system uses. If this is from the same system, this is the original transaction ID for the source service area (HTR for HB transaction, ETR for PB)."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "CHG_UPDATE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date that this charge documentation line was consolidated. This date is set to the day the documentation line was first imported from the source system."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "CHG_CONS_SP_DOCLN_STS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The current active status of the documentation line.",
+      "entries": [
+        "Pending",
+        "Active",
+        "Pending Reversal",
+        "Inactive"
+      ]
+    }
+  ]
+}

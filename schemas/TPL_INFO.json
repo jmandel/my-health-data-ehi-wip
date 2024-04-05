@@ -1,0 +1,536 @@
+{
+  "name": "TPL_INFO",
+  "description": "This table contains basic information about a treatment plan or a pathway, such as the plan/pathway name, the user who created the plan/pathway, when it was created, which protocol it was created from, the starting cycle number or step, etc.",
+  "primaryKey": [
+    {
+      "columnName": "TREATMENT_PLAN_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TREATMENT_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The treatment plan ID."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "TREATMENT_PLAN_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the treatment plan in this row."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PLAN_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status of the treatment plan in this row, for example Active or Inactive.",
+      "entries": [
+        "Active",
+        "Inactive",
+        "Future"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PLAN_REC_TYP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The record type of the treatment plan in this row, for example Treatment Plan or Simple Plan.",
+      "entries": [
+        "Treatment Plan",
+        "Pathway",
+        "Surgical Plan",
+        "Simple Plan",
+        "Therapy Plan",
+        "Dental Treatment",
+        "Dental Parent Treatment",
+        "BMT Plan",
+        "IEC Plan"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PLAN_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The start date in external format of the treatment plan in this row."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ZERO_BASED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The yes/no flag signaling whether the days start at day 0 or day 1.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PROTOCOL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the protocol that generated the treatment plan in this row."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PROTOCOL_ID_PROTOCOL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The SmartSet/Protocol record name.  This is different from the display name, which is stored in CL_PRL_SS_OT.DISPLAY_NAME."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PROTOCOL_DAT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The contact date (DAT) of the protocol that generated the treatment plan in this row."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "CREATED_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user ID of the person who created the treatment plan in this row."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "CREATED_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "CREATED_ON_TM",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "The date/time in external format that the treatment plan in this row was created."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PLAN_VERIF_DATE_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date/time in external format when the treatment plan in this row was last verified."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "PLAN_VERIF_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user ID of the person who last verified the treatment plan in this row."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "PLAN_VERIF_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "DC_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason for discontinuing the treatment plan in this row.",
+      "entries": [
+        "Linked episode is resolved",
+        "Linked episode is deleted",
+        "Merge Treatment plan",
+        "Discontinued by Contact Mover",
+        "Future Plan Deleted",
+        "Advanced to Next Plan",
+        "Discontinued by Patient Unmerge",
+        "Automatically Discontinued - Patient Deceased",
+        "Automatically Discontinued - Inactive Plan"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "DISPLAY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The treatment plan display name entered by the user."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "FIRST_CYCLE_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The cycle number of the first cycle in the treatment plan."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "START_CYCLE_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The cycle number of the cycle marked as the 'start cycle' in the treatment plan."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient who is associated with this treatment plan or pathway."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "PATHWAY_DISC_RESN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the reason for discontinuing the pathway.",
+      "entries": [
+        "Patient Discharged"
+      ]
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "REV_NEXT_DUE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The contact date (DAT) or treatment number when review reminders begin to display to users."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "REV_EXPIRES",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The contact date (DAT) or treatment number after which this plan will be considered unreviewed."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "TRT_GOAL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the treatment goal for the treatment plan."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "TPL_PROVIDER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The provider who is managing this treatment plan."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "PLAN_VERSION",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores the lowest Version in which the plan was edited. This data is used to determine what features will be enabled for the plan."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "REFERRAL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the ID of a referral which is used for prior authorization."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "DEVIATION_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who signed off on the treatment plan deviation"
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "DEVIATION_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "DEVIATION_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant when the treatment plan was given a signoff for deviation"
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "DEVIATION_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason to specify why the plan deviation from protocol",
+      "entries": [
+        "Other",
+        "New study version"
+      ]
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "DEVIATION_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comment to give more information about the deviation reason.  This only extracts the first 4000 characters."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "LAST_DEVIATION_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the instant when the plan last deviated from the protocol"
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "DEVIATION_REQUESTOR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the user who marked the plan as needing approval for deviation"
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "DEVIATION_REQUESTOR_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "NEXT_PLANNED_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Next planned treatment date for a plan."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "INFUSION_DEPT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the treatment department."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "PROTOCOL_CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "The contact date real of the protocol that generated the treatment plan in this row.  The contact date real is a unique, internal contact date in decimal format. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "HOLD_INSTANT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The UTC instant when this plan was put on hold, if it is on hold."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "HOLD_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who put this plan on hold, if it is on hold."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "HOLD_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "HOLD_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason why this plan was put on hold.",
+      "entries": [
+        "Admission",
+        "Transfer",
+        "Discharge",
+        "Admitted with OP day",
+        "Not admitted with IP day",
+        "Plan Created",
+        "Protocol Added",
+        "Patient Contact Moved",
+        "New study version available",
+        "Plan Reactivated",
+        "Plan Conversion",
+        "New study version available"
+      ]
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "HOLD_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comment entered when this plan was put on hold."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "PROGRAM_NUMBER",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item contains the program number for a treatment plan"
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "REGIMEN_NUMBER",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item contains the regimen number for a treatment plan"
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "LINE_OF_TREATMENT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the line of treatment for the treatment plan.",
+      "entries": [
+        "First Line",
+        "Second Line",
+        "Third Line",
+        "Induction",
+        "Consolidation",
+        "Maintenance",
+        "Adjuvant",
+        "Neoadjuvant",
+        "Test Line"
+      ]
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "PROTOCOL_SUGGESTION_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates which type of protocol suggestion, if any, led to the creation of this treatment plan.",
+      "entries": [
+        "Not From Suggested Protocol",
+        "Tag",
+        "BPA",
+        "Research",
+        "Pathways",
+        "No Suggestions"
+      ]
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "PROTOCOL_LINK_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "For a treatment plan created from a linked protocol (PTP) record, this column stores the contact serial number (CSN) of the PTP contact linking the clinical protocol contact to a billing protocol contact."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "CREATION_STATE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the creation status of a therapy plan based on whether the plan or added plan has been signed or activated.",
+      "entries": [
+        "Activated",
+        "Not Activated",
+        "Additional Plan Not Activated"
+      ]
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "STUDY_CURRENT_VERSION_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The current study version identifier of the treatment plan."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "PRIOR_AUTH_PRIMARY_COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the primary coverage ID that is used to generate the Referral in the treatment or therapy plan."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "BMT_AMEND_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "the user who amended the plan which resulted in the creation of a new treatment plan."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "BMT_AMEND_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "BMT_PLAN_AMEND_INST_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant that the plan was amended."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "REFERRAL_STATUS_CHNG_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item stores the most recent instant when the treatment plan referral status changed due to changes made to the treatment plan."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "DISCON_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "It stores the discontinue comments entered by the user."
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "DISCON_INSTANT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item stores the discontinue plan instant."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "DISCON_PLAN_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item store the user who discontinued the plan."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "DISCON_PLAN_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "LAST_USER_ACTION_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the last instant that a user interacted directly with the plan. This item will not be updated when the plan is updated by an action outside the plan or by a background process."
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "RECONCILIATION_EVENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the ID of the event used to track reconciliation actions for this plan"
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "NEEDS_RECONCILIATION_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains whether or not the plan needs reconciliation"
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "NEXT_UNAUTH_TREATMENT_DAY_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the treatment day ID of the next unauthorized day in the treatment plan."
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "IS_PLAN_DELETED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Virtual item that determines if a treatment plan (TPL) has been deleted or not. A treatment plan is considered deleted if it has a discontinued reason (I TPL 120) that's defined as entered in error (I LSD 77800), or if it's a BMT plan and its associated HSB record is deleted (I HSB 50).  A dental treatment plan is never considered deleted."
+    }
+  ]
+}

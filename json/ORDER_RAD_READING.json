@@ -1,0 +1,96 @@
+{
+  "$meta": {
+    "schemas": {
+      "ORDER_RAD_READING": {
+        "name": "ORDER_RAD_READING",
+        "description": "This table stores reading physician information for imaging procedures.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_PROC_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_PROC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the procedure order record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line count for this table as determined by the number of reading radiologists for an order."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PROV_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The reading radiologist for the order."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "READ_UTC_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "The date and time in UTC format when the reading physician made a change to the study."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RAD_READING",
+            "target": "ORDER_PARENT_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RAD_READING",
+            "target": "ORDER_PROC",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RAD_READING",
+            "target": "ORD_PRFLST_TRK",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ORDER_RAD_READING": [
+    {
+      "ORDER_PROC_ID": 772179259,
+      "LINE": 1,
+      "PROV_ID": "8800099",
+      "READ_UTC_DTTM": "2019-02-09 02:16:03",
+      "$meta": {
+        "type": "ORDER_RAD_READING"
+      }
+    }
+  ]
+}

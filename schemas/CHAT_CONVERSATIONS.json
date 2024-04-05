@@ -1,0 +1,123 @@
+{
+  "name": "CHAT_CONVERSATIONS",
+  "description": "Table containing Secure Chat conversation level items.",
+  "primaryKey": [
+    {
+      "columnName": "CONVERSATION_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CONVERSATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the secure chat conversation record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CM_PHY_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this record or line. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Record name"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "RECORD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the record status (hidden, soft-deleted, etc...)",
+      "entries": [
+        "Soft Deleted",
+        "Hidden",
+        "Hidden and Soft Deleted"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "LST_UPDATE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant the newest message in the conversation was sent."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the patient linked to the conversation."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "RECORD_CREATION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date the record was created"
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "INSTANT_OF_UPDATE_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the instant the record was last locked/unlocked"
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CONVERSATION_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of the conversation record, which indicates the intended audience of the Secure Chat conversation. A null value indicates the conversation is only between staff members.",
+      "entries": [
+        "Staff-only conversation",
+        "Bedside conversation",
+        "Staff Broadcast conversation"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The contact serial number (CSN) of the patient encounter associated with this conversation. This item will only be populated for Bedside patient-facing conversations. A value here means the conversation may include a patient or their proxies."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PAT_CONVERSATION_THREAD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the MyChart conversation linked to this Secure Chat conversation."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "CHAT_CONTEXT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the Secure Chat conversation context.",
+      "entries": [
+        "Alert"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "LINKED_PUSH_NOTIF_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Linked PNN (push notification) record ID to the TLK record that provides additional context about the conversation."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "ORIGINAL_GROUP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores TGR ID of the original group that received a Secure Chat. Used for starting and continuing conversations with additional context with this group."
+    }
+  ]
+}

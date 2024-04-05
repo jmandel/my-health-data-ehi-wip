@@ -1,0 +1,58 @@
+{
+  "name": "OVERLAPPED_BED_DAY",
+  "description": "This table stores information at the claim service line level related to bed day types that overlap with the bed day types of the referral associated with the claim.\n\n\n\n\n\nTo link this table�s service line information back to a claim header, join this table to AP_CLAIM_PROC_IDS on the TX_ID column. If you need to report on claim service lines specific to Cost Sharing Reduction (CSR), join this table instead to AP_CLAIM_PROC_IDS_CSR on the TX_ID column.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the AP Claim procedure transaction."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "OVRLP_BD_TYPE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the overlapped bed day type (TOD) from the referral linked to this procedure."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "OVRLP_BD_TYPE_ID_BED_DAY_TYPE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the bed day type record (i.e. ICU or non-authorized.)"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "OVRLP_BD_WGT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the relative weight of this bed day type calculated against all bed day types on the matched referral that overlapped with the procedure's date range."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "OVRLP_BD_CONV_DAYS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the converted bed days on the matched referral for the bed day types that overlap with the procedure's date range."
+    }
+  ]
+}

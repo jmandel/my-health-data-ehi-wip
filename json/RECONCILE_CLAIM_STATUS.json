@@ -1,0 +1,1342 @@
+{
+  "$meta": {
+    "schemas": {
+      "RECONCILE_CLAIM_STATUS": {
+        "name": "RECONCILE_CLAIM_STATUS",
+        "description": "This table contains claim-level status code information for claims reconciliation.",
+        "primaryKey": [
+          {
+            "columnName": "CLAIM_RECON_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "CONTACT_DATE_REAL",
+            "ordinalPosition": 2
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 3
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "CLAIM_RECON_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique identifier for the claim reconciliation record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "CONTACT_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "CLM_STAT_CODE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Claim level status code received in a reconciliation file if value matches codes in the current claim status code category.",
+            "entries": [
+              "Unmapped code received"
+            ]
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "CLM_CAT_CODE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Claim level category code received in a reconciliation file if value matches codes in the claim status category code category.",
+            "entries": [
+              "Unmapped code received"
+            ]
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "CLM_MAPPED_ACT_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Mapped action for the status code.",
+            "entries": [
+              "No Action",
+              "Accept Claim",
+              "Send to WQ"
+            ]
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "CLM_ACT_CODE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Claim level action code received in a reconciliation file if value matches codes in the claim action category.",
+            "entries": [
+              "Accept",
+              "Reject",
+              "<invalid>"
+            ]
+          },
+          {
+            "ordinalPosition": 15,
+            "name": "CLM_STATUS_MSG",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Claim level status message received in a reconciliation file."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "RECONCILE_CLAIM_STATUS",
+            "target": "RECONCILE_CLM",
+            "joinKeys": [
+              {
+                "source": "CLAIM_RECON_ID",
+                "target": "CLAIM_REC_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "RECONCILE_CLAIM_STATUS": [
+    {
+      "CLAIM_RECON_ID": "42972138",
+      "CONTACT_DATE_REAL": 64875,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-15 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Hold STC",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "CLM_STATUS_MSG": "As of 08/14/2018 at 05:34 claim is in HOLD status",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "42972138",
+      "CONTACT_DATE_REAL": 64875.01,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-15 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Hold STC",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "CLM_STATUS_MSG": "HDPA09 CHECK PAYER MAPPING ASSIGNMENT- FPAPER09 INVALID PAYER",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "42972138",
+      "CONTACT_DATE_REAL": 64889,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-29 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Rejected",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "95305293",
+      "CONTACT_DATE_REAL": 66375.03,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-09-23 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted in H.IP – Electronic Claim Sent",
+      "CLM_CAT_CODE_C_NAME": "ACK/Forwarded-The claim has been forwarded to another entity",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "CLAIM FORWARDED",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "95305293",
+      "CONTACT_DATE_REAL": 66375.03,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-09-23 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Claim/encounter has been forwarded to entity.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Forwarded-The claim has been forwarded to another entity",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "95305293",
+      "CONTACT_DATE_REAL": 66375.04,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-09-23 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Payer – Accepted Claim",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "ACCEPTED FOR PROCESSING.",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "95305293",
+      "CONTACT_DATE_REAL": 66375.04,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-09-23 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted for processing.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "95305293",
+      "CONTACT_DATE_REAL": 66375.05,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-09-23 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Payer – Accepted Claim",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "ACCEPTED FOR PROCESSING.",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "95305293",
+      "CONTACT_DATE_REAL": 66375.05,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-09-23 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted for processing.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "42972139",
+      "CONTACT_DATE_REAL": 64875,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-15 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Hold STC",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "CLM_STATUS_MSG": "As of 08/14/2018 at 05:34 claim is in HOLD status",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "42972139",
+      "CONTACT_DATE_REAL": 64875.01,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-15 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Hold STC",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "CLM_STATUS_MSG": "HDPA09 CHECK PAYER MAPPING ASSIGNMENT- FPAPER09 INVALID PAYER",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "42972139",
+      "CONTACT_DATE_REAL": 64889,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-29 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Rejected",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "98402730",
+      "CONTACT_DATE_REAL": 66450.03,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-12-07 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted in H.IP – Electronic Claim Sent",
+      "CLM_CAT_CODE_C_NAME": "ACK/Forwarded-The claim has been forwarded to another entity",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "CLAIM FORWARDED",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "98402730",
+      "CONTACT_DATE_REAL": 66450.03,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-12-07 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Claim/encounter has been forwarded to entity.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Forwarded-The claim has been forwarded to another entity",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "98402730",
+      "CONTACT_DATE_REAL": 66450.04,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-12-07 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Payer – Accepted Claim",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "ACCEPTED FOR PROCESSING.",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "98402730",
+      "CONTACT_DATE_REAL": 66450.04,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-12-07 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted for processing.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "98402730",
+      "CONTACT_DATE_REAL": 66450.05,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-12-07 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Payer – Accepted Claim",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "ACCEPTED FOR PROCESSING.",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "98402730",
+      "CONTACT_DATE_REAL": 66450.05,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-12-07 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted for processing.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "110203431",
+      "CONTACT_DATE_REAL": 66752.03,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-10-05 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted in H.IP – Electronic Claim Sent",
+      "CLM_CAT_CODE_C_NAME": "ACK/Forwarded-The claim has been forwarded to another entity",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "CLAIM FORWARDED",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "110203431",
+      "CONTACT_DATE_REAL": 66752.03,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-10-05 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Claim/encounter has been forwarded to entity.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Forwarded-The claim has been forwarded to another entity",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "110203431",
+      "CONTACT_DATE_REAL": 66752.04,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-10-05 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Payer – Accepted Claim",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "ACCEPTED FOR PROCESSING.",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "110203431",
+      "CONTACT_DATE_REAL": 66752.04,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-10-05 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted for processing.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "110203431",
+      "CONTACT_DATE_REAL": 66752.05,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-10-05 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Payer – Accepted Claim",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "ACCEPTED FOR PROCESSING.",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "110203431",
+      "CONTACT_DATE_REAL": 66752.05,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-10-05 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted for processing.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "110539507",
+      "CONTACT_DATE_REAL": 66760.03,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-10-13 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted in H.IP – Electronic Claim Sent",
+      "CLM_CAT_CODE_C_NAME": "ACK/Forwarded-The claim has been forwarded to another entity",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "CLAIM FORWARDED",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "110539507",
+      "CONTACT_DATE_REAL": 66760.03,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-10-13 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Claim/encounter has been forwarded to entity.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Forwarded-The claim has been forwarded to another entity",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "110539507",
+      "CONTACT_DATE_REAL": 66760.04,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-10-13 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Payer – Accepted Claim",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "ACCEPTED FOR PROCESSING.",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "110539507",
+      "CONTACT_DATE_REAL": 66760.04,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-10-13 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted for processing.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "110539507",
+      "CONTACT_DATE_REAL": 66760.05,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-10-13 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Payer – Accepted Claim",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "ACCEPTED FOR PROCESSING.",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "110539507",
+      "CONTACT_DATE_REAL": 66760.05,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-10-13 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted for processing.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "43461737",
+      "CONTACT_DATE_REAL": 64890.01,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-30 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Clean Claim",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "As of 08/29/2018 at 05:35 claim is in NEW status",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "43461737",
+      "CONTACT_DATE_REAL": 64890.02,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-30 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "As of 08/29/2018 at 12:03 claim is in SUBMITTED status",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "43461737",
+      "CONTACT_DATE_REAL": 64891,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-31 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "Received By Payer  (Trace: 1923265-999238-123286 TimeStamp: 2018-08-29 20:14:01). (PAYER RPT10): ACK/RECEIPT - ACCEPTED FOR PROCESSING. ACKNOWLEDGEMENT/RECEIPT-THE CLAIM/ENCOUNTER HAS BEEN RECEIVED. THIS DOES NOT MEAN THAT THE CLAIM HAS BEEN ACCEPTED FOR ADJUDICATION. CARRIER: BC BS OF WISCONSIN CARR REF #: CP18241153671973469 CLEARINGHOUSE TRACE #: EPXT8U80189O279 CLAIM ORIGINAL REFERENCE #: EP082918790317035 CATEGORY/STATUS CODE: A1/20 REPORT TYPE: 277 STATUS TIME: 2018-08-29 00:00:00 277 CLAIM STATUS CATEGORY/STATUS CODE/ENTITYCODE: A1/20/NULL",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "43461737",
+      "CONTACT_DATE_REAL": 64891.01,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-31 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "Received By Payer  (Trace: 1923265-999238-123286 TimeStamp: 2018-08-29 20:13:46). (PAYER RPT10): ACKNOWLEDGEMENT/RECEIPT-THE CLAIM/ENCOUNTER HAS BEEN RECEIVED. THIS DOES NOT MEAN THAT THE CLAIM HAS BEEN ACCEPTED FOR ADJUDICATION. ACKNOWLEDGEMENT/RECEIPT-THE CLAIM/ENCOUNTER HAS BEEN RECEIVED. THIS DOES NOT MEAN THAT THE CLAIM HAS BEEN ACCEPTED FOR ADJUDICATION. CARRIER: BC BS OF WISCONSIN CARR REF #: CP18241153671973469 CLEARINGHOUSE TRACE #: EPXT8U80189O279 CLAIM ORIGINAL REFERENCE #: EP082918790317035 CATEGORY/STATUS CODE: A1/NULL REPORT TYPE: ANTHEM LEVEL 2",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "43461737",
+      "CONTACT_DATE_REAL": 64891.02,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-31 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "Received By Payer  (Trace: 1923265-999238-123286 TimeStamp: 2018-08-29 16:08:14). (PAYER RPT10): PAYER ACKNOWLEDGED RECEIPT OF THE CLAIM 997 ACCEPTED ACKNOWLEDGEMENT CARRIER: BC BS OF WISCONSIN CLEARINGHOUSE TRACE #: EPXT8U80189O279 CLAIM ORIGINAL REFERENCE #: EP082918790317035 CATEGORY/STATUS CODE: 90/NULL REPORT TYPE: 999 STATUS TIME: 2018-08-29 16:08:14",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "43461737",
+      "CONTACT_DATE_REAL": 64901,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-09-10 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "Received By Payer  (Trace: 1923265-999238-123286 TimeStamp: 2018-09-08 08:27:38). (PAYER RPT10): FINALIZED.  PAYER HAS PROCESSED THIS CLAIM AS THE PRIMARY PAYER. FINALIZED/PAYMENT-THE CLAIM/LINE HAS BEEN PAID. CARRIER: BC BS OF WISCONSIN CARR REF #: 3382780135 CLEARINGHOUSE TRACE #: EPXT8U80189O279 CLAIM ORIGINAL REFERENCE #: EP082918790317035 DATA IN ERROR: ACH CATEGORY/STATUS CODE: F1/CH111 REPORT TYPE: 835 STATUS TIME: 2018-09-11 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "60433254",
+      "CONTACT_DATE_REAL": 65391.01,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-01-13 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Clean Claim",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "As of 01/10/2020 at 06:08 claim is in NEW status",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "60433254",
+      "CONTACT_DATE_REAL": 65391.02,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-01-13 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "As of 01/10/2020 at 12:04 claim is in SUBMITTED status",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "60433254",
+      "CONTACT_DATE_REAL": 65391.03,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-01-13 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "Received By Payer  (Trace: 2096255-998882-182687 TimeStamp: 2020-01-10 18:20:38). (PAYER RPT10): PAYER ACKNOWLEDGED RECEIPT OF THE CLAIM 997 ACCEPTED ACKNOWLEDGEMENT CARRIER: BC BS OF WISCONSIN CLEARINGHOUSE TRACE #: EP5NE8J018ID6J9 CLAIM ORIGINAL REFERENCE #: EP011020736119095 CATEGORY/STATUS CODE: 90/NULL REPORT TYPE: 999 STATUS TIME: 2020-01-10 18:20:38",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "60433254",
+      "CONTACT_DATE_REAL": 65391.04,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-01-13 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "Received By Payer  (Trace: 2096255-998882-182687 TimeStamp: 2020-01-10 23:47:03). (PAYER RPT10): A  CATEGORY: ACKNOWLEDGEMENT/RECEIPT  THE CLAIM/ENCOUNTER HAS BEEN RECEIVED. THIS DOES NOT MEAN THE CLAIM HAS BEEN ACCEPTED FOR ADJUDICATION STATUS: ACCEPTED FOR PROCESSING ACKNOWLEDGEMENT/RECEIPT-THE CLAIM/ENCOUNTER HAS BEEN RECEIVED. THIS DOES NOT MEAN THAT THE CLAIM HAS BEEN ACCEPTED FOR ADJUDICATION. CARRIER: BC BS OF WISCONSIN CARR REF #: CP20010182742427391 CLEARINGHOUSE TRACE #: EP5NE8J018ID6J9 CLAIM ORIGINAL REFERENCE #: EP011020736119095 CATEGORY/STATUS CODE: A1/NULL REPORT TYPE: AVAILITY DPR STATUS TIME: 2020-01-10 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "60433254",
+      "CONTACT_DATE_REAL": 65391.05,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-01-13 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "Received By Payer  (Trace: 2096255-998882-182687 TimeStamp: 2020-01-10 23:02:20). (PAYER RPT10): ACK/RECEIPT - ACCEPTED FOR PROCESSING. ACKNOWLEDGEMENT/RECEIPT-THE CLAIM/ENCOUNTER HAS BEEN RECEIVED. THIS DOES NOT MEAN THAT THE CLAIM HAS BEEN ACCEPTED FOR ADJUDICATION. CARRIER: BC BS OF WISCONSIN CLEARINGHOUSE TRACE #: EP5NE8J018ID6J9 CLAIM ORIGINAL REFERENCE #: EP011020736119095 CATEGORY/STATUS CODE: A1/20 REPORT TYPE: 277 STATUS TIME: 2020-01-10 00:00:00 277 CLAIM STATUS CATEGORY/STATUS CODE/ENTITYCODE: A1/20/NULL",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "60433254",
+      "CONTACT_DATE_REAL": 65391.06,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-01-13 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "Received By Payer  (Trace: 2096255-998882-182687 TimeStamp: 2020-01-10 23:47:32). (PAYER RPT10): ACKNOWLEDGEMENT/RECEIPT-THE CLAIM/ENCOUNTER HAS BEEN RECEIVED. THIS DOES NOT MEAN THAT THE CLAIM HAS BEEN ACCEPTED FOR ADJUDICATION. ACKNOWLEDGEMENT/RECEIPT-THE CLAIM/ENCOUNTER HAS BEEN RECEIVED. THIS DOES NOT MEAN THAT THE CLAIM HAS BEEN ACCEPTED FOR ADJUDICATION. CARRIER: BC BS OF WISCONSIN CARR REF #: 2020011017553900 CLEARINGHOUSE TRACE #: EP5NE8J018ID6J9 CLAIM ORIGINAL REFERENCE #: EP011020736119095 CATEGORY/STATUS CODE: A1/NULL REPORT TYPE: AVAILITY DPR STATUS TIME: 2020-01-10 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "60433254",
+      "CONTACT_DATE_REAL": 65391.07,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-01-13 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "Received By Payer  (Trace: 2096255-998882-182687 TimeStamp: 2020-01-10 23:48:56). (PAYER RPT10): THIS CLAIM HAS BEEN ACCEPTED FOR FURTHER PROCESSING AVAILITY TRACE #:13810355562 ACKNOWLEDGEMENT/RECEIPT-THE CLAIM/ENCOUNTER HAS BEEN RECEIVED. THIS DOES NOT MEAN THAT THE CLAIM HAS BEEN ACCEPTED FOR ADJUDICATION. CARRIER: BC BS OF WISCONSIN CARR REF #: 2020011017553900 CLEARINGHOUSE TRACE #: EP5NE8J018ID6J9 CLAIM ORIGINAL REFERENCE #: EP011020736119095 CATEGORY/STATUS CODE: A1/NULL REPORT TYPE: AVAILITY STATUS TIME: 2020-01-10 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "60433254",
+      "CONTACT_DATE_REAL": 65391.08,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-01-13 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "Received By Payer  (Trace: 2096255-998882-182687 TimeStamp: 2020-01-10 23:47:15). (PAYER RPT10): THIS CLAIM HAS BEEN ACCEPTED FOR FURTHER PROCESSING ACKNOWLEDGEMENT/RECEIPT-THE CLAIM/ENCOUNTER HAS BEEN RECEIVED. THIS DOES NOT MEAN THAT THE CLAIM HAS BEEN ACCEPTED FOR ADJUDICATION. CARRIER: BC BS OF WISCONSIN CLEARINGHOUSE TRACE #: EP5NE8J018ID6J9 CLAIM ORIGINAL REFERENCE #: EP011020736119095 CATEGORY/STATUS CODE: A1/NULL REPORT TYPE: EBR REPORT STATUS TIME: 2020-01-10 00:00:00 (PAYER RPT10): ACK/RECEIPT - ACCEPTED FOR PROCESSING. ACKNOWLEDGEMENT/RECEIPT-THE CLAIM/ENCOUNTER HAS BEEN RECEIVED. THIS DOES NOT MEAN THAT THE CLAIM HAS BEEN ACCEPTED FOR ADJUDICATION. CARRIER: BC BS OF WISCONSIN CARR REF #: CP20010182742427391 CLEARINGHOUSE TRACE #: EP5NE8J018ID6J9 CLAIM ORIGINAL REFERENCE #: EP011020736119095 CATEGORY/STATUS CODE: A1/20 REPORT TYPE: 277 STATUS TIME: 2020-01-10 00:00:00 277 CLAIM STATUS CATEGORY/STATUS CODE/ENTITYCODE: A1/20/NULL",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "60433254",
+      "CONTACT_DATE_REAL": 65407,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-01-29 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "Received By Payer  (Trace: 2096255-998882-182687 TimeStamp: 2020-01-27 08:32:56). (PAYER RPT10): FINALIZED.  PAYER HAS PROCESSED THIS CLAIM AS THE PRIMARY PAYER. FINALIZED-THE CLAIM/ENCOUNTER HAS COMPLETED THE ADJUDICATION CYCLE AND NO MORE ACTION WILL BE TAKEN. CARRIER: BC BS OF WISCONSIN CARR REF #: 3117289622 CLEARINGHOUSE TRACE #: EP5NE8J018ID6J9 CLAIM ORIGINAL REFERENCE #: EP011020736119095 DATA IN ERROR: ACH CATEGORY/STATUS CODE: F0/CH111 REPORT TYPE: 835 STATUS TIME: 2020-01-28 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "98990043",
+      "CONTACT_DATE_REAL": 66464.03,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted in H.IP – Electronic Claim Sent",
+      "CLM_CAT_CODE_C_NAME": "ACK/Forwarded-The claim has been forwarded to another entity",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "CLAIM FORWARDED",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "98990043",
+      "CONTACT_DATE_REAL": 66464.03,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Claim/encounter has been forwarded to entity.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Forwarded-The claim has been forwarded to another entity",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "98990043",
+      "CONTACT_DATE_REAL": 66464.04,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Payer – Accepted Claim",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "ACCEPTED FOR PROCESSING.",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "98990043",
+      "CONTACT_DATE_REAL": 66464.04,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted for processing.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "98990043",
+      "CONTACT_DATE_REAL": 66464.05,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Payer – Accepted Claim",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "ACCEPTED FOR PROCESSING.",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "98990043",
+      "CONTACT_DATE_REAL": 66464.05,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted for processing.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "98990043",
+      "CONTACT_DATE_REAL": 66464.03,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted in H.IP – Electronic Claim Sent",
+      "CLM_CAT_CODE_C_NAME": "ACK/Forwarded-The claim has been forwarded to another entity",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "CLAIM FORWARDED",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "98990043",
+      "CONTACT_DATE_REAL": 66464.03,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Claim/encounter has been forwarded to entity.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Forwarded-The claim has been forwarded to another entity",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "98990043",
+      "CONTACT_DATE_REAL": 66464.04,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Payer – Accepted Claim",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "ACCEPTED FOR PROCESSING.",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "98990043",
+      "CONTACT_DATE_REAL": 66464.04,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted for processing.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "98990043",
+      "CONTACT_DATE_REAL": 66464.05,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Payer – Accepted Claim",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "ACCEPTED FOR PROCESSING.",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "98990043",
+      "CONTACT_DATE_REAL": 66464.05,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-12-21 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted for processing.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "95212572",
+      "CONTACT_DATE_REAL": 66373.03,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-09-21 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted in H.IP – Electronic Claim Sent",
+      "CLM_CAT_CODE_C_NAME": "ACK/Forwarded-The claim has been forwarded to another entity",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "CLAIM FORWARDED",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "95212572",
+      "CONTACT_DATE_REAL": 66373.03,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-09-21 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Claim/encounter has been forwarded to entity.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Forwarded-The claim has been forwarded to another entity",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "95212572",
+      "CONTACT_DATE_REAL": 66373.04,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-09-21 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Payer – Accepted Claim",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "ACCEPTED FOR PROCESSING.",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "95212572",
+      "CONTACT_DATE_REAL": 66373.04,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-09-21 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted for processing.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "95212572",
+      "CONTACT_DATE_REAL": 66373.05,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-09-21 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Payer – Accepted Claim",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "ACCEPTED FOR PROCESSING.",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "95212572",
+      "CONTACT_DATE_REAL": 66373.05,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-09-21 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted for processing.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "110156845",
+      "CONTACT_DATE_REAL": 66751.03,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-10-04 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted in H.IP – Electronic Claim Sent",
+      "CLM_CAT_CODE_C_NAME": "ACK/Forwarded-The claim has been forwarded to another entity",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "CLAIM FORWARDED",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "110156845",
+      "CONTACT_DATE_REAL": 66751.03,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-10-04 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Claim/encounter has been forwarded to entity.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Forwarded-The claim has been forwarded to another entity",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "110156845",
+      "CONTACT_DATE_REAL": 66752,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-10-05 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Payer – Accepted Claim",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "THIS CLAIM HAS BEEN ACCEPTED FOR FURTHER PROCESSING",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "110156845",
+      "CONTACT_DATE_REAL": 66752,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-10-05 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted for processing.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "110156845",
+      "CONTACT_DATE_REAL": 66752.01,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-10-05 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Payer – Accepted Claim",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "ACCEPTED FOR PROCESSING.",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "110156845",
+      "CONTACT_DATE_REAL": 66752.01,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-10-05 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted for processing.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "43461738",
+      "CONTACT_DATE_REAL": 64890.01,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-30 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Clean Claim",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "As of 08/29/2018 at 05:35 claim is in NEW status",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "43461738",
+      "CONTACT_DATE_REAL": 64890.02,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-30 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "As of 08/29/2018 at 12:03 claim is in SUBMITTED status",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "43461738",
+      "CONTACT_DATE_REAL": 64891,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-31 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "Received By Payer  (Trace: 1923265-999238-123287 TimeStamp: 2018-08-29 20:14:02). (PAYER RPT10): ACK/RECEIPT - ACCEPTED FOR PROCESSING. ACKNOWLEDGEMENT/RECEIPT-THE CLAIM/ENCOUNTER HAS BEEN RECEIVED. THIS DOES NOT MEAN THAT THE CLAIM HAS BEEN ACCEPTED FOR ADJUDICATION. CARRIER: BC BS OF WISCONSIN CARR REF #: CP18241153671973470 CLEARINGHOUSE TRACE #: EPXT8U80189O279 CLAIM ORIGINAL REFERENCE #: EP082918790317036 CATEGORY/STATUS CODE: A1/20 REPORT TYPE: 277 STATUS TIME: 2018-08-29 00:00:00 277 CLAIM STATUS CATEGORY/STATUS CODE/ENTITYCODE: A1/20/NULL",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "43461738",
+      "CONTACT_DATE_REAL": 64891.01,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-31 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "Received By Payer  (Trace: 1923265-999238-123287 TimeStamp: 2018-08-29 20:13:47). (PAYER RPT10): ACKNOWLEDGEMENT/RECEIPT-THE CLAIM/ENCOUNTER HAS BEEN RECEIVED. THIS DOES NOT MEAN THAT THE CLAIM HAS BEEN ACCEPTED FOR ADJUDICATION. ACKNOWLEDGEMENT/RECEIPT-THE CLAIM/ENCOUNTER HAS BEEN RECEIVED. THIS DOES NOT MEAN THAT THE CLAIM HAS BEEN ACCEPTED FOR ADJUDICATION. CARRIER: BC BS OF WISCONSIN CARR REF #: CP18241153671973470 CLEARINGHOUSE TRACE #: EPXT8U80189O279 CLAIM ORIGINAL REFERENCE #: EP082918790317036 CATEGORY/STATUS CODE: A1/NULL REPORT TYPE: ANTHEM LEVEL 2",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "43461738",
+      "CONTACT_DATE_REAL": 64891.02,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-08-31 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "Received By Payer  (Trace: 1923265-999238-123287 TimeStamp: 2018-08-29 16:08:14). (PAYER RPT10): PAYER ACKNOWLEDGED RECEIPT OF THE CLAIM 997 ACCEPTED ACKNOWLEDGEMENT CARRIER: BC BS OF WISCONSIN CLEARINGHOUSE TRACE #: EPXT8U80189O279 CLAIM ORIGINAL REFERENCE #: EP082918790317036 CATEGORY/STATUS CODE: 90/NULL REPORT TYPE: 999 STATUS TIME: 2018-08-29 16:08:14",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "43461738",
+      "CONTACT_DATE_REAL": 64901,
+      "LINE": 1,
+      "CONTACT_DATE": "2018-09-10 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "Received By Payer  (Trace: 1923265-999238-123287 TimeStamp: 2018-09-08 08:27:38). (PAYER RPT10): FINALIZED.  PAYER HAS PROCESSED THIS CLAIM AS THE PRIMARY PAYER. FINALIZED/PAYMENT-THE CLAIM/LINE HAS BEEN PAID. CARRIER: BC BS OF WISCONSIN CARR REF #: 3382780135 CLEARINGHOUSE TRACE #: EPXT8U80189O279 CLAIM ORIGINAL REFERENCE #: EP082918790317036 DATA IN ERROR: ACH CATEGORY/STATUS CODE: F1/CH111 REPORT TYPE: 835 STATUS TIME: 2018-09-11 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "102143190",
+      "CONTACT_DATE_REAL": 66546.03,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-03-13 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted in H.IP – Electronic Claim Sent",
+      "CLM_CAT_CODE_C_NAME": "ACK/Forwarded-The claim has been forwarded to another entity",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "CLAIM FORWARDED",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "102143190",
+      "CONTACT_DATE_REAL": 66546.03,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-03-13 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Claim/encounter has been forwarded to entity.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Forwarded-The claim has been forwarded to another entity",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "102143190",
+      "CONTACT_DATE_REAL": 66547,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-03-14 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Payer – Accepted Claim",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "ACCEPTED FOR PROCESSING.",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "102143190",
+      "CONTACT_DATE_REAL": 66547,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-03-14 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted for processing.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "102143190",
+      "CONTACT_DATE_REAL": 66547.01,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-03-14 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Payer – Accepted Claim",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "ACCEPTED FOR PROCESSING.",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "102143190",
+      "CONTACT_DATE_REAL": 66547.01,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-03-14 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted for processing.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "66988170",
+      "CONTACT_DATE_REAL": 65608.01,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-08-17 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Clean Claim",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "As of 08/14/2020 at 05:49 claim is in NEW status",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "66988170",
+      "CONTACT_DATE_REAL": 65608.02,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-08-17 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "As of 08/14/2020 at 12:03 claim is in SUBMITTED status",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "66988170",
+      "CONTACT_DATE_REAL": 65608.03,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-08-17 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "Received By Payer  (Trace: 2162894-998728-208089 TimeStamp: 2020-08-14 18:46:02). (PAYER RPT10): PAYER ACKNOWLEDGED RECEIPT OF THE CLAIM 997 ACCEPTED ACKNOWLEDGEMENT CARRIER: BC BS OF WISCONSIN CLEARINGHOUSE TRACE #: EP9BXXZ02M9VZ89 CLAIM ORIGINAL REFERENCE #: EP081420741205510 CATEGORY/STATUS CODE: 90/NULL REPORT TYPE: 999 STATUS TIME: 2020-08-14 18:46:02",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "66988170",
+      "CONTACT_DATE_REAL": 65608.04,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-08-17 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "Received By Payer  (Trace: 2162894-998728-208089 TimeStamp: 2020-08-15 00:02:14). (PAYER RPT10): ACK/RECEIPT - ACCEPTED FOR PROCESSING. ACKNOWLEDGEMENT/RECEIPT-THE CLAIM/ENCOUNTER HAS BEEN RECEIVED. THIS DOES NOT MEAN THAT THE CLAIM HAS BEEN ACCEPTED FOR ADJUDICATION. CARRIER: BC BS OF WISCONSIN CLEARINGHOUSE TRACE #: EP9BXXZ02M9VZ89 CLAIM ORIGINAL REFERENCE #: EP081420741205510 CATEGORY/STATUS CODE: A1/20 REPORT TYPE: 277 STATUS TIME: 2020-08-14 00:00:00 277 CLAIM STATUS CATEGORY/STATUS CODE/ENTITYCODE: A1/20/NULL",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "66988170",
+      "CONTACT_DATE_REAL": 65608.05,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-08-17 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "Received By Payer  (Trace: 2162894-998728-208089 TimeStamp: 2020-08-15 16:10:29). (PAYER RPT10): A  CATEGORY: ACKNOWLEDGEMENT/RECEIPT  THE CLAIM/ENCOUNTER HAS BEEN RECEIVED. THIS DOES NOT MEAN THE CLAIM HAS BEEN ACCEPTED FOR ADJUDICATION STATUS: ACCEPTED FOR PROCESSING ACKNOWLEDGEMENT/RECEIPT-THE CLAIM/ENCOUNTER HAS BEEN RECEIVED. THIS DOES NOT MEAN THAT THE CLAIM HAS BEEN ACCEPTED FOR ADJUDICATION. CARRIER: BC BS OF WISCONSIN CARR REF #: CP20228094156155901 CLEARINGHOUSE TRACE #: EP9BXXZ02M9VZ89 CLAIM ORIGINAL REFERENCE #: EP081420741205510 CATEGORY/STATUS CODE: A1/NULL REPORT TYPE: AVAILITY DPR STATUS TIME: 2020-08-15 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "66988170",
+      "CONTACT_DATE_REAL": 65608.06,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-08-17 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "Received By Payer  (Trace: 2162894-998728-208089 TimeStamp: 2020-08-15 16:13:00). (PAYER RPT10): ACK/RECEIPT - ACCEPTED FOR PROCESSING. ACKNOWLEDGEMENT/RECEIPT-THE CLAIM/ENCOUNTER HAS BEEN RECEIVED. THIS DOES NOT MEAN THAT THE CLAIM HAS BEEN ACCEPTED FOR ADJUDICATION. CARRIER: BC BS OF WISCONSIN CARR REF #: CP20228094156155901 CLEARINGHOUSE TRACE #: EP9BXXZ02M9VZ89 CLAIM ORIGINAL REFERENCE #: EP081420741205510 CATEGORY/STATUS CODE: A1/20 REPORT TYPE: 277 STATUS TIME: 2020-08-15 00:00:00 277 CLAIM STATUS CATEGORY/STATUS CODE/ENTITYCODE: A1/20/NULL",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "66988170",
+      "CONTACT_DATE_REAL": 65608.07,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-08-17 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "Received By Payer  (Trace: 2162894-998728-208089 TimeStamp: 2020-08-15 16:12:10). (PAYER RPT10): ACKNOWLEDGEMENT/RECEIPT-THE CLAIM/ENCOUNTER HAS BEEN RECEIVED. THIS DOES NOT MEAN THAT THE CLAIM HAS BEEN ACCEPTED FOR ADJUDICATION. ACKNOWLEDGEMENT/RECEIPT-THE CLAIM/ENCOUNTER HAS BEEN RECEIVED. THIS DOES NOT MEAN THAT THE CLAIM HAS BEEN ACCEPTED FOR ADJUDICATION. CARRIER: BC BS OF WISCONSIN CARR REF #: 2020081417560200 CLEARINGHOUSE TRACE #: EP9BXXZ02M9VZ89 CLAIM ORIGINAL REFERENCE #: EP081420741205510 CATEGORY/STATUS CODE: A1/NULL REPORT TYPE: AVAILITY DPR STATUS TIME: 2020-08-15 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "66988170",
+      "CONTACT_DATE_REAL": 65608.08,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-08-17 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "Received By Payer  (Trace: 2162894-998728-208089 TimeStamp: 2020-08-15 16:18:38). (PAYER RPT10): THIS CLAIM HAS BEEN ACCEPTED FOR FURTHER PROCESSING AVAILITY TRACE #:17170320767 ACKNOWLEDGEMENT/RECEIPT-THE CLAIM/ENCOUNTER HAS BEEN RECEIVED. THIS DOES NOT MEAN THAT THE CLAIM HAS BEEN ACCEPTED FOR ADJUDICATION. CARRIER: BC BS OF WISCONSIN CARR REF #: 2020081417560200 CLEARINGHOUSE TRACE #: EP9BXXZ02M9VZ89 CLAIM ORIGINAL REFERENCE #: EP081420741205510 CATEGORY/STATUS CODE: A1/NULL REPORT TYPE: AVAILITY STATUS TIME: 2020-08-14 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "66988170",
+      "CONTACT_DATE_REAL": 65608.09,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-08-17 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "Received By Payer  (Trace: 2162894-998728-208089 TimeStamp: 2020-08-15 16:13:29). (PAYER RPT10): THIS CLAIM HAS BEEN ACCEPTED FOR FURTHER PROCESSING ACKNOWLEDGEMENT/RECEIPT-THE CLAIM/ENCOUNTER HAS BEEN RECEIVED. THIS DOES NOT MEAN THAT THE CLAIM HAS BEEN ACCEPTED FOR ADJUDICATION. CARRIER: BC BS OF WISCONSIN CLEARINGHOUSE TRACE #: EP9BXXZ02M9VZ89 CLAIM ORIGINAL REFERENCE #: EP081420741205510 CATEGORY/STATUS CODE: A1/NULL REPORT TYPE: EBR REPORT STATUS TIME: 2020-08-15 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "66988170",
+      "CONTACT_DATE_REAL": 65640,
+      "LINE": 1,
+      "CONTACT_DATE": "2020-09-18 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "S - Submit",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_STATUS_MSG": "Received By Payer  (Trace: 2162894-998728-208089 TimeStamp: 2020-09-17 08:48:59). (PAYER RPT10): FINALIZED.  PAYER HAS PROCESSED THIS CLAIM AS THE PRIMARY PAYER. FINALIZED/PAYMENT-THE CLAIM/LINE HAS BEEN PAID. CARRIER: BC BS OF WISCONSIN CARR REF #: 3132172428 CLEARINGHOUSE TRACE #: EP9BXXZ02M9VZ89 CLAIM ORIGINAL REFERENCE #: EP081420741205510 DATA IN ERROR: ACH CATEGORY/STATUS CODE: F1/CH111 REPORT TYPE: 835 STATUS TIME: 2020-09-15 00:00:00",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "89293998",
+      "CONTACT_DATE_REAL": 66214.03,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-04-15 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted in H.IP – Electronic Claim Sent",
+      "CLM_CAT_CODE_C_NAME": "ACK/Forwarded-The claim has been forwarded to another entity",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "CLAIM FORWARDED",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "89293998",
+      "CONTACT_DATE_REAL": 66214.03,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-04-15 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Claim/encounter has been forwarded to entity.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Forwarded-The claim has been forwarded to another entity",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "89293998",
+      "CONTACT_DATE_REAL": 66214.04,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-04-15 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Payer – Accepted Claim",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "ACCEPTED FOR PROCESSING.",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "89293998",
+      "CONTACT_DATE_REAL": 66214.04,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-04-15 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted for processing.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "89293998",
+      "CONTACT_DATE_REAL": 66214.05,
+      "LINE": 1,
+      "CONTACT_DATE": "2022-04-15 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Payer – Accepted Claim",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "Accept Claim",
+      "CLM_ACT_CODE_C_NAME": "Accept",
+      "CLM_STATUS_MSG": "ACCEPTED FOR PROCESSING.",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    },
+    {
+      "CLAIM_RECON_ID": "89293998",
+      "CONTACT_DATE_REAL": 66214.05,
+      "LINE": 2,
+      "CONTACT_DATE": "2022-04-15 00:00:00",
+      "CLM_STAT_CODE_C_NAME": "Accepted for processing.",
+      "CLM_CAT_CODE_C_NAME": "ACK/Receipt-Claim has been received.  - Does not necessarily mean it has been accepted for adjudication",
+      "CLM_MAPPED_ACT_C_NAME": "No Action",
+      "$meta": {
+        "type": "RECONCILE_CLAIM_STATUS"
+      }
+    }
+  ]
+}

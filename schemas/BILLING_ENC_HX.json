@@ -1,0 +1,84 @@
+{
+  "name": "BILLING_ENC_HX",
+  "description": "This table contains a history of the encounter-level events for Billing Encounters.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "BILL_ENC_HX_EVENT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The event within the audit trail of encounter level events.",
+      "entries": [
+        "Created",
+        "Voided",
+        "Unvoided"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "BILL_ENC_HX_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who performed the encounter level event in the audit trail."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "BILL_ENC_HX_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "BILL_ENC_HX_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant at which the encounter level event was performed in the audit trail."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "BILL_ENC_HX_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A user-entered comment to explain the event"
+    }
+  ]
+}

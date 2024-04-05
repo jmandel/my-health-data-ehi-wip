@@ -1,0 +1,133 @@
+{
+  "name": "PAT_ENC_RSH",
+  "description": "This table extracts information for patient encounters linked to patient research study records.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ENC_RESEARCH_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the research study linked to this patient encounter. This column is frequently used to link to the CLARITY_RSH table.",
+      "linksTo": "CLARITY_RSH"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ENROLL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifiers for associated enrollment information records for the study/patient combination for the research studies linked to this patient encounter."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "MANUAL_LINK_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the non-inferred columns of this table are based on manual user linkage. Y indicates that a user manually linked the encounter to the patient timeline. N indicates the data was inferred based on the encounter date and the patient timeline's dates.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PROTOCOL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the protocol linked from the encounter within the patient's study timeline."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PROTOCOL_ID_PROTOCOL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The SmartSet/Protocol record name.  This is different from the display name, which is stored in CL_PRL_SS_OT.DISPLAY_NAME."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PROTOCOL_VER",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "If the encounter is linked to a protocol, this is the version number of that protocol."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PROTOCOL_CONT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "If the encounter is linked to a protocol, this is the unique contact date of the protocol, in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "UNIQ_DAY_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The encounter is linked to this unique day number within the protocol of the patient's study timeline."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "INF_PROTOCOL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "When comparing the encounter date with the patient's study timeline, and regardless of any manually specified encounter-timeline relationship, this is the inferred protocol for the encounter. The value of this column may be different from the actual linked protocol if a user has linked the encounter to a different point in the timeline."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "INF_PROTOCOL_ID_PROTOCOL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The SmartSet/Protocol record name.  This is different from the display name, which is stored in CL_PRL_SS_OT.DISPLAY_NAME."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "INF_PROTOCOL_VER",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "When comparing the encounter date with the patient's study timeline, and regardless of any manually specified encounter-timeline relationship, INF_PROTOCOL_ID contains the inferred protocol ID for the encounter while this column contains the version number of the protocol."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "INF_PROTOCOL_CONT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "When comparing the encounter date with the patient's study timeline, and regardless of any manually specified encounter-timeline relationship, INF_PROTOCOL_ID contains the inferred protocol ID for the encounter while this column contains the unique contact date of the protocol, in decimal format.  The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "INF_UNIQ_DAY_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "When comparing the encounter date with the patient's study timeline, and regardless of any manually specified encounter-timeline relationship, this is the inferred unique day number for the encounter. The value of this column may be different from the actual linked day if a user has linked the encounter to a different point in the timeline."
+    }
+  ]
+}

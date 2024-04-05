@@ -1,0 +1,399 @@
+{
+  "name": "DOCS_RCVD_CLINICAL_NOTES",
+  "description": "This table contains metadata about clinical notes retrieved from external sources. Each row represents a discrete clinical note received in this document.",
+  "primaryKey": [
+    {
+      "columnName": "DOCUMENT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "DOCUMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the document record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "NOTE_REFERENCE_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reference ID of the clinical note, which uniquely identifies the note."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "NOTE_EXTERNAL_UNIQUE_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The externally-assigned globally unique identifier for the clinical note."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "NOTE_LOCAL_UNIQUE_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The locally-assigned unique identifier for the clinical note."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "NOTE_FHIR_DOCREF_RESRC_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The logical ID of the FHIR Document Reference resource for the clinical note."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "NOTE_FHIR_DOCREF_ATTACHT_URL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The URL containing the content of the clinical note."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "NOTE_SOURCE_ORG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the organization record that represents the original source of this clinical note."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "NOTE_SOURCE_ORG_ID_EXTERNAL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Organization's external name used as the display name on forms and user interfaces."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "NOTE_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The current status of the clinical note.",
+      "entries": [
+        "Incomplete",
+        "Signed",
+        "Addendum",
+        "Deleted",
+        "Revised",
+        "Cosigned",
+        "Finalized",
+        "Unsigned",
+        "Cosign Needed",
+        "Incomplete Revision",
+        "Cosign Needed Addendum",
+        "Shared"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "NOTE_SHARED_WITH_PAT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicator of whether the clinical note was allowed to be shared with the patient at the source organization for the note. A Yes value does not imply the patient has actually viewed the note.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "NOTE_UCN_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The mapped type of the clinical note in the Unified Clinical Notes framework.",
+      "entries": [
+        "Progress Notes",
+        "Consults",
+        "Procedures",
+        "H&P",
+        "Discharge Summary",
+        "ED Notes",
+        "Initial Assessments",
+        "ED Triage Notes",
+        "Case Communication",
+        "OR Nursing",
+        "OR Surgeon",
+        "OR PreOp",
+        "OR PostOp",
+        "OR Anesthesia",
+        "Ambulatory Progress Notes",
+        "Ambulatory H&P Notes",
+        "Ambulatory Procedure Notes",
+        "Discharge Instructions",
+        "ED Provider Notes",
+        "Decision",
+        "Note to Patient via Portal",
+        "Anesthesia Preprocedure Evaluation",
+        "Anesthesia Postprocedure Evaluation",
+        "H&P (View-Only)",
+        "Interval H&P Note",
+        "Anesthesia Procedure Notes",
+        "Addendum Note",
+        "Care Plan",
+        "Hospital Course",
+        "Subjective & Objective",
+        "L&D Delivery Note",
+        "Telephone Encounter",
+        "Patient Instructions",
+        "Assessment & Plan Note",
+        "Communication Body",
+        "ED AVS Snapshot",
+        "Letter",
+        "Lactation Note",
+        "Committee Review",
+        "IP AVS Snapshot",
+        "MR AVS Snapshot",
+        "Pharmacy Enrollment Note",
+        "Pre-Procedure Assessment",
+        "Discharge Instr - Supplementary Instructions",
+        "Discharge Instr - AVS First Page",
+        "Discharge Instr - Meds",
+        "Discharge Instr - Pharmacy",
+        "Discharge Instr - Activity",
+        "Discharge Instr - Diet",
+        "Discharge Instr - Appointments",
+        "Discharge Instr - Lab",
+        "Discharge Instr - Other Orders",
+        "Discharge Instr - Other Info",
+        "CAA (Care Area Assessment)",
+        "Nursing Note",
+        "ACP (Advance Care Planning)",
+        "ERAS",
+        "Result Encounter Note",
+        "Radiation Planning Notes",
+        "Radiation Completion Notes",
+        "Home Infusion",
+        "Form",
+        "BH Treatment Plan",
+        "Group Note",
+        "Video Visit Routing Comment",
+        "E-Visit Routing Comment",
+        "Claim Note",
+        "Dialysis Plan of Care Note",
+        "Home Health Plan of Care Certification Statement",
+        "Home Health Plan of Care",
+        "SMD Notes",
+        "Unmapped External Note",
+        "Filtered External Note",
+        "Code Documentation",
+        "Sedation Documentation",
+        "JDT PCOD",
+        "Dental Procedure Details",
+        "Home Health",
+        "LTC Provider Review",
+        "Chart Abstraction",
+        "Inpatient Self-Administration Sheet",
+        "Outpatient Self-Administration Sheet",
+        "Inpatient Medication Chart",
+        "Outpatient Medication Chart",
+        "Hospice",
+        "Hospice Plan of Care",
+        "Hospice Non-Covered",
+        "Hard Deleted Note"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "NOTE_TYPE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The free-text description of the type of the clinical note."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "NOTE_LAST_FILED_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant the clinical note was last meaningfully modified at the note's source organization."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "NOTE_CREATION_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant the clinical note was originally created at the note's source organization."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "NOTE_LAST_SIGNED_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant the clinical note was most recently signed or co-signed."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "NOTE_LAST_SIGNER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the individual that most recently signed or co-signed the clinical note."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "NOTE_AUTHOR_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the author of the clinical note."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "NOTE_AUTHOR_TYPE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The free-text description of the type of provider that authored the clinical note."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "NOTE_AUTHOR_SERVICE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The free-text description of the service associated with the authorship of the clinical note."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "NOTE_AUTHOR_SPECIALTY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The mapped provider specialty of the author of the clinical note."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "NOTE_AUTHOR_SPECIALTY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The free-text description of the provider specialty of the author of the clinical note."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "AUTORECONCILED_UCN_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the note record automatically created in the local chart from this received clinical note."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "NOTE_FILTER_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the reason this external clinical note should be filtered and thus not auto-reconciled into the local chart. Calculated at the time the note is received and saved.",
+      "entries": [
+        "Claim Derivation: Procedure Code Inclusion/Exclusion List",
+        "Claim Derivation: Missing Provider",
+        "Claim Derivation: Sensitive Diagnosis",
+        "Claim Derivation: Missing Procedure Start Date",
+        "Claim Derivation: Excluded Procedure Modifier",
+        "Source Organization Unknown",
+        "Source Organization Mismatch",
+        "Source Organization Is Self",
+        "Clinical Note Type Exclusion List",
+        "Clinical Note Missing Service Instant",
+        "Clinical Note Missing Last Filed Instant",
+        "Clinical Note Missing Author Name",
+        "Dispense Cancellation",
+        "Same Day as Internal Encounter",
+        "Missing or Invalid Binary URL",
+        "Filtered or Missing Source Note",
+        "DocumentReference Status not Current",
+        "Claim Derivation: Excluded Linked Diagnoses",
+        "Claim Derivation: Missing Encounter Start Date",
+        "Entered In Error",
+        "FHIR resource contained an invalid category",
+        "Condition verification status is no longer confirmed",
+        "Condition is no longer valid for this patient due to age or sex",
+        "FHIR resource has an invalid start date",
+        "Encounter FHIR resource is missing the type element",
+        "FHIR resource is missing the status element",
+        "Encounter FHIR resource is missing the class element",
+        "Encounter FHIR resource contained an unrecognized status code",
+        "Encounter FHIR resource contained a status code for a future encounter",
+        "Encounter FHIR resource contained a class code for a future encounter",
+        "FHIR resource has a future start date",
+        "FHIR resource does not have a status of completed",
+        "FHIR resource is missing the code element",
+        "Diagnosis is missing a link to an encounter",
+        "FHIR resource contains a reference to encounter not in the system",
+        "FHIR resource contained a patient reference not matching the searched for patient",
+        "Immunization FHIR Resource is missing the vaccineCode element or did not contain a CVX code",
+        "FHIR Resource is missing an effective date/time",
+        "FHIR resource contained an invalid status",
+        "Observation FHIR resource is linked to a filtered Condition FHIR resource",
+        "SDOH Assessment contains no questions"
+      ]
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "NOTE_ASSOC_EVENT_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reference ID of the encounter associated with the clinical note. Is associated with a value from I DXR 8010."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "NOTE_SERVICE_START_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant of service associated with the clinical note."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "NOTE_SRC_DOCREF_RESRC_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the FHIR Document Reference resource for the source note of the clinical note. Populated when the clinical note is an interval note."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "NOTE_REMOVED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the note is no longer in the received note list"
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "NOTE_ASSOC_PROB_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reference ID of the external problem linked to a clinical note."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "NOTE_AUTHOR_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The internal category value of the type of provider that authored the clinical note.",
+      "entries": [
+        "Resource",
+        "Physician"
+      ]
+    }
+  ]
+}

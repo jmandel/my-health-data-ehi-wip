@@ -1,0 +1,78 @@
+{
+  "$meta": {
+    "schemas": {
+      "PAT_REL_LANGUAGES": {
+        "name": "PAT_REL_LANGUAGES",
+        "description": "This table contains information about the patient contacts' languages. The records included in this table are Patient Relationships (RLA) records.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_RELATIONSHIP_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_RELATIONSHIP_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the patient contact record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "LANGUAGE_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The language type category ID for the patient contact.",
+            "entries": [
+              "Spoken Language",
+              "Written Language"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "PAT_REL_LANGUAGES",
+            "target": "PAT_RELATIONSHIP_LIST",
+            "joinKeys": [
+              {
+                "source": "PAT_RELATIONSHIP_ID",
+                "target": "PAT_RELATIONSHIP_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PAT_REL_LANGUAGES": [
+    {
+      "PAT_RELATIONSHIP_ID": 31533870,
+      "LINE": 1,
+      "LANGUAGE_TYPE_C_NAME": "Spoken Language",
+      "$meta": {
+        "type": "PAT_REL_LANGUAGES"
+      }
+    },
+    {
+      "PAT_RELATIONSHIP_ID": 31533870,
+      "LINE": 2,
+      "LANGUAGE_TYPE_C_NAME": "Written Language",
+      "$meta": {
+        "type": "PAT_REL_LANGUAGES"
+      }
+    }
+  ]
+}

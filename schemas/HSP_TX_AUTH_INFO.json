@@ -1,0 +1,95 @@
+{
+  "name": "HSP_TX_AUTH_INFO",
+  "description": "This table contains the authorization information for each hospital transaction.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the hospital billing transaction."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "AUTH_COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item is the list of coverages the associated Authorization values are being applied to."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "AUTH_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the list of authorization number overrides for a charge. This item cannot be set at the same time as Authorization ID (I HTR 833)."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "AUTH_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item is the list of authorization records linked to a charge"
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "AUTH_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This stores the source of the authorization link.",
+      "entries": [
+        "User",
+        "System",
+        "Charge Router Handler"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "AUTH_OVRIDE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the user who was responsible for the last authorization assignment."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "AUTH_OVRIDE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "AUTH_UPDATE_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item stores the last time the authorization was updated either by the system or a user."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "INCL_IN_AUTH_CHG_CNT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column indicates whether the charge contributes to the used count of the authorization linked to it.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    }
+  ]
+}

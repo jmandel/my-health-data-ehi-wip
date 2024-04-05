@@ -1,0 +1,88 @@
+{
+  "name": "DOC_PROVIDER",
+  "description": "This table contains information entered in the documentation provider table during charge entry. Since one transaction may have multiple rows of documentation provider data, each row in this table represents one line of documentation provider data and is identified by the transaction ID and line number. The data for this table is extracted using a KB_SQL query.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the transaction record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number to identify each row of documentation provider data associated with an individual transaction."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "POST_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The post date of the transaction identified by TX_ID."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "DOC_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the documentation provider for this transaction. This ID may be encrypted if you have elected to use enterprise reporting�s security utility."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "DOC_PROV_FUNC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value associated with the function performed by the documentation provider as recorded in billing system charge entry such as Supervised, Performed, or Assisted.",
+      "entries": [
+        "Supervised",
+        "Performed",
+        "Assisted",
+        "Observed",
+        "Billing Provider",
+        "Surrogate Provider",
+        "Ordering Provider"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "DOC_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which this provider�s participation began."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "DOC_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date on which this provider�s participation ended."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "DOC_START_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The time of day at which this provider�s participation began."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "DOC_END_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The time of day at which this provider�s participation ended."
+    }
+  ]
+}

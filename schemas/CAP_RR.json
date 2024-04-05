@@ -1,0 +1,446 @@
+{
+  "name": "CAP_RR",
+  "description": "The CAP_RR table contains information on capitation receipt and reconciliation transactions.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The internal ID of the transaction."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "TX_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of the transaction.",
+      "entries": [
+        "Incoming Receipt",
+        "PCP Capitation",
+        "Specialty Capitation",
+        "AP Claims Adjustment",
+        "Withhold Adjustment",
+        "General Adjustment",
+        "Other Reimbursement",
+        "PCP Capitation Adjustment",
+        "Specialty Capitation Adjustment"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "TX_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status of the transaction.",
+      "entries": [
+        "Loaded",
+        "Reconciled",
+        "Calculated",
+        "AP Batched",
+        "Paid",
+        "Void"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SPECIAL_TX_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The special transaction type of the transaction.",
+      "entries": [
+        "Manual",
+        "Retro",
+        "AP Claims Holdback",
+        "Paid By Carrier Claim",
+        "Withholding Payback",
+        "COB Savings Member Payout",
+        "Refund",
+        "Extra Refund",
+        "Remittance Recovery",
+        "Write-off Refund",
+        "HRA Remittance Recovery",
+        "Prepayment",
+        "Future Prepayment",
+        "Prepayment Recovery"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EFFECTIVE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The effective date of the transaction."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "POSTING_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The posting date of the transaction."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ELIGIBILITY_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The eligibility date of the transaction."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the user who created the transaction."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "COMMENT_LINE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The free text comment of the transaction."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "RCPT_MEM_DOB",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of birth of the received member."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "RCPT_MEM_SEX_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The sex of the received member.",
+      "entries": [
+        "Female",
+        "Male",
+        "Unknown",
+        "Nonbinary",
+        "X",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "RCPT_SERV_AREA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The internal ID of the received service area."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "RCPT_CARRIER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The internal ID of the received carrier."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "RCPT_CARRIER_ID_CARRIER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the carrier record."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "RCPT_NETWORK_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The internal ID of the received network."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "RCPT_NETWORK_ID_NETWORK_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the network."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "RCPT_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The internal ID of the received plan."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "RCPT_PLAN_GRP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The internal ID of the received plan group."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "RCPT_PLAN_GRP_ID_PLAN_GRP_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the employer group record"
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "RCPT_LOCATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The internal ID of the received location."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "RCPT_PCP_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The internal ID of the primary care provider (PCP) of the member associated with the transaction."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "RCPT_SUB_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the received subscriber."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "RCPT_ADJ_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value for the received adjustment code.",
+      "entries": [
+        "Cancel",
+        "Add"
+      ]
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "RCPT_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount received for the transaction."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "CANCELED_BY_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The internal ID of the transaction which cancels this transaction."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "CANCELS_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The internal ID of the transaction cancelled by this transaction."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "RCNCL_DISC_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value of the reconciliation discrepancy type.",
+      "entries": [
+        "No Match For Cancel Transaction",
+        "Duplicate Transaction",
+        "Incorrect Capitation Context or Amount",
+        "Effective Date Exceeds Retro Window",
+        "Member Not Eligible",
+        "Member Eligible, No Cap Received",
+        "Incorrect Monthly Net Amount"
+      ]
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "RCNCL_MEM_DOB",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of birth for the reconciled member."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "RCNCL_SEX_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The sex of the reconciled member."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "RCNCL_NETWORK_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The internal ID of the reconciled network."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "RCNCL_NETWORK_ID_NETWORK_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the network."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "RCNCL_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The internal ID of the reconciled plan."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "RCNCL_PLAN_GRP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The internal ID of the reconciled plan group."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "RCNCL_PLAN_GRP_ID_PLAN_GRP_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the employer group record"
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "RCNCL_LOCATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The internal ID of the reconciled location."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "RCNCL_PCP_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The internal ID of the reconciled primary care provider (PCP) of the member associated with the transaction."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "RCNCL_CVG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The internal ID of the reconciled coverage."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "RCNCL_SUB_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the reconciled subscriber."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "RCNCL_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount reconciled."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "RCPT_MGRP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the member group used for capitation receipt."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "RCPT_LOB_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The capitation receipt line of business."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "RCPT_LOB_ID_LOB_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the line of business record."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "RCPT_RKP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the risk panel used for capitation receipt."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "RCPT_RKP_ID_RISK_PANEL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the risk panel."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "RCNCL_LOB_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The capitation reconciliation line of business."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "RCNCL_LOB_ID_LOB_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the line of business record."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "RCNCL_RKP_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the risk panel used for capitation reconciliation."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "RCNCL_RKP_ID_RISK_PANEL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the risk panel."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "RCNCL_REGISTRY_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The ID of the patient registry determined during reconciliation."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "RCNCL_REGISTRY_ID_REGISTRY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the registry record."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "RCPT_MEM_ID_CVG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The member ID from an incoming capitation file."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "RCNCL_MEMBER_ID_CVG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The member ID used for reconciling incoming capitation."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "RCPT_ADJ_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the type of the capitation payment adjustment."
+    }
+  ]
+}

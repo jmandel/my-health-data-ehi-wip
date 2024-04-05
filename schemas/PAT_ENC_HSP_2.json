@@ -1,0 +1,464 @@
+{
+  "name": "PAT_ENC_HSP_2",
+  "description": "The PAT_ENC_HSP_2 table is the subsequent table for the PAT_ENC_HSP table, which is the primary table for hospital encounter information. Each record in this table is based on a patient contact serial number.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EX_DIS_DT_ENTR_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant of entry of expected discharge date."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EX_DIS_TM_ENTR_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant of entry of expected discharge time."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CONTRACT_REG_FLAG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether an HOV contact was registered using the Contract Registration workflow. If this workflow was not used, this column is null."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CONTRACT_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The contract code category for the encounter."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ACCEPTS_BLOOD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID that indicates whether this patient accepts blood."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ED_ARRIVAL_DETAILS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Free text information holding any details regarding the ED Arrival."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "CONS_SEDATION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID of the conscious sedation status for the patient encounter."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "RESTRAINT_SECLUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The restraint or seclusion status category ID for this patient encounter."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "MULTI_PREG_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the mother has a multiple pregnancy for this L&D encounter.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "DISASTER_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the disaster number, which is a number given by the ambulance company to patients during catastrophes that cause massive patient influxes to the hospital."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "SRC_PATTERN_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Contact Serial Number (CSN) of the Admission Pattern record associated with the projected bed usage for this patient encounter. If this projection is manually modified an end user, the column stores null."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "ENC_CLOSED_OR_COMPLETED_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date that the encounter was closed or completed."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "ED_DISPO_PAT_COND_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID of the patient condition at time of disposition in the ED.",
+      "entries": [
+        "Good",
+        "Stable",
+        "Fair",
+        "Serious",
+        "Critical",
+        "Expired"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "ADOPTION_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Item to store what type of adoption is related to the current L&D contact.",
+      "entries": [
+        "Open Adoption",
+        "Closed Adoption",
+        "Surrogate",
+        "Safe Surrender",
+        "Gestational Carrier",
+        "Traditional Surrogate",
+        "Hide Mother's Info",
+        "Not Applicable"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "PRI_PROBLEM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the principal problem for a patient's hospitalization."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "EXPECTED_DISCHRG_APPROX_TIME_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Current approximate expected discharge time.  Each value represents a time range (e.g. Morning, Midday, Afternoon, Evening).",
+      "entries": [
+        "Morning",
+        "Midday",
+        "Afternoon",
+        "Evening"
+      ]
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "DISCH_MILEST_KICKOFF_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Displays the date and time that discharge milestones were initiated."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "DISCH_MILEST_AUTO_MANAGED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Determines if discharge milestones have had any manual intervention.  Discharge Milestones are considered auto-managed if the discharge order is the sole driver for kicking off and discontinuing milestones."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "PREDICTED_LOS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Length of Stay value determined by the Predictive Model run."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "EXP_LOS_UPD_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The source (e.g. Predictive Model, User Entered) from which the Expected Length of Stay was updated.",
+      "entries": [
+        "User Entered",
+        "Model Prediction",
+        "Expected Discharge Date Update",
+        "Expected Length of Stay Update",
+        "Admission Planning Reservation Updated",
+        "Discharge Order Filed"
+      ]
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "ED_ENC_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores how an ED encounter was created (e.g. via interface, user workflows)",
+      "entries": [
+        "Standard",
+        "Interface",
+        "Kiosk",
+        "Online",
+        "Call Center / Clinic Referral",
+        "Scheduling"
+      ]
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "ED_DEPART_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The ED Departure date and time in UTC."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "ADT_ARRIVAL_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The arrival date and time in UTC."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "HOSP_DISCH_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The hospital discharge date and time in UTC."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "HOSP_ADMSN_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The hospital admission date and time in UTC."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "INP_ADMSN_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time that the patient first reached a patient class of Inpatient in UTC."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "ED_HISTORICAL_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "ED Historical Encounter is set by cutover and historical encounter interfaces when patient encounters are created for emergency patients.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "PATIENT_TASK_COMPLETION_RATE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Aggregated task progression rates across all active tasks currently assigned to the patient."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "START_MED_REM_DISCHG_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If set to 1-Yes, medication reminders will start automatically after discharge. If set to 0-No or empty, medication reminders will not start automatically after discharge."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "EXPECTED_DISCHARGE_UNKNOWN_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the expected discharge date is unknown for this patient. 'Y' indicates that the expected discharge date is unknown and documented. 'N' indicates that the expected discharge date is known and documented. NULL indicates that no expected discharge info has been saved for this contact."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "DUAL_ADMISSION_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "In a dual admission scenario this will point from the encounter on leave to the admitted encounter."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "LOA_PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column is only populated when the encounter for this row is admitted and the patient currently has an encounter on a leave of absence. This column displays the unique contact serial number of the patient encounter that is on a leave of absence."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "INITIAL_ADT_PAT_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ADT type of encounter category ID initially assigned for the encounter.",
+      "entries": [
+        "Preadmission",
+        "Admission",
+        "Discharged",
+        "Leave of Absence",
+        "Hospital Outpatient Visit"
+      ]
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "NOTIFICATION_SENT_FIRST_IP_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the Event Notification message was sent when the patient was upgraded to an IP class. 'Y' indicates that the message was sent. 'N' or NULL indicate that the message was not sent. Note that this message is only sent once, even though the date and time the patient became IP can be changed."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "NOTIFICATION_SENT_OBS_ADMSN_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the Event Notification message was sent when the patient was upgraded to an observation patient class. 'Y' indicates that the message was sent. 'N' or NULL indicate that the message was not sent. Note that this message is only sent once, even though the date and time the patient became observation can be changed."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "IB_ALERT_LENGTH_OF_STAY_MSG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the In Basket Message that was sent to alert that a patient has gone past the approved length of stay."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "INITIAL_ADMIT_CONF_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The encounter status category ID initially assigned to this encounter.",
+      "entries": [
+        "Confirmed",
+        "Pending",
+        "Canceled",
+        "Completed"
+      ]
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "TRANSFER_COMMENTS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The transfer comments entered by the user during the most recent transfer."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "MED_READINESS_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The medical readiness date and time for this patient encounter. This date and time may be expected or confirmed, depending on whether the patient is medically ready or not."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "MED_READINESS_TIMEFRAM_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The medical readiness timeframe category ID for the patient encounter",
+      "entries": [
+        "Now",
+        "Anticipated Today",
+        "Anticipated Tomorrow",
+        "Anticipated in 2-4 Days",
+        "Anticipated in 5+ Days"
+      ]
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "MED_READINESS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether this patient encounter is medically ready for discharge. 'Y' indicates that this encounter has been marked medically ready for discharge. 'N' or NULL indicates that it has not been marked medically ready for discharge."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "MED_READINESS_INST_ENTRY_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant at which this patient's medical readiness information was last updated"
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "MED_READINESS_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who last updated medical readiness information for this patient encounter"
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "MED_READINESS_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "MED_READINESS_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The medical readiness source category ID for this patient encounter",
+      "entries": [
+        "SmartList",
+        "Expected Discharge Date Section",
+        "Update Order",
+        "Discharge Order",
+        "Automatic Update"
+      ]
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "EXPECTED_DISCH_DISP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient's expected discharge disposition.",
+      "entries": [
+        "Home or Self Care",
+        "Home Health Services",
+        "Assisted Living Facility",
+        "Behavioral Health Facility",
+        "Hospice - Home",
+        "Hospice - Residential",
+        "Inpatient Rehab Facility",
+        "Long Term Acute Care Hospital",
+        "Skilled Nursing Facility",
+        "Transfer to Other Acute Facility",
+        "Other (Comment)"
+      ]
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "EXP_DISCH_DISP_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item logs the last user that changed the expected discharge disposition."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "EXP_DISCH_DISP_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "EXP_DISCH_DISP_ENTRY_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant of entry of expected discharge disposition."
+    }
+  ]
+}

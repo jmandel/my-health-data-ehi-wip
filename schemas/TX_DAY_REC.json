@@ -1,0 +1,101 @@
+{
+  "name": "TX_DAY_REC",
+  "description": "This table contains a history of all reconcilable changes made to orders in a treatment day, as well as how the user reconciled those changes.  For example, if a medication order was discontinued, the discontinuation would appear in this table, as well as any actions taken on that modification (such as acknowledging it, or removing the order from future days).",
+  "primaryKey": [
+    {
+      "columnName": "EVENT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "EVENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the event record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "TX_REC_OTP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the ID of the order template that this action refers to."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "TX_REC_ORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the ID of the order that this action refers to."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "TX_REC_EVENT_LINE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the line number of the event where this action occurred.  This corresponds to the LINE column in the table ED_IEV_EVENT_INFO."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "TX_REC_CHANGE_TYP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the type of change documented on this line.",
+      "entries": [
+        "Review",
+        "Propagate",
+        "New Order",
+        "Dose Change",
+        "Discontinue",
+        "Build Change"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "TX_REC_RVW_BY_LINE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains the line number of the action that reviewed this action."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "TX_REC_REVIEW_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "For review actions, this item contains the comment entered by the user during the review process."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "TX_REC_OLD_ERX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "For treatment plan reconciliation events, will hold the old medication (ERX) ID if this event came from a medication replacement."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "TX_REC_NEW_ERX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "For treatment plan reconciliation events, will hold the new medication (ERX) ID if this even came from a medication replacement"
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "TX_REC_MESSAGE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "For treatment plan reconciliation events, will hold the reconciliation message"
+    }
+  ]
+}

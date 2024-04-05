@@ -1,0 +1,76 @@
+{
+  "name": "ORDER_RAD_READING",
+  "description": "This table stores reading physician information for imaging procedures.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_PROC_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the procedure order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line count for this table as determined by the number of reading radiologists for an order."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reading radiologist for the order."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "READING_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date that the study was read by the reading radiologist (PROV_ID) -- i.e., the date that the radiologist performed any action on the study."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "READ_PHYS_SPEC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reading physician roles category ID for the order.",
+      "entries": [
+        "Other",
+        "Radiology",
+        "Cardiology",
+        "Ophthalmology",
+        "Obstetrics",
+        "Test Supervisor",
+        "ECG Reader",
+        "Echo Reader",
+        "SPECT Reader"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "READING_RESIDENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the resident being supervised by the reading radiologist, if one exists."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "READ_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time in UTC format when the reading physician made a change to the study."
+    }
+  ]
+}

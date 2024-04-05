@@ -1,0 +1,162 @@
+{
+  "name": "HSP_ACCT_CONS_SP_PMT_ADJ",
+  "description": "The HSP_ACCT_CONS_SP_PMT_ADJ table contains information about the payment & adjustment documentation lines associated with a received self-pay hospital account. As a partial example, this includes common payment & adjustment information like the deposit date, reference number, description, and amount.",
+  "primaryKey": [
+    {
+      "columnName": "HSP_ACCOUNT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the hosp acct record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PMT_ADJ_UNIQUE_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "An identifier unique to this payment/adjustment documentation line related group at the HAR level.  No other payment/adjustment documentation lines on the same HAR should share this identifier."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PMT_ADJ_DEPOSIT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The deposit date for a self-pay adjustment or payment.  This date is when the adjustment or payment was deposited in the source system."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PMT_ADJ_POST_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The original post date for a self-pay adjustment or payment.  This date is when the adjustment or payment was posted in the source system."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PMT_ADJ_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The procedure code for an self-pay adjustment or payment."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PMT_ADJ_REF_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reference number (e.g. check number) for an self-pay adjustment or payment."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PMT_ADJ_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The credit or debit amount for an self-pay adjustment or payment."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PMT_ADJ_PAYER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The payer for a self-pay adjustment or payment."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PMT_ADJ_DESCRIPTION",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A description of a self-pay adjustment or payment.  Can be supplied by the source system as an override for the procedure description."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PMT_ADJ_REVERSAL_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date that this payment or adjustment documentation line was reversed. This date is set to the day the documentation line was marked as reversed by the source system. If this item is blank, then the charge has not been reversed."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PMT_ADJ_ORIG_IDENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "An identifier for a self-pay adjustment or payment. If this is from another system, this is the ID the source system uses. If this is from the same system, this is the original transaction ID for the source service area (HTR for HB, ETR for PB)."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PMT_ADJ_UPDATE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date that this adjustment or payment documentation line was sent to the consolidated self-pay service area. This date is set to the day the documentation line was first imported from the source system."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "PMT_ADJ_HTR_ON_BILLING_ACCT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If this payment/adjustment documentation line corresponds to an HB transaction posted on the insourced hospital account (for example, a patient payment that was posted directly to the target service area hospital account), this item stores a pointer to that transaction."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "PMT_ADJ_CONS_SP_DOCLN_STS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The current active status of the documentation line.",
+      "entries": [
+        "Pending",
+        "Active",
+        "Pending Reversal",
+        "Inactive"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "PMT_EOB_DEDUCTIBLE_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Deductible amount from related payment transaction."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PMT_EOB_COINSURANCE_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Coinsurance amount from related payment transaction."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "PMT_EOB_COPAY_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Copay amount from related payment transaction."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PMT_EOB_NON_COVERED_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Non-covered amount from related payment transaction."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "PMT_ADJ_PAYER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The payer name for an adjustment or payment documentation line. Will fallback on I HAR 3488."
+    }
+  ]
+}

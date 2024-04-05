@@ -1,0 +1,60 @@
+{
+  "$meta": {
+    "schemas": {
+      "CLARITY_LOT": {
+        "name": "CLARITY_LOT",
+        "description": "This table contains most of the information about the lot number records in the Lot Number (LOT) master file.",
+        "primaryKey": [
+          {
+            "columnName": "LOT_NUM_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "LOT_NUM_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The internal ID of the lot number record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LOT_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The lot number on the vial for a given medication or immunization."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LOT_NUM_NM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the lot number/name.",
+            "mergedFrom": "MEDICATION_LOT"
+          }
+        ],
+        "merged": [
+          {
+            "name": "MEDICATION_LOT",
+            "description": "This table stores information for medication-type Lot Number (LOT) records."
+          }
+        ]
+      }
+    }
+  },
+  "CLARITY_LOT": [
+    {
+      "LOT_NUM_ID": 298403,
+      "LOT_NUM": "5ME77",
+      "$meta": {
+        "type": "CLARITY_LOT",
+        "mergedFrom": [
+          "MEDICATION_LOT"
+        ]
+      },
+      "// mergedFrom MEDICATION_LOT": true,
+      "LOT_NUM_NM": "5ME77"
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "$meta": {
+    "schemas": {
+      "ORDER_DISP_INFO": {
+        "name": "ORDER_DISP_INFO",
+        "description": "This table contains dispense information for orders.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_MED_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "CONTACT_DATE_REAL",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_MED_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the order that these actions were taken on."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "CONTACT_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "A unique, internal contact date in decimal format. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+          },
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier (.1 item) for the order record.",
+            "mergedFrom": "ORDER_DISP_INFO_2"
+          }
+        ],
+        "merged": [
+          {
+            "name": "ORDER_DISP_INFO_2",
+            "description": "This table contains dispense information for orders."
+          },
+          {
+            "name": "ORDER_DISP_INFO_3",
+            "description": "This table contains dispense information for orders."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_DISP_INFO",
+            "target": "ORDER_MED",
+            "joinKeys": [
+              {
+                "source": "ORDER_MED_ID",
+                "target": "ORDER_MED_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_DISP_INFO",
+            "target": "ORD_PRFLST_TRK",
+            "joinKeys": [
+              {
+                "source": "ORDER_MED_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ORDER_DISP_INFO": [
+    {
+      "ORDER_MED_ID": 945468373,
+      "CONTACT_DATE_REAL": 66743,
+      "$meta": {
+        "type": "ORDER_DISP_INFO",
+        "mergedFrom": [
+          "ORDER_DISP_INFO_2",
+          "ORDER_DISP_INFO_3"
+        ]
+      },
+      "// mergedFrom ORDER_DISP_INFO_2": true,
+      "ORDER_ID": 945468373,
+      "// mergedFrom ORDER_DISP_INFO_3": true
+    },
+    {
+      "ORDER_MED_ID": 772179261,
+      "CONTACT_DATE_REAL": 66177,
+      "$meta": {
+        "type": "ORDER_DISP_INFO",
+        "mergedFrom": [
+          "ORDER_DISP_INFO_2",
+          "ORDER_DISP_INFO_3"
+        ]
+      },
+      "// mergedFrom ORDER_DISP_INFO_2": true,
+      "ORDER_ID": 772179261,
+      "// mergedFrom ORDER_DISP_INFO_3": true
+    },
+    {
+      "ORDER_MED_ID": 772179269,
+      "CONTACT_DATE_REAL": 66177,
+      "$meta": {
+        "type": "ORDER_DISP_INFO",
+        "mergedFrom": [
+          "ORDER_DISP_INFO_2",
+          "ORDER_DISP_INFO_3"
+        ]
+      },
+      "// mergedFrom ORDER_DISP_INFO_2": true,
+      "ORDER_ID": 772179269,
+      "// mergedFrom ORDER_DISP_INFO_3": true
+    },
+    {
+      "ORDER_MED_ID": 772179266,
+      "CONTACT_DATE_REAL": 66177,
+      "$meta": {
+        "type": "ORDER_DISP_INFO",
+        "mergedFrom": [
+          "ORDER_DISP_INFO_2",
+          "ORDER_DISP_INFO_3"
+        ]
+      },
+      "// mergedFrom ORDER_DISP_INFO_2": true,
+      "ORDER_ID": 772179266,
+      "// mergedFrom ORDER_DISP_INFO_3": true
+    }
+  ]
+}

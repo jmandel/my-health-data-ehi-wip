@@ -1,0 +1,93 @@
+{
+  "$meta": {
+    "schemas": {
+      "MEDICAL_HX": {
+        "name": "MEDICAL_HX",
+        "description": "The MEDICAL_HX table contains data from medical history contacts entered in clinical system patient encounters. Since one patient encounter may contain multiple medical history contacts, each contact is uniquely identified by a patient encounter serial number and a line number.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ENC_CSN_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number of the medical history contact within the encounter. Each line of history is stored in enterprise reporting as its own record; a given patient may have multiple records (identified by line number) that reflect multiple lines of history."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "DX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the diagnosis record associated with the medical history contact. Note: This is NOT the ICD9 diagnosis code. It is an internal identifier that is typically not visible to a user."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "A unique serial number for this encounter. This number is unique across all patients and encounters in the system."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "MEDICAL_HX",
+            "target": "PAT_ENC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "MEDICAL_HX",
+            "target": "SOCIAL_HX",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "MEDICAL_HX": [
+    {
+      "LINE": 1,
+      "DX_ID": 260690,
+      "PAT_ENC_CSN_ID": 958134730,
+      "$meta": {
+        "type": "MEDICAL_HX"
+      }
+    },
+    {
+      "LINE": 1,
+      "DX_ID": 260690,
+      "PAT_ENC_CSN_ID": 991221485,
+      "$meta": {
+        "type": "MEDICAL_HX"
+      }
+    },
+    {
+      "LINE": 1,
+      "DX_ID": 260690,
+      "PAT_ENC_CSN_ID": 1028739468,
+      "$meta": {
+        "type": "MEDICAL_HX"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1048 @@
+{
+  "name": "HSP_ACCOUNT",
+  "description": "This table contains hospital account information from the Hospital Account (HAR) and Claim (CLM) master files. It will exclude professional billing hospital accounts created by visit filing order in non-single billing office service areas.",
+  "primaryKey": [
+    {
+      "columnName": "HSP_ACCOUNT_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the hospital account."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "HSP_ACCOUNT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the patient associated with the hospital account."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ACCT_CLASS_HA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The hospital account's account class."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ACCT_FIN_CLASS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The hospital account's financial class.",
+      "entries": [
+        "Commercial",
+        "Medicare",
+        "Medicaid",
+        "Self-Pay",
+        "Worker's Comp",
+        "Tricare",
+        "Champva",
+        "Group Health Plan",
+        "FECA Black Lung",
+        "Blue Shield",
+        "Medigap",
+        "Other",
+        "DK Regional",
+        "Client",
+        "Received Self-Pay",
+        "Sent to Consolidated Self-Pay Service Area"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ACCT_SLFPYST_HA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The hospital account's self-pay status.",
+      "entries": [
+        "Full Self-Pay Due",
+        "Review",
+        "Payment Plan",
+        "Pre-collection",
+        "Bad Debt",
+        "Prorated"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ACCT_BILLSTS_HA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the status of the hospital account. If this is a professional billing default hospital account, this column always returns 4 (Billed).",
+      "entries": [
+        "Open",
+        "Discharged/Not Billed",
+        "Billed",
+        "Zero Balance",
+        "Bad Debt",
+        "Voided",
+        "Closed",
+        "Archived",
+        "Combined"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ACCT_ZERO_BAL_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column stores the date the hospital account went to a zero balance. This may be empty for older accounts, as Zero Balance Date (I HAR 244) had not always been available."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ADM_DATE_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "This column stores the admission date and time associated with the hospital account. The admission date and time (I HAR 400/405) are first pulled from the coding information on the hospital account. If this data is not stored on the hospital account yet, then this will pull the data from the primary patient encounter for the hospital account. Depending on a hospital billing system definition setting, this will pull either the admission date and time (I EPT 18850/18851) or the arrival date and time (I EPT 10820/10815). If the arrival date and time is not available than the admission date and time will be used."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ADM_DEPARMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The department of the account's admission event."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ADM_LOC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The location of the account's admission event."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "ADM_PRIORITY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The admission priority stored in the hospital account."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ADM_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the admitting provider stored on the hospital account."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "ATTENDING_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the attending provider stored on the hospital account. See column PROV_ID in table HSP_ATND_PROV if coding has not been performed on this hospital account. Alternatively, see V_ARHB_HSP_ACCOUNT_ADDL_INFO for the calculated value for this column based on both hospital account and encounter data. This view should be used to maintain backwards compatibility with reports created before upgrading to the Summer 2009 release."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "AUTOPSY_DONE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Denotes whether an autopsy was performed.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "BAD_DEBT_AGENCY_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the collection agency that was selected when the hospital account was sent to bad debt, sent to external agency A/R, outsourced, or pre-collected. This is cleared when the account returns from bad debt, returns from external agency A/R, or is no longer outsourced."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "BAD_DEBT_AGENCY_ID_COLL_AGENCY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the collection agency."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "BAD_DEBT_BUCKET_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the bad debt bucket that was created when the hospital account was sent to bad debt."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "CODE_BLUE_YNU",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Denotes whether the patient associated with the hospital account was code blue.",
+      "entries": [
+        "Yes",
+        "No",
+        "Unknown"
+      ]
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "COMBINE_ACCT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the target hospital account into which this hospital account was combined."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "COMBINE_DATE_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time that this hospital account was combined with another one."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "COMBINE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the user who combined this hospital account with another one."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "COMBINE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "COMPLETION_DT_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time when abstracting was completed for the hospital account."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "CVG_LIST_SELECT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Denotes whether coverages have been put on the hospital account.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "DISCH_DATE_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "This column stores the discharge date and time associated with the hospital account. The discharge date and time (I HAR 425/430) are first pulled from the coding information on the hospital account. If this data is not stored on the hospital account yet, then this will pull the discharge date and time (I EPT 18855/18856) that is stored on the primary patient encounter for the hospital account."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "DISCH_DEPT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the discharge department on the hospital account."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "DISCH_DESTIN_HA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the discharge destination stored in the hospital account. This item is copied from the patient's ADT event record."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "DISCH_LOC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The discharge location stored in the hospital account."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "DISCH_TO",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A discharge destination stored in the hospital account for coding and/or abstracting purposes. This is manually entered into the hospital account."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "DRG_EXPECTED_REIMB",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the diagnosis-related group (DRG)-based expected reimbursement amount stored in the hospital account."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "ER_ADMIT_DATE_TIME",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The emergency room admission date and time stored in the hospital account."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "ER_DSCHG_DATE_TIME",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The emergency room discharge date and time stored in the hospital account."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "ER_PAT_STS_HA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The emergency room patient status stored in the hospital account."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "EXPIRATION_UNIT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The expiration unit stored in the hospital account."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "FINAL_DRG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The final coded DRG stored in the hospital account."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "FINAL_DRG_ID_DRG_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the Diagnoses Related Group name."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "FRST_DMND_STMT_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date that the first demand statement was sent for the hospital account."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "FRST_STMT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date that the first statement (non-demand) was sent for the hospital account.  If you are sending informational or prorated statements this date will store the date the first informational, prorated, or full statement was sent."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "GUAR_ADDR_1",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The first line of the street address of the guarantor for the hospital account at time of discharge."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "GUAR_ADDR_2",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The second line of the street address of the guarantor for the hospital account at time of discharge."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "GUAR_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the guarantor for the hospital account at time of discharge."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "GUAR_WK_PHONE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The work phone number of the guarantor for the hospital account at time of discharge."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "GUAR_ZIP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ZIP Code of the guarantor for the hospital account at time of discharge."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "IS_CALLED_911_YNU",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Denotes whether 911 was called."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "IS_INSTI_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Denotes whether the hospital account is designated as an institutional account. A hospital account is considered institutional if its guarantor is of a type designated as institutional in the system definition profile."
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "LAST_DMND_STMT_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The last date that a demand statement was sent for the hospital account."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "LAST_INTRM_BILL_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The last date that interim billing was performed for the hospital account."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "MEANS_OF_ARRV_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient's means of arrival stored in the hospital account."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "NUM_OF_DET_BILLS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of detail bills that have been sent for the hospital account."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "NUM_OF_DMND_STMTS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of demand statements that have been sent for the hospital account."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "NUM_OF_STMTS_SENT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of statements (non-demand) that have been sent for the hospital account."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "PAT_CITY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The city portion of the address of the patient for the hospital account at time of discharge."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "PAT_DOB",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of birth of the patient for the hospital account at time of discharge."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "PAT_HOME_PHONE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The home phone number of the patient for the hospital account at time of discharge."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "PAT_SSN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The social security number of the patient for the hospital account at time of discharge."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "PAT_WRK_PHN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The work phone number of the patient for the hospital account at time of discharge."
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "PAT_ZIP",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ZIP Code of the patient for the hospital account at time of discharge."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "POLICE_INVOLVD_YNU",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Denotes whether the police were involved in the circumstances of the patient's hospital stay."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "POST_ADM_EXP_HA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Denotes whether the patient expired after admission."
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "POST_OP_EXP_HA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Denotes whether the patient expired after an operation."
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "PREBILL_BUCKET_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the hospital account's prebilled bucket."
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "PRIM_SVC_HA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The primary service stored in the hospital account for the patient's hospital stay."
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "PSYCH_CASE_YNU",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Denotes whether the patient is classified as a psychiatric case."
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "REHAB_INDICATOR",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Denotes whether the patient was undergoing rehab."
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "SCNDRY_SVC_HA_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The secondary service stored in the hospital account for the patient's hospital stay."
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "SELF_PAY_BUCKET_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the hospital account's self-pay bucket."
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "SERV_AREA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the service area stored on the hospital account."
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "TOT_ADJ",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total of all adjustments on the hospital account."
+    },
+    {
+      "ordinalPosition": 69,
+      "name": "TOT_CHGS",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The total of all charges on the hospital account."
+    },
+    {
+      "ordinalPosition": 70,
+      "name": "TRANSFER_FROM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Denotes where the patient was transferred from."
+    },
+    {
+      "ordinalPosition": 71,
+      "name": "TREATMENT_AUTH_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Note: This column will be deprecated in a future release. Please start referring to the column HSP_ACCT_CLAIM_HAR.AUTHORIZATION_NUM in your reports. Authorization Number: Used on claims for identifying patient referrals and affected reimbursements. Refer to CLAIM_INFO2 table if not set on the hospital account."
+    },
+    {
+      "ordinalPosition": 72,
+      "name": "UB92_COINS_DAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of coinsurance days that were listed on a UB92 claim for the hospital account. This is a user-entered value that overrides the value calculated by the system. Refer to AP_CLAIM table if not set on the hospital account."
+    },
+    {
+      "ordinalPosition": 73,
+      "name": "UB92_COVERED_DAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of covered days that were listed on a UB92 claim for the hospital account. This is a user-entered value that overrides the value calculated by the system. Refer to AP_CLAIM table if not set on the hospital account."
+    },
+    {
+      "ordinalPosition": 74,
+      "name": "UB92_LIFETIME_DAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of lifetime reserve days that were listed on a UB92 claim for the hospital account. Refer to AP_CLAIM table if not set on the hospital account."
+    },
+    {
+      "ordinalPosition": 75,
+      "name": "UB92_NONCOVRD_DAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of noncovered days that were listed on a UB92 claim for the hospital account. This is a user-entered value that overrides the value calculated by the system. Refer to AP_CLAIM table if not set on the hospital account."
+    },
+    {
+      "ordinalPosition": 76,
+      "name": "UB92_TOB_OVERRIDE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Note: This column will be deprecated in a future release. Please start referring to the column HSP_ACCT_CLAIM_HAR.UB92_TOB_OVERRIDE in your reports. Type of Bill (TOB) override: TOB is a numeric code printed on claims that provide encounter information to a payer. Values entered here will override system settings that normally determine the Type of Bill. Refer to CLAIM_INFO2 table if not set on the hospital account."
+    },
+    {
+      "ordinalPosition": 77,
+      "name": "UNDISTRB_BUCKET_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for a hospital account's undistributed bucket."
+    },
+    {
+      "ordinalPosition": 78,
+      "name": "PATIENT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient status (discharge disposition) category ID for the hospital account."
+    },
+    {
+      "ordinalPosition": 79,
+      "name": "ADMISSION_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The point of origin category ID (admission source) for the hospital account."
+    },
+    {
+      "ordinalPosition": 80,
+      "name": "ADMISSION_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The admission type category ID for the hospital account."
+    },
+    {
+      "ordinalPosition": 81,
+      "name": "PRIMARY_PAYOR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the primary payer associated with the hospital account."
+    },
+    {
+      "ordinalPosition": 82,
+      "name": "PRIMARY_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the primary benefit plan associated with the hospital account."
+    },
+    {
+      "ordinalPosition": 83,
+      "name": "NUM_OF_CHARGES",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The total number of charge transactions posted to the hospital account. This number may include inactive charges, such as reversals and reversed charges."
+    },
+    {
+      "ordinalPosition": 84,
+      "name": "SIGN_ON_FILE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID indicating whether a hospital account signature is on file. This is an abstracting item.",
+      "entries": [
+        "Yes",
+        "No",
+        "Appropriate Release of Information on File",
+        "Informed Consent to Release Information",
+        "Provider has Limited Ability to Release Data",
+        "On file at Payor or Plan Sponsor"
+      ]
+    },
+    {
+      "ordinalPosition": 85,
+      "name": "SIGN_ON_FILE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the signature on file was entered for the hospital account. This is an abstracting item."
+    },
+    {
+      "ordinalPosition": 86,
+      "name": "PRIM_CONTACT_OVRD",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The value for the primary contact override associated with the hospital account."
+    },
+    {
+      "ordinalPosition": 87,
+      "name": "CODING_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The coding status category ID for the hospital account.",
+      "entries": [
+        "Not Started",
+        "In Progress",
+        "Waiting",
+        "Completed",
+        "Ready To Start",
+        "On Hold"
+      ]
+    },
+    {
+      "ordinalPosition": 88,
+      "name": "CODING_STS_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the user when the coding status for the hospital account last changed."
+    },
+    {
+      "ordinalPosition": 89,
+      "name": "CODING_STS_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 90,
+      "name": "CODING_DATETIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time that the coding status for the hospital account was last changed."
+    },
+    {
+      "ordinalPosition": 91,
+      "name": "ABSTRACT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the user who last changed the abstracting status of the hospital account."
+    },
+    {
+      "ordinalPosition": 92,
+      "name": "ABSTRACT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 93,
+      "name": "OLD_RECUR_PRNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the parent recurring account before combine."
+    },
+    {
+      "ordinalPosition": 94,
+      "name": "CASE_MIX_GRP_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The case-mix group code associated with the hospital account."
+    },
+    {
+      "ordinalPosition": 95,
+      "name": "LAST_CMG_CODE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The CMG code from the last CPT merge."
+    },
+    {
+      "ordinalPosition": 96,
+      "name": "LAST_INT_CVG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the last interim coverage associated with the hospital account."
+    },
+    {
+      "ordinalPosition": 97,
+      "name": "BIRTH_WEIGHT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The birth weight of the newborn associated with the hospital account. This is an abstracting item."
+    },
+    {
+      "ordinalPosition": 98,
+      "name": "GESTATIONAL_AGE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "On the mother's hospital account, the gestational age of the baby. This is an abstracting item."
+    },
+    {
+      "ordinalPosition": 99,
+      "name": "DISCHARGE_WEIGHT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The discharge weight of the newborn associated with the hospital account. This is an abstracting item."
+    },
+    {
+      "ordinalPosition": 100,
+      "name": "ORGAN_DONOR_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the patient associated with hospital account is an organ donor. This is an abstracting item."
+    },
+    {
+      "ordinalPosition": 101,
+      "name": "PREMATURE_BABY_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the baby associated with the hospital account is premature. This is an abstracting item."
+    },
+    {
+      "ordinalPosition": 102,
+      "name": "CODER_INITIALS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The initials of the user to last change the coding status on the hospital account."
+    },
+    {
+      "ordinalPosition": 103,
+      "name": "ADMIT_CATEGORY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the admission category ID for this hospital account. See column ADMIT_CATEGORY_C in table PAT_ENC_HSP if coding has not been performed on this hospital account. Alternatively, see V_ARHB_HSP_ACCOUNT_ADDL_INFO for the calculated value for this column based on both hospital account and encounter data. This view should be used to maintain backwards compatibility with reports created before upgrading to the Summer 2009 release."
+    },
+    {
+      "ordinalPosition": 104,
+      "name": "FIRST_BILLED_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column stores the date when the account moved to the billed state for the first time."
+    },
+    {
+      "ordinalPosition": 105,
+      "name": "LAST_CODING_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of the last coding status change for the hospital account. This is an abstracting item."
+    },
+    {
+      "ordinalPosition": 106,
+      "name": "EXP_TOTAL_CHG_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The expected total charge amount for the hospital account."
+    },
+    {
+      "ordinalPosition": 107,
+      "name": "EXP_TOTAL_CHG_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The expected total charge user comment for the hospital account."
+    },
+    {
+      "ordinalPosition": 108,
+      "name": "EXP_PAT_LIAB_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The expected patient liability user comment for the hospital account."
+    },
+    {
+      "ordinalPosition": 109,
+      "name": "BILL_DRG_IDTYPE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the billing DRG code set on the hospital account."
+    },
+    {
+      "ordinalPosition": 110,
+      "name": "BILL_DRG_IDTYPE_ID_ID_TYPE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the ID Type."
+    },
+    {
+      "ordinalPosition": 111,
+      "name": "BILL_DRG_MDC_VAL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Major Diagnostic Category value for the billing DRG on the hospital account."
+    },
+    {
+      "ordinalPosition": 112,
+      "name": "BILL_DRG_WEIGHT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The weight for the billing DRG on the hospital account."
+    },
+    {
+      "ordinalPosition": 113,
+      "name": "BILL_DRG_PS_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The severity of illness (SOI) category ID associated with the billing DRG on the hospital account.",
+      "entries": [
+        "Refinement not possible",
+        "Minor",
+        "Moderate",
+        "Major",
+        "Extreme",
+        "Principal Dx Used for SOI/ROM Calc",
+        "Excluded",
+        "Duplicate Diagnosis",
+        "Excluded Complication of Care"
+      ]
+    },
+    {
+      "ordinalPosition": 114,
+      "name": "BILL_DRG_ROM_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The risk of mortality category ID associated with the billing DRG on the hospital account."
+    },
+    {
+      "ordinalPosition": 115,
+      "name": "BILL_DRG_SHORT_LOS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The short length of stay for the billing DRG on the hospital account."
+    },
+    {
+      "ordinalPosition": 116,
+      "name": "BILL_DRG_LONG_LOS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The long length of stay for the billing DRG on the hospital account."
+    },
+    {
+      "ordinalPosition": 117,
+      "name": "BILL_DRG_AMLOS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The arithmetic mean length of stay for the billing DRG on the hospital account."
+    },
+    {
+      "ordinalPosition": 118,
+      "name": "BILL_DRG_GMLOS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The geometric mean length of stay for the billing DRG on the hospital account."
+    },
+    {
+      "ordinalPosition": 119,
+      "name": "BASE_INV_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The base invoice number for this row."
+    },
+    {
+      "ordinalPosition": 120,
+      "name": "INV_NUM_SEQ_CTR",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The invoice number sequence counter for the hospital account."
+    },
+    {
+      "ordinalPosition": 121,
+      "name": "RESEARCH_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the research study or client record."
+    },
+    {
+      "ordinalPosition": 122,
+      "name": "SPECIALTY_SVC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The specialty service category ID associated with the hospital account. This is an abstracting item."
+    },
+    {
+      "ordinalPosition": 123,
+      "name": "XFER_TO_NURSE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value of the transfer to nursing home item for the hospital account. This is an abstracting item."
+    },
+    {
+      "ordinalPosition": 124,
+      "name": "XFER_TO_ACUTE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value of the transfer to acute care facility item for the hospital account. This is an abstracting item."
+    },
+    {
+      "ordinalPosition": 125,
+      "name": "DEATH_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of death category ID for the hospital account. This is an abstracting item."
+    },
+    {
+      "ordinalPosition": 126,
+      "name": "APGAR_1_MIN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The Apgar score at one minute for the newborn associated with the hospital account. This is an abstracting item."
+    },
+    {
+      "ordinalPosition": 127,
+      "name": "APGAR_5_MIN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The Apgar score at five minutes for the newborn associated with the hospital account. This is an abstracting item."
+    },
+    {
+      "ordinalPosition": 128,
+      "name": "GRAVIDA",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The total number of pregnancies the patient on the hospital account has had, regardless of whether they were carried to term. This is an abstracting item."
+    },
+    {
+      "ordinalPosition": 129,
+      "name": "PARA",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of pregnancies that the patient on the hospital account has carried until the point where the fetus is viable. This is an abstracting item."
+    },
+    {
+      "ordinalPosition": 130,
+      "name": "BIRTH_CERT_SENT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether a birth certificate has been sent for this account. A null value for this column indicates that a birth certificate has not been sent. This is an abstracting item."
+    },
+    {
+      "ordinalPosition": 131,
+      "name": "FAILED_VBAC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether a vaginal birth after caesarian failed. This is an abstracting item."
+    },
+    {
+      "ordinalPosition": 132,
+      "name": "DELIVERY_DATE_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time of the delivery associated with the hospital account. This is an abstracting item."
+    },
+    {
+      "ordinalPosition": 133,
+      "name": "PRENATAL_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the prenatal physician. This is an abstracting item."
+    },
+    {
+      "ordinalPosition": 134,
+      "name": "DELIVER_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the delivering physician associated with the hospital account. This is an abstracting item."
+    },
+    {
+      "ordinalPosition": 135,
+      "name": "HOLD_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The coding hold status category ID for the hospital account. This is an abstracting item."
+    },
+    {
+      "ordinalPosition": 136,
+      "name": "GEST_AGE_BABY",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The gestational age of the baby associated with the hospital account. This is an abstracting item."
+    },
+    {
+      "ordinalPosition": 137,
+      "name": "ACCT_FOLLOWUP_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column stores the self-pay follow-up date associated with this hospital account."
+    }
+  ]
+}

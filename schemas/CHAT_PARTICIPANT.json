@@ -1,0 +1,174 @@
+{
+  "name": "CHAT_PARTICIPANT",
+  "description": "Table containing Secure Chat conversation participants.",
+  "primaryKey": [
+    {
+      "columnName": "CONVERSATION_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CONVERSATION_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the secure chat conversation record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user ID of a user participating in the conversation."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "USER_MYPT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient access account ID of a patient or proxy in the conversation."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "USER_ACTIVE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This indicates if the participant is considered active in the conversation or not",
+      "entries": [
+        "Active",
+        "Inactive"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "LST_READ_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The time the participant last read a message in the conversation. The time is used to generate read receipts whenever a user opens up the conversation."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "UPDATE_INSTANT_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This indicates the time of the last update that the user would be concerned with."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "LST_READ_MSG_LN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the message last read by the participant."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "LST_READ_MSG_DAT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The DAT of the message last read by the participant."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "READ_ALL_MSG_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Flag needed to index conversations with new messages.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ADDED_FROM_GROUP_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Item used to determine whether or not a user was included in the conversation part of a group instead of being added normally.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "UNREAD_MESSAGE_CNT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of unread messages in the conversation for this user. Used to cache unread message counts."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "LAST_IMPORTANT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item stores the last unread important message instant; when a message with a higher than normal priority is sent we set this to the time that the message was sent."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "USER_PRIORITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the priority of the message to display for the user in the Secure Chat conversation list.",
+      "entries": [
+        "Unspecified",
+        "Normal",
+        "Important",
+        "Urgent"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "LST_REACTION_LN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Line (of TLK 3500 superitem) of last reaction a user has received for one of their messages."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "LST_REACT_CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "DAT of last reaction a user has received for one of their messages."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "LST_REACTION_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Instant of last reaction a user has received for one of their messages."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "LATEST_REACTION_SEEN_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Instant of latest reaction (by anyone to any message) seen by user"
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "SHOW_IN_UNREAD_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether this conversation should count towards the user in this row of superitem 2000's unread counts."
+    }
+  ]
+}

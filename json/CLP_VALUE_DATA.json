@@ -1,0 +1,74 @@
+{
+  "$meta": {
+    "schemas": {
+      "CLP_VALUE_DATA": {
+        "name": "CLP_VALUE_DATA",
+        "description": "This table extracts the value codes and value amounts printed on institutional claims.",
+        "primaryKey": [
+          {
+            "columnName": "CLAIM_PRINT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "CLAIM_PRINT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID of the claim print record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The Line Count"
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "VALUE_CODE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores Value Code to print on institutional claims"
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "VALUE_AMT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Value Remark to print on institutional claims"
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "CLP_VALUE_DATA",
+            "target": "HSP_CLAIM_DETAIL1",
+            "joinKeys": [
+              {
+                "source": "CLAIM_PRINT_ID",
+                "target": "CLAIM_PRINT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "CLP_VALUE_DATA": [
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "LINE": 1,
+      "VALUE_CODE_C_NAME": "Occupational Therapy Visits",
+      "VALUE_AMT": "2",
+      "$meta": {
+        "type": "CLP_VALUE_DATA"
+      }
+    }
+  ]
+}

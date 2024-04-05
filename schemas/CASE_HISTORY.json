@@ -1,0 +1,99 @@
+{
+  "name": "CASE_HISTORY",
+  "description": "The CASE_HISTORY table contains the case history information associated with each case record stored in the CASE_MGMT table. It contains details of all changes that have ever been made to the case record. It stores such information as the action performed, the time and date the action was performed, and the user that performed the action.",
+  "primaryKey": [
+    {
+      "columnName": "CASE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CASE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The internal ID of the case record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the case history. For example, if the case has two history events, the first will have a line value of 1, while the second will have a line value of 2."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ACTION_DATETIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time associated with the case history action entry."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number of the action associated with this history entry.",
+      "entries": [
+        "Create Case",
+        "Open Case",
+        "Re-Open Case",
+        "Close Case",
+        "Create Contact",
+        "Review",
+        "Case Name Changed",
+        "Priority Changed",
+        "Link Referral",
+        "Unlink Referral",
+        "Link Claim",
+        "Unlink Claim",
+        "Link Charge",
+        "Unlink Charge",
+        "Change Bed Days Start Date",
+        "Change Bed Days End Date",
+        "Change Estimated Bed Days",
+        "Change Override Bed Days",
+        "Change Converted Bed Days",
+        "Change Bed Days Day Type",
+        "Delete Bed Days Row",
+        "Create Event",
+        "Edit Event",
+        "Link Episode",
+        "Unlink Episode"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PREV_VALUE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The \"Note or Previous Value\" information from the case history action."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ACTION_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The internal ID of the user who performed the action associated with this line of the change history."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ACTION_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "HISTORY_REV_DUE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Tracks the current review due date."
+    }
+  ]
+}

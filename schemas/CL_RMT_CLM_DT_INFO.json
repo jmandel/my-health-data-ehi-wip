@@ -1,0 +1,50 @@
+{
+  "name": "CL_RMT_CLM_DT_INFO",
+  "description": "Contains claim level date information from the electronic remittance payment. This information is sent in the DTM segment in Loop 2100 of an ANSI 835 Health Care Claim Payment/Advice file. This segment is used to send specific dates associated with the claim being paid. This information is stored in the remittance image record.",
+  "primaryKey": [
+    {
+      "columnName": "IMAGE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "IMAGE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the ID for the remittance image record with related claim date information."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CLAIM_DATE_QUAL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The date qualifier code for the claim date information. This is a standard code that indicates what the date represents.",
+      "entries": [
+        "Expiration",
+        "Received",
+        "Claim statement period start",
+        "Claim statement period end"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CLAIM_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Claim related date sent in the remittance file. The specific meaning of this date is indicated by the associated date qualifier code."
+    }
+  ]
+}

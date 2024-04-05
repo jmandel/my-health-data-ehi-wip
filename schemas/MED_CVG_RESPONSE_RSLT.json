@@ -1,0 +1,148 @@
+{
+  "name": "MED_CVG_RESPONSE_RSLT",
+  "description": "This table holds information about medication coverage responses.",
+  "primaryKey": [
+    {
+      "columnName": "MED_ESTIMATE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "MED_ESTIMATE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the medication estimate record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_SERIAL_NUM",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The contact serial number (CSN) of the contact."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CONTACT_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Stores contact number."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "RESP_RESULT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Category value indicating the coverage response result.",
+      "entries": [
+        "Processed",
+        "Not Processed",
+        "Processed, Alternatives Available",
+        "Pharmacy ID Missing/Invalid",
+        "PBM Member ID Missing/Invalid",
+        "System Error",
+        "Unmatched Quantity Unit",
+        "Drug Not Found",
+        "Discontinued NDC",
+        "Patient Not Found",
+        "Missing/Invalid Date of Birth",
+        "Missing/Invalid Quantity",
+        "Missing/Invalid Gender Code",
+        "Missing/Invalid Prescriber ID",
+        "Patient Not Covered",
+        "Missing/Invalid Days Supply",
+        "Validation Error"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "INSTANT_OF_ENTRY_DTTM",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "Stores the instant of entry when a record is edited."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "TRIG_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Holds the instant when the interface message was triggered."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "RESP_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Holds the instant an interface response was received."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the category value indicating the interface message status.",
+      "entries": [
+        "Message Sent",
+        "Response Filed",
+        "Error Occurred",
+        "Query Triggered"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "RESP_MSG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the message ID of the response interface message."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "RESP_EXACT_MATCH_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item records if the payer sent back coverage information that exactly matched the order details that were sent in the Real-Time Prescription Benefit request.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "ORIG_MED_PA_REQ_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds a category value indicating if prior authorization is required for the medication that was originally ordered. It is calculated when data a response is filed based on data stored in the LME 300 group.",
+      "entries": [
+        "Yes",
+        "No",
+        "Unknown"
+      ]
+    }
+  ]
+}

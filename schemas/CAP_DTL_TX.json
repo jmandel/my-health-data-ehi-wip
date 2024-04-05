@@ -1,0 +1,193 @@
+{
+  "name": "CAP_DTL_TX",
+  "description": "The CAP_DTL_TX table contains capitation detailed transactions associated with received capitation files.",
+  "primaryKey": [
+    {
+      "columnName": "TRANSACTION_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TRANSACTION_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the detail transaction record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "AR_TX_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of transaction. This indicates if the transaction is a charge, a payment, or an adjustment.",
+      "entries": [
+        "Charge",
+        "Payment",
+        "Debit Adjustment",
+        "Credit Adjustment"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "AR_TX_CODE_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The code associated with a transaction. The code is used as a more discrete category for the transaction. For example, an adjustment transaction may use a different code to differentiate between a write-off adjustment and a balance transfer adjustment."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "AR_TX_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The dollar amount for a transaction."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "AR_TX_CAP_CNTRCT_ACCT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The account that this transaction is posting to."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "AR_TX_COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The coverage that this transaction applies to."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "AR_TX_EFF_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The effective date that this transaction applies to."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "AR_MEMBER_PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The member that this transaction applies to. This applies only to per-member accounts."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "AR_SUBSCRIBER_PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The subscriber that this transaction applies to."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "AR_TX_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The current status for a transaction.",
+      "entries": [
+        "New",
+        "Waiting to file",
+        "Filing",
+        "In Review",
+        "Filed",
+        "Voided"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "AR_TX_FILED_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date that a transaction has filed to the system."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "AR_TX_REVERSAL_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The transaction ID that is being reversed by a given transaction."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "AR_TX_CORRECTED_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The transaction ID that is being corrected by a given transaction."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "CAP_TX_SUBTYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the subtype of the capitation transaction. Used to distinguish between different types of capitation payments made to a single account in the same month.",
+      "entries": [
+        "Part A",
+        "Part B",
+        "Part D"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "CAP_TX_ADJ_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the adjustment reason code for the capitation transaction.",
+      "entries": [
+        "Prospective Payment Components",
+        "Notification of Death of Beneficiary",
+        "Retroactive Enrollment",
+        "Retroactive Disenrollment",
+        "Correction to Enrollment Date",
+        "Correction to Disenrollment Date",
+        "Correction to Part A Entitlement",
+        "Retroactive Hospice Status",
+        "Retroactive ESRD",
+        "Retroactive Institutional Status",
+        "Retroactive Medicaid Status",
+        "Retroactive Change to State County Code",
+        "Date of Death Correction",
+        "Date of Birth Correction",
+        "Correction to Sex Code",
+        "For APPS use only",
+        "Part C Rate Change",
+        "Correction to Part B Entitlement",
+        "Retroactive Working Aged Status",
+        "Retroactive NHC Status",
+        "Disenrolled Due to Prior ESRD",
+        "Demo Factor Adjustment",
+        "Part C Risk Adjustment Factor Change/Recon",
+        "Mid-year Part C Risk Adjustment Factor Change",
+        "Retroactive Change to Congestive Heart Failure (CHF) Payment",
+        "Retroactive Change to BIPA Part B Premium Reduction Amount",
+        "Retroactive Change to Hospice Rate",
+        "Retroactive Change to Basic Part D Premium",
+        "Retroactive Change to Part D Low Income Status",
+        "Retroactive Change to Estimated Cost-Sharing Amount",
+        "Retroactive Change to Estimated Reinsurance Amount",
+        "Retroactive Change to Basic Part C Premium",
+        "Retroactive Change to Rebate Amount",
+        "Part D Rate Change",
+        "Part D Risk Adjustment Factor Change",
+        "Part C Segment ID Changes",
+        "Part D Risk Adjustment Factor (ongoing)",
+        "Retroactive MSP Status",
+        "Retroactive correction of previously failed Payment (affects Part C and D)",
+        "Disenroll for Failure to Pay Part D IRMAA Premium - Reported for Pt C and Pt D",
+        "Correction of Part D Eligibility - Reported for Pt D",
+        "Payment adjustment due to Beneficiary Merge",
+        "Part C Payment Adjustments created as a result of the RAS overpayment file processing",
+        "Part D Payment Adjustments created as a result of the RAS overpayment file processing",
+        "Confirmed Incarceration - Reported for Pt C and Pt D",
+        "Not Lawfully Present",
+        "System of Record History Alignment",
+        "Special Payment Adjustment Due to Cleanup"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "CAP_TX_PMT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Stores the date of the captiation payment"
+    }
+  ]
+}

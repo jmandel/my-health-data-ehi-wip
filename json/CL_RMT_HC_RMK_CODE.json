@@ -1,0 +1,96 @@
+{
+  "$meta": {
+    "schemas": {
+      "CL_RMT_HC_RMK_CODE": {
+        "name": "CL_RMT_HC_RMK_CODE",
+        "description": "Contains health care remark code information from the service line level of an electronic remittance file. This information is sent in the LQ segment of an ANSI 835 Health Care Claim Payment/Advice file. This information is stored in the remittance image record.",
+        "primaryKey": [
+          {
+            "columnName": "IMAGE_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "IMAGE_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "ID for the remittance image record containing the health care remark code information."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "LQ_SERVICE_LINE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The service line associated with the health care remark code."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "CODE_LST_QUAL_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The code list qualifier code. This is a standard code which indicates which code set the remark code belongs to.",
+            "entries": [
+              "Claim payment remark codes",
+              "National council for prescription drug programs reject/payment codes"
+            ]
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "INDUSTRY_CODE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The specific health care remark code."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "CL_RMT_HC_RMK_CODE",
+            "target": "CL_REMIT",
+            "joinKeys": [
+              {
+                "source": "IMAGE_ID",
+                "target": "IMAGE_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "CL_RMT_HC_RMK_CODE": [
+    {
+      "IMAGE_ID": "192950267",
+      "LINE": 1,
+      "LQ_SERVICE_LINE": "1",
+      "CODE_LST_QUAL_C_NAME": "Claim payment remark codes",
+      "INDUSTRY_CODE": "MA63",
+      "$meta": {
+        "type": "CL_RMT_HC_RMK_CODE"
+      }
+    },
+    {
+      "IMAGE_ID": "195454936",
+      "LINE": 1,
+      "LQ_SERVICE_LINE": "1",
+      "CODE_LST_QUAL_C_NAME": "Claim payment remark codes",
+      "INDUSTRY_CODE": "MA63",
+      "$meta": {
+        "type": "CL_RMT_HC_RMK_CODE"
+      }
+    }
+  ]
+}

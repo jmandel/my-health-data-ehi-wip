@@ -1,0 +1,93 @@
+{
+  "$meta": {
+    "schemas": {
+      "EPISODE_OT": {
+        "name": "EPISODE_OT",
+        "description": "The EPISODE_OT table contains overtime information on the episodes recorded in clinical system for your patients.",
+        "primaryKey": [
+          {
+            "columnName": "SUMMARY_BLOCK_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "CONTACT_DATE_REAL",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "SUMMARY_BLOCK_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier of the episode record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "CONTACT_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "CONTACT_SERIAL_NUM",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique contact serial number (CSN) of the contact.  This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "CONTACT_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The number for this contact."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "EPISODE_OT",
+            "target": "EPISODE",
+            "joinKeys": [
+              {
+                "source": "SUMMARY_BLOCK_ID",
+                "target": "EPISODE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "EPISODE_OT",
+            "target": "CARE_PATH",
+            "joinKeys": [
+              {
+                "source": "SUMMARY_BLOCK_ID",
+                "target": "SUMMARY_BLOCK_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "EPISODE_OT": [
+    {
+      "SUMMARY_BLOCK_ID": 200498750,
+      "CONTACT_DATE_REAL": 66179,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "CONTACT_SERIAL_NUM": 200532020,
+      "CONTACT_NUM": "1",
+      "$meta": {
+        "type": "EPISODE_OT"
+      }
+    }
+  ]
+}

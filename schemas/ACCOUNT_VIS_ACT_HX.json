@@ -1,0 +1,102 @@
+{
+  "name": "ACCOUNT_VIS_ACT_HX",
+  "description": "The ACCOUNT_VIS_ACT_HX table contains information about visit-level actions performed on guarantor accounts. The LINE column gives the order in which the actions happened, so rows with a higher LINE happened after rows with a lower LINE. The VIS_ACT_NUM column gives the visit number on the account.",
+  "primaryKey": [
+    {
+      "columnName": "ACCT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ACCT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the guarantor record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VIS_ACT_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Visit number on the account."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "VIS_ACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the action happened."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "VIS_ACT_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID that represents an action taken on a visit.",
+      "entries": [
+        "Not Allowed Adjustment",
+        "Transfer to Self-Pay",
+        "Next Responsible Party",
+        "Resubmit Insurance",
+        "Write Off Self-Pay",
+        "Write Off Insurance",
+        "Transfer to Insurance",
+        "Gramm Rudman Adjustment",
+        "Denied",
+        "Turn Off Automatic Self-Pay Write-Off",
+        "Turn On Automatic Self-Pay Write-Off",
+        "Close Claim",
+        "Debit Adjustment",
+        "Research",
+        "Do Not Bill Insurance",
+        "Bill Insurance",
+        "Suspended NRP",
+        "Recalculate Discount",
+        "Service Level Authorization Edit",
+        "Post Dental Upgrade Adjustment",
+        "Create Shadow Charges"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "VIS_ACT_CVG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The visit coverage at the time the action happened."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "VIS_ACT_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Action amount; what this amount represents is determined by the specific action taken (see VIS_ACT_ACTION_C column). Some actions (e.g. Research) may not have an amount."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "VIS_ACT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the user record of the user who performed the action."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "VIS_ACT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    }
+  ]
+}

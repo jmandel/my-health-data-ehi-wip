@@ -1,0 +1,212 @@
+{
+  "name": "PB_ACCT_TX",
+  "description": "The PB_ACCT_TX table contains the transactions associated with premium billing accounts.",
+  "primaryKey": [
+    {
+      "columnName": "PB_ACT_TX_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PB_ACT_TX_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the premium billing account transaction."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PB_ACT_TX_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Specifies the type of premium billing account transaction (i.e. premium billing, payment, ad hoc adjustment, balance forward, etc.)",
+      "entries": [
+        "Premium Billing",
+        "Payment",
+        "Ad Hoc Adjustment",
+        "Balance Forward",
+        "Overpost",
+        "Writeoff",
+        "Payment Reversal",
+        "Uncommitted Payment"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PB_ACT_TX_SENSE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the premium billing account transaction is a credit or charge.",
+      "entries": [
+        "Credit",
+        "Charge"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CYCLE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Cycle date for the premium billing account transaction."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PERIOD_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Indicates the time period for which the account transaction applies"
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "POST_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Indicates the date the transaction was posted."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PB_ACCT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the premium billing account associated with the transaction."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CANC_PB_ACT_TX_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column is populated if this transaction reverses another transaction. The unique ID listed is that of the transaction that was reversed."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "NOT_OUTSTND_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Specifies the date on which the premium billing account transaction is no longer outstanding."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "FIRST_AR_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Specifies the first date on which payment is received for the transaction."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PB_BAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Specifies the unique ID of the premium billing batch that generated the transaction."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ADJ_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Adjustment reason assigned to the account transaction."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "IDX_PB_ACCT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Selective account index for the account transaction."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "OUTSTND_PB_INVC_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of invoice on which the transaction is outstanding."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "CLOSE_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates the reason the transaction has been closed.",
+      "entries": [
+        "Paid In Full",
+        "Balance Forward"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "SINCE_PB_ACCT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the premium billing invoice."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PB_TXSET_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the transaction set."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "USEDIN_PB_TXSET_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the transaction set."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "PTMT_TOTAL",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Total payment amount for the transaction."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "ATTACH_PP_BAT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of payment posting batch to which the transaction is attached."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "CNCLD_PB_ACT_TX_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column is populated if the transaction was reversed. The unique ID listed is that of the transaction that included the reversal."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "AP_CHECK_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the AP check issued from this premium billing account based on this premium billing transaction."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "REV_PB_PMT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If this transaction is a payment reversal, then this field lists the unique ID of the premium billing payment being reversed."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "UPDATE_DATE",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The extract date and time of the record for this table."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "PMNT_REV_BY_PAX_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique reversed by payment ID for the transaction. This refers to the PB account transactions being reversed as original PB account transactions."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "BAL_FWD_MIRROR_PB_ACT_TX_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Keeps track of the link between the charge and credit premium billing amount by each storing the unique ID of the other amount."
+    }
+  ]
+}

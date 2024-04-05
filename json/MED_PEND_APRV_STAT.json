@@ -1,0 +1,96 @@
+{
+  "$meta": {
+    "schemas": {
+      "MED_PEND_APRV_STAT": {
+        "name": "MED_PEND_APRV_STAT",
+        "description": "Information on the approval status of medication orders pended in a telephone encounter.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ENC_CSN_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PAT_ENC_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "MED_PEND_APRV_FLG_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "A flag indicating the status of medications pended for approval in a telephone encounter.",
+            "entries": [
+              "Approved",
+              "Refused"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "MED_PEND_APRV_STAT",
+            "target": "PAT_ENC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "MED_PEND_APRV_STAT": [
+    {
+      "PAT_ENC_CSN_ID": 988126821,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66524,
+      "CONTACT_DATE": "2023-02-19 00:00:00",
+      "MED_PEND_APRV_FLG_C_NAME": "Approved",
+      "$meta": {
+        "type": "MED_PEND_APRV_STAT"
+      }
+    },
+    {
+      "PAT_ENC_CSN_ID": 1043034397,
+      "LINE": 1,
+      "PAT_ENC_DATE_REAL": 66830,
+      "CONTACT_DATE": "2023-12-22 00:00:00",
+      "MED_PEND_APRV_FLG_C_NAME": "Approved",
+      "$meta": {
+        "type": "MED_PEND_APRV_STAT"
+      }
+    }
+  ]
+}

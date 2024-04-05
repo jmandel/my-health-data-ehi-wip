@@ -1,0 +1,58 @@
+{
+  "name": "PAT_GUEST_PROXY",
+  "description": "Lists the guest proxies for a patient, and the relationship types of those guest proxies.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PROXY_MYPT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The MyChart account ID (WPR) of the delegate who has guest proxy access to this patient."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PROXY_REL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Lists the relationship type of this proxy relationship"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PROXY_UPG_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Lists the current status of the guest proxy's upgrade request",
+      "entries": [
+        "Upgrade Tickler Sent",
+        "Upgrade Requested",
+        "Upgrade Declined",
+        "Upgraded"
+      ]
+    }
+  ]
+}

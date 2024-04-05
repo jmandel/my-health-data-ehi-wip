@@ -1,0 +1,170 @@
+{
+  "$meta": {
+    "schemas": {
+      "HSP_ACCT_CL_AG_HIS": {
+        "name": "HSP_ACCT_CL_AG_HIS",
+        "description": "This table contains collection agency history information from the Hospital Accounts Receivable (HAR) master file.",
+        "primaryKey": [
+          {
+            "columnName": "HSP_ACCOUNT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "HSP_ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the hospital account with associated collection agency information."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number in the results of a query. Each collection agency history will have its own line number."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "AGNCY_HST_DT_OF_CH",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Date hospital account was either assigned to or withdrawn from the collection agency."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "AGNC_HST_CHG_TP_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Change in the collection agency status.  1-Assign to agency 2-Withdraw from agency",
+            "entries": [
+              "Assign",
+              "Withdraw"
+            ]
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "AGNCY_HST_AGNCY_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "ID of collection agency hospital account has been assigned to."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "AGNCY_HST_AGNCY_ID_COLL_AGENCY_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the collection agency."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "AGN_HST_COL_ACT_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the type of collection action done on the hospital account: 1-Send Letter, 2-Pre-Collect, 3-Bad Debt, 4-Return to Self-Pay, 5-Write Off, 6-Create Billing Note, 7-Change Notification Date, 8-Add to Queue, 10- Outsource Account, 11- Return from Outsource, 12-Change Agency, 13-Set Billing Indicator, or 14-Send SmartText Letter.",
+            "entries": [
+              "Send Letter",
+              "Pre-Collect",
+              "Send to Bad Debt",
+              "Return to Self-Pay",
+              "Write Off",
+              "Create Billing Note",
+              "Change Notification Date",
+              "Add to Queue",
+              "Account Note",
+              "Outsource Account",
+              "Return from Outsource Agency",
+              "Change Agency",
+              "Modify Billing Indicator",
+              "Send SmartText Letter",
+              "Change Self-Pay Follow-up Date",
+              "Send to External Agency A/R",
+              "Return from External Agency A/R",
+              "Set Tickler",
+              "Pre-Collect to Bad Debt",
+              "Outsource to Bad Debt",
+              "Outsource to External Agency A/R",
+              "External Agency A/R to Bad Debt",
+              "Bad Debt to External Agency A/R"
+            ]
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "AGNCY_HST_ACCT_BAL",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Account balance on the hospital account that was sent to collections."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ACCT_CL_AG_HIS",
+            "target": "HAR_ALL",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ACCT_CL_AG_HIS",
+            "target": "HSP_ACCT_CLAIM_HAR",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ACCT_CL_AG_HIS",
+            "target": "HSP_ACCOUNT",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HSP_ACCT_CL_AG_HIS": [
+    {
+      "HSP_ACCOUNT_ID": 376684810,
+      "LINE": 1,
+      "AGNCY_HST_DT_OF_CH": "2022-04-27 00:00:00",
+      "AGNC_HST_CHG_TP_C_NAME": "Assign",
+      "AGNCY_HST_AGNCY_ID": 32,
+      "AGNCY_HST_AGNCY_ID_COLL_AGENCY_NAME": "AVADYNE",
+      "AGN_HST_COL_ACT_C_NAME": "Outsource Account",
+      "AGNCY_HST_ACCT_BAL": 554.27,
+      "$meta": {
+        "type": "HSP_ACCT_CL_AG_HIS"
+      }
+    },
+    {
+      "HSP_ACCOUNT_ID": 376684810,
+      "LINE": 2,
+      "AGNCY_HST_DT_OF_CH": "2022-05-12 00:00:00",
+      "AGNC_HST_CHG_TP_C_NAME": "Withdraw",
+      "AGNCY_HST_AGNCY_ID": 32,
+      "AGNCY_HST_AGNCY_ID_COLL_AGENCY_NAME": "AVADYNE",
+      "AGN_HST_COL_ACT_C_NAME": "Return from Outsource Agency",
+      "AGNCY_HST_ACCT_BAL": 0,
+      "$meta": {
+        "type": "HSP_ACCT_CL_AG_HIS"
+      }
+    }
+  ]
+}

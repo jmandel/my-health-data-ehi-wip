@@ -1,0 +1,176 @@
+{
+  "$meta": {
+    "schemas": {
+      "ORDER_RPTD_SIG_TEXT": {
+        "name": "ORDER_RPTD_SIG_TEXT",
+        "description": "For each row in ORDER_RPTD_SIG_HX, this table contains the complete sig for the data represented by that row. Depending on whether your organization uses discrete sigs or not, this text may be generated from the various discrete fields or entered directly.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "GROUP_LINE",
+            "ordinalPosition": 2
+          },
+          {
+            "columnName": "VALUE_LINE",
+            "ordinalPosition": 3
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the order record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "GROUP_LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with the text of the sig of this medication."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "VALUE_LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number of one of the multiple values associated with a specific group of text of a sig within this record."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "SIG_TEXT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The text of the medication instructions for the order record."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RPTD_SIG_TEXT",
+            "target": "ORDER_DX_MED",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_MED_ID"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RPTD_SIG_TEXT",
+            "target": "ORDER_IMAGE_AVAIL_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RPTD_SIG_TEXT",
+            "target": "ORDER_RPTD_SIG_HX",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RPTD_SIG_TEXT",
+            "target": "ORDER_SUMMARY",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RPTD_SIG_TEXT",
+            "target": "ORDER_MED",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_MED_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RPTD_SIG_TEXT",
+            "target": "ORD_PRFLST_TRK",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ORDER_RPTD_SIG_TEXT": [
+    {
+      "ORDER_ID": 772179261,
+      "GROUP_LINE": 1,
+      "VALUE_LINE": 1,
+      "SIG_TEXT": "Take 1 (one) tablet by mouth daily.",
+      "$meta": {
+        "type": "ORDER_RPTD_SIG_TEXT"
+      }
+    },
+    {
+      "ORDER_ID": 772179269,
+      "GROUP_LINE": 1,
+      "VALUE_LINE": 1,
+      "SIG_TEXT": "TAKE 1 CAPSULE BY MOUTH EVERY NIGHT. START WITH 1 CAPSULE AT NIGHT; CAN. INCREASE TO 2 CAPSULES AFTER 1-2 WEEKS IF NO SIDE EFFECTS",
+      "$meta": {
+        "type": "ORDER_RPTD_SIG_TEXT"
+      }
+    },
+    {
+      "ORDER_ID": 772179266,
+      "GROUP_LINE": 1,
+      "VALUE_LINE": 1,
+      "SIG_TEXT": "Take 1 (one) capsule by mouth nightly. Start with 10 mg at night; can increase to 20 mg after 1-2 weeks if no side effects",
+      "$meta": {
+        "type": "ORDER_RPTD_SIG_TEXT"
+      }
+    },
+    {
+      "ORDER_ID": 945468373,
+      "GROUP_LINE": 1,
+      "VALUE_LINE": 1,
+      "SIG_TEXT": "Take 3 (three) capsules by mouth nightly.",
+      "$meta": {
+        "type": "ORDER_RPTD_SIG_TEXT"
+      }
+    }
+  ]
+}

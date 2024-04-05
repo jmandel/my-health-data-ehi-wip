@@ -1,0 +1,207 @@
+{
+  "name": "LNO_LAB_AUDIT_TRL",
+  "description": "This table contains information for the audit trail of Patient Summary Extract (LNO) records.",
+  "primaryKey": [
+    {
+      "columnName": "RECORD_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "RECORD_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the LNO record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PRINT_INSTANT",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "These are the instants that copies of the report were printed."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "DEVICE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "These are the devices used to print the report."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "DEVICE_ID_PRINT_DEVICE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The printer name."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "FREE_TEXT_FAX_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "These are the numbers of the fax machines the report was sent to."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "NUM_OF_COPIES",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "These are the number of copies of the report sent to each given destination."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "REQUESTING_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "These are the users who requested a copy of the report."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "REQUESTING_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "RCPNT_EMPLOYEE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "These are the employees who received a copy of the report."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "RCPNT_EMPLOYEE_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "RCPNT_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "These are the providers who received a copy of the report."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "RCPNT_FREE_TEXT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "These are the recipients of the report in freetext."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "RCPNT_SUBMITTER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "These are the submitters which received a copy of the report."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "RCPNT_SUBMITTER_ID_RECORD_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the submitter record."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "TYPE_OF_RECIP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "For each provider recipient of the report, this indicates if the provider is an authorizing provider, a PCP, or a CC recipient.",
+      "entries": [
+        "Authorizing Provider",
+        "Primary Care Physician",
+        "CC Provider",
+        "CC Employee",
+        "Free text CC",
+        "Submitter",
+        "Department",
+        "Patient",
+        "Patient/Source",
+        "CC Submitter",
+        "Ordering Provider"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "RCPNT_DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "These are the departments who received a copy of the report."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "RCPNT_PT_RQG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the patient who received a copy of the report. The patient database is RQG."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "ADDRESS_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The source which was used to select the destination address for the recipient report.",
+      "entries": [
+        "Unknown",
+        "User selected",
+        "Requisition authorizing provider",
+        "Lab additional recipient extension",
+        "Lab CC List",
+        "Provider encounter submitter",
+        "Submitter",
+        "Department lab fax",
+        "Provider lab fax",
+        "Routing provider address extension",
+        "Provider primary",
+        "Provider requisition submitter",
+        "Provider CC linked submitter",
+        "Care Team",
+        "Requisition ordering provider",
+        "Order authorizing provider",
+        "Order ordering provider",
+        "Order referring provider",
+        "Radiant CC List",
+        "Order referral",
+        "Encounter referral",
+        "Encounter admitting",
+        "Current admitting",
+        "Provider secondary"
+      ]
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "DEVICE_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The source which was used to select the printing/faxing device for the recipient report.",
+      "entries": [
+        "Unknown",
+        "User selected",
+        "Lab additional recipient extension",
+        "Provider lab printer",
+        "Submitter",
+        "Lab routing fax device",
+        "Resulting lab",
+        "Department external recipient printer",
+        "Department printer class mapping",
+        "Facility"
+      ]
+    }
+  ]
+}

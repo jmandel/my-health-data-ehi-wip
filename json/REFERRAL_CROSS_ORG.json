@@ -1,0 +1,115 @@
+{
+  "$meta": {
+    "schemas": {
+      "REFERRAL_CROSS_ORG": {
+        "name": "REFERRAL_CROSS_ORG",
+        "description": "This table contains cross-organization referral information.",
+        "primaryKey": [
+          {
+            "columnName": "REFERRAL_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "REFERRAL_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier (.1 item) for the referral record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "CROSS_ORG_RFL_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Track the status of a cross-organization referral.",
+            "entries": [
+              "Created",
+              "Accepted",
+              "Declined",
+              "Cancellation Requested",
+              "Specialist Visit Completed",
+              "Referral Completed",
+              "Canceled"
+            ]
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "CROSS_ORG_RFL_ORGANIZATION_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Store the organization for a cross-organization referral."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "CROSS_ORG_RFL_ORGANIZATION_ID_EXTERNAL_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Organization's external name used as the display name on forms and user interfaces."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "CROSS_ORG_RFL_UNIQUE_IDENT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Store the unique ID of a cross-organization referral."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "CROSS_ORG_RFL_ASGN_AUTH_OID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Store the assigning authority OID of a cross-organization referral."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "CROSS_ORG_RFL_INST_UPDATE_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "Instant the cross-organization status was last updated."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "REFERRAL_CROSS_ORG",
+            "target": "EPA_INFO",
+            "joinKeys": [
+              {
+                "source": "REFERRAL_ID",
+                "target": "REFERRAL_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "REFERRAL_CROSS_ORG": [
+    {
+      "REFERRAL_ID": 15963353,
+      "LINE": 1,
+      "CROSS_ORG_RFL_STATUS_C_NAME": "Created",
+      "CROSS_ORG_RFL_ORGANIZATION_ID": 3600,
+      "CROSS_ORG_RFL_ORGANIZATION_ID_EXTERNAL_NAME": "UW Health and Affiliates - Wisconsin and Illinois",
+      "CROSS_ORG_RFL_UNIQUE_IDENT": "15963353.1",
+      "CROSS_ORG_RFL_ASGN_AUTH_OID": "1.2.840.114350.1.13.283.2.7.2.827076",
+      "CROSS_ORG_RFL_INST_UPDATE_DTTM": "2022-12-01 16:15:09",
+      "$meta": {
+        "type": "REFERRAL_CROSS_ORG"
+      }
+    }
+  ]
+}

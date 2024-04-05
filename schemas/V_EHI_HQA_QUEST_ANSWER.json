@@ -1,0 +1,37 @@
+{
+  "name": "V_EHI_HQA_QUEST_ANSWER",
+  "description": "This view converts the QUEST_ANSWER column in CL_QANSWER_QA into an external-facing format for EHI Export. This table should be used in tandem with CL_QANSWER_QA, using the ANSWER_ID and LINE columns to join the two together.",
+  "primaryKey": [
+    {
+      "columnName": "ANSWER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ANSWER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the questionnaire answer record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Line count of the answers in the questionnaire record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "QUEST_ANSWER_EXTERNAL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The actual answer to the question as it was seen by the answering user. This value is converted to an external format depending on the question response type (I LQL 110). For category values, this column will contain the category title. For all other value types, the value matches what is stored in CL_QANSWER_QA__QUEST_ANSWER."
+    }
+  ]
+}

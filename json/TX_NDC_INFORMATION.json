@@ -1,0 +1,97 @@
+{
+  "$meta": {
+    "schemas": {
+      "TX_NDC_INFORMATION": {
+        "name": "TX_NDC_INFORMATION",
+        "description": "This table contains Medical National Drug Code (NDC) information. Since one transaction may be associated with multiple NDC codes, each row in this table represents one NDC code and is identified by the transaction ID and line number. The data for this table is extracted using a KB_SQL query.",
+        "primaryKey": [
+          {
+            "columnName": "TX_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "TX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique accounts receivable transaction record ID."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "Line number to identify each row of�Medical National Drug Code (NDC) data associated with an individual transaction."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "NDC_CODES_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The ID of the Medical National Drug Code (NDC) associated with a transaction."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "NDC_CODES_ID_NDC_CODE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The external code for the National Drug Code (NDC). An NDC represents packages of medications."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "NDC_CODES_ADMIN_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The NDC amount associated with this charge."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "NDC_CODES_UNIT_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The Medical National Drug Code (NDC) unit associated with the charge.",
+            "entries": [
+              "Milliliters",
+              "Milligrams",
+              "Grams",
+              "International Units",
+              "Units"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "TX_NDC_INFORMATION",
+            "target": "ARPB_TX_MODERATE",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "TX_NDC_INFORMATION": [
+    {
+      "TX_ID": 354520699,
+      "LINE": 1,
+      "NDC_CODES_ID": "368186",
+      "NDC_CODES_ID_NDC_CODE": "58160-909-52",
+      "NDC_CODES_ADMIN_AMT": 0.5,
+      "NDC_CODES_UNIT_C_NAME": "Milliliters",
+      "$meta": {
+        "type": "TX_NDC_INFORMATION"
+      }
+    }
+  ]
+}

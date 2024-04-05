@@ -1,0 +1,1404 @@
+{
+  "$meta": {
+    "schemas": {
+      "MYC_MESG": {
+        "name": "MYC_MESG",
+        "description": "This table contains information on messages sent to and from web-based chart system patients.",
+        "primaryKey": [
+          {
+            "columnName": "MESSAGE_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "MESSAGE_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID used to identify a web-based chart system message record. A new record is created each time a patient sends a message from a web-based chart system to a system user and each time a system user sends a message to a web-based chart system patient."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "CREATED_TIME",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The date and time the web-based chart system message record was created in local time."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PARENT_MESSAGE_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the original message in a chain of web-based chart system messages between patients and system users."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "INBASKET_MSG_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the system message associated with the web-based chart system message. An example is when a patient sends a message to a system user."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+            "linksTo": "PATIENT"
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "PAT_ENC_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "A unique, internal contact date in decimal format. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "FROM_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the system user who sent a web-based chart system message to a patient."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "FROM_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "TO_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the system user who was sent a web-based chart system message from a patient."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "TO_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "TOFROM_PAT_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The message direction category number for the web-based chart system message. 1 corresponds to \"To patient\". 2 corresponds to \"From patient\".",
+            "entries": [
+              "To Patient",
+              "From Patient"
+            ]
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "ORIGINAL_TO",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "If a message sent from a web-based chart system patient is re-routed from its intended destination, then the ID of the original recipient is stored in the field. Most commonly this occurs when a system user does not accept messages directly from web-based chart system patients. In this case, the message will be re-routed to a pool, but the employee ID of the system user will be stored here. The ID of the final destination is stored in MODIFIED_TO."
+          },
+          {
+            "ordinalPosition": 15,
+            "name": "UPDATE_DATE",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The date and time that this web-based chart system message record was pulled into enterprise reporting."
+          },
+          {
+            "ordinalPosition": 16,
+            "name": "REQUEST_SUBJECT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This field is only used for medical advice request messages and indicates the subject selected by the patient from the drop down list."
+          },
+          {
+            "ordinalPosition": 17,
+            "name": "PROV_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The provider that was used in routing the patient access message. The provider may vary depending on message type."
+          },
+          {
+            "ordinalPosition": 18,
+            "name": "DEPARTMENT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The department used in routing the patient access message. The department may vary depending on message type."
+          },
+          {
+            "ordinalPosition": 20,
+            "name": "SUBJECT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The subject line of the web-based chart system message."
+          },
+          {
+            "ordinalPosition": 21,
+            "name": "PAT_ENC_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+          },
+          {
+            "ordinalPosition": 22,
+            "name": "EOW_READ_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The read status category number for the web-based chart system message.",
+            "entries": [
+              "Unread",
+              "Read"
+            ]
+          },
+          {
+            "ordinalPosition": 27,
+            "name": "WPR_OWNER_WPR_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the web-based chart system patient who owns this message."
+          },
+          {
+            "ordinalPosition": 44,
+            "name": "RENEWAL_REQ_SRC_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item stores the request source of a medication renewal request. The  default is 2-Web.",
+            "entries": [
+              "IVR",
+              "Web",
+              "Pharmacy",
+              "Ambulatory",
+              "Discharge",
+              "External E-Prescription",
+              "Other",
+              "Telephone",
+              "Hospital Outpatient",
+              "Surgery",
+              "Emergency",
+              "System",
+              "Call Center",
+              "Reporting Workbench",
+              "Automatic Refill",
+              "Pharmacy Front Counter",
+              "Dispense Activity",
+              "External System",
+              "Willow Home Infusion",
+              "Prescription Document",
+              "Willow Inpatient",
+              "Resupply Request",
+              "Residential Facility",
+              "Hospital",
+              "Test Billing"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "MYC_MESG",
+            "target": "MSG_TXT",
+            "joinKeys": [
+              {
+                "source": "MESSAGE_ID",
+                "target": "MESSAGE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "MYC_MESG",
+            "target": "MYC_MESG_CHILD",
+            "joinKeys": [
+              {
+                "source": "MESSAGE_ID",
+                "target": "MESSAGE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "MYC_MESG",
+            "target": "MYC_MESG_CNCL_RSN",
+            "joinKeys": [
+              {
+                "source": "MESSAGE_ID",
+                "target": "MESSAGE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "MYC_MESG",
+            "target": "MYC_MESG_ORD_ITEMS",
+            "joinKeys": [
+              {
+                "source": "MESSAGE_ID",
+                "target": "MESSAGE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "MYC_MESG",
+            "target": "MYC_MESG_QUESR_ANS",
+            "joinKeys": [
+              {
+                "source": "MESSAGE_ID",
+                "target": "MESSAGE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "MYC_MESG",
+            "target": "MYC_MESG_RTF_TEXT",
+            "joinKeys": [
+              {
+                "source": "MESSAGE_ID",
+                "target": "MESSAGE_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "MYC_MESG": [
+    {
+      "MESSAGE_ID": "53360694",
+      "CREATED_TIME": "2022-03-04 16:09:00",
+      "INBASKET_MSG_ID": "710695166",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66179,
+      "FROM_USER_ID": "MYCHARTG",
+      "FROM_USER_ID_NAME": "MYCHART, GENERIC",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2022-03-04 17:04:00",
+      "PROV_ID": "E1011",
+      "DEPARTMENT_ID": 1,
+      "SUBJECT": "Appointment Reminder",
+      "PAT_ENC_CSN_ID": 922942674,
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "25505522",
+      "CREATED_TIME": "2020-07-14 09:54:00",
+      "INBASKET_MSG_ID": "530638879",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 65574,
+      "FROM_USER_ID": "MYCHARTG",
+      "FROM_USER_ID_NAME": "MYCHART, GENERIC",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2020-07-15 11:07:00",
+      "PROV_ID": "E1011",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Appointment Rescheduled",
+      "PAT_ENC_CSN_ID": 829213099,
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "19034115",
+      "CREATED_TIME": "2019-12-23 08:45:00",
+      "INBASKET_MSG_ID": "480451771",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 65387,
+      "FROM_USER_ID": "MYCHARTG",
+      "FROM_USER_ID_NAME": "MYCHART, GENERIC",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2020-03-11 10:42:00",
+      "PROV_ID": "E1011",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Appointment Scheduled",
+      "PAT_ENC_CSN_ID": 799951565,
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "33704267",
+      "CREATED_TIME": "2021-01-21 14:00:00",
+      "PAT_ID": "Z7004242",
+      "FROM_USER_ID": "TJC322",
+      "FROM_USER_ID_NAME": "CARUFEL-WERT, TERRI",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2021-04-05 10:55:00",
+      "PROV_ID": "554513",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "RE:  Dr. Dhillon departure from Associated Physicians",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "27921908",
+      "CREATED_TIME": "2020-09-14 09:00:00",
+      "PARENT_MESSAGE_ID": "27919516",
+      "INBASKET_MSG_ID": "547631074",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 65630,
+      "TO_USER_ID": "KLL403",
+      "TO_USER_ID_NAME": "LOUGH, KAREN L",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "ORIGINAL_TO": "KLL403",
+      "UPDATE_DATE": "2020-09-14 11:36:00",
+      "PROV_ID": "508903",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "RE: wrist pain",
+      "PAT_ENC_CSN_ID": 837844366,
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "25769232",
+      "CREATED_TIME": "2020-07-21 09:33:00",
+      "PARENT_MESSAGE_ID": "25600619",
+      "INBASKET_MSG_ID": "532686627",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 65576,
+      "TO_USER_ID": "PICONEMA",
+      "TO_USER_ID_NAME": "PICONE, MARY A",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "ORIGINAL_TO": "PICONEMA",
+      "UPDATE_DATE": "2020-07-21 17:05:00",
+      "PROV_ID": "219711",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "RE: imaging questions",
+      "PAT_ENC_CSN_ID": 829467718,
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "60694421",
+      "CREATED_TIME": "2022-12-22 09:41:00",
+      "INBASKET_MSG_ID": "795240304",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66465,
+      "TO_USER_ID": "RAMMELZL",
+      "TO_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "ORIGINAL_TO": "RAMMELZL",
+      "UPDATE_DATE": "2023-04-03 13:04:00",
+      "REQUEST_SUBJECT": "5",
+      "PROV_ID": "144590",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Neurology referral",
+      "PAT_ENC_CSN_ID": 977858467,
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "60146360",
+      "CREATED_TIME": "2022-11-28 15:22:00",
+      "INBASKET_MSG_ID": "787755067",
+      "PAT_ID": "Z7004242",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "UPDATE_DATE": "2022-11-28 17:05:00",
+      "PROV_ID": "144590",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Appointment Request",
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "58993563",
+      "CREATED_TIME": "2022-10-04 09:06:00",
+      "INBASKET_MSG_ID": "771651830",
+      "PAT_ID": "Z7004242",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "UPDATE_DATE": "2022-10-04 10:07:00",
+      "PROV_ID": "3724611",
+      "DEPARTMENT_ID": 1700801005,
+      "SUBJECT": "Appointment Cancellation Request",
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "57127509",
+      "CREATED_TIME": "2022-07-06 10:51:00",
+      "INBASKET_MSG_ID": "746286337",
+      "PAT_ID": "Z7004242",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "UPDATE_DATE": "2024-02-09 15:04:00",
+      "PROV_ID": "802011",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Appointment Request (HM)",
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "57165120",
+      "CREATED_TIME": "2022-07-07 13:22:00",
+      "PARENT_MESSAGE_ID": "57163965",
+      "INBASKET_MSG_ID": "746721996",
+      "PAT_ID": "Z7004242",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "UPDATE_DATE": "2024-02-09 15:04:00",
+      "PROV_ID": "802011",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Appointment Request (HM)",
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "66803623",
+      "CREATED_TIME": "2023-08-21 10:57:00",
+      "INBASKET_MSG_ID": "864828889",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66707,
+      "FROM_USER_ID": "KLL403",
+      "FROM_USER_ID_NAME": "LOUGH, KAREN L",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2023-08-23 12:06:00",
+      "PROV_ID": "508903",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "appointment request",
+      "PAT_ENC_CSN_ID": 1020583168,
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "68053760",
+      "CREATED_TIME": "2023-09-28 11:29:00",
+      "PARENT_MESSAGE_ID": "68052804",
+      "INBASKET_MSG_ID": "876494341",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66745.03,
+      "FROM_USER_ID": "MSF400",
+      "FROM_USER_ID_NAME": "FARGEN, MEGAN",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2023-10-12 16:05:00",
+      "PROV_ID": "144590",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Weight reading",
+      "PAT_ENC_CSN_ID": 1028766353,
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "25505268",
+      "CREATED_TIME": "2020-07-14 09:51:00",
+      "INBASKET_MSG_ID": "530637406",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 65575,
+      "FROM_USER_ID": "MYCHARTG",
+      "FROM_USER_ID_NAME": "MYCHART, GENERIC",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2020-07-15 11:07:00",
+      "PROV_ID": "E1011",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Appointment Changed",
+      "PAT_ENC_CSN_ID": 829212157,
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "25600619",
+      "CREATED_TIME": "2020-07-16 07:56:00",
+      "INBASKET_MSG_ID": "531304947",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 65576,
+      "FROM_USER_ID": "PICONEMA",
+      "FROM_USER_ID_NAME": "PICONE, MARY A",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2020-07-21 15:07:00",
+      "PROV_ID": "219711",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "imaging questions",
+      "PAT_ENC_CSN_ID": 829467718,
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "60139026",
+      "CREATED_TIME": "2022-11-28 12:48:00",
+      "PARENT_MESSAGE_ID": "60134830",
+      "INBASKET_MSG_ID": "787666362",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66441,
+      "FROM_USER_ID": "TLG404",
+      "FROM_USER_ID_NAME": "GAIER, TERESA L",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2022-12-12 15:05:00",
+      "PROV_ID": "144590",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Recommendation for neurologist?",
+      "PAT_ENC_CSN_ID": 974452422,
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "25521747",
+      "CREATED_TIME": "2020-07-14 14:03:00",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 65574.01,
+      "TO_USER_ID": "PICONEMA",
+      "TO_USER_ID_NAME": "PICONE, MARY A",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "ORIGINAL_TO": "PICONEMA",
+      "UPDATE_DATE": "2020-07-14 15:06:00",
+      "SUBJECT": "Questionnaire Submission",
+      "PAT_ENC_CSN_ID": 829273579,
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "27635684",
+      "CREATED_TIME": "2020-09-07 09:56:00",
+      "INBASKET_MSG_ID": "545797897",
+      "PAT_ID": "Z7004242",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "UPDATE_DATE": "2020-09-08 10:48:00",
+      "PROV_ID": "802011",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Appointment Request",
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "27635693",
+      "CREATED_TIME": "2020-09-07 09:57:00",
+      "INBASKET_MSG_ID": "545798000",
+      "PAT_ID": "Z7004242",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "UPDATE_DATE": "2020-09-08 12:06:00",
+      "PROV_ID": "802011",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Appointment Request",
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "27931089",
+      "CREATED_TIME": "2020-09-14 10:00:00",
+      "PARENT_MESSAGE_ID": "27921908",
+      "INBASKET_MSG_ID": "547672272",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 65630,
+      "FROM_USER_ID": "KLL403",
+      "FROM_USER_ID_NAME": "LOUGH, KAREN L",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2021-04-05 12:06:00",
+      "PROV_ID": "508903",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "RE: wrist pain",
+      "PAT_ENC_CSN_ID": 837844366,
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "25505496",
+      "CREATED_TIME": "2020-07-14 09:54:00",
+      "INBASKET_MSG_ID": "530638767",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 65575,
+      "FROM_USER_ID": "MYCHARTG",
+      "FROM_USER_ID_NAME": "MYCHART, GENERIC",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2020-07-15 11:07:00",
+      "PROV_ID": "E1011",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Appointment Canceled",
+      "PAT_ENC_CSN_ID": 829212157,
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "37427770",
+      "CREATED_TIME": "2021-04-05 09:40:00",
+      "PARENT_MESSAGE_ID": "37422896",
+      "INBASKET_MSG_ID": "606679097",
+      "PAT_ID": "Z7004242",
+      "FROM_USER_ID": "PAM400",
+      "FROM_USER_ID_NAME": "MANIX, PATRICIA A",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2021-04-19 12:06:00",
+      "PROV_ID": "219711",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "RE: Appointment Request",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "37430034",
+      "CREATED_TIME": "2021-04-05 09:59:00",
+      "PARENT_MESSAGE_ID": "37427770",
+      "INBASKET_MSG_ID": "606691352",
+      "PAT_ID": "Z7004242",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "UPDATE_DATE": "2021-04-14 16:05:00",
+      "PROV_ID": "219711",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "RE: Appointment Request",
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "66808672",
+      "CREATED_TIME": "2023-08-22 19:13:00",
+      "PARENT_MESSAGE_ID": "66861956",
+      "INBASKET_MSG_ID": "865421698",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66707,
+      "TO_USER_ID": "KLL403",
+      "TO_USER_ID_NAME": "LOUGH, KAREN L",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "ORIGINAL_TO": "KLL403",
+      "UPDATE_DATE": "2023-08-23 11:09:00",
+      "PROV_ID": "508903",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "appointment request",
+      "PAT_ENC_CSN_ID": 1020583168,
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "68055673",
+      "CREATED_TIME": "2023-09-28 11:56:00",
+      "PARENT_MESSAGE_ID": "68053760",
+      "INBASKET_MSG_ID": "876508677",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66745.03,
+      "TO_USER_ID": "RAMMELZL",
+      "TO_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "ORIGINAL_TO": "RAMMELZL",
+      "UPDATE_DATE": "2023-09-28 13:04:00",
+      "PROV_ID": "144590",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Weight reading",
+      "PAT_ENC_CSN_ID": 1028766353,
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "66293148",
+      "CREATED_TIME": "2023-08-03 19:34:00",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66689,
+      "FROM_USER_ID": "224",
+      "FROM_USER_ID_NAME": "AMBULATORY, ADMIN",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2023-08-03 21:04:00",
+      "PROV_ID": "E1011",
+      "DEPARTMENT_ID": 101155,
+      "SUBJECT": "Health Reminders",
+      "PAT_ENC_CSN_ID": 1018439080,
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "25795344",
+      "CREATED_TIME": "2020-07-21 15:56:00",
+      "PARENT_MESSAGE_ID": "25769232",
+      "INBASKET_MSG_ID": "532876676",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 65576,
+      "FROM_USER_ID": "BUDZBANL",
+      "FROM_USER_ID_NAME": "BUDZBAN, NICOLE L",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2020-07-23 20:06:00",
+      "PROV_ID": "219711",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "RE: imaging questions",
+      "PAT_ENC_CSN_ID": 829467718,
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "60698883",
+      "CREATED_TIME": "2022-12-22 11:29:00",
+      "PARENT_MESSAGE_ID": "60694421",
+      "INBASKET_MSG_ID": "795287365",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66465,
+      "FROM_USER_ID": "KLL403",
+      "FROM_USER_ID_NAME": "LOUGH, KAREN L",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2023-04-03 13:04:00",
+      "PROV_ID": "144590",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Neurology referral",
+      "PAT_ENC_CSN_ID": 977858467,
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "25506756",
+      "CREATED_TIME": "2020-07-14 10:11:00",
+      "INBASKET_MSG_ID": "530647332",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 65574,
+      "FROM_USER_ID": "MYCHARTG",
+      "FROM_USER_ID_NAME": "MYCHART, GENERIC",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2020-07-15 11:07:00",
+      "PROV_ID": "E1011",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Appointment Changed",
+      "PAT_ENC_CSN_ID": 829213099,
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "25505248",
+      "CREATED_TIME": "2020-07-14 09:51:00",
+      "INBASKET_MSG_ID": "530637185",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 65575,
+      "FROM_USER_ID": "MYCHARTG",
+      "FROM_USER_ID_NAME": "MYCHART, GENERIC",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2020-07-15 11:07:00",
+      "PROV_ID": "E1011",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Appointment Scheduled",
+      "PAT_ENC_CSN_ID": 829212157,
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "57163965",
+      "CREATED_TIME": "2022-07-07 13:00:00",
+      "PARENT_MESSAGE_ID": "57127509",
+      "INBASKET_MSG_ID": "746711727",
+      "PAT_ID": "Z7004242",
+      "FROM_USER_ID": "PAM400",
+      "FROM_USER_ID_NAME": "MANIX, PATRICIA A",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2024-02-09 15:04:00",
+      "PROV_ID": "802011",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Appointment Request (HM)",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "38414430",
+      "CREATED_TIME": "2021-04-22 15:24:00",
+      "PAT_ID": "Z7004242",
+      "FROM_USER_ID": "TJC322",
+      "FROM_USER_ID_NAME": "CARUFEL-WERT, TERRI",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2022-11-14 17:05:00",
+      "PROV_ID": "554513",
+      "DEPARTMENT_ID": 1700801001,
+      "SUBJECT": "RE:  Scheduling COVID-19 vaccine",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "7974993",
+      "CREATED_TIME": "2018-08-20 12:17:00",
+      "INBASKET_MSG_ID": "357243546",
+      "PAT_ID": "Z7004242",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "UPDATE_DATE": "2018-08-24 10:57:00",
+      "PROV_ID": "802011",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "\"Message Your Care Team\" not working",
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "66773863",
+      "CREATED_TIME": "2023-08-20 01:03:00",
+      "INBASKET_MSG_ID": "864566976",
+      "PAT_ID": "Z7004242",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "UPDATE_DATE": "2023-08-21 10:27:00",
+      "PROV_ID": "144590",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Appointment Request",
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "66878626",
+      "CREATED_TIME": "2023-08-23 07:58:00",
+      "PARENT_MESSAGE_ID": "66808672",
+      "INBASKET_MSG_ID": "865496514",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66707,
+      "TO_USER_ID": "KLL403",
+      "TO_USER_ID_NAME": "LOUGH, KAREN L",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "ORIGINAL_TO": "KLL403",
+      "UPDATE_DATE": "2023-08-23 11:09:00",
+      "PROV_ID": "508903",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "appointment request",
+      "PAT_ENC_CSN_ID": 1020583168,
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "68762228",
+      "CREATED_TIME": "2023-10-19 22:52:00",
+      "INBASKET_MSG_ID": "883124868",
+      "PAT_ID": "Z7004242",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "UPDATE_DATE": "2023-10-20 10:06:00",
+      "PROV_ID": "144590",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Appointment Request",
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "8000313",
+      "CREATED_TIME": "2018-08-24 08:10:00",
+      "PARENT_MESSAGE_ID": "7974993",
+      "INBASKET_MSG_ID": "358193435",
+      "PAT_ID": "Z7004242",
+      "FROM_USER_ID": "DANNINGJ",
+      "FROM_USER_ID_NAME": "DANNINGER, GAYLA J",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2022-11-14 17:05:00",
+      "PROV_ID": "802011",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "RE: \"Message Your Care Team\" not working",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "8018055",
+      "CREATED_TIME": "2018-08-28 08:54:00",
+      "INBASKET_MSG_ID": "358920800",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 64888,
+      "FROM_USER_ID": "DMW400",
+      "FROM_USER_ID_NAME": "WILD, DAWN M",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2019-02-01 13:07:00",
+      "PROV_ID": "554383",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "lab results",
+      "PAT_ENC_CSN_ID": 727947624,
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "66861956",
+      "CREATED_TIME": "2023-08-22 14:18:00",
+      "PARENT_MESSAGE_ID": "66803623",
+      "INBASKET_MSG_ID": "865325873",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66707,
+      "FROM_USER_ID": "KLL403",
+      "FROM_USER_ID_NAME": "LOUGH, KAREN L",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2023-08-24 16:05:00",
+      "PROV_ID": "508903",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "appointment request",
+      "PAT_ENC_CSN_ID": 1020583168,
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "62985027",
+      "CREATED_TIME": "2023-03-31 14:56:00",
+      "INBASKET_MSG_ID": "823885979",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66564,
+      "FROM_USER_ID": "WHITTITC",
+      "FROM_USER_ID_NAME": "WHITTINGTON, THERESA",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2023-04-03 13:04:00",
+      "PROV_ID": "519715",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Associated Physicians No Show Policy Update for All Patients",
+      "PAT_ENC_CSN_ID": 996534320,
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "25521748",
+      "CREATED_TIME": "2020-07-14 14:03:00",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 65574,
+      "TO_USER_ID": "PICONEMA",
+      "TO_USER_ID_NAME": "PICONE, MARY A",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "ORIGINAL_TO": "PICONEMA",
+      "UPDATE_DATE": "2020-07-14 15:06:00",
+      "SUBJECT": "Questionnaire Submission",
+      "PAT_ENC_CSN_ID": 829213099,
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "58213592",
+      "CREATED_TIME": "2022-08-28 13:51:00",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66350,
+      "TO_USER_ID": "RAMMELZL",
+      "TO_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "ORIGINAL_TO": "RAMMELZL",
+      "UPDATE_DATE": "2022-08-28 14:08:00",
+      "SUBJECT": "Questionnaire Submission",
+      "PAT_ENC_CSN_ID": 948004323,
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "62182596",
+      "CREATED_TIME": "2023-02-27 15:56:00",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66535,
+      "TO_USER_ID": "RAMMELZL",
+      "TO_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "ORIGINAL_TO": "RAMMELZL",
+      "UPDATE_DATE": "2023-02-27 16:05:00",
+      "PROV_ID": "144590",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Questionnaire Submission",
+      "PAT_ENC_CSN_ID": 958148810,
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "68017125",
+      "CREATED_TIME": "2023-09-27 12:07:00",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66745,
+      "TO_USER_ID": "RAMMELZL",
+      "TO_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "ORIGINAL_TO": "RAMMELZL",
+      "UPDATE_DATE": "2023-09-27 13:05:00",
+      "SUBJECT": "Questionnaire Submission",
+      "PAT_ENC_CSN_ID": 991225117,
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "37982360",
+      "CREATED_TIME": "2021-04-14 15:03:00",
+      "PARENT_MESSAGE_ID": "37430034",
+      "INBASKET_MSG_ID": "609864932",
+      "PAT_ID": "Z7004242",
+      "FROM_USER_ID": "ADA401",
+      "FROM_USER_ID_NAME": "ANGER FRANZEN, ALYSSA",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2021-04-28 16:05:00",
+      "PROV_ID": "219711",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "RE: Appointment Request",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "53651791",
+      "CREATED_TIME": "2022-03-15 16:09:00",
+      "INBASKET_MSG_ID": "713667177",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66190,
+      "FROM_USER_ID": "MYCHARTG",
+      "FROM_USER_ID_NAME": "MYCHART, GENERIC",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2022-03-15 17:06:00",
+      "PROV_ID": "E1011",
+      "DEPARTMENT_ID": 1,
+      "SUBJECT": "Appointment Reminder",
+      "PAT_ENC_CSN_ID": 922943112,
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "19034185",
+      "CREATED_TIME": "2019-12-23 08:46:00",
+      "PARENT_MESSAGE_ID": "19025649",
+      "INBASKET_MSG_ID": "480452384",
+      "PAT_ID": "Z7004242",
+      "FROM_USER_ID": "PAM400",
+      "FROM_USER_ID_NAME": "MANIX, PATRICIA A",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2020-01-06 11:40:00",
+      "PROV_ID": "802011",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "RE: Appointment Request",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "68052804",
+      "CREATED_TIME": "2023-09-28 11:20:00",
+      "INBASKET_MSG_ID": "876489834",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66745.03,
+      "TO_USER_ID": "RAMMELZL",
+      "TO_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "ORIGINAL_TO": "RAMMELZL",
+      "UPDATE_DATE": "2023-09-28 12:05:00",
+      "REQUEST_SUBJECT": "1",
+      "PROV_ID": "144590",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Weight reading",
+      "PAT_ENC_CSN_ID": 1028766353,
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "37422896",
+      "CREATED_TIME": "2021-04-05 09:00:00",
+      "INBASKET_MSG_ID": "606653167",
+      "PAT_ID": "Z7004242",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "UPDATE_DATE": "2021-04-05 11:05:00",
+      "PROV_ID": "219711",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Appointment Request",
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "7981677",
+      "CREATED_TIME": "2018-08-21 10:48:00",
+      "PARENT_MESSAGE_ID": "7974993",
+      "INBASKET_MSG_ID": "357483693",
+      "PAT_ID": "Z7004242",
+      "FROM_USER_ID": "DANNINGJ",
+      "FROM_USER_ID_NAME": "DANNINGER, GAYLA J",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2018-08-21 13:07:00",
+      "PROV_ID": "802011",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "RE: \"Message Your Care Team\" not working",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "66880479",
+      "CREATED_TIME": "2023-08-23 08:38:00",
+      "PARENT_MESSAGE_ID": "66878626",
+      "INBASKET_MSG_ID": "865514681",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66707,
+      "FROM_USER_ID": "KLL403",
+      "FROM_USER_ID_NAME": "LOUGH, KAREN L",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2023-08-25 12:05:00",
+      "PROV_ID": "508903",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "appointment request",
+      "PAT_ENC_CSN_ID": 1020583168,
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "27919516",
+      "CREATED_TIME": "2020-09-14 08:43:00",
+      "INBASKET_MSG_ID": "547620386",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 65630,
+      "FROM_USER_ID": "KLL403",
+      "FROM_USER_ID_NAME": "LOUGH, KAREN L",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2020-09-16 12:06:00",
+      "PROV_ID": "508903",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "wrist pain",
+      "PAT_ENC_CSN_ID": 837844366,
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "27919519",
+      "CREATED_TIME": "2020-09-14 08:43:00",
+      "PAT_ID": "Z7004242",
+      "FROM_USER_ID": "MYCHARTG",
+      "FROM_USER_ID_NAME": "MYCHART, GENERIC",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2020-09-14 11:15:00",
+      "PROV_ID": "E1011",
+      "DEPARTMENT_ID": 1,
+      "SUBJECT": "Please update your email address. The last attempt to send an e-mail notification was undeliverable.",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "25504040",
+      "CREATED_TIME": "2020-07-14 09:35:00",
+      "INBASKET_MSG_ID": "530628510",
+      "PAT_ID": "Z7004242",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "UPDATE_DATE": "2020-07-14 11:00:00",
+      "PROV_ID": "802011",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Appointment Request",
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "60134830",
+      "CREATED_TIME": "2022-11-28 11:29:00",
+      "INBASKET_MSG_ID": "787620425",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66441,
+      "TO_USER_ID": "RAMMELZL",
+      "TO_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "ORIGINAL_TO": "RAMMELZL",
+      "UPDATE_DATE": "2022-12-05 21:04:00",
+      "REQUEST_SUBJECT": "5",
+      "PROV_ID": "144590",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Recommendation for neurologist?",
+      "PAT_ENC_CSN_ID": 974452422,
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "58213591",
+      "CREATED_TIME": "2022-08-28 13:51:00",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66349,
+      "TO_USER_ID": "RAMMELZL",
+      "TO_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "ORIGINAL_TO": "RAMMELZL",
+      "UPDATE_DATE": "2022-08-28 14:08:00",
+      "SUBJECT": "Questionnaire Submission",
+      "PAT_ENC_CSN_ID": 957995289,
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "68017124",
+      "CREATED_TIME": "2023-09-27 12:07:00",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66744,
+      "TO_USER_ID": "RAMMELZL",
+      "TO_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "ORIGINAL_TO": "RAMMELZL",
+      "UPDATE_DATE": "2023-09-27 13:05:00",
+      "SUBJECT": "Questionnaire Submission",
+      "PAT_ENC_CSN_ID": 1028606559,
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "37985418",
+      "CREATED_TIME": "2021-04-14 15:38:00",
+      "PARENT_MESSAGE_ID": "37982360",
+      "INBASKET_MSG_ID": "609882971",
+      "PAT_ID": "Z7004242",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "UPDATE_DATE": "2021-04-14 16:05:00",
+      "PROV_ID": "219711",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "RE: Appointment Request",
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "70809369",
+      "CREATED_TIME": "2023-12-22 14:05:00",
+      "INBASKET_MSG_ID": "902121473",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 66830,
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "ORIGINAL_TO": "RAMMELZL",
+      "UPDATE_DATE": "2024-01-25 12:04:00",
+      "PROV_ID": "144590",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Medication Renewal Request",
+      "PAT_ENC_CSN_ID": 1043034397,
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "RENEWAL_REQ_SRC_C_NAME": "Web",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "19025649",
+      "CREATED_TIME": "2019-12-22 11:52:00",
+      "INBASKET_MSG_ID": "480330107",
+      "PAT_ID": "Z7004242",
+      "TOFROM_PAT_C_NAME": "From Patient",
+      "UPDATE_DATE": "2019-12-23 11:25:00",
+      "PROV_ID": "802011",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Appointment Request",
+      "EOW_READ_STATUS_C_NAME": "Read",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "19316037",
+      "CREATED_TIME": "2020-01-02 16:11:00",
+      "INBASKET_MSG_ID": "482936524",
+      "PAT_ID": "Z7004242",
+      "PAT_ENC_DATE_REAL": 65387,
+      "FROM_USER_ID": "MYCHARTG",
+      "FROM_USER_ID_NAME": "MYCHART, GENERIC",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2020-03-11 10:42:00",
+      "PROV_ID": "E1011",
+      "DEPARTMENT_ID": 1,
+      "SUBJECT": "Appointment Reminder",
+      "PAT_ENC_CSN_ID": 799951565,
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "27931092",
+      "CREATED_TIME": "2020-09-14 10:00:00",
+      "PAT_ID": "Z7004242",
+      "FROM_USER_ID": "MYCHARTG",
+      "FROM_USER_ID_NAME": "MYCHART, GENERIC",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2021-04-05 12:06:00",
+      "PROV_ID": "E1011",
+      "DEPARTMENT_ID": 1,
+      "SUBJECT": "Please update your email address. The last attempt to send an e-mail notification was undeliverable.",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    },
+    {
+      "MESSAGE_ID": "42379633",
+      "CREATED_TIME": "2021-07-16 15:42:00",
+      "PAT_ID": "Z7004242",
+      "FROM_USER_ID": "TJC322",
+      "FROM_USER_ID_NAME": "CARUFEL-WERT, TERRI",
+      "TOFROM_PAT_C_NAME": "To Patient",
+      "UPDATE_DATE": "2024-02-09 15:04:00",
+      "PROV_ID": "554513",
+      "DEPARTMENT_ID": 1700801002,
+      "SUBJECT": "Re:  Primary Care Physician Reassignment",
+      "WPR_OWNER_WPR_ID": "389635",
+      "$meta": {
+        "type": "MYC_MESG"
+      }
+    }
+  ]
+}

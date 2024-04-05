@@ -1,0 +1,1054 @@
+{
+  "$meta": {
+    "schemas": {
+      "HSP_ACCOUNT": {
+        "name": "HSP_ACCOUNT",
+        "description": "This table contains hospital account information from the Hospital Account (HAR) and Claim (CLM) master files. It will exclude professional billing hospital accounts created by visit filing order in non-single billing office service areas.",
+        "primaryKey": [
+          {
+            "columnName": "HSP_ACCOUNT_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "HSP_ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the hospital account."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "HSP_ACCOUNT_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the patient associated with the hospital account."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "ACCT_CLASS_HA_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The hospital account's account class."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "ACCT_FIN_CLASS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The hospital account's financial class.",
+            "entries": [
+              "Commercial",
+              "Medicare",
+              "Medicaid",
+              "Self-Pay",
+              "Worker's Comp",
+              "Tricare",
+              "Champva",
+              "Group Health Plan",
+              "FECA Black Lung",
+              "Blue Shield",
+              "Medigap",
+              "Other",
+              "DK Regional",
+              "Client",
+              "Received Self-Pay",
+              "Sent to Consolidated Self-Pay Service Area"
+            ]
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "ACCT_SLFPYST_HA_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The hospital account's self-pay status.",
+            "entries": [
+              "Full Self-Pay Due",
+              "Review",
+              "Payment Plan",
+              "Pre-collection",
+              "Bad Debt",
+              "Prorated"
+            ]
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "ACCT_BILLSTS_HA_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the status of the hospital account. If this is a professional billing default hospital account, this column always returns 4 (Billed).",
+            "entries": [
+              "Open",
+              "Discharged/Not Billed",
+              "Billed",
+              "Zero Balance",
+              "Bad Debt",
+              "Voided",
+              "Closed",
+              "Archived",
+              "Combined"
+            ]
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "ACCT_ZERO_BAL_DT",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This column stores the date the hospital account went to a zero balance. This may be empty for older accounts, as Zero Balance Date (I HAR 244) had not always been available."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "ADM_DATE_TIME",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "This column stores the admission date and time associated with the hospital account. The admission date and time (I HAR 400/405) are first pulled from the coding information on the hospital account. If this data is not stored on the hospital account yet, then this will pull the data from the primary patient encounter for the hospital account. Depending on a hospital billing system definition setting, this will pull either the admission date and time (I EPT 18850/18851) or the arrival date and time (I EPT 10820/10815). If the arrival date and time is not available than the admission date and time will be used."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "ADM_DEPARMENT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The department of the account's admission event."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "ADM_LOC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The location of the account's admission event."
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "ATTENDING_PROV_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the attending provider stored on the hospital account. See column PROV_ID in table HSP_ATND_PROV if coding has not been performed on this hospital account. Alternatively, see V_ARHB_HSP_ACCOUNT_ADDL_INFO for the calculated value for this column based on both hospital account and encounter data. This view should be used to maintain backwards compatibility with reports created before upgrading to the Summer 2009 release."
+          },
+          {
+            "ordinalPosition": 23,
+            "name": "COMPLETION_DT_TM",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The date and time when abstracting was completed for the hospital account."
+          },
+          {
+            "ordinalPosition": 24,
+            "name": "CVG_LIST_SELECT_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Denotes whether coverages have been put on the hospital account.",
+            "entries": [
+              "No",
+              "Yes"
+            ]
+          },
+          {
+            "ordinalPosition": 25,
+            "name": "DISCH_DATE_TIME",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "This column stores the discharge date and time associated with the hospital account. The discharge date and time (I HAR 425/430) are first pulled from the coding information on the hospital account. If this data is not stored on the hospital account yet, then this will pull the discharge date and time (I EPT 18855/18856) that is stored on the primary patient encounter for the hospital account."
+          },
+          {
+            "ordinalPosition": 26,
+            "name": "DISCH_DEPT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the discharge department on the hospital account."
+          },
+          {
+            "ordinalPosition": 28,
+            "name": "DISCH_LOC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The discharge location stored in the hospital account."
+          },
+          {
+            "ordinalPosition": 39,
+            "name": "GUAR_ADDR_1",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The first line of the street address of the guarantor for the hospital account at time of discharge."
+          },
+          {
+            "ordinalPosition": 41,
+            "name": "GUAR_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the guarantor for the hospital account at time of discharge."
+          },
+          {
+            "ordinalPosition": 43,
+            "name": "GUAR_ZIP",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The ZIP Code of the guarantor for the hospital account at time of discharge."
+          },
+          {
+            "ordinalPosition": 52,
+            "name": "PAT_CITY",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The city portion of the address of the patient for the hospital account at time of discharge."
+          },
+          {
+            "ordinalPosition": 53,
+            "name": "PAT_DOB",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of birth of the patient for the hospital account at time of discharge."
+          },
+          {
+            "ordinalPosition": 54,
+            "name": "PAT_HOME_PHONE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The home phone number of the patient for the hospital account at time of discharge."
+          },
+          {
+            "ordinalPosition": 55,
+            "name": "PAT_SSN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The social security number of the patient for the hospital account at time of discharge."
+          },
+          {
+            "ordinalPosition": 57,
+            "name": "PAT_ZIP",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The ZIP Code of the patient for the hospital account at time of discharge."
+          },
+          {
+            "ordinalPosition": 61,
+            "name": "PREBILL_BUCKET_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the hospital account's prebilled bucket."
+          },
+          {
+            "ordinalPosition": 66,
+            "name": "SELF_PAY_BUCKET_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the hospital account's self-pay bucket."
+          },
+          {
+            "ordinalPosition": 67,
+            "name": "SERV_AREA_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the service area stored on the hospital account."
+          },
+          {
+            "ordinalPosition": 68,
+            "name": "TOT_ADJ",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The total of all adjustments on the hospital account."
+          },
+          {
+            "ordinalPosition": 69,
+            "name": "TOT_CHGS",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The total of all charges on the hospital account."
+          },
+          {
+            "ordinalPosition": 77,
+            "name": "UNDISTRB_BUCKET_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for a hospital account's undistributed bucket."
+          },
+          {
+            "ordinalPosition": 78,
+            "name": "PATIENT_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The patient status (discharge disposition) category ID for the hospital account."
+          },
+          {
+            "ordinalPosition": 79,
+            "name": "ADMISSION_SOURCE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The point of origin category ID (admission source) for the hospital account."
+          },
+          {
+            "ordinalPosition": 80,
+            "name": "ADMISSION_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The admission type category ID for the hospital account."
+          },
+          {
+            "ordinalPosition": 81,
+            "name": "PRIMARY_PAYOR_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the primary payer associated with the hospital account."
+          },
+          {
+            "ordinalPosition": 82,
+            "name": "PRIMARY_PLAN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the primary benefit plan associated with the hospital account."
+          },
+          {
+            "ordinalPosition": 83,
+            "name": "NUM_OF_CHARGES",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The total number of charge transactions posted to the hospital account. This number may include inactive charges, such as reversals and reversed charges."
+          },
+          {
+            "ordinalPosition": 87,
+            "name": "CODING_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The coding status category ID for the hospital account.",
+            "entries": [
+              "Not Started",
+              "In Progress",
+              "Waiting",
+              "Completed",
+              "Ready To Start",
+              "On Hold"
+            ]
+          },
+          {
+            "ordinalPosition": 88,
+            "name": "CODING_STS_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the user when the coding status for the hospital account last changed."
+          },
+          {
+            "ordinalPosition": 89,
+            "name": "CODING_STS_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 90,
+            "name": "CODING_DATETIME",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The date and time that the coding status for the hospital account was last changed."
+          },
+          {
+            "ordinalPosition": 91,
+            "name": "ABSTRACT_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the user who last changed the abstracting status of the hospital account."
+          },
+          {
+            "ordinalPosition": 92,
+            "name": "ABSTRACT_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 104,
+            "name": "FIRST_BILLED_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This column stores the date when the account moved to the billed state for the first time."
+          },
+          {
+            "ordinalPosition": 119,
+            "name": "BASE_INV_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The base invoice number for this row."
+          },
+          {
+            "ordinalPosition": 120,
+            "name": "INV_NUM_SEQ_CTR",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The invoice number sequence counter for the hospital account."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "SBO_TOT_BALANCE",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Contains the combined total balance of Hospital Billing (HB)�and Professional Billing (PB) transactions on the hospital account, including charges, payments and adjustments in all statuses (single billing office (SBO)�mode only).",
+            "mergedFrom": "HSP_ACCT_SBO"
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "SBO_TOTAL_CHARGES",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Combined Hospital Billing (HB)�and Professional Billing (PB) charges on the hospital account in all statuses (single billing office (SBO)�mode only).",
+            "mergedFrom": "HSP_ACCT_SBO"
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "SBO_TOTAL_PAYMENTS",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Combined Hospital Billing (HB)�and Professional Billing (PB) payments on the hospital account in all statuses (single billing office (SBO)�mode only).",
+            "mergedFrom": "HSP_ACCT_SBO"
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "SBO_TOTAL_ADJ",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Contains combined Hospital Billing (HB)�and Professional Billing (PB) adjustments on the hospital account in all statuses (single billing office (SBO)�mode only).",
+            "mergedFrom": "HSP_ACCT_SBO"
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "SBO_PREBILL_BALANC",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Contains combined Hospital Billing (HB)�and Professional Billing (PB) prebilled balances including charges, payments and adjustments (single billing office (SBO)�mode only).",
+            "mergedFrom": "HSP_ACCT_SBO"
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "SBO_INS_BALANCE",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Contains combined Hospital Billing (HB)�and Professional Billing (PB) insurance balances including charges, payments and adjustments (single billing office (SBO)�mode only).",
+            "mergedFrom": "HSP_ACCT_SBO"
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "SBO_SP_BAL",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Contains combined Hospital Billing (HB)�and Professional Billing (PB) self pay balances including charges, payments and adjustments (single billing office (SBO)�mode only).",
+            "mergedFrom": "HSP_ACCT_SBO"
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "OPEN_DENIAL_BDC_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores whether the hospital account has an open denial record.",
+            "entries": [
+              "No",
+              "Yes"
+            ],
+            "mergedFrom": "HSP_ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "OPEN_RMK_BDC_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores whether the hospital account has an open remark record.",
+            "mergedFrom": "HSP_ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "OPEN_COR_BDC_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores whether the hospital account has an open correspondence record.",
+            "mergedFrom": "HSP_ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "REC_CREATE_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the user who created the hospital account.",
+            "mergedFrom": "HSP_ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 15,
+            "name": "REC_CREATE_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden.",
+            "mergedFrom": "HSP_ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 27,
+            "name": "CODING_USER",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the user who last changed the coding status of the hospital account. This is frequently used to join to the CLARITY_EMP table.",
+            "mergedFrom": "HSP_ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 28,
+            "name": "CODING_USER_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden.",
+            "mergedFrom": "HSP_ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 42,
+            "name": "FIRST_SELF_PAY_DT",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This field contains the date of the first self-pay balance for this account.",
+            "mergedFrom": "HSP_ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 43,
+            "name": "FIRST_FULL_SP_DT",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This field contains the first date when the self-pay balance equaled the full account balance for this account.",
+            "mergedFrom": "HSP_ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 52,
+            "name": "PRIMARY_CONTACT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores the primary contact date (DAT) of the hospital account. It's used in many places, such as in determining the admission/discharge date of the account.",
+            "mergedFrom": "HSP_ACCOUNT_2"
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "ADMIT_TYPE_EPT_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Admit type as stored on patient record.",
+            "mergedFrom": "HSP_ACCOUNT_3"
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "PAT_STS_EPT_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Patient Status as stored on patient record.",
+            "mergedFrom": "HSP_ACCOUNT_3"
+          },
+          {
+            "ordinalPosition": 20,
+            "name": "HAS_OPEN_OVRP_BD_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates whether the hospital account has open overpayment records.",
+            "mergedFrom": "HSP_ACCOUNT_3"
+          },
+          {
+            "ordinalPosition": 23,
+            "name": "SELF_PAY_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates whether this hospital account is self-pay.",
+            "mergedFrom": "HSP_ACCOUNT_3"
+          },
+          {
+            "ordinalPosition": 27,
+            "name": "ACTUAL_COPAY_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "For all insurance buckets of the last coverage in the filing order, the total copay specified by insurance on payments.",
+            "mergedFrom": "HSP_ACCOUNT_3"
+          },
+          {
+            "ordinalPosition": 28,
+            "name": "ACTUAL_COINS_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "For all insurance buckets of the last coverage in the filing order, the total coinsurance specified by insurance on payments.",
+            "mergedFrom": "HSP_ACCOUNT_3"
+          },
+          {
+            "ordinalPosition": 29,
+            "name": "ACTUAL_DED_AMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "For all insurance buckets of the last coverage in the filing order, the total deductible specified by insurance on payments.",
+            "mergedFrom": "HSP_ACCOUNT_3"
+          },
+          {
+            "ordinalPosition": 20,
+            "name": "TOT_INS_PMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The total amount of insurance payments posted to this account, not including refunds.",
+            "mergedFrom": "HSP_ACCOUNT_4"
+          },
+          {
+            "ordinalPosition": 22,
+            "name": "TOT_INS_ADJ",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The total amount of insurance adjustments posted to this account, not including refunds.",
+            "mergedFrom": "HSP_ACCOUNT_4"
+          },
+          {
+            "ordinalPosition": 23,
+            "name": "TOT_SP_PMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The total amount of self-pay payments posted to this account, not including refunds.",
+            "mergedFrom": "HSP_ACCOUNT_4"
+          },
+          {
+            "ordinalPosition": 24,
+            "name": "TOT_AR_INS_PMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The total amount of active AR insurance payments posted to this account, not including refunds.",
+            "mergedFrom": "HSP_ACCOUNT_4"
+          },
+          {
+            "ordinalPosition": 26,
+            "name": "TOT_AR_INS_ALLOWANCES",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The total amount of active AR insurance allowance adjustments posted to this account.",
+            "mergedFrom": "HSP_ACCOUNT_4"
+          },
+          {
+            "ordinalPosition": 27,
+            "name": "TOT_AR_SP_PMT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The total amount of active AR self-pay payments posted to this account, not including refunds.",
+            "mergedFrom": "HSP_ACCOUNT_4"
+          },
+          {
+            "ordinalPosition": 33,
+            "name": "TOT_INS_PMTS_AND_RFNDS",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The total insurance payment amount posted to the account, less any refunded amount.",
+            "mergedFrom": "HSP_ACCOUNT_4"
+          },
+          {
+            "ordinalPosition": 34,
+            "name": "TOT_SP_PMTS_AND_RFNDS",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The total self-pay payment amount posted to the account, less any refunded amount.",
+            "mergedFrom": "HSP_ACCOUNT_4"
+          },
+          {
+            "ordinalPosition": 35,
+            "name": "TOT_PMTS_AND_RFNDS",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The total payment amount posted to the account, less any refunded amount.",
+            "mergedFrom": "HSP_ACCOUNT_4"
+          },
+          {
+            "ordinalPosition": 36,
+            "name": "TOT_ADJ_EXCL_RFNDS",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The total adjustment amount posted to the account, not including refund adjustments.",
+            "mergedFrom": "HSP_ACCOUNT_4"
+          },
+          {
+            "ordinalPosition": 42,
+            "name": "SP_RESP_AFTER_INS",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The balance transferred to self-pay after insurance is taken into account. This does not include any self-pay discount, financial assistance, or pre-payments.",
+            "mergedFrom": "HSP_ACCOUNT_4"
+          },
+          {
+            "ordinalPosition": 43,
+            "name": "SP_RESP_LESS_DISCOUNT",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The self-pay responsibility after any self-pay or financial assistance discounts are posted on the self-pay bucket.",
+            "mergedFrom": "HSP_ACCOUNT_4"
+          },
+          {
+            "ordinalPosition": 45,
+            "name": "BAL_IN_FULL_SELF_PAY_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column indicates whether the balances for this hospital account are entirely in self-pay. 'Y' indicates that all balances are in self-pay. 'N' or NULL indicates that there are some balances not in self-pay or the account has not been billed.",
+            "mergedFrom": "HSP_ACCOUNT_4"
+          },
+          {
+            "ordinalPosition": 46,
+            "name": "FIRST_TX_POST_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This column is the original post date for the very first transaction that filed to this hospital account, even if that transaction has been reposted, transferred, or reversed.",
+            "mergedFrom": "HSP_ACCOUNT_4"
+          }
+        ],
+        "merged": [
+          {
+            "name": "HSP_ACCT_SBO",
+            "description": "This table contains the single billing office (SBO) balances on the hospital account (HAR). The information is only populated in Enterprise SBO mode. SBO balances are the combined Hospital Billing and Professional Billing transaction balances on each HAR."
+          },
+          {
+            "name": "HSP_ACCOUNT_2",
+            "description": "This table contains hospital account information from the Hospital Accounts Receivable (HAR) master file. This second hospital account table has the same basic structure as HSP_ACCOUNT, but was created as a second table to prevent HSP_ACCOUNT from getting any larger. This table will exclude professional billing HARs created by visit filing order in non-single billing office service areas."
+          },
+          {
+            "name": "HSP_ACCOUNT_3",
+            "description": "This table contains hospital account information from the Hospital Accounts Receivable (HAR) master file. This third hospital account table has the same basic structure as HSP_ACCOUNT and HSP_ACCOUNT_2, but was created as a third table to prevent the other tables from getting any larger. This table will exclude professional billing hospital account records created by visit filing order in non-single billing office service areas."
+          },
+          {
+            "name": "HSP_ACCOUNT_4",
+            "description": "This table contains hospital account information from the Hospital Accounts Receivable (HAR) master file. It excludes Professional Billing HARs created by visit filing order in non-single billing office service areas. This fourth hospital account table has the same basic structure as HSP_ACCOUNT, HSP_ACCOUNT_2 and HSP_ACCOUNT_3."
+          },
+          {
+            "name": "HSP_ACCT_BILL_DRG",
+            "description": "This table contains billing diagnosis related group (DRG) information from the Hospital Accounts Receivable (HAR) master file."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCOUNT",
+            "target": "CODE_INT_COMB_LN",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCOUNT",
+            "target": "DOCS_FOR_HOSP_ACCT",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCOUNT",
+            "target": "HSP_ACCT_ADJ_LIST",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCOUNT",
+            "target": "HSP_ACCT_ADMIT_DX",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCOUNT",
+            "target": "HSP_ACCT_ATND_PROV",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCOUNT",
+            "target": "HSP_ACCT_CHG_LIST",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCOUNT",
+            "target": "HSP_ACCT_CL_AG_HIS",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCOUNT",
+            "target": "HSP_ACCT_DX_LIST",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCOUNT",
+            "target": "HSP_ACCT_EARSTADDR",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCOUNT",
+            "target": "HSP_ACCT_EXTINJ_CD",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCOUNT",
+            "target": "HSP_ACCT_OCUR_HAR",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "ACCT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_ACCOUNT",
+            "target": "HSP_ACCT_PYMT_LIST",
+            "joinKeys": [
+              {
+                "source": "HSP_ACCOUNT_ID",
+                "target": "HSP_ACCOUNT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HSP_ACCOUNT": [
+    {
+      "HSP_ACCOUNT_ID": 377811219,
+      "HSP_ACCOUNT_NAME": "MANDEL,JOSHUA C",
+      "ACCT_CLASS_HA_C_NAME": "Therapies Series",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "ACCT_BILLSTS_HA_C_NAME": "Closed",
+      "ADM_DATE_TIME": "2022-03-22 16:42:00",
+      "ADM_DEPARMENT_ID": 101401044,
+      "ADM_LOC_ID": 101401,
+      "DISCH_DATE_TIME": "2022-03-22 23:59:00",
+      "DISCH_DEPT_ID": 101401044,
+      "DISCH_LOC_ID": 101401,
+      "PREBILL_BUCKET_ID": 471869181,
+      "SELF_PAY_BUCKET_ID": 471869182,
+      "SERV_AREA_ID": 10,
+      "UNDISTRB_BUCKET_ID": 471869183,
+      "PRIMARY_PAYOR_ID": 1302,
+      "PRIMARY_PLAN_ID": 130204,
+      "$meta": {
+        "type": "HSP_ACCOUNT",
+        "mergedFrom": [
+          "HSP_ACCT_SBO",
+          "HSP_ACCOUNT_2",
+          "HSP_ACCOUNT_3",
+          "HSP_ACCOUNT_4",
+          "HSP_ACCT_BILL_DRG"
+        ]
+      },
+      "// mergedFrom HSP_ACCT_SBO": true,
+      "// mergedFrom HSP_ACCOUNT_2": true,
+      "REC_CREATE_USER_ID": "PBNIGHTP",
+      "REC_CREATE_USER_ID_NAME": "PB, SYSTEM NIGHTLY PROCESSOR",
+      "PRIMARY_CONTACT": "55341",
+      "// mergedFrom HSP_ACCOUNT_3": true,
+      "SELF_PAY_YN": "N",
+      "// mergedFrom HSP_ACCOUNT_4": true,
+      "BAL_IN_FULL_SELF_PAY_YN": "Y",
+      "// mergedFrom HSP_ACCT_BILL_DRG": true
+    },
+    {
+      "HSP_ACCOUNT_ID": 376684703,
+      "HSP_ACCOUNT_NAME": "MANDEL,JOSHUA C",
+      "ACCT_CLASS_HA_C_NAME": "Outpatient",
+      "ACCT_FIN_CLASS_C_NAME": "Other",
+      "ACCT_BILLSTS_HA_C_NAME": "Billed",
+      "PREBILL_BUCKET_ID": 464352300,
+      "SELF_PAY_BUCKET_ID": 464352301,
+      "SERV_AREA_ID": 10,
+      "UNDISTRB_BUCKET_ID": 464352302,
+      "$meta": {
+        "type": "HSP_ACCOUNT",
+        "mergedFrom": [
+          "HSP_ACCT_SBO",
+          "HSP_ACCOUNT_2",
+          "HSP_ACCOUNT_3",
+          "HSP_ACCOUNT_4",
+          "HSP_ACCT_BILL_DRG"
+        ]
+      },
+      "// mergedFrom HSP_ACCT_SBO": true,
+      "// mergedFrom HSP_ACCOUNT_2": true,
+      "REC_CREATE_USER_ID": "CMM400",
+      "REC_CREATE_USER_ID_NAME": "MUTCH, CHERIE M",
+      "// mergedFrom HSP_ACCOUNT_3": true,
+      "// mergedFrom HSP_ACCOUNT_4": true,
+      "BAL_IN_FULL_SELF_PAY_YN": "Y",
+      "// mergedFrom HSP_ACCT_BILL_DRG": true
+    },
+    {
+      "HSP_ACCOUNT_ID": 377515141,
+      "HSP_ACCOUNT_NAME": "MANDEL,JOSHUA C",
+      "ACCT_CLASS_HA_C_NAME": "Therapies Series",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "ACCT_BILLSTS_HA_C_NAME": "Closed",
+      "ADM_DATE_TIME": "2022-03-11 14:41:00",
+      "ADM_DEPARMENT_ID": 101401044,
+      "ADM_LOC_ID": 101401,
+      "DISCH_DATE_TIME": "2022-03-11 23:59:00",
+      "DISCH_DEPT_ID": 101401044,
+      "DISCH_LOC_ID": 101401,
+      "PREBILL_BUCKET_ID": 469902719,
+      "SELF_PAY_BUCKET_ID": 469902720,
+      "SERV_AREA_ID": 10,
+      "UNDISTRB_BUCKET_ID": 469902721,
+      "PRIMARY_PAYOR_ID": 1302,
+      "PRIMARY_PLAN_ID": 130204,
+      "$meta": {
+        "type": "HSP_ACCOUNT",
+        "mergedFrom": [
+          "HSP_ACCT_SBO",
+          "HSP_ACCOUNT_2",
+          "HSP_ACCOUNT_3",
+          "HSP_ACCOUNT_4",
+          "HSP_ACCT_BILL_DRG"
+        ]
+      },
+      "// mergedFrom HSP_ACCT_SBO": true,
+      "// mergedFrom HSP_ACCOUNT_2": true,
+      "REC_CREATE_USER_ID": "PBNIGHTP",
+      "REC_CREATE_USER_ID_NAME": "PB, SYSTEM NIGHTLY PROCESSOR",
+      "PRIMARY_CONTACT": "55352",
+      "// mergedFrom HSP_ACCOUNT_3": true,
+      "SELF_PAY_YN": "N",
+      "// mergedFrom HSP_ACCOUNT_4": true,
+      "BAL_IN_FULL_SELF_PAY_YN": "Y",
+      "// mergedFrom HSP_ACCT_BILL_DRG": true
+    },
+    {
+      "HSP_ACCOUNT_ID": 376684810,
+      "HSP_ACCOUNT_NAME": "MANDEL,JOSHUA C",
+      "ACCT_CLASS_HA_C_NAME": "Therapies Series",
+      "ACCT_FIN_CLASS_C_NAME": "Blue Cross",
+      "ACCT_SLFPYST_HA_C_NAME": "Full Self-Pay Due",
+      "ACCT_BILLSTS_HA_C_NAME": "Closed",
+      "ACCT_ZERO_BAL_DT": "2022-05-11 00:00:00",
+      "ADM_DATE_TIME": "2022-03-11 14:41:00",
+      "ADM_DEPARMENT_ID": 101401044,
+      "ADM_LOC_ID": 101401,
+      "ATTENDING_PROV_ID": "805364",
+      "COMPLETION_DT_TM": "2022-04-14 11:48:00",
+      "CVG_LIST_SELECT_YN": "Y",
+      "DISCH_DATE_TIME": "2022-03-31 00:00:00",
+      "DISCH_DEPT_ID": 101401044,
+      "DISCH_LOC_ID": 101401,
+      "GUAR_ADDR_1": "REDACTED",
+      "GUAR_NAME": "MANDEL,JOSHUA C",
+      "GUAR_ZIP": "REDACTED",
+      "PAT_CITY": "MADISON",
+      "PAT_DOB": "1982-10-26 00:00:00",
+      "PAT_HOME_PHONE": "REDACTED",
+      "PAT_SSN": "REDACTED",
+      "PAT_ZIP": "REDACTED",
+      "PREBILL_BUCKET_ID": 464352999,
+      "SELF_PAY_BUCKET_ID": 464353000,
+      "SERV_AREA_ID": 10,
+      "TOT_ADJ": -962.82,
+      "TOT_CHGS": 1638.82,
+      "UNDISTRB_BUCKET_ID": 464353001,
+      "PATIENT_STATUS_C_NAME": "Discharged to Home or Self Care (Routine Discharge)",
+      "ADMISSION_SOURCE_C_NAME": "Non-Health Care Facility Point of Origin",
+      "ADMISSION_TYPE_C_NAME": "Elective",
+      "PRIMARY_PAYOR_ID": 1302,
+      "PRIMARY_PLAN_ID": 130204,
+      "NUM_OF_CHARGES": 3,
+      "CODING_STATUS_C_NAME": "Completed",
+      "CODING_STS_USER_ID": "WESTBRKK",
+      "CODING_STS_USER_ID_NAME": "WESTBROOK, KARLA K",
+      "CODING_DATETIME": "2022-04-14 11:48:00",
+      "ABSTRACT_USER_ID": "WESTBRKK",
+      "ABSTRACT_USER_ID_NAME": "WESTBROOK, KARLA K",
+      "FIRST_BILLED_DATE": "2022-04-15 00:00:00",
+      "BASE_INV_NUM": "376684810",
+      "INV_NUM_SEQ_CTR": 4,
+      "$meta": {
+        "type": "HSP_ACCOUNT",
+        "mergedFrom": [
+          "HSP_ACCT_SBO",
+          "HSP_ACCOUNT_2",
+          "HSP_ACCOUNT_3",
+          "HSP_ACCOUNT_4",
+          "HSP_ACCT_BILL_DRG"
+        ]
+      },
+      "// mergedFrom HSP_ACCT_SBO": true,
+      "SBO_TOT_BALANCE": 0,
+      "SBO_TOTAL_CHARGES": 1638.82,
+      "SBO_TOTAL_PAYMENTS": -676,
+      "SBO_TOTAL_ADJ": -962.82,
+      "SBO_PREBILL_BALANC": 0,
+      "SBO_INS_BALANCE": 0,
+      "SBO_SP_BAL": 0,
+      "// mergedFrom HSP_ACCOUNT_2": true,
+      "OPEN_DENIAL_BDC_YN": "N",
+      "OPEN_RMK_BDC_YN": "N",
+      "OPEN_COR_BDC_YN": "N",
+      "REC_CREATE_USER_ID": "CMM400",
+      "REC_CREATE_USER_ID_NAME": "MUTCH, CHERIE M",
+      "CODING_USER": "WESTBRKK",
+      "CODING_USER_NAME": "WESTBROOK, KARLA K",
+      "FIRST_SELF_PAY_DT": "2022-04-26 00:00:00",
+      "FIRST_FULL_SP_DT": "2022-04-26 00:00:00",
+      "PRIMARY_CONTACT": "55352",
+      "// mergedFrom HSP_ACCOUNT_3": true,
+      "ADMIT_TYPE_EPT_C_NAME": "Elective",
+      "PAT_STS_EPT_C_NAME": "Home - Discharge to Home or Self Care",
+      "HAS_OPEN_OVRP_BD_YN": "N",
+      "ACTUAL_COPAY_AMT": 0,
+      "ACTUAL_COINS_AMT": 0,
+      "ACTUAL_DED_AMT": 554.27,
+      "// mergedFrom HSP_ACCOUNT_4": true,
+      "TOT_INS_PMT": -121.73,
+      "TOT_INS_ADJ": -962.82,
+      "TOT_SP_PMT": -554.27,
+      "TOT_AR_INS_PMT": -121.73,
+      "TOT_AR_INS_ALLOWANCES": -962.82,
+      "TOT_AR_SP_PMT": -554.27,
+      "TOT_INS_PMTS_AND_RFNDS": -121.73,
+      "TOT_SP_PMTS_AND_RFNDS": -554.27,
+      "TOT_PMTS_AND_RFNDS": -676,
+      "TOT_ADJ_EXCL_RFNDS": -962.82,
+      "SP_RESP_AFTER_INS": 554.27,
+      "SP_RESP_LESS_DISCOUNT": 554.27,
+      "BAL_IN_FULL_SELF_PAY_YN": "Y",
+      "FIRST_TX_POST_DATE": "2022-03-11 00:00:00",
+      "// mergedFrom HSP_ACCT_BILL_DRG": true
+    }
+  ]
+}

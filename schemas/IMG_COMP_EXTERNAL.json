@@ -1,0 +1,50 @@
+{
+  "name": "IMG_COMP_EXTERNAL",
+  "description": "This stores comparison study data for externally performed procedures.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "COMP_EXT_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number that corresponds with the patient's list of externally performed studies. Use it to join to the table PAT_IMG_EXT_PROCS on the LINE column."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EXT_CHNG_AMT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comparison studies amount of change category ID for the external procedure order in the COMP_EXT_LINE column.",
+      "entries": [
+        "No Comparison",
+        "No Significant Change",
+        "Significant Change",
+        "Not Otherwise Specified"
+      ]
+    }
+  ]
+}

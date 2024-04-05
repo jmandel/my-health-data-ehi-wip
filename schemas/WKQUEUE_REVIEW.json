@@ -1,0 +1,106 @@
+{
+  "name": "WKQUEUE_REVIEW",
+  "description": "This is the clarity table for Infection Control Workqueue functionality. It contains the review information for a result.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "WKQUEUE_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This stores user group of a workqueue. This is meant to be used in conjunction with the Workqueue Type parameter from Reporting Workbench reports from the Infection Control Find Results template.",
+      "entries": [
+        "Infection Preventionist",
+        "Pharmacist",
+        "NHSN C. diff Reviewer",
+        "NHSN MRSA Reviewer",
+        "NHSN CephR-Klebsiella Reviewer",
+        "NHSN MSSA Reviewer",
+        "NHSN VRE Reviewer",
+        "NHSN CRE-E. coli Reviewer",
+        "NHSN CRE-Klebsiella Reviewer",
+        "NHSN MDR-Acinetobacter Reviewer",
+        "NHSN CRE-Enterobacter Reviewer",
+        "NHSN UTI Reviewer",
+        "NHSN CLABSI Reviewer"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "WKQUEUE_REVIEW_TIME_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This stores the review instant for a result. This is the time at which a user clicked the \"Reviewed\" button from a Reporting Workbench Workqueue. Each instant is specific to the Workqueue Type and User ID."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "WKQUEUE_REV_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reviewer for a result. This is related to the review instant and the workqueue type."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "WKQUEUE_REV_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "WKQUEUE_REVIEW_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This stores the review action for a result. This is the action a user took from a Reporting Workbench Workqueue.",
+      "entries": [
+        "Review",
+        "Unreview"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "WKQUEUE_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This stores a result review reason. This is the discrete reason a user documented while reviewing the result. Each reason is specific to a workqueue and user ID.",
+      "entries": [
+        "Present on admission",
+        "Present on insertion",
+        "Does not meet NHSN criteria",
+        "Contaminant",
+        "Sent to Department of Health",
+        "Infection case created"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "WKQUEUE_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the free text result review comment. This is the comment a user documented while reviewing the result. Each comment is specific to a workqueue and user ID."
+    }
+  ]
+}

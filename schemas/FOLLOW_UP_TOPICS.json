@@ -1,0 +1,154 @@
+{
+  "name": "FOLLOW_UP_TOPICS",
+  "description": "This table contains information regarding patient outreach topics, patients for which outreach was performed on these topics, who performed the outreach and when the outreach was done. The records included in this table are LFT records that are designated as clincal outreach tracking records.",
+  "primaryKey": [
+    {
+      "columnName": "FOLLOW_UP_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "FOLLOW_UP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CM_PHY_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this record or line. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "FOLLOW_UP_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This column displays the instant of patient outreach."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "FOLLOW_UP_TOPIC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column displays patient outreach topics such as Diabetes or Hypertension.",
+      "entries": [
+        "General",
+        "Diabetes mellitus",
+        "Hypertension",
+        "Asthma",
+        "Congestive heart failure",
+        "Chronic kidney disease",
+        "Obesity",
+        "Preventive Screening",
+        "Immunizations",
+        "Coronary artery disease",
+        "Chronic liver disease",
+        "Chronic obstructive pulmonary disease",
+        "Cystic fibrosis",
+        "HIV/AIDS",
+        "Osteoporosis",
+        "Cervical Cancer Screening",
+        "Breast Cancer Screening",
+        "Colorectal Cancer Screening",
+        "Tobacco Cessation Counseling",
+        "Tetanus, diphtheria, pertussis",
+        "Human papillomavirus",
+        "Meningococcal",
+        "Influenza",
+        "Pneumococcal",
+        "Hepatitis A",
+        "Hepatitis B",
+        "Inactivated poliovirus",
+        "Measles, mumps, rubella",
+        "Varicella",
+        "Rotavirus",
+        "Diphtheria, tetanus, pertussis",
+        "Haemophilus influenzae type b",
+        "Medication Transition",
+        "Fall Risk",
+        "Depression",
+        "Chronic Opioid Management",
+        "ADHD",
+        "Schizophrenia",
+        "Substance Use Disorder",
+        "PTSD",
+        "Lung Cancer Screening",
+        "Cancer Symptom Monitoring",
+        "All Topics",
+        "Non-Clinical Communication"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "FOLLOW_UP_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column displays the user who performed the patient outreach action. This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "FOLLOW_UP_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "FOLLOW_UP_NEXT_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column displays the date when the patient will next require outreach."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "LINKED_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item contains a pointer to the encounter linked with this outreach."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PAT_OUT_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the source of the patient outreach",
+      "entries": [
+        "Health Maintenance"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "MAIL_LETTER_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This contains the line in SI EPT 20200 which contains the details of the letter."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PHONE_MSG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the pointer to the In Basket message that is sent out to support staff asking them to call patients."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PAT_PORTAL_MESSAGE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores a pointer to the MyChart message."
+    }
+  ]
+}

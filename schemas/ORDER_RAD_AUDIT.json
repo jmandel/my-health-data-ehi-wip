@@ -1,0 +1,500 @@
+{
+  "name": "ORDER_RAD_AUDIT",
+  "description": "ORDER_RAD_AUDIT stores information about imaging audit actions logged on procedure records.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_PROC_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the procedure order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line count for this table as determined by the number of audit actions performed on an order."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "AUDIT_ACT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The auditing category ID for the radiology action that took place.",
+      "entries": [
+        "Appointment Scheduled",
+        "Began Exam",
+        "Ended Exam",
+        "Physicians Assigned",
+        "Saved",
+        "Signed",
+        "Status Changed",
+        "Appointment Canceled",
+        "Appt Rescheduled",
+        "Sent to Transcription",
+        "Transcribed",
+        "Marked as Preliminary",
+        "Marked as Queued Prelim",
+        "Sent to Queued Trans",
+        "Queued Signed",
+        "Status Coordinated",
+        "Unlinked from Appointment",
+        "Linked to Appointment",
+        "Needs Review",
+        "Queued Needs Review",
+        "Procedure Changed",
+        "Accession Number Changed",
+        "Modifier Changed",
+        "Appointment Reassigned",
+        "Removed",
+        "Procedure Started",
+        "Procedure Finished",
+        "Procedure Discontinued",
+        "DICOM Message Linked",
+        "System Removed",
+        "Override Begin/End Stop",
+        "Order Released",
+        "Finalized Protocol",
+        "Cleared Protocol",
+        "EOD Processing",
+        "Final by Administrator",
+        "Background Processing",
+        "Sent for Resident Revision",
+        "External Read Added to Work List",
+        "Permanent Transfer Added To Study History",
+        "Back to Lists",
+        "Unlinked from Study",
+        "Linked to Study",
+        "Claim Study",
+        "Move Result",
+        "DICOM SR Results Filed",
+        "Revise Final Study",
+        "Marked as Wet Read",
+        "Marked as No Protocols Needed",
+        "Saved in Update Asmt/Recs Activity",
+        "Flagged For Scheduling",
+        "Signed After Procedure Changed",
+        "Procedure Changed After Final",
+        "Sent for Tech Revision",
+        "Reassigned Protocol",
+        "Completed by Tech",
+        "Routed Protocol",
+        "Documented by Tech",
+        "Result Tracking Updated",
+        "Result Tracking Required",
+        "Result Tracking Completed",
+        "Provider Changed After Final",
+        "Auto Finalized",
+        "Procedure Correction",
+        "Screening Form Created",
+        "Screening Form Completed",
+        "Order Canceled",
+        "Updated Protocol",
+        "Letter Needed",
+        "Letter Not Needed",
+        "CC Recipients Changed",
+        "QT Elements Edited",
+        "Updated Image Availability",
+        "Refreshed Mammo Reporting Data",
+        "Images Linked to Order",
+        "Images Unlinked from Order",
+        "Study Marked as Reviewed",
+        "Sign Order",
+        "Change Order",
+        "Order Updated by Interface",
+        "Patient Contact Mover",
+        "Last Procedure Changed",
+        "Mammo History Updated",
+        "Synchronized Protocol",
+        "Screening Form Created From Order Sign",
+        "Ordering Provider Changed",
+        "Ordering Department Changed",
+        "Diagnosis Changed",
+        "Resulting Agency Change",
+        "Performable Changed After Final",
+        "Order Created",
+        "Findings Copied from a Previous Study",
+        "Verified Findings Copied from a Previous Study",
+        "Study Restored",
+        "Order Note",
+        "Automatic Comparison Selection",
+        "Update Comparison Studies",
+        "Correct ECG Scheduling",
+        "Reading Physician Updated",
+        "Updated By Conversion",
+        "Created By Care Everywhere Order Reconciliation",
+        "Updated by Administrative Utility",
+        "NLP Results Added",
+        "NLP Results Modified",
+        "NLP Results Verified",
+        "NLP Results Removed",
+        "NLP Results Removed via Interface",
+        "NLP Status Changed"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "AUDIT_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time that an audit action took place."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user that performed the audited action."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "AUDIT_ORDER_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The study status category number for the order at the time of the audited event.",
+      "entries": [
+        "Ordered",
+        "No Show",
+        "Scheduled",
+        "Arrived",
+        "Exam Begun",
+        "Procedure Started",
+        "Discontinued",
+        "Procedure Finished",
+        "Exam Ended",
+        "----- BEGIN READING PALETTE STATUSES -----",
+        "Tech Complete",
+        "Tech Revise",
+        "Resident Revise",
+        "Saved",
+        "Queued In Trans",
+        "In Transcription",
+        "Incomplete Transcription",
+        "Transcribed",
+        "Wet Read",
+        "Queued Prelim",
+        "Preliminary",
+        "Queued Needs Review",
+        "Needs Review",
+        "Revised",
+        "Queued Final",
+        "Final",
+        "Cadence Non-Imaging Order"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "AUD_TECH_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the user that was the technologist user related to the audit action. The source item is located at ORDER_PROC.TECHNOLOGIST_ID."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "AUD_TECH_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "AUD_TRANS_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the user that is the transcriptionist related to the audit action. The source item is located at ORDER_PROC.RIS_TRANS_ID."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "AUD_TRANS_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "AUD_CHG_STAT_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The change status reason category ID for the audited order. The source item is located at ORDER_PROC_2.CHANGE_REASON_C.",
+      "entries": [
+        "Other",
+        "Error"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "AUD_EXAM_BG_DTTM",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "This column contains the audited information about the begin exam date and time. The source item is located at ORDER_PROC.PROC_BGN_TIME."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "AUD_EXAM_END_DTTM",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "This column contains the audited information about the end exam date and time. The source item is located at ORDER_PROC.PROC_END_TIME."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "AUD_PROC_BEG_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "This column contains the audited information about the begin date and time for the procedure. The source item is located at ORDER_PROC_2.MOD_BEGIN_TM."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "AUD_PROC_END_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "This column contains the audited information about the end date and time for the procedure. The source item is located at ORDER_PROC_2.MOD_END_TM."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "AUD_OVRD_BGNEND_HS_DTTM",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "This column contains the audit information for the last time a user overrode a hard stop at begin/end. The source item is located at ORDER_PROC_2.OVERRIDE_TM."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "AUD_CHG_STAT_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains comments about the change status reason. The source item is located at ORDER_PROC_2.CHANGE_CMT."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "AUD_RSLT_PRTY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The priority category ID of the result priority of the audited order. The source item is located at ORDER_PROC_2.ORDER_PRIORITY_C."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "AUD_RELEASED_ORD",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the audited information about the future/standing order released child instant. The source item is located at ORDER_PROC.INSTANTIATED_TIME."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "AUD_NUM_SIG_REQ",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column contains the audited information about the number of signatures required for the study. The source item is located at ORDER_PROC_3.NUM_SIG_REQ."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "AUD_GROUPER_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the order that represents the MOPS (Multiple Orders Per Study) Order ID. The source item is located at ORDER_PROC_2.GRP_ORDER_PROC_ID."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "AUD_OVERALL_BRST_DENS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The overall breast density category ID for the audited order. The source item is located at ORDER_STATUS.OVRL_BREAST_DENS_C.",
+      "entries": [
+        "Almost entirely fatty",
+        "Scattered fibroglandular density",
+        "Heterogeneously dense",
+        "Extremely dense",
+        "Unknown"
+      ]
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "AUD_RIGHT_BRST_DENS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The right breast density category ID for the audited order. The source item is located at ORDER_STATUS.RIGHT_BREAST_DENS_C."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "AUD_LEFT_BRST_DENS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The left breast density category ID for the audited order. The source item is located at ORDER_STATUS.LEFT_BREAST_DENS_C."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "AUD_OVERALL_ASMT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The overall assessment category ID for the audited order. The source item is located at ORDER_RAD_ASMT.ASSESSMENT_C.",
+      "entries": [
+        "Need Additional Imaging Evaluation",
+        "Negative",
+        "Benign",
+        "Probably Benign",
+        "Suspicious",
+        "Highly Suggestive of Malignancy",
+        "Known Biopsy-Proven Malignancy",
+        "Low Suspicion for Malignancy",
+        "Moderate Suspicion for Malignancy",
+        "High Suspicion for Malignancy"
+      ]
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "AUD_RIGHT_ASMT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The right assessment category ID for the audited order. The source item is located at ORDER_RAD_ASMT.RIGHT_ASMT_C."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "AUD_LEFT_ASMT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The left assessment category ID for the audited order. The source item is located at ORDER_RAD_ASMT.LEFT_ASMT_C."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "AUD_READING_PRI_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The priority category ID of the imaging reading priority for the audited order. The source item is located at ORDER_PROC_2.READING_PRIORITY_C."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "AUD_MAM_LTR_TMPLT_SMARTTEXT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the audited information about the result letter template. The source item is located at ORDER_STATUS.RIS_LET_TEMPLT_ID."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "AUD_MAM_LTR_TMPLT_SMARTTEXT_ID_SMARTTEXT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the SmartText record."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "AUD_OVRL_TC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The overall tissue composition category ID for the audited order. The source item is located at ORDER_STATUS.OVRL_TISSUE_COMP_C.",
+      "entries": [
+        "Homogeneous background echotexture - fat",
+        "Homogeneous background echotexture - fibroglandular",
+        "Heterogeneous background echotexture"
+      ]
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "AUD_RIGHT_TC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The right tissue composition category ID for the audited order. The source item is located at ORDER_STATUS.RIGHT_TISSUE_COMP_C."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "AUD_LEFT_TC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The left tissue composition category ID for the audited order.The source item is located at ORDER_STATUS.LEFT_TISSUE_COMP_C."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "AUD_OVRL_FGT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The overall amount of fibroglandular tissue category ID for the audited order. The source item is located at ORDER_STATUS.OVRL_FGT_C.",
+      "entries": [
+        "Almost entirely fatty",
+        "Scattered fibroglandular tissue",
+        "Heterogeneous fibroglandular tissue",
+        "Extreme fibroglandular tissue"
+      ]
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "AUD_RIGHT_FGT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The right amount of fibroglandular tissue category ID for the audited order. The source item is located at ORDER_STATUS.RIGHT_FGT_C."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "AUD_LEFT_FGT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The left amount of fibroglandular tissue category ID for the audited order. The source item is located at ORDER_STATUS.LEFT_FGT_C."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "AUD_OVRL_BPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The overall background parenchymal enhancement category ID for the audited order. The source item is located at ORDER_STATUS.OVRL_BPE_C.",
+      "entries": [
+        "Minimal",
+        "Mild",
+        "Moderate",
+        "Marked"
+      ]
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "AUD_RIGHT_BPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The right background parenchymal enhancement category ID for the audited order. The source item is located at ORDER_STATUS.RIGHT_BPE_C."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "AUD_LEFT_BPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The left background parenchymal enhancement category ID for the audited order. The source item is located at ORDER_STATUS.LEFT_BPE_C."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "AUD_SYMMETRIC_BPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The symmetric background parenchymal enhancement category ID for the audited order. The source item is located at ORDER_STATUS.SYMMETRIC_BPE_C.",
+      "entries": [
+        "Symmetric",
+        "Asymmetric"
+      ]
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "AUD_IL_PRI_ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the order that is the image linked primary order. The source item is located at ORDER_PROC_4.IMG_PRIMARY_ORD_ID."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "AUD_HORMONES_NO_HISTORY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Audit of the 'No Hormone History' item for hormones relevant to breast imaging exams captured in the hormone history navigator. The source item is located at ORDER_PROC_4.MAM_HORMONE_NONE_YN."
+    }
+  ]
+}

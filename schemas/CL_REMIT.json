@@ -1,0 +1,200 @@
+{
+  "name": "CL_REMIT",
+  "description": "This table stores information for each Image Database (IMD) record. This can be check-level or claim-level, and is indicated in column IMD_TYPE_C.",
+  "primaryKey": [
+    {
+      "columnName": "IMAGE_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "IMAGE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the ID for the remittance image record. A separate remittance image record is created for each invoice payment."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CREATION_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the remittance image record was created (i.e., when the electronic file was loaded and created)."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SERVICE_AREA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The service area of the invoice to which this remittance payment was posted."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAYMENT_METHOD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The posting method by which this remittance record was created (manual or through electronic remittance).",
+      "entries": [
+        "Remittance",
+        "Manual payment posting"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PAYMENT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The payment type for this remittance record (self-pay or insurance).",
+      "entries": [
+        "Insurance payment",
+        "Self-Pay"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PAYMENT_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Total amount paid by the payer in the remittance file."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CREDIT_DEBIT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Code indicating whether payment amount is a credit or debit.",
+      "entries": [
+        "Credit",
+        "Debit"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PAYMENT_MTD_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Code identifying the method for the movement of payment instructions.",
+      "entries": [
+        "Automated Clearing House",
+        "Financial Institution Option",
+        "Check",
+        "Federal Reserve Funds or Wire Transfer",
+        "Non-Payment Data"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PAYMENT_FMT_CD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Code identifying the payment format used.",
+      "entries": [
+        "Cash Concentration/Disbursement plus Addenda (CCD+) (ACH)",
+        "Corporate Trade Exchange (CTX) (ACH)"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "SENDER_ID_QUAL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Sender ID qualifier. Code identifying the type of identification number of Depository Financial Institution (DFI).",
+      "entries": [
+        "ABA Transit Routing Number with check digits",
+        "Canadian Bank Branch and Institution Number"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "SENDER_IDN_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Sender Depository Financial Institution (DFI) identification number from the remittance file."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "ISSUE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Check issue date or Effective Entry Date for electronic fund transfers."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "TRACE_TYP_CD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Code identifying which transaction is being referenced.",
+      "entries": [
+        "Current Transaction Trace Numbers"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "REF_IMG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Reference remittance record for general remittance file information.  A separate remittance image record is created for each invoice payment in the remittance file. The general check level information is stored in the first remittance image record and subsequent image records hold the image ID of that record in this item."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "GRP_REF_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Reference remittance image record for Provider Summary Information and Provider Supplemental Summary Information.  A separate remittance image record is created for each invoice payment in the remittance file.  Multiple invoice payments can share the same Provider Summary Information and Provider Supplemental Summary Information. This information is stored in the first remittance image record. Subsequent image records hold the image ID of the original remittance image in this item."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The patient from the invoice to which the payment in the remittance image record is posted."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "CLM_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The starting date of the claim that was sent out to the payer."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "CLM_END_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The ending date of the claim that was sent out to the payer."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "CLP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Internal ID of the claim record (for Hospital Billing only)."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "IMD_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Specifies the type of Remittance Image. 1 is Check Level and 2 is File Level.",
+      "entries": [
+        "Check Level IMD",
+        "Invoice IMD"
+      ]
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "INTER_CTRL_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the Interchange Control Number from the electronic remittance file."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "GROUP_CTRL_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the Group Control Number from the electronic remittance file."
+    }
+  ]
+}

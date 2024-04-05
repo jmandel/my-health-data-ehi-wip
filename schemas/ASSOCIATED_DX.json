@@ -1,0 +1,62 @@
+{
+  "name": "ASSOCIATED_DX",
+  "description": "Diagnoses associated with treatment plans.",
+  "primaryKey": [
+    {
+      "columnName": "TREATMENT_PLAN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TREATMENT_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the plan record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "DX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the problem diagnosis (i.e. the diagnosis that is associated with the problem list entry), which is linked to the treatment/therapy plan for the duration of that plan. This diagnosis is only kept up to date if the associated problem (I TPL 302) is linked to the episode (I TPL 303)."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SPECIFIC_DX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the selected diagnosis for the related problem diagnosis (ASSOCIATED_DX.DX_ID). If a user is allowed to select generic diagnoses in Visit Diagnoses, then this column may store a generic diagnosis if the selected problem diagnosis is also generic. This diagnosis is only kept up to date if the associated problem (I TPL 302) is linked to the episode (I TPL 303)."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PROBLEM_LIST_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column is used to track problems currently or previously linked to the plan (via episodes of care)."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PROBLEM_LINKED_TO_PLAN_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column is used to store whether the problem and diagnoses on this line are linked to the plan. This column is updated for plans of active and future statuses.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    }
+  ]
+}

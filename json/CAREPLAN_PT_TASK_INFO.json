@@ -1,0 +1,97 @@
+{
+  "$meta": {
+    "schemas": {
+      "CAREPLAN_PT_TASK_INFO": {
+        "name": "CAREPLAN_PT_TASK_INFO",
+        "description": "This table contains information about patient-assigned tasks in the care plan.",
+        "primaryKey": [
+          {
+            "columnName": "CAREPLAN_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "CAREPLAN_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique identifier (.1 item) for the care plan record."
+          }
+        ],
+        "merged": [
+          {
+            "name": "CAREPLAN_ENROLLMENT_INFO",
+            "description": "This table cotains the enrollment information for a care plan."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "CAREPLAN_PT_TASK_INFO",
+            "target": "CARE_INTEGRATOR",
+            "joinKeys": [
+              {
+                "source": "CAREPLAN_ID",
+                "target": "CARE_INTG_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "CAREPLAN_PT_TASK_INFO",
+            "target": "CAREPLAN_CNCT_INFO",
+            "joinKeys": [
+              {
+                "source": "CAREPLAN_ID",
+                "target": "CAREPLAN_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "CAREPLAN_PT_TASK_INFO": [
+    {
+      "CAREPLAN_ID": "7498035",
+      "$meta": {
+        "type": "CAREPLAN_PT_TASK_INFO",
+        "mergedFrom": [
+          "CAREPLAN_ENROLLMENT_INFO"
+        ]
+      },
+      "// mergedFrom CAREPLAN_ENROLLMENT_INFO": true
+    },
+    {
+      "CAREPLAN_ID": "7615790",
+      "$meta": {
+        "type": "CAREPLAN_PT_TASK_INFO",
+        "mergedFrom": [
+          "CAREPLAN_ENROLLMENT_INFO"
+        ]
+      },
+      "// mergedFrom CAREPLAN_ENROLLMENT_INFO": true
+    },
+    {
+      "CAREPLAN_ID": "7498036",
+      "$meta": {
+        "type": "CAREPLAN_PT_TASK_INFO",
+        "mergedFrom": [
+          "CAREPLAN_ENROLLMENT_INFO"
+        ]
+      },
+      "// mergedFrom CAREPLAN_ENROLLMENT_INFO": true
+    },
+    {
+      "CAREPLAN_ID": "7615791",
+      "$meta": {
+        "type": "CAREPLAN_PT_TASK_INFO",
+        "mergedFrom": [
+          "CAREPLAN_ENROLLMENT_INFO"
+        ]
+      },
+      "// mergedFrom CAREPLAN_ENROLLMENT_INFO": true
+    }
+  ]
+}

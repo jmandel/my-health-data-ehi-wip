@@ -1,0 +1,152 @@
+{
+  "name": "ARPB_TX_SST",
+  "description": "Sliding Scale Table Related Items for Transactions.  This table has information that is populated by sliding scale workflows and by self-pay discount workflows.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the transaction record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "SST_DISC",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This field holds the percentage amount of the sliding scale discount."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SST_OVERRIDE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is a Yes/No flag that stores whether the system increases the self-pay amount due to the application of a minimum fee."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ORIGINAL_PAT_PORT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The original self-pay portion before the amount was reduced according to the sliding scale."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SLIDING_MIN_FEE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This is the minimum fee that is associated with this transaction. This applies only to sliding scale and not self-pay discount."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SST_WO",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This is the amount of the write-off that was applied."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "SST_DEFAULT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the sliding scale table system calculation was overridden by a user. Y indicates that the sliding scale table system calculation was overridden. N indicates that it was not.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "SST_DISC_OV_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the discount amount was overridden by a user. Y indicates that discount amount was overridden. N indicates that it was not.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "SST_DISC_APP_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether a sliding scale discount has been applied to this transaction."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "SST_SELF_OVRD_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the self-pay portion in the self-pay discount workflow was overridden by a user. Y indicates that self-pay portion was overridden. N indicates that it was not."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "SST_FF_APPLIED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds a flag to determine if a flat fee discount was applied to this transaction."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "SST_FF_PROC_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds a flag to determine if the procedure associated with this charge is a flat fee eligible procedure."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "SST_WO_APPLIED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is a flag that is set to Yes if a Sliding Scale Write off adjustment has been applied to this charge."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "FF_WO_APPLIED_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds a flag to determine if a flat fee discount was applied to this transaction."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "DISCOUNT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates what kind of discount was used.  This item only applies to self-pay discount.  The choices are percentage or fee schedule.",
+      "entries": [
+        "None",
+        "Percentage",
+        "Fee Schedule",
+        "Extension"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "SSCALE_PCT",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This field holds the sliding scale write-off percentage."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "SP_DISC_EXCL_RS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the self-pay discount exclusion reason:  1 - Self-pay amount is manually overridden by user 2 - Procedure is excluded from self-pay discount 3 - Waiting for all charges on the visit to NRP to self-pay",
+      "entries": [
+        "Self-pay amount overridden",
+        "Procedure excluded",
+        "Pending NRP of visit to self-pay",
+        "Manually undistributed",
+        "Declined in adjustment review"
+      ]
+    }
+  ]
+}

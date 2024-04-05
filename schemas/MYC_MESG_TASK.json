@@ -1,0 +1,78 @@
+{
+  "name": "MYC_MESG_TASK",
+  "description": "Message tasks are discrete activities that can be attached to a message sent from an system user to a patient. The task contains an action item for the patient to complete, such as filling out a questionnaire or scheduling an appointment. This table stores data regarding tasks that have been attached to Patient Access Message (WMG) records, such as what type of a task it was and when the task was completed by a patient.",
+  "primaryKey": [
+    {
+      "columnName": "MESSAGE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "MESSAGE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID used to identify a web based chart system message record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number used to identify each row of read data associated with an individual web based chart system message record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "TASK_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A category value corresponding to the type of the current message task.  Example types are Appointment and Questionnaire.  Link to the ZC_MYC_TASK_TYPE table to get the task names.",
+      "entries": [
+        "Appointment",
+        "Questionnaire",
+        "Hx Questionnaire",
+        "E-Visit Payment Request"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "TASK_TYPE_ORD_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This is the message task type ordinal number.  It is used in conjunction with TASK_TYPE_C and indicates if a given message task is the first, second, third etc., of a given message type to be attached to the message. For example, if there were three Appointment tasks and two Questionnaire tasks attached to a given web based chart system message, the first Appointment would have a TASK_TYPE_ORD_NUM of 1, the second Appointment would have a TASK_TYPE_ORD_NUM of 2, and the third Appointment would have a TASK_TYPE_ORD_NUM of 3. Similarly, the first Questionnaire task would have a TASK_TYPE_ORD_NUM of 1 and the second Questionnaire task would have a TASK_TYPE_ORD_NUM of 2."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "TASK_DISPLAY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the display name of the task (what the patient will see in web based chart system)."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "TASK_COMP_DATE",
+      "type": "DATETIME (Attached) ",
+      "discontinued": false,
+      "description": "This stores the instant the message task was completed.  If the task has not been completed, this item is blank."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "TASK_COMP_WPR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the person who completed the task."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "TASK_SCHED_APPT_REQUEST_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The appointment request order IDs linked to this message as a scheduling task for the patient"
+    }
+  ]
+}

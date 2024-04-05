@@ -1,0 +1,101 @@
+{
+  "name": "HSP_BUCKET_2",
+  "description": "This table contains hospital liability bucket information from the Hospital Liability Buckets (HLB) master file. This table does not include information for pre-allocated HLB records that are not yet in use.",
+  "primaryKey": [
+    {
+      "columnName": "BUCKET_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "BUCKET_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the bucket record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "TIMELY_FILING_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The timely filing deadline date for insurance buckets. This is blank for Late Write Off and Supplemental Payment Claim buckets."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "REPLACEMENT_TIMELY_FILING_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The replacement timely filing deadline date for insurance buckets. This is blank for Late Write Off and Supplemental Payment Claim buckets."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "AR_CLASSIFICATION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the A/R classification of this bucket.",
+      "entries": [
+        "Active AR",
+        "External Agency AR",
+        "Bad Debt",
+        "Outsourced",
+        "Received Self-Pay Active AR",
+        "Received Self-Pay External Agency AR",
+        "Received Self-Pay Bad Debt"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "BUCKET_CLAIM_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The current claim status associated with the claim status update for the accepted claim on the bucket.",
+      "entries": [
+        "Received",
+        "Rejected",
+        "Accepted",
+        "Pended",
+        "In Progress",
+        "Forwarded",
+        "Adjudicated",
+        "Revised",
+        "Payment Expected",
+        "Denial Expected",
+        "Not Found",
+        "Claim Split",
+        "Data Error",
+        "System Error",
+        "Notification",
+        "Unmapped Code"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "BUCKET_AR_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A status for the bucket with detail about which stage of the billing cycle the AR is at.",
+      "entries": [
+        "In-House - Unbilled",
+        "Held for Minimum Days",
+        "Candidate for Billing",
+        "Late Charges",
+        "Claim Rejected",
+        "Billed to Payer",
+        "Open Denial",
+        "Open Underpayment",
+        "Open Follow-Up",
+        "Closed Denial - Waiting on Payer",
+        "Closed Underpayment - Waiting on Payer",
+        "Closed Denial - Pending Write-Off",
+        "Closed Underpayment  - Pending Write-Off",
+        "Self-Pay",
+        "Zero Balance",
+        "Open Debit Balance",
+        "Open Credit Balance",
+        "Credit Balance - Pending Refund"
+      ]
+    }
+  ]
+}

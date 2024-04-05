@@ -1,0 +1,450 @@
+{
+  "name": "ORDER_RESULTS",
+  "description": "This table contains information on results from clinical system orders. This table extracts only the last Orders (ORD) contact for each ORD record.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_PROC_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "ORD_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the procedure order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of each result component within each ordered procedure."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ORD_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "This is a numeric representation of the date each order was placed in your system. The integer portion of the number specifies the date the order was placed. The digits after the decimal point indicate multiple orders on one day."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "ORD_END_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "This is a numeric representation of the end date for each order in your system. The integer portion of the number specifies the date the order was placed. The digits after the decimal point indicate multiple orders on one day."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RESULT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date the technician ran the tests for each order in calendar format."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "COMPONENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of each result component for each result."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "COMPONENT_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the component."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "A unique serial number for the associated patient encounter. This number is unique across all patients and encounters in the system."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ORD_VALUE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The value returned for each result component, in short free text format. NOTE:  This is how the data is stored in the database; as string format. Interface data may come in with alpha characters and this field is designed to store exactly what is stored in the database. This field stores numeric and structured numeric values in M internal format, using a period as the decimal separator irrespective of locale."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ORD_NUM_VALUE",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A numeric representation of the value returned for each component where applicable. If the value contains any non-numeric characters, the value will display as 9999999."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "RESULT_FLAG_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value associated with a standard HL7 flag code to mark each component result as abnormal. Any value in this field not equal to 1 is considered abnormal.",
+      "entries": [
+        "(NONE)",
+        "Abnormal",
+        "Panic",
+        "Low",
+        "High",
+        "Low Panic",
+        "High Panic",
+        "Low Off-Scale",
+        "High Off-Scale",
+        "Sig Change Up",
+        "Sig Change Down",
+        "Better",
+        "Worse",
+        "Sensitive",
+        "Resistant",
+        "Intermediate",
+        "Moderately Sensitive",
+        "Very Sensitive"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "REFERENCE_LOW",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The lowest acceptable value for each result component. If the value in this column is a number or structured numeric, the numbers will be stored in M internal format, using a period as the decimal separator."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "REFERENCE_HIGH",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The highest acceptable value for each result component. If the value in this column is a number or structured numeric, the numbers will be stored in M internal format, using a period as the decimal separator."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "REFERENCE_UNIT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The units for each result component value."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "RESULT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value corresponding to the status of each result record, such as 2-Preliminary, 3-Final, 4-Corrected, 5-Incomplete.",
+      "entries": [
+        "Preliminary",
+        "Final",
+        "Corrected",
+        "Incomplete"
+      ]
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "RESULT_SUB_IDN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is populated with the unique organism identifier (OVR 700 or interface) when the component of an order result is an organism and can be joined to ORDER_SENSITIVITY.SENS_ORGANISM_SID to identify details about this organism."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "LAB_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value associated with the status of each result, such as 1-In Progress, 2-Preliminary, 3-Final, 4-Edited.",
+      "entries": [
+        "In process",
+        "Preliminary result",
+        "Final result",
+        "Edited",
+        "Edited Result - FINAL"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "INTERFACE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This Yes/No flag identifies whether each order was resulted through an interface. The field will display \"Y\" if the result came through an interface, otherwise the field will display \"N\".",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "RESULTING_LAB_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Unique ID of the Lab running the test."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "RESULTING_LAB_ID_LLB_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Interface laboratory name."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "COMPONENT_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the comments associated with a order COMPONENT_ID, i.e. this is the comments associated with a specific order component's results. If comment data is too long to fit in this item, then the comments will be found in the ORDER_RES_COMMENT table."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "RESULT_IN_RANGE_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A Yes/No category value to indicate whether a result has been verified to be within its reference range.  This item is set by the interface when the result is sent. A null value is equivalent to a \"no\"  value.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "REF_NORMAL_VALS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is a free-text item which allows you to enter a reference range without tying it to a \"low\" or \"high\" value. For example, it could be a string (\"negative\"), a list of choices (\"Yellow, orange\"), or a descriptive range (\"Less than 20\"). The values entered in this range should always represent the \"normal\" values. This item will be displayed in Results Review as the reference range, superseding any values in the low or high items. It may also be displayed in reports, if the print groups are configured to use it. Multiple responses are permitted (one per line). If the value in this column is a number or structured numeric, the numbers will be stored in M internal format using a period as the decimal separator."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "LRR_BASED_ORGAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Used for storing discrete organisms. This item is used for storing isolated organisms at the component level. There may be cases where an isolated organism does not undergo sensitivity tests and therefore is only stored at the component level. Organisms with sensitivities are also stored in addition to this item."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "LRR_BASED_ORGAN_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the organism."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "COMP_RES_TECHNICIA",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "ID of the Resulting Lab Technician."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "VALUE_NORMALIZED",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Will contain the structured numeric result value in a delimited structured numeric format. Numbers will be in M internal format. The delimited structured numeric value is the user entered structured numeric value converted to a delimited format. Valid structured numeric formats are range, operator followed by number, and number followed by operator the value stored in this item is of the format:    operator1_$c(16)_number1_$c(16)_operator2_$c(16)_number2."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "NUMERIC_PRECISION",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The number of decimal digits to the right of the decimal point."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "COMP_OBS_INST_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Timestamp to track per non-micro result component when it was collected/observed."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "COMP_ANL_INST_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Timestamp to track per non-micro result component when it was analyzed in lab."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "RESULT_VAL_START_LN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "For multi-line results holds the starting line number of RESULTS_CMT column from ORDER_RES_COMMENT table, where the result values begin.  This column is simply an indicator of the line number(s) where a result is stored."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "RESULT_VAL_END_LN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "For multi-line results holds the ending line number of RESULTS_CMT column from ORDER_RES_COMMENT table, where the result values begin.  This column is simply an indicator of the line number(s) where a result is stored."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "RESULT_CMT_START_LN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "For multi-line results holds the starting line number of RESULTS_CMT column from ORDER_RES_COMMENT table, where the result values begin.  This column is simply an indicator of the line number(s) where a result is stored."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "RESULT_CMT_END_LN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "For multi-line results holds the ending line number of RESULTS_CMT column from ORDER_RES_COMMENT table, where the result values begin.  This column is simply an indicator of the line number(s) where a result is stored."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "ORD_RAW_VALUE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the raw value of a numeric result as entered by the user. The value stored here and in column ORD_VALUE will be different in international locales for numeric data if the decimal separator used in that locale is a comma instead of a period. This is because ORD_VALUE will store numeric values in the M internal format."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "RAW_LOW",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores raw value of the minimum value of the result component mentioned in column REFERENCE_LOW. The value stored here and in REFERENCE_LOW will be different in international locales for numeric data if the decimal separator used in that locale is a comma instead of a period. This is because REFERENCE_LOW will store numeric data in M internal format."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "RAW_HIGH",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores raw value of the maximum value of the result component mentioned in column REFERENCE_HIGH. The value stored here and in REFERENCE_HIGH will be different in international locales for numeric data if the decimal separator used in that locale is a comma instead of a period. This is because REFERENCE_HIGH will store numeric data in M internal format."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "RAW_REF_VALS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the raw value of REF_NORMAL_VALS (i.e. the reference normal values of the result component). Since REF_NORMAL_VALS will store numeric data in M internal format, the value stored here and in REF_NORMAL_VALS will be different in international locales if the decimal separator used in that locale is a comma instead of a period."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "ORGANISM_QUANTITY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is used for storing isolated organisms at the component level. It contains the numeric or qualitative quantity of the organism that was observed."
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "ORGANISM_QUANTITY_UNIT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is used for storing isolated organisms at the component level. It contains the unit associated with the quantity of the organism that was observed."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "COMPON_LNC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Logical Observation Identifiers Names and Codes (LOINC) ID of the component."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "COMPON_LNC_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Source of the component Logical Observation Identifiers Names and Codes (LOINC) ID.",
+      "entries": [
+        "Reported",
+        "Inferred"
+      ]
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "COMP_SNOMED_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Source of the Systemized Nomenclature of Medicine � Clinical Terms (SNOMED) code (reported vs inferred)."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "REF_UNIT_UOM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Pointer to the record that represents the component's units of measure."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "REF_UNIT_UOM_ID_UNIT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Record name"
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "REF_RANGE_TYPE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Displays the type of the reference range."
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "ORGANISM_SNOMED_CT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Systemized Nomenclature of Medicine � Clinical Terms (SNOMED) code for the component's organism."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "ORGANISM_QUANTITY_SNOMED_CT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Systemized Nomenclature of Medicine � Clinical Terms (SNOMED) code for the component's organism quantity."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "PERFORMING_ORG_INFO_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This is used to indicate the performing organization information for the component. This item stores the line number of the ORD related group which is used to save the performing organization information."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "COMPON_EXCL_CDS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "To cache if the component has a value or comment that matches a value in Excluded result text (I LSD 768)."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "RTF_VAL_START_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "If the component result value is rich text, this column gives the first line of ORD_RTF_VAL_CMT that the value is stored in."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "RTF_VAL_END_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "If the component result value is rich text, this column gives the last line of ORD_RTF_VAL_CMT that the value is stored in."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "RTF_CMT_START_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "If the component comment is rich text, this column gives the first line of ORD_RTF_VAL_CMT that the component comment is stored in."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "RTF_CMT_END_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "If the component comment is rich text, this column gives the last line of ORD_RTF_VAL_CMT that the component comment is stored in."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "RSLT_ACCR_FLAG_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item determines the accreditation status of the corresponding component. If set to Y-Yes, the corresponding component is accredited. If set to N-No, the corresponding component is not accredited. If null, no evaluation was performed on the component to determine if it is accredited or not."
+    }
+  ]
+}

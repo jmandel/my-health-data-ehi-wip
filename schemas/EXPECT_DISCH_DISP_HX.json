@@ -1,0 +1,93 @@
+{
+  "name": "EXPECT_DISCH_DISP_HX",
+  "description": "This is the expected discharge disposition table. It will track the changes made to the patient's expected discharge disposition throughout the encounter. This table contains the data about the expected discharge disposition (I EPT 11090), the user that made the change (I EPT 11091) and the date and time that the expected discharge disposition was entered (I EPT 11092).",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "HX_EXPECTED_DISCH_DISP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Disposition the patient is expected to be discharged with.",
+      "entries": [
+        "Home or Self Care",
+        "Home Health Services",
+        "Assisted Living Facility",
+        "Behavioral Health Facility",
+        "Hospice - Home",
+        "Hospice - Residential",
+        "Inpatient Rehab Facility",
+        "Long Term Acute Care Hospital",
+        "Skilled Nursing Facility",
+        "Transfer to Other Acute Facility",
+        "Other (Comment)"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "HX_EXP_DISCH_DISP_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "User that entered expected discharge disposition"
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "HX_EXP_DISCH_DISP_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "HX_EXP_DISCH_DISP_UPD_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Instant the expected discharge disposition was updated."
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "name": "IP_WORKLIST_2",
+  "description": "This table contains data associated with task (LTK) records.",
+  "primaryKey": [
+    {
+      "columnName": "TASK_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TASK_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the task record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "DESC_FOR_PAT_OVRIDE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A descriptive name for instances of this task that is written specifically for a given patient."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "NAME_FOR_PAT_OVRIDE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A descriptive name for instances of this task at LTK level that is written specifically for patients."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "START_OFFSET_DAYS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Number of days to offset the start date from the task assignment or the anchor event date."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "START_OFFSET_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of start date offset (e.g., before/after).",
+      "entries": [
+        "Before",
+        "After"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SOURCE_LTT_UTC_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the instant the task template (LTT) was assigned which resulted in tasks (LTK) being created."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CALCULATED_RESUME_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "When resuming a paused task, this will be its start instant if no start date is specified."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "FLO_THRESHOLD_VALUE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Threshold value for flowsheet based task completion."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "TSK_DISCONTINUE_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Describe the reason of the discontinued patient-assigned task.",
+      "entries": [
+        "Discontinued by Provider",
+        "Finished",
+        "Discontinued through BPA",
+        "Resolved by Provider",
+        "Discontinued by Patient",
+        "Discontinued by Chart Correction",
+        "Patient Deceased",
+        "Discontinued by Medication Reminder Pause Anchor Event Action",
+        "Discontinued by Unanchor Behavior",
+        "Discontinued by Past Start Date Behavior"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ENSURE_DELIVERY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Determines the scheduling behavior of this anchored task when its start date falls in the past.",
+      "entries": [
+        "Start immediately",
+        "Skip in-between occurrences",
+        "Don't start",
+        "Resolve task as discontinued"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "EFQ_OVRIDE_CYL_LEN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "If there is a frequency override specified, this item will contain the length of a relative specified type cycle. For all other specified types this value will be ignored (and should be empty)."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "EFQ_OVRIDE_DAY_TYP",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Specifies what the numeric values in the frequency override days columns represent. If it is 1 then the listed days are relative days. If it is 2 then the listed days are weekdays. Any other value has no meaning."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "DURATION",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Determines the number of days this recurring task should go on for relative to its start date."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "TASK_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The note (HNO) ID that is attached to the task (LTK) record."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "DECISION_TRACKER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the linked decision, if one exists, for this task"
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "REQ_DOC_NOT_ATTRIBUTED_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The did not attribute reason category ID for the required documentation task. This indicates the reason that the task was not attributed to any users.",
+      "entries": [
+        "Could Not Find Any Appropriate Users",
+        "Already Completed Before Evaluation"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "USED_FOR_OUTREACH_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether a checklist task is used for outreach or not. 'Y' indicates that the checklist task is used for outreach. 'N' or NULL indicates that the checklist task is not used for outreach.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "PAT_ASGN_TASK_PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If this task is anchored to an anchor target of type Hospital Discharge, then this item stores the contact serial number associated with the admission."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "SC_SUPPORT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value of the support & service type that triggered the generation of this task"
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "SC_SUPPORT_TYPE_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The start date of the support & service type that triggered the generation of this task"
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "REFERRAL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The referral that this target is tracking."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "USED_FOR_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number which identifies the purpose for which the task is used.",
+      "entries": [
+        "Target",
+        "Outpatient Care Plan",
+        "Outreach",
+        "Case Review",
+        "Checklist",
+        "Medication Therapy Problem"
+      ]
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "CREATE_INST_LOCAL_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant at which the task was created, in local time. This item is the local equivalent of the CREATION_UTC_DTTM column, which is in UTC."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "LINKED_PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the patient linked directly or indirectly to the task record. This differs from column PAT_ID in table IP_WORKLIST in that this column also contains patients linked indirectly to a task, through a patient CSN (I LTK 215) or an episode (HSB) (I LTK 53100 or I LTK 81110). To find only patients linked directly to a task, use column PAT_ID in table IP_WORKLIST."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "OUTREACH_OUTCOME_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Outcome of an outreach task",
+      "entries": [
+        "Completed Successfully",
+        "Unable to Reach",
+        "Skipped"
+      ]
+    }
+  ]
+}

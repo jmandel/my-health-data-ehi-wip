@@ -1,0 +1,87 @@
+{
+  "name": "CHILD_NOTE_INFO",
+  "description": "The CHILD_NOTE_INFO table contains information about child notes that are linked to clinical notes. Each row represents one child note and contains information such as the user that created the link, when the link was created, and what type of link it is.",
+  "primaryKey": [
+    {
+      "columnName": "NOTE_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the note record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "TEXT_NOTE_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This holds the note contact serial number (CSN) pointer to the record where the child note's text can be found. Any workflow that links a child note to a clinical note must populate this item with the pointer to the child note contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "LINK_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This holds the type of linked note. Any workflow that links a child note to a clinical note must populate this item with the type of child note that is being linked. Different link types will have different effects on how the parent clinical note displays or behaves.",
+      "entries": [
+        "Current Attestation",
+        "Previous Attestation",
+        "Removed Attestation",
+        "Incomplete Attestation",
+        "Save Summary",
+        "Attest Summary"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "LINK_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the user ID of the user who added the corresponding child note. Any workflow that links a child note to a clinical note must specify the user adding the link in this item."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "LINK_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "LINK_UTC",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Holds the instant, in UTC format, that the child note was added to the note. Any workflow that links a child note to a clinical note must populate this item with the UTC timestamp of when the link was added."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "SOURCE_NOTE_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Contains the note contact serial number (CSN) of the source contact the child note was originally added to. Any workflow that links a child note to a clinical note must specify which contact on the parent clinical note the child note applies to."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "LINK_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Holds the instant, in local time zone format, that the child note was added to the note. This item is automatically calculated based on the Child Note - Instant (UTC) item (I HNO 34253)."
+    }
+  ]
+}

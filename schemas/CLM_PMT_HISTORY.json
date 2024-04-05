@@ -1,0 +1,98 @@
+{
+  "name": "CLM_PMT_HISTORY",
+  "description": "The CLM_PMT_HISTORY table contains claim level history for how a payment was processed.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID for the transaction record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CLM_PMT_HISTORY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains an action that was taken for the payment.",
+      "entries": [
+        "Selected procedure code cannot be used for this payment.",
+        "Both a takeback and a $0 denial are present for the invoice.",
+        "This payment has a corresponding forward balance PLB payment.",
+        "This payment has an unbalanced forward balance PLB payment.",
+        "The claim charge amount was increased due to charge not found extension.",
+        "Remittance workqueue comment.",
+        "Undistributed remittance workqueue error message.",
+        "This payment was automatically distributed.",
+        "Service line paid amounts may have change due to the payment distribution setting in the RMO.",
+        "Remittance Note",
+        "MA07 - The claim information has also been forwarded to Medicaid for review.",
+        "MA18 - The claim information is also being forwarded to the patient's supplemental insurer.",
+        "Updated subscriber ID is identical to the current subscriber ID. No update necessary.",
+        "New subscriber ID missing from file. No update will occur.",
+        "Insurance ID will be updated upon acceptance of the run.",
+        "Supplemental Remittance Information",
+        "The invoice paid amount was updated as a result of the interest payment received in the AMT-I segment.",
+        "Interest in the claim level AMT-I segment.",
+        "Payor sent procedure.",
+        "The paid amount for this claim was calculated by the system successfully.",
+        "Charge(s) not found during calculation of the paid amounts.",
+        "The claim paid amount can not be successfully distributed.",
+        "Remittance file contains invalid invoice number or service date.",
+        "SVC segments cannot be created when the remittance file charge amount does not match the invoice.",
+        "An extension has been configured to error out payments with a specific claim status code.",
+        "A service level adjustment has been added by a remittance balancing extension.",
+        "A claim level adjustment has been added by a remittance balancing extension.",
+        "Pre-payment comment",
+        "Capitation adjustment removed from claim level and added to service line level.",
+        "Tax amount was removed from check.",
+        "Tax amount removed from invoice payment.",
+        "Claim paid amount updated by supplemental payment programming point.",
+        "Service level paid amounts have been updated by a supplemental payment extension.",
+        "Payment automatically generated from remittance image record.",
+        "Invoice error message",
+        "This payment could not be distributed.",
+        "Sum of all invoices meeting the external invoice format.",
+        "Overridden load error message",
+        "Overridden load error comment",
+        "Remittance run comment",
+        "No automatic distribution. Unmatched remittance amount does not equal unmatched claim amount.",
+        "No automatic distribution. A non-zero unmatched claim line is required.",
+        "Payment received for rejected invoice will be posted to an accepted invoice.",
+        "Payment made from a Consumer Spending Account",
+        "Insurance ID format does not match defined payer/plan format. No update will occur.",
+        "Payment was modified due to a discrepancy with the billed amount of the matched claim.",
+        "Payment billed amount was modified due to a discrepancy with the matched claim without comparing to the primary payer's adjudication.",
+        "Payer changed in payment posting.",
+        "NAA and NRP suppressed due to contract variance.",
+        "NAA and NRP suppressed as payment was posted against voided invoice",
+        "NAA and NRP suppressed as payment was posted for BFD cross-over invoice",
+        "NAA and NRP suppressed as payment qualified for pre-payment filing extension"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CLM_PMT_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains a comment for an action that was taken for the payment."
+    }
+  ]
+}

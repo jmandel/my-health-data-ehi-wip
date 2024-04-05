@@ -1,0 +1,57 @@
+{
+  "name": "OR_LOG_COSTS_CHARGES",
+  "description": "The OR_LOG_COSTS_CHARGES table contains information about costs and charges associated with the procedural log.",
+  "primaryKey": [
+    {
+      "columnName": "LOG_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "LOG_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier for the log record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "COST_CHARGE_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The cost and charge type category ID for the procedural log.",
+      "entries": [
+        "Supply Used",
+        "Supply Wasted",
+        "Implant Used",
+        "Implant Wasted"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CASE_COST",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The cost amount of the associated type for the procedural log."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CASE_CHARGE",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The charge amount sent for the associated type for the procedural log. The charge is determined using the necessary settings from the procedural location and the relevant charge settings in place at the time the charges were triggered. Note that this value may differ from what is actually sent from the billing system."
+    }
+  ]
+}

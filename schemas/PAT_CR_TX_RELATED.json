@@ -1,0 +1,266 @@
+{
+  "name": "PAT_CR_TX_RELATED",
+  "description": "This table contains related response information about the credit card transaction associated with an e-visit encounter that is stored in the patient record when the encounter is created.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The contact serial number is unique across all patients and all contacts."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "This is a numeric representation of the date of this encounter in your system. The integer portion of the number specifies the date of the encounter. The digits after the decimal point indicate multiple visits on one day."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the contact owner."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CR_TX_AMOUNT_AUTH",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount authorized on the credit card."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CR_TX_INSTANT",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant the status was updated."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CR_TX_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status of the transaction.",
+      "entries": [
+        "Authorized",
+        "Charged",
+        "Cancelled",
+        "Failed"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CARDHOLDER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "To store the name of the pre-auth credit card holder ."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "CREDIT_CARD_BRAND_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "To store the card brand of the pre-auth credit card",
+      "entries": [
+        "Visa",
+        "MasterCard",
+        "American Express",
+        "Discover",
+        "Diners Club",
+        "Health Benefit",
+        "Bank Account (Unknown Type)",
+        "Checking Account",
+        "Savings Account",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "EXP_MONTH",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "To store the expiration month of the pre-auth credit card"
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "EXP_YEAR",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "To store the expiration year of the pre-auth credit"
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "TX_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the transaction source application for copay only pre-authorized transactions. For example, it will store \"MyChart Web\" for a payment made via MyChart website.",
+      "entries": [
+        "Transaction Import",
+        "Interface",
+        "EpicCare",
+        "Daily Charge",
+        "Bed Charge",
+        "Batch Charge Entry",
+        "Unit Charge Entry",
+        "Payment Posting",
+        "Adjustment Posting",
+        "Post Adjustment - Account Maintenance",
+        "Reverse Transaction - Account Maintenance",
+        "Reversal and Repost",
+        "Charge Correction",
+        "Order Trigger",
+        "Transfer Transaction",
+        "Combine Accounts",
+        "Electronic Remittance",
+        "HB Only Quick Payment Posting",
+        "Account Maintenance - Actions",
+        "Revenue Reclassification - Account Class Change",
+        "Revenue Reclassification - Financial Class Change",
+        "Claims Accept - Bucket Split",
+        "Small Balance Write-Off",
+        "System Auto Action",
+        "Hourly Charge",
+        "Expected Not-Allwd-Auto Write-Off",
+        "Claim Denial Payment",
+        "Willow Inpatient",
+        "Refund - Account Maintenance",
+        "OpTime",
+        "Radiant",
+        "MyChart Web",
+        "Inpatient",
+        "Resolute Professional Billing",
+        "Emergency Dept",
+        "Home Health",
+        "Lab",
+        "Cohort",
+        "Enterprise Payment Posting",
+        "Charge Router Charge Entry",
+        "Self-Pay Discount",
+        "Payment Collection",
+        "Late Fee",
+        "Tx Report - Add Corresponding Charge",
+        "Patient Refund",
+        "Welcome",
+        "Cardiology",
+        "Obstetrics",
+        "Handheld",
+        "Late Charge Write-Off",
+        "Hospice Per Diem",
+        "Hospice",
+        "Surcharge",
+        "Adjustment Import",
+        "DBC Product",
+        "DBC Accepted Invoice",
+        "Willow Ambulatory",
+        "Anesthesia",
+        "Reverse Transaction - Tx Report",
+        "Billing Activity",
+        "Web Service",
+        "HB Coding",
+        "Auto Pay Payment Plan",
+        "Distribution",
+        "Duplicated Charge",
+        "Billing Charge Write-Off",
+        "Transaction Classification Balancing",
+        "Financial Assistance",
+        "Cumulative Billing",
+        "MyChart Mobile",
+        "Pay as Guest",
+        "Unbilled Expected Write-Off",
+        "DBC Denied Invoice",
+        "Bundle Payment Distribution",
+        "DBC Denied Invoice - Ignored",
+        "Balance Transfer In",
+        "Balance Transfer Out",
+        "Balance Correct In",
+        "Balance Correct Out",
+        "Visit Auto Pay",
+        "Trust Transfer",
+        "Trust Recurring Payment",
+        "Notification Billing",
+        "Advance Billing",
+        "Two-Way SMS",
+        "Linked Procedure"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "DIGITAL_WALLET_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the digital wallet used to make the credit card payment",
+      "entries": [
+        "Apple Pay",
+        "Google Pay"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "CR_LAST_FOUR",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the last four digits of the payment method used to make a pre-authorization for a copay."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "PAT_PMT_COLL_WKFL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The payment collection workflow category used by billing for reporting. See ECT-41109 for possible values.",
+      "entries": [
+        "Staff Collected",
+        "MyChart Billing",
+        "MyChart One-Touch",
+        "MyChart Pay as Guest",
+        "MyChart Visit Payment",
+        "MyChart eCheck-in",
+        "Welcome Balance Payment",
+        "Welcome Check-in",
+        "Two-Way SMS",
+        "Payment Posting",
+        "Lockbox",
+        "Release of Information",
+        "Willow Ambulatory",
+        "Web Service"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "PAT_PMT_MYC_AUTH_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The MyChart authentication method at the time of preauthorization. See ECT-41110 for possible values.",
+      "entries": [
+        "Password Sign-in",
+        "Demographics Sign-in",
+        "No Sign-in"
+      ]
+    }
+  ]
+}

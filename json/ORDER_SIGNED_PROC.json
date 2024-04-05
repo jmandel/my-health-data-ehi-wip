@@ -1,0 +1,339 @@
+{
+  "$meta": {
+    "schemas": {
+      "ORDER_SIGNED_PROC": {
+        "name": "ORDER_SIGNED_PROC",
+        "description": "This table contains the users, providers, and messages related to procedure verbal orders and cosign orders.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_PROC_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_PROC_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID for the procedure order record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line count for the table."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "SIGNED_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates the type of order signing the row represents. Note: Any type can have cosigner data.",
+            "entries": [
+              "Ordering",
+              "Cosign",
+              "Discontinuing",
+              "Pending Discontinue",
+              "Edit",
+              "Delete",
+              "Continue on Transfer",
+              "Discontinue on Transfer",
+              "New on Transfer",
+              "Unreview on Transfer",
+              "Holding",
+              "Unholding",
+              "Order and Hold",
+              "Assigning Administration Responsibility",
+              "Cancel Hold",
+              "Discontinue on Admission",
+              "Discontinue on Discharge",
+              "Sign on Admission",
+              "Sign on Discharge",
+              "Modify for Admission",
+              "Modify for Discharge",
+              "Modify for Transfer",
+              "Continue on Admission",
+              "Continue on Discharge",
+              "Do Not Order on Admission",
+              "Do Not Prescribe on Discharge",
+              "Do Not Order on Transfer",
+              "Sign on Inter-Facility Transfer",
+              "Modify for Inter-Facility Transfer",
+              "Discontinue on Inter-Facility Transfer",
+              "Continue on Inter-Facility Transfer",
+              "Do Not Order on Inter-Facility Transfer"
+            ]
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "VERB_COMM_PROV_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique provider record ID for the provider communicating the verbal order."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "VERB_SGNER_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique user record ID for the user signing the verbal order."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "VERB_SGNER_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "VERB_SIGNED_TIME",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The date and time the verbal order was signed."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "VERBAL_MODE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The mode associated with the verbal order.",
+            "entries": [
+              "Verbal",
+              "Standard"
+            ]
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "ORDER_PROV_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique provider record ID for the ordering provider."
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "AUTH_PROV_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique provider record ID for the authorizing provider."
+          },
+          {
+            "ordinalPosition": 20,
+            "name": "IS_HOSPITALIST_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates if the order was by a hospitalist.",
+            "entries": [
+              "Yes",
+              "No"
+            ]
+          },
+          {
+            "ordinalPosition": 22,
+            "name": "CSGN_CREATE_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "When the cosign requirement was created (UTC Time)."
+          },
+          {
+            "ordinalPosition": 23,
+            "name": "CSGN_RQRD_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item stores whether or not an order requires a cosign based on when a new line is added to the verbal order category type (I ORD 34800).",
+            "entries": [
+              "Yes",
+              "No",
+              "Administratively Closed"
+            ]
+          },
+          {
+            "ordinalPosition": 24,
+            "name": "SIG_REQ_CRT_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "If the order signature requirement was manually created, this item stores the ID of the user who created the requirement."
+          },
+          {
+            "ordinalPosition": 25,
+            "name": "SIG_REQ_CRT_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 26,
+            "name": "SIG_REQ_CRT_SRC_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column is the creation source for order signature requirements.",
+            "entries": [
+              "Automatically Created",
+              "HIM",
+              "Create Signature Requirement Utility",
+              "Patient Creator Utility",
+              "Bulk Orders Utility",
+              "Beacon",
+              "Inactive User Attached to Ordering Provider",
+              "Instant Orders",
+              "Cosign Checkbox",
+              "Cosign Rule",
+              "LQL",
+              "Profile Setting 8535 - Admission Orders",
+              "Profile Setting 8536 - Code Status Orders",
+              "Profile Setting 38800 - RW Bulk Orders",
+              "Home Health Code Status Order",
+              "Anesthesia Sedation Order",
+              "Radiant Change Order LPP",
+              "Low Acuity Order",
+              "Cadence Decision Tree",
+              "Security EC36 - Rx Non-controlled",
+              "Security EC37 - Rx Controlled w/o C-II",
+              "Security EC90 - OP Procedures",
+              "Security EC104 - Rx Schedule II",
+              "Security EC235 - IP Non-controlled",
+              "Security EC236 - IP Controlled w/o C-II",
+              "Security EC237 - IP Schedule II",
+              "Security EC238 - IP Procedure",
+              "Security EC282 - DC Med"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_SIGNED_PROC",
+            "target": "APPT_REQUEST",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "REQUEST_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_SIGNED_PROC",
+            "target": "ORDER_PARENT_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_SIGNED_PROC",
+            "target": "ORDER_PROC",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_SIGNED_PROC",
+            "target": "ORD_PRFLST_TRK",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ORDER_SIGNED_PROC": [
+    {
+      "ORDER_PROC_ID": 945468367,
+      "LINE": 1,
+      "SIGNED_TYPE_C_NAME": "Ordering",
+      "VERB_COMM_PROV_ID": "621755",
+      "VERB_SGNER_USER_ID": "RAMMELZL",
+      "VERB_SGNER_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "VERB_SIGNED_TIME": "2023-09-28 10:00:00",
+      "VERBAL_MODE_C_NAME": "Per Protocol - Cosign Required",
+      "ORDER_PROV_ID": "144590",
+      "AUTH_PROV_ID": "144590",
+      "IS_HOSPITALIST_YN": "N",
+      "CSGN_CREATE_DTTM": "2023-09-28 14:47:00",
+      "CSGN_RQRD_C_NAME": "Yes",
+      "SIG_REQ_CRT_USER_ID": "MBS403",
+      "SIG_REQ_CRT_USER_ID_NAME": "SMITH, MARY B",
+      "SIG_REQ_CRT_SRC_C_NAME": "Automatically Created",
+      "$meta": {
+        "type": "ORDER_SIGNED_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 763403909,
+      "LINE": 1,
+      "SIGNED_TYPE_C_NAME": "Ordering",
+      "VERBAL_MODE_C_NAME": "Transcribed Order",
+      "ORDER_PROV_ID": "805364",
+      "AUTH_PROV_ID": "805364",
+      "IS_HOSPITALIST_YN": "N",
+      "CSGN_CREATE_DTTM": "2022-02-09 21:26:00",
+      "CSGN_RQRD_C_NAME": "No",
+      "SIG_REQ_CRT_USER_ID": "JLM406",
+      "SIG_REQ_CRT_USER_ID_NAME": "MIRON, JACKI L",
+      "SIG_REQ_CRT_SRC_C_NAME": "Automatically Created",
+      "$meta": {
+        "type": "ORDER_SIGNED_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179267,
+      "LINE": 1,
+      "SIGNED_TYPE_C_NAME": "Ordering",
+      "VERB_COMM_PROV_ID": "508903",
+      "VERB_SGNER_USER_ID": "RAMMELZL",
+      "VERB_SGNER_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "VERB_SIGNED_TIME": "2022-12-22 11:39:00",
+      "VERBAL_MODE_C_NAME": "Per Protocol - Cosign Required",
+      "ORDER_PROV_ID": "144590",
+      "AUTH_PROV_ID": "144590",
+      "IS_HOSPITALIST_YN": "N",
+      "CSGN_CREATE_DTTM": "2022-12-22 17:29:00",
+      "CSGN_RQRD_C_NAME": "Yes",
+      "SIG_REQ_CRT_USER_ID": "KLL403",
+      "SIG_REQ_CRT_USER_ID_NAME": "LOUGH, KAREN L",
+      "SIG_REQ_CRT_SRC_C_NAME": "Automatically Created",
+      "$meta": {
+        "type": "ORDER_SIGNED_PROC"
+      }
+    },
+    {
+      "ORDER_PROC_ID": 772179268,
+      "LINE": 1,
+      "SIGNED_TYPE_C_NAME": "Ordering",
+      "VERB_COMM_PROV_ID": "508903",
+      "VERB_SGNER_USER_ID": "RAMMELZL",
+      "VERB_SGNER_USER_ID_NAME": "RAMMELKAMP, ZOE L",
+      "VERB_SIGNED_TIME": "2022-12-22 11:39:00",
+      "VERBAL_MODE_C_NAME": "Per Protocol - Cosign Required",
+      "ORDER_PROV_ID": "144590",
+      "AUTH_PROV_ID": "144590",
+      "IS_HOSPITALIST_YN": "N",
+      "CSGN_CREATE_DTTM": "2022-12-22 17:29:00",
+      "CSGN_RQRD_C_NAME": "Yes",
+      "SIG_REQ_CRT_USER_ID": "KLL403",
+      "SIG_REQ_CRT_USER_ID_NAME": "LOUGH, KAREN L",
+      "SIG_REQ_CRT_SRC_C_NAME": "Automatically Created",
+      "$meta": {
+        "type": "ORDER_SIGNED_PROC"
+      }
+    }
+  ]
+}

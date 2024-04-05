@@ -1,0 +1,91 @@
+{
+  "name": "RES_NLP_STATUS",
+  "description": "Stores information related to the verification status of NLP generated findings and recommendations.",
+  "primaryKey": [
+    {
+      "columnName": "FINDING_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "FINDING_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the finding record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "NLP_MODEL_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores NLP Models that have run for this record.",
+      "entries": [
+        "AFM Recommendations Model",
+        "AFM Findings Model",
+        "Lung Recommendations Model",
+        "Lung-RADS Model"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "NLP_VERIFYING_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user that verified the NLP generated results."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "NLP_VERIFYING_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RIS_NLP_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The verification status of an NLP Model.",
+      "entries": [
+        "Processing",
+        "Evaluated - No Results",
+        "Results Need Verification",
+        "Results Verified",
+        "Addended - Needs Confirmation",
+        "Error",
+        "Results Verified (Modified)"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "NLP_VERIFIED_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The UTC instant NLP results are verified."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "NLP_MODIFY_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of modification needed to correct NLP results.",
+      "entries": [
+        "Quick Button",
+        "Other"
+      ]
+    }
+  ]
+}

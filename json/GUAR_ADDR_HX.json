@@ -1,0 +1,127 @@
+{
+  "$meta": {
+    "schemas": {
+      "GUAR_ADDR_HX": {
+        "name": "GUAR_ADDR_HX",
+        "description": "This table holds the Accounts Receivable (EAR) related group 5000 pertaining to Guarantor Address Change History.",
+        "primaryKey": [
+          {
+            "columnName": "ACCOUNT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ACCOUNT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the account record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "ADDR_CHANGE_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This column specifies the date on which the address change described on the rest of the row was performed."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "ADDR_HX_1",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column contains the first line of a previous guarantor address."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "CITY_HX",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column contains the city for a previous address for this guarantor."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "STATE_HX_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column contains the state for a previous address for this guarantor."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "ZIP_HX",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column contains the ZIP code for a previous address for this guarantor."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "ADDR_CHANGE_SRC_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column contains the context from which the address change was performed.",
+            "entries": [
+              "Bridges",
+              "EpicCare",
+              "Cadence",
+              "Professional Billing",
+              "ManagedCare",
+              "Chronicles"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "GUAR_ADDR_HX",
+            "target": "ACCOUNT",
+            "joinKeys": [
+              {
+                "source": "ACCOUNT_ID",
+                "target": "ACCOUNT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "GUAR_ADDR_HX": [
+    {
+      "ACCOUNT_ID": 1810018166,
+      "LINE": 1,
+      "ADDR_CHANGE_DATE": "2022-11-14 00:00:00",
+      "ADDR_HX_1": "REDACTED",
+      "CITY_HX": "MADISON",
+      "STATE_HX_C_NAME": "Wisconsin",
+      "ZIP_HX": "REDACTED",
+      "ADDR_CHANGE_SRC_C_NAME": "Chronicles",
+      "$meta": {
+        "type": "GUAR_ADDR_HX"
+      }
+    },
+    {
+      "ACCOUNT_ID": 4793998,
+      "LINE": 1,
+      "ADDR_CHANGE_DATE": "2022-11-14 00:00:00",
+      "ADDR_HX_1": "REDACTED",
+      "CITY_HX": "MADISON",
+      "STATE_HX_C_NAME": "Wisconsin",
+      "ZIP_HX": "REDACTED",
+      "ADDR_CHANGE_SRC_C_NAME": "Chronicles",
+      "$meta": {
+        "type": "GUAR_ADDR_HX"
+      }
+    }
+  ]
+}

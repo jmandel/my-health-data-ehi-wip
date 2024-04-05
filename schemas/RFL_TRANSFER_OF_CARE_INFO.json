@@ -1,0 +1,62 @@
+{
+  "name": "RFL_TRANSFER_OF_CARE_INFO",
+  "description": "Stores information about each Transfer of Care send attempt.",
+  "primaryKey": [
+    {
+      "columnName": "REFERRAL_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "REFERRAL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The referral ID for the referral record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "INSTANT_OF_SEND_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Store the time instant for each Transfer of Care send attempt."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SEND_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Store the status for each Transfer of Care send attempt.",
+      "entries": [
+        "Success",
+        "No patient associated with referral",
+        "No destination specified",
+        "No profile or not configured to send",
+        "Communication generation failed",
+        "Not a transfer of care",
+        "No sending method defined for recipient",
+        "No order encounter associated with referral",
+        "Provider address mismatch",
+        "Provider address inactive",
+        "Patient needs authorization to send",
+        "Patient not participating in Care Everywhere",
+        "Processing communication",
+        "Care Everywhere Referrals not enabled",
+        "Communication failed at destination",
+        "Referral has expired"
+      ]
+    }
+  ]
+}

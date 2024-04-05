@@ -1,0 +1,66 @@
+{
+  "name": "ENROLL_TIMELINE",
+  "description": "The ENROLL_TIMELINE table extracts the patient's assigned protocols, cycle, days, and date ranges. The dates are used to capture the patient's progress through the research protocol.",
+  "primaryKey": [
+    {
+      "columnName": "ENROLL_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ENROLL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the patient enrollment record. This column is frequently used to link to the ENROLL_INFO table.",
+      "linksTo": "ENROLL_INFO"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PROTOCOL_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for protocols linked to this encounter. These numbers are unique across all protocol contacts in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "UNIQ_CYCLE_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column stores the unique cycle number that is generated after applying a protocol to a patient timeline and expanding all of the repeating cycles and days within the protocol. This number can be mapped back to the original protocol source cycle by linking to CL_PRL_DAY_MAP. In order to determine the appropriate contact to use, ENROLL_TIMELINE.PROTOCOL_contact serial number (CSN) should be used to link to CL_PRL_SS_OT.CONTACT_SERIAL_NUM."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "UNIQ_DAY_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This column stores the unique cycle number that is generated after applying a protocol to a patient timeline and expanding all of the repeating cycles and days within the protocol. This number can be mapped back to the original protocol source day by linking to CL_PRL_DAY_MAP. In order to determine the appropriate contact to use, ENROLL_TIMELINE.PROTOCOL_contact serial number (CSN) should be used to link to CL_PRL_SS_OT.CONTACT_SERIAL_NUM."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EXPECT_FROM_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "For the timeline treatment day, this is start of the date range of when the day is expected to take place."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "EXPECT_TO_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "For the timeline treatment day, this is end of the date range of when the day is expected to take place."
+    }
+  ]
+}

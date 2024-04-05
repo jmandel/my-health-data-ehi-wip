@@ -1,0 +1,129 @@
+{
+  "$meta": {
+    "schemas": {
+      "MDL_MD_PRBLM_LIST": {
+        "name": "MDL_MD_PRBLM_LIST",
+        "description": "The MDL_MD_PRBLM_LIST table enables you to report on Medication Problem List information.",
+        "primaryKey": [
+          {
+            "columnName": "MED_PRBLM_LIST_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "MED_PRBLM_LIST_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier (.1 item) for the med problem list record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PATIENT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The Patient ID (EPT) with which this medication problem list (MDL) record is associated."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "MED_ADHER_SCORE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "This item stores the most recently calculated medication adherence score for this simple generic. The adherence score is not updated in real time. If you need to ensure a current score for reporting on a population of patients and certain simple generics, you can use a registry with metric HFP 82099-Medication Adherence Score Data."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "MED_ADHER_CONF_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Our confidence that the dispense data used to calculate the medication adherence score is a comprehensive list of dispenses.",
+            "entries": [
+              "Low",
+              "Moderate",
+              "High"
+            ]
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "MED_ADHER_ACC_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "This item stores the instant that the current score is considered accurate. This is equivalent to the end of the period that we run medication adherence calculation."
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "MED_ADHER_DAYSOWNED",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "This item stores the number of days a patient is supposed to take medications related to this simple generic. This item is accurate to the current medication adherence score."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "MED_ADHER_COVERED",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "This item stores the number of days that are covered by a patient's supply. Equivalently, it means the patient is being adherent on these days. This item is accurate with the current adherence score."
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "MED_ADHER_INST_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "This item stores the calculation instant of the current adherence score."
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "MED_ADHER_STRT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This item sets the start date of the Medication adherence score measurement period"
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "MDL_MD_PRBLM_LIST",
+            "target": "MDL_HISTORY",
+            "joinKeys": [
+              {
+                "source": "MED_PRBLM_LIST_ID",
+                "target": "MED_PRBLM_LIST_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "MDL_MD_PRBLM_LIST": [
+    {
+      "MED_PRBLM_LIST_ID": 73847702,
+      "PATIENT_ID": "Z7004242",
+      "MED_ADHER_SCORE": 72,
+      "MED_ADHER_CONF_C_NAME": "Moderate",
+      "MED_ADHER_ACC_DTTM": "2023-12-20 20:05:56",
+      "MED_ADHER_DAYSOWNED": 180,
+      "MED_ADHER_COVERED": 129,
+      "MED_ADHER_INST_DTTM": "2023-12-22 21:05:32",
+      "MED_ADHER_STRT_DATE": "2023-06-24 00:00:00",
+      "$meta": {
+        "type": "MDL_MD_PRBLM_LIST"
+      }
+    },
+    {
+      "MED_PRBLM_LIST_ID": 71736200,
+      "PATIENT_ID": "Z7004242",
+      "MED_ADHER_SCORE": 54,
+      "MED_ADHER_CONF_C_NAME": "High",
+      "MED_ADHER_ACC_DTTM": "2023-08-19 16:43:01",
+      "MED_ADHER_DAYSOWNED": 180,
+      "MED_ADHER_COVERED": 98,
+      "MED_ADHER_INST_DTTM": "2023-09-28 12:49:46",
+      "MED_ADHER_STRT_DATE": "2023-02-21 00:00:00",
+      "$meta": {
+        "type": "MDL_MD_PRBLM_LIST"
+      }
+    }
+  ]
+}

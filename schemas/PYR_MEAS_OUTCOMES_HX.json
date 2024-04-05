@@ -1,0 +1,73 @@
+{
+  "name": "PYR_MEAS_OUTCOMES_HX",
+  "description": "This table stores the historical payer calculated outcomes for quality measures that are received from payers.",
+  "primaryKey": [
+    {
+      "columnName": "REGISTRY_DATA_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "REGISTRY_DATA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the registry data record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PROPORTION_OF_DAYS_COVERED_HX",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The historical Proportion of Days Covered (PDC)"
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "IS_IMPACTABLE_HX_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if there are enough days left in the measurement year that a fill today could move the patient to meet the adherence threshold.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "IS_FIRST_FILL_HX_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Is this outcome in the First Fill status? This status is where the patient has filled the medication once, but has not filled it a second time. For some measures during this timeframe the patient is not technically in the denominator yet, but once they pick up that second fill they will be."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "INDEX_RX_HX_START_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The prescription start date during the measurement period for a medication adherence measure. This is the start date to use when calculating a Proportion of Days Covered (PDC) value."
+    }
+  ]
+}

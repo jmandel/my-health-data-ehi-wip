@@ -1,0 +1,109 @@
+{
+  "name": "REIMB_CALC_HX",
+  "description": "This table contains a line for each reimbursement calculation related to a transaction.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Unique ID of the transaction."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Dollar amount of the calculated reimbursement. This value is the amount we expect to be reimbursed and cannot exceed the charge amount."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "User ID of the person who performed the reimbursement calculation."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CALC_MODULE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Module that triggered this reimbursement calculation.  The possible values for this column are:   1) CLAIMS: Claims Processing   2) CHG ENTRY: Charge Entry   3) ACCT MAINT: Account Maintenance   4) PMT POST: Payment Posting   5) RECALC UTIL: Reimbursement Recalculation Utility",
+      "entries": [
+        "Claims Processing",
+        "Charge Entry",
+        "Account Maintenance",
+        "Payment Posting",
+        "Reimbursement Recalculation Utility",
+        "Testing/Modeling",
+        "Ad Hoc Reevaluation",
+        "Manual Override"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CALC_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date of the reimbursement calculation."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CALC_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Date and time of the reimbursement calculation."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CONTRACT_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the allowed amount as calculated by the reimbursement contract. This amount can exceed the charge amount."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "REIMB_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores how the reimbursement amount was calculated for the charge.",
+      "entries": [
+        "System Calculated",
+        "Contract Overridden",
+        "Expected Amounts Overridden",
+        "Overridden by Wisdom Estimate"
+      ]
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "COVERAGE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the coverage used to compute reimbursement."
+    }
+  ]
+}

@@ -1,0 +1,1331 @@
+{
+  "$meta": {
+    "schemas": {
+      "ORDER_STATUS": {
+        "name": "ORDER_STATUS",
+        "description": "The ORDER_STATUS table contains overtime single response orders information.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "ORD_DATE_REAL",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Unique ID for this order record"
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "ORD_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "This is a numeric representation of the date of this encounter in your system. The integer portion of the number specifies the date of the encounter. The digits after the decimal point indicate multiple visits on one day."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "CONTACT_NUMBER",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The contact number of the orders record."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "CONTACT_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value for the contact type, such as \"1\" for \"Ordered\" or \"2\" for \"Resulted\"",
+            "entries": [
+              "Ordered",
+              "Resulted",
+              "Canceled",
+              "Verify",
+              "Dispense",
+              "Return",
+              "Administration",
+              "Edited History",
+              "Credit",
+              "Add Refill",
+              "Fill Request",
+              "Prescription Transfer",
+              "Pend Verify",
+              "Waste",
+              "Waste Credit",
+              "Canceled Verify",
+              "Canceled Pend Verify",
+              "Canceled Dispense",
+              "Adjudication",
+              "Hospice Refill",
+              "Charge",
+              "Pend Autoverify Review",
+              "Canceled Return",
+              "Canceled Waste",
+              "Edit Infusion Rate",
+              "Pharmacy Sale",
+              "Dispensing Verify"
+            ]
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "ABNORMAL_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This Y/N flag reports Y if a result component in the order is reported as abnormal or N if the order is normal.",
+            "entries": [
+              "Abnormal",
+              "Normal"
+            ]
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "ORDER_CREATOR_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the person creating the order."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "ORDER_CREATOR_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "RESULTING_LAB_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the lab running the test."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "RESULTING_LAB_ID_LLB_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Interface laboratory name."
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "INSTANT_OF_ENTRY",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The instant the record was last entered."
+          },
+          {
+            "ordinalPosition": 26,
+            "name": "ROUTING_OUTCOME_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value of the outcome of results routing for each resulting contact of order associated with this row.",
+            "entries": [
+              "Result not sent",
+              "Primary notification suppressed, CC list and Care Team evaluated",
+              "Routed using only CC list and additional recipients",
+              "Routed using routing scheme",
+              "Routed using routing scheme and additional recipients",
+              "Routed using results routing rule",
+              "Routed using results routing rule and additional recipients",
+              "Routed using an override provider",
+              "Routed using the authorizing provider",
+              "Routed using the authorizing provider and additional recipients",
+              "Routed using the encounter provider",
+              "Routed using the encounter provider and additional recipients",
+              "Routing failure - routed via batch",
+              "Sent with a different order as part of a grouped result",
+              "Routed as a group with other orders",
+              "Primary notification suppressed, CC list evaluated except Care Team"
+            ]
+          },
+          {
+            "ordinalPosition": 28,
+            "name": "ROUTING_SCHEME_LINE",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The line of the results routing scheme that was executed to determine recipients for this result. If no line was executed, the value of the column will be the string \"DEFAULT\"."
+          },
+          {
+            "ordinalPosition": 29,
+            "name": "ROUTING_INST_TM",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The date and time the order was resulted and routed."
+          },
+          {
+            "ordinalPosition": 30,
+            "name": "ROUTING_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the user the result was routed to for this row."
+          },
+          {
+            "ordinalPosition": 31,
+            "name": "ROUTING_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 34,
+            "name": "ROUTING_CURSTATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item stores the current routing status for a resulting contact.",
+            "entries": [
+              "Result contact created",
+              "Routing started",
+              "Needs Chart Sync",
+              "Synced - Needs routing",
+              "Re-Routing attempted",
+              "Re-routing attempt failed",
+              "Routing Complete"
+            ]
+          },
+          {
+            "ordinalPosition": 36,
+            "name": "LAB_STATUS_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates the lab status value associated with each order contact.",
+            "entries": [
+              "In process",
+              "Preliminary result",
+              "Final result",
+              "Edited",
+              "Edited Result - FINAL"
+            ]
+          },
+          {
+            "ordinalPosition": 45,
+            "name": "RSLT_CNCT_INSTANT_DTTM",
+            "type": "DATETIME (UTC) ",
+            "discontinued": false,
+            "description": "The instant in which a result contact is modified/filed to the system. Not to be confused with Result Date/Time, which is when the result was actually generated."
+          },
+          {
+            "ordinalPosition": 46,
+            "name": "RSLT_CNCT_USER_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The user filing the result contact. For interfaces or Beaker Result Filing background job, this might be a generic user."
+          },
+          {
+            "ordinalPosition": 47,
+            "name": "RSLT_CNCT_USER_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden."
+          },
+          {
+            "ordinalPosition": 48,
+            "name": "RSLT_CNCT_SOURCE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores which entry point modified the result contact.",
+            "entries": [
+              "Unknown",
+              "Enter/Edit Results",
+              "Result Orders Visit Navigator",
+              "Results Console Visit Navigator",
+              "Anticoag Tracker Visit Navigator",
+              "Lab Auto Verification",
+              "Lab Manual Verification",
+              "Study Review",
+              "Procedure Notes",
+              "Begin/End Exam",
+              "Media Manager",
+              "Prior Status",
+              "Update Assessment and Recommendation",
+              "Validation Queue",
+              "Change Procedure",
+              "Change Imaging Study Status",
+              "Track Result",
+              "In Basket",
+              "ED Narrator",
+              "Wet Read",
+              "External Results Entry",
+              "HH Remote Client Lab Result",
+              "Donor Organ Editor",
+              "UNOS Import",
+              "Historical Cervical Cytology",
+              "Automatically Reconciled Lab Result",
+              "Link Health Maintenance",
+              "Dermatology Exam",
+              "Automatically Reconciled Image Result",
+              "Mobile POCT Results Entry",
+              "Document Batch Editor",
+              "Imaging and Procedures",
+              "Interfaces",
+              "Transcription Utility",
+              "3rd Party Result Entry",
+              "Bulk Ordering Utility",
+              "Utilities"
+            ]
+          },
+          {
+            "ordinalPosition": 66,
+            "name": "RESULT_DTTM",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "The date and time the technician ran the tests for each order in calendar format. NOTE: Concatenates the result date (ORD 26) and result time (ORD 28) into a datetime format. If the time value is null, the query will return 12:00 AM for a time."
+          },
+          {
+            "ordinalPosition": 73,
+            "name": "NARRATIVE_PERF_ORG_INFO",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "This item stores the line number of the performing organization related group (ORD 1220) and acts as a pointer to the performing organization information of narrative of the result."
+          },
+          {
+            "ordinalPosition": 74,
+            "name": "IMPRESSION_PERF_ORG_INFO",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "This item stores the line number of the preforming organization related group (ORD 1220) and acts as a pointer to the performing organization information of impression of the result."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "ORDER_STATUS",
+            "target": "OBS_MTHD_ID",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "ORD_DATE_REAL",
+                "target": "CONTACT_DATE_REAL"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_STATUS",
+            "target": "ORDER_DOCUMENTS",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "ORD_DATE_REAL",
+                "target": "CONTACT_DATE_REAL"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_STATUS",
+            "target": "ORDER_IMPRESSION",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              },
+              {
+                "source": "ORD_DATE_REAL",
+                "target": "ORD_DATE_REAL"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_STATUS",
+            "target": "ORDER_NARRATIVE",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              },
+              {
+                "source": "ORD_DATE_REAL",
+                "target": "ORD_DATE_REAL"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_STATUS",
+            "target": "ORDER_READ_ACK",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "ORD_DATE_REAL",
+                "target": "CONTACT_DATE_REAL"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_STATUS",
+            "target": "ORDER_RES_COMMENT",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "ORD_DATE_REAL",
+                "target": "CONTACT_DATE_REAL"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_STATUS",
+            "target": "ORDER_RESULTS",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              },
+              {
+                "source": "ORD_DATE_REAL",
+                "target": "ORD_DATE_REAL"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_STATUS",
+            "target": "ORD_RSLT_COMPON_ID",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "ORD_DATE_REAL",
+                "target": "CONTACT_DATE_REAL"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_STATUS",
+            "target": "ORD_PRFLST_TRK",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ORDER_STATUS": [
+    {
+      "ORDER_ID": 439060613,
+      "ORD_DATE_REAL": 65591,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "CONTACT_NUMBER": 2,
+      "CONTACT_TYPE_C_NAME": "Resulted",
+      "ORDER_CREATOR_ID": "CCT400",
+      "ORDER_CREATOR_ID_NAME": "KALSOW, COURTNEY C",
+      "RESULTING_LAB_ID": 21030,
+      "RESULTING_LAB_ID_LLB_NAME": "MISC REFERENCE LAB",
+      "INSTANT_OF_ENTRY": "2020-07-31 09:17:00",
+      "ROUTING_OUTCOME_C_NAME": "Result not sent",
+      "ROUTING_INST_TM": "2020-07-31 09:19:00",
+      "ROUTING_USER_ID": "CCT400",
+      "ROUTING_USER_ID_NAME": "KALSOW, COURTNEY C",
+      "ROUTING_CURSTATUS_C_NAME": "Routing Complete",
+      "LAB_STATUS_C_NAME": "Final result",
+      "RSLT_CNCT_INSTANT_DTTM": "2020-07-31 14:19:20",
+      "RSLT_CNCT_USER_ID": "CCT400",
+      "RSLT_CNCT_USER_ID_NAME": "KALSOW, COURTNEY C",
+      "RSLT_CNCT_SOURCE_C_NAME": "Enter/Edit Results",
+      "RESULT_DTTM": "2020-07-29 11:34:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 439060613,
+      "ORD_DATE_REAL": 65591.01,
+      "CONTACT_DATE": "2020-07-31 00:00:00",
+      "CONTACT_NUMBER": 3,
+      "CONTACT_TYPE_C_NAME": "Resulted",
+      "ORDER_CREATOR_ID": "CCT400",
+      "ORDER_CREATOR_ID_NAME": "KALSOW, COURTNEY C",
+      "RESULTING_LAB_ID": 21030,
+      "RESULTING_LAB_ID_LLB_NAME": "MISC REFERENCE LAB",
+      "INSTANT_OF_ENTRY": "2020-07-31 09:21:00",
+      "ROUTING_OUTCOME_C_NAME": "Result not sent",
+      "ROUTING_INST_TM": "2020-07-31 09:21:00",
+      "ROUTING_USER_ID": "CCT400",
+      "ROUTING_USER_ID_NAME": "KALSOW, COURTNEY C",
+      "ROUTING_CURSTATUS_C_NAME": "Routing Complete",
+      "LAB_STATUS_C_NAME": "Final result",
+      "RSLT_CNCT_INSTANT_DTTM": "2020-07-31 14:21:13",
+      "RSLT_CNCT_USER_ID": "CCT400",
+      "RSLT_CNCT_USER_ID_NAME": "KALSOW, COURTNEY C",
+      "RSLT_CNCT_SOURCE_C_NAME": "Media Manager",
+      "RESULT_DTTM": "2020-07-29 11:34:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 439060607,
+      "ORD_DATE_REAL": 64878,
+      "CONTACT_DATE": "2018-08-18 00:00:00",
+      "CONTACT_NUMBER": 2,
+      "CONTACT_TYPE_C_NAME": "Resulted",
+      "ORDER_CREATOR_ID": "EDILABIM",
+      "ORDER_CREATOR_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2018-08-18 09:47:00",
+      "ROUTING_OUTCOME_C_NAME": "Result not sent",
+      "ROUTING_INST_TM": "2018-08-18 09:47:00",
+      "ROUTING_USER_ID": "EDILABIM",
+      "ROUTING_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "ROUTING_CURSTATUS_C_NAME": "Routing Complete",
+      "LAB_STATUS_C_NAME": "In process",
+      "RSLT_CNCT_INSTANT_DTTM": "2018-08-18 14:47:04",
+      "RSLT_CNCT_USER_ID": "EDILABIM",
+      "RSLT_CNCT_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RSLT_CNCT_SOURCE_C_NAME": "Interfaces",
+      "RESULT_DTTM": "2018-08-18 09:47:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 945468372,
+      "ORD_DATE_REAL": 66745,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "CONTACT_NUMBER": 2,
+      "CONTACT_TYPE_C_NAME": "Resulted",
+      "ORDER_CREATOR_ID": "EDILABIM",
+      "ORDER_CREATOR_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2023-09-28 10:18:00",
+      "ROUTING_OUTCOME_C_NAME": "Result not sent",
+      "ROUTING_INST_TM": "2023-09-28 10:18:00",
+      "ROUTING_USER_ID": "EDILABIM",
+      "ROUTING_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "ROUTING_CURSTATUS_C_NAME": "Routing Complete",
+      "LAB_STATUS_C_NAME": "In process",
+      "RSLT_CNCT_INSTANT_DTTM": "2023-09-28 15:18:10",
+      "RSLT_CNCT_USER_ID": "EDILABIM",
+      "RSLT_CNCT_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RSLT_CNCT_SOURCE_C_NAME": "Interfaces",
+      "RESULT_DTTM": "2023-09-28 10:17:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 772179262,
+      "ORD_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "CONTACT_NUMBER": 2,
+      "CONTACT_TYPE_C_NAME": "Resulted",
+      "ORDER_CREATOR_ID": "EDILABIM",
+      "ORDER_CREATOR_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2022-08-29 14:37:00",
+      "ROUTING_OUTCOME_C_NAME": "Result not sent",
+      "ROUTING_INST_TM": "2022-08-29 14:37:00",
+      "ROUTING_USER_ID": "EDILABIM",
+      "ROUTING_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "ROUTING_CURSTATUS_C_NAME": "Routing Complete",
+      "LAB_STATUS_C_NAME": "In process",
+      "RSLT_CNCT_INSTANT_DTTM": "2022-08-29 19:37:47",
+      "RSLT_CNCT_USER_ID": "EDILABIM",
+      "RSLT_CNCT_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RSLT_CNCT_SOURCE_C_NAME": "Interfaces",
+      "RESULT_DTTM": "2022-08-29 14:37:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 945468371,
+      "ORD_DATE_REAL": 66745,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "CONTACT_NUMBER": 2,
+      "CONTACT_TYPE_C_NAME": "Resulted",
+      "ORDER_CREATOR_ID": "EDILABIM",
+      "ORDER_CREATOR_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2023-09-28 10:18:00",
+      "ROUTING_OUTCOME_C_NAME": "Result not sent",
+      "ROUTING_INST_TM": "2023-09-28 10:18:00",
+      "ROUTING_USER_ID": "EDILABIM",
+      "ROUTING_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "ROUTING_CURSTATUS_C_NAME": "Routing Complete",
+      "LAB_STATUS_C_NAME": "In process",
+      "RSLT_CNCT_INSTANT_DTTM": "2023-09-28 15:18:10",
+      "RSLT_CNCT_USER_ID": "EDILABIM",
+      "RSLT_CNCT_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RSLT_CNCT_SOURCE_C_NAME": "Interfaces",
+      "RESULT_DTTM": "2023-09-28 10:17:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 763403909,
+      "ORD_DATE_REAL": 66147,
+      "CONTACT_DATE": "2022-02-07 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "JLM406",
+      "ORDER_CREATOR_ID_NAME": "MIRON, JACKI L",
+      "INSTANT_OF_ENTRY": "2022-02-09 15:26:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 945468367,
+      "ORD_DATE_REAL": 66743,
+      "CONTACT_DATE": "2023-09-26 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "MBS403",
+      "ORDER_CREATOR_ID_NAME": "SMITH, MARY B",
+      "INSTANT_OF_ENTRY": "2023-09-28 09:46:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 772179259,
+      "ORD_DATE_REAL": 66177,
+      "CONTACT_DATE": "2022-03-09 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "1",
+      "ORDER_CREATOR_ID_NAME": "EPIC, USER",
+      "INSTANT_OF_ENTRY": "2022-03-11 02:01:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 439060614,
+      "ORD_DATE_REAL": 64867,
+      "CONTACT_DATE": "2018-08-07 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "1",
+      "ORDER_CREATOR_ID_NAME": "EPIC, USER",
+      "INSTANT_OF_ENTRY": "2018-08-09 10:13:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 439060608,
+      "ORD_DATE_REAL": 64867,
+      "CONTACT_DATE": "2018-08-07 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "DHILLOPS",
+      "ORDER_CREATOR_ID_NAME": "DHILLON, PUNEET S",
+      "INSTANT_OF_ENTRY": "2018-08-09 10:13:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 772179266,
+      "ORD_DATE_REAL": 66177,
+      "CONTACT_DATE": "2022-03-09 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "RAMMELZL",
+      "ORDER_CREATOR_ID_NAME": "RAMMELKAMP, ZOE L",
+      "INSTANT_OF_ENTRY": "2022-03-11 02:01:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 772179265,
+      "ORD_DATE_REAL": 66177,
+      "CONTACT_DATE": "2022-03-09 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "RAMMELZL",
+      "ORDER_CREATOR_ID_NAME": "RAMMELKAMP, ZOE L",
+      "INSTANT_OF_ENTRY": "2022-03-11 02:01:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 772179261,
+      "ORD_DATE_REAL": 66177,
+      "CONTACT_DATE": "2022-03-09 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "RAMMELZL",
+      "ORDER_CREATOR_ID_NAME": "RAMMELKAMP, ZOE L",
+      "INSTANT_OF_ENTRY": "2022-03-11 02:01:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 945468373,
+      "ORD_DATE_REAL": 66743,
+      "CONTACT_DATE": "2023-09-26 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "RAMMELZL",
+      "ORDER_CREATOR_ID_NAME": "RAMMELKAMP, ZOE L",
+      "INSTANT_OF_ENTRY": "2023-09-28 09:46:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 772179269,
+      "ORD_DATE_REAL": 66177,
+      "CONTACT_DATE": "2022-03-09 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "RAMMELZL",
+      "ORDER_CREATOR_ID_NAME": "RAMMELKAMP, ZOE L",
+      "INSTANT_OF_ENTRY": "2022-03-11 02:01:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 772179267,
+      "ORD_DATE_REAL": 66177,
+      "CONTACT_DATE": "2022-03-09 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "KLL403",
+      "ORDER_CREATOR_ID_NAME": "LOUGH, KAREN L",
+      "INSTANT_OF_ENTRY": "2022-03-11 02:01:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 439060607,
+      "ORD_DATE_REAL": 64867,
+      "CONTACT_DATE": "2018-08-07 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "MSW400",
+      "ORDER_CREATOR_ID_NAME": "WATKINS, MICHELLE S",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2018-08-09 10:13:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 439060606,
+      "ORD_DATE_REAL": 64867,
+      "CONTACT_DATE": "2018-08-07 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "CORNELVX",
+      "ORDER_CREATOR_ID_NAME": "CORNELL, VIRA D",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2018-08-09 10:13:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 945468371,
+      "ORD_DATE_REAL": 66743,
+      "CONTACT_DATE": "2023-09-26 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "BRECHTSL1",
+      "ORDER_CREATOR_ID_NAME": "BRECHT, SAMANTHA L",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2023-09-28 09:46:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 945468370,
+      "ORD_DATE_REAL": 66743,
+      "CONTACT_DATE": "2023-09-26 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "BRECHTSL1",
+      "ORDER_CREATOR_ID_NAME": "BRECHT, SAMANTHA L",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2023-09-28 09:46:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 439060614,
+      "ORD_DATE_REAL": 65643,
+      "CONTACT_DATE": "2020-09-21 00:00:00",
+      "CONTACT_NUMBER": 2,
+      "CONTACT_TYPE_C_NAME": "Resulted",
+      "ABNORMAL_YN": "N",
+      "ORDER_CREATOR_ID": "1",
+      "ORDER_CREATOR_ID_NAME": "EPIC, USER",
+      "INSTANT_OF_ENTRY": "2020-09-21 09:50:00",
+      "ROUTING_OUTCOME_C_NAME": "Result not sent",
+      "ROUTING_INST_TM": "2020-09-21 09:50:00",
+      "ROUTING_USER_ID": "1",
+      "ROUTING_USER_ID_NAME": "EPIC, USER",
+      "ROUTING_CURSTATUS_C_NAME": "Routing Complete",
+      "LAB_STATUS_C_NAME": "Final result",
+      "RSLT_CNCT_INSTANT_DTTM": "2020-09-21 14:50:21",
+      "RSLT_CNCT_USER_ID": "1",
+      "RSLT_CNCT_USER_ID_NAME": "EPIC, USER",
+      "RSLT_CNCT_SOURCE_C_NAME": "Automatically Reconciled Lab Result",
+      "RESULT_DTTM": "2020-09-17 12:19:00",
+      "NARRATIVE_PERF_ORG_INFO": 1,
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 439060606,
+      "ORD_DATE_REAL": 64869,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "CONTACT_NUMBER": 2,
+      "CONTACT_TYPE_C_NAME": "Resulted",
+      "ORDER_CREATOR_ID": "EDILABIM",
+      "ORDER_CREATOR_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2018-08-09 10:22:00",
+      "ROUTING_OUTCOME_C_NAME": "Result not sent",
+      "ROUTING_INST_TM": "2018-08-09 10:22:00",
+      "ROUTING_USER_ID": "EDILABIM",
+      "ROUTING_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "ROUTING_CURSTATUS_C_NAME": "Routing Complete",
+      "LAB_STATUS_C_NAME": "In process",
+      "RSLT_CNCT_INSTANT_DTTM": "2018-08-09 15:22:35",
+      "RSLT_CNCT_USER_ID": "EDILABIM",
+      "RSLT_CNCT_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RSLT_CNCT_SOURCE_C_NAME": "Interfaces",
+      "RESULT_DTTM": "2018-08-09 10:22:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 945468370,
+      "ORD_DATE_REAL": 66745,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "CONTACT_NUMBER": 2,
+      "CONTACT_TYPE_C_NAME": "Resulted",
+      "ORDER_CREATOR_ID": "EDILABIM",
+      "ORDER_CREATOR_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2023-09-28 10:18:00",
+      "ROUTING_OUTCOME_C_NAME": "Result not sent",
+      "ROUTING_INST_TM": "2023-09-28 10:18:00",
+      "ROUTING_USER_ID": "EDILABIM",
+      "ROUTING_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "ROUTING_CURSTATUS_C_NAME": "Routing Complete",
+      "LAB_STATUS_C_NAME": "In process",
+      "RSLT_CNCT_INSTANT_DTTM": "2023-09-28 15:18:10",
+      "RSLT_CNCT_USER_ID": "EDILABIM",
+      "RSLT_CNCT_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RSLT_CNCT_SOURCE_C_NAME": "Interfaces",
+      "RESULT_DTTM": "2023-09-28 10:17:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 945468372,
+      "ORD_DATE_REAL": 66743,
+      "CONTACT_DATE": "2023-09-26 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "BRECHTSL1",
+      "ORDER_CREATOR_ID_NAME": "BRECHT, SAMANTHA L",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2023-09-28 09:46:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 439060607,
+      "ORD_DATE_REAL": 64878.01,
+      "CONTACT_DATE": "2018-08-18 00:00:00",
+      "CONTACT_NUMBER": 3,
+      "CONTACT_TYPE_C_NAME": "Resulted",
+      "ORDER_CREATOR_ID": "EDILABIM",
+      "ORDER_CREATOR_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2018-08-18 14:25:00",
+      "ROUTING_OUTCOME_C_NAME": "Routed using routing scheme",
+      "ROUTING_SCHEME_LINE": "Default",
+      "ROUTING_INST_TM": "2018-08-18 14:25:00",
+      "ROUTING_USER_ID": "EDILABIM",
+      "ROUTING_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "ROUTING_CURSTATUS_C_NAME": "Routing Complete",
+      "LAB_STATUS_C_NAME": "Final result",
+      "RSLT_CNCT_INSTANT_DTTM": "2018-08-18 19:25:33",
+      "RSLT_CNCT_USER_ID": "EDILABIM",
+      "RSLT_CNCT_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RSLT_CNCT_SOURCE_C_NAME": "Interfaces",
+      "RESULT_DTTM": "2018-08-18 14:25:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 439060604,
+      "ORD_DATE_REAL": 64867,
+      "CONTACT_DATE": "2018-08-07 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "DHILLOPS",
+      "ORDER_CREATOR_ID_NAME": "DHILLON, PUNEET S",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2018-08-09 10:13:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 439060605,
+      "ORD_DATE_REAL": 64867,
+      "CONTACT_DATE": "2018-08-07 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "DHILLOPS",
+      "ORDER_CREATOR_ID_NAME": "DHILLON, PUNEET S",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2018-08-09 10:13:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 945468372,
+      "ORD_DATE_REAL": 66745.01,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "CONTACT_NUMBER": 3,
+      "CONTACT_TYPE_C_NAME": "Resulted",
+      "ORDER_CREATOR_ID": "EDILABIM",
+      "ORDER_CREATOR_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2023-09-28 16:09:00",
+      "ROUTING_OUTCOME_C_NAME": "Routed using routing scheme",
+      "ROUTING_SCHEME_LINE": "Default",
+      "ROUTING_INST_TM": "2023-09-28 16:09:00",
+      "ROUTING_USER_ID": "EDILABIM",
+      "ROUTING_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "ROUTING_CURSTATUS_C_NAME": "Routing Complete",
+      "LAB_STATUS_C_NAME": "Final result",
+      "RSLT_CNCT_INSTANT_DTTM": "2023-09-28 21:09:25",
+      "RSLT_CNCT_USER_ID": "EDILABIM",
+      "RSLT_CNCT_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RSLT_CNCT_SOURCE_C_NAME": "Interfaces",
+      "RESULT_DTTM": "2023-09-28 16:09:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 945468369,
+      "ORD_DATE_REAL": 66743,
+      "CONTACT_DATE": "2023-09-26 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "RAMMELZL",
+      "ORDER_CREATOR_ID_NAME": "RAMMELKAMP, ZOE L",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2023-09-28 09:46:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 772179260,
+      "ORD_DATE_REAL": 66177,
+      "CONTACT_DATE": "2022-03-09 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "RAMMELZL",
+      "ORDER_CREATOR_ID_NAME": "RAMMELKAMP, ZOE L",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2022-03-11 02:01:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 772179263,
+      "ORD_DATE_REAL": 66177,
+      "CONTACT_DATE": "2022-03-09 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "RAMMELZL",
+      "ORDER_CREATOR_ID_NAME": "RAMMELKAMP, ZOE L",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2022-03-11 02:01:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 945468368,
+      "ORD_DATE_REAL": 66743,
+      "CONTACT_DATE": "2023-09-26 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "RAMMELZL",
+      "ORDER_CREATOR_ID_NAME": "RAMMELKAMP, ZOE L",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2023-09-28 09:46:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 439060613,
+      "ORD_DATE_REAL": 64867,
+      "CONTACT_DATE": "2018-08-07 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "CCT400",
+      "ORDER_CREATOR_ID_NAME": "KALSOW, COURTNEY C",
+      "RESULTING_LAB_ID": 347,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MHM MERITER HOSPITAL  RADIANT RAD",
+      "INSTANT_OF_ENTRY": "2018-08-09 10:13:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 439060612,
+      "ORD_DATE_REAL": 64867,
+      "CONTACT_DATE": "2018-08-07 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "PICONEMA",
+      "ORDER_CREATOR_ID_NAME": "PICONE, MARY A",
+      "RESULTING_LAB_ID": 347,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MHM MERITER HOSPITAL  RADIANT RAD",
+      "INSTANT_OF_ENTRY": "2018-08-09 10:13:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 439060609,
+      "ORD_DATE_REAL": 64867,
+      "CONTACT_DATE": "2018-08-07 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "PICONEMA",
+      "ORDER_CREATOR_ID_NAME": "PICONE, MARY A",
+      "RESULTING_LAB_ID": 347,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MHM MERITER HOSPITAL  RADIANT RAD",
+      "INSTANT_OF_ENTRY": "2018-08-09 10:13:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 439060610,
+      "ORD_DATE_REAL": 64867,
+      "CONTACT_DATE": "2018-08-07 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "PICONEMA",
+      "ORDER_CREATOR_ID_NAME": "PICONE, MARY A",
+      "RESULTING_LAB_ID": 347,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MHM MERITER HOSPITAL  RADIANT RAD",
+      "INSTANT_OF_ENTRY": "2018-08-09 10:13:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 772179268,
+      "ORD_DATE_REAL": 66177,
+      "CONTACT_DATE": "2022-03-09 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "KLL403",
+      "ORDER_CREATOR_ID_NAME": "LOUGH, KAREN L",
+      "INSTANT_OF_ENTRY": "2022-03-11 02:01:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 772179263,
+      "ORD_DATE_REAL": 66745,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "CONTACT_NUMBER": 2,
+      "CONTACT_TYPE_C_NAME": "Canceled",
+      "INSTANT_OF_ENTRY": "2023-09-28 10:02:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 439060609,
+      "ORD_DATE_REAL": 65576,
+      "CONTACT_DATE": "2020-07-16 00:00:00",
+      "CONTACT_NUMBER": 2,
+      "CONTACT_TYPE_C_NAME": "Canceled",
+      "INSTANT_OF_ENTRY": "2020-07-16 12:14:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 439060610,
+      "ORD_DATE_REAL": 65605,
+      "CONTACT_DATE": "2020-08-14 00:00:00",
+      "CONTACT_NUMBER": 2,
+      "CONTACT_TYPE_C_NAME": "Canceled",
+      "INSTANT_OF_ENTRY": "2020-08-14 10:44:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 772179259,
+      "ORD_DATE_REAL": 66179,
+      "CONTACT_DATE": "2022-03-11 00:00:00",
+      "CONTACT_NUMBER": 2,
+      "CONTACT_TYPE_C_NAME": "Resulted",
+      "ORDER_CREATOR_ID": "1",
+      "ORDER_CREATOR_ID_NAME": "EPIC, USER",
+      "INSTANT_OF_ENTRY": "2022-03-11 08:12:00",
+      "ROUTING_OUTCOME_C_NAME": "Result not sent",
+      "ROUTING_INST_TM": "2022-03-11 08:12:00",
+      "ROUTING_USER_ID": "1",
+      "ROUTING_USER_ID_NAME": "EPIC, USER",
+      "ROUTING_CURSTATUS_C_NAME": "Routing Complete",
+      "LAB_STATUS_C_NAME": "Final result",
+      "RSLT_CNCT_INSTANT_DTTM": "2022-03-11 14:12:54",
+      "RSLT_CNCT_USER_ID": "1",
+      "RSLT_CNCT_USER_ID_NAME": "EPIC, USER",
+      "RSLT_CNCT_SOURCE_C_NAME": "Automatically Reconciled Image Result",
+      "RESULT_DTTM": "2019-02-08 20:16:00",
+      "NARRATIVE_PERF_ORG_INFO": 1,
+      "IMPRESSION_PERF_ORG_INFO": 1,
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 772179264,
+      "ORD_DATE_REAL": 66177,
+      "CONTACT_DATE": "2022-03-09 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "RAMMELZL",
+      "ORDER_CREATOR_ID_NAME": "RAMMELKAMP, ZOE L",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2022-03-11 02:01:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 772179262,
+      "ORD_DATE_REAL": 66350.01,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "CONTACT_NUMBER": 3,
+      "CONTACT_TYPE_C_NAME": "Resulted",
+      "ABNORMAL_YN": "Y",
+      "ORDER_CREATOR_ID": "EDILABIM",
+      "ORDER_CREATOR_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2022-08-29 15:42:00",
+      "ROUTING_OUTCOME_C_NAME": "Routed using routing scheme",
+      "ROUTING_SCHEME_LINE": "Default",
+      "ROUTING_INST_TM": "2022-08-29 15:42:00",
+      "ROUTING_USER_ID": "EDILABIM",
+      "ROUTING_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "ROUTING_CURSTATUS_C_NAME": "Routing Complete",
+      "LAB_STATUS_C_NAME": "Final result",
+      "RSLT_CNCT_INSTANT_DTTM": "2022-08-29 20:42:02",
+      "RSLT_CNCT_USER_ID": "EDILABIM",
+      "RSLT_CNCT_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RSLT_CNCT_SOURCE_C_NAME": "Interfaces",
+      "RESULT_DTTM": "2022-08-29 15:41:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 772179262,
+      "ORD_DATE_REAL": 66177,
+      "CONTACT_DATE": "2022-03-09 00:00:00",
+      "CONTACT_NUMBER": 1,
+      "CONTACT_TYPE_C_NAME": "Ordered",
+      "ORDER_CREATOR_ID": "PHATSX",
+      "ORDER_CREATOR_ID_NAME": "PHAT, SOPHAN",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2022-03-11 02:01:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 772179259,
+      "ORD_DATE_REAL": 66350,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "CONTACT_NUMBER": 3,
+      "CONTACT_TYPE_C_NAME": "Resulted",
+      "ORDER_CREATOR_ID": "1",
+      "ORDER_CREATOR_ID_NAME": "EPIC, USER",
+      "INSTANT_OF_ENTRY": "2022-08-29 13:23:00",
+      "ROUTING_OUTCOME_C_NAME": "Result not sent",
+      "ROUTING_INST_TM": "2022-08-29 13:23:00",
+      "ROUTING_USER_ID": "1",
+      "ROUTING_USER_ID_NAME": "EPIC, USER",
+      "ROUTING_CURSTATUS_C_NAME": "Routing Complete",
+      "LAB_STATUS_C_NAME": "Edited Result - FINAL",
+      "RSLT_CNCT_INSTANT_DTTM": "2022-08-29 18:23:17",
+      "RSLT_CNCT_USER_ID": "1",
+      "RSLT_CNCT_USER_ID_NAME": "EPIC, USER",
+      "RSLT_CNCT_SOURCE_C_NAME": "Automatically Reconciled Image Result",
+      "RESULT_DTTM": "2019-02-08 20:16:00",
+      "NARRATIVE_PERF_ORG_INFO": 1,
+      "IMPRESSION_PERF_ORG_INFO": 1,
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 945468371,
+      "ORD_DATE_REAL": 66745.01,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "CONTACT_NUMBER": 3,
+      "CONTACT_TYPE_C_NAME": "Resulted",
+      "ORDER_CREATOR_ID": "EDILABIM",
+      "ORDER_CREATOR_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2023-09-28 11:19:00",
+      "ROUTING_OUTCOME_C_NAME": "Routed using routing scheme",
+      "ROUTING_SCHEME_LINE": "Default",
+      "ROUTING_INST_TM": "2023-09-28 11:19:00",
+      "ROUTING_USER_ID": "EDILABIM",
+      "ROUTING_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "ROUTING_CURSTATUS_C_NAME": "Routing Complete",
+      "LAB_STATUS_C_NAME": "Final result",
+      "RSLT_CNCT_INSTANT_DTTM": "2023-09-28 16:19:26",
+      "RSLT_CNCT_USER_ID": "EDILABIM",
+      "RSLT_CNCT_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RSLT_CNCT_SOURCE_C_NAME": "Interfaces",
+      "RESULT_DTTM": "2023-09-28 11:18:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 439060606,
+      "ORD_DATE_REAL": 64869.01,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "CONTACT_NUMBER": 3,
+      "CONTACT_TYPE_C_NAME": "Resulted",
+      "ORDER_CREATOR_ID": "EDILABIM",
+      "ORDER_CREATOR_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2018-08-09 11:59:00",
+      "ROUTING_OUTCOME_C_NAME": "Routed using routing scheme",
+      "ROUTING_SCHEME_LINE": "Default",
+      "ROUTING_INST_TM": "2018-08-09 11:59:00",
+      "ROUTING_USER_ID": "EDILABIM",
+      "ROUTING_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "ROUTING_CURSTATUS_C_NAME": "Routing Complete",
+      "LAB_STATUS_C_NAME": "Final result",
+      "RSLT_CNCT_INSTANT_DTTM": "2018-08-09 16:59:09",
+      "RSLT_CNCT_USER_ID": "EDILABIM",
+      "RSLT_CNCT_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RSLT_CNCT_SOURCE_C_NAME": "Interfaces",
+      "RESULT_DTTM": "2018-08-09 11:59:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    },
+    {
+      "ORDER_ID": 945468370,
+      "ORD_DATE_REAL": 66745.01,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "CONTACT_NUMBER": 3,
+      "CONTACT_TYPE_C_NAME": "Resulted",
+      "ORDER_CREATOR_ID": "EDILABIM",
+      "ORDER_CREATOR_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RESULTING_LAB_ID": 359,
+      "RESULTING_LAB_ID_LLB_NAME": "UPH MADISON MERITER SUNQUEST LAB",
+      "INSTANT_OF_ENTRY": "2023-09-28 10:47:00",
+      "ROUTING_OUTCOME_C_NAME": "Routed using routing scheme",
+      "ROUTING_SCHEME_LINE": "Default",
+      "ROUTING_INST_TM": "2023-09-28 10:47:00",
+      "ROUTING_USER_ID": "EDILABIM",
+      "ROUTING_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "ROUTING_CURSTATUS_C_NAME": "Routing Complete",
+      "LAB_STATUS_C_NAME": "Final result",
+      "RSLT_CNCT_INSTANT_DTTM": "2023-09-28 15:47:49",
+      "RSLT_CNCT_USER_ID": "EDILABIM",
+      "RSLT_CNCT_USER_ID_NAME": "EDI, LAB IN SUNQUEST",
+      "RSLT_CNCT_SOURCE_C_NAME": "Interfaces",
+      "RESULT_DTTM": "2023-09-28 10:47:00",
+      "$meta": {
+        "type": "ORDER_STATUS"
+      }
+    }
+  ]
+}

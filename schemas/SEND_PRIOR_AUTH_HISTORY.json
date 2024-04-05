@@ -1,0 +1,76 @@
+{
+  "name": "SEND_PRIOR_AUTH_HISTORY",
+  "description": "This table tracks the history of values for the the send medication prior authorization request flag, ORD 22101.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SEND_PA_REQ_HX_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is used to track the history of different values for ORD 22101-Send Med Prior Authorization Request. This item holds the value that ORD 22101 was set to.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PA_HX_CHANGE_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is used to track the history of different values for ORD 22101-Send Med Prior Authorization Request. This item holds what caused the value of ORD 22101 to change.",
+      "entries": [
+        "User",
+        "Formulary",
+        "RTPB",
+        "Approved PA On File",
+        "Pending PA On File"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PA_HX_CHANGE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "This item is used to track the history of different values for ORD 22101-Send Med Prior Authorization Request. This item holds when the value of ORD 22101 changed."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "PA_HX_CHNG_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item is used to track the history of different values for ORD 22101-Send Med Prior Authorization Request. This item holds which user changed the value of ORD 22101."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "PA_HX_CHNG_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    }
+  ]
+}

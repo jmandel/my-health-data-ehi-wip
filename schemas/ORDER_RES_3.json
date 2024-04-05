@@ -1,0 +1,88 @@
+{
+  "name": "ORDER_RES_3",
+  "description": "The ORDER_RES_3 table contains result finding information for an order. Result findings include mammography pathology results, cardiovascular palette findings, and other result findings.",
+  "primaryKey": [
+    {
+      "columnName": "FINDING_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "FINDING_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the finding record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LUNG_SEC_HIST_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Determines the type of cancer that was found in the secondary cell type of the tissue sample.",
+      "entries": [
+        "Non-small cell cancer",
+        "Small cell lung cancer",
+        "Carcinoid",
+        "Atypical carcinoid",
+        "Other",
+        "Unknown"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LUNG_SEC_NONSMALL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If secondary histology is \"Non Small Cell Lung Cancer\", then this item specifies the type of the cancer.",
+      "entries": [
+        "Invasive adenocarcinoma",
+        "Squamous cell carcinoma",
+        "Adenosquamous cell carcinoma",
+        "Large cell carcinoma",
+        "Undifferentiated carcinoma",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "LUNG_SEC_NS_COMM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If Secondary histology - Non-Small Cell Lung Cancer is Other, Specify, then this item holds a free text description of the cancer."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "FIRST_DOCUMENTED_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The date and time when this lesion was first documented."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "FOLLOWUP_CUR_RESP_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the provider who was documented as currently being responsible for following up on this screening program recommendation."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "FINDING_HIDDEN_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether a finding in the image documentation section in study review for a breast imaging study is hidden. 'Y' indicates that a finding has been hidden. 'N' or NULL indicate that a finding has not been hidden.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "FINDING_SUP_MOPS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether a finding in the image documentation section in study review for a MOPS breast imaging study is suppressed. 'Y' indicates that a finding has been suppressed. 'N' or NULL indicate that a finding has not been suppressed."
+    }
+  ]
+}

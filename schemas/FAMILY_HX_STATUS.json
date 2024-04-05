@@ -1,0 +1,260 @@
+{
+  "name": "FAMILY_HX_STATUS",
+  "description": "Family status relationship table.  Contains the relationship to the patient and the name of the family member, as well as the source of this information.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "FAM_STAT_REL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The family status relationship category number for the relationship between the patient and their family member."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "FAM_STAT_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The family status category number for the family member, such as 1 for \"alive\" and 2 for \"deceased\".",
+      "entries": [
+        "Other",
+        "Alive",
+        "Deceased",
+        "Unknown",
+        "Fetus - In Utero",
+        "Fetus - Stillbirth",
+        "Fetus - Ectopic Pregnancy",
+        "Fetus - Termination of Pregnancy",
+        "Fetus - Spontaneous Abortion",
+        "Fetus - Other",
+        "Fetus - Molar",
+        "Fetus - Abortion"
+      ]
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "FAM_STAT_DEATH_AGE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Age of family member at their death."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "FAM_STAT_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the free text comments associated with a patient's family member status in medical history."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "FAM_STAT_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of family member."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "FAM_STAT_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The family status source category number for the source of corresponding family status information.",
+      "entries": [
+        "Provider",
+        "Patient",
+        "Parent",
+        "Legal Guardian",
+        "Proxy User"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "HX_LNK_ENC_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Contact Serial Number of the encounter in which the history was created/edited. If the history was created/edited outside of the context of an encounter, then this column will be blank."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "FAM_STAT_DOB_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This is used to calculate the age of a relative. This is either the date of birth (approximate or exact) or part of a range. If it is a range, then this column will be the beginning date and FAM_STAT_DOB_END_DT will store the end date. This range of dates is used to define an age range."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "FAM_STAT_ID",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The Unique ID for the family member."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "FAM_STAT_FATHER_ID",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Unique ID for the Father"
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "FAM_STAT_MOTHER_ID",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Unique ID for the mother."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "FAM_STAT_DOB_END_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "If an age range is entered for a family member, then the range is stored as two dates. This column holds the end date and FAM_STAT_DOB_DT holds the beginning date."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "FAM_STAT_TWIN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item tracks twin relationships among members of the patient's family.  Two family members who are twins (or three who are triplets, etc.) will have the same value on their lines of this item.  A value of 0 indicates that the family member is a twin of the patient."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "FAM_STAT_IDENT_TWIN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item tracks identical twin relationships among members of the patient's family.  Two family members who are identical twins (or three who are identical triplets, etc.) will have the same value on their lines of this item.  A value of 0 indicates that the family member is an identical twin of the patient."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "FAM_STAT_COD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The cause of death of a family member of the patient."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "FAM_STAT_SEX_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the sex of a family member of the patient.",
+      "entries": [
+        "Female",
+        "Male",
+        "Unknown",
+        "Unassigned"
+      ]
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "FAM_STAT_GENDER_IDENTITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Gender identity for a family member.",
+      "entries": [
+        "Female",
+        "Male",
+        "Transgender Female",
+        "Transgender Male",
+        "Other",
+        "Choose not to disclose",
+        "Nonbinary",
+        "Genderqueer"
+      ]
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "FAM_STAT_REL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the unique ID of the patient relationship record. The patient relationship record contains information about how the person is related to the patient."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "FAM_STAT_ADOPT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Adoption status of a particular family member.",
+      "entries": [
+        "Adopted In",
+        "Adopted Out",
+        "Adopted"
+      ]
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "FAM_STAT_ADPT_PAR_1",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The ID of a relative's adoptive parent. We allow two adoptive parents. The other adoptive parent ID is stored in I EPT 20359."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "FAM_STAT_ADPT_PAR_2",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The ID of a relative's adoptive parent. We allow two adoptive parents. The other adoptive parent ID is stored in I EPT 20358."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "FAM_STAT_PREG_EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores a link to the patient's pregnancy information in Obstetric history."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "FAM_STAT_DELIV_EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores a link to the patient's delivery information for Obstetric History."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "FAM_HX_FERT_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This field contains the category value representing a patient's relative's fertility status.",
+      "entries": [
+        "Fertile",
+        "No Children By Choice",
+        "Infertile",
+        "Unknown"
+      ]
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "FAM_HX_FERT_NOTE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This field is a free text item holding notes pertaining to a particular relative's fertility status."
+    }
+  ]
+}

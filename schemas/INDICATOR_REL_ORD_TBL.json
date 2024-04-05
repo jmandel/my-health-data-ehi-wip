@@ -1,0 +1,48 @@
+{
+  "name": "INDICATOR_REL_ORD_TBL",
+  "description": "Contains the related results for patient genomic indicators in a related multiple table making it possible to determine which orders have which components, values, and variants.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_INDICATOR_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_INDICATOR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the pt indicators record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "ORDER_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "If lab results or genomic variants triggered this patient genomic indicator to be added, the order ID of the lab results or variants causing this PGI to be added is stored in this item."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_GENOMICS_IND_SRC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If the order in the ORDER_PROC_ID column was added manually or by the translation engine.",
+      "entries": [
+        "Manual Entry",
+        "Translation Engine"
+      ]
+    }
+  ]
+}

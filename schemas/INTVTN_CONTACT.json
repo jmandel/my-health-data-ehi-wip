@@ -1,0 +1,165 @@
+{
+  "name": "INTVTN_CONTACT",
+  "description": "The INTVTN_CONTACT table contains information about care plan intervention records. This information includes the unique ID of the intervention, its frequency, and data on edits made.",
+  "primaryKey": [
+    {
+      "columnName": "INTERVENTION_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "INTERVENTION_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the intervention record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique, internal contact date in decimal format. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The contact type category ID for this intervention. This column is commonly used to differentiate edits from documentation instances.",
+      "entries": [
+        "Edit",
+        "Document"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "EDIT_INSTANT_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time the intervention was last edited."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EDIT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the user who edited the care plan intervention data. This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "EDIT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "SCHEDULED_VISITS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Care plan intervention scheduled visits."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "CARE_PLAN_CSN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The link to the unique contact serial number for this care plan contact. If you use IntraConnect, this is the Unique Contact Identifier (UCI). This column is used to recreate historic versions of a care plan."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PAT_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the visit this intervention documentation event was done in."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "HAS_NOTE_EDIT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Y means that, for this reading, the default smarttext has been pulled in at least once.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "READING_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Documents when the original reading contact was documented. Used to order active documentation readings in the order they clinically happened."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "NAME_DISPLAY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The display name of the intervention."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "UPDATED_INTERVENTION_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item links to the newly created intervention ID that was made when this original intervention was completed and updated."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "REASON_FOR_UPDATE",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Contains the reason as to why this element was resolved and updated."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "INTV_RESPONSIBLE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The responsible user for the intervention."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "INTV_RESPONSIBLE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "INTV_RESPONSIBLE_IB_POOL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The responsible pool for the intervention."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "INTV_RESPONSIBLE_IB_POOL_ID_REGISTRY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the In Basket registry in the HIP master file."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "LINKED_EPISODE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the episode associated with the intervention's care plan."
+    }
+  ]
+}

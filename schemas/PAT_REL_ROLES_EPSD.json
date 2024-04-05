@@ -1,0 +1,48 @@
+{
+  "name": "PAT_REL_ROLES_EPSD",
+  "description": "This table contains patient contact roles towards the patient for episode-level relationships. The records included in this table are Patient Relationships (RLA) records.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_RELATIONSHIP_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_RELATIONSHIP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the patient contact record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the episode information in the patient contact. Together with PAT_RELATIONSHIP_ID, this forms the foreign key to the PAT_REL_INFO_EPSD and the PAT_REL_NOTES_EPSD tables."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of multiple roles associated with the patient contact and episode from the PAT_REL_INFO_EPSD table."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EPSD_ROLE_TO_PAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The role category ID of the patient contact at the episode-level."
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "$meta": {
+    "schemas": {
+      "HSP_CLP_DIAGNOSIS": {
+        "name": "HSP_CLP_DIAGNOSIS",
+        "description": "This table contains diagnosis related information for claim print records associated with the hospital account/liability bucket.",
+        "primaryKey": [
+          {
+            "columnName": "CLAIM_PRINT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "CLAIM_PRINT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the claim record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number of one of the multiple values associated with a specific group of data within this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "DX_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The diagnoses to print on both institutional and professional claim forms."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "HSP_CLP_DIAGNOSIS",
+            "target": "HSP_CLAIM_DETAIL1",
+            "joinKeys": [
+              {
+                "source": "CLAIM_PRINT_ID",
+                "target": "CLAIM_PRINT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HSP_CLP_DIAGNOSIS": [
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "LINE": 1,
+      "DX_ID": 462273,
+      "$meta": {
+        "type": "HSP_CLP_DIAGNOSIS"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 124482006,
+      "LINE": 2,
+      "DX_ID": 468251,
+      "$meta": {
+        "type": "HSP_CLP_DIAGNOSIS"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 122220271,
+      "LINE": 1,
+      "DX_ID": 468251,
+      "$meta": {
+        "type": "HSP_CLP_DIAGNOSIS"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 121445416,
+      "LINE": 1,
+      "DX_ID": 468251,
+      "$meta": {
+        "type": "HSP_CLP_DIAGNOSIS"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "LINE": 1,
+      "DX_ID": 462273,
+      "$meta": {
+        "type": "HSP_CLP_DIAGNOSIS"
+      }
+    },
+    {
+      "CLAIM_PRINT_ID": 123337005,
+      "LINE": 2,
+      "DX_ID": 468251,
+      "$meta": {
+        "type": "HSP_CLP_DIAGNOSIS"
+      }
+    }
+  ]
+}

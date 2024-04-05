@@ -1,0 +1,395 @@
+{
+  "$meta": {
+    "schemas": {
+      "ORDER_RES_COMMENT": {
+        "name": "ORDER_RES_COMMENT",
+        "description": "This table contains result component comments for orders that are populated by the Incoming Results Interface. These result component comments are not populated through Enter/Edit Results. The data in this table is populated only if the result component comments normally stored in the Component Comment (I ORD 2070) field is too long to be stored in that field.",
+        "primaryKey": [
+          {
+            "columnName": "ORDER_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "CONTACT_DATE_REAL",
+            "ordinalPosition": 2
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 3
+          },
+          {
+            "columnName": "LINE_COMMENT",
+            "ordinalPosition": 4
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "ORDER_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The internal order ID for this procedure."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "CONTACT_DATE_REAL",
+            "type": "FLOAT",
+            "discontinued": false,
+            "description": "This is a numeric representation of the date of this encounter in your system. The integer portion of the number specifies the date of the encounter. The digits after the decimal point indicate multiple visits on one day."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line count associated with the result component. This line number will match with the LINE column in the ORDER_RESULTS table. It is probable that this table will not have all the lines from the ORDER_RESULTS table since this table only contains data for the components that do not have data in the Component Comment item in the Order record (ORDER_RESULTS.COMPONENT_COMMENT)."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "CONTACT_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date of this contact in calendar format."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "RESULTS_CMT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The result component comments for this order record which are populated by the Incoming Results Interface.  These result comments are not populated by Enter/Edit Results. This column is populated when the result component comments that are normally stored in the Component Comment item in the Order record (ORDER_RESULTS.COMPONENT_COMMENT) are too long to be stored in the Component Comment item in the Order record."
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "COMPONENT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of each result component for each result.  Additional data about result components can be found in the CLARITY_COMPONENT table."
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "COMPONENT_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the component."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "LINE_COMMENT",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line count associated with each line of the result component comments. There can be multiple lines of comments, therefore each line has a line number."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RES_COMMENT",
+            "target": "OBS_MTHD_ID",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "CONTACT_DATE_REAL",
+                "target": "CONTACT_DATE_REAL"
+              },
+              {
+                "source": "LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RES_COMMENT",
+            "target": "ORDER_MYC_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RES_COMMENT",
+            "target": "ORDER_PARENT_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RES_COMMENT",
+            "target": "ORDER_RESULTS",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              },
+              {
+                "source": "CONTACT_DATE_REAL",
+                "target": "ORD_DATE_REAL"
+              },
+              {
+                "source": "LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RES_COMMENT",
+            "target": "ORDER_STATUS",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "CONTACT_DATE_REAL",
+                "target": "ORD_DATE_REAL"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RES_COMMENT",
+            "target": "ORDER_PROC",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "ORDER_RES_COMMENT",
+            "target": "ORD_PRFLST_TRK",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ORDER_RES_COMMENT": [
+    {
+      "ORDER_ID": 945468370,
+      "CONTACT_DATE_REAL": 66745.01,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "RESULTS_CMT": "The eAG (Estimated Average Glucose) in 80% of patients should be within 15% of this calculated value.",
+      "COMPONENT_ID": 1180010806,
+      "COMPONENT_ID_NAME": "ESTIMATED AVG GLUC",
+      "LINE_COMMENT": 1,
+      "$meta": {
+        "type": "ORDER_RES_COMMENT"
+      }
+    },
+    {
+      "ORDER_ID": 945468370,
+      "CONTACT_DATE_REAL": 66745.01,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "RESULTS_CMT": "The Estimated Average Glucose calculation is NOT VALID if:",
+      "COMPONENT_ID": 1180010806,
+      "COMPONENT_ID_NAME": "ESTIMATED AVG GLUC",
+      "LINE_COMMENT": 2,
+      "$meta": {
+        "type": "ORDER_RES_COMMENT"
+      }
+    },
+    {
+      "ORDER_ID": 945468370,
+      "CONTACT_DATE_REAL": 66745.01,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "RESULTS_CMT": "1. Patient is not stable glycemia",
+      "COMPONENT_ID": 1180010806,
+      "COMPONENT_ID_NAME": "ESTIMATED AVG GLUC",
+      "LINE_COMMENT": 3,
+      "$meta": {
+        "type": "ORDER_RES_COMMENT"
+      }
+    },
+    {
+      "ORDER_ID": 945468370,
+      "CONTACT_DATE_REAL": 66745.01,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "RESULTS_CMT": "(A1C change is less than 1% in last 6 months)",
+      "COMPONENT_ID": 1180010806,
+      "COMPONENT_ID_NAME": "ESTIMATED AVG GLUC",
+      "LINE_COMMENT": 4,
+      "$meta": {
+        "type": "ORDER_RES_COMMENT"
+      }
+    },
+    {
+      "ORDER_ID": 945468370,
+      "CONTACT_DATE_REAL": 66745.01,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "RESULTS_CMT": "2. Patient is pregnant",
+      "COMPONENT_ID": 1180010806,
+      "COMPONENT_ID_NAME": "ESTIMATED AVG GLUC",
+      "LINE_COMMENT": 5,
+      "$meta": {
+        "type": "ORDER_RES_COMMENT"
+      }
+    },
+    {
+      "ORDER_ID": 945468370,
+      "CONTACT_DATE_REAL": 66745.01,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "RESULTS_CMT": "3. Patient has ABNORMAL RBC LIFESPAN such as hemoglobinopathy",
+      "COMPONENT_ID": 1180010806,
+      "COMPONENT_ID_NAME": "ESTIMATED AVG GLUC",
+      "LINE_COMMENT": 6,
+      "$meta": {
+        "type": "ORDER_RES_COMMENT"
+      }
+    },
+    {
+      "ORDER_ID": 945468370,
+      "CONTACT_DATE_REAL": 66745.01,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "RESULTS_CMT": "(e.g. SICKLE CELL DISEASE, blood loss or transfusion, chronic renal or liver disease, high-dose Vitamin C or erythropoietin or anemia)",
+      "COMPONENT_ID": 1180010806,
+      "COMPONENT_ID_NAME": "ESTIMATED AVG GLUC",
+      "LINE_COMMENT": 7,
+      "$meta": {
+        "type": "ORDER_RES_COMMENT"
+      }
+    },
+    {
+      "ORDER_ID": 945468370,
+      "CONTACT_DATE_REAL": 66745.01,
+      "LINE": 2,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "RESULTS_CMT": "Testing performed at Associated Physicians LLP, 4410 Regent Street, Madison, WI 53705",
+      "COMPONENT_ID": 1180010806,
+      "COMPONENT_ID_NAME": "ESTIMATED AVG GLUC",
+      "LINE_COMMENT": 8,
+      "$meta": {
+        "type": "ORDER_RES_COMMENT"
+      }
+    },
+    {
+      "ORDER_ID": 439060606,
+      "CONTACT_DATE_REAL": 64869.01,
+      "LINE": 4,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "RESULTS_CMT": "LDL less than 100 is considered optimal.",
+      "COMPONENT_ID": 1557762,
+      "COMPONENT_ID_NAME": "LDL, CALCULATED",
+      "LINE_COMMENT": 1,
+      "$meta": {
+        "type": "ORDER_RES_COMMENT"
+      }
+    },
+    {
+      "ORDER_ID": 439060606,
+      "CONTACT_DATE_REAL": 64869.01,
+      "LINE": 4,
+      "CONTACT_DATE": "2018-08-09 00:00:00",
+      "RESULTS_CMT": "LDL between 100-129 is considered above to near optimal.",
+      "COMPONENT_ID": 1557762,
+      "COMPONENT_ID_NAME": "LDL, CALCULATED",
+      "LINE_COMMENT": 2,
+      "$meta": {
+        "type": "ORDER_RES_COMMENT"
+      }
+    },
+    {
+      "ORDER_ID": 945468371,
+      "CONTACT_DATE_REAL": 66745.01,
+      "LINE": 4,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "RESULTS_CMT": "LDL less than 100 is considered optimal.",
+      "COMPONENT_ID": 1557762,
+      "COMPONENT_ID_NAME": "LDL, CALCULATED",
+      "LINE_COMMENT": 1,
+      "$meta": {
+        "type": "ORDER_RES_COMMENT"
+      }
+    },
+    {
+      "ORDER_ID": 945468371,
+      "CONTACT_DATE_REAL": 66745.01,
+      "LINE": 4,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "RESULTS_CMT": "LDL between 100-129 is considered above to near optimal.",
+      "COMPONENT_ID": 1557762,
+      "COMPONENT_ID_NAME": "LDL, CALCULATED",
+      "LINE_COMMENT": 2,
+      "$meta": {
+        "type": "ORDER_RES_COMMENT"
+      }
+    },
+    {
+      "ORDER_ID": 772179262,
+      "CONTACT_DATE_REAL": 66350.01,
+      "LINE": 12,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "RESULTS_CMT": "GFR >90  Normal or elevated GFR.",
+      "COMPONENT_ID": 1180010753,
+      "COMPONENT_ID_NAME": "EGFR NON-AFR/AMER",
+      "LINE_COMMENT": 1,
+      "$meta": {
+        "type": "ORDER_RES_COMMENT"
+      }
+    },
+    {
+      "ORDER_ID": 772179262,
+      "CONTACT_DATE_REAL": 66350.01,
+      "LINE": 12,
+      "CONTACT_DATE": "2022-08-29 00:00:00",
+      "RESULTS_CMT": "Testing performed at Associated Physicians LLP, 4410 Regent Street, Madison, WI 53705",
+      "COMPONENT_ID": 1180010753,
+      "COMPONENT_ID_NAME": "EGFR NON-AFR/AMER",
+      "LINE_COMMENT": 2,
+      "$meta": {
+        "type": "ORDER_RES_COMMENT"
+      }
+    },
+    {
+      "ORDER_ID": 945468372,
+      "CONTACT_DATE_REAL": 66745.01,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "RESULTS_CMT": "Antibodies to HCV not detected - does not exclude the possibility of exposure to HCV.",
+      "COMPONENT_ID": 1180011095,
+      "COMPONENT_ID_NAME": "HEPATITIS C AB",
+      "LINE_COMMENT": 1,
+      "$meta": {
+        "type": "ORDER_RES_COMMENT"
+      }
+    },
+    {
+      "ORDER_ID": 945468372,
+      "CONTACT_DATE_REAL": 66745.01,
+      "LINE": 1,
+      "CONTACT_DATE": "2023-09-28 00:00:00",
+      "RESULTS_CMT": "Testing performed at Meriter Laboratories, 36 S Brooks St Madison, WI 53715, unless otherwise stated in result.",
+      "COMPONENT_ID": 1180011095,
+      "COMPONENT_ID_NAME": "HEPATITIS C AB",
+      "LINE_COMMENT": 2,
+      "$meta": {
+        "type": "ORDER_RES_COMMENT"
+      }
+    }
+  ]
+}

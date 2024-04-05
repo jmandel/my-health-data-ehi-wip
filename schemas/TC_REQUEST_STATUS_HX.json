@@ -1,0 +1,102 @@
+{
+  "name": "TC_REQUEST_STATUS_HX",
+  "description": "This table stores information related to the status change history for Transfer Center requests.",
+  "primaryKey": [
+    {
+      "columnName": "COMM_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "COMM_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the communication record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "REQUEST_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the audit trail for the status of the request.",
+      "entries": [
+        "Pending",
+        "Accepted",
+        "Declined",
+        "Completed",
+        "Voided",
+        "Canceled"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "STATUS_UPDATE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The datetime at which the request's status changed, stored in UTC. For local time, use TC_REQUEST_STATUS_HX.STATUS_UPDATE_LOCAL_DTTM."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "STATUS_UPDATE_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the user who changed the status of the request."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "STATUS_UPDATE_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "DEST_DECLINE_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the audit trail for the decline reason of the destination planning record.",
+      "entries": [
+        "Transfer not medically appropriate",
+        "Hospital at capacity",
+        "Patient out of network",
+        "Auto-declined"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CANCEL_STATUS_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the audit trail for the cancel reason of the request.",
+      "entries": [
+        "Patient declined transfer",
+        "Took too long to respond",
+        "Referring location pulled request",
+        "Patient condition not suitable for transfer",
+        "Transfer request order canceled",
+        "Created in error",
+        "Duplicate request"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "STATUS_UPDATE_LOCAL_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The datetime at which the request's status changed, stored in local time. For UTC, use TC_REQUEST_STATUS_HX.STATUS_UPDATE_UTC_DTTM."
+    }
+  ]
+}

@@ -1,0 +1,671 @@
+{
+  "name": "ORDER_PROC",
+  "description": "The ORDER_PROC table enables you to report on the procedures ordered in the clinical system. We have also included patient and contact identification information for each record.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_PROC_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the order record associated with this procedure order."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this order. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique, internal contact date in decimal format. The integer portion of the number indicates the date of the contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across patients and encounters in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "RESULT_LAB_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the lab or other resulting agency, such as radiology, that provided the order results."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "RESULT_LAB_ID_LLB_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Interface laboratory name."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ORDERING_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the procedure order was placed."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ORDER_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The order type category number for the procedure order.",
+      "entries": [
+        "Medications"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the  procedure record corresponding to this order. This can be used to link to CLARITY_EAP."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "DESCRIPTION",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "A brief summary of the procedure order."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "ORDER_CLASS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The order class category number of the procedure order.",
+      "entries": [
+        "Normal"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "AUTHRZING_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the provider prescribing or authorizing the order."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "ABNORMAL_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether or not this order contains abnormal results. This column will contain a Y if there are abnormal results and an N or null if it does not. For orders with lab component results, if any one component of this order has an abnormal result value then this will hold a Y.",
+      "entries": [
+        "Abnormal",
+        "Normal"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "BILLING_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the provider under whose name this order should be billed. This might be the same ID as the AUTHRZING_PROV_ID."
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "ORD_CREATR_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique identifier of the user who signed the order, or the last person who performed a sign and hold or release action for a signed and held order."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "ORD_CREATR_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "LAB_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the status of results for an order, as of the date and time the record was extracted.",
+      "entries": [
+        "In process",
+        "Preliminary result",
+        "Final result",
+        "Edited",
+        "Edited Result - FINAL"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "ORDER_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The order status category number of the procedure order.",
+      "entries": [
+        "Pending",
+        "Sent",
+        "Resulted",
+        "Canceled",
+        "Completed",
+        "Holding for Referral",
+        "Denied Approval",
+        "Suspend",
+        "Discontinued",
+        "Verified",
+        "Dispensed",
+        "Pending Verify"
+      ]
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "MODIFIER1_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the modifier record.  This is the first modifier entered for the procedure and affects how the procedure is billed."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "MODIFIER1_ID_MODIFIER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the modifier record."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "MODIFIER2_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the modifier record.  This is the second modifier entered for the procedure and affects how the procedure is billed."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "MODIFIER2_ID_MODIFIER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the modifier record."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "MODIFIER3_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the modifier record.  This is the third modifier entered for the procedure and affects how the procedure is billed."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "MODIFIER3_ID_MODIFIER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the modifier record."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "MODIFIER4_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the modifier record.  This is the fourth modifier entered for the procedure and affects how the procedure is billed."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "MODIFIER4_ID_MODIFIER_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the modifier record."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "QUANTITY",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of procedures authorized for this order."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "REASON_FOR_CANC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason for cancellation category number for the procedure order."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "FUTURE_OR_STAND",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column indicates whether an order is a future (F) or standing (S) order.",
+      "entries": [
+        "Standing",
+        "Future"
+      ]
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "STANDING_EXP_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when a recurring procedure order expires."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "FUT_EXPECT_COMP_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date by which each future procedure order should be completed. Displayed in calendar format."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "STANDING_OCCURS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of individual occurrences remaining for this procedure order."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "STAND_ORIG_OCCUR",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The total number of occurrences that a recurring order was authorized for."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "REFERRING_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the provider who has referred this order, i.e. the referring provider."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "REFERRING_PROV_ID_REFERRING_PROV_NAM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the referral source."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "REFD_TO_LOC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the location record to which this patient was referred."
+    },
+    {
+      "ordinalPosition": 37,
+      "name": "REFD_TO_SPECLTY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value for the medical specialty of the provider to which the patient is referred.  This field does not contain data for referral orders created within Epic."
+    },
+    {
+      "ordinalPosition": 38,
+      "name": "REQUESTED_SPEC_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The medical specialty category number of the provider to which the patient was referred for the procedure order."
+    },
+    {
+      "ordinalPosition": 39,
+      "name": "RFL_CLASS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The referral class category number for the procedure order.",
+      "entries": [
+        "Internal",
+        "Incoming",
+        "Outgoing"
+      ]
+    },
+    {
+      "ordinalPosition": 40,
+      "name": "RFL_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The referral type category number for the procedure order."
+    },
+    {
+      "ordinalPosition": 41,
+      "name": "RSN_FOR_RFL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason for referral category number for the procedure order."
+    },
+    {
+      "ordinalPosition": 42,
+      "name": "RFL_NUM_VIS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The number of visits this referral order is authorized for."
+    },
+    {
+      "ordinalPosition": 43,
+      "name": "RFL_EXPIRE_DT",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The expiration date for this referral order."
+    },
+    {
+      "ordinalPosition": 44,
+      "name": "ABN_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the notes record representing the Advanced Beneficiary Notice form associated with this order."
+    },
+    {
+      "ordinalPosition": 45,
+      "name": "RADIOLOGY_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for the imaging study status (e.g. technician ended the exam, reading physician finalized the exam) of the procedure order.",
+      "entries": [
+        "Ordered",
+        "No Show",
+        "Scheduled",
+        "Arrived",
+        "Exam Begun",
+        "Procedure Started",
+        "Discontinued",
+        "Procedure Finished",
+        "Exam Ended",
+        "----- BEGIN READING PALETTE STATUSES -----",
+        "Tech Complete",
+        "Tech Revise",
+        "Resident Revise",
+        "Saved",
+        "Queued In Trans",
+        "In Transcription",
+        "Incomplete Transcription",
+        "Transcribed",
+        "Wet Read",
+        "Queued Prelim",
+        "Preliminary",
+        "Queued Needs Review",
+        "Needs Review",
+        "Revised",
+        "Queued Final",
+        "Final",
+        "Cadence Non-Imaging Order"
+      ]
+    },
+    {
+      "ordinalPosition": 46,
+      "name": "INT_STUDY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category ID for denoting the reason a study is worth being marked for later review, as in for an educational case or for group reading physician review.",
+      "entries": [
+        "Teaching Case"
+      ]
+    },
+    {
+      "ordinalPosition": 47,
+      "name": "INT_STUDY_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the employee record who denoted a study as worth being marked for later review, as in for an educational case or for group reading physician review."
+    },
+    {
+      "ordinalPosition": 48,
+      "name": "INT_STUDY_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 49,
+      "name": "TECHNOLOGIST_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the employee record of the technologist who performed this procedure."
+    },
+    {
+      "ordinalPosition": 50,
+      "name": "TECHNOLOGIST_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 51,
+      "name": "PROC_BGN_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time when the procedure order (exam) is to begin."
+    },
+    {
+      "ordinalPosition": 52,
+      "name": "RIS_TRANS_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user record of the transcriptionist for this order."
+    },
+    {
+      "ordinalPosition": 53,
+      "name": "RIS_TRANS_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 54,
+      "name": "ORDER_INST",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant when the order was created."
+    },
+    {
+      "ordinalPosition": 55,
+      "name": "DISPLAY_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the order as it appears in the patient's record."
+    },
+    {
+      "ordinalPosition": 56,
+      "name": "HV_HOSPITALIST_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether or not this order was placed by a hospitalist. �Y�  indicates that this order was placed by a hospitalist. �N� or NULL indicate that this order was not placed by a hospitalist.",
+      "entries": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "ordinalPosition": 57,
+      "name": "ORDER_PRIORITY_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The overall priority category number for the procedure order."
+    },
+    {
+      "ordinalPosition": 58,
+      "name": "CHRG_DROPPED_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time when the charge was generated for the procedure order."
+    },
+    {
+      "ordinalPosition": 59,
+      "name": "PANEL_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the panel procedure record associated with this order."
+    },
+    {
+      "ordinalPosition": 60,
+      "name": "STAND_INTERVAL",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The time interval set for a recurring order, indicating the time between one instance of the order and the next instance."
+    },
+    {
+      "ordinalPosition": 61,
+      "name": "DISCRETE_INTERVAL_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The discrete interval for the order.  This is extracted as the category title."
+    },
+    {
+      "ordinalPosition": 62,
+      "name": "INSTANTIATED_TIME",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date and time of instantiation when a child order is generated from a standing or future order."
+    },
+    {
+      "ordinalPosition": 63,
+      "name": "INSTNTOR_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user who instantiated the order."
+    },
+    {
+      "ordinalPosition": 64,
+      "name": "INSTNTOR_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 65,
+      "name": "DEPT_REF_PROV_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the department to which this order is referred."
+    },
+    {
+      "ordinalPosition": 66,
+      "name": "SPECIALTY_DEP_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category value for the requested medical specialty of the department to which the patient is referred."
+    },
+    {
+      "ordinalPosition": 67,
+      "name": "SPECIMEN_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The specimen type category number for the procedure order."
+    },
+    {
+      "ordinalPosition": 68,
+      "name": "SPECIMEN_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The source category number for the procedure order."
+    },
+    {
+      "ordinalPosition": 69,
+      "name": "ORDER_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time when the procedure order was placed."
+    },
+    {
+      "ordinalPosition": 70,
+      "name": "RESULT_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The most recent date and time when the procedure order was resulted."
+    },
+    {
+      "ordinalPosition": 71,
+      "name": "IS_PENDING_ORD_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether or not the order has a pending status. 'Y' indicates that the order has a pending status. 'N' or NULL indicates that the order does not have a pending status.",
+      "entries": [
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 72,
+      "name": "PROC_START_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time when the procedure order is to start."
+    },
+    {
+      "ordinalPosition": 73,
+      "name": "PROBLEM_LIST_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the problem list record that is associated with this order. This column is mainly used for immunization orders."
+    },
+    {
+      "ordinalPosition": 74,
+      "name": "RSLTS_INTERPRETER",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the principal results interpreter, the person who reviewed and interpreted the results."
+    },
+    {
+      "ordinalPosition": 75,
+      "name": "PROC_ENDING_TIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time when the procedure order is to end."
+    },
+    {
+      "ordinalPosition": 76,
+      "name": "SPECIFIED_FIRST_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The first occurrence time specified by a user, if the order was signed with a frequency record containing a schedule of specified dates and times."
+    },
+    {
+      "ordinalPosition": 77,
+      "name": "SCHED_START_TM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "This column stores the scheduling start instant used when the order was last scheduled."
+    },
+    {
+      "ordinalPosition": 78,
+      "name": "SESSION_KEY",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique key associated with the order at the time of signing.  Other orders will share this key if they were signed at the same time."
+    },
+    {
+      "ordinalPosition": 79,
+      "name": "LABCORP_BILL_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reference lab bill type category ID for the order record, indicating how reference labs should bill for services performed.",
+      "entries": [
+        "Client",
+        "Patient",
+        "Third-Party"
+      ]
+    },
+    {
+      "ordinalPosition": 80,
+      "name": "LABCORP_CLIENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The client ID or account ID assigned by the reference lab."
+    },
+    {
+      "ordinalPosition": 81,
+      "name": "LABCORP_CONTROL_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "Required information for LabCorp requisition and order messages."
+    },
+    {
+      "ordinalPosition": 82,
+      "name": "CHNG_ORDER_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the changed or reordered procedure order that this procedure replaced. This column is frequently used to link back to ORDER_PROC table."
+    }
+  ]
+}

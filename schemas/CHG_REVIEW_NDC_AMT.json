@@ -1,0 +1,48 @@
+{
+  "name": "CHG_REVIEW_NDC_AMT",
+  "description": "This table contains Medical National Drug Code (NDC) administered amount for a temporary accounts receivable (TAR) record that is or has been in a Charge Review workqueue. Because one procedure in a TAR record can be associated with multiple NDC codes, each row in this table represents one NDC administered amount and is identified by the transaction ID (TAR_ID), procedure line number (GROUP_LINE), and line number (VALUE_LINE). The data for this table is extracted using a KB_SQL query. Note: TAR records in Chronicles are purged periodically depending on your system setting. Be aware that old data in this table might be lost if you truncate the table.",
+  "primaryKey": [
+    {
+      "columnName": "TAR_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "GROUP_LINE",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "VALUE_LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TAR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier for the subject record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "GROUP_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the charge in the charge session. Multiple charges can be associated with this charge session."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "VALUE_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one of the multiple NDC associated with a specific group of data within this record."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "NDC_CODES_ADMIN_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The line number of the charge in the charge session. Multiple charges can be associated with this charge session"
+    }
+  ]
+}

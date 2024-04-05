@@ -1,0 +1,367 @@
+{
+  "name": "HSP_TRANSACTIONS_3",
+  "description": "This table contains hospital account transaction details from the Hospital Permanent Transactions (HTR) master file.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the hospital billing transaction."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTEST_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the contested reason. This is set only for charges.",
+      "entries": [
+        "Account Has Contested Charges",
+        "Patient Not Seen",
+        "Bankruptcy",
+        "Legal",
+        "Deceased",
+        "Not Informed Service Not Covered",
+        "Service Not Provided",
+        "Insurance Appeal",
+        "Patient Grievance",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CONTEST_RESOLUTION_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the contested resolution reason. This is set only for charges.",
+      "entries": [
+        "Transfer",
+        "All Charges Resolved",
+        "Contested in Error",
+        "Confirmed Billed Correctly",
+        "Patient No Longer Contesting",
+        "Insurance Issue Resolved",
+        "Problem Fixed"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "REVERSAL_RSN_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the reversal reason. This is set for all transaction types.",
+      "entries": [
+        "CCI Edit",
+        "No Supporting Documentation",
+        "Service Not Performed",
+        "Payment Received",
+        "Returned Mail",
+        "Other",
+        "Duplicate",
+        "Posted in Error",
+        "Wrong Code",
+        "Give Back"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "TAX_RATE_DEF_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the tax rate definition contact serial number (CSN) used in the tax calculation."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "IS_PRE_SERVICE_PMT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether or not this is a pre-service payment, such as a co-pay. This item is only populated for self-pay payments A payment is considered pre-service if it is a visit pre-pay or co-pay payment (such as during check-in).",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "FIRST_HTR_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the first hospital billing transaction in a chain of transactions. Note that this chain will include transactions from both hospital billing and professional billing, so this item will return the very first transaction. For a given transaction, either column HSP_TRANSACTIONS_3.FIRST_HTR_ID, or column HSP_TRANSACTIONS_3.FIRST_ETR_ID will be populated. This is different from column HSP_TRANSACTIONS_2.FIRST_TX_ID, which only chains back to the point that the transaction was transferred from professional billing."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "FIRST_ETR_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the first professional billing transaction (ETR record) in a chain of transactions. Note that this chain will include transactions from both hospital billing and professional billing, so this item will return the very first transaction. For a given transaction, either column HSP_TRANSACTIONS_3.FIRST_HTR_ID, or column HSP_TRANSACTIONS_3.FIRST_ETR_ID will be populated. This is different from column HSP_TRANSACTIONS_2.FIRST_TX_ID, which only chains back to the point that the transaction was transferred from professional billing."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "NO_PAY_CLAIM_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If this charge was posted to drive no-pay claims to be generated, this charge is intended to file and bill immediately. These claims will have different types/purposes. This item defines the type of claim that should be generated for the bucket that hold this charge.",
+      "entries": [
+        "SNF No-Pay Claim",
+        "SNF Exhaust Claim",
+        "HH No-Pay RAP",
+        "HH Notice of Admission"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ORIG_PMT_SPLIT_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the original unique identifier for the hospital billing transaction when payments are distributed or split."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "SVC_AUTH_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the social care service decision level authorization record associated with this charge."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "POSTING_DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The department where the transaction was posted."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "TAX_EFFECTIVE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This column stores the date used in the hospital billing system definitions that determine when this tax line went into effect."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "TAXABLE_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the amount that the tax is applied to"
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "TAX_PERCENT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Percent used to calculate the tax amount"
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "TAX_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the amount used for the tax"
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "DIGITAL_WALLET_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the digital wallet used for an electronic payment. Stored on payments made from a digital wallet and on reversals. This item is not stored on refund transactions.",
+      "entries": [
+        "Apple Pay",
+        "Google Pay"
+      ]
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "ADV_BILL_DB_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the hospital billing transaction for this advance bill debit transfer adjustment."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "ADV_BILL_ESTIMATE_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the unique identifier for the estimate used in posting this advance bill adjustment."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "IS_ADV_BILL_TRANS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if this transaction an advance bill transfer system adjustment. Includes both credit and debit adjustments."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "SAVED_PMT_DIGITAL_WALLET_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Holds the digital wallet of the saved payment method used to make the payment"
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "RESEARCH_ENROLL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the research study association linked to this transaction."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "CLAIM_PRINT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The payment's claim print ID with a matching invoice number."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "INS_WRITE_OFF_AMT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the insurance write off amount from the payment based on remittance codes that are mapped to an insurance write-off action."
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "IS_SCANNED_CHECK_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates if a transaction was made using a scanned check."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "E_PMT_RECEIPT_MSG",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Saves the receipt message received from the gateway for an electronic payment transaction."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "PAT_PMT_COLL_WKFL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains the workflow category ID performed to collect a patient payment from the point of view of the user. For example, MyChart eCheck-in vs. MyChart One-Touch.",
+      "entries": [
+        "Staff Collected",
+        "MyChart Billing",
+        "MyChart One-Touch",
+        "MyChart Pay as Guest",
+        "MyChart Visit Payment",
+        "MyChart eCheck-in",
+        "Welcome Balance Payment",
+        "Welcome Check-in",
+        "Two-Way SMS",
+        "Payment Posting",
+        "Lockbox",
+        "Release of Information",
+        "Willow Ambulatory",
+        "Web Service"
+      ]
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "MYC_SIGNIN_METHOD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column denotes how the patient or guarantor logged in to MyChart to either post the payment or create an agreement that will post a payment via Auto Pay. Only populated for agreements made via MyChart.",
+      "entries": [
+        "Password Sign-in",
+        "Demographics Sign-in",
+        "No Sign-in"
+      ]
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "POSTING_MYPT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains either the MyChart account that created the agreement that resulted in the self-pay payment (if applicable) or the MyChart account that posted the self-pay payment."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "POSTING_MYC_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column contains either the status of the MyChart account that created the agreement that resulted in the self-pay payment (if applicable) or the status of the MyChart account that posted the self-pay payment.  An active MyChart account status is defined as whether a MyChart user could log into the account with a user name and password. Accounts that are not yet active, deactivated, or are proxy accounts are considered inactive.",
+      "entries": [
+        "ACTIVE",
+        "INACTIVE"
+      ]
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "EB_TX_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the enterprise posting module for the transaction. This is calculated based on the hospital billing transaction source for the transaction. For reversals, the module will always match the module of the reversed parent transaction.",
+      "entries": [
+        "Payment Plan Auto Pay",
+        "Enterprise Payment Posting",
+        "HB Payment Posting",
+        "PB Payment Posting",
+        "Electronic Remittance",
+        "PB Charge Entry Fast Pay",
+        "POS Quick Pay",
+        "Welcome",
+        "MyChart Web",
+        "PB Release of Information",
+        "Transaction Import",
+        "Web Service",
+        "Payment Collection",
+        "Willow Ambulatory",
+        "Distribution",
+        "Transfer from PB",
+        "Transfer from HB",
+        "MyChart Mobile",
+        "Guest Pay",
+        "Account Maintenance Refund",
+        "Patient Refund",
+        "Back-End Refund",
+        "Visit Auto Pay",
+        "Trust Recurring Payment",
+        "Premium Billing Auto Pay",
+        "Premium Billing One Time Payment",
+        "Premium Billing Payment Posting",
+        "Two-Way SMS",
+        "External Agency Payment"
+      ]
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "LINKED_PARENT_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the parent HTR ID in a linked child HTR."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "RELATED_ETR_TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Applies only if you have enabled Consolidated Self-Pay Balances functionality. Stores the professional transaction ID of the related transaction. This will only be populated on transactions that were mirrored from professional billing."
+    },
+    {
+      "ordinalPosition": 34,
+      "name": "PMT_PLAN_AGRMT_SCHED_PMT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the transaction's target guarantor's active payment plan agreement record at the time of filing."
+    },
+    {
+      "ordinalPosition": 35,
+      "name": "IS_EST_PRE_SERVICE_PLAN_PMT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether this payment was made on an estimated balance on a payment plan at time of filing ('Y'). 'N' or NULL indicates that the transaction is not a payment, the payment is not on a balance on a payment plan, or the balance was not estimated at the time of filing."
+    },
+    {
+      "ordinalPosition": 36,
+      "name": "IS_PRE_SERVICE_PLAN_PMT_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether this payment was made toward a hospital account on a payment plan that was added by an estimate ('Y'). 'N' or NULL indicates that the transaction is not a payment or the payment was not made toward a hospital account on a payment plan that was added by an estimate."
+    }
+  ]
+}

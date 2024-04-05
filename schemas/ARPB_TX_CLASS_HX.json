@@ -1,0 +1,80 @@
+{
+  "name": "ARPB_TX_CLASS_HX",
+  "description": "Classification history for Professional Billing Transactions. Indicates when the transaction has moved between Active AR, External AR, and Bad Debt.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the transaction."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CLASS_HX_INST",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant when the transaction's classification changed."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CLASS_HX_CHANGE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The classification change category number of the transaction.",
+      "entries": [
+        "Active",
+        "External",
+        "Bad Debt",
+        "External W/O",
+        "Bad Debt W/O"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CLASS_HX_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The amount of the transaction that is associated with the classification change of the transaction in dollars."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "CLASS_HX_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID associated with the user who made the classification change. This column is frequently used to link to the CLARITY_EMP table.",
+      "linksTo": "CLARITY_EMP"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "CLASS_HX_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CLASS_HX_LN",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line associated with the�matching transactions�group that this classification change corresponds to. Used to easily link the classification change to the distribution/undistribution history of the transaction."
+    }
+  ]
+}

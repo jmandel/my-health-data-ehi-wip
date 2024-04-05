@@ -1,0 +1,98 @@
+{
+  "name": "SDD_ENTRIES",
+  "description": "This table stores basic info about Social Determinant entries. Each row represents one documentation of a need or risk for the patient in a given domain. This data includes the score that defines the severity of this need or risk.",
+  "primaryKey": [
+    {
+      "columnName": "SDOH_DATA_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "CONTACT_DATE_REAL",
+      "ordinalPosition": 2
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 3
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "SDOH_DATA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier (.1 item) for the social determinant data record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CONTACT_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ENTRY_DOM_CONFIG_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the source SDC that this entry contains data for."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ENTRY_EFFECTIVE_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "Stores the instant at which an entry in SDD was considered active."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "ENTRY_CONCERN_LVL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the level of concern for this entry on a scale of low, medium, or high (or unknown).",
+      "entries": [
+        "Unknown",
+        "Low Risk",
+        "Medium Risk",
+        "High Risk",
+        "Patient Unable To Answer",
+        "Patient Declined"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "ENTRY_PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "Stores the CSN of the encounter where this entry was filed"
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "ENTRY_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the user who documented this entry"
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "ENTRY_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "$meta": {
+    "schemas": {
+      "QUESR_LST_ANS_INFO": {
+        "name": "QUESR_LST_ANS_INFO",
+        "description": "This table stores information about the most recent patient questionnaire submission. This table stores when the questionnaire was last answered and the contact serial number for the encounter.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+            "linksTo": "PATIENT"
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "QUESR_ANS_FORM_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This column stores recently answered questionnaire IDs. Use the QUESR_ANS_CSN_ID and QUESR_ANS_DDATETIME columns to determine the encounter and last submission instant for each questionnaire."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "QUESR_ANS_FORM_ID_FORM_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the form associated with the questionnaire."
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "QUESR_ANS_CSN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the encounter contact serial number (CSN) for the most recent questionnaire submissions. Use the QUESR_ANS_FORM_ID and QUESR_ANS_CSN_ID columns to determine the form ID and encounter contact serial number for each questionnaire."
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "QUESR_ANS_DATETIME",
+            "type": "DATETIME (Attached) ",
+            "discontinued": false,
+            "description": "This column stores the last instant of submission for questionnaires. Use the QUESR_ANS_FORM_ID and QUESR_ANS_CSN_ID columns to determine the form ID and encounter contact serial number for each questionnaire."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "QUESR_LST_ANS_INFO",
+            "target": "PAT_REL_ADDR",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "QUESR_LST_ANS_INFO",
+            "target": "PATIENT",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "QUESR_LST_ANS_INFO": [
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 1,
+      "QUESR_ANS_FORM_ID": "64186",
+      "QUESR_ANS_FORM_ID_FORM_NAME": "TRAVEL SCREENING",
+      "QUESR_ANS_CSN_ID": 957995289,
+      "QUESR_ANS_DATETIME": "2022-08-28 13:51:00",
+      "$meta": {
+        "type": "QUESR_LST_ANS_INFO"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 2,
+      "QUESR_ANS_FORM_ID": "21004670",
+      "QUESR_ANS_FORM_ID_FORM_NAME": "UPH AMB PHQ2",
+      "QUESR_ANS_CSN_ID": 958148810,
+      "QUESR_ANS_DATETIME": "2023-02-27 15:56:00",
+      "$meta": {
+        "type": "QUESR_LST_ANS_INFO"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 3,
+      "QUESR_ANS_FORM_ID": "21064186",
+      "QUESR_ANS_FORM_ID_FORM_NAME": "UPH MUP TRAVEL SCREENING",
+      "QUESR_ANS_CSN_ID": 1028606559,
+      "QUESR_ANS_DATETIME": "2023-09-27 12:07:00",
+      "$meta": {
+        "type": "QUESR_LST_ANS_INFO"
+      }
+    }
+  ]
+}

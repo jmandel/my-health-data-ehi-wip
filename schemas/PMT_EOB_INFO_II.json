@@ -1,0 +1,136 @@
+{
+  "name": "PMT_EOB_INFO_II",
+  "description": "The PMT_EOB_INFO_II table contains the Explanation of Benefits information given a transaction ID. This table contains multiple response items pertaining to PMT_EOB_INFO_I table.",
+  "primaryKey": [
+    {
+      "columnName": "TX_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "TX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The transaction ID."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of one EOB code which is different from EOB line number in PMT_EOB_INFO_I."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The Explanation of Benefits amount for a transaction."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "EOB_CODES",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The EOB Code for this transaction."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "ADJ_PROC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The write-off adjustment code associated with the remittance code."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "ACTIONS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The action category ID for the payment Explanation of Benefits (EOB)�action in this table. This column is frequently used to link to the ZC_TX_ACTION_TYPE table.",
+      "linksTo": "ZC_TX_ACTION_TYPE"
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "SYSTEM_COMMENT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The comment put into the systems for this transaction."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "WINNINGRMC_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The winning remittance code ID from the remittance code."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "WINNINGRMC_ID_REMIT_CODE_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of each remittance code."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "TX_MATCH_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date when the charge was matched to the payment."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PEOB_EOB_RMC_IDS",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The remittance code specified by the payer in its Explanation of Benefits (EOB). If this contains a comma delimited list, we will only show the first remittance code."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PEOB_EOB_AMOUNT",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The not allowed amount associated with the Remittance Codes that the payor specifies in its Explanation of Benefit (EOB)."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "PEOB_EOB_GRPCODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Explanation Of Benefits group code category ID for the transaction�from insurance payment posting.",
+      "entries": [
+        "Patient Responsibility",
+        "Contractual Obligation",
+        "Payor Initiated",
+        "Correction and Reversal",
+        "Other Adjustment"
+      ]
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "PEOB_DUP_DENIAL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item contains the duplicate denial reason calculated at the time the  payment is distributed to the invoice. It is populated only when a duplicate denial (Remittance code external ID=18) is present.",
+      "entries": [
+        "Same Payer and Suscriber on Different Coverages",
+        "Correct or Repost",
+        "Charge Router Repost",
+        "Retroadjudication",
+        "Demand Claim",
+        "Resubmit Insurance",
+        "Similar Charge on Account",
+        "Same Visit With Multiple Claims",
+        "Transfer",
+        "Same Subscriber On Different Coverages",
+        "Coverage Billed Multiple Times",
+        "Unknown"
+      ]
+    }
+  ]
+}

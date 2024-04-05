@@ -1,0 +1,57 @@
+{
+  "name": "SCHEDULER_HX",
+  "description": "Inpatient scheduler history table.",
+  "primaryKey": [
+    {
+      "columnName": "ORDER_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ORDER_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID for the order record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "SCH_EXTRA_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores what special scheduler action, if any, was performed on scheduling.",
+      "entries": [
+        "Skip first occurence per off schedule occurrence",
+        "Extra Occurrence Scheduled at Start Point",
+        "Skip first occurrence per existing MAR time",
+        "First occurrence elapsed, extra occurrence scheduled at start point"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "SCH_SKIPPED_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The instant an occurrence was skipped by the scheduler because an off schedule occurrence was too close to a standard time."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "SCHEDULE_EXTRA_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Time that an extra occurrence was scheduled since a standard specified time was just missed."
+    }
+  ]
+}

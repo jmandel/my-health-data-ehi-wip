@@ -1,0 +1,230 @@
+{
+  "name": "HH_EVV_DATA",
+  "description": "Will contain Electronic Visit Verification data and documentation for each visit.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is only populated if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EVV_METHOD_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The EVV trigger, such as the start of end of the visit, for the corresponding line in the related item.",
+      "entries": [
+        "NFC Scan In",
+        "NFC Scan Out",
+        "Start Visit",
+        "End Visit",
+        "Other NFC Scan"
+      ]
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "EVV_FAIL_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Describes how EVV failed on the client.",
+      "entries": [
+        "Location Services Failed",
+        "Location Outside Allowed Radius",
+        "Visit Time Later Than Scheduled Time",
+        "Visit Time Manually Entered (Mobile)",
+        "Visit Time Manually Entered (Remote Client)",
+        "Aggregator Rejected Submission (Needs Addendum)",
+        "Visit Duration Does Not Match Scheduled Visit Duration",
+        "Visit Time Earlier Than Scheduled Time"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "EVV_RSN_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason code to justify the change made to override the EVV failure.",
+      "entries": [
+        "Mobile Device Issues",
+        "Mobile Device Captured Incorrect Location",
+        "Mobile Device Not Charged",
+        "Mobile Device Missing",
+        "Mobile Device Requested",
+        "Mobile App Issues/Inoperable",
+        "No Cell Coverage",
+        "Other",
+        "Provider Error",
+        "Provider Failed to Document Start Visit - Services Delivered",
+        "Provider Failed to Document End Visit - Services Delivered",
+        "Provider Failed to Document Start or End Visit - Services Delivered",
+        "Provider Failed to Document Start and End Visit - Services Delivered",
+        "Provider Documented Visit Start/End too Late/Early",
+        "Data Entry Error",
+        "Scheduling Error",
+        "Duplicate Entry",
+        "Service Provided Outside Home",
+        "Service Provided at an Alternate Location - Services Delivered",
+        "Wrong Type of Service Selected",
+        "Wrong Patient Selected",
+        "Unsafe Environment",
+        "Emergency",
+        "Natural/Public Health Disaster",
+        "Visit Extended by Patient Request",
+        "Visit Shortened by Patient Request",
+        "Patient Refused Service",
+        "No One Answered Locked Door",
+        "Patient Discharged",
+        "Legal Designee Refused Service",
+        "Patient Unavailable",
+        "Patient Not Home",
+        "Patient Removed From Home By Family",
+        "Patient in Hospital",
+        "Patient Expired",
+        "Unscheduled Visit (Confirmed)",
+        "Provider Service Not Per Patient",
+        "Provider No Show",
+        "Provider Change",
+        "Provider Unable to Use Mobile Device",
+        "Administrative Delay",
+        "Retroactive Coverage Addition",
+        "Retroactive Payor Change",
+        "Manual Entry of EVV",
+        "Verification Attempt Failed",
+        "Group Visit",
+        "Split Visit - Overtime",
+        "Split Visit - Multiple Programs",
+        "Split Visit - Home Care Attendant",
+        "No Orders - Not Billable",
+        "Provider ID Not Entered",
+        "Invalid Provider ID",
+        "EVV System Failure",
+        "Type of Service Not Selected",
+        "Patient Requested Visit Change/Cancellation",
+        "Visit Cancelled - Patient's Services Suspended"
+      ]
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "EVV_RSN_CODE_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The type of reason code, and whether the code was entered on mobile or through the Remote Client.",
+      "entries": [
+        "General",
+        "Location",
+        "Scheduled Time",
+        "Administrative",
+        "Duration"
+      ]
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "EVV_RSN_CODE_CMT",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Comments accompanying the reason code."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "EVV_RES_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The resolution code corresponding to the actions taken to override the EVV failure.",
+      "entries": [
+        "Changed verification collection method and documented",
+        "Written documentation maintained",
+        "Visit Rescheduled within 2 hours",
+        "Visit Rescheduled within 24 hours",
+        "Visit Rescheduled within 48 hours",
+        "Next Scheduled Visit",
+        "Non-Paid Caregiver",
+        "New attendant assigned to Patient",
+        "Visit has been rescheduled",
+        "Services canceled or suspended until further notice",
+        "Updated patient's address and documented",
+        "Change in schedule",
+        "Other"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "EVV_EXC_CODE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The exception code to be acknowledged corresponding to the EVV failure.",
+      "entries": [
+        "Unknown Client",
+        "Unknown Employee",
+        "Visit Without Any Calls",
+        "Visit Without In-Calls",
+        "Visit Without Out-Calls",
+        "Unscheduled Visit",
+        "Unmatched Client ID/Phone",
+        "GPS Distance Exception",
+        "Service Verification Exception",
+        "Visit Verification Exception",
+        "Client Signature Exception",
+        "Late In Call",
+        "Early Out Call",
+        "Short Visit",
+        "No Show",
+        "Missing Service",
+        "Employee Speaker Verification",
+        "Invalid Service",
+        "Location Required"
+      ]
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "EVV_FAIL_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates the source of the EVV failure for the corresponding line in the related group.",
+      "entries": [
+        "Calculated",
+        "User Input"
+      ]
+    }
+  ]
+}

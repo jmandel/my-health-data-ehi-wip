@@ -1,0 +1,81 @@
+{
+  "$meta": {
+    "schemas": {
+      "PATIENT_ALIAS": {
+        "name": "PATIENT_ALIAS",
+        "description": "The PATIENT_ALIAS table contains the aliases and soundex data for your patients. Each patient may have multiple aliases; therefore, a line number is used to uniquely identify each alias for a patient.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID number assigned to the patient record."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The line number associated with the alias information associated with this row. Multiple pieces of information can be associated with this row."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "ALIAS",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The alias on the patient record."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "PATIENT_ALIAS",
+            "target": "PAT_REL_ADDR",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "PATIENT_ALIAS",
+            "target": "PATIENT",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PATIENT_ALIAS": [
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 1,
+      "ALIAS": "MANDEL,JOSH",
+      "$meta": {
+        "type": "PATIENT_ALIAS"
+      }
+    }
+  ]
+}

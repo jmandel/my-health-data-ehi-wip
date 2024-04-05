@@ -1,0 +1,85 @@
+{
+  "name": "DEMOG_AUTH_AUDIT",
+  "description": "Audit trail for events related to demographic authentication tokens.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+      "linksTo": "PATIENT"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "EVENT_UTC_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "The instant an action was taken on a token."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "TOKEN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The token this action happened in relation to."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If applicable, this stores the Hyperspace user ID associated with this action."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "MYPT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "If applicable, this stores the MyChart user ID that performed an action taken on a token."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "MYC_DEMOG_AUTH_ACTION_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Stores the type of action taken on a token.",
+      "entries": [
+        "Token Generated",
+        "Token Manually Expired",
+        "Successful Login",
+        "Failed Login Invalid Credentials",
+        "Failed Login Invalid Token",
+        "Token Cleared",
+        "Token Consumed By Web Service",
+        "Token Redeemed for Login",
+        "Token Consumed for Quick Pay Loading",
+        "Token Consumed for Quick Pay Payment Posting"
+      ]
+    }
+  ]
+}

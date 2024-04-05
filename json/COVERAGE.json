@@ -1,0 +1,212 @@
+{
+  "$meta": {
+    "schemas": {
+      "COVERAGE": {
+        "name": "COVERAGE",
+        "description": "The COVERAGE table contains high-level information on both managed care and indemnity coverage records in your system.",
+        "primaryKey": [
+          {
+            "columnName": "COVERAGE_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "COVERAGE_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID assigned to the coverage record. This ID may be encrypted if you have elected to use enterprise reporting�s encryption utility."
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "COVERAGE_TYPE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value that indicates whether a coverage is managed care or indemnity; 1 � Indemnity, 2 � Managed Care.",
+            "entries": [
+              "Indemnity",
+              "Managed Care"
+            ]
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PAYOR_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column is only populated for indemnity coverages (COVERAGE_TYPE_C equal to 1). This column stores the unique identifier of the payor associated with the coverage record.  To look up the payor for managed care coverages (COVERAGE_TYPE_C equal to 2), join COVERAGE.COVERAGE_ID on V_COVERAGE_PAYOR_PLAN.COVERAGE_ID and filter on V_COVERAGE_PAYOR_PLAN.EFF_DATE and V_COVERAGE_PAYOR_PLAN.TERM_DATE to find the relevant PAYOR_ID."
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "PLAN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column is only populated for indemnity coverages (COVERAGE_TYPE_C equal to 1). This column stores the unique identifier of the benefit plan associated with the coverage record.  To look up the benefit plan for managed care coverages (COVERAGE_TYPE_C equal to 2), join COVERAGE.COVERAGE_ID on V_COVERAGE_PAYOR_PLAN.COVERAGE_ID and filter on V_COVERAGE_PAYOR_PLAN.EFF_DATE and V_COVERAGE_PAYOR_PLAN.TERM_DATE to find the relevant BENEFIT_PLAN_ID."
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "EPIC_CVG_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the coverage record. This column may be hidden if you have elected to use enterprise reporting�s security utility."
+          },
+          {
+            "ordinalPosition": 21,
+            "name": "GROUP_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the coverage group."
+          },
+          {
+            "ordinalPosition": 27,
+            "name": "GROUP_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The identification number assigned to this subscriber's employer/plan group by the payor.  This number will appear in box 11 of the HCFA claim form."
+          },
+          {
+            "ordinalPosition": 28,
+            "name": "CLAIM_MAIL_CODE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The category value associated with where to send the claim on a coverage (i.e. send claim to payor, send claim to account, etc.)",
+            "entries": [
+              "Payer",
+              "Account",
+              "Payer Plan",
+              "Coverage Address"
+            ]
+          },
+          {
+            "ordinalPosition": 35,
+            "name": "PAT_REC_OF_SUBS_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "If the subscriber is the same person as a patient, this item contains the patient ID."
+          },
+          {
+            "ordinalPosition": 65,
+            "name": "SUBSCR_OR_SELF_MEM_PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item contains the subscriber patient Id of a coverage and will be used to associate patients with linked premium billing accounts for EHI."
+          },
+          {
+            "ordinalPosition": 1,
+            "name": "CVG_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique identifier for the coverage record.",
+            "mergedFrom": "COVERAGE_2"
+          },
+          {
+            "ordinalPosition": 67,
+            "name": "PAYOR_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The coverage payor's name.",
+            "mergedFrom": "COVERAGE_2"
+          }
+        ],
+        "merged": [
+          {
+            "name": "COVERAGE_2",
+            "description": "The COVERAGE_2 table contains high-level information on both managed care and indemnity coverage records in your system."
+          },
+          {
+            "name": "COVERAGE_3",
+            "description": "The COVERAGE_3 table contains high-level information on both managed care and indemnity coverage records in your system."
+          },
+          {
+            "name": "CVG_AP_CLAIMS",
+            "description": "This table contains coverage information generated and owned by AP Claims adjudication. If your organization uses a separate AP Claims instance in an Interconnect setting, then this table should be extracted from the AP Claims instance instead of the clinical instance."
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "COVERAGE",
+            "target": "COVERAGE_COPAY_ECD",
+            "joinKeys": [
+              {
+                "source": "COVERAGE_ID",
+                "target": "COVERAGE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "COVERAGE",
+            "target": "COVERAGE_MEMBER_LIST",
+            "joinKeys": [
+              {
+                "source": "COVERAGE_ID",
+                "target": "COVERAGE_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "COVERAGE",
+            "target": "COVERAGE_SPONSOR",
+            "joinKeys": [
+              {
+                "source": "COVERAGE_ID",
+                "target": "CVG_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "COVERAGE",
+            "target": "CVG_ACCT_LIST",
+            "joinKeys": [
+              {
+                "source": "COVERAGE_ID",
+                "target": "CVG_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "COVERAGE",
+            "target": "CVG_SUBSCR_ADDR",
+            "joinKeys": [
+              {
+                "source": "COVERAGE_ID",
+                "target": "CVG_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "COVERAGE": [
+    {
+      "COVERAGE_ID": 5934765,
+      "COVERAGE_TYPE_C_NAME": "Indemnity",
+      "PAYOR_ID": 1302,
+      "PLAN_ID": 130204,
+      "EPIC_CVG_ID": 5934765,
+      "GROUP_NAME": "Microsoft",
+      "GROUP_NUM": "1000010",
+      "CLAIM_MAIL_CODE_C_NAME": "Payer Plan",
+      "PAT_REC_OF_SUBS_ID": "Z7004242",
+      "SUBSCR_OR_SELF_MEM_PAT_ID": "Z7004242",
+      "$meta": {
+        "type": "COVERAGE",
+        "mergedFrom": [
+          "COVERAGE_2",
+          "COVERAGE_3",
+          "CVG_AP_CLAIMS"
+        ]
+      },
+      "// mergedFrom COVERAGE_2": true,
+      "CVG_ID": 5934765,
+      "PAYOR_NAME": "BLUE CROSS OF WISCONSIN",
+      "// mergedFrom COVERAGE_3": true,
+      "// mergedFrom CVG_AP_CLAIMS": true
+    }
+  ]
+}

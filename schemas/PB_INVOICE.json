@@ -1,0 +1,105 @@
+{
+  "name": "PB_INVOICE",
+  "description": "The PB_INVOICE table contains information about premium billing invoices.",
+  "primaryKey": [
+    {
+      "columnName": "PB_INVC_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PB_INVC_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the premium billing invoice."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "INV_CREATE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Date invoice was created."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "INV_DUE_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Due date for the invoice."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "INV_STAT_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates the current status of the invoice (printed, payment received, etc.)",
+      "entries": [
+        "Created",
+        "Printed",
+        "Payment Received",
+        "Closed",
+        "Cancelled",
+        "Approved",
+        "Rejected",
+        "Released",
+        "Disputed",
+        "Not Printed - Paperless"
+      ]
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "PB_ACCT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the premium billing account associated with the invoice."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "EFF_MONTH",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Effective period for the invoice. This date will correspond to the cycle date of the billing cycle used to generate this invoice."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "INV_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Invoice number generated using the account ID and the account invoicing sequence number."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "CYL_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "Cycle date for the invoice."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "UPDATE_DATE",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The extract date and time of the record for this table."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PRESUMED_PAYMENT_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The ID of the payment that pays this invoice."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "GRACE_EXCLUSION_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Controls whether an invoice is considered an exception to the FFM grace period rules",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "name": "AP_PROC_ASSOC_DX",
+  "description": "This table summarizes diagnoses associated with AP claim service lines.\n\n\n\n\n\nTo link this table�s service line information back to a claim header, join this table to AP_CLAIM_PROC_IDS on the TX_ID column. If you need to report on claim service lines specific to Cost Sharing Reduction (CSR), join this table instead to AP_CLAIM_PROC_IDS_CSR on the TX_ID column.",
+  "primaryKey": [
+    {
+      "columnName": "ETR_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ETR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the AP Claim procedure transaction."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "DX_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique identifier of the diagnosis record associated with the AP claim procedure. Note: This is not the ICD-9 code for the diagnosis."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "DX_QUAL_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The diagnosis qualifier category ID associated with this procedure."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "DX_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The diagnosis number on the AP claim that this row corresponds to. It can be used to access diagnosis details found by joining this column on AP_CLAIM_DX.AP_DX_NUM and the known claim unique identifier on AP_CLAIM_DX.CLAIM_ID."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "DX_RANK",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The rank of this diagnosis compared to the other diagnoses on the service."
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "name": "REC_LINK_AUDIT_TRL",
+  "description": "This table stores an audit trail of changes made to a recommendation's linking.",
+  "primaryKey": [
+    {
+      "columnName": "FINDING_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "FINDING_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the recommendation record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "AUDIT_DATETIME",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "The date and time when the recommendation link change was made."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "AUDIT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the user that made the change to the recommendation link."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "AUDIT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "AUDIT_WORKFLOW_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The category number for the workflow that triggered the link changes.",
+      "entries": [
+        "Interface",
+        "Track Recommendations",
+        "Open Recommendations",
+        "Appointment Scheduled",
+        "Appointment Canceled",
+        "Appointment Marked Incomplete",
+        "Appointment Status Edited",
+        "Order Entered",
+        "Order Changed",
+        "Order Canceled",
+        "Order Linked to Appointment",
+        "Order Unlinked from Appointment",
+        "Study Signed",
+        "Recommendation Updated",
+        "Order Released",
+        "Utility",
+        "Study Saved",
+        "Order No Longer Available for Scheduling",
+        "Related Order Linked"
+      ]
+    }
+  ]
+}

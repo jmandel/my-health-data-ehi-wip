@@ -1,0 +1,94 @@
+{
+  "name": "ENROLL_LINKED_CSN2",
+  "description": "The ENROLL_LINKED_CSN2 table identifies encounters, using Contact Serial Numbers (CSN), linked to a patient's enrollment in a research study. Unlike ENROLL_LINKED_REPL, this table includes any associated protocols, day numbers, treatment plans, and treatment days with the CSN as well.\n\n\n\n\n\nThe ENROLL_LINKED_CSN view should be used instead of directly linking to this table. The actual data used by this view may be split between the ENROLL_LINKED_REPL or the ENROLL_LINKED_CSN2 tables. The ENROLL_LINKED_CSN view combines the data from both tables regardless of how the underlying data may be shifting between the two tables.",
+  "primaryKey": [
+    {
+      "columnName": "ENROLL_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "ENROLL_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique ID of the patient enrollment record for this row. This column is frequently used to link to the ENROLL_INFO table.",
+      "linksTo": "ENROLL_INFO"
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this record. Multiple pieces of information can be associated with this record."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number (CSN) for patient encounters linked to this enrollment. These numbers are unique across all patient encounters in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PROTOCOL_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number (CSN) for protocols linked to this encounter. These numbers are unique across all protocol contacts in your system. If you use IntraConnect this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "LINKED_UNIQ_DAY_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The timeline day ID for the timeline instantiation of a protocol. Once a protocol is assigned to a patient, any repeating cycles and treatment days defined in the protocol are expanded out into individual cycles and cycles in the timeline. This day ID is a unique value for the protocol contact serial number (CSN) assigned to the timeline and can be linked back to the original protocol through the CL_PRL_DAY_MAP table."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "TREATMENT_PLAN_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The clinical treatment plan linked to the encounter."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "TREATMENT_DAY_CSN",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The clinical treatment day linked to the encounter. This column may be linked to TRG_UPDATE_INFO.CONTACT_SERIAL_NUM."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "LINK_ENCOUNTER_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The user who linked or unlinked an encounter to a study."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "LINK_ENCOUNTER_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "LINK_ENCOUNTER_DTTM",
+      "type": "DATETIME (UTC) ",
+      "discontinued": false,
+      "description": "UTC formatted instant when user links or unlinks an encounter to a study."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "TREATMENT_DAY_LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number of the treatment day in the treatment plan that this encounter is linked to."
+    }
+  ]
+}

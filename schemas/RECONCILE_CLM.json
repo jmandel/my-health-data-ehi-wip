@@ -1,0 +1,272 @@
+{
+  "name": "RECONCILE_CLM",
+  "description": "This table contains basic information for claim reconciliation records.",
+  "primaryKey": [
+    {
+      "columnName": "CLAIM_REC_ID",
+      "ordinalPosition": 1
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "CLAIM_REC_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique ID of the claim reconciliation record."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "CLAIM_INVOICE_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The invoice number of the claim."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "CUR_EPIC_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This is the system status of the claim: opened or closed.",
+      "entries": [
+        "Open",
+        "Closed"
+      ]
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "PAYOR_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This is the payer ID for the payer on the claim."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "BENEFIT_PLAN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This is the benefit plan ID for the benefit plan on the claim."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "LOC_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This is the location ID for the location of the claim."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "DEPARTMENT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This is the department ID for the department of the claim."
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "BUCKET_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The hospital liability bucket ID for the claim. This column is populated only for Hospital Billing claims."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "HSP_ACCOUNT_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The hospital account ID for the claim. This column is populated only for Hospital Billing claims."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "SERVICE_AREA_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the service area ID from the claim that created the reconciliation record."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "EPIC_CLM_STS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the status of the claim that created the reconciliation record. This column will indicate whether the claim has been accepted, processed, or rejected in Epic.",
+      "entries": [
+        "Processed",
+        "Errored",
+        "Accepted from Run",
+        "Rejected",
+        "WQ Resubmit",
+        "Accept from WQ"
+      ]
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "CLAIM_RUN_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column stores the claim run ID for the reconciliation record. This column will be populated for records created in the 2010 version and beyond."
+    },
+    {
+      "ordinalPosition": 13,
+      "name": "TOTAL_BILLED",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This column stores the billed amount for the reconciliation record."
+    },
+    {
+      "ordinalPosition": 14,
+      "name": "EXT_STS_RCV_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This column indicates whether at least one external status update has been received for the reconciliation record.",
+      "entries": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "ordinalPosition": 15,
+      "name": "CROSSOVER_CLAIM_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Indicates whether the associated claim is a crossover claim."
+    },
+    {
+      "ordinalPosition": 16,
+      "name": "RECORD_TYPE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates whether the record is Interchange Control Header (ISA), Transaction Set Header (ST), or Claim data.",
+      "entries": [
+        "Interchange",
+        "Transaction Set",
+        "Claim"
+      ]
+    },
+    {
+      "ordinalPosition": 17,
+      "name": "ISA_CONTROL_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item holds a unique value used for tracking an interchange for records of type Interchange."
+    },
+    {
+      "ordinalPosition": 18,
+      "name": "GS_CONTROL_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item holds a unique value used for tracking a transaction set for records of type Transaction Set."
+    },
+    {
+      "ordinalPosition": 19,
+      "name": "NUM_OF_CLAIMS",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "This item holds the number of claims submitted. It is set for records of type Interchange and Transaction Set."
+    },
+    {
+      "ordinalPosition": 20,
+      "name": "PRINT_USER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item holds the user associated with the print event. Set only for records of type Interchange."
+    },
+    {
+      "ordinalPosition": 21,
+      "name": "PRINT_USER_ID_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the user record. This name may be hidden."
+    },
+    {
+      "ordinalPosition": 22,
+      "name": "BHT_REF_NUM",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The reference identifier (BHT-03) value from the electronic claim file generated out of Epic. This acts as a link to the receiver level reference identifier (TRN-02) in the claim reconciliation (277CA) response file."
+    },
+    {
+      "ordinalPosition": 23,
+      "name": "POST_ACK_STATUS_YN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item indicates whether at least one external status update has been received on or after either four days post claim acceptance or the predicted payment response date if earlier. Claim acknowledgements are generally posted before then."
+    },
+    {
+      "ordinalPosition": 24,
+      "name": "AP_CLAIM_IMPORT_SOURCE_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "Used to define the type of source a claim is imported from to drive reporting on the different use cases a single workflow type may have.",
+      "entries": [
+        "Historical System",
+        "Repricing Source",
+        "Delegated Payer",
+        "Clearinghouse",
+        "Other Internal Source",
+        "Other External Source"
+      ]
+    },
+    {
+      "ordinalPosition": 25,
+      "name": "SOURCE_GROUP_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The EAF record representing the Medical Group that sent the imported claim."
+    },
+    {
+      "ordinalPosition": 26,
+      "name": "MC_PROV_ACCT_NUM",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the provider account number (invoice number) of the rejected claim."
+    },
+    {
+      "ordinalPosition": 27,
+      "name": "REJ_CLM_SVC_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item stores the service date of the rejected claim."
+    },
+    {
+      "ordinalPosition": 28,
+      "name": "REJ_CLM_MEMBER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the matched member of the rejected claim, if one was identified during claim load."
+    },
+    {
+      "ordinalPosition": 29,
+      "name": "REJ_CLM_VENDOR_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the matched vendor of the rejected claim, if one was identified during claim load."
+    },
+    {
+      "ordinalPosition": 30,
+      "name": "REJ_CLM_VENDOR_ID_VENDOR_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The name of the vendor."
+    },
+    {
+      "ordinalPosition": 31,
+      "name": "REJ_CLM_PROV_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "This item stores the matched provider of the rejected claim, if a one was identified during claim load."
+    },
+    {
+      "ordinalPosition": 32,
+      "name": "REJ_CLM_POS_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "This item stores the matched place of service (EAF) of the rejected claim, if a one was identified during claim load."
+    },
+    {
+      "ordinalPosition": 33,
+      "name": "CLAIM_CLOSED_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "This item holds the contact date the CRD was marked closed."
+    }
+  ]
+}

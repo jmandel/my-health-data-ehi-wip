@@ -1,0 +1,105 @@
+{
+  "name": "PRE_CLM_REV_SUBMISSIONS",
+  "description": "Each row in this table represents a Home Health Pre-Claim Review submission to Medicare for approval to send the final claim for full reimbursement.",
+  "primaryKey": [
+    {
+      "columnName": "PAT_ENC_CSN_ID",
+      "ordinalPosition": 1
+    },
+    {
+      "columnName": "LINE",
+      "ordinalPosition": 2
+    }
+  ],
+  "columns": [
+    {
+      "ordinalPosition": 1,
+      "name": "PAT_ENC_CSN_ID",
+      "type": "NUMERIC",
+      "discontinued": false,
+      "description": "The unique contact serial number for this contact. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI)."
+    },
+    {
+      "ordinalPosition": 2,
+      "name": "LINE",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The line number for the information associated with this contact. Multiple pieces of information can be associated with this contact."
+    },
+    {
+      "ordinalPosition": 3,
+      "name": "PAT_ENC_DATE_REAL",
+      "type": "FLOAT",
+      "discontinued": false,
+      "description": "A unique contact date in decimal format. The integer portion of the number indicates the date of contact. The digits after the decimal distinguish different contacts on the same date and are unique for each contact on that date. For example, .00 is the first/only contact, .01 is the second contact, etc."
+    },
+    {
+      "ordinalPosition": 4,
+      "name": "CONTACT_DATE",
+      "type": "DATETIME",
+      "discontinued": false,
+      "description": "The date of this contact in calendar format."
+    },
+    {
+      "ordinalPosition": 5,
+      "name": "CM_CT_OWNER_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The Community ID (CID) of the instance that owns this contact. This is populated only if you use IntraConnect."
+    },
+    {
+      "ordinalPosition": 6,
+      "name": "SUBMISSION_INSTANT_DTTM",
+      "type": "DATETIME (Local) ",
+      "discontinued": false,
+      "description": "Stores the instant the Pre-Claim Review submission was recorded as sent to CMS."
+    },
+    {
+      "ordinalPosition": 7,
+      "name": "SUBMISSION_STATUS_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The status of a Pre-Claim Review submission.",
+      "entries": [
+        "Submitted",
+        "Not Affirmed",
+        "Affirmed"
+      ]
+    },
+    {
+      "ordinalPosition": 8,
+      "name": "SUBMISSION_UTN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The unique tracking number (UTN) of a Pre-Claim Review submission, as provided by CMS  in response to a Pre-Claim Review submission."
+    },
+    {
+      "ordinalPosition": 9,
+      "name": "SUBMISSION_NOTE_ID",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The identifier for a note that stores comments about this Pre-Claim Review submission. A unique note exists for each submission line if note data has been entered."
+    },
+    {
+      "ordinalPosition": 10,
+      "name": "PCR_REASON_C_NAME",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The reason that a Pre-Claim Review submission has not been affirmed, as provided by CMS in response to a Pre-Claim Review submission."
+    },
+    {
+      "ordinalPosition": 11,
+      "name": "PCR_SUBMISSION_DCN",
+      "type": "VARCHAR",
+      "discontinued": false,
+      "description": "The document control number (DCN) of a Pre-Claim Review submission, as provided by CMS when a Pre-Claim Review submission is first submitted."
+    },
+    {
+      "ordinalPosition": 12,
+      "name": "PCR_BILLING_PERIOD",
+      "type": "INTEGER",
+      "discontinued": false,
+      "description": "The billing period number for a Pre-Claim Review submission. This is 1 (or blank) for the first account in a certification period and 2 for the second account in a certification period."
+    }
+  ]
+}

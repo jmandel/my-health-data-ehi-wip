@@ -1,0 +1,345 @@
+{
+  "$meta": {
+    "schemas": {
+      "PATIENT_HMT_STATUS": {
+        "name": "PATIENT_HMT_STATUS",
+        "description": "This table contains information on the due status of health maintenance topics.",
+        "primaryKey": [
+          {
+            "columnName": "PAT_ID",
+            "ordinalPosition": 1
+          },
+          {
+            "columnName": "LINE",
+            "ordinalPosition": 2
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "PAT_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The unique ID of the patient record for this row. This column is frequently used to link to the PATIENT table.",
+            "linksTo": "PATIENT"
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "The Line Count"
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "HMT_LAST_UPDATE_DT",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date when the patient's qualified Health Maintenance topic due status was last updated."
+          },
+          {
+            "ordinalPosition": 9,
+            "name": "ACTIVE_HM_PLAN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Stores the Health Maintenance plan that is currently active for the topic"
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "ACTIVE_HM_PLAN_ID_HM_PLAN_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the Health Maintenance Plan record."
+          },
+          {
+            "ordinalPosition": 12,
+            "name": "HM_ACTIVE_SERIES_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Stores the active immunization series the patient is currently on.",
+            "entries": [
+              "COVID-19 Pfizer 2-dose series",
+              "COVID-19 Moderna 2-dose series",
+              "COVID-19 Janssen series with boosters",
+              "COVID-19 AstraZeneca 2-dose series",
+              "COVID-19 Novavax series",
+              "COVID-19 Sinopharm 2-dose series",
+              "COVID-19 Sinovac 2-dose series",
+              "COVID-19 Inadvertent 2-dose series",
+              "COVID-19 Unsupported vaccine series",
+              "COVID-19 Risk IC Pfizer series",
+              "COVID-19 Risk IC Moderna series",
+              "COVID-19 Risk IC Janssen series",
+              "COVID-19 Risk IC Mixed Product series",
+              "COVID-19 Pfizer series",
+              "COVID-19 Mixed Product series",
+              "COVID-19 Moderna series",
+              "COVID-19 Risk IC WHO-authorized series",
+              "COVID-19 COVAXIN 2-dose series",
+              "COVID-19 WHO-authorized series with boosters",
+              "Pneumococcal PCV-first series",
+              "Pneumococcal PCV-second series",
+              "Pneumococcal PCV-third series",
+              "Pneumococcal PPSV-only series",
+              "COVID-19 Risk Janssen series with intermediate booster",
+              "Hepatitis B 3-dose series",
+              "Hepatitis B 4-dose series",
+              "Hepatitis B adolescent 2-dose series",
+              "Hepatitis B CpG 2-dose series",
+              "Hepatitis B HepB-CpG 4-dose series",
+              "Hepatitis B CpG-HepB 4-dose series",
+              "Hepatitis B Twinrix 3-dose series",
+              "Hepatitis B Twinrix 4-dose series",
+              "Hepatitis B risk 3-dose series",
+              "Hepatitis B risk dialysis Recombivax 3-dose series",
+              "Hepatitis B risk dialysis 4-dose series",
+              "COVID-19 Risk IC Novavax series",
+              "Orthopoxvirus risk more virulent 2-dose series",
+              "Orthopoxvirus risk less virulent 2-dose series",
+              "Orthopoxvirus risk 2-dose series",
+              "COVID-19 Start At 5 Years+"
+            ]
+          }
+        ],
+        "discoveredMappings": [
+          {
+            "type": "has-child-table",
+            "source": "PATIENT_HMT_STATUS",
+            "target": "PAT_REL_ADDR",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-parent-table",
+            "source": "PATIENT_HMT_STATUS",
+            "target": "PATIENT",
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "PATIENT_HMT_STATUS": [
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 1,
+      "ACTIVE_HM_PLAN_ID": 13,
+      "ACTIVE_HM_PLAN_ID_HM_PLAN_NAME": "Meningococcal B Vaccine",
+      "$meta": {
+        "type": "PATIENT_HMT_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 2,
+      "ACTIVE_HM_PLAN_ID": 94,
+      "ACTIVE_HM_PLAN_ID_HM_PLAN_NAME": "Japanese Encephalitis Vaccine",
+      "$meta": {
+        "type": "PATIENT_HMT_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 3,
+      "ACTIVE_HM_PLAN_ID": 6,
+      "ACTIVE_HM_PLAN_ID_HM_PLAN_NAME": "Cholera Vaccine",
+      "$meta": {
+        "type": "PATIENT_HMT_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 4,
+      "ACTIVE_HM_PLAN_ID": 69,
+      "ACTIVE_HM_PLAN_ID_HM_PLAN_NAME": "Zoster (Shingles) Vaccine 50+",
+      "$meta": {
+        "type": "PATIENT_HMT_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 5,
+      "ACTIVE_HM_PLAN_ID": 96,
+      "ACTIVE_HM_PLAN_ID_HM_PLAN_NAME": "Rabies Vaccine",
+      "$meta": {
+        "type": "PATIENT_HMT_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 6,
+      "ACTIVE_HM_PLAN_ID": 97,
+      "ACTIVE_HM_PLAN_ID_HM_PLAN_NAME": "Yellow Fever Vaccine",
+      "$meta": {
+        "type": "PATIENT_HMT_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 7,
+      "ACTIVE_HM_PLAN_ID": 2100000008,
+      "ACTIVE_HM_PLAN_ID_HM_PLAN_NAME": "Meningococcal Conjugate Vaccine",
+      "$meta": {
+        "type": "PATIENT_HMT_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 8,
+      "HMT_LAST_UPDATE_DT": "2019-02-05 00:00:00",
+      "ACTIVE_HM_PLAN_ID": 95,
+      "ACTIVE_HM_PLAN_ID_HM_PLAN_NAME": "Typhoid Vaccine",
+      "$meta": {
+        "type": "PATIENT_HMT_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 9,
+      "ACTIVE_HM_PLAN_ID": 136,
+      "ACTIVE_HM_PLAN_ID_HM_PLAN_NAME": "Pneumococcal Vaccines 0-64 yo",
+      "$meta": {
+        "type": "PATIENT_HMT_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 10,
+      "HMT_LAST_UPDATE_DT": "2023-09-28 00:00:00",
+      "ACTIVE_HM_PLAN_ID": 73,
+      "ACTIVE_HM_PLAN_ID_HM_PLAN_NAME": "Hepatitis C Screening (DOB 1945-1965 or at High Risk)",
+      "$meta": {
+        "type": "PATIENT_HMT_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 11,
+      "HMT_LAST_UPDATE_DT": "2023-09-28 00:00:00",
+      "ACTIVE_HM_PLAN_ID": 105,
+      "ACTIVE_HM_PLAN_ID_HM_PLAN_NAME": "Annual Wellness Visit (18-49 yrs)",
+      "$meta": {
+        "type": "PATIENT_HMT_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 12,
+      "HMT_LAST_UPDATE_DT": "2023-09-28 00:00:00",
+      "ACTIVE_HM_PLAN_ID": 146,
+      "ACTIVE_HM_PLAN_ID_HM_PLAN_NAME": "Cholesterol Screening-Every 5 Yrs",
+      "$meta": {
+        "type": "PATIENT_HMT_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 13,
+      "HMT_LAST_UPDATE_DT": "2022-09-25 00:00:00",
+      "ACTIVE_HM_PLAN_ID": 164,
+      "ACTIVE_HM_PLAN_ID_HM_PLAN_NAME": "COVID-19 Vaccine: Age 6 mo-64 years",
+      "HM_ACTIVE_SERIES_C_NAME": "COVID-19 Start At 5 Years+",
+      "$meta": {
+        "type": "PATIENT_HMT_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 14,
+      "HMT_LAST_UPDATE_DT": "2023-09-28 00:00:00",
+      "ACTIVE_HM_PLAN_ID": 133,
+      "ACTIVE_HM_PLAN_ID_HM_PLAN_NAME": "Influenza Vaccine",
+      "$meta": {
+        "type": "PATIENT_HMT_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 15,
+      "ACTIVE_HM_PLAN_ID": 183,
+      "ACTIVE_HM_PLAN_ID_HM_PLAN_NAME": "Orthopoxvirus Health Maintenance",
+      "$meta": {
+        "type": "PATIENT_HMT_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 16,
+      "ACTIVE_HM_PLAN_ID": 163,
+      "ACTIVE_HM_PLAN_ID_HM_PLAN_NAME": "RSV < 20 Months",
+      "$meta": {
+        "type": "PATIENT_HMT_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 17,
+      "ACTIVE_HM_PLAN_ID": 2100000006,
+      "ACTIVE_HM_PLAN_ID_HM_PLAN_NAME": "HIB Vaccine",
+      "$meta": {
+        "type": "PATIENT_HMT_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 18,
+      "ACTIVE_HM_PLAN_ID": 82,
+      "ACTIVE_HM_PLAN_ID_HM_PLAN_NAME": "Hepatitis B Vaccine 0-60y",
+      "HM_ACTIVE_SERIES_C_NAME": "Hepatitis B 3-dose series",
+      "$meta": {
+        "type": "PATIENT_HMT_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 19,
+      "ACTIVE_HM_PLAN_ID": 83,
+      "ACTIVE_HM_PLAN_ID_HM_PLAN_NAME": "IPV Vaccine",
+      "$meta": {
+        "type": "PATIENT_HMT_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 20,
+      "HMT_LAST_UPDATE_DT": "2019-02-05 00:00:00",
+      "ACTIVE_HM_PLAN_ID": 81,
+      "ACTIVE_HM_PLAN_ID_HM_PLAN_NAME": "Hepatitis A Vaccine",
+      "$meta": {
+        "type": "PATIENT_HMT_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 21,
+      "ACTIVE_HM_PLAN_ID": 66,
+      "ACTIVE_HM_PLAN_ID_HM_PLAN_NAME": "HPV Vaccine (9-26YO)",
+      "$meta": {
+        "type": "PATIENT_HMT_STATUS"
+      }
+    },
+    {
+      "PAT_ID": "Z7004242",
+      "LINE": 22,
+      "HMT_LAST_UPDATE_DT": "2019-02-05 00:00:00",
+      "ACTIVE_HM_PLAN_ID": 2100000007,
+      "ACTIVE_HM_PLAN_ID_HM_PLAN_NAME": "Tetanus/Pertussis Vaccine Teen/Adult",
+      "$meta": {
+        "type": "PATIENT_HMT_STATUS"
+      }
+    }
+  ]
+}
