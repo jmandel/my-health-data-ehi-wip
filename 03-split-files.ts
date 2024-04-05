@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
+import _ from 'lodash';
 
 interface Schema {
   name: string;
@@ -62,13 +63,16 @@ try {
     const tableData = tables[tableName];
     const schema = schemas[tableName];
 
+    // Sort the rows in the table by the primary key columns
+    const sortedTableData = _.sortBy(tableData, schema.primaryKey.map(pk => pk.columnName));
+
     const outputData = {
       $meta: {
         schemas: {
           [tableName]: schema,
         },
       },
-      [tableName]: tableData,
+      [tableName]: sortedTableData,
     };
 
     const outputFilePath = path.join(outputDirPath, `${tableName}.json`);
