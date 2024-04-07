@@ -75,6 +75,20 @@
               "BH Substance Use",
               "Vaping"
             ]
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "HX_REVIEWED_HEADER",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The header (a short title or description) and possibly, depending where in the application the history was reviewed, a unique record ID that describe where the history was reviewed.",
+            "mergedFrom": "PAT_HX_REV_TOPIC"
+          }
+        ],
+        "merged": [
+          {
+            "name": "PAT_HX_REV_TOPIC",
+            "description": "This table contains information about where in the application the history was reviewed for a patient.\n\n\n\n\n\nThe history types (the kind of history reviewed) associated with a header (where the history was reviewed) are in PAT_HX_REV_TYPE.\n\n\n\n\n\nAdditional information about when a patient's history was reviewed and by whom is found in the PAT_HX_REVIEW table."
           }
         ],
         "discoveredMappings": [
@@ -130,6 +144,24 @@
               }
             ]
           }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "PAT_HX_REV_TYPE",
+            "target": "PAT_ENC",
+            "joinKey": {
+              "source": "PAT_ENC_CSN_ID",
+              "target": "PAT_ENC_CSN_ID"
+            }
+          },
+          {
+            "source": "PAT_HX_REV_TYPE",
+            "target": "SOCIAL_HX",
+            "joinKey": {
+              "source": "PAT_ENC_CSN_ID",
+              "target": "PAT_ENC_CSN_ID"
+            }
+          }
         ]
       }
     }
@@ -142,8 +174,13 @@
       "CONTACT_DATE": "2018-08-09 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Tobacco",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Vitals VN Section"
     },
     {
       "PAT_ENC_CSN_ID": 724623985,
@@ -152,8 +189,13 @@
       "CONTACT_DATE": "2018-08-09 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Medical",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Past Medical History (LQH 210138000002)"
     },
     {
       "PAT_ENC_CSN_ID": 724623985,
@@ -162,8 +204,13 @@
       "CONTACT_DATE": "2018-08-09 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Surgical",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Surgical History (LQH 210138000003)"
     },
     {
       "PAT_ENC_CSN_ID": 724623985,
@@ -172,8 +219,13 @@
       "CONTACT_DATE": "2018-08-09 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Family",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Family History (LQH 210138000004)"
     },
     {
       "PAT_ENC_CSN_ID": 724623985,
@@ -182,8 +234,13 @@
       "CONTACT_DATE": "2018-08-09 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Family",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Family History (LQH 210138000004)"
     },
     {
       "PAT_ENC_CSN_ID": 724623985,
@@ -192,8 +249,13 @@
       "CONTACT_DATE": "2018-08-09 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Alcohol",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Social History (LQH 2090000025)"
     },
     {
       "PAT_ENC_CSN_ID": 724623985,
@@ -202,8 +264,13 @@
       "CONTACT_DATE": "2018-08-09 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Sexual Activity",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Social History (LQH 2090000025)"
     },
     {
       "PAT_ENC_CSN_ID": 724623985,
@@ -212,8 +279,13 @@
       "CONTACT_DATE": "2018-08-09 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Drug Use",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Social History (LQH 2090000025)"
     },
     {
       "PAT_ENC_CSN_ID": 724623985,
@@ -222,8 +294,13 @@
       "CONTACT_DATE": "2018-08-09 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Tobacco",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Social History (LQH 2090000025)"
     },
     {
       "PAT_ENC_CSN_ID": 724623985,
@@ -232,8 +309,13 @@
       "CONTACT_DATE": "2018-08-09 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Alcohol",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Social History (LQH 2090000025)"
     },
     {
       "PAT_ENC_CSN_ID": 724623985,
@@ -242,8 +324,13 @@
       "CONTACT_DATE": "2018-08-09 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Sexual Activity",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Social History (LQH 2090000025)"
     },
     {
       "PAT_ENC_CSN_ID": 724623985,
@@ -252,8 +339,13 @@
       "CONTACT_DATE": "2018-08-09 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Drug Use",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Social History (LQH 2090000025)"
     },
     {
       "PAT_ENC_CSN_ID": 724623985,
@@ -262,8 +354,13 @@
       "CONTACT_DATE": "2018-08-09 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Tobacco",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Social History (LQH 2090000025)"
     },
     {
       "PAT_ENC_CSN_ID": 802802103,
@@ -272,8 +369,13 @@
       "CONTACT_DATE": "2020-01-09 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Tobacco",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Vitals VN Section"
     },
     {
       "PAT_ENC_CSN_ID": 802802103,
@@ -282,8 +384,13 @@
       "CONTACT_DATE": "2020-01-09 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Tobacco",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Vitals VN Section"
     },
     {
       "PAT_ENC_CSN_ID": 958134730,
@@ -292,8 +399,13 @@
       "CONTACT_DATE": "2022-08-29 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Medical",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Medical History (History Navigator Section - LQH 23401)"
     },
     {
       "PAT_ENC_CSN_ID": 958134730,
@@ -302,8 +414,13 @@
       "CONTACT_DATE": "2022-08-29 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Surgical",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Surgical History (History Navigator Section - LQH 23402)"
     },
     {
       "PAT_ENC_CSN_ID": 958134730,
@@ -312,8 +429,13 @@
       "CONTACT_DATE": "2022-08-29 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Family",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Family History (History Navigator Section - LQH 23403)"
     },
     {
       "PAT_ENC_CSN_ID": 958134730,
@@ -322,8 +444,13 @@
       "CONTACT_DATE": "2022-08-29 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Custom",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "E-cigarette/Vaping (History Navigator Section - LQH 2101000010)"
     },
     {
       "PAT_ENC_CSN_ID": 958134730,
@@ -332,8 +459,13 @@
       "CONTACT_DATE": "2022-08-29 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Custom",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "E-cigarette/Vaping Substances (History Navigator Section - LQH 2100000020)"
     },
     {
       "PAT_ENC_CSN_ID": 958134730,
@@ -342,8 +474,13 @@
       "CONTACT_DATE": "2022-08-29 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Custom",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "E-cigarette/Vaping Devices (History Navigator Section - LQH 2100000021)"
     },
     {
       "PAT_ENC_CSN_ID": 958134730,
@@ -352,8 +489,13 @@
       "CONTACT_DATE": "2022-08-29 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Tobacco",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Tobacco (History Navigator Section - LQH 23405)"
     },
     {
       "PAT_ENC_CSN_ID": 958134730,
@@ -362,8 +504,13 @@
       "CONTACT_DATE": "2022-08-29 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Alcohol",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Alcohol (History Navigator Section - LQH 23406)"
     },
     {
       "PAT_ENC_CSN_ID": 958134730,
@@ -372,8 +519,13 @@
       "CONTACT_DATE": "2022-08-29 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Drug Use",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Drug (History Navigator Section - LQH 23407)"
     },
     {
       "PAT_ENC_CSN_ID": 958134730,
@@ -382,8 +534,13 @@
       "CONTACT_DATE": "2022-08-29 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Sexual Activity",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Sexual Activity (History Navigator Section - LQH 23408)"
     },
     {
       "PAT_ENC_CSN_ID": 958134730,
@@ -392,8 +549,13 @@
       "CONTACT_DATE": "2022-08-29 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Tobacco",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Tobacco (History Navigator Section - LQH 23405)"
     },
     {
       "PAT_ENC_CSN_ID": 958134730,
@@ -402,8 +564,13 @@
       "CONTACT_DATE": "2022-08-29 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Alcohol",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Alcohol (History Navigator Section - LQH 23406)"
     },
     {
       "PAT_ENC_CSN_ID": 958134730,
@@ -412,8 +579,13 @@
       "CONTACT_DATE": "2022-08-29 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Drug Use",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Drug (History Navigator Section - LQH 23407)"
     },
     {
       "PAT_ENC_CSN_ID": 958134730,
@@ -422,8 +594,13 @@
       "CONTACT_DATE": "2022-08-29 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Sexual Activity",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Sexual Activity (History Navigator Section - LQH 23408)"
     },
     {
       "PAT_ENC_CSN_ID": 958134730,
@@ -432,8 +609,13 @@
       "CONTACT_DATE": "2022-08-29 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Socioeconomic",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Socioeconomic (History Navigator Section - LQH 23453)"
     },
     {
       "PAT_ENC_CSN_ID": 958134730,
@@ -442,8 +624,13 @@
       "CONTACT_DATE": "2022-08-29 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Social Documentation",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Social Documentation (History Navigator Section - LQH 23452)"
     },
     {
       "PAT_ENC_CSN_ID": 991221485,
@@ -452,8 +639,13 @@
       "CONTACT_DATE": "2023-03-02 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Medical",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Medical History (History Navigator Section - LQH 23401)"
     },
     {
       "PAT_ENC_CSN_ID": 1028739468,
@@ -462,8 +654,13 @@
       "CONTACT_DATE": "2023-09-28 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Medical",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Medical History (History Navigator Section - LQH 23401)"
     },
     {
       "PAT_ENC_CSN_ID": 1028739468,
@@ -472,8 +669,13 @@
       "CONTACT_DATE": "2023-09-28 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Surgical",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Surgical History (History Navigator Section - LQH 23402)"
     },
     {
       "PAT_ENC_CSN_ID": 1028739468,
@@ -482,8 +684,13 @@
       "CONTACT_DATE": "2023-09-28 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Family",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Family History (History Navigator Section - LQH 23403)"
     },
     {
       "PAT_ENC_CSN_ID": 1028739468,
@@ -492,8 +699,13 @@
       "CONTACT_DATE": "2023-09-28 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Tobacco",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Tobacco (History Navigator Section - LQH 23405)"
     },
     {
       "PAT_ENC_CSN_ID": 1028739468,
@@ -502,8 +714,13 @@
       "CONTACT_DATE": "2023-09-28 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Alcohol",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Alcohol (History Navigator Section - LQH 23406)"
     },
     {
       "PAT_ENC_CSN_ID": 1028739468,
@@ -512,8 +729,13 @@
       "CONTACT_DATE": "2023-09-28 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Drug Use",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Drug (History Navigator Section - LQH 23407)"
     },
     {
       "PAT_ENC_CSN_ID": 1028739468,
@@ -522,8 +744,13 @@
       "CONTACT_DATE": "2023-09-28 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Sexual Activity",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Sexual Activity (History Navigator Section - LQH 23408)"
     },
     {
       "PAT_ENC_CSN_ID": 1028739468,
@@ -532,8 +759,13 @@
       "CONTACT_DATE": "2023-09-28 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Custom",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "E-cigarette/Vaping (History Navigator Section - LQH 2101000010)"
     },
     {
       "PAT_ENC_CSN_ID": 1028739468,
@@ -542,8 +774,13 @@
       "CONTACT_DATE": "2023-09-28 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Custom",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "E-cigarette/Vaping Substances (History Navigator Section - LQH 2100000020)"
     },
     {
       "PAT_ENC_CSN_ID": 1028739468,
@@ -552,8 +789,13 @@
       "CONTACT_DATE": "2023-09-28 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Custom",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "E-cigarette/Vaping Devices (History Navigator Section - LQH 2100000021)"
     },
     {
       "PAT_ENC_CSN_ID": 1028739468,
@@ -562,8 +804,13 @@
       "CONTACT_DATE": "2023-09-28 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Socioeconomic",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Socioeconomic (History Navigator Section - LQH 23453)"
     },
     {
       "PAT_ENC_CSN_ID": 1028739468,
@@ -572,8 +819,13 @@
       "CONTACT_DATE": "2023-09-28 00:00:00",
       "HX_REVIEWED_TYPE_C_NAME": "Social Documentation",
       "$meta": {
-        "type": "PAT_HX_REV_TYPE"
-      }
+        "type": "PAT_HX_REV_TYPE",
+        "mergedFrom": [
+          "PAT_HX_REV_TOPIC"
+        ]
+      },
+      "// mergedFrom PAT_HX_REV_TOPIC": true,
+      "HX_REVIEWED_HEADER": "Social Documentation (History Navigator Section - LQH 23452)"
     }
   ]
 }

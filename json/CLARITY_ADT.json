@@ -187,6 +187,56 @@
             "discontinued": false,
             "description": "The unique ID of the original event that this event record replaces. If this event record has not been canceled or updated, this column will be equal to the EVENT_ID column. This column is not necessarily equal to the CANC_EVENT_ID column. If the original event has been updated multiple times, then this column will show the ID of the original event, not the ID of the event that was most recently replaced by this record."
           }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "CLARITY_ADT",
+            "target": "CLARITY_DEP",
+            "joinKey": {
+              "source": "DEPARTMENT_ID",
+              "target": "DEPARTMENT_ID"
+            }
+          },
+          {
+            "source": "CLARITY_ADT",
+            "target": "PATIENT",
+            "joinKey": {
+              "source": "PAT_ID",
+              "target": "PAT_ID"
+            }
+          },
+          {
+            "source": "CLARITY_ADT",
+            "target": "PAT_ENC_DISP",
+            "joinKey": {
+              "source": "PAT_ENC_CSN_ID",
+              "target": "PAT_ENC_CSN_ID"
+            }
+          },
+          {
+            "source": "CLARITY_ADT",
+            "target": "PAT_ENC_HSP",
+            "joinKey": {
+              "source": "PAT_ENC_CSN_ID",
+              "target": "PAT_ENC_CSN_ID"
+            }
+          },
+          {
+            "source": "CLARITY_ADT",
+            "target": "PAT_ENC",
+            "joinKey": {
+              "source": "PAT_ENC_CSN_ID",
+              "target": "PAT_ENC_CSN_ID"
+            }
+          },
+          {
+            "source": "CLARITY_ADT",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "USER_ID",
+              "target": "USER_ID"
+            }
+          }
         ]
       }
     }

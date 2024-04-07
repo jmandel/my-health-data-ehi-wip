@@ -55,13 +55,39 @@
           {
             "type": "has-parent-table",
             "source": "REFERRAL_CVG_AUTH",
-            "target": "EPA_INFO",
+            "target": "REFERRAL",
             "joinKeys": [
               {
                 "source": "REFERRAL_ID",
                 "target": "REFERRAL_ID"
               }
             ]
+          }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "REFERRAL_CVG_AUTH",
+            "target": "REFERRAL",
+            "joinKey": {
+              "source": "REFERRAL_ID",
+              "target": "REFERRAL_ID"
+            }
+          },
+          {
+            "source": "REFERRAL_CVG_AUTH",
+            "target": "COVERAGE",
+            "joinKey": {
+              "source": "AUTH_CERT_CVG_ID",
+              "target": "COVERAGE_ID"
+            }
+          },
+          {
+            "source": "REFERRAL_CVG_AUTH",
+            "target": "HNO_INFO",
+            "joinKey": {
+              "source": "PRECERT_CMT_NOTE_ID",
+              "target": "NOTE_ID"
+            }
           }
         ]
       }

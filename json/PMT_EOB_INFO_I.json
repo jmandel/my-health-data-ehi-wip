@@ -279,13 +279,103 @@
           {
             "type": "has-parent-table",
             "source": "PMT_EOB_INFO_I",
-            "target": "ARPB_TX_MODERATE",
+            "target": "ARPB_TRANSACTIONS",
             "joinKeys": [
               {
                 "source": "TX_ID",
                 "target": "TX_ID"
               }
             ]
+          }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "PMT_EOB_INFO_I",
+            "target": "ARPB_TRANSACTIONS",
+            "joinKey": {
+              "source": "TX_ID",
+              "target": "TX_ID"
+            }
+          },
+          {
+            "source": "PMT_EOB_INFO_I",
+            "target": "INVOICE",
+            "joinKey": {
+              "source": "INV_ID",
+              "target": "INVOICE_ID"
+            }
+          },
+          {
+            "source": "PMT_EOB_INFO_I",
+            "target": "ACCOUNT",
+            "joinKey": {
+              "source": "PEOB_ACCOUNT_ID",
+              "target": "ACCOUNT_ID"
+            }
+          },
+          {
+            "source": "PMT_EOB_INFO_I",
+            "target": "CLARITY_LOC",
+            "joinKey": {
+              "source": "PEOB_LOC_ID",
+              "target": "LOC_ID"
+            }
+          },
+          {
+            "source": "PMT_EOB_INFO_I",
+            "target": "CLARITY_LOC",
+            "joinKey": {
+              "source": "PEOB_POS_ID",
+              "target": "LOC_ID"
+            }
+          },
+          {
+            "source": "PMT_EOB_INFO_I",
+            "target": "CLARITY_DEP",
+            "joinKey": {
+              "source": "PEOB_DEPT_ID",
+              "target": "DEPARTMENT_ID"
+            }
+          },
+          {
+            "source": "PMT_EOB_INFO_I",
+            "target": "CLARITY_SER",
+            "joinKey": {
+              "source": "PEOB_BILL_PROV_ID",
+              "target": "PROV_ID"
+            }
+          },
+          {
+            "source": "PMT_EOB_INFO_I",
+            "target": "REFERRAL_SOURCE",
+            "joinKey": {
+              "source": "PEOB_BILL_PROV_ID",
+              "target": "REFERRING_PROV_ID"
+            }
+          },
+          {
+            "source": "PMT_EOB_INFO_I",
+            "target": "CLARITY_EPP",
+            "joinKey": {
+              "source": "PEOB_PLAN_ID",
+              "target": "BENEFIT_PLAN_ID"
+            }
+          },
+          {
+            "source": "PMT_EOB_INFO_I",
+            "target": "CLARITY_EAP",
+            "joinKey": {
+              "source": "PEOB_PROC_ID",
+              "target": "PROC_ID"
+            }
+          },
+          {
+            "source": "PMT_EOB_INFO_I",
+            "target": "ARPB_TRANSACTIONS",
+            "joinKey": {
+              "source": "PEOB_MTCH_CHG_TX_ID",
+              "target": "TX_ID"
+            }
           }
         ]
       }

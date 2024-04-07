@@ -41,13 +41,31 @@
           {
             "type": "has-parent-table",
             "source": "ARPB_PMT_RELATED_DENIALS",
-            "target": "ARPB_TX_MODERATE",
+            "target": "ARPB_TRANSACTIONS",
             "joinKeys": [
               {
                 "source": "TX_ID",
                 "target": "TX_ID"
               }
             ]
+          }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "ARPB_PMT_RELATED_DENIALS",
+            "target": "ARPB_TRANSACTIONS",
+            "joinKey": {
+              "source": "TX_ID",
+              "target": "TX_ID"
+            }
+          },
+          {
+            "source": "ARPB_PMT_RELATED_DENIALS",
+            "target": "BDC_INFO",
+            "joinKey": {
+              "source": "RELATED_BDC_ID",
+              "target": "BDC_ID"
+            }
           }
         ]
       }

@@ -69,21 +69,6 @@
           {
             "type": "has-child-table",
             "source": "PAT_HX_REVIEW",
-            "target": "PAT_HX_REV_TOPIC",
-            "joinKeys": [
-              {
-                "source": "PAT_ENC_CSN_ID",
-                "target": "PAT_ENC_CSN_ID"
-              },
-              {
-                "source": "LINE_COUNT",
-                "target": "GROUP_LINE"
-              }
-            ]
-          },
-          {
-            "type": "has-child-table",
-            "source": "PAT_HX_REVIEW",
             "target": "PAT_HX_REV_TYPE",
             "joinKeys": [
               {
@@ -117,6 +102,32 @@
                 "target": "PAT_ENC_CSN_ID"
               }
             ]
+          }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "PAT_HX_REVIEW",
+            "target": "PAT_ENC",
+            "joinKey": {
+              "source": "PAT_ENC_CSN_ID",
+              "target": "PAT_ENC_CSN_ID"
+            }
+          },
+          {
+            "source": "PAT_HX_REVIEW",
+            "target": "SOCIAL_HX",
+            "joinKey": {
+              "source": "PAT_ENC_CSN_ID",
+              "target": "PAT_ENC_CSN_ID"
+            }
+          },
+          {
+            "source": "PAT_HX_REVIEW",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "HX_REVIEWED_USER_ID",
+              "target": "USER_ID"
+            }
           }
         ]
       }

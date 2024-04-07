@@ -18,7 +18,7 @@ interface Table {
 interface Schema {
   name: string;
   description?: string;
-  merged?: {name: string, description: string}[]
+  merged?: { name: string; description: string }[];
   primaryKey: { columnName: string }[];
   columns: {
     name: string;
@@ -27,7 +27,13 @@ interface Schema {
   }[];
   pkOnly?: boolean;
   discoveredMappings?: Relationship[];
+  discoveredForeignKeys?: {
+    source: string;
+    target: string;
+    joinKey: { source: string; target: string };
+  }[];
 }
+
 
 interface TablesMap {
   [tableName: string]: Table[];
@@ -60,10 +66,11 @@ function buildMergeableSets(relationships: Relationship[]): { [key: string]: str
   }
 
   const ret = _.chain(mapping).values().uniq().map((set) => {
-    const members = _.sortBy(Array.from(set), [(m) => (""+m).length, identity]);
+    const members = _.sortBy(Array.from(set), [(m) => m.split("_").length, (m) => (""+m).length, identity]);
     return [members[0], members.slice(1)];
   }).filter(([_k, v]) => v.length > 0).fromPairs().value();
 
+  console.error("MS", ret);
   return ret;
 }
 
@@ -159,14 +166,32 @@ function findSameLogicalTableRelationships(tables, schemas: SchemasMap): Relatio
 
   for (const tableA of Object.keys(schemas)) {
     for (const tableB of Object.keys(schemas)) {
+      if (tableA === tableB) {
+        continue;
+      }
+      const namesMatch = normalizeTableName(tableA) === normalizeTableName(tableB);
       if ( schemas[tableA].primaryKey.length === schemas[tableB].primaryKey.length && 
-          (normalizeTableName(tableA) === normalizeTableName(tableB) || 
-          (!schemas[tableA].primaryKey.some(k => k.columnName.match("LINE")) && JSON.stringify(schemas[tableA].primaryKey) === JSON.stringify(schemas[tableB].primaryKey) && tables[tableA].length === tables[tableB].length))
+          ( namesMatch || 
+          (JSON.stringify(schemas[tableA].primaryKey) === JSON.stringify(schemas[tableB].primaryKey) && tables[tableA].length === tables[tableB].length))
           ) {
+
+        if (!namesMatch && schemas[tableA].primaryKey.some(k => k.columnName.match("LINE"))) {
+          // review counts of unique values and ensure all are >2
+          const allCounts = schemas[tableA].primaryKey.map((pk) => {
+            const values = new Set(tables[tableA].map((row) => row[pk.columnName]));
+            return values.size;
+          });
+
+         if (allCounts.some((c) => c < 3)){
+            // not enouhg evidence to do line-based matching if we never have more than one line
+            continue;
+          }
+         }
         const joinKeys = schemas[tableA].primaryKey.map((pkA, index) => ({
           source: pkA.columnName,
           target: schemas[tableB].primaryKey[index].columnName,
         }));
+
         relationships.push({
           type: "same-logical-table",
           source: tableA,
@@ -248,6 +273,46 @@ function isValidPrefixRelationship(
 
   return true;
 }
+
+function findForeignKeyRelationships(
+  tables: TablesMap,
+  schemas: SchemasMap,
+  fudgeFactor: number
+): Exclude<Schema["discoveredForeignKeys"], undefined> {
+  const relationships: Schema["discoveredForeignKeys"] = [];
+
+  for (const tableA of Object.keys(schemas)) {
+    for (const columnA of schemas[tableA].columns) {
+      if (columnA.name.match(/(_ID|_GUID|_PTR|_USER|_SOURCE|_LOC)$/)) {
+        for (const tableB of Object.keys(schemas)) {
+          if (tableA === tableB) {
+            continue;
+          }
+          if (schemas[tableB].primaryKey.length === 1) {
+            const pkB = schemas[tableB].primaryKey[0].columnName;
+            const valuesA = new Set(tables[tableA].map((row) => row[columnA.name]));
+            const valuesB = new Set(tables[tableB].map((row) => row[pkB]));
+
+            const concordance = [...valuesA].filter((v) => valuesB.has(v)).length / valuesA.size;
+            if (concordance >= 1 - fudgeFactor) {
+              relationships.push({
+                source: tableA,
+                target: tableB,
+                joinKey: {source: columnA.name, target: pkB},
+              });
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return relationships;
+}
+
+
+
+
 async function main() {
   const argv = yargs(hideBin(process.argv))
     .option("input", {
@@ -296,10 +361,23 @@ async function main() {
       });
     }
 
+    const foreignKeyRelationships = findForeignKeyRelationships(mergedTables, mergedSchemas, fudgeFactor);
+    for (const fk of foreignKeyRelationships) {
+      mergedSchemas[fk.source].discoveredForeignKeys = mergedSchemas[fk.source].discoveredForeignKeys || [];
+      mergedSchemas[fk.source].discoveredForeignKeys!.push(fk);
+    }
+
     console.log(JSON.stringify({
-      $meta: {schemas: mergedSchemas},
-      ...mergedTables}, null, 2));
+      $meta: { schemas: mergedSchemas },
+      ...mergedTables
+    }, null, 2));
 
 }
 
 main();
+
+// Improvement ideas
+// * Discover "A has at most one optional B" relationships
+// * Discover "A.[code] is a foreign key to B.[solePk]" relationships
+// * Evaluate normalize(A) is a prefix of normalize(B) tables for missing relationships
+// * Add a hotfix file for manual corrections

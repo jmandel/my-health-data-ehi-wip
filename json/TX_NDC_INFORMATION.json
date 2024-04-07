@@ -69,13 +69,31 @@
           {
             "type": "has-parent-table",
             "source": "TX_NDC_INFORMATION",
-            "target": "ARPB_TX_MODERATE",
+            "target": "ARPB_TRANSACTIONS",
             "joinKeys": [
               {
                 "source": "TX_ID",
                 "target": "TX_ID"
               }
             ]
+          }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "TX_NDC_INFORMATION",
+            "target": "ARPB_TRANSACTIONS",
+            "joinKey": {
+              "source": "TX_ID",
+              "target": "TX_ID"
+            }
+          },
+          {
+            "source": "TX_NDC_INFORMATION",
+            "target": "RX_NDC",
+            "joinKey": {
+              "source": "NDC_CODES_ID",
+              "target": "NDC_ID"
+            }
           }
         ]
       }

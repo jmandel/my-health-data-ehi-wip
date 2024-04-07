@@ -163,6 +163,20 @@
             "type": "VARCHAR",
             "discontinued": false,
             "description": "The group line number on the invoice record that corresponds to the data in INVOICE_CLM_LN."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "NON_GROUP_HTR_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "Stores charges that are active on the current claim.",
+            "mergedFrom": "CLP_NON_GRP_TX_IDS"
+          }
+        ],
+        "merged": [
+          {
+            "name": "CLP_NON_GRP_TX_IDS",
+            "description": "This table stores claim print transaction IDs for Hospital Billing."
           }
         ],
         "discoveredMappings": [
@@ -207,6 +221,64 @@
               }
             ]
           }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "HSP_CLP_CMS_LINE",
+            "target": "HSP_CLAIM_DETAIL1",
+            "joinKey": {
+              "source": "CLAIM_PRINT_ID",
+              "target": "CLAIM_PRINT_ID"
+            }
+          },
+          {
+            "source": "HSP_CLP_CMS_LINE",
+            "target": "CLARITY_EAP",
+            "joinKey": {
+              "source": "PROC_ID",
+              "target": "PROC_ID"
+            }
+          },
+          {
+            "source": "HSP_CLP_CMS_LINE",
+            "target": "CL_UB_REV_CODE",
+            "joinKey": {
+              "source": "OVRD_REV_CODE_ID",
+              "target": "UB_REV_CODE_ID"
+            }
+          },
+          {
+            "source": "HSP_CLP_CMS_LINE",
+            "target": "CLARITY_LOC",
+            "joinKey": {
+              "source": "REV_LOCATION_ID",
+              "target": "LOC_ID"
+            }
+          },
+          {
+            "source": "HSP_CLP_CMS_LINE",
+            "target": "CLARITY_DEP",
+            "joinKey": {
+              "source": "DEPT_ID",
+              "target": "DEPARTMENT_ID"
+            }
+          },
+          {
+            "source": "HSP_CLP_CMS_LINE",
+            "target": "CLARITY_LOC",
+            "joinKey": {
+              "source": "LINE_POS_ID",
+              "target": "LOC_ID"
+            }
+          },
+          {
+            "source": "HSP_CLP_CMS_LINE",
+            "target": "HSP_TRANSACTIONS",
+            "joinKey": {
+              "source": "NON_GROUP_HTR_ID",
+              "target": "TX_ID"
+            }
+          }
         ]
       }
     }
@@ -232,8 +304,13 @@
       "LINE_POS_ID": 101401,
       "CMS_CODE_TYPE_C_NAME": "CPT(R)",
       "$meta": {
-        "type": "HSP_CLP_CMS_LINE"
-      }
+        "type": "HSP_CLP_CMS_LINE",
+        "mergedFrom": [
+          "CLP_NON_GRP_TX_IDS"
+        ]
+      },
+      "// mergedFrom CLP_NON_GRP_TX_IDS": true,
+      "NON_GROUP_HTR_ID": 670514271
     },
     {
       "CLAIM_PRINT_ID": 121445416,
@@ -255,8 +332,13 @@
       "LINE_POS_ID": 101401,
       "CMS_CODE_TYPE_C_NAME": "CPT(R)",
       "$meta": {
-        "type": "HSP_CLP_CMS_LINE"
-      }
+        "type": "HSP_CLP_CMS_LINE",
+        "mergedFrom": [
+          "CLP_NON_GRP_TX_IDS"
+        ]
+      },
+      "// mergedFrom CLP_NON_GRP_TX_IDS": true,
+      "NON_GROUP_HTR_ID": 670514272
     },
     {
       "CLAIM_PRINT_ID": 122220271,
@@ -278,8 +360,13 @@
       "LINE_POS_ID": 101401,
       "CMS_CODE_TYPE_C_NAME": "CPT(R)",
       "$meta": {
-        "type": "HSP_CLP_CMS_LINE"
-      }
+        "type": "HSP_CLP_CMS_LINE",
+        "mergedFrom": [
+          "CLP_NON_GRP_TX_IDS"
+        ]
+      },
+      "// mergedFrom CLP_NON_GRP_TX_IDS": true,
+      "NON_GROUP_HTR_ID": 670514271
     },
     {
       "CLAIM_PRINT_ID": 122220271,
@@ -301,8 +388,13 @@
       "LINE_POS_ID": 101401,
       "CMS_CODE_TYPE_C_NAME": "CPT(R)",
       "$meta": {
-        "type": "HSP_CLP_CMS_LINE"
-      }
+        "type": "HSP_CLP_CMS_LINE",
+        "mergedFrom": [
+          "CLP_NON_GRP_TX_IDS"
+        ]
+      },
+      "// mergedFrom CLP_NON_GRP_TX_IDS": true,
+      "NON_GROUP_HTR_ID": 670514272
     },
     {
       "CLAIM_PRINT_ID": 122220271,
@@ -324,8 +416,13 @@
       "LINE_POS_ID": 101401,
       "CMS_CODE_TYPE_C_NAME": "CPT(R)",
       "$meta": {
-        "type": "HSP_CLP_CMS_LINE"
-      }
+        "type": "HSP_CLP_CMS_LINE",
+        "mergedFrom": [
+          "CLP_NON_GRP_TX_IDS"
+        ]
+      },
+      "// mergedFrom CLP_NON_GRP_TX_IDS": true,
+      "NON_GROUP_HTR_ID": 672984063
     },
     {
       "CLAIM_PRINT_ID": 123337005,
@@ -348,8 +445,13 @@
       "CMS_CODE_TYPE_C_NAME": "CPT(R)",
       "INVOICE_GRP_LN": "1",
       "$meta": {
-        "type": "HSP_CLP_CMS_LINE"
-      }
+        "type": "HSP_CLP_CMS_LINE",
+        "mergedFrom": [
+          "CLP_NON_GRP_TX_IDS"
+        ]
+      },
+      "// mergedFrom CLP_NON_GRP_TX_IDS": true,
+      "NON_GROUP_HTR_ID": 670514271
     },
     {
       "CLAIM_PRINT_ID": 123337005,
@@ -372,8 +474,13 @@
       "CMS_CODE_TYPE_C_NAME": "CPT(R)",
       "INVOICE_GRP_LN": "2",
       "$meta": {
-        "type": "HSP_CLP_CMS_LINE"
-      }
+        "type": "HSP_CLP_CMS_LINE",
+        "mergedFrom": [
+          "CLP_NON_GRP_TX_IDS"
+        ]
+      },
+      "// mergedFrom CLP_NON_GRP_TX_IDS": true,
+      "NON_GROUP_HTR_ID": 670514272
     },
     {
       "CLAIM_PRINT_ID": 123337005,
@@ -396,8 +503,13 @@
       "CMS_CODE_TYPE_C_NAME": "CPT(R)",
       "INVOICE_GRP_LN": "3",
       "$meta": {
-        "type": "HSP_CLP_CMS_LINE"
-      }
+        "type": "HSP_CLP_CMS_LINE",
+        "mergedFrom": [
+          "CLP_NON_GRP_TX_IDS"
+        ]
+      },
+      "// mergedFrom CLP_NON_GRP_TX_IDS": true,
+      "NON_GROUP_HTR_ID": 672984063
     },
     {
       "CLAIM_PRINT_ID": 124482006,
@@ -419,8 +531,13 @@
       "LINE_POS_ID": 101401,
       "CMS_CODE_TYPE_C_NAME": "CPT(R)",
       "$meta": {
-        "type": "HSP_CLP_CMS_LINE"
-      }
+        "type": "HSP_CLP_CMS_LINE",
+        "mergedFrom": [
+          "CLP_NON_GRP_TX_IDS"
+        ]
+      },
+      "// mergedFrom CLP_NON_GRP_TX_IDS": true,
+      "NON_GROUP_HTR_ID": 670514271
     },
     {
       "CLAIM_PRINT_ID": 124482006,
@@ -442,8 +559,13 @@
       "LINE_POS_ID": 101401,
       "CMS_CODE_TYPE_C_NAME": "CPT(R)",
       "$meta": {
-        "type": "HSP_CLP_CMS_LINE"
-      }
+        "type": "HSP_CLP_CMS_LINE",
+        "mergedFrom": [
+          "CLP_NON_GRP_TX_IDS"
+        ]
+      },
+      "// mergedFrom CLP_NON_GRP_TX_IDS": true,
+      "NON_GROUP_HTR_ID": 670514272
     },
     {
       "CLAIM_PRINT_ID": 124482006,
@@ -465,8 +587,13 @@
       "LINE_POS_ID": 101401,
       "CMS_CODE_TYPE_C_NAME": "CPT(R)",
       "$meta": {
-        "type": "HSP_CLP_CMS_LINE"
-      }
+        "type": "HSP_CLP_CMS_LINE",
+        "mergedFrom": [
+          "CLP_NON_GRP_TX_IDS"
+        ]
+      },
+      "// mergedFrom CLP_NON_GRP_TX_IDS": true,
+      "NON_GROUP_HTR_ID": 672984063
     }
   ]
 }

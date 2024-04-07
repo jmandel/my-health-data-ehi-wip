@@ -1,9 +1,9 @@
 {
   "$meta": {
     "schemas": {
-      "ARPB_TX_MODERATE": {
-        "name": "ARPB_TX_MODERATE",
-        "description": "Transaction Information that is used moderately often.",
+      "ARPB_TRANSACTIONS": {
+        "name": "ARPB_TRANSACTIONS",
+        "description": "This table contains information about professional billing transactions.",
         "primaryKey": [
           {
             "columnName": "TX_ID",
@@ -16,288 +16,21 @@
             "name": "TX_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The unique identifier for the transaction record."
-          },
-          {
-            "ordinalPosition": 2,
-            "name": "ORIGINATING_TAR_ID",
-            "type": "NUMERIC",
-            "discontinued": false,
-            "description": "This item holds the originating temporary transaction�ID for this transaction. If the transaction is a charge, then the originating temporary transaction�ID will be the temporary transaction ID of the charge. If transaction is a payment, then the originating temporary transaction ID will be the payment temporary transaction ID unless the payment is from fast payment. In the fast payment case, the originating temporary transaction ID will be the charge temporary transaction ID."
-          },
-          {
-            "ordinalPosition": 3,
-            "name": "SOURCE_TAR_ID",
-            "type": "NUMERIC",
-            "discontinued": false,
-            "description": "This item holds the source temporary transaction ID for this transaction.  The source temporary transaction ID will always be equal to the temporary transaction ID that generates the transaction."
-          },
-          {
-            "ordinalPosition": 4,
-            "name": "SRC_TAR_CHG_LINE",
-            "type": "INTEGER",
-            "discontinued": false,
-            "description": "Indicates the temporary transaction charge line this transaction originated from."
-          },
-          {
-            "ordinalPosition": 5,
-            "name": "PAT_AGING_DATE",
-            "type": "DATETIME",
-            "discontinued": false,
-            "description": "Aging date used for self-pay aged A/R"
-          },
-          {
-            "ordinalPosition": 6,
-            "name": "INS_AGING_DATE",
-            "type": "DATETIME",
-            "discontinued": false,
-            "description": "Aging date used for insurance aged A/R"
-          },
-          {
-            "ordinalPosition": 7,
-            "name": "HOSP_ACCT_ID",
-            "type": "NUMERIC",
-            "discontinued": false,
-            "description": "This item stores the hospital account record ID for the transaction."
-          },
-          {
-            "ordinalPosition": 8,
-            "name": "ORDER_ID",
-            "type": "NUMERIC",
-            "discontinued": false,
-            "description": "The unique ID of the order record that triggered this transaction. This item is not always populated if you use the Charge Router."
-          },
-          {
-            "ordinalPosition": 10,
-            "name": "REFERENCE_NUM",
-            "type": "VARCHAR",
-            "discontinued": false,
-            "description": "This item stores the reference number (check number) for a payment transaction."
-          },
-          {
-            "ordinalPosition": 11,
-            "name": "PMT_RECEIPT_NUM",
-            "type": "VARCHAR",
-            "discontinued": false,
-            "description": "This item stores the receipt number for a payment transaction."
-          },
-          {
-            "ordinalPosition": 13,
-            "name": "REFERRAL_PROV_ID",
-            "type": "VARCHAR",
-            "discontinued": false,
-            "description": "This stores this transaction's referral provider.  Note that this field is linked to the referral source master file and not the provider master file."
-          },
-          {
-            "ordinalPosition": 14,
-            "name": "REFERRAL_PROV_ID_REFERRING_PROV_NAM",
-            "type": "VARCHAR",
-            "discontinued": false,
-            "description": "The name of the referral source."
-          },
-          {
-            "ordinalPosition": 15,
-            "name": "INSURANCE_AMT_PAID",
-            "type": "NUMERIC",
-            "discontinued": false,
-            "description": "This item stores the insurance amount that has been paid on a charge transaction."
-          },
-          {
-            "ordinalPosition": 16,
-            "name": "WRITEOFF_EXCEPT_C_NAME",
-            "type": "VARCHAR",
-            "discontinued": false,
-            "description": "The Yes-No write-off category number for a charge transaction. The value indicates whether the charge transaction was adjudicated as a write-off in charge entry and thus the insurance portion write-off is suppressed.",
-            "entries": [
-              "Yes",
-              "Yes, No NCC either"
-            ]
-          },
-          {
-            "ordinalPosition": 18,
-            "name": "ORIG_PRICE",
-            "type": "NUMERIC",
-            "discontinued": false,
-            "description": "This item stores the original price of the transaction if the price was changed during charge entry."
-          },
-          {
-            "ordinalPosition": 21,
-            "name": "COVERAGE_PLAN_ID",
-            "type": "NUMERIC",
-            "discontinued": false,
-            "description": "The Plan (EPP) ID that is associated with this transaction."
-          },
-          {
-            "ordinalPosition": 31,
-            "name": "ORIGINAL_AMT_COPAY",
-            "type": "NUMERIC",
-            "discontinued": false,
-            "description": "This item stores the original copay amount for the transaction."
-          },
-          {
-            "ordinalPosition": 32,
-            "name": "BAD_DEBT_CHG_YN",
-            "type": "VARCHAR",
-            "discontinued": false,
-            "description": "Indicates whether the charges is written off to bad debt.",
-            "entries": [
-              "No",
-              "Yes"
-            ]
-          },
-          {
-            "ordinalPosition": 49,
-            "name": "FIRST_SELFPAY_DATE",
-            "type": "DATETIME",
-            "discontinued": false,
-            "description": "This items stores the date when a charge first goes to self-pay."
-          },
-          {
-            "ordinalPosition": 51,
-            "name": "CLAIM_ID",
-            "type": "NUMERIC",
-            "discontinued": false,
-            "description": "The claim record for the transaction."
-          },
-          {
-            "ordinalPosition": 53,
-            "name": "EOB_UPDATED_DT",
-            "type": "DATETIME",
-            "discontinued": false,
-            "description": "Date in which the Explanation of�Benefits for this transaction was last updated."
-          },
-          {
-            "ordinalPosition": 56,
-            "name": "START_TIME",
-            "type": "DATETIME (Local) ",
-            "discontinued": false,
-            "description": "Start time of a timed procedure."
-          },
-          {
-            "ordinalPosition": 58,
-            "name": "SERVICE_TIME",
-            "type": "DATETIME (Local) ",
-            "discontinued": false,
-            "description": "Time when service is performed."
-          },
-          {
-            "ordinalPosition": 62,
-            "name": "TYPE_OF_SERVICE_C_NAME",
-            "type": "VARCHAR",
-            "discontinued": false,
-            "description": "The type of service category number associated with the transaction.",
-            "entries": [
-              "Medical Care",
-              "Surgery",
-              "Consultation",
-              "Diagnostic Radiology",
-              "Diagnostic Laboratory",
-              "Therapeutic Radiology",
-              "Anesthesia",
-              "Assistant at Surgery",
-              "Other Medical Items or Services",
-              "Whole Blood",
-              "Used Durable Medical Equipment (DME)",
-              "Ambulatory Surgical Center (Facility usage for Surgical Services)",
-              "Hospice (Obsolete, Discontinued 1/95)",
-              "ESRD Supplies",
-              "Monthly Capitation Payment for Dialysis",
-              "Kidney Donor",
-              "Pneumococcal/Flu Vaccine",
-              "Second Opinion on Elective Surgery (Obsolete)",
-              "Third Opinion on Elective Surgery (Obsolete)",
-              "Diagnostic Medical (Obsolete)",
-              "Ancillaries, Hospital and Nursing Home (Obsolete)",
-              "Drug Services (Obsolete)",
-              "Accommodations, Hospital and Nursing Home (Obsolete)",
-              "Dental (Obsolete)",
-              "Vision Care and Cataract Lens (Obsolete)",
-              "Nuclear Medicine (Obsolete)",
-              "Diagnostic X-Ray (Professional) (Obsolete)",
-              "Rental of DME",
-              "Radiation Therapy (Professional) (Obsolete)",
-              "Diagnostic Lab (Professional) (Obsolete)",
-              "Diagnostic Medical (Professional) (Obsolete)",
-              "DME Purchase (Obsolete)",
-              "CRD Equipment (Obsolete)",
-              "Pre-Admission Testing (Obsolete)",
-              "EPSDT",
-              "High Risk Screening Mammography",
-              "Low Risk Screening Mammography",
-              "Ambulance",
-              "Enteral/Parenteral Nutrients/Supplies",
-              "Immunosuppressive Drugs",
-              "Diabetic Shoes",
-              "Hearing Items and Services",
-              "Lump Sum Purchase of DME, Prostethics, Orthotics",
-              "Vision Items or Services",
-              "Surgical Dressings or Other Medical Supplies",
-              "Psychological Therapy",
-              "Occupational Therapy",
-              "Physical Therapy",
-              "Medication (Obsolete)",
-              "Chiropractic Care",
-              "DME Prescription"
-            ]
-          },
-          {
-            "ordinalPosition": 63,
-            "name": "DX_PRIM_CODESET_C_NAME",
-            "type": "VARCHAR",
-            "discontinued": false,
-            "description": "This item stores the primary diagnosis codeset for the transaction.",
-            "entries": [
-              "ICD-9-CM",
-              "ICD-10-CM",
-              "ICD-10-CA",
-              "ICD-10-UK",
-              "DBC",
-              "ICD-10 Dutch",
-              "ICD-10-AM",
-              "A&E Diagnoses",
-              "SKS",
-              "ICD-10-THL",
-              "ICPC-2",
-              "ICD-O-3",
-              "ICD-10-GM",
-              "ICD-9-CM Supplemental",
-              "ICD-10-BE",
-              "ICD-10-NO",
-              "Apache",
-              "DSM-5",
-              "KinCor",
-              "ORPHA"
-            ]
-          },
-          {
-            "ordinalPosition": 64,
-            "name": "DX_ALT_CODESET_C_NAME",
-            "type": "VARCHAR",
-            "discontinued": false,
-            "description": "This item stores the alternate diagnosis codeset for the transaction."
-          },
-          {
-            "ordinalPosition": 65,
-            "name": "START_DATE",
-            "type": "DATETIME",
-            "discontinued": false,
-            "description": "The date on which a service is started."
+            "description": "A transaction's unique internal identification number. A patient's record can include charges, payments, or adjustments and the patient's account balance will reflect these transactions."
           },
           {
             "ordinalPosition": 2,
             "name": "POST_DATE",
             "type": "DATETIME",
             "discontinued": false,
-            "description": "The date when a transaction is entered into the billing system.  This differs from the service date, which is the date when the service was performed.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The date when a transaction is entered into the billing system.  This differs from the service date, which is the date when the service was performed."
           },
           {
             "ordinalPosition": 3,
             "name": "SERVICE_DATE",
             "type": "DATETIME",
             "discontinued": false,
-            "description": "The date a medical service is performed.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The date a medical service is performed."
           },
           {
             "ordinalPosition": 4,
@@ -313,16 +46,14 @@
               "AP Claim Refund Tx",
               "AP Claim DRG Tx",
               "Pharmacy Claim Tx"
-            ],
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            ]
           },
           {
             "ordinalPosition": 5,
             "name": "ACCOUNT_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The internal ID of the record that maintains the patient's transactions. A patient may use more than one account and an account may contain more than one patient.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The internal ID of the record that maintains the patient's transactions. A patient may use more than one account and an account may contain more than one patient."
           },
           {
             "ordinalPosition": 6,
@@ -333,208 +64,182 @@
             "entries": [
               "Debit",
               "Credit"
-            ],
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            ]
           },
           {
             "ordinalPosition": 7,
             "name": "SERV_PROVIDER_ID",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "The internal identifier of the provider who performed the medical services on the patient.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The internal identifier of the provider who performed the medical services on the patient."
           },
           {
             "ordinalPosition": 8,
             "name": "BILLING_PROV_ID",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "The billing provider associated with the transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The billing provider associated with the transaction."
           },
           {
             "ordinalPosition": 9,
             "name": "DEPARTMENT_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The department ID of the department associated with the transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The department ID of the department associated with the transaction."
           },
           {
             "ordinalPosition": 10,
             "name": "POS_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The place of service ID of the place of service associated with the transaction",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The place of service ID of the place of service associated with the transaction"
           },
           {
             "ordinalPosition": 11,
             "name": "LOC_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The location ID of the location associated with the transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The location ID of the location associated with the transaction."
           },
           {
             "ordinalPosition": 12,
             "name": "SERVICE_AREA_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The service area ID of the service area associated with the transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The service area ID of the service area associated with the transaction."
           },
           {
             "ordinalPosition": 13,
             "name": "MODIFIER_ONE",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "The first procedure modifier associated with this transaction. This is the external modifier, as it would be printed on the claim.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The first procedure modifier associated with this transaction. This is the external modifier, as it would be printed on the claim."
           },
           {
             "ordinalPosition": 17,
             "name": "PRIMARY_DX_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The primary diagnosis ID associated with the transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The primary diagnosis ID associated with the transaction."
           },
           {
             "ordinalPosition": 18,
             "name": "DX_TWO_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The second diagnosis ID associated with the transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The second diagnosis ID associated with the transaction."
           },
           {
             "ordinalPosition": 19,
             "name": "DX_THREE_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The third diagnosis ID associated with the transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The third diagnosis ID associated with the transaction."
           },
           {
             "ordinalPosition": 20,
             "name": "DX_FOUR_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The fourth diagnosis ID associated with the transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The fourth diagnosis ID associated with the transaction."
           },
           {
             "ordinalPosition": 23,
             "name": "PROCEDURE_QUANTITY",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The quantity as entered in Charge Entry for the procedure of this transaction (TX_ID). If the row has a DETAIL_TYPE value of 10-13, this column displays a negative value. If the row has a DETAIL_TYPE value of 20-33, 43-45, 50, or 51, this column displays a zero.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The quantity as entered in Charge Entry for the procedure of this transaction (TX_ID). If the row has a DETAIL_TYPE value of 10-13, this column displays a negative value. If the row has a DETAIL_TYPE value of 20-33, 43-45, 50, or 51, this column displays a zero."
           },
           {
             "ordinalPosition": 24,
             "name": "AMOUNT",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The original amount of this transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The original amount of this transaction."
           },
           {
             "ordinalPosition": 25,
             "name": "OUTSTANDING_AMT",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The outstanding amount of the transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The outstanding amount of the transaction."
           },
           {
             "ordinalPosition": 26,
             "name": "INSURANCE_AMT",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The insurance portion of the transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The insurance portion of the transaction."
           },
           {
             "ordinalPosition": 27,
             "name": "PATIENT_AMT",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The patient or self-pay portion of the transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The patient or self-pay portion of the transaction."
           },
           {
             "ordinalPosition": 28,
             "name": "VOID_DATE",
             "type": "DATETIME",
             "discontinued": false,
-            "description": "If this transaction is voided, this column will have the date in which this transaction is voided.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "If this transaction is voided, this column will have the date in which this transaction is voided."
           },
           {
             "ordinalPosition": 29,
             "name": "LAST_ACTION_DATE",
             "type": "DATETIME",
             "discontinued": false,
-            "description": "This column contains the most recent date when an action is performed on this transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "This column contains the most recent date when an action is performed on this transaction."
           },
           {
             "ordinalPosition": 30,
             "name": "PROV_SPECIALTY_C_NAME",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "This column contains the provider specialty of the provider associated with the transaction. The procedure category of the charge on the transaction may affect what specialty is recorded here and in the \"Encounter Specialty\" displayed in Hyperspace.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "This column contains the provider specialty of the provider associated with the transaction. The procedure category of the charge on the transaction may affect what specialty is recorded here and in the \"Encounter Specialty\" displayed in Hyperspace."
           },
           {
             "ordinalPosition": 31,
             "name": "PROC_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The Procedure ID of the procedure associated with the transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The Procedure ID of the procedure associated with the transaction."
           },
           {
             "ordinalPosition": 32,
             "name": "TOTAL_MATCH_AMT",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "This column contains the total amount matched to the transaction, including adjustments.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "This column contains the total amount matched to the transaction, including adjustments."
           },
           {
             "ordinalPosition": 33,
             "name": "TOTAL_MTCH_INS_AMT",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "This column contains the total insurance amount matched to the transaction, including adjustments.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "This column contains the total insurance amount matched to the transaction, including adjustments."
           },
           {
             "ordinalPosition": 34,
             "name": "TOTAL_MTCH_ADJ",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "This column contains the total adjustment amount matched to the transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "This column contains the total adjustment amount matched to the transaction."
           },
           {
             "ordinalPosition": 35,
             "name": "TOTAL_MTCH_INS_ADJ",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "This column contains the total insurance adjustment amount matched to the transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "This column contains the total insurance adjustment amount matched to the transaction."
           },
           {
             "ordinalPosition": 36,
             "name": "REPOST_ETR_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "This is the repost source transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "This is the repost source transaction."
           },
           {
             "ordinalPosition": 37,
@@ -545,48 +250,42 @@
             "entries": [
               "Repost",
               "Correction"
-            ],
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            ]
           },
           {
             "ordinalPosition": 40,
             "name": "ENC_FORM_NUM",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "The encounter form number corresponding to the charge transaction. If you are not using encounter forms, a negative number is stored in this item.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The encounter form number corresponding to the charge transaction. If you are not using encounter forms, a negative number is stored in this item."
           },
           {
             "ordinalPosition": 41,
             "name": "BEN_SELF_PAY_AMT",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "Stores the adjudicated self-pay amount calculated by the benefits engine",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "Stores the adjudicated self-pay amount calculated by the benefits engine"
           },
           {
             "ordinalPosition": 42,
             "name": "BEN_ADJ_COPAY_AMT",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "Stores the copay part of the adjudicated self-pay amount calculated by the benefits engine",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "Stores the copay part of the adjudicated self-pay amount calculated by the benefits engine"
           },
           {
             "ordinalPosition": 44,
             "name": "VISIT_NUMBER",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "This item stores the visit number for this transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "This item stores the visit number for this transaction."
           },
           {
             "ordinalPosition": 46,
             "name": "ORIGINAL_EPM_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "This item stores the original payor (EPM) ID for this transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "This item stores the original payor (EPM) ID for this transaction."
           },
           {
             "ordinalPosition": 47,
@@ -611,32 +310,28 @@
               "Client",
               "Received Self-Pay",
               "Sent to Consolidated Self-Pay Service Area"
-            ],
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            ]
           },
           {
             "ordinalPosition": 48,
             "name": "ORIGINAL_CVG_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "This item stores the original coverage (CVG) ID for this transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "This item stores the original coverage (CVG) ID for this transaction."
           },
           {
             "ordinalPosition": 49,
             "name": "PAYOR_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "This item stores the current payor (EPM) ID for this transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "This item stores the current payor (EPM) ID for this transaction."
           },
           {
             "ordinalPosition": 50,
             "name": "COVERAGE_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "This item stores the current coverage (CVG) ID for this transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "This item stores the current coverage (CVG) ID for this transaction."
           },
           {
             "ordinalPosition": 51,
@@ -647,16 +342,14 @@
             "entries": [
               "Yes",
               "No"
-            ],
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            ]
           },
           {
             "ordinalPosition": 52,
             "name": "FACILITY_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "This item stores the facility (EAF) ID for this transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "This item stores the facility (EAF) ID for this transaction."
           },
           {
             "ordinalPosition": 53,
@@ -672,24 +365,21 @@
               "Voucher",
               "Bank Account",
               "Trust Account"
-            ],
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            ]
           },
           {
             "ordinalPosition": 54,
             "name": "USER_ID",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "This item stores the user who posted the transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "This item stores the user who posted the transaction."
           },
           {
             "ordinalPosition": 55,
             "name": "USER_ID_NAME",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "The name of the user record. This name may be hidden.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The name of the user record. This name may be hidden."
           },
           {
             "ordinalPosition": 56,
@@ -700,32 +390,28 @@
             "entries": [
               "No",
               "Yes"
-            ],
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            ]
           },
           {
             "ordinalPosition": 57,
             "name": "CHG_ROUTER_SRC_ID",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "This item stores the universal charge line (UCL) ID for this transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "This item stores the universal charge line (UCL) ID for this transaction."
           },
           {
             "ordinalPosition": 61,
             "name": "BILL_AREA_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "Networked to BIL: the Bill Area for this transaction.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "Networked to BIL: the Bill Area for this transaction."
           },
           {
             "ordinalPosition": 62,
             "name": "BILL_AREA_ID_BILL_AREA_NAME",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "The record name of this bill area, financial subdivision, or financial division.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The record name of this bill area, financial subdivision, or financial division."
           },
           {
             "ordinalPosition": 63,
@@ -799,40 +485,35 @@
               "Reeval Reimbursement (User)",
               "Override Reimbursement (User)",
               "Same-Instance Consolidated Balances"
-            ],
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            ]
           },
           {
             "ordinalPosition": 64,
             "name": "UPDATE_DATE",
             "type": "DATETIME (Local) ",
             "discontinued": false,
-            "description": "The date that this row was last updated.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The date that this row was last updated."
           },
           {
             "ordinalPosition": 65,
             "name": "CLAIM_DATE",
             "type": "DATETIME",
             "discontinued": false,
-            "description": "The most recent date that this transaction has been on an accepted claim run.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "The most recent date that this transaction has been on an accepted claim run."
           },
           {
             "ordinalPosition": 66,
             "name": "IPP_INV_NUMBER",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "This item stores the original invoice number that user posts to in GUI payment posting or remittance.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "This item stores the original invoice number that user posts to in GUI payment posting or remittance."
           },
           {
             "ordinalPosition": 67,
             "name": "IPP_INV_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "This item stores the original invoice ID that user posts to in�graphical user interface�(GUI) payment posting or remittance.",
-            "mergedFrom": "ARPB_TRANSACTIONS"
+            "description": "This item stores the original invoice ID that user posts to in�graphical user interface�(GUI) payment posting or remittance."
           },
           {
             "ordinalPosition": 2,
@@ -1269,13 +950,300 @@
               "External Agency Payment"
             ],
             "mergedFrom": "ARPB_TRANSACTIONS3"
+          },
+          {
+            "ordinalPosition": 2,
+            "name": "ORIGINATING_TAR_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This item holds the originating temporary transaction�ID for this transaction. If the transaction is a charge, then the originating temporary transaction�ID will be the temporary transaction ID of the charge. If transaction is a payment, then the originating temporary transaction ID will be the payment temporary transaction ID unless the payment is from fast payment. In the fast payment case, the originating temporary transaction ID will be the charge temporary transaction ID.",
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "SOURCE_TAR_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This item holds the source temporary transaction ID for this transaction.  The source temporary transaction ID will always be equal to the temporary transaction ID that generates the transaction.",
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "SRC_TAR_CHG_LINE",
+            "type": "INTEGER",
+            "discontinued": false,
+            "description": "Indicates the temporary transaction charge line this transaction originated from.",
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "PAT_AGING_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Aging date used for self-pay aged A/R",
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "INS_AGING_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Aging date used for insurance aged A/R",
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 7,
+            "name": "HOSP_ACCT_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This item stores the hospital account record ID for the transaction.",
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 8,
+            "name": "ORDER_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique ID of the order record that triggered this transaction. This item is not always populated if you use the Charge Router.",
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 10,
+            "name": "REFERENCE_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item stores the reference number (check number) for a payment transaction.",
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "PMT_RECEIPT_NUM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item stores the receipt number for a payment transaction.",
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 13,
+            "name": "REFERRAL_PROV_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This stores this transaction's referral provider.  Note that this field is linked to the referral source master file and not the provider master file.",
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 14,
+            "name": "REFERRAL_PROV_ID_REFERRING_PROV_NAM",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the referral source.",
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 15,
+            "name": "INSURANCE_AMT_PAID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This item stores the insurance amount that has been paid on a charge transaction.",
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 16,
+            "name": "WRITEOFF_EXCEPT_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The Yes-No write-off category number for a charge transaction. The value indicates whether the charge transaction was adjudicated as a write-off in charge entry and thus the insurance portion write-off is suppressed.",
+            "entries": [
+              "Yes",
+              "Yes, No NCC either"
+            ],
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 18,
+            "name": "ORIG_PRICE",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This item stores the original price of the transaction if the price was changed during charge entry.",
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 21,
+            "name": "COVERAGE_PLAN_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The Plan (EPP) ID that is associated with this transaction.",
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 31,
+            "name": "ORIGINAL_AMT_COPAY",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This item stores the original copay amount for the transaction.",
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 32,
+            "name": "BAD_DEBT_CHG_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Indicates whether the charges is written off to bad debt.",
+            "entries": [
+              "No",
+              "Yes"
+            ],
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 49,
+            "name": "FIRST_SELFPAY_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This items stores the date when a charge first goes to self-pay.",
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 51,
+            "name": "CLAIM_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The claim record for the transaction.",
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 53,
+            "name": "EOB_UPDATED_DT",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "Date in which the Explanation of�Benefits for this transaction was last updated.",
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 56,
+            "name": "START_TIME",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "Start time of a timed procedure.",
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 58,
+            "name": "SERVICE_TIME",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "Time when service is performed.",
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 62,
+            "name": "TYPE_OF_SERVICE_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The type of service category number associated with the transaction.",
+            "entries": [
+              "Medical Care",
+              "Surgery",
+              "Consultation",
+              "Diagnostic Radiology",
+              "Diagnostic Laboratory",
+              "Therapeutic Radiology",
+              "Anesthesia",
+              "Assistant at Surgery",
+              "Other Medical Items or Services",
+              "Whole Blood",
+              "Used Durable Medical Equipment (DME)",
+              "Ambulatory Surgical Center (Facility usage for Surgical Services)",
+              "Hospice (Obsolete, Discontinued 1/95)",
+              "ESRD Supplies",
+              "Monthly Capitation Payment for Dialysis",
+              "Kidney Donor",
+              "Pneumococcal/Flu Vaccine",
+              "Second Opinion on Elective Surgery (Obsolete)",
+              "Third Opinion on Elective Surgery (Obsolete)",
+              "Diagnostic Medical (Obsolete)",
+              "Ancillaries, Hospital and Nursing Home (Obsolete)",
+              "Drug Services (Obsolete)",
+              "Accommodations, Hospital and Nursing Home (Obsolete)",
+              "Dental (Obsolete)",
+              "Vision Care and Cataract Lens (Obsolete)",
+              "Nuclear Medicine (Obsolete)",
+              "Diagnostic X-Ray (Professional) (Obsolete)",
+              "Rental of DME",
+              "Radiation Therapy (Professional) (Obsolete)",
+              "Diagnostic Lab (Professional) (Obsolete)",
+              "Diagnostic Medical (Professional) (Obsolete)",
+              "DME Purchase (Obsolete)",
+              "CRD Equipment (Obsolete)",
+              "Pre-Admission Testing (Obsolete)",
+              "EPSDT",
+              "High Risk Screening Mammography",
+              "Low Risk Screening Mammography",
+              "Ambulance",
+              "Enteral/Parenteral Nutrients/Supplies",
+              "Immunosuppressive Drugs",
+              "Diabetic Shoes",
+              "Hearing Items and Services",
+              "Lump Sum Purchase of DME, Prostethics, Orthotics",
+              "Vision Items or Services",
+              "Surgical Dressings or Other Medical Supplies",
+              "Psychological Therapy",
+              "Occupational Therapy",
+              "Physical Therapy",
+              "Medication (Obsolete)",
+              "Chiropractic Care",
+              "DME Prescription"
+            ],
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 63,
+            "name": "DX_PRIM_CODESET_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item stores the primary diagnosis codeset for the transaction.",
+            "entries": [
+              "ICD-9-CM",
+              "ICD-10-CM",
+              "ICD-10-CA",
+              "ICD-10-UK",
+              "DBC",
+              "ICD-10 Dutch",
+              "ICD-10-AM",
+              "A&E Diagnoses",
+              "SKS",
+              "ICD-10-THL",
+              "ICPC-2",
+              "ICD-O-3",
+              "ICD-10-GM",
+              "ICD-9-CM Supplemental",
+              "ICD-10-BE",
+              "ICD-10-NO",
+              "Apache",
+              "DSM-5",
+              "KinCor",
+              "ORPHA"
+            ],
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 64,
+            "name": "DX_ALT_CODESET_C_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This item stores the alternate diagnosis codeset for the transaction.",
+            "mergedFrom": "ARPB_TX_MODERATE"
+          },
+          {
+            "ordinalPosition": 65,
+            "name": "START_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "The date on which a service is started.",
+            "mergedFrom": "ARPB_TX_MODERATE"
           }
         ],
         "merged": [
-          {
-            "name": "ARPB_TRANSACTIONS",
-            "description": "This table contains information about professional billing transactions."
-          },
           {
             "name": "ARPB_TRANSACTIONS2",
             "description": "This table contains information about professional billing transactions."
@@ -1283,12 +1251,16 @@
           {
             "name": "ARPB_TRANSACTIONS3",
             "description": "This table contains information about professional billing transactions."
+          },
+          {
+            "name": "ARPB_TX_MODERATE",
+            "description": "Transaction Information that is used moderately often."
           }
         ],
         "discoveredMappings": [
           {
             "type": "has-child-table",
-            "source": "ARPB_TX_MODERATE",
+            "source": "ARPB_TRANSACTIONS",
             "target": "ARPB_AUTH_INFO",
             "joinKeys": [
               {
@@ -1299,7 +1271,7 @@
           },
           {
             "type": "has-child-table",
-            "source": "ARPB_TX_MODERATE",
+            "source": "ARPB_TRANSACTIONS",
             "target": "ARPB_CHG_ENTRY_DX",
             "joinKeys": [
               {
@@ -1310,7 +1282,7 @@
           },
           {
             "type": "has-child-table",
-            "source": "ARPB_TX_MODERATE",
+            "source": "ARPB_TRANSACTIONS",
             "target": "ARPB_PMT_RELATED_DENIALS",
             "joinKeys": [
               {
@@ -1321,7 +1293,7 @@
           },
           {
             "type": "has-child-table",
-            "source": "ARPB_TX_MODERATE",
+            "source": "ARPB_TRANSACTIONS",
             "target": "ARPB_TX_ACTIONS",
             "joinKeys": [
               {
@@ -1332,7 +1304,7 @@
           },
           {
             "type": "has-child-table",
-            "source": "ARPB_TX_MODERATE",
+            "source": "ARPB_TRANSACTIONS",
             "target": "ARPB_TX_CHG_REV_HX",
             "joinKeys": [
               {
@@ -1343,7 +1315,7 @@
           },
           {
             "type": "has-child-table",
-            "source": "ARPB_TX_MODERATE",
+            "source": "ARPB_TRANSACTIONS",
             "target": "ARPB_TX_MATCH_HX",
             "joinKeys": [
               {
@@ -1354,7 +1326,7 @@
           },
           {
             "type": "has-child-table",
-            "source": "ARPB_TX_MODERATE",
+            "source": "ARPB_TRANSACTIONS",
             "target": "ARPB_TX_MODIFIERS",
             "joinKeys": [
               {
@@ -1365,7 +1337,7 @@
           },
           {
             "type": "has-child-table",
-            "source": "ARPB_TX_MODERATE",
+            "source": "ARPB_TRANSACTIONS",
             "target": "ARPB_TX_STMCLAIMHX",
             "joinKeys": [
               {
@@ -1376,7 +1348,7 @@
           },
           {
             "type": "has-child-table",
-            "source": "ARPB_TX_MODERATE",
+            "source": "ARPB_TRANSACTIONS",
             "target": "ARPB_TX_STMT_DT",
             "joinKeys": [
               {
@@ -1387,7 +1359,7 @@
           },
           {
             "type": "has-child-table",
-            "source": "ARPB_TX_MODERATE",
+            "source": "ARPB_TRANSACTIONS",
             "target": "PMT_EOB_INFO_II",
             "joinKeys": [
               {
@@ -1398,7 +1370,7 @@
           },
           {
             "type": "has-child-table",
-            "source": "ARPB_TX_MODERATE",
+            "source": "ARPB_TRANSACTIONS",
             "target": "PMT_EOB_INFO_I",
             "joinKeys": [
               {
@@ -1409,7 +1381,7 @@
           },
           {
             "type": "has-child-table",
-            "source": "ARPB_TX_MODERATE",
+            "source": "ARPB_TRANSACTIONS",
             "target": "SVC_PMT_HISTORY",
             "joinKeys": [
               {
@@ -1420,7 +1392,7 @@
           },
           {
             "type": "has-child-table",
-            "source": "ARPB_TX_MODERATE",
+            "source": "ARPB_TRANSACTIONS",
             "target": "TX_DIAG",
             "joinKeys": [
               {
@@ -1431,7 +1403,7 @@
           },
           {
             "type": "has-child-table",
-            "source": "ARPB_TX_MODERATE",
+            "source": "ARPB_TRANSACTIONS",
             "target": "TX_NDC_INFORMATION",
             "joinKeys": [
               {
@@ -1440,43 +1412,127 @@
               }
             ]
           }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "ACCOUNT",
+            "joinKey": {
+              "source": "ACCOUNT_ID",
+              "target": "ACCOUNT_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "CLARITY_DEP",
+            "joinKey": {
+              "source": "DEPARTMENT_ID",
+              "target": "DEPARTMENT_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "CLARITY_LOC",
+            "joinKey": {
+              "source": "LOC_ID",
+              "target": "LOC_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "CLARITY_SA",
+            "joinKey": {
+              "source": "SERVICE_AREA_ID",
+              "target": "SERV_AREA_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "CLARITY_LOC",
+            "joinKey": {
+              "source": "SERVICE_AREA_ID",
+              "target": "LOC_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "CLARITY_EAP",
+            "joinKey": {
+              "source": "PROC_ID",
+              "target": "PROC_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "CLARITY_SA",
+            "joinKey": {
+              "source": "FACILITY_ID",
+              "target": "SERV_AREA_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "CLARITY_DEP",
+            "joinKey": {
+              "source": "FACILITY_ID",
+              "target": "DEPARTMENT_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "CLARITY_LOC",
+            "joinKey": {
+              "source": "FACILITY_ID",
+              "target": "LOC_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "USER_ID",
+              "target": "USER_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "INVOICE",
+            "joinKey": {
+              "source": "IPP_INV_ID",
+              "target": "INVOICE_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "CLARITY_DEP",
+            "joinKey": {
+              "source": "POSTING_DEPARTMENT_ID",
+              "target": "DEPARTMENT_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "ARPB_VISITS",
+            "joinKey": {
+              "source": "HOSP_ACCT_ID",
+              "target": "PB_VISIT_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "HAR_ALL",
+            "joinKey": {
+              "source": "HOSP_ACCT_ID",
+              "target": "ACCT_ID"
+            }
+          }
         ]
       }
     }
   },
-  "ARPB_TX_MODERATE": [
+  "ARPB_TRANSACTIONS": [
     {
       "TX_ID": 129124216,
-      "ORIGINATING_TAR_ID": 221103812,
-      "SOURCE_TAR_ID": 221103812,
-      "SRC_TAR_CHG_LINE": 1,
-      "INS_AGING_DATE": "2018-08-13 00:00:00",
-      "HOSP_ACCT_ID": 4307813,
-      "REFERRAL_PROV_ID": "802011",
-      "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "DHILLON, PUNEET S",
-      "INSURANCE_AMT_PAID": 114,
-      "WRITEOFF_EXCEPT_C_NAME": "Yes",
-      "ORIG_PRICE": 114,
-      "COVERAGE_PLAN_ID": 130204,
-      "ORIGINAL_AMT_COPAY": 0,
-      "BAD_DEBT_CHG_YN": "N",
-      "FIRST_SELFPAY_DATE": "2018-09-10 00:00:00",
-      "EOB_UPDATED_DT": "2018-09-10 00:00:00",
-      "START_TIME": "1900-01-01 10:16:00",
-      "SERVICE_TIME": "1900-01-01 10:16:00",
-      "TYPE_OF_SERVICE_C_NAME": "Diagnostic Laboratory",
-      "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
-      "DX_ALT_CODESET_C_NAME": "ICD-9-CM",
-      "START_DATE": "2018-08-09 00:00:00",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2018-08-13 00:00:00",
       "SERVICE_DATE": "2018-08-09 00:00:00",
       "TX_TYPE_C_NAME": "Charge",
@@ -1521,6 +1577,14 @@
       "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
       "UPDATE_DATE": "2020-10-17 22:19:00",
       "CLAIM_DATE": "2018-08-29 00:00:00",
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "VST_DO_NOT_BIL_I_YN": "N",
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -1530,20 +1594,18 @@
       "FIRST_ETR_TX_ID": 129124216,
       "POSTING_DEPARTMENT_ID": 1700801005,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
-      "// mergedFrom ARPB_TRANSACTIONS3": true
-    },
-    {
-      "TX_ID": 129124217,
+      "// mergedFrom ARPB_TRANSACTIONS3": true,
+      "// mergedFrom ARPB_TX_MODERATE": true,
       "ORIGINATING_TAR_ID": 221103812,
       "SOURCE_TAR_ID": 221103812,
-      "SRC_TAR_CHG_LINE": 2,
+      "SRC_TAR_CHG_LINE": 1,
       "INS_AGING_DATE": "2018-08-13 00:00:00",
       "HOSP_ACCT_ID": 4307813,
       "REFERRAL_PROV_ID": "802011",
       "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "DHILLON, PUNEET S",
-      "INSURANCE_AMT_PAID": 37,
+      "INSURANCE_AMT_PAID": 114,
       "WRITEOFF_EXCEPT_C_NAME": "Yes",
-      "ORIG_PRICE": 37,
+      "ORIG_PRICE": 114,
       "COVERAGE_PLAN_ID": 130204,
       "ORIGINAL_AMT_COPAY": 0,
       "BAD_DEBT_CHG_YN": "N",
@@ -1554,16 +1616,10 @@
       "TYPE_OF_SERVICE_C_NAME": "Diagnostic Laboratory",
       "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
       "DX_ALT_CODESET_C_NAME": "ICD-9-CM",
-      "START_DATE": "2018-08-09 00:00:00",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
+      "START_DATE": "2018-08-09 00:00:00"
+    },
+    {
+      "TX_ID": 129124217,
       "POST_DATE": "2018-08-13 00:00:00",
       "SERVICE_DATE": "2018-08-09 00:00:00",
       "TX_TYPE_C_NAME": "Charge",
@@ -1608,6 +1664,14 @@
       "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
       "UPDATE_DATE": "2020-10-17 22:19:00",
       "CLAIM_DATE": "2018-08-29 00:00:00",
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "VST_DO_NOT_BIL_I_YN": "N",
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -1617,37 +1681,32 @@
       "FIRST_ETR_TX_ID": 129124217,
       "POSTING_DEPARTMENT_ID": 1700801005,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
-      "// mergedFrom ARPB_TRANSACTIONS3": true
-    },
-    {
-      "TX_ID": 129124339,
-      "ORIGINATING_TAR_ID": 220951886,
-      "SOURCE_TAR_ID": 220951886,
-      "SRC_TAR_CHG_LINE": 1,
+      "// mergedFrom ARPB_TRANSACTIONS3": true,
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 221103812,
+      "SOURCE_TAR_ID": 221103812,
+      "SRC_TAR_CHG_LINE": 2,
       "INS_AGING_DATE": "2018-08-13 00:00:00",
-      "HOSP_ACCT_ID": 4307370,
+      "HOSP_ACCT_ID": 4307813,
       "REFERRAL_PROV_ID": "802011",
       "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "DHILLON, PUNEET S",
-      "INSURANCE_AMT_PAID": 335,
+      "INSURANCE_AMT_PAID": 37,
       "WRITEOFF_EXCEPT_C_NAME": "Yes",
-      "ORIG_PRICE": 335,
+      "ORIG_PRICE": 37,
       "COVERAGE_PLAN_ID": 130204,
       "ORIGINAL_AMT_COPAY": 0,
       "BAD_DEBT_CHG_YN": "N",
       "FIRST_SELFPAY_DATE": "2018-09-10 00:00:00",
       "EOB_UPDATED_DT": "2018-09-10 00:00:00",
-      "TYPE_OF_SERVICE_C_NAME": "Medical Care",
+      "START_TIME": "1900-01-01 10:16:00",
+      "SERVICE_TIME": "1900-01-01 10:16:00",
+      "TYPE_OF_SERVICE_C_NAME": "Diagnostic Laboratory",
       "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
       "DX_ALT_CODESET_C_NAME": "ICD-9-CM",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
+      "START_DATE": "2018-08-09 00:00:00"
+    },
+    {
+      "TX_ID": 129124339,
       "POST_DATE": "2018-08-13 00:00:00",
       "SERVICE_DATE": "2018-08-09 00:00:00",
       "TX_TYPE_C_NAME": "Charge",
@@ -1693,6 +1752,14 @@
       "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
       "UPDATE_DATE": "2020-10-17 22:19:00",
       "CLAIM_DATE": "2018-08-29 00:00:00",
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "VST_DO_NOT_BIL_I_YN": "N",
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -1702,23 +1769,29 @@
       "FIRST_ETR_TX_ID": 129124339,
       "POSTING_DEPARTMENT_ID": 1700801002,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
-      "// mergedFrom ARPB_TRANSACTIONS3": true
+      "// mergedFrom ARPB_TRANSACTIONS3": true,
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 220951886,
+      "SOURCE_TAR_ID": 220951886,
+      "SRC_TAR_CHG_LINE": 1,
+      "INS_AGING_DATE": "2018-08-13 00:00:00",
+      "HOSP_ACCT_ID": 4307370,
+      "REFERRAL_PROV_ID": "802011",
+      "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "DHILLON, PUNEET S",
+      "INSURANCE_AMT_PAID": 335,
+      "WRITEOFF_EXCEPT_C_NAME": "Yes",
+      "ORIG_PRICE": 335,
+      "COVERAGE_PLAN_ID": 130204,
+      "ORIGINAL_AMT_COPAY": 0,
+      "BAD_DEBT_CHG_YN": "N",
+      "FIRST_SELFPAY_DATE": "2018-09-10 00:00:00",
+      "EOB_UPDATED_DT": "2018-09-10 00:00:00",
+      "TYPE_OF_SERVICE_C_NAME": "Medical Care",
+      "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
+      "DX_ALT_CODESET_C_NAME": "ICD-9-CM"
     },
     {
       "TX_ID": 132295742,
-      "ORIGINATING_TAR_ID": 228500038,
-      "SOURCE_TAR_ID": 228500468,
-      "HOSP_ACCT_ID": 4307315,
-      "REFERENCE_NUM": "3382780135",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2018-09-10 00:00:00",
       "SERVICE_DATE": "2018-09-10 00:00:00",
       "TX_TYPE_C_NAME": "Payment",
@@ -1747,6 +1820,14 @@
       "UPDATE_DATE": "2023-01-20 11:51:00",
       "IPP_INV_NUMBER": "L1002834040",
       "IPP_INV_ID": 24873736,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "TX_ENTERED_INSTANT_DTTM": "2018-09-10 16:57:31",
       "CVG_PLAN_ON_PMT_ID": 130204,
@@ -1755,22 +1836,15 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
-    },
-    {
-      "TX_ID": 132295745,
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
       "ORIGINATING_TAR_ID": 228500038,
       "SOURCE_TAR_ID": 228500468,
       "HOSP_ACCT_ID": 4307315,
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
+      "REFERENCE_NUM": "3382780135"
+    },
+    {
+      "TX_ID": 132295745,
       "POST_DATE": "2018-09-10 00:00:00",
       "SERVICE_DATE": "2018-09-10 00:00:00",
       "TX_TYPE_C_NAME": "Adjustment",
@@ -1798,6 +1872,14 @@
       "UPDATE_DATE": "2020-02-05 13:18:00",
       "IPP_INV_NUMBER": "L1002834040",
       "IPP_INV_ID": 24873736,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "CVG_PLAN_ON_PMT_ID": 130204,
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -1807,22 +1889,14 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 228500038,
+      "SOURCE_TAR_ID": 228500468,
+      "HOSP_ACCT_ID": 4307315
     },
     {
       "TX_ID": 132295750,
-      "ORIGINATING_TAR_ID": 228500038,
-      "SOURCE_TAR_ID": 228500468,
-      "HOSP_ACCT_ID": 4307315,
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2018-09-10 00:00:00",
       "SERVICE_DATE": "2018-09-10 00:00:00",
       "TX_TYPE_C_NAME": "Adjustment",
@@ -1850,6 +1924,14 @@
       "UPDATE_DATE": "2020-02-05 13:18:00",
       "IPP_INV_NUMBER": "L1002834040",
       "IPP_INV_ID": 24873736,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "CVG_PLAN_ON_PMT_ID": 130204,
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -1859,23 +1941,14 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 228500038,
+      "SOURCE_TAR_ID": 228500468,
+      "HOSP_ACCT_ID": 4307315
     },
     {
       "TX_ID": 132295842,
-      "ORIGINATING_TAR_ID": 228500147,
-      "SOURCE_TAR_ID": 228500531,
-      "HOSP_ACCT_ID": 4307315,
-      "REFERENCE_NUM": "3382780135",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2018-09-10 00:00:00",
       "SERVICE_DATE": "2018-09-10 00:00:00",
       "TX_TYPE_C_NAME": "Payment",
@@ -1904,6 +1977,14 @@
       "UPDATE_DATE": "2023-01-20 11:51:00",
       "IPP_INV_NUMBER": "L1002834030",
       "IPP_INV_ID": 24873734,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "TX_ENTERED_INSTANT_DTTM": "2018-09-10 16:57:34",
       "CVG_PLAN_ON_PMT_ID": 130204,
@@ -1912,22 +1993,15 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
-    },
-    {
-      "TX_ID": 132295844,
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
       "ORIGINATING_TAR_ID": 228500147,
       "SOURCE_TAR_ID": 228500531,
       "HOSP_ACCT_ID": 4307315,
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
+      "REFERENCE_NUM": "3382780135"
+    },
+    {
+      "TX_ID": 132295844,
       "POST_DATE": "2018-09-10 00:00:00",
       "SERVICE_DATE": "2018-09-10 00:00:00",
       "TX_TYPE_C_NAME": "Adjustment",
@@ -1955,6 +2029,14 @@
       "UPDATE_DATE": "2020-02-05 13:18:00",
       "IPP_INV_NUMBER": "L1002834030",
       "IPP_INV_ID": 24873734,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "CVG_PLAN_ON_PMT_ID": 130204,
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -1964,38 +2046,14 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 228500147,
+      "SOURCE_TAR_ID": 228500531,
+      "HOSP_ACCT_ID": 4307315
     },
     {
       "TX_ID": 190635377,
-      "ORIGINATING_TAR_ID": 358179232,
-      "SOURCE_TAR_ID": 358179232,
-      "SRC_TAR_CHG_LINE": 1,
-      "PAT_AGING_DATE": "2020-01-29 00:00:00",
-      "INS_AGING_DATE": "2020-01-09 00:00:00",
-      "HOSP_ACCT_ID": 5960354,
-      "REFERRAL_PROV_ID": "802011",
-      "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "DHILLON, PUNEET S",
-      "INSURANCE_AMT_PAID": 31.71,
-      "WRITEOFF_EXCEPT_C_NAME": "Yes",
-      "ORIG_PRICE": 165,
-      "COVERAGE_PLAN_ID": 130204,
-      "ORIGINAL_AMT_COPAY": 0,
-      "BAD_DEBT_CHG_YN": "N",
-      "FIRST_SELFPAY_DATE": "2020-01-27 00:00:00",
-      "EOB_UPDATED_DT": "2020-01-27 00:00:00",
-      "TYPE_OF_SERVICE_C_NAME": "Medical Care",
-      "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
-      "DX_ALT_CODESET_C_NAME": "ICD-9-CM",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2020-01-09 00:00:00",
       "SERVICE_DATE": "2020-01-09 00:00:00",
       "TX_TYPE_C_NAME": "Charge",
@@ -2038,6 +2096,14 @@
       "BILL_AREA_ID": 9,
       "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
       "UPDATE_DATE": "2020-02-10 10:47:00",
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "VST_DO_NOT_BIL_I_YN": "N",
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -2047,23 +2113,30 @@
       "FIRST_ETR_TX_ID": 190635377,
       "POSTING_DEPARTMENT_ID": 1700801002,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
-      "// mergedFrom ARPB_TRANSACTIONS3": true
+      "// mergedFrom ARPB_TRANSACTIONS3": true,
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 358179232,
+      "SOURCE_TAR_ID": 358179232,
+      "SRC_TAR_CHG_LINE": 1,
+      "PAT_AGING_DATE": "2020-01-29 00:00:00",
+      "INS_AGING_DATE": "2020-01-09 00:00:00",
+      "HOSP_ACCT_ID": 5960354,
+      "REFERRAL_PROV_ID": "802011",
+      "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "DHILLON, PUNEET S",
+      "INSURANCE_AMT_PAID": 31.71,
+      "WRITEOFF_EXCEPT_C_NAME": "Yes",
+      "ORIG_PRICE": 165,
+      "COVERAGE_PLAN_ID": 130204,
+      "ORIGINAL_AMT_COPAY": 0,
+      "BAD_DEBT_CHG_YN": "N",
+      "FIRST_SELFPAY_DATE": "2020-01-27 00:00:00",
+      "EOB_UPDATED_DT": "2020-01-27 00:00:00",
+      "TYPE_OF_SERVICE_C_NAME": "Medical Care",
+      "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
+      "DX_ALT_CODESET_C_NAME": "ICD-9-CM"
     },
     {
       "TX_ID": 192508079,
-      "ORIGINATING_TAR_ID": 362371980,
-      "SOURCE_TAR_ID": 362372744,
-      "HOSP_ACCT_ID": 4307315,
-      "REFERENCE_NUM": "3117289622",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2020-01-27 00:00:00",
       "SERVICE_DATE": "2020-01-27 00:00:00",
       "TX_TYPE_C_NAME": "Payment",
@@ -2092,6 +2165,14 @@
       "UPDATE_DATE": "2022-10-06 12:07:00",
       "IPP_INV_NUMBER": "L1004236460",
       "IPP_INV_ID": 35267927,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "TX_ENTERED_INSTANT_DTTM": "2020-01-27 14:02:12",
       "CVG_PLAN_ON_PMT_ID": 130204,
@@ -2101,22 +2182,15 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
-    },
-    {
-      "TX_ID": 192508083,
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
       "ORIGINATING_TAR_ID": 362371980,
       "SOURCE_TAR_ID": 362372744,
       "HOSP_ACCT_ID": 4307315,
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
+      "REFERENCE_NUM": "3117289622"
+    },
+    {
+      "TX_ID": 192508083,
       "POST_DATE": "2020-01-27 00:00:00",
       "SERVICE_DATE": "2020-01-27 00:00:00",
       "TX_TYPE_C_NAME": "Adjustment",
@@ -2144,6 +2218,14 @@
       "UPDATE_DATE": "2022-10-06 12:07:00",
       "IPP_INV_NUMBER": "L1004236460",
       "IPP_INV_ID": 35267927,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "CVG_PLAN_ON_PMT_ID": 130204,
       "STMT_HOLD_DT": "2022-10-05 00:00:00",
@@ -2154,23 +2236,14 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 362371980,
+      "SOURCE_TAR_ID": 362372744,
+      "HOSP_ACCT_ID": 4307315
     },
     {
       "TX_ID": 194272840,
-      "ORIGINATING_TAR_ID": 366522695,
-      "SOURCE_TAR_ID": 366522695,
-      "HOSP_ACCT_ID": 4307315,
-      "REFERENCE_NUM": "7385",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2020-02-10 00:00:00",
       "SERVICE_DATE": "2020-02-10 00:00:00",
       "TX_TYPE_C_NAME": "Payment",
@@ -2195,6 +2268,14 @@
       "USER_ID_NAME": "WARDELL, SHELLY L",
       "CREDIT_SRC_MODULE_C_NAME": "Payment Posting",
       "UPDATE_DATE": "2020-02-10 10:48:00",
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "TX_ENTERED_INSTANT_DTTM": "2020-02-10 15:27:46",
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -2204,38 +2285,15 @@
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
       "PAT_PMT_COLL_WKFL_C_NAME": "Payment Posting",
-      "EB_TX_SOURCE_C_NAME": "PB Payment Posting"
+      "EB_TX_SOURCE_C_NAME": "PB Payment Posting",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 366522695,
+      "SOURCE_TAR_ID": 366522695,
+      "HOSP_ACCT_ID": 4307315,
+      "REFERENCE_NUM": "7385"
     },
     {
       "TX_ID": 213432121,
-      "ORIGINATING_TAR_ID": 403825467,
-      "SOURCE_TAR_ID": 403825467,
-      "SRC_TAR_CHG_LINE": 1,
-      "INS_AGING_DATE": "2020-08-13 00:00:00",
-      "HOSP_ACCT_ID": 6585418,
-      "REFERRAL_PROV_ID": "219711",
-      "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "PICONE, MARY A",
-      "INSURANCE_AMT_PAID": 170,
-      "WRITEOFF_EXCEPT_C_NAME": "Yes",
-      "ORIG_PRICE": 170,
-      "COVERAGE_PLAN_ID": 130204,
-      "ORIGINAL_AMT_COPAY": 0,
-      "BAD_DEBT_CHG_YN": "N",
-      "FIRST_SELFPAY_DATE": "2020-09-17 00:00:00",
-      "CLAIM_ID": 2985948,
-      "EOB_UPDATED_DT": "2020-09-17 00:00:00",
-      "TYPE_OF_SERVICE_C_NAME": "Medical Care",
-      "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
-      "DX_ALT_CODESET_C_NAME": "ICD-9-CM",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2020-08-13 00:00:00",
       "SERVICE_DATE": "2020-07-14 00:00:00",
       "TX_TYPE_C_NAME": "Charge",
@@ -2283,6 +2341,14 @@
       "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
       "UPDATE_DATE": "2020-09-17 10:46:00",
       "CLAIM_DATE": "2020-08-14 00:00:00",
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "VST_DO_NOT_BIL_I_YN": "N",
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -2293,23 +2359,30 @@
       "FIRST_ETR_TX_ID": 213432121,
       "POSTING_DEPARTMENT_ID": 1700801002,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
-      "// mergedFrom ARPB_TRANSACTIONS3": true
+      "// mergedFrom ARPB_TRANSACTIONS3": true,
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 403825467,
+      "SOURCE_TAR_ID": 403825467,
+      "SRC_TAR_CHG_LINE": 1,
+      "INS_AGING_DATE": "2020-08-13 00:00:00",
+      "HOSP_ACCT_ID": 6585418,
+      "REFERRAL_PROV_ID": "219711",
+      "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "PICONE, MARY A",
+      "INSURANCE_AMT_PAID": 170,
+      "WRITEOFF_EXCEPT_C_NAME": "Yes",
+      "ORIG_PRICE": 170,
+      "COVERAGE_PLAN_ID": 130204,
+      "ORIGINAL_AMT_COPAY": 0,
+      "BAD_DEBT_CHG_YN": "N",
+      "FIRST_SELFPAY_DATE": "2020-09-17 00:00:00",
+      "CLAIM_ID": 2985948,
+      "EOB_UPDATED_DT": "2020-09-17 00:00:00",
+      "TYPE_OF_SERVICE_C_NAME": "Medical Care",
+      "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
+      "DX_ALT_CODESET_C_NAME": "ICD-9-CM"
     },
     {
       "TX_ID": 217014433,
-      "ORIGINATING_TAR_ID": 424209738,
-      "SOURCE_TAR_ID": 424210290,
-      "HOSP_ACCT_ID": 4307315,
-      "REFERENCE_NUM": "3132172428",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2020-09-17 00:00:00",
       "SERVICE_DATE": "2020-09-17 00:00:00",
       "TX_TYPE_C_NAME": "Payment",
@@ -2338,6 +2411,14 @@
       "UPDATE_DATE": "2020-09-17 10:46:00",
       "IPP_INV_NUMBER": "L1004718920",
       "IPP_INV_ID": 39392511,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "TX_ENTERED_INSTANT_DTTM": "2020-09-17 13:19:50",
       "CVG_PLAN_ON_PMT_ID": 130204,
@@ -2346,22 +2427,15 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
-    },
-    {
-      "TX_ID": 217014440,
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
       "ORIGINATING_TAR_ID": 424209738,
       "SOURCE_TAR_ID": 424210290,
       "HOSP_ACCT_ID": 4307315,
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
+      "REFERENCE_NUM": "3132172428"
+    },
+    {
+      "TX_ID": 217014440,
       "POST_DATE": "2020-09-17 00:00:00",
       "SERVICE_DATE": "2020-09-17 00:00:00",
       "TX_TYPE_C_NAME": "Adjustment",
@@ -2389,6 +2463,14 @@
       "UPDATE_DATE": "2020-09-17 10:46:00",
       "IPP_INV_NUMBER": "L1004718920",
       "IPP_INV_ID": 39392511,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "CVG_PLAN_ON_PMT_ID": 130204,
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -2398,37 +2480,14 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 424209738,
+      "SOURCE_TAR_ID": 424210290,
+      "HOSP_ACCT_ID": 4307315
     },
     {
       "TX_ID": 302543306,
-      "ORIGINATING_TAR_ID": 627028346,
-      "SOURCE_TAR_ID": 627028346,
-      "SRC_TAR_CHG_LINE": 1,
-      "INS_AGING_DATE": "2022-09-20 00:00:00",
-      "HOSP_ACCT_ID": 9586039,
-      "REFERRAL_PROV_ID": "144590",
-      "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
-      "INSURANCE_AMT_PAID": 294,
-      "WRITEOFF_EXCEPT_C_NAME": "Yes",
-      "ORIG_PRICE": 294,
-      "COVERAGE_PLAN_ID": 130204,
-      "ORIGINAL_AMT_COPAY": 0,
-      "BAD_DEBT_CHG_YN": "N",
-      "FIRST_SELFPAY_DATE": "2022-10-04 00:00:00",
-      "EOB_UPDATED_DT": "2022-10-04 00:00:00",
-      "TYPE_OF_SERVICE_C_NAME": "Medical Care",
-      "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
-      "DX_ALT_CODESET_C_NAME": "ICD-9-CM",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2022-09-20 00:00:00",
       "SERVICE_DATE": "2022-08-29 00:00:00",
       "TX_TYPE_C_NAME": "Charge",
@@ -2473,6 +2532,14 @@
       "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
       "UPDATE_DATE": "2022-10-04 11:58:00",
       "CLAIM_DATE": "2022-09-21 00:00:00",
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "VST_DO_NOT_BIL_I_YN": "N",
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -2482,20 +2549,18 @@
       "FIRST_ETR_TX_ID": 302543306,
       "POSTING_DEPARTMENT_ID": 1700801002,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
-      "// mergedFrom ARPB_TRANSACTIONS3": true
-    },
-    {
-      "TX_ID": 302543307,
+      "// mergedFrom ARPB_TRANSACTIONS3": true,
+      "// mergedFrom ARPB_TX_MODERATE": true,
       "ORIGINATING_TAR_ID": 627028346,
       "SOURCE_TAR_ID": 627028346,
-      "SRC_TAR_CHG_LINE": 2,
+      "SRC_TAR_CHG_LINE": 1,
       "INS_AGING_DATE": "2022-09-20 00:00:00",
       "HOSP_ACCT_ID": 9586039,
       "REFERRAL_PROV_ID": "144590",
       "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
-      "INSURANCE_AMT_PAID": 215.01,
+      "INSURANCE_AMT_PAID": 294,
       "WRITEOFF_EXCEPT_C_NAME": "Yes",
-      "ORIG_PRICE": 222,
+      "ORIG_PRICE": 294,
       "COVERAGE_PLAN_ID": 130204,
       "ORIGINAL_AMT_COPAY": 0,
       "BAD_DEBT_CHG_YN": "N",
@@ -2503,16 +2568,10 @@
       "EOB_UPDATED_DT": "2022-10-04 00:00:00",
       "TYPE_OF_SERVICE_C_NAME": "Medical Care",
       "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
-      "DX_ALT_CODESET_C_NAME": "ICD-9-CM",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
+      "DX_ALT_CODESET_C_NAME": "ICD-9-CM"
+    },
+    {
+      "TX_ID": 302543307,
       "POST_DATE": "2022-09-20 00:00:00",
       "SERVICE_DATE": "2022-08-29 00:00:00",
       "TX_TYPE_C_NAME": "Charge",
@@ -2554,6 +2613,14 @@
       "BILL_AREA_ID": 9,
       "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
       "UPDATE_DATE": "2023-01-12 14:08:00",
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "VST_DO_NOT_BIL_I_YN": "N",
       "STMT_HOLD_DT": "2023-01-11 00:00:00",
@@ -2566,40 +2633,29 @@
       "POSTING_DEPARTMENT_ID": 1700801002,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "STMT_HOLD_RSN_TEXT": "83550000||s result=$$skip^KPZMTSTAPL(etrId)||1",
-      "// mergedFrom ARPB_TRANSACTIONS3": true
-    },
-    {
-      "TX_ID": 302968774,
-      "ORIGINATING_TAR_ID": 627028294,
-      "SOURCE_TAR_ID": 627028294,
-      "SRC_TAR_CHG_LINE": 1,
-      "INS_AGING_DATE": "2022-09-22 00:00:00",
-      "HOSP_ACCT_ID": 9587009,
+      "// mergedFrom ARPB_TRANSACTIONS3": true,
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 627028346,
+      "SOURCE_TAR_ID": 627028346,
+      "SRC_TAR_CHG_LINE": 2,
+      "INS_AGING_DATE": "2022-09-20 00:00:00",
+      "HOSP_ACCT_ID": 9586039,
       "REFERRAL_PROV_ID": "144590",
       "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
-      "INSURANCE_AMT_PAID": 139.38,
+      "INSURANCE_AMT_PAID": 215.01,
       "WRITEOFF_EXCEPT_C_NAME": "Yes",
-      "ORIG_PRICE": 140,
+      "ORIG_PRICE": 222,
       "COVERAGE_PLAN_ID": 130204,
       "ORIGINAL_AMT_COPAY": 0,
       "BAD_DEBT_CHG_YN": "N",
       "FIRST_SELFPAY_DATE": "2022-10-04 00:00:00",
       "EOB_UPDATED_DT": "2022-10-04 00:00:00",
-      "START_TIME": "1900-01-01 14:32:00",
-      "SERVICE_TIME": "1900-01-01 14:32:00",
-      "TYPE_OF_SERVICE_C_NAME": "Diagnostic Laboratory",
+      "TYPE_OF_SERVICE_C_NAME": "Medical Care",
       "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
-      "DX_ALT_CODESET_C_NAME": "ICD-9-CM",
-      "START_DATE": "2022-08-29 00:00:00",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
+      "DX_ALT_CODESET_C_NAME": "ICD-9-CM"
+    },
+    {
+      "TX_ID": 302968774,
       "POST_DATE": "2022-09-22 00:00:00",
       "SERVICE_DATE": "2022-08-29 00:00:00",
       "TX_TYPE_C_NAME": "Charge",
@@ -2641,6 +2697,14 @@
       "BILL_AREA_ID": 9,
       "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
       "UPDATE_DATE": "2023-01-12 14:08:00",
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "VST_DO_NOT_BIL_I_YN": "N",
       "STMT_HOLD_DT": "2023-01-11 00:00:00",
@@ -2653,20 +2717,18 @@
       "POSTING_DEPARTMENT_ID": 1700801005,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "STMT_HOLD_RSN_TEXT": "83550000||s result=$$skip^KPZMTSTAPL(etrId)||1",
-      "// mergedFrom ARPB_TRANSACTIONS3": true
-    },
-    {
-      "TX_ID": 302968775,
+      "// mergedFrom ARPB_TRANSACTIONS3": true,
+      "// mergedFrom ARPB_TX_MODERATE": true,
       "ORIGINATING_TAR_ID": 627028294,
       "SOURCE_TAR_ID": 627028294,
-      "SRC_TAR_CHG_LINE": 2,
+      "SRC_TAR_CHG_LINE": 1,
       "INS_AGING_DATE": "2022-09-22 00:00:00",
       "HOSP_ACCT_ID": 9587009,
       "REFERRAL_PROV_ID": "144590",
       "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
-      "INSURANCE_AMT_PAID": 32.79,
+      "INSURANCE_AMT_PAID": 139.38,
       "WRITEOFF_EXCEPT_C_NAME": "Yes",
-      "ORIG_PRICE": 33,
+      "ORIG_PRICE": 140,
       "COVERAGE_PLAN_ID": 130204,
       "ORIGINAL_AMT_COPAY": 0,
       "BAD_DEBT_CHG_YN": "N",
@@ -2677,16 +2739,10 @@
       "TYPE_OF_SERVICE_C_NAME": "Diagnostic Laboratory",
       "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
       "DX_ALT_CODESET_C_NAME": "ICD-9-CM",
-      "START_DATE": "2022-08-29 00:00:00",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
+      "START_DATE": "2022-08-29 00:00:00"
+    },
+    {
+      "TX_ID": 302968775,
       "POST_DATE": "2022-09-22 00:00:00",
       "SERVICE_DATE": "2022-08-29 00:00:00",
       "TX_TYPE_C_NAME": "Charge",
@@ -2728,6 +2784,14 @@
       "BILL_AREA_ID": 9,
       "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
       "UPDATE_DATE": "2023-01-12 14:08:00",
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "VST_DO_NOT_BIL_I_YN": "N",
       "STMT_HOLD_DT": "2023-01-11 00:00:00",
@@ -2740,23 +2804,32 @@
       "POSTING_DEPARTMENT_ID": 1700801005,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "STMT_HOLD_RSN_TEXT": "83550000||s result=$$skip^KPZMTSTAPL(etrId)||1",
-      "// mergedFrom ARPB_TRANSACTIONS3": true
+      "// mergedFrom ARPB_TRANSACTIONS3": true,
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 627028294,
+      "SOURCE_TAR_ID": 627028294,
+      "SRC_TAR_CHG_LINE": 2,
+      "INS_AGING_DATE": "2022-09-22 00:00:00",
+      "HOSP_ACCT_ID": 9587009,
+      "REFERRAL_PROV_ID": "144590",
+      "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
+      "INSURANCE_AMT_PAID": 32.79,
+      "WRITEOFF_EXCEPT_C_NAME": "Yes",
+      "ORIG_PRICE": 33,
+      "COVERAGE_PLAN_ID": 130204,
+      "ORIGINAL_AMT_COPAY": 0,
+      "BAD_DEBT_CHG_YN": "N",
+      "FIRST_SELFPAY_DATE": "2022-10-04 00:00:00",
+      "EOB_UPDATED_DT": "2022-10-04 00:00:00",
+      "START_TIME": "1900-01-01 14:32:00",
+      "SERVICE_TIME": "1900-01-01 14:32:00",
+      "TYPE_OF_SERVICE_C_NAME": "Diagnostic Laboratory",
+      "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
+      "DX_ALT_CODESET_C_NAME": "ICD-9-CM",
+      "START_DATE": "2022-08-29 00:00:00"
     },
     {
       "TX_ID": 304446127,
-      "ORIGINATING_TAR_ID": 636446650,
-      "SOURCE_TAR_ID": 636447751,
-      "HOSP_ACCT_ID": 4307315,
-      "REFERENCE_NUM": "3190867488",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2022-10-04 00:00:00",
       "SERVICE_DATE": "2022-10-04 00:00:00",
       "TX_TYPE_C_NAME": "Payment",
@@ -2785,6 +2858,14 @@
       "UPDATE_DATE": "2022-10-04 11:59:00",
       "IPP_INV_NUMBER": "L1006942840",
       "IPP_INV_ID": 56523114,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "TX_ENTERED_INSTANT_DTTM": "2022-10-04 15:37:13",
       "CVG_PLAN_ON_PMT_ID": 130204,
@@ -2793,22 +2874,15 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
-    },
-    {
-      "TX_ID": 304446131,
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
       "ORIGINATING_TAR_ID": 636446650,
       "SOURCE_TAR_ID": 636447751,
       "HOSP_ACCT_ID": 4307315,
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
+      "REFERENCE_NUM": "3190867488"
+    },
+    {
+      "TX_ID": 304446131,
       "POST_DATE": "2022-10-04 00:00:00",
       "SERVICE_DATE": "2022-10-04 00:00:00",
       "TX_TYPE_C_NAME": "Adjustment",
@@ -2836,6 +2910,14 @@
       "UPDATE_DATE": "2022-10-04 11:59:00",
       "IPP_INV_NUMBER": "L1006942840",
       "IPP_INV_ID": 56523114,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "CVG_PLAN_ON_PMT_ID": 130204,
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -2845,22 +2927,14 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 636446650,
+      "SOURCE_TAR_ID": 636447751,
+      "HOSP_ACCT_ID": 4307315
     },
     {
       "TX_ID": 304446136,
-      "ORIGINATING_TAR_ID": 636446650,
-      "SOURCE_TAR_ID": 636447751,
-      "HOSP_ACCT_ID": 4307315,
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2022-10-04 00:00:00",
       "SERVICE_DATE": "2022-10-04 00:00:00",
       "TX_TYPE_C_NAME": "Adjustment",
@@ -2888,6 +2962,14 @@
       "UPDATE_DATE": "2022-10-04 11:59:00",
       "IPP_INV_NUMBER": "L1006942840",
       "IPP_INV_ID": 56523114,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "CVG_PLAN_ON_PMT_ID": 130204,
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -2897,23 +2979,14 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 636446650,
+      "SOURCE_TAR_ID": 636447751,
+      "HOSP_ACCT_ID": 4307315
     },
     {
       "TX_ID": 304446678,
-      "ORIGINATING_TAR_ID": 636447251,
-      "SOURCE_TAR_ID": 636447959,
-      "HOSP_ACCT_ID": 4307315,
-      "REFERENCE_NUM": "3190867488",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2022-10-04 00:00:00",
       "SERVICE_DATE": "2022-10-04 00:00:00",
       "TX_TYPE_C_NAME": "Payment",
@@ -2942,6 +3015,14 @@
       "UPDATE_DATE": "2022-10-04 11:59:00",
       "IPP_INV_NUMBER": "L1006928390",
       "IPP_INV_ID": 56467923,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "TX_ENTERED_INSTANT_DTTM": "2022-10-04 15:37:23",
       "CVG_PLAN_ON_PMT_ID": 130204,
@@ -2950,22 +3031,15 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
-    },
-    {
-      "TX_ID": 304446682,
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
       "ORIGINATING_TAR_ID": 636447251,
       "SOURCE_TAR_ID": 636447959,
       "HOSP_ACCT_ID": 4307315,
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
+      "REFERENCE_NUM": "3190867488"
+    },
+    {
+      "TX_ID": 304446682,
       "POST_DATE": "2022-10-04 00:00:00",
       "SERVICE_DATE": "2022-10-04 00:00:00",
       "TX_TYPE_C_NAME": "Adjustment",
@@ -2993,6 +3067,14 @@
       "UPDATE_DATE": "2022-10-04 11:59:00",
       "IPP_INV_NUMBER": "L1006928390",
       "IPP_INV_ID": 56467923,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "CVG_PLAN_ON_PMT_ID": 130204,
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -3002,22 +3084,14 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 636447251,
+      "SOURCE_TAR_ID": 636447959,
+      "HOSP_ACCT_ID": 4307315
     },
     {
       "TX_ID": 304446684,
-      "ORIGINATING_TAR_ID": 636447251,
-      "SOURCE_TAR_ID": 636447959,
-      "HOSP_ACCT_ID": 4307315,
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2022-10-04 00:00:00",
       "SERVICE_DATE": "2022-10-04 00:00:00",
       "TX_TYPE_C_NAME": "Adjustment",
@@ -3045,6 +3119,14 @@
       "UPDATE_DATE": "2022-10-04 11:59:00",
       "IPP_INV_NUMBER": "L1006928390",
       "IPP_INV_ID": 56467923,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "CVG_PLAN_ON_PMT_ID": 130204,
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -3054,24 +3136,14 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 636447251,
+      "SOURCE_TAR_ID": 636447959,
+      "HOSP_ACCT_ID": 4307315
     },
     {
       "TX_ID": 314281735,
-      "ORIGINATING_TAR_ID": 656205938,
-      "SOURCE_TAR_ID": 656205938,
-      "HOSP_ACCT_ID": 4307315,
-      "REFERENCE_NUM": "7385",
-      "PMT_RECEIPT_NUM": "8141265",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2022-12-01 00:00:00",
       "SERVICE_DATE": "2022-12-01 00:00:00",
       "TX_TYPE_C_NAME": "Payment",
@@ -3097,6 +3169,14 @@
       "USER_ID_NAME": "MAGGIT, MARIYAH N",
       "CREDIT_SRC_MODULE_C_NAME": "Payment Collection",
       "UPDATE_DATE": "2023-01-12 14:08:00",
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "EB_PMT_TOTAL_AMT": 7.82,
       "TX_ENTERED_INSTANT_DTTM": "2022-12-01 15:28:38",
@@ -3111,36 +3191,16 @@
       "// mergedFrom ARPB_TRANSACTIONS3": true,
       "EB_PMT_HTT_ID": 772942581,
       "PAT_PMT_COLL_WKFL_C_NAME": "Staff Collected",
-      "EB_TX_SOURCE_C_NAME": "Payment Collection"
+      "EB_TX_SOURCE_C_NAME": "Payment Collection",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 656205938,
+      "SOURCE_TAR_ID": 656205938,
+      "HOSP_ACCT_ID": 4307315,
+      "REFERENCE_NUM": "7385",
+      "PMT_RECEIPT_NUM": "8141265"
     },
     {
       "TX_ID": 315026147,
-      "ORIGINATING_TAR_ID": 657345570,
-      "SOURCE_TAR_ID": 657345570,
-      "SRC_TAR_CHG_LINE": 1,
-      "INS_AGING_DATE": "2022-12-06 00:00:00",
-      "HOSP_ACCT_ID": 10141450,
-      "REFERRAL_PROV_ID": "144590",
-      "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
-      "INSURANCE_AMT_PAID": 0,
-      "WRITEOFF_EXCEPT_C_NAME": "Yes",
-      "ORIG_PRICE": 315,
-      "COVERAGE_PLAN_ID": 130204,
-      "ORIGINAL_AMT_COPAY": 0,
-      "BAD_DEBT_CHG_YN": "N",
-      "EOB_UPDATED_DT": "2022-12-20 00:00:00",
-      "TYPE_OF_SERVICE_C_NAME": "Medical Care",
-      "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
-      "DX_ALT_CODESET_C_NAME": "ICD-9-CM",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2022-12-06 00:00:00",
       "SERVICE_DATE": "2022-12-01 00:00:00",
       "TX_TYPE_C_NAME": "Charge",
@@ -3186,6 +3246,14 @@
       "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
       "UPDATE_DATE": "2022-12-20 15:09:00",
       "CLAIM_DATE": "2022-12-07 00:00:00",
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "VST_DO_NOT_BIL_I_YN": "N",
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -3198,23 +3266,28 @@
       "POSTING_DEPARTMENT_ID": 1700801002,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "PRIM_TIMELY_FILE_DEADLINE_DATE": "2023-05-30 00:00:00"
+      "PRIM_TIMELY_FILE_DEADLINE_DATE": "2023-05-30 00:00:00",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 657345570,
+      "SOURCE_TAR_ID": 657345570,
+      "SRC_TAR_CHG_LINE": 1,
+      "INS_AGING_DATE": "2022-12-06 00:00:00",
+      "HOSP_ACCT_ID": 10141450,
+      "REFERRAL_PROV_ID": "144590",
+      "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
+      "INSURANCE_AMT_PAID": 0,
+      "WRITEOFF_EXCEPT_C_NAME": "Yes",
+      "ORIG_PRICE": 315,
+      "COVERAGE_PLAN_ID": 130204,
+      "ORIGINAL_AMT_COPAY": 0,
+      "BAD_DEBT_CHG_YN": "N",
+      "EOB_UPDATED_DT": "2022-12-20 00:00:00",
+      "TYPE_OF_SERVICE_C_NAME": "Medical Care",
+      "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
+      "DX_ALT_CODESET_C_NAME": "ICD-9-CM"
     },
     {
       "TX_ID": 317165897,
-      "ORIGINATING_TAR_ID": 661918628,
-      "SOURCE_TAR_ID": 661919479,
-      "HOSP_ACCT_ID": 4307315,
-      "REFERENCE_NUM": "3197481824",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2022-12-20 00:00:00",
       "SERVICE_DATE": "2022-12-20 00:00:00",
       "TX_TYPE_C_NAME": "Payment",
@@ -3243,6 +3316,14 @@
       "UPDATE_DATE": "2023-01-12 14:08:00",
       "IPP_INV_NUMBER": "L1007201490",
       "IPP_INV_ID": 58319567,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "TX_ENTERED_INSTANT_DTTM": "2022-12-20 16:11:35",
       "CVG_PLAN_ON_PMT_ID": 130204,
@@ -3254,39 +3335,15 @@
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "STMT_HOLD_RSN_TEXT": "83550000||s result=$$skip^KPZMTSTAPL(etrId)||1",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 661918628,
+      "SOURCE_TAR_ID": 661919479,
+      "HOSP_ACCT_ID": 4307315,
+      "REFERENCE_NUM": "3197481824"
     },
     {
       "TX_ID": 317236398,
-      "ORIGINATING_TAR_ID": 662051971,
-      "SOURCE_TAR_ID": 662051971,
-      "SRC_TAR_CHG_LINE": 1,
-      "PAT_AGING_DATE": "2023-01-11 00:00:00",
-      "INS_AGING_DATE": "2022-12-20 00:00:00",
-      "HOSP_ACCT_ID": 10141450,
-      "REFERRAL_PROV_ID": "144590",
-      "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
-      "INSURANCE_AMT_PAID": 295.11,
-      "WRITEOFF_EXCEPT_C_NAME": "Yes",
-      "ORIG_PRICE": 315,
-      "COVERAGE_PLAN_ID": 130204,
-      "ORIGINAL_AMT_COPAY": 0,
-      "BAD_DEBT_CHG_YN": "N",
-      "FIRST_SELFPAY_DATE": "2023-01-10 00:00:00",
-      "CLAIM_ID": 4128938,
-      "EOB_UPDATED_DT": "2023-01-10 00:00:00",
-      "TYPE_OF_SERVICE_C_NAME": "Medical Care",
-      "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
-      "DX_ALT_CODESET_C_NAME": "ICD-9-CM",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2022-12-20 00:00:00",
       "SERVICE_DATE": "2022-12-01 00:00:00",
       "TX_TYPE_C_NAME": "Charge",
@@ -3330,6 +3387,14 @@
       "BILL_AREA_ID": 9,
       "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
       "UPDATE_DATE": "2023-01-24 10:17:00",
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "VST_DO_NOT_BIL_I_YN": "N",
       "REPOST_REASON_C_NAME": "Charge Correct",
@@ -3341,23 +3406,31 @@
       "POSTING_DEPARTMENT_ID": 1700801002,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "PRIM_TIMELY_FILE_DEADLINE_DATE": "2023-05-30 00:00:00"
+      "PRIM_TIMELY_FILE_DEADLINE_DATE": "2023-05-30 00:00:00",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 662051971,
+      "SOURCE_TAR_ID": 662051971,
+      "SRC_TAR_CHG_LINE": 1,
+      "PAT_AGING_DATE": "2023-01-11 00:00:00",
+      "INS_AGING_DATE": "2022-12-20 00:00:00",
+      "HOSP_ACCT_ID": 10141450,
+      "REFERRAL_PROV_ID": "144590",
+      "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
+      "INSURANCE_AMT_PAID": 295.11,
+      "WRITEOFF_EXCEPT_C_NAME": "Yes",
+      "ORIG_PRICE": 315,
+      "COVERAGE_PLAN_ID": 130204,
+      "ORIGINAL_AMT_COPAY": 0,
+      "BAD_DEBT_CHG_YN": "N",
+      "FIRST_SELFPAY_DATE": "2023-01-10 00:00:00",
+      "CLAIM_ID": 4128938,
+      "EOB_UPDATED_DT": "2023-01-10 00:00:00",
+      "TYPE_OF_SERVICE_C_NAME": "Medical Care",
+      "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
+      "DX_ALT_CODESET_C_NAME": "ICD-9-CM"
     },
     {
       "TX_ID": 319922979,
-      "ORIGINATING_TAR_ID": 667622672,
-      "SOURCE_TAR_ID": 667623586,
-      "HOSP_ACCT_ID": 4307315,
-      "REFERENCE_NUM": "3199232336",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2023-01-10 00:00:00",
       "SERVICE_DATE": "2023-01-10 00:00:00",
       "TX_TYPE_C_NAME": "Payment",
@@ -3386,6 +3459,14 @@
       "UPDATE_DATE": "2023-01-12 14:08:00",
       "IPP_INV_NUMBER": "L1007201490",
       "IPP_INV_ID": 58319567,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "TX_ENTERED_INSTANT_DTTM": "2023-01-10 16:39:58",
       "CVG_PLAN_ON_PMT_ID": 130204,
@@ -3397,23 +3478,15 @@
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "STMT_HOLD_RSN_TEXT": "83550000||s result=$$skip^KPZMTSTAPL(etrId)||1",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 667622672,
+      "SOURCE_TAR_ID": 667623586,
+      "HOSP_ACCT_ID": 4307315,
+      "REFERENCE_NUM": "3199232336"
     },
     {
       "TX_ID": 319923250,
-      "ORIGINATING_TAR_ID": 667622972,
-      "SOURCE_TAR_ID": 667623948,
-      "HOSP_ACCT_ID": 4307315,
-      "REFERENCE_NUM": "3199232336",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2023-01-10 00:00:00",
       "SERVICE_DATE": "2023-01-10 00:00:00",
       "TX_TYPE_C_NAME": "Payment",
@@ -3442,6 +3515,14 @@
       "UPDATE_DATE": "2023-01-12 14:08:00",
       "IPP_INV_NUMBER": "L1007233831",
       "IPP_INV_ID": 58660400,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "TX_ENTERED_INSTANT_DTTM": "2023-01-10 16:40:04",
       "CVG_PLAN_ON_PMT_ID": 130204,
@@ -3453,22 +3534,15 @@
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "STMT_HOLD_RSN_TEXT": "83550000||s result=$$skip^KPZMTSTAPL(etrId)||1",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
-    },
-    {
-      "TX_ID": 319923252,
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
       "ORIGINATING_TAR_ID": 667622972,
       "SOURCE_TAR_ID": 667623948,
       "HOSP_ACCT_ID": 4307315,
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
+      "REFERENCE_NUM": "3199232336"
+    },
+    {
+      "TX_ID": 319923252,
       "POST_DATE": "2023-01-10 00:00:00",
       "SERVICE_DATE": "2023-01-10 00:00:00",
       "TX_TYPE_C_NAME": "Adjustment",
@@ -3496,6 +3570,14 @@
       "UPDATE_DATE": "2023-01-12 14:08:00",
       "IPP_INV_NUMBER": "L1007233831",
       "IPP_INV_ID": 58660400,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "CVG_PLAN_ON_PMT_ID": 130204,
       "STMT_HOLD_DT": "2023-01-11 00:00:00",
@@ -3508,23 +3590,14 @@
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "STMT_HOLD_RSN_TEXT": "83550000||s result=$$skip^KPZMTSTAPL(etrId)||1",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 667622972,
+      "SOURCE_TAR_ID": 667623948,
+      "HOSP_ACCT_ID": 4307315
     },
     {
       "TX_ID": 321705114,
-      "ORIGINATING_TAR_ID": 671277478,
-      "SOURCE_TAR_ID": 671277478,
-      "HOSP_ACCT_ID": 4307315,
-      "REFERENCE_NUM": "7385",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2023-01-24 00:00:00",
       "SERVICE_DATE": "2023-01-24 00:00:00",
       "TX_TYPE_C_NAME": "Payment",
@@ -3549,6 +3622,14 @@
       "USER_ID_NAME": "GILBECK, KAYLA J",
       "CREDIT_SRC_MODULE_C_NAME": "Payment Posting",
       "UPDATE_DATE": "2023-01-24 10:18:00",
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "TX_ENTERED_INSTANT_DTTM": "2023-01-24 13:41:05",
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -3558,38 +3639,15 @@
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
       "PAT_PMT_COLL_WKFL_C_NAME": "Payment Posting",
-      "EB_TX_SOURCE_C_NAME": "PB Payment Posting"
+      "EB_TX_SOURCE_C_NAME": "PB Payment Posting",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 671277478,
+      "SOURCE_TAR_ID": 671277478,
+      "HOSP_ACCT_ID": 4307315,
+      "REFERENCE_NUM": "7385"
     },
     {
       "TX_ID": 328283034,
-      "ORIGINATING_TAR_ID": 683365795,
-      "SOURCE_TAR_ID": 683365795,
-      "SRC_TAR_CHG_LINE": 1,
-      "PAT_AGING_DATE": "2023-03-29 00:00:00",
-      "INS_AGING_DATE": "2023-03-10 00:00:00",
-      "HOSP_ACCT_ID": 10685743,
-      "REFERRAL_PROV_ID": "144590",
-      "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
-      "INSURANCE_AMT_PAID": 86.03,
-      "WRITEOFF_EXCEPT_C_NAME": "Yes",
-      "ORIG_PRICE": 226,
-      "COVERAGE_PLAN_ID": 130204,
-      "ORIGINAL_AMT_COPAY": 0,
-      "BAD_DEBT_CHG_YN": "N",
-      "FIRST_SELFPAY_DATE": "2023-03-28 00:00:00",
-      "EOB_UPDATED_DT": "2023-03-28 00:00:00",
-      "TYPE_OF_SERVICE_C_NAME": "Medical Care",
-      "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
-      "DX_ALT_CODESET_C_NAME": "ICD-9-CM",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2023-03-10 00:00:00",
       "SERVICE_DATE": "2023-03-02 00:00:00",
       "TX_TYPE_C_NAME": "Charge",
@@ -3630,6 +3688,14 @@
       "BILL_AREA_ID": 9,
       "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
       "UPDATE_DATE": "2023-05-17 10:18:00",
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "VST_DO_NOT_BIL_I_YN": "N",
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -3640,23 +3706,30 @@
       "POSTING_DEPARTMENT_ID": 1700801002,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "PRIM_TIMELY_FILE_DEADLINE_DATE": "2023-08-29 00:00:00"
+      "PRIM_TIMELY_FILE_DEADLINE_DATE": "2023-08-29 00:00:00",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 683365795,
+      "SOURCE_TAR_ID": 683365795,
+      "SRC_TAR_CHG_LINE": 1,
+      "PAT_AGING_DATE": "2023-03-29 00:00:00",
+      "INS_AGING_DATE": "2023-03-10 00:00:00",
+      "HOSP_ACCT_ID": 10685743,
+      "REFERRAL_PROV_ID": "144590",
+      "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
+      "INSURANCE_AMT_PAID": 86.03,
+      "WRITEOFF_EXCEPT_C_NAME": "Yes",
+      "ORIG_PRICE": 226,
+      "COVERAGE_PLAN_ID": 130204,
+      "ORIGINAL_AMT_COPAY": 0,
+      "BAD_DEBT_CHG_YN": "N",
+      "FIRST_SELFPAY_DATE": "2023-03-28 00:00:00",
+      "EOB_UPDATED_DT": "2023-03-28 00:00:00",
+      "TYPE_OF_SERVICE_C_NAME": "Medical Care",
+      "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
+      "DX_ALT_CODESET_C_NAME": "ICD-9-CM"
     },
     {
       "TX_ID": 330455164,
-      "ORIGINATING_TAR_ID": 689569928,
-      "SOURCE_TAR_ID": 689571399,
-      "HOSP_ACCT_ID": 4307315,
-      "REFERENCE_NUM": "3205979885",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2023-03-28 00:00:00",
       "SERVICE_DATE": "2023-03-28 00:00:00",
       "TX_TYPE_C_NAME": "Payment",
@@ -3685,6 +3758,14 @@
       "UPDATE_DATE": "2023-03-30 11:21:00",
       "IPP_INV_NUMBER": "L1007449820",
       "IPP_INV_ID": 60492688,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "TX_ENTERED_INSTANT_DTTM": "2023-03-28 15:22:54",
       "CVG_PLAN_ON_PMT_ID": 130204,
@@ -3696,22 +3777,15 @@
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "STMT_HOLD_RSN_TEXT": "83550000||s result=$$skip^KPZMTSTAPL(etrId)||1",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
-    },
-    {
-      "TX_ID": 330455167,
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
       "ORIGINATING_TAR_ID": 689569928,
       "SOURCE_TAR_ID": 689571399,
       "HOSP_ACCT_ID": 4307315,
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
+      "REFERENCE_NUM": "3205979885"
+    },
+    {
+      "TX_ID": 330455167,
       "POST_DATE": "2023-03-28 00:00:00",
       "SERVICE_DATE": "2023-03-28 00:00:00",
       "TX_TYPE_C_NAME": "Adjustment",
@@ -3739,6 +3813,14 @@
       "UPDATE_DATE": "2023-03-30 11:21:00",
       "IPP_INV_NUMBER": "L1007449820",
       "IPP_INV_ID": 60492688,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "CVG_PLAN_ON_PMT_ID": 130204,
       "STMT_HOLD_DT": "2023-03-29 00:00:00",
@@ -3751,23 +3833,14 @@
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "STMT_HOLD_RSN_TEXT": "83550000||s result=$$skip^KPZMTSTAPL(etrId)||1",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 689569928,
+      "SOURCE_TAR_ID": 689571399,
+      "HOSP_ACCT_ID": 4307315
     },
     {
       "TX_ID": 336699833,
-      "ORIGINATING_TAR_ID": 702974850,
-      "SOURCE_TAR_ID": 702974850,
-      "HOSP_ACCT_ID": 4307315,
-      "REFERENCE_NUM": "7385",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2023-05-17 00:00:00",
       "SERVICE_DATE": "2023-05-17 00:00:00",
       "TX_TYPE_C_NAME": "Payment",
@@ -3792,6 +3865,14 @@
       "USER_ID_NAME": "GILBECK, KAYLA J",
       "CREDIT_SRC_MODULE_C_NAME": "Payment Posting",
       "UPDATE_DATE": "2023-05-17 10:20:00",
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "TX_ENTERED_INSTANT_DTTM": "2023-05-17 12:45:08",
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -3801,40 +3882,15 @@
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
       "PAT_PMT_COLL_WKFL_C_NAME": "Payment Posting",
-      "EB_TX_SOURCE_C_NAME": "PB Payment Posting"
+      "EB_TX_SOURCE_C_NAME": "PB Payment Posting",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 702974850,
+      "SOURCE_TAR_ID": 702974850,
+      "HOSP_ACCT_ID": 4307315,
+      "REFERENCE_NUM": "7385"
     },
     {
       "TX_ID": 354336208,
-      "ORIGINATING_TAR_ID": 743463665,
-      "SOURCE_TAR_ID": 743463665,
-      "SRC_TAR_CHG_LINE": 1,
-      "INS_AGING_DATE": "2023-10-03 00:00:00",
-      "HOSP_ACCT_ID": 11825589,
-      "REFERRAL_PROV_ID": "144590",
-      "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
-      "INSURANCE_AMT_PAID": 50,
-      "WRITEOFF_EXCEPT_C_NAME": "Yes",
-      "ORIG_PRICE": 50,
-      "COVERAGE_PLAN_ID": 130204,
-      "ORIGINAL_AMT_COPAY": 0,
-      "BAD_DEBT_CHG_YN": "N",
-      "FIRST_SELFPAY_DATE": "2023-10-18 00:00:00",
-      "EOB_UPDATED_DT": "2023-10-18 00:00:00",
-      "START_TIME": "1900-01-01 10:10:00",
-      "SERVICE_TIME": "1900-01-01 10:10:00",
-      "TYPE_OF_SERVICE_C_NAME": "Diagnostic Laboratory",
-      "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
-      "DX_ALT_CODESET_C_NAME": "ICD-9-CM",
-      "START_DATE": "2023-09-28 00:00:00",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2023-10-03 00:00:00",
       "SERVICE_DATE": "2023-09-28 00:00:00",
       "TX_TYPE_C_NAME": "Charge",
@@ -3879,6 +3935,14 @@
       "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
       "UPDATE_DATE": "2023-10-18 14:06:00",
       "CLAIM_DATE": "2023-10-04 00:00:00",
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "VST_DO_NOT_BIL_I_YN": "N",
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -3889,20 +3953,18 @@
       "POSTING_DEPARTMENT_ID": 1700801005,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "PRIM_TIMELY_FILE_DEADLINE_DATE": "2024-03-26 00:00:00"
-    },
-    {
-      "TX_ID": 354336209,
+      "PRIM_TIMELY_FILE_DEADLINE_DATE": "2024-03-26 00:00:00",
+      "// mergedFrom ARPB_TX_MODERATE": true,
       "ORIGINATING_TAR_ID": 743463665,
       "SOURCE_TAR_ID": 743463665,
-      "SRC_TAR_CHG_LINE": 2,
+      "SRC_TAR_CHG_LINE": 1,
       "INS_AGING_DATE": "2023-10-03 00:00:00",
       "HOSP_ACCT_ID": 11825589,
       "REFERRAL_PROV_ID": "144590",
       "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
-      "INSURANCE_AMT_PAID": 120,
+      "INSURANCE_AMT_PAID": 50,
       "WRITEOFF_EXCEPT_C_NAME": "Yes",
-      "ORIG_PRICE": 120,
+      "ORIG_PRICE": 50,
       "COVERAGE_PLAN_ID": 130204,
       "ORIGINAL_AMT_COPAY": 0,
       "BAD_DEBT_CHG_YN": "N",
@@ -3913,16 +3975,10 @@
       "TYPE_OF_SERVICE_C_NAME": "Diagnostic Laboratory",
       "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
       "DX_ALT_CODESET_C_NAME": "ICD-9-CM",
-      "START_DATE": "2023-09-28 00:00:00",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
+      "START_DATE": "2023-09-28 00:00:00"
+    },
+    {
+      "TX_ID": 354336209,
       "POST_DATE": "2023-10-03 00:00:00",
       "SERVICE_DATE": "2023-09-28 00:00:00",
       "TX_TYPE_C_NAME": "Charge",
@@ -3967,6 +4023,14 @@
       "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
       "UPDATE_DATE": "2023-10-18 14:06:00",
       "CLAIM_DATE": "2023-10-04 00:00:00",
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "VST_DO_NOT_BIL_I_YN": "N",
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -3977,20 +4041,18 @@
       "POSTING_DEPARTMENT_ID": 1700801005,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "PRIM_TIMELY_FILE_DEADLINE_DATE": "2024-03-26 00:00:00"
-    },
-    {
-      "TX_ID": 354336210,
+      "PRIM_TIMELY_FILE_DEADLINE_DATE": "2024-03-26 00:00:00",
+      "// mergedFrom ARPB_TX_MODERATE": true,
       "ORIGINATING_TAR_ID": 743463665,
       "SOURCE_TAR_ID": 743463665,
-      "SRC_TAR_CHG_LINE": 3,
+      "SRC_TAR_CHG_LINE": 2,
       "INS_AGING_DATE": "2023-10-03 00:00:00",
       "HOSP_ACCT_ID": 11825589,
       "REFERRAL_PROV_ID": "144590",
       "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
-      "INSURANCE_AMT_PAID": 33,
+      "INSURANCE_AMT_PAID": 120,
       "WRITEOFF_EXCEPT_C_NAME": "Yes",
-      "ORIG_PRICE": 33,
+      "ORIG_PRICE": 120,
       "COVERAGE_PLAN_ID": 130204,
       "ORIGINAL_AMT_COPAY": 0,
       "BAD_DEBT_CHG_YN": "N",
@@ -4001,16 +4063,10 @@
       "TYPE_OF_SERVICE_C_NAME": "Diagnostic Laboratory",
       "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
       "DX_ALT_CODESET_C_NAME": "ICD-9-CM",
-      "START_DATE": "2023-09-28 00:00:00",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
+      "START_DATE": "2023-09-28 00:00:00"
+    },
+    {
+      "TX_ID": 354336210,
       "POST_DATE": "2023-10-03 00:00:00",
       "SERVICE_DATE": "2023-09-28 00:00:00",
       "TX_TYPE_C_NAME": "Charge",
@@ -4055,6 +4111,14 @@
       "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
       "UPDATE_DATE": "2023-10-18 14:06:00",
       "CLAIM_DATE": "2023-10-04 00:00:00",
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "VST_DO_NOT_BIL_I_YN": "N",
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -4065,38 +4129,32 @@
       "POSTING_DEPARTMENT_ID": 1700801005,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "PRIM_TIMELY_FILE_DEADLINE_DATE": "2024-03-26 00:00:00"
-    },
-    {
-      "TX_ID": 354520699,
-      "ORIGINATING_TAR_ID": 743463931,
-      "SOURCE_TAR_ID": 743463931,
-      "SRC_TAR_CHG_LINE": 1,
-      "INS_AGING_DATE": "2023-10-04 00:00:00",
-      "HOSP_ACCT_ID": 10686227,
-      "ORDER_ID": 945468367,
+      "PRIM_TIMELY_FILE_DEADLINE_DATE": "2024-03-26 00:00:00",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 743463665,
+      "SOURCE_TAR_ID": 743463665,
+      "SRC_TAR_CHG_LINE": 3,
+      "INS_AGING_DATE": "2023-10-03 00:00:00",
+      "HOSP_ACCT_ID": 11825589,
       "REFERRAL_PROV_ID": "144590",
       "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
-      "INSURANCE_AMT_PAID": 54,
+      "INSURANCE_AMT_PAID": 33,
       "WRITEOFF_EXCEPT_C_NAME": "Yes",
-      "ORIG_PRICE": 54,
+      "ORIG_PRICE": 33,
       "COVERAGE_PLAN_ID": 130204,
       "ORIGINAL_AMT_COPAY": 0,
       "BAD_DEBT_CHG_YN": "N",
       "FIRST_SELFPAY_DATE": "2023-10-18 00:00:00",
       "EOB_UPDATED_DT": "2023-10-18 00:00:00",
-      "TYPE_OF_SERVICE_C_NAME": "Medical Care",
+      "START_TIME": "1900-01-01 10:10:00",
+      "SERVICE_TIME": "1900-01-01 10:10:00",
+      "TYPE_OF_SERVICE_C_NAME": "Diagnostic Laboratory",
       "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
       "DX_ALT_CODESET_C_NAME": "ICD-9-CM",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
+      "START_DATE": "2023-09-28 00:00:00"
+    },
+    {
+      "TX_ID": 354520699,
       "POST_DATE": "2023-10-04 00:00:00",
       "SERVICE_DATE": "2023-09-28 00:00:00",
       "TX_TYPE_C_NAME": "Charge",
@@ -4140,6 +4198,14 @@
       "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
       "UPDATE_DATE": "2023-10-18 14:06:00",
       "CLAIM_DATE": "2023-10-05 00:00:00",
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "VST_DO_NOT_BIL_I_YN": "N",
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -4149,21 +4215,19 @@
       "POSTING_DEPARTMENT_ID": 1700801002,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "PRIM_TIMELY_FILE_DEADLINE_DATE": "2024-03-26 00:00:00"
-    },
-    {
-      "TX_ID": 354520701,
+      "PRIM_TIMELY_FILE_DEADLINE_DATE": "2024-03-26 00:00:00",
+      "// mergedFrom ARPB_TX_MODERATE": true,
       "ORIGINATING_TAR_ID": 743463931,
       "SOURCE_TAR_ID": 743463931,
-      "SRC_TAR_CHG_LINE": 2,
+      "SRC_TAR_CHG_LINE": 1,
       "INS_AGING_DATE": "2023-10-04 00:00:00",
       "HOSP_ACCT_ID": 10686227,
       "ORDER_ID": 945468367,
       "REFERRAL_PROV_ID": "144590",
       "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
-      "INSURANCE_AMT_PAID": 60,
+      "INSURANCE_AMT_PAID": 54,
       "WRITEOFF_EXCEPT_C_NAME": "Yes",
-      "ORIG_PRICE": 60,
+      "ORIG_PRICE": 54,
       "COVERAGE_PLAN_ID": 130204,
       "ORIGINAL_AMT_COPAY": 0,
       "BAD_DEBT_CHG_YN": "N",
@@ -4171,16 +4235,10 @@
       "EOB_UPDATED_DT": "2023-10-18 00:00:00",
       "TYPE_OF_SERVICE_C_NAME": "Medical Care",
       "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
-      "DX_ALT_CODESET_C_NAME": "ICD-9-CM",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
+      "DX_ALT_CODESET_C_NAME": "ICD-9-CM"
+    },
+    {
+      "TX_ID": 354520701,
       "POST_DATE": "2023-10-04 00:00:00",
       "SERVICE_DATE": "2023-09-28 00:00:00",
       "TX_TYPE_C_NAME": "Charge",
@@ -4224,6 +4282,14 @@
       "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
       "UPDATE_DATE": "2023-10-18 14:06:00",
       "CLAIM_DATE": "2023-10-05 00:00:00",
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "VST_DO_NOT_BIL_I_YN": "N",
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -4233,37 +4299,30 @@
       "POSTING_DEPARTMENT_ID": 1700801002,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "PRIM_TIMELY_FILE_DEADLINE_DATE": "2024-03-26 00:00:00"
-    },
-    {
-      "TX_ID": 355871699,
-      "ORIGINATING_TAR_ID": 743463928,
-      "SOURCE_TAR_ID": 743463928,
-      "SRC_TAR_CHG_LINE": 1,
-      "INS_AGING_DATE": "2023-10-12 00:00:00",
+      "PRIM_TIMELY_FILE_DEADLINE_DATE": "2024-03-26 00:00:00",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 743463931,
+      "SOURCE_TAR_ID": 743463931,
+      "SRC_TAR_CHG_LINE": 2,
+      "INS_AGING_DATE": "2023-10-04 00:00:00",
       "HOSP_ACCT_ID": 10686227,
+      "ORDER_ID": 945468367,
       "REFERRAL_PROV_ID": "144590",
       "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
-      "INSURANCE_AMT_PAID": 330,
+      "INSURANCE_AMT_PAID": 60,
       "WRITEOFF_EXCEPT_C_NAME": "Yes",
-      "ORIG_PRICE": 330,
+      "ORIG_PRICE": 60,
       "COVERAGE_PLAN_ID": 130204,
       "ORIGINAL_AMT_COPAY": 0,
       "BAD_DEBT_CHG_YN": "N",
-      "FIRST_SELFPAY_DATE": "2023-10-23 00:00:00",
-      "EOB_UPDATED_DT": "2023-10-23 00:00:00",
+      "FIRST_SELFPAY_DATE": "2023-10-18 00:00:00",
+      "EOB_UPDATED_DT": "2023-10-18 00:00:00",
       "TYPE_OF_SERVICE_C_NAME": "Medical Care",
       "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
-      "DX_ALT_CODESET_C_NAME": "ICD-9-CM",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
+      "DX_ALT_CODESET_C_NAME": "ICD-9-CM"
+    },
+    {
+      "TX_ID": 355871699,
       "POST_DATE": "2023-10-12 00:00:00",
       "SERVICE_DATE": "2023-09-28 00:00:00",
       "TX_TYPE_C_NAME": "Charge",
@@ -4309,6 +4368,14 @@
       "BILL_AREA_ID_BILL_AREA_NAME": "Associated Physicians Madison Wisconsin",
       "UPDATE_DATE": "2023-10-23 15:06:00",
       "CLAIM_DATE": "2023-10-13 00:00:00",
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "VST_DO_NOT_BIL_I_YN": "N",
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -4319,23 +4386,29 @@
       "POSTING_DEPARTMENT_ID": 1700801002,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "PRIM_TIMELY_FILE_DEADLINE_DATE": "2024-03-26 00:00:00"
+      "PRIM_TIMELY_FILE_DEADLINE_DATE": "2024-03-26 00:00:00",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 743463928,
+      "SOURCE_TAR_ID": 743463928,
+      "SRC_TAR_CHG_LINE": 1,
+      "INS_AGING_DATE": "2023-10-12 00:00:00",
+      "HOSP_ACCT_ID": 10686227,
+      "REFERRAL_PROV_ID": "144590",
+      "REFERRAL_PROV_ID_REFERRING_PROV_NAM": "RAMMELKAMP, ZOE L",
+      "INSURANCE_AMT_PAID": 330,
+      "WRITEOFF_EXCEPT_C_NAME": "Yes",
+      "ORIG_PRICE": 330,
+      "COVERAGE_PLAN_ID": 130204,
+      "ORIGINAL_AMT_COPAY": 0,
+      "BAD_DEBT_CHG_YN": "N",
+      "FIRST_SELFPAY_DATE": "2023-10-23 00:00:00",
+      "EOB_UPDATED_DT": "2023-10-23 00:00:00",
+      "TYPE_OF_SERVICE_C_NAME": "Medical Care",
+      "DX_PRIM_CODESET_C_NAME": "ICD-10-CM",
+      "DX_ALT_CODESET_C_NAME": "ICD-9-CM"
     },
     {
       "TX_ID": 356659570,
-      "ORIGINATING_TAR_ID": 748859154,
-      "SOURCE_TAR_ID": 748860069,
-      "HOSP_ACCT_ID": 4307315,
-      "REFERENCE_NUM": "3223414426",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2023-10-18 00:00:00",
       "SERVICE_DATE": "2023-10-18 00:00:00",
       "TX_TYPE_C_NAME": "Payment",
@@ -4364,6 +4437,14 @@
       "UPDATE_DATE": "2023-10-18 14:06:00",
       "IPP_INV_NUMBER": "L1007990080",
       "IPP_INV_ID": 65226259,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "TX_ENTERED_INSTANT_DTTM": "2023-10-18 18:08:08",
       "CVG_PLAN_ON_PMT_ID": 130204,
@@ -4372,22 +4453,15 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
-    },
-    {
-      "TX_ID": 356659575,
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
       "ORIGINATING_TAR_ID": 748859154,
       "SOURCE_TAR_ID": 748860069,
       "HOSP_ACCT_ID": 4307315,
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
+      "REFERENCE_NUM": "3223414426"
+    },
+    {
+      "TX_ID": 356659575,
       "POST_DATE": "2023-10-18 00:00:00",
       "SERVICE_DATE": "2023-10-18 00:00:00",
       "TX_TYPE_C_NAME": "Adjustment",
@@ -4415,6 +4489,14 @@
       "UPDATE_DATE": "2023-10-18 14:06:00",
       "IPP_INV_NUMBER": "L1007990080",
       "IPP_INV_ID": 65226259,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "CVG_PLAN_ON_PMT_ID": 130204,
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -4424,22 +4506,14 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 748859154,
+      "SOURCE_TAR_ID": 748860069,
+      "HOSP_ACCT_ID": 4307315
     },
     {
       "TX_ID": 356659580,
-      "ORIGINATING_TAR_ID": 748859154,
-      "SOURCE_TAR_ID": 748860069,
-      "HOSP_ACCT_ID": 4307315,
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2023-10-18 00:00:00",
       "SERVICE_DATE": "2023-10-18 00:00:00",
       "TX_TYPE_C_NAME": "Adjustment",
@@ -4467,6 +4541,14 @@
       "UPDATE_DATE": "2023-10-18 14:06:00",
       "IPP_INV_NUMBER": "L1007990080",
       "IPP_INV_ID": 65226259,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "CVG_PLAN_ON_PMT_ID": 130204,
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -4476,23 +4558,14 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 748859154,
+      "SOURCE_TAR_ID": 748860069,
+      "HOSP_ACCT_ID": 4307315
     },
     {
       "TX_ID": 356659643,
-      "ORIGINATING_TAR_ID": 748859226,
-      "SOURCE_TAR_ID": 748860092,
-      "HOSP_ACCT_ID": 4307315,
-      "REFERENCE_NUM": "3223414426",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2023-10-18 00:00:00",
       "SERVICE_DATE": "2023-10-18 00:00:00",
       "TX_TYPE_C_NAME": "Payment",
@@ -4521,6 +4594,14 @@
       "UPDATE_DATE": "2023-10-18 14:06:00",
       "IPP_INV_NUMBER": "L1007985430",
       "IPP_INV_ID": 65200403,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "TX_ENTERED_INSTANT_DTTM": "2023-10-18 18:08:09",
       "CVG_PLAN_ON_PMT_ID": 130204,
@@ -4529,22 +4610,15 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
-    },
-    {
-      "TX_ID": 356659647,
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
       "ORIGINATING_TAR_ID": 748859226,
       "SOURCE_TAR_ID": 748860092,
       "HOSP_ACCT_ID": 4307315,
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
+      "REFERENCE_NUM": "3223414426"
+    },
+    {
+      "TX_ID": 356659647,
       "POST_DATE": "2023-10-18 00:00:00",
       "SERVICE_DATE": "2023-10-18 00:00:00",
       "TX_TYPE_C_NAME": "Adjustment",
@@ -4572,6 +4646,14 @@
       "UPDATE_DATE": "2023-10-18 14:06:00",
       "IPP_INV_NUMBER": "L1007985430",
       "IPP_INV_ID": 65200403,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "CVG_PLAN_ON_PMT_ID": 130204,
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -4581,22 +4663,14 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 748859226,
+      "SOURCE_TAR_ID": 748860092,
+      "HOSP_ACCT_ID": 4307315
     },
     {
       "TX_ID": 356659652,
-      "ORIGINATING_TAR_ID": 748859226,
-      "SOURCE_TAR_ID": 748860092,
-      "HOSP_ACCT_ID": 4307315,
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2023-10-18 00:00:00",
       "SERVICE_DATE": "2023-10-18 00:00:00",
       "TX_TYPE_C_NAME": "Adjustment",
@@ -4624,6 +4698,14 @@
       "UPDATE_DATE": "2023-10-18 14:06:00",
       "IPP_INV_NUMBER": "L1007985430",
       "IPP_INV_ID": 65200403,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "CVG_PLAN_ON_PMT_ID": 130204,
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -4633,22 +4715,14 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 748859226,
+      "SOURCE_TAR_ID": 748860092,
+      "HOSP_ACCT_ID": 4307315
     },
     {
       "TX_ID": 356659657,
-      "ORIGINATING_TAR_ID": 748859226,
-      "SOURCE_TAR_ID": 748860092,
-      "HOSP_ACCT_ID": 4307315,
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2023-10-18 00:00:00",
       "SERVICE_DATE": "2023-10-18 00:00:00",
       "TX_TYPE_C_NAME": "Adjustment",
@@ -4676,6 +4750,14 @@
       "UPDATE_DATE": "2023-10-18 14:06:00",
       "IPP_INV_NUMBER": "L1007985430",
       "IPP_INV_ID": 65200403,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "CVG_PLAN_ON_PMT_ID": 130204,
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -4685,23 +4767,14 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 748859226,
+      "SOURCE_TAR_ID": 748860092,
+      "HOSP_ACCT_ID": 4307315
     },
     {
       "TX_ID": 357218465,
-      "ORIGINATING_TAR_ID": 750121628,
-      "SOURCE_TAR_ID": 750123308,
-      "HOSP_ACCT_ID": 4307315,
-      "REFERENCE_NUM": "3224008759",
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
       "POST_DATE": "2023-10-23 00:00:00",
       "SERVICE_DATE": "2023-10-23 00:00:00",
       "TX_TYPE_C_NAME": "Payment",
@@ -4730,6 +4803,14 @@
       "UPDATE_DATE": "2023-10-23 15:06:00",
       "IPP_INV_NUMBER": "L1008016200",
       "IPP_INV_ID": 65425314,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "TX_ENTERED_INSTANT_DTTM": "2023-10-23 19:54:19",
       "CVG_PLAN_ON_PMT_ID": 130204,
@@ -4738,22 +4819,15 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
-    },
-    {
-      "TX_ID": 357218470,
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
       "ORIGINATING_TAR_ID": 750121628,
       "SOURCE_TAR_ID": 750123308,
       "HOSP_ACCT_ID": 4307315,
-      "$meta": {
-        "type": "ARPB_TX_MODERATE",
-        "mergedFrom": [
-          "ARPB_TRANSACTIONS",
-          "ARPB_TRANSACTIONS2",
-          "ARPB_TRANSACTIONS3"
-        ]
-      },
-      "// mergedFrom ARPB_TRANSACTIONS": true,
+      "REFERENCE_NUM": "3224008759"
+    },
+    {
+      "TX_ID": 357218470,
       "POST_DATE": "2023-10-23 00:00:00",
       "SERVICE_DATE": "2023-10-23 00:00:00",
       "TX_TYPE_C_NAME": "Adjustment",
@@ -4781,6 +4855,14 @@
       "UPDATE_DATE": "2023-10-23 15:06:00",
       "IPP_INV_NUMBER": "L1008016200",
       "IPP_INV_ID": 65425314,
+      "$meta": {
+        "type": "ARPB_TRANSACTIONS",
+        "mergedFrom": [
+          "ARPB_TRANSACTIONS2",
+          "ARPB_TRANSACTIONS3",
+          "ARPB_TX_MODERATE"
+        ]
+      },
       "// mergedFrom ARPB_TRANSACTIONS2": true,
       "CVG_PLAN_ON_PMT_ID": 130204,
       "OUTST_CLM_STAT_C_NAME": "Not Outstanding",
@@ -4790,7 +4872,11 @@
       "POSTING_DEPARTMENT_ID": 1700801001,
       "EXP_REIMB_SRC_C_NAME": "System Calculated",
       "// mergedFrom ARPB_TRANSACTIONS3": true,
-      "EB_TX_SOURCE_C_NAME": "Electronic Remittance"
+      "EB_TX_SOURCE_C_NAME": "Electronic Remittance",
+      "// mergedFrom ARPB_TX_MODERATE": true,
+      "ORIGINATING_TAR_ID": 750121628,
+      "SOURCE_TAR_ID": 750123308,
+      "HOSP_ACCT_ID": 4307315
     }
   ]
 }

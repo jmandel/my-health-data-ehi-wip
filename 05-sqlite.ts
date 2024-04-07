@@ -29,12 +29,19 @@ interface DiscoveredMapping {
   joinKeys: JoinKey[];
 }
 
+interface DiscoveredForeignKey {
+  source: string;
+  target: string;
+  joinKey: JoinKey;
+}
+
 interface Schema {
   name: string;
   description: string;
   primaryKey: PrimaryKeyColumn[];
   columns: Column[];
   discoveredMappings?: DiscoveredMapping[];
+  discoveredForeignKeys?: DiscoveredForeignKey[];
 }
 
 interface Metadata {
@@ -63,7 +70,6 @@ function generateSqliteSchema(metadata: Metadata, childTableInfo: Record<string,
       description += childTableComments.join('  ');
     }
 
-
     // Generate CREATE TABLE statement
     const createTableStatement = `CREATE TABLE ${schemaName} ( -- ${description}\n`;
     const columnDefinitions: string[] = [];
@@ -79,17 +85,14 @@ function generateSqliteSchema(metadata: Metadata, childTableInfo: Record<string,
           columnType = 'INTEGER';
           break;
         case 'DATETIME':
-        case 'DATETIME (Attached)': // ??
-        case 'DATETIME (Local)': // ??
-        case 'DATETIME (UTC)': // ??
+        case 'DATETIME (Attached)':
+        case 'DATETIME (Local)':
+        case 'DATETIME (UTC)':
         case 'VARCHAR':
           columnType = 'TEXT';
           break;
-        default: {
-            console.log(`'${column.type}'`, column.type === 'DATETIME (Attached)');
+        default:
           throw new Error(`Unsupported data type: ${column.type}`);
-
-        }
       }
 
       // Generate column definition
@@ -109,9 +112,20 @@ function generateSqliteSchema(metadata: Metadata, childTableInfo: Record<string,
           const foreignKeyColumns = mapping.joinKeys.map(jk => jk.source);
           const referencedTableName = mapping.target;
           const referencedColumns = mapping.joinKeys.map(jk => jk.target);
-          const foreignKeyConstraint = `, FOREIGN KEY (${foreignKeyColumns.join(', ')}) REFERENCES ${referencedTableName} (${referencedColumns.join(', ')}) -- References ${referencedTableName} table\n`;
+          const foreignKeyConstraint = `, FOREIGN KEY (${foreignKeyColumns.join(', ')}) REFERENCES ${referencedTableName} (${referencedColumns.join(', ')})\n`;
           columnDefinitions.push(foreignKeyConstraint);
         }
+      }
+    }
+
+    // Generate foreign key constraints for discovered foreign keys
+    if (schema.discoveredForeignKeys) {
+      for (const foreignKey of schema.discoveredForeignKeys) {
+        const foreignKeyColumn = foreignKey.joinKey.source;
+        const referencedTableName = foreignKey.target;
+        const referencedColumn = foreignKey.joinKey.target;
+        const foreignKeyConstraint = `, FOREIGN KEY (${foreignKeyColumn}) REFERENCES ${referencedTableName} (${referencedColumn}) -- References ${referencedTableName} table\n`;
+        columnDefinitions.push(foreignKeyConstraint);
       }
     }
 
@@ -122,7 +136,7 @@ function generateSqliteSchema(metadata: Metadata, childTableInfo: Record<string,
     sqlStatements.push(createTableQuery);
   }
 
-  console.log(sqlStatements.join(''))
+  console.log(sqlStatements.join(''));
   return sqlStatements.join('');
 }
 
@@ -143,6 +157,11 @@ function topologicalSortSchemas(metadata: Metadata): string[] {
         }
       }
     }
+    if (schema.discoveredForeignKeys) {
+      for (const foreignKey of schema.discoveredForeignKeys) {
+        dfs(foreignKey.target);
+      }
+    }
 
     result.push(schemaName);
   }
@@ -154,38 +173,37 @@ function topologicalSortSchemas(metadata: Metadata): string[] {
   return result.reverse();
 }
 
-function createTablesAndInsertData(db: Database, metadata: Metadata, childTableInfo: Record<string, ChildTableInfo[]>,  jsonFiles: string[], inputDir: string) {
+function createTablesAndInsertData(db: Database, metadata: Metadata, childTableInfo: Record<string, ChildTableInfo[]>, jsonFiles: string[], inputDir: string) {
   // Create tables based on the meta structures in topological order
   db.transaction(() => {
-  const sortedSchemas = topologicalSortSchemas(metadata);
-  for (const schemaName of sortedSchemas) {
-    const sqliteSchema = generateSqliteSchema({ schemas: { [schemaName]: metadata.schemas[schemaName] } }, childTableInfo);
-    console.log(schemaName)
-    db.exec(sqliteSchema);
-  }
+    const sortedSchemas = topologicalSortSchemas(metadata);
+    for (const schemaName of sortedSchemas) {
+      const sqliteSchema = generateSqliteSchema({ schemas: { [schemaName]: metadata.schemas[schemaName] } }, childTableInfo);
+      console.log(schemaName);
+      db.exec(sqliteSchema);
+    }
 
-  // Insert rows into the corresponding tables
+    // Insert rows into the corresponding tables
     for (const file of jsonFiles) {
-        const jsonData = JSON.parse(fs.readFileSync(path.join(inputDir, file), 'utf-8'));
-        for (const tableName of sortedSchemas) {
+      const jsonData = JSON.parse(fs.readFileSync(path.join(inputDir, file), 'utf-8'));
+      for (const tableName of sortedSchemas) {
         if (jsonData[tableName]) {
-            const rows = jsonData[tableName];
-            const columns = Object.keys(rows[0]).filter(r => r.match(/^[a-zA-Z]/));
-            const placeholders = columns.map(() => '?').join(', ');
-            const insertQuery = `INSERT INTO ${tableName} (${columns.join(', ')}) VALUES (${placeholders})`;
-            console.log(insertQuery)
-            const statement = db.prepare(insertQuery);
-            for (const row of rows) {
-            //   console.log(JSON.stringify(row))
+          const rows = jsonData[tableName];
+          const columns = Object.keys(rows[0]).filter(r => r.match(/^[a-zA-Z]/));
+          const placeholders = columns.map(() => '?').join(', ');
+          const insertQuery = `INSERT INTO ${tableName} (${columns.join(', ')}) VALUES (${placeholders})`;
+          console.log(insertQuery);
+          const statement = db.prepare(insertQuery);
+          for (const row of rows) {
             try {
-                statement.run(columns.map(c => row[c]));
+              statement.run(columns.map(c => row[c]));
             } catch (e) {
-                console.error(e);
-                console.error(`Failed to insert ${tableName} row: ${JSON.stringify(row)}`);
+              console.error(e);
+              console.error(`Failed to insert ${tableName} row: ${JSON.stringify(row)}`);
             }
-            }
+          }
         }
-        }
+      }
     }
   })();
 }
@@ -238,7 +256,7 @@ async function main() {
           const joinKey = mapping.joinKeys.map(jk => jk.source).join(', ');
           const countQuery = `SELECT min(count) as minCount, MAX(count) as maxCount from (SELECT ${joinKey}, COUNT(*) AS count FROM ${childTable} GROUP BY ${joinKey})`;
           const countResults = memDb.query(countQuery).all();
-          console.log(countQuery, countResults)
+          console.log(countQuery, countResults);
 
           if (!childTableInfo[parentTable]) {
             childTableInfo[parentTable] = [];
@@ -262,12 +280,11 @@ async function main() {
   const db = new Database(outputFile);
 
   // Insert rows into the corresponding tables in the final database
-  createTablesAndInsertData(db, allSchemas, childTableInfo,  jsonFiles, inputDir);
+  createTablesAndInsertData(db, allSchemas, childTableInfo, jsonFiles, inputDir);
 
   console.log('SQLite database created successfully.');
 
   db.close();
-//   console.log(childTableInfo)
 }
 
 main().catch(console.error);

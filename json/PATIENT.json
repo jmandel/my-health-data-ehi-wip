@@ -577,6 +577,46 @@
           },
           {
             "ordinalPosition": 2,
+            "name": "PROB_LIST_REV_DATE",
+            "type": "DATETIME",
+            "discontinued": false,
+            "description": "This is the date the problem list was last reviewed.",
+            "mergedFrom": "PROB_LIST_REVIEWED"
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "PROB_LIST_REV_TIME",
+            "type": "DATETIME (Local) ",
+            "discontinued": false,
+            "description": "This is the time the problem list was last reviewed.",
+            "mergedFrom": "PROB_LIST_REVIEWED"
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "PROB_LIST_REVUSR_ID",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "This is the user who last reviewed the Problem List.",
+            "mergedFrom": "PROB_LIST_REVIEWED"
+          },
+          {
+            "ordinalPosition": 5,
+            "name": "PROB_LIST_REVUSR_ID_NAME",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The name of the user record. This name may be hidden.",
+            "mergedFrom": "PROB_LIST_REVIEWED"
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "PROB_REV_EPT_CSN",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The unique contact serial number for the patient encounter in which the problem list was last reviewed within an encounter context. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI).",
+            "mergedFrom": "PROB_LIST_REVIEWED"
+          },
+          {
+            "ordinalPosition": 2,
             "name": "EXTALG_D_UTC_DTTM",
             "type": "DATETIME (UTC) ",
             "discontinued": false,
@@ -670,46 +710,6 @@
             "discontinued": false,
             "description": "The name of the user record. This name may be hidden.",
             "mergedFrom": "EXT_DATA_LAST_DONE"
-          },
-          {
-            "ordinalPosition": 2,
-            "name": "PROB_LIST_REV_DATE",
-            "type": "DATETIME",
-            "discontinued": false,
-            "description": "This is the date the problem list was last reviewed.",
-            "mergedFrom": "PROB_LIST_REVIEWED"
-          },
-          {
-            "ordinalPosition": 3,
-            "name": "PROB_LIST_REV_TIME",
-            "type": "DATETIME (Local) ",
-            "discontinued": false,
-            "description": "This is the time the problem list was last reviewed.",
-            "mergedFrom": "PROB_LIST_REVIEWED"
-          },
-          {
-            "ordinalPosition": 4,
-            "name": "PROB_LIST_REVUSR_ID",
-            "type": "VARCHAR",
-            "discontinued": false,
-            "description": "This is the user who last reviewed the Problem List.",
-            "mergedFrom": "PROB_LIST_REVIEWED"
-          },
-          {
-            "ordinalPosition": 5,
-            "name": "PROB_LIST_REVUSR_ID_NAME",
-            "type": "VARCHAR",
-            "discontinued": false,
-            "description": "The name of the user record. This name may be hidden.",
-            "mergedFrom": "PROB_LIST_REVIEWED"
-          },
-          {
-            "ordinalPosition": 6,
-            "name": "PROB_REV_EPT_CSN",
-            "type": "NUMERIC",
-            "discontinued": false,
-            "description": "The unique contact serial number for the patient encounter in which the problem list was last reviewed within an encounter context. This number is unique across all patient encounters in your system. If you use IntraConnect, this is the Unique Contact Identifier (UCI).",
-            "mergedFrom": "PROB_LIST_REVIEWED"
           }
         ],
         "merged": [
@@ -738,16 +738,12 @@
             "description": "This table contains web-based chart system-related data items that are stored in the Patient (EPT) master file. These items generally relate to web-based chart system account activation and account status, and also include the last verification date for different types of patient information that can be verified through the web-based chart system."
           },
           {
-            "name": "PAT_RES_CODE",
-            "description": "Patient's residence code."
-          },
-          {
             "name": "TEETH_REVIEWED",
             "description": "This table contains information about when a patient's teeth were first reviewed."
           },
           {
-            "name": "EXT_DATA_LAST_DONE",
-            "description": "This table stores the user and instant for the last time each external data type was marked as Done in Reconcile Outside Information."
+            "name": "PAT_RES_CODE",
+            "description": "Patient's residence code."
           },
           {
             "name": "PROB_LIST_REVIEWED",
@@ -758,16 +754,20 @@
             "description": "The table holds the information about when and by whom the immunizations section has been reviewed."
           },
           {
-            "name": "CLAIMS_DERIVE_PAT_FLAGS",
-            "description": "Contains patient-level flags that impact claims derivation"
-          },
-          {
             "name": "ANTICOAG_SELF_REGULATING",
             "description": "Whether a patient is self-regulating their anticoagulation therapy dosage."
           },
           {
             "name": "COMMUNITY_RESRC_REVIEWED",
             "description": "This table contains the last review information for community resources."
+          },
+          {
+            "name": "EXT_DATA_LAST_DONE",
+            "description": "This table stores the user and instant for the last time each external data type was marked as Done in Reconcile Outside Information."
+          },
+          {
+            "name": "CLAIMS_DERIVE_PAT_FLAGS",
+            "description": "Contains patient-level flags that impact claims derivation"
           }
         ],
         "discoveredMappings": [
@@ -1178,6 +1178,144 @@
               }
             ]
           }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "PATIENT",
+            "target": "CLARITY_SER",
+            "joinKey": {
+              "source": "CUR_PCP_PROV_ID",
+              "target": "PROV_ID"
+            }
+          },
+          {
+            "source": "PATIENT",
+            "target": "REFERRAL_SOURCE",
+            "joinKey": {
+              "source": "CUR_PCP_PROV_ID",
+              "target": "REFERRING_PROV_ID"
+            }
+          },
+          {
+            "source": "PATIENT",
+            "target": "CLARITY_LOC",
+            "joinKey": {
+              "source": "CUR_PRIM_LOC_ID",
+              "target": "LOC_ID"
+            }
+          },
+          {
+            "source": "PATIENT",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "CREATE_USER_ID",
+              "target": "USER_ID"
+            }
+          },
+          {
+            "source": "PATIENT",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "REC_CREATE_PAT_ID",
+              "target": "USER_ID"
+            }
+          },
+          {
+            "source": "PATIENT",
+            "target": "CLARITY_EEP",
+            "joinKey": {
+              "source": "EMPLOYER_ID",
+              "target": "EMPLOYER_ID"
+            }
+          },
+          {
+            "source": "PATIENT",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "MEDS_LST_REV_USR_ID",
+              "target": "USER_ID"
+            }
+          },
+          {
+            "source": "PATIENT",
+            "target": "NAMES",
+            "joinKey": {
+              "source": "PAT_NAME_RECORD_ID",
+              "target": "RECORD_ID"
+            }
+          },
+          {
+            "source": "PATIENT",
+            "target": "COMM_PREF_ADDL_ITEMS",
+            "joinKey": {
+              "source": "PREFERENCES_ID",
+              "target": "PREFERENCES_ID"
+            }
+          },
+          {
+            "source": "PATIENT",
+            "target": "PERSON_PREFERENCES",
+            "joinKey": {
+              "source": "PREFERENCES_ID",
+              "target": "PERSON_PREFERENCE_ID"
+            }
+          },
+          {
+            "source": "PATIENT",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "ADDR_CHG_USER_ID",
+              "target": "USER_ID"
+            }
+          },
+          {
+            "source": "PATIENT",
+            "target": "MYC_PATIENT",
+            "joinKey": {
+              "source": "MYPT_ID",
+              "target": "MYPT_ID"
+            }
+          },
+          {
+            "source": "PATIENT",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "PROB_LIST_REVUSR_ID",
+              "target": "USER_ID"
+            }
+          },
+          {
+            "source": "PATIENT",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "EXTALG_D_USER_ID",
+              "target": "USER_ID"
+            }
+          },
+          {
+            "source": "PATIENT",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "EXTMED_D_USER_ID",
+              "target": "USER_ID"
+            }
+          },
+          {
+            "source": "PATIENT",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "EXTPRB_D_USER_ID",
+              "target": "USER_ID"
+            }
+          },
+          {
+            "source": "PATIENT",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "EXTIMM_D_USER_ID",
+              "target": "USER_ID"
+            }
+          }
         ]
       }
     }
@@ -1230,14 +1368,14 @@
           "PATIENT_5",
           "PATIENT_6",
           "PATIENT_MYC",
-          "PAT_RES_CODE",
           "TEETH_REVIEWED",
-          "EXT_DATA_LAST_DONE",
+          "PAT_RES_CODE",
           "PROB_LIST_REVIEWED",
           "IMMNZTN_LAST_REVIEW",
-          "CLAIMS_DERIVE_PAT_FLAGS",
           "ANTICOAG_SELF_REGULATING",
-          "COMMUNITY_RESRC_REVIEWED"
+          "COMMUNITY_RESRC_REVIEWED",
+          "EXT_DATA_LAST_DONE",
+          "CLAIMS_DERIVE_PAT_FLAGS"
         ]
       },
       "// mergedFrom PATIENT_2": true,
@@ -1275,8 +1413,17 @@
       "DEM_VERIF_DT": "2023-09-27 00:00:00",
       "INS_VERIF_DT": "2023-09-27 00:00:00",
       "R_E_L_PAT_VERIF_DT": "2023-09-27 00:00:00",
-      "// mergedFrom PAT_RES_CODE": true,
       "// mergedFrom TEETH_REVIEWED": true,
+      "// mergedFrom PAT_RES_CODE": true,
+      "// mergedFrom PROB_LIST_REVIEWED": true,
+      "PROB_LIST_REV_DATE": "2023-09-28 00:00:00",
+      "PROB_LIST_REV_TIME": "2023-09-28 10:18:00",
+      "PROB_LIST_REVUSR_ID": "RAMMELZL",
+      "PROB_LIST_REVUSR_ID_NAME": "RAMMELKAMP, ZOE L",
+      "PROB_REV_EPT_CSN": 991225117,
+      "// mergedFrom IMMNZTN_LAST_REVIEW": true,
+      "// mergedFrom ANTICOAG_SELF_REGULATING": true,
+      "// mergedFrom COMMUNITY_RESRC_REVIEWED": true,
       "// mergedFrom EXT_DATA_LAST_DONE": true,
       "EXTALG_D_UTC_DTTM": "2023-09-28 14:39:10",
       "EXTALG_D_USER_ID": "MBS403",
@@ -1290,16 +1437,7 @@
       "EXTIMM_D_UTC_DTTM": "2022-12-01 15:35:50",
       "EXTIMM_D_USER_ID": "MBS403",
       "EXTIMM_D_USER_ID_NAME": "SMITH, MARY B",
-      "// mergedFrom PROB_LIST_REVIEWED": true,
-      "PROB_LIST_REV_DATE": "2023-09-28 00:00:00",
-      "PROB_LIST_REV_TIME": "2023-09-28 10:18:00",
-      "PROB_LIST_REVUSR_ID": "RAMMELZL",
-      "PROB_LIST_REVUSR_ID_NAME": "RAMMELKAMP, ZOE L",
-      "PROB_REV_EPT_CSN": 991225117,
-      "// mergedFrom IMMNZTN_LAST_REVIEW": true,
-      "// mergedFrom CLAIMS_DERIVE_PAT_FLAGS": true,
-      "// mergedFrom ANTICOAG_SELF_REGULATING": true,
-      "// mergedFrom COMMUNITY_RESRC_REVIEWED": true
+      "// mergedFrom CLAIMS_DERIVE_PAT_FLAGS": true
     }
   ]
 }

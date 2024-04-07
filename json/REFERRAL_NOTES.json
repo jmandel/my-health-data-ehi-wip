@@ -62,13 +62,39 @@
           {
             "type": "has-parent-table",
             "source": "REFERRAL_NOTES",
-            "target": "EPA_INFO",
+            "target": "REFERRAL",
             "joinKeys": [
               {
                 "source": "REFERRAL_ID",
                 "target": "REFERRAL_ID"
               }
             ]
+          }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "REFERRAL_NOTES",
+            "target": "REFERRAL",
+            "joinKey": {
+              "source": "REFERRAL_ID",
+              "target": "REFERRAL_ID"
+            }
+          },
+          {
+            "source": "REFERRAL_NOTES",
+            "target": "HNO_INFO",
+            "joinKey": {
+              "source": "NOTE_ID",
+              "target": "NOTE_ID"
+            }
+          },
+          {
+            "source": "REFERRAL_NOTES",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "NOTE_USER_ID",
+              "target": "USER_ID"
+            }
           }
         ]
       }

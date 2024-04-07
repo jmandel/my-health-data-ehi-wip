@@ -902,6 +902,14 @@
             "description": "Table contains patient entered clinical data review from Welcome Kiosk and MyChart."
           },
           {
+            "name": "HOMUNCULUS_PAT_DATA",
+            "description": "Patient-specific rheumatology data, related to the homunculus joint exam."
+          },
+          {
+            "name": "PAT_UTILIZATION_REVIEW",
+            "description": "This table contains information related to the patient utilization reviews entered during an admission."
+          },
+          {
             "name": "PAT_CR_TX_SINGLE",
             "description": "This table contains single response information about the credit card transaction associated with an e-visit encounter that is stored in the patient record when the encounter is created."
           },
@@ -910,24 +918,16 @@
             "description": "This table contains miscellaneous data about clinical calls, such as the patient following the Care Advice."
           },
           {
-            "name": "HOMUNCULUS_PAT_DATA",
-            "description": "Patient-specific rheumatology data, related to the homunculus joint exam."
-          },
-          {
             "name": "PAT_ENC_BILLING_ENC",
             "description": "This table contains encounter-specific data related to Billing Encounters."
           },
           {
-            "name": "PAT_ENC_CC_AUTO_CHG",
-            "description": "This table contains data related to a patient's encounter, specifically the patient giving consent for the charges linked to this encounter to be automatically paid by the patient's credit card."
-          },
-          {
-            "name": "PAT_UTILIZATION_REVIEW",
-            "description": "This table contains information related to the patient utilization reviews entered during an admission."
-          },
-          {
             "name": "PATIENT_ENC_VIDEO_VISIT",
             "description": "This table contains the video visit related data for a patient that is stored at the patient contact level."
+          },
+          {
+            "name": "PAT_ENC_CC_AUTO_CHG",
+            "description": "This table contains data related to a patient's encounter, specifically the patient giving consent for the charges linked to this encounter to be automatically paid by the patient's credit card."
           }
         ],
         "discoveredMappings": [
@@ -1209,17 +1209,6 @@
           {
             "type": "has-child-table",
             "source": "PAT_ENC",
-            "target": "PAT_ENC_LOS_DX",
-            "joinKeys": [
-              {
-                "source": "PAT_ENC_CSN_ID",
-                "target": "PAT_ENC_CSN_ID"
-              }
-            ]
-          },
-          {
-            "type": "has-child-table",
-            "source": "PAT_ENC",
             "target": "PAT_ENC_QNRS_ANS",
             "joinKeys": [
               {
@@ -1265,28 +1254,6 @@
             "type": "has-child-table",
             "source": "PAT_ENC",
             "target": "PAT_HX_REVIEW",
-            "joinKeys": [
-              {
-                "source": "PAT_ENC_CSN_ID",
-                "target": "PAT_ENC_CSN_ID"
-              }
-            ]
-          },
-          {
-            "type": "has-child-table",
-            "source": "PAT_ENC",
-            "target": "PAT_HX_REV_TOPIC",
-            "joinKeys": [
-              {
-                "source": "PAT_ENC_CSN_ID",
-                "target": "PAT_ENC_CSN_ID"
-              }
-            ]
-          },
-          {
-            "type": "has-child-table",
-            "source": "PAT_ENC",
-            "target": "PAT_HX_REV_TYPE",
             "joinKeys": [
               {
                 "source": "PAT_ENC_CSN_ID",
@@ -1403,6 +1370,118 @@
                 "target": "PAT_ENC_CSN_ID"
               }
             ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_ENC",
+            "target": "PAT_ENC_LOS_DX",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "PAT_ENC",
+            "target": "PAT_HX_REV_TYPE",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "PAT_ENC",
+            "target": "PATIENT",
+            "joinKey": {
+              "source": "PAT_ID",
+              "target": "PAT_ID"
+            }
+          },
+          {
+            "source": "PAT_ENC",
+            "target": "CLARITY_SER",
+            "joinKey": {
+              "source": "PCP_PROV_ID",
+              "target": "PROV_ID"
+            }
+          },
+          {
+            "source": "PAT_ENC",
+            "target": "REFERRAL_SOURCE",
+            "joinKey": {
+              "source": "PCP_PROV_ID",
+              "target": "REFERRING_PROV_ID"
+            }
+          },
+          {
+            "source": "PAT_ENC",
+            "target": "CLARITY_SER",
+            "joinKey": {
+              "source": "VISIT_PROV_ID",
+              "target": "PROV_ID"
+            }
+          },
+          {
+            "source": "PAT_ENC",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "ENC_CLOSED_USER_ID",
+              "target": "USER_ID"
+            }
+          },
+          {
+            "source": "PAT_ENC",
+            "target": "CLARITY_LOC",
+            "joinKey": {
+              "source": "PRIMARY_LOC_ID",
+              "target": "LOC_ID"
+            }
+          },
+          {
+            "source": "PAT_ENC",
+            "target": "IP_DATA_STORE",
+            "joinKey": {
+              "source": "INPATIENT_DATA_ID",
+              "target": "INPATIENT_DATA_ID"
+            }
+          },
+          {
+            "source": "PAT_ENC",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "ENC_CREATE_USER_ID",
+              "target": "USER_ID"
+            }
+          },
+          {
+            "source": "PAT_ENC",
+            "target": "BENEFITS",
+            "joinKey": {
+              "source": "BENEFIT_ID",
+              "target": "RECORD_ID"
+            }
+          },
+          {
+            "source": "PAT_ENC",
+            "target": "ARPB_VISITS",
+            "joinKey": {
+              "source": "PB_VISIT_HAR_ID",
+              "target": "PB_VISIT_ID"
+            }
+          },
+          {
+            "source": "PAT_ENC",
+            "target": "HAR_ALL",
+            "joinKey": {
+              "source": "PB_VISIT_HAR_ID",
+              "target": "ACCT_ID"
+            }
           }
         ]
       }
@@ -1462,13 +1541,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -1506,13 +1585,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -1549,13 +1628,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -1574,13 +1653,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -1612,13 +1691,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -1637,13 +1716,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -1692,13 +1771,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -1726,13 +1805,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -1781,13 +1860,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -1814,13 +1893,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -1858,13 +1937,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -1886,13 +1965,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -1927,13 +2006,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -1950,13 +2029,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -1991,13 +2070,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -2014,13 +2093,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -2055,13 +2134,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -2078,13 +2157,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -2119,13 +2198,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -2142,13 +2221,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -2187,13 +2266,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -2219,13 +2298,13 @@
       "// mergedFrom PAT_ENC_THREADS": true,
       "THREAD_ID": 65983586,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -2260,13 +2339,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -2283,13 +2362,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -2324,13 +2403,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -2347,13 +2426,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -2388,13 +2467,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -2411,13 +2490,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -2452,13 +2531,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -2475,13 +2554,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -2516,13 +2595,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -2539,13 +2618,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -2580,13 +2659,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -2603,13 +2682,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -2644,13 +2723,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -2667,13 +2746,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -2708,13 +2787,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -2731,13 +2810,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -2772,13 +2851,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -2795,13 +2874,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -2836,13 +2915,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -2859,13 +2938,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -2920,13 +2999,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -2968,13 +3047,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -3006,13 +3085,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -3031,13 +3110,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -3072,13 +3151,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -3095,13 +3174,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -3141,13 +3220,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -3170,13 +3249,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -3224,13 +3303,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -3266,13 +3345,13 @@
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
       "PAT_ALG_RVW_INFO_C_NAME": "Patient indicated correct",
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -3300,13 +3379,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -3325,13 +3404,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -3357,13 +3436,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -3381,13 +3460,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -3425,13 +3504,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -3456,13 +3535,13 @@
       "// mergedFrom PAT_ENC_THREADS": true,
       "THREAD_ID": 91055717,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -3500,13 +3579,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -3533,13 +3612,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -3577,13 +3656,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -3608,13 +3687,13 @@
       "// mergedFrom PAT_ENC_THREADS": true,
       "THREAD_ID": 91127209,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -3652,13 +3731,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -3685,13 +3764,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -3718,13 +3797,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -3742,13 +3821,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -3787,13 +3866,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -3819,13 +3898,13 @@
       "// mergedFrom PAT_ENC_THREADS": true,
       "THREAD_ID": 91547899,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -3863,13 +3942,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -3894,13 +3973,13 @@
       "// mergedFrom PAT_ENC_THREADS": true,
       "THREAD_ID": 91561497,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -3935,13 +4014,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -3958,13 +4037,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -4002,13 +4081,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -4031,13 +4110,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -4075,13 +4154,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -4106,13 +4185,13 @@
       "// mergedFrom PAT_ENC_THREADS": true,
       "THREAD_ID": 93426653,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -4147,13 +4226,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -4170,13 +4249,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -4214,13 +4293,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -4245,13 +4324,13 @@
       "// mergedFrom PAT_ENC_THREADS": true,
       "THREAD_ID": 95330796,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -4283,13 +4362,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -4307,13 +4386,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -4348,13 +4427,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -4371,13 +4450,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -4412,13 +4491,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -4435,13 +4514,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -4476,13 +4555,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -4499,13 +4578,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -4540,13 +4619,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -4563,13 +4642,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -4604,13 +4683,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -4627,13 +4706,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -4668,13 +4747,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -4691,13 +4770,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -4732,13 +4811,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -4755,13 +4834,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -4796,13 +4875,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -4819,13 +4898,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -4860,13 +4939,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -4883,13 +4962,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -4924,13 +5003,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -4947,13 +5026,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -4988,13 +5067,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -5011,13 +5090,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -5052,13 +5131,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -5075,13 +5154,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -5116,13 +5195,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -5139,13 +5218,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -5184,13 +5263,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -5213,13 +5292,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -5270,13 +5349,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -5306,13 +5385,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -5363,13 +5442,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -5399,13 +5478,13 @@
       "// mergedFrom PAT_ENC_THREADS": true,
       "THREAD_ID": 197506504,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -5433,13 +5512,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -5458,13 +5537,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -5499,13 +5578,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -5522,13 +5601,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -5560,13 +5639,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -5584,13 +5663,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -5618,13 +5697,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -5643,13 +5722,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -5677,13 +5756,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -5702,13 +5781,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -5743,13 +5822,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -5766,13 +5845,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -5807,13 +5886,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -5830,13 +5909,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -5871,13 +5950,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -5894,13 +5973,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -5935,13 +6014,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -5958,13 +6037,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -6006,13 +6085,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -6038,13 +6117,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -6100,13 +6179,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -6151,13 +6230,13 @@
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
       "PAT_PROB_RVW_INFO_C_NAME": "Patient indicated correct",
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -6192,13 +6271,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -6215,13 +6294,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -6256,13 +6335,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -6279,13 +6358,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -6313,13 +6392,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -6338,13 +6417,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -6376,13 +6455,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -6402,13 +6481,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -6457,13 +6536,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -6496,13 +6575,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -6543,13 +6622,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -6575,13 +6654,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -6634,13 +6713,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -6681,13 +6760,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -6722,13 +6801,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -6745,13 +6824,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -6786,13 +6865,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -6809,13 +6888,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -6850,13 +6929,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -6873,13 +6952,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -6917,13 +6996,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -6947,13 +7026,13 @@
       "// mergedFrom PAT_ENC_THREADS": true,
       "THREAD_ID": 247718619,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -7009,13 +7088,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -7058,13 +7137,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -7093,13 +7172,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -7118,13 +7197,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -7162,13 +7241,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -7193,13 +7272,13 @@
       "// mergedFrom PAT_ENC_THREADS": true,
       "THREAD_ID": 251370417,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -7234,13 +7313,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -7257,13 +7336,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -7298,13 +7377,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -7321,13 +7400,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -7366,13 +7445,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -7397,13 +7476,13 @@
       "// mergedFrom PAT_ENC_THREADS": true,
       "THREAD_ID": 259112017,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -7438,13 +7517,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -7461,13 +7540,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -7496,13 +7575,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -7521,13 +7600,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -7560,13 +7639,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -7585,13 +7664,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -7647,13 +7726,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -7694,13 +7773,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -7735,13 +7814,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -7758,13 +7837,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -7802,13 +7881,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -7829,13 +7908,13 @@
       "// mergedFrom PAT_ENC_THREADS": true,
       "THREAD_ID": 264877648,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -7870,13 +7949,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -7893,13 +7972,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -7934,13 +8013,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -7957,13 +8036,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -7998,13 +8077,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -8021,13 +8100,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -8062,13 +8141,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -8085,13 +8164,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -8122,13 +8201,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -8145,13 +8224,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -8190,13 +8269,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -8222,13 +8301,13 @@
       "// mergedFrom PAT_ENC_THREADS": true,
       "THREAD_ID": 284456601,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -8263,13 +8342,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -8286,13 +8365,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -8327,13 +8406,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -8350,13 +8429,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -8384,13 +8463,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -8409,13 +8488,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -8447,13 +8526,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -8473,13 +8552,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -8528,13 +8607,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -8567,13 +8646,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -8613,13 +8692,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -8648,13 +8727,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -8692,13 +8771,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -8719,13 +8798,13 @@
       "// mergedFrom PAT_ENC_THREADS": true,
       "THREAD_ID": 290240544,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -8764,13 +8843,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -8795,13 +8874,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -8836,13 +8915,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -8859,13 +8938,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -8900,13 +8979,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -8923,13 +9002,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -8967,13 +9046,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -8998,13 +9077,13 @@
       "// mergedFrom PAT_ENC_THREADS": true,
       "THREAD_ID": 302881801,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -9039,13 +9118,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -9062,13 +9141,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -9103,13 +9182,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -9126,13 +9205,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     },
     {
       "PAT_ID": "Z7004242",
@@ -9163,13 +9242,13 @@
           "AN_RELINK_INFO",
           "PAT_ENC_THREADS",
           "PAT_REVIEW_DATA",
+          "HOMUNCULUS_PAT_DATA",
+          "PAT_UTILIZATION_REVIEW",
           "PAT_CR_TX_SINGLE",
           "PAT_ENC_CALL_DATA",
-          "HOMUNCULUS_PAT_DATA",
           "PAT_ENC_BILLING_ENC",
-          "PAT_ENC_CC_AUTO_CHG",
-          "PAT_UTILIZATION_REVIEW",
-          "PATIENT_ENC_VIDEO_VISIT"
+          "PATIENT_ENC_VIDEO_VISIT",
+          "PAT_ENC_CC_AUTO_CHG"
         ]
       },
       "// mergedFrom PAT_ENC_2": true,
@@ -9187,13 +9266,13 @@
       "// mergedFrom AN_RELINK_INFO": true,
       "// mergedFrom PAT_ENC_THREADS": true,
       "// mergedFrom PAT_REVIEW_DATA": true,
+      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
+      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
       "// mergedFrom PAT_CR_TX_SINGLE": true,
       "// mergedFrom PAT_ENC_CALL_DATA": true,
-      "// mergedFrom HOMUNCULUS_PAT_DATA": true,
       "// mergedFrom PAT_ENC_BILLING_ENC": true,
-      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true,
-      "// mergedFrom PAT_UTILIZATION_REVIEW": true,
-      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true
+      "// mergedFrom PATIENT_ENC_VIDEO_VISIT": true,
+      "// mergedFrom PAT_ENC_CC_AUTO_CHG": true
     }
   ]
 }

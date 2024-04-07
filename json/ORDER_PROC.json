@@ -1569,17 +1569,6 @@
           {
             "type": "has-child-table",
             "source": "ORDER_PROC",
-            "target": "ORDER_REVIEW",
-            "joinKeys": [
-              {
-                "source": "ORDER_PROC_ID",
-                "target": "ORDER_ID"
-              }
-            ]
-          },
-          {
-            "type": "has-child-table",
-            "source": "ORDER_PROC",
             "target": "ORDER_SIGNED_PROC",
             "joinKeys": [
               {
@@ -1675,6 +1664,131 @@
                 "target": "ORDER_ID"
               }
             ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PROC",
+            "target": "ORDER_REVIEW",
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "ORDER_PROC",
+            "target": "ORDER_PARENT_INFO",
+            "joinKey": {
+              "source": "ORDER_PROC_ID",
+              "target": "ORDER_ID"
+            }
+          },
+          {
+            "source": "ORDER_PROC",
+            "target": "ORD_PRFLST_TRK",
+            "joinKey": {
+              "source": "ORDER_PROC_ID",
+              "target": "ORDER_ID"
+            }
+          },
+          {
+            "source": "ORDER_PROC",
+            "target": "PATIENT",
+            "joinKey": {
+              "source": "PAT_ID",
+              "target": "PAT_ID"
+            }
+          },
+          {
+            "source": "ORDER_PROC",
+            "target": "PAT_ENC",
+            "joinKey": {
+              "source": "PAT_ENC_CSN_ID",
+              "target": "PAT_ENC_CSN_ID"
+            }
+          },
+          {
+            "source": "ORDER_PROC",
+            "target": "CLARITY_EAP",
+            "joinKey": {
+              "source": "PROC_ID",
+              "target": "PROC_ID"
+            }
+          },
+          {
+            "source": "ORDER_PROC",
+            "target": "CLARITY_SER",
+            "joinKey": {
+              "source": "AUTHRZING_PROV_ID",
+              "target": "PROV_ID"
+            }
+          },
+          {
+            "source": "ORDER_PROC",
+            "target": "REFERRAL_SOURCE",
+            "joinKey": {
+              "source": "AUTHRZING_PROV_ID",
+              "target": "REFERRING_PROV_ID"
+            }
+          },
+          {
+            "source": "ORDER_PROC",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "ORD_CREATR_USER_ID",
+              "target": "USER_ID"
+            }
+          },
+          {
+            "source": "ORDER_PROC",
+            "target": "CLARITY_DEP",
+            "joinKey": {
+              "source": "PAT_LOC_ID",
+              "target": "DEPARTMENT_ID"
+            }
+          },
+          {
+            "source": "ORDER_PROC",
+            "target": "CLARITY_LOC",
+            "joinKey": {
+              "source": "REFG_FACILITY_ID",
+              "target": "LOC_ID"
+            }
+          },
+          {
+            "source": "ORDER_PROC",
+            "target": "ORDER_PARENT_INFO",
+            "joinKey": {
+              "source": "ORDER_ID",
+              "target": "ORDER_ID"
+            }
+          },
+          {
+            "source": "ORDER_PROC",
+            "target": "ORD_PRFLST_TRK",
+            "joinKey": {
+              "source": "ORDER_ID",
+              "target": "ORDER_ID"
+            }
+          },
+          {
+            "source": "ORDER_PROC",
+            "target": "CLARITY_SER",
+            "joinKey": {
+              "source": "ORD_PROV_ID",
+              "target": "PROV_ID"
+            }
+          },
+          {
+            "source": "ORDER_PROC",
+            "target": "REFERRAL_SOURCE",
+            "joinKey": {
+              "source": "ORD_PROV_ID",
+              "target": "REFERRING_PROV_ID"
+            }
           }
         ]
       }

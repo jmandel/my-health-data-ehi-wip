@@ -49,19 +49,95 @@
             "type": "INTEGER",
             "discontinued": false,
             "description": "The number of units of this procedure that were approved"
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "CVG_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "The ID of a coverage that is valid for the referral.",
+            "mergedFrom": "REFERRAL_CVG"
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "CVG_USED_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "A yes/no flag that indicates whether or not the coverage should be considered available for the referral use in non-UM (utilization management) workflows. For UM workflows, consider using SUBMITTED_UM_AUTHS_YN.  The coverage may be valid on the dates, but still inappropriate to use. Setting the flag to Yes means that the coverage is all right to use.",
+            "entries": [
+              "Yes",
+              "No"
+            ],
+            "mergedFrom": "REFERRAL_CVG"
+          },
+          {
+            "ordinalPosition": 6,
+            "name": "CARRIER_AUTH_CMT",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "The carrier authorization number or comment, indicating that authorization was received.",
+            "mergedFrom": "REFERRAL_CVG"
+          },
+          {
+            "ordinalPosition": 11,
+            "name": "USE_CHARGE_COUNT_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Flag to specify if the referral & coverage are using charge counting.",
+            "entries": [
+              "No",
+              "Yes"
+            ],
+            "mergedFrom": "REFERRAL_CVG"
+          }
+        ],
+        "merged": [
+          {
+            "name": "REFERRAL_CVG",
+            "description": "The REFERRAL_CVG table contains coverage information for referrals."
+          },
+          {
+            "name": "REFERRAL_ORG_FILTER_SA",
+            "description": "This table holds a list of authorized service areas, business segments and the patient associated with each referral. This table is used with Organizational Filtering. An organization will have access to a referral if they are authorized for at least one of the referral's associated service areas/business segments or if they are authorized for the referral's associated patient."
           }
         ],
         "discoveredMappings": [
           {
             "type": "has-parent-table",
             "source": "REFERRAL_PX",
-            "target": "EPA_INFO",
+            "target": "REFERRAL",
             "joinKeys": [
               {
                 "source": "REFERRAL_ID",
                 "target": "REFERRAL_ID"
               }
             ]
+          }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "REFERRAL_PX",
+            "target": "REFERRAL",
+            "joinKey": {
+              "source": "REFERRAL_ID",
+              "target": "REFERRAL_ID"
+            }
+          },
+          {
+            "source": "REFERRAL_PX",
+            "target": "CLARITY_EAP",
+            "joinKey": {
+              "source": "PX_ID",
+              "target": "PROC_ID"
+            }
+          },
+          {
+            "source": "REFERRAL_PX",
+            "target": "COVERAGE",
+            "joinKey": {
+              "source": "CVG_ID",
+              "target": "COVERAGE_ID"
+            }
           }
         ]
       }
@@ -75,8 +151,17 @@
       "UNITS_REQUESTED": 1,
       "UNITS_APPROVED": 1,
       "$meta": {
-        "type": "REFERRAL_PX"
-      }
+        "type": "REFERRAL_PX",
+        "mergedFrom": [
+          "REFERRAL_CVG",
+          "REFERRAL_ORG_FILTER_SA"
+        ]
+      },
+      "// mergedFrom REFERRAL_CVG": true,
+      "CVG_ID": 5934765,
+      "CVG_USED_YN": "Y",
+      "USE_CHARGE_COUNT_YN": "N",
+      "// mergedFrom REFERRAL_ORG_FILTER_SA": true
     },
     {
       "REFERRAL_ID": 10321219,
@@ -85,8 +170,17 @@
       "UNITS_REQUESTED": 1,
       "UNITS_APPROVED": 1,
       "$meta": {
-        "type": "REFERRAL_PX"
-      }
+        "type": "REFERRAL_PX",
+        "mergedFrom": [
+          "REFERRAL_CVG",
+          "REFERRAL_ORG_FILTER_SA"
+        ]
+      },
+      "// mergedFrom REFERRAL_CVG": true,
+      "CVG_ID": 5934765,
+      "CVG_USED_YN": "Y",
+      "USE_CHARGE_COUNT_YN": "N",
+      "// mergedFrom REFERRAL_ORG_FILTER_SA": true
     },
     {
       "REFERRAL_ID": 10327483,
@@ -95,8 +189,18 @@
       "UNITS_REQUESTED": 1,
       "UNITS_APPROVED": 1,
       "$meta": {
-        "type": "REFERRAL_PX"
-      }
+        "type": "REFERRAL_PX",
+        "mergedFrom": [
+          "REFERRAL_CVG",
+          "REFERRAL_ORG_FILTER_SA"
+        ]
+      },
+      "// mergedFrom REFERRAL_CVG": true,
+      "CVG_ID": 5934765,
+      "CVG_USED_YN": "Y",
+      "CARRIER_AUTH_CMT": "165183052",
+      "USE_CHARGE_COUNT_YN": "N",
+      "// mergedFrom REFERRAL_ORG_FILTER_SA": true
     },
     {
       "REFERRAL_ID": 10358290,
@@ -105,8 +209,17 @@
       "UNITS_REQUESTED": 1,
       "UNITS_APPROVED": 1,
       "$meta": {
-        "type": "REFERRAL_PX"
-      }
+        "type": "REFERRAL_PX",
+        "mergedFrom": [
+          "REFERRAL_CVG",
+          "REFERRAL_ORG_FILTER_SA"
+        ]
+      },
+      "// mergedFrom REFERRAL_CVG": true,
+      "CVG_ID": 5934765,
+      "CVG_USED_YN": "Y",
+      "USE_CHARGE_COUNT_YN": "N",
+      "// mergedFrom REFERRAL_ORG_FILTER_SA": true
     },
     {
       "REFERRAL_ID": 13661714,
@@ -115,8 +228,16 @@
       "UNITS_REQUESTED": 1,
       "UNITS_APPROVED": 1,
       "$meta": {
-        "type": "REFERRAL_PX"
-      }
+        "type": "REFERRAL_PX",
+        "mergedFrom": [
+          "REFERRAL_CVG",
+          "REFERRAL_ORG_FILTER_SA"
+        ]
+      },
+      "// mergedFrom REFERRAL_CVG": true,
+      "CVG_ID": 5934765,
+      "CVG_USED_YN": "Y",
+      "// mergedFrom REFERRAL_ORG_FILTER_SA": true
     },
     {
       "REFERRAL_ID": 15963353,
@@ -125,8 +246,16 @@
       "UNITS_REQUESTED": 1,
       "UNITS_APPROVED": 1,
       "$meta": {
-        "type": "REFERRAL_PX"
-      }
+        "type": "REFERRAL_PX",
+        "mergedFrom": [
+          "REFERRAL_CVG",
+          "REFERRAL_ORG_FILTER_SA"
+        ]
+      },
+      "// mergedFrom REFERRAL_CVG": true,
+      "CVG_ID": 5934765,
+      "CVG_USED_YN": "Y",
+      "// mergedFrom REFERRAL_ORG_FILTER_SA": true
     },
     {
       "REFERRAL_ID": 16132994,
@@ -135,8 +264,16 @@
       "UNITS_REQUESTED": 1,
       "UNITS_APPROVED": 1,
       "$meta": {
-        "type": "REFERRAL_PX"
-      }
+        "type": "REFERRAL_PX",
+        "mergedFrom": [
+          "REFERRAL_CVG",
+          "REFERRAL_ORG_FILTER_SA"
+        ]
+      },
+      "// mergedFrom REFERRAL_CVG": true,
+      "CVG_ID": 5934765,
+      "CVG_USED_YN": "Y",
+      "// mergedFrom REFERRAL_ORG_FILTER_SA": true
     },
     {
       "REFERRAL_ID": 16132995,
@@ -145,8 +282,16 @@
       "UNITS_REQUESTED": 1,
       "UNITS_APPROVED": 1,
       "$meta": {
-        "type": "REFERRAL_PX"
-      }
+        "type": "REFERRAL_PX",
+        "mergedFrom": [
+          "REFERRAL_CVG",
+          "REFERRAL_ORG_FILTER_SA"
+        ]
+      },
+      "// mergedFrom REFERRAL_CVG": true,
+      "CVG_ID": 5934765,
+      "CVG_USED_YN": "Y",
+      "// mergedFrom REFERRAL_ORG_FILTER_SA": true
     }
   ]
 }

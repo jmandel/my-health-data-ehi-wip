@@ -100,7 +100,7 @@
           {
             "type": "has-child-table",
             "source": "ORDER_MYC_INFO",
-            "target": "ORDER_REVIEW",
+            "target": "ORD_RSLT_COMPON_ID",
             "joinKeys": [
               {
                 "source": "ORDER_PROC_ID",
@@ -111,13 +111,39 @@
           {
             "type": "has-child-table",
             "source": "ORDER_MYC_INFO",
-            "target": "ORD_RSLT_COMPON_ID",
+            "target": "ORDER_REVIEW",
             "joinKeys": [
               {
                 "source": "ORDER_PROC_ID",
                 "target": "ORDER_ID"
               }
             ]
+          }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "ORDER_MYC_INFO",
+            "target": "ORDER_PARENT_INFO",
+            "joinKey": {
+              "source": "ORDER_PROC_ID",
+              "target": "ORDER_ID"
+            }
+          },
+          {
+            "source": "ORDER_MYC_INFO",
+            "target": "ORDER_PROC",
+            "joinKey": {
+              "source": "ORDER_PROC_ID",
+              "target": "ORDER_PROC_ID"
+            }
+          },
+          {
+            "source": "ORDER_MYC_INFO",
+            "target": "ORD_PRFLST_TRK",
+            "joinKey": {
+              "source": "ORDER_PROC_ID",
+              "target": "ORDER_ID"
+            }
           }
         ]
       }

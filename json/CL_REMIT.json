@@ -334,7 +334,7 @@
           {
             "type": "has-child-table",
             "source": "CL_REMIT",
-            "target": "CL_RMT_SVC_DAT_INF",
+            "target": "CL_RMT_SVC_LVL_ADJ",
             "joinKeys": [
               {
                 "source": "IMAGE_ID",
@@ -352,28 +352,32 @@
                 "target": "IMAGE_ID"
               }
             ]
+          }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "CL_REMIT",
+            "target": "CLARITY_SA",
+            "joinKey": {
+              "source": "SERVICE_AREA_ID",
+              "target": "SERV_AREA_ID"
+            }
           },
           {
-            "type": "has-child-table",
             "source": "CL_REMIT",
-            "target": "CL_RMT_SVC_LVL_ADJ",
-            "joinKeys": [
-              {
-                "source": "IMAGE_ID",
-                "target": "IMAGE_ID"
-              }
-            ]
+            "target": "CLARITY_LOC",
+            "joinKey": {
+              "source": "SERVICE_AREA_ID",
+              "target": "LOC_ID"
+            }
           },
           {
-            "type": "has-child-table",
             "source": "CL_REMIT",
-            "target": "CL_RMT_SVC_LVL_REF",
-            "joinKeys": [
-              {
-                "source": "IMAGE_ID",
-                "target": "IMAGE_ID"
-              }
-            ]
+            "target": "PATIENT",
+            "joinKey": {
+              "source": "PAT_ID",
+              "target": "PAT_ID"
+            }
           }
         ]
       }

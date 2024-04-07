@@ -46,6 +46,32 @@
             "discontinued": false,
             "description": "This column stores the unique identifier for the guarantor account that is associated with this letter. This is only populated for letters sent at the guarantor account level."
           }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "HSP_ACCT_LETTERS",
+            "target": "HNO_INFO",
+            "joinKey": {
+              "source": "NOTE_ID",
+              "target": "NOTE_ID"
+            }
+          },
+          {
+            "source": "HSP_ACCT_LETTERS",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "LET_CREATE_USER_ID",
+              "target": "USER_ID"
+            }
+          },
+          {
+            "source": "HSP_ACCT_LETTERS",
+            "target": "ACCOUNT",
+            "joinKey": {
+              "source": "ACCOUNT_ID",
+              "target": "ACCOUNT_ID"
+            }
+          }
         ]
       }
     }

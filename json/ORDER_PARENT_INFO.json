@@ -245,17 +245,6 @@
           {
             "type": "has-child-table",
             "source": "ORDER_PARENT_INFO",
-            "target": "ORDER_REVIEW",
-            "joinKeys": [
-              {
-                "source": "ORDER_ID",
-                "target": "ORDER_ID"
-              }
-            ]
-          },
-          {
-            "type": "has-child-table",
-            "source": "ORDER_PARENT_INFO",
             "target": "ORDER_SIGNED_PROC",
             "joinKeys": [
               {
@@ -351,6 +340,67 @@
                 "target": "ORDER_ID"
               }
             ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORDER_REVIEW",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORDER_PROC",
+            "joinKey": {
+              "source": "ORDER_ID",
+              "target": "ORDER_PROC_ID"
+            }
+          },
+          {
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORD_PRFLST_TRK",
+            "joinKey": {
+              "source": "ORDER_ID",
+              "target": "ORDER_ID"
+            }
+          },
+          {
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORDER_PROC",
+            "joinKey": {
+              "source": "PARENT_ORDER_ID",
+              "target": "ORDER_PROC_ID"
+            }
+          },
+          {
+            "source": "ORDER_PARENT_INFO",
+            "target": "ORD_PRFLST_TRK",
+            "joinKey": {
+              "source": "PARENT_ORDER_ID",
+              "target": "ORDER_ID"
+            }
+          },
+          {
+            "source": "ORDER_PARENT_INFO",
+            "target": "PAT_ENC",
+            "joinKey": {
+              "source": "PAT_ENC_CSN_ID",
+              "target": "PAT_ENC_CSN_ID"
+            }
+          },
+          {
+            "source": "ORDER_PARENT_INFO",
+            "target": "CLARITY_DEP",
+            "joinKey": {
+              "source": "PAT_CONTACT_DEP_ID",
+              "target": "DEPARTMENT_ID"
+            }
           }
         ]
       }

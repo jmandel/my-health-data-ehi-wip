@@ -1,9 +1,9 @@
 {
   "$meta": {
     "schemas": {
-      "EPA_INFO": {
-        "name": "EPA_INFO",
-        "description": "This table holds information about electronic prior authorization requests.",
+      "REFERRAL": {
+        "name": "REFERRAL",
+        "description": "The REFERRAL table is the primary table for referral information stored in system.",
         "primaryKey": [
           {
             "columnName": "REFERRAL_ID",
@@ -16,39 +16,35 @@
             "name": "REFERRAL_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The unique identifier for the referral record."
+            "description": "The unique ID of the referral in database. This is the primary key for the REFERRAL table."
           },
           {
             "ordinalPosition": 2,
             "name": "EXTERNAL_ID_NUM",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "The external identification number used on the referral.",
-            "mergedFrom": "REFERRAL"
+            "description": "The external identification number used on the referral."
           },
           {
             "ordinalPosition": 3,
             "name": "PAT_ID",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "The ID of the patient associated with the referral.",
-            "mergedFrom": "REFERRAL"
+            "description": "The ID of the patient associated with the referral."
           },
           {
             "ordinalPosition": 4,
             "name": "PCP_PROV_ID",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "The unique ID of the patient's primary care provider at the time the referral was created.",
-            "mergedFrom": "REFERRAL"
+            "description": "The unique ID of the patient's primary care provider at the time the referral was created."
           },
           {
             "ordinalPosition": 5,
             "name": "ENTRY_DATE",
             "type": "DATETIME",
             "discontinued": false,
-            "description": "The date the referral was entered.",
-            "mergedFrom": "REFERRAL"
+            "description": "The date the referral was entered."
           },
           {
             "ordinalPosition": 6,
@@ -65,8 +61,7 @@
               "Closed",
               "New Request",
               "Incomplete"
-            ],
-            "mergedFrom": "REFERRAL"
+            ]
           },
           {
             "ordinalPosition": 7,
@@ -74,40 +69,35 @@
             "type": "VARCHAR",
             "discontinued": false,
             "description": "The unique ID of the referral source (REF) record of the provider who made the referral. This column is frequently used to link to the REFERRAL_SOURCE table. The actual provider (SER) ID can be found in column REF_PROVIDER_ID of table REFERRAL_SOURCE.",
-            "linksTo": "REFERRAL_SOURCE",
-            "mergedFrom": "REFERRAL"
+            "linksTo": "REFERRAL_SOURCE"
           },
           {
             "ordinalPosition": 8,
             "name": "REFERRING_PROV_ID_REFERRING_PROV_NAM",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "The name of the referral source.",
-            "mergedFrom": "REFERRAL"
+            "description": "The name of the referral source."
           },
           {
             "ordinalPosition": 12,
             "name": "PROV_SPEC_C_NAME",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "The category value indicating the provider specialty being referred to.",
-            "mergedFrom": "REFERRAL"
+            "description": "The category value indicating the provider specialty being referred to."
           },
           {
             "ordinalPosition": 13,
             "name": "RFL_TYPE_C_NAME",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "The category value indicating the type of referral.",
-            "mergedFrom": "REFERRAL"
+            "description": "The category value indicating the type of referral."
           },
           {
             "ordinalPosition": 14,
             "name": "RSN_FOR_RFL_C_NAME",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "The category value indicating the main (first) reason for the referral.   Since multiple reasons can be listed, use table REFERRAL_REASONS to view all of them.",
-            "mergedFrom": "REFERRAL"
+            "description": "The category value indicating the main (first) reason for the referral.   Since multiple reasons can be listed, use table REFERRAL_REASONS to view all of them."
           },
           {
             "ordinalPosition": 15,
@@ -119,88 +109,77 @@
               "Internal",
               "Incoming",
               "Outgoing"
-            ],
-            "mergedFrom": "REFERRAL"
+            ]
           },
           {
             "ordinalPosition": 19,
             "name": "AUTH_NUM_OF_VISITS",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The number of visits authorized for this referral.",
-            "mergedFrom": "REFERRAL"
+            "description": "The number of visits authorized for this referral."
           },
           {
             "ordinalPosition": 23,
             "name": "START_DATE",
             "type": "DATETIME",
             "discontinued": false,
-            "description": "The start date of the referral.",
-            "mergedFrom": "REFERRAL"
+            "description": "The start date of the referral."
           },
           {
             "ordinalPosition": 24,
             "name": "EXP_DATE",
             "type": "DATETIME",
             "discontinued": false,
-            "description": "The expiration date of the referral.",
-            "mergedFrom": "REFERRAL"
+            "description": "The expiration date of the referral."
           },
           {
             "ordinalPosition": 28,
             "name": "SERV_AREA_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The ID number of the service area associated with the referral.",
-            "mergedFrom": "REFERRAL"
+            "description": "The ID number of the service area associated with the referral."
           },
           {
             "ordinalPosition": 29,
             "name": "COVERAGE_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The unique ID of the coverage associated with the referral.",
-            "mergedFrom": "REFERRAL"
+            "description": "The unique ID of the coverage associated with the referral."
           },
           {
             "ordinalPosition": 30,
             "name": "NUM_PROC",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The number of procedures associated with the referral.",
-            "mergedFrom": "REFERRAL"
+            "description": "The number of procedures associated with the referral."
           },
           {
             "ordinalPosition": 31,
             "name": "SVC_DATE_REAL",
             "type": "FLOAT",
             "discontinued": false,
-            "description": "If available, this column is populated by the authorized start date (I RFL 85). If not, it is populated by the expiration date on the referral (I RFL 90). If neither of these are available, the column will be empty. The date in this column is based on days since December 31, 1840.",
-            "mergedFrom": "REFERRAL"
+            "description": "If available, this column is populated by the authorized start date (I RFL 85). If not, it is populated by the expiration date on the referral (I RFL 90). If neither of these are available, the column will be empty. The date in this column is based on days since December 31, 1840."
           },
           {
             "ordinalPosition": 34,
             "name": "PAYOR_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The ID number of the payor associated with the referral.",
-            "mergedFrom": "REFERRAL"
+            "description": "The ID number of the payor associated with the referral."
           },
           {
             "ordinalPosition": 35,
             "name": "PLAN_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The ID number of the plan associated with the referral.",
-            "mergedFrom": "REFERRAL"
+            "description": "The ID number of the plan associated with the referral."
           },
           {
             "ordinalPosition": 36,
             "name": "SERV_DATE",
             "type": "DATETIME",
             "discontinued": false,
-            "description": "This column is populated by the authorized start date (I RFL 85) if available. If not, it is populated by the expiration date on the referral (I RFL 90). If neither of these are available, the column will be empty. The date in this column is in MM/DD/YYYY format.",
-            "mergedFrom": "REFERRAL"
+            "description": "This column is populated by the authorized start date (I RFL 85) if available. If not, it is populated by the expiration date on the referral (I RFL 90). If neither of these are available, the column will be empty. The date in this column is in MM/DD/YYYY format."
           },
           {
             "ordinalPosition": 37,
@@ -211,56 +190,49 @@
             "entries": [
               "Yes",
               "No"
-            ],
-            "mergedFrom": "REFERRAL"
+            ]
           },
           {
             "ordinalPosition": 39,
             "name": "AUTO_APPROVED_DATE",
             "type": "DATETIME",
             "discontinued": false,
-            "description": "The date on which the referral was approved automatically by the system.",
-            "mergedFrom": "REFERRAL"
+            "description": "The date on which the referral was approved automatically by the system."
           },
           {
             "ordinalPosition": 40,
             "name": "AUTH_RSN_C_NAME",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "The category value indicating the authorization reason associated with the referral.",
-            "mergedFrom": "REFERRAL"
+            "description": "The category value indicating the authorization reason associated with the referral."
           },
           {
             "ordinalPosition": 41,
             "name": "REFD_BY_LOC_POS_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The ID number of the place of service the referral was referred from.",
-            "mergedFrom": "REFERRAL"
+            "description": "The ID number of the place of service the referral was referred from."
           },
           {
             "ordinalPosition": 42,
             "name": "REFD_TO_LOC_POS_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The ID number of the place of service the referral was referred to.",
-            "mergedFrom": "REFERRAL"
+            "description": "The ID number of the place of service the referral was referred to."
           },
           {
             "ordinalPosition": 43,
             "name": "REFD_TO_DEPT_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The ID number of the department the referral was referred to.",
-            "mergedFrom": "REFERRAL"
+            "description": "The ID number of the department the referral was referred to."
           },
           {
             "ordinalPosition": 44,
             "name": "REFD_TO_SPEC_C_NAME",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "The category value indicating the specialty the department was referred to.",
-            "mergedFrom": "REFERRAL"
+            "description": "The category value indicating the specialty the department was referred to."
           },
           {
             "ordinalPosition": 45,
@@ -275,48 +247,42 @@
               "Elective",
               "Two Week Wait",
               "See Details"
-            ],
-            "mergedFrom": "REFERRAL"
+            ]
           },
           {
             "ordinalPosition": 50,
             "name": "IBNR_PAY_UNTIL_DT",
             "type": "DATETIME",
             "discontinued": false,
-            "description": "The date up to which your facility will pay claims for the procedures approved on this referral.",
-            "mergedFrom": "REFERRAL"
+            "description": "The date up to which your facility will pay claims for the procedures approved on this referral."
           },
           {
             "ordinalPosition": 52,
             "name": "PRIM_LOC_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The unique ID of the member's primary location at the time the referral was entered.",
-            "mergedFrom": "REFERRAL"
+            "description": "The unique ID of the member's primary location at the time the referral was entered."
           },
           {
             "ordinalPosition": 59,
             "name": "ACTUAL_NUM_VISITS",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The actual number of completed visits for this referral.",
-            "mergedFrom": "REFERRAL"
+            "description": "The actual number of completed visits for this referral."
           },
           {
             "ordinalPosition": 60,
             "name": "SCHED_NUM_VISITS",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The number of visits scheduled for this referral.",
-            "mergedFrom": "REFERRAL"
+            "description": "The number of visits scheduled for this referral."
           },
           {
             "ordinalPosition": 61,
             "name": "REQUEST_NUM_VISITS",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The number of visits requested for this referral.",
-            "mergedFrom": "REFERRAL"
+            "description": "The number of visits requested for this referral."
           },
           {
             "ordinalPosition": 65,
@@ -327,24 +293,21 @@
             "entries": [
               "Appointed",
               "Denied"
-            ],
-            "mergedFrom": "REFERRAL"
+            ]
           },
           {
             "ordinalPosition": 68,
             "name": "REFD_BY_DEPT_ID",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The ID number of the department the referral was referred by.",
-            "mergedFrom": "REFERRAL"
+            "description": "The ID number of the department the referral was referred by."
           },
           {
             "ordinalPosition": 69,
             "name": "CLOSE_RSN_C_NAME",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "For closed referrals, the category value indicating the reason for closing.",
-            "mergedFrom": "REFERRAL"
+            "description": "For closed referrals, the category value indicating the reason for closing."
           },
           {
             "ordinalPosition": 70,
@@ -354,16 +317,14 @@
             "description": "Scheduling status of the referral to keep track of internally schedulable referrals.  For category list use ZC_SCHED_STATUS.",
             "entries": [
               "Do not change"
-            ],
-            "mergedFrom": "REFERRAL"
+            ]
           },
           {
             "ordinalPosition": 71,
             "name": "SCHED_BY_DATE",
             "type": "DATETIME",
             "discontinued": false,
-            "description": "Indicates deadline to schedule a referral.",
-            "mergedFrom": "REFERRAL"
+            "description": "Indicates deadline to schedule a referral."
           },
           {
             "ordinalPosition": 72,
@@ -376,48 +337,42 @@
               "Prior Authorization Number Collected",
               "Prior Authorization Number Not Collected",
               "Prior Authorization Number Processed"
-            ],
-            "mergedFrom": "REFERRAL"
+            ]
           },
           {
             "ordinalPosition": 75,
             "name": "PREAUTH_CHG_EMP_ID",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "The unique ID of the user who last changed the preauthorization data.",
-            "mergedFrom": "REFERRAL"
+            "description": "The unique ID of the user who last changed the preauthorization data."
           },
           {
             "ordinalPosition": 76,
             "name": "PREAUTH_CHG_EMP_ID_NAME",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "The name of the user record. This name may be hidden.",
-            "mergedFrom": "REFERRAL"
+            "description": "The name of the user record. This name may be hidden."
           },
           {
             "ordinalPosition": 77,
             "name": "PREAUTH_CHNGD_DTTM",
             "type": "DATETIME (Local) ",
             "discontinued": false,
-            "description": "Date/time stamp for last time the preauthorization data was changed.",
-            "mergedFrom": "REFERRAL"
+            "description": "Date/time stamp for last time the preauthorization data was changed."
           },
           {
             "ordinalPosition": 81,
             "name": "EXT_REF_DATE",
             "type": "DATETIME",
             "discontinued": false,
-            "description": "This is the external referring date.",
-            "mergedFrom": "REFERRAL"
+            "description": "This is the external referring date."
           },
           {
             "ordinalPosition": 87,
             "name": "DECISION_DATE",
             "type": "DATETIME",
             "discontinued": false,
-            "description": "Date on which the referral's current status was assigned.",
-            "mergedFrom": "REFERRAL"
+            "description": "Date on which the referral's current status was assigned."
           },
           {
             "ordinalPosition": 89,
@@ -437,8 +392,7 @@
               "Diagnosis Change",
               "Create AUTs for new coverage",
               "Day/Cycle Copied"
-            ],
-            "mergedFrom": "REFERRAL"
+            ]
           },
           {
             "ordinalPosition": 53,
@@ -593,11 +547,7 @@
         ],
         "merged": [
           {
-            "name": "REFERRAL",
-            "description": "The REFERRAL table is the primary table for referral information stored in system."
-          },
-          {
-            "name": "EPA_INFO_2",
+            "name": "EPA_INFO",
             "description": "This table holds information about electronic prior authorization requests."
           },
           {
@@ -615,12 +565,16 @@
           {
             "name": "REFERRAL_5",
             "description": "The REFERRAL_5 table is a continuation of the REFERRAL_4 table. The REFERRAL_* tables are the primary tables for referral information stored in the system."
+          },
+          {
+            "name": "EPA_INFO_2",
+            "description": "This table holds information about electronic prior authorization requests."
           }
         ],
         "discoveredMappings": [
           {
             "type": "has-child-table",
-            "source": "EPA_INFO",
+            "source": "REFERRAL",
             "target": "REFERRAL_APT",
             "joinKeys": [
               {
@@ -631,7 +585,7 @@
           },
           {
             "type": "has-child-table",
-            "source": "EPA_INFO",
+            "source": "REFERRAL",
             "target": "REFERRAL_CROSS_ORG",
             "joinKeys": [
               {
@@ -642,7 +596,7 @@
           },
           {
             "type": "has-child-table",
-            "source": "EPA_INFO",
+            "source": "REFERRAL",
             "target": "REFERRAL_CVG_AUTH",
             "joinKeys": [
               {
@@ -653,18 +607,7 @@
           },
           {
             "type": "has-child-table",
-            "source": "EPA_INFO",
-            "target": "REFERRAL_CVG",
-            "joinKeys": [
-              {
-                "source": "REFERRAL_ID",
-                "target": "REFERRAL_ID"
-              }
-            ]
-          },
-          {
-            "type": "has-child-table",
-            "source": "EPA_INFO",
+            "source": "REFERRAL",
             "target": "REFERRAL_DX",
             "joinKeys": [
               {
@@ -675,7 +618,7 @@
           },
           {
             "type": "has-child-table",
-            "source": "EPA_INFO",
+            "source": "REFERRAL",
             "target": "REFERRAL_HIST",
             "joinKeys": [
               {
@@ -686,7 +629,7 @@
           },
           {
             "type": "has-child-table",
-            "source": "EPA_INFO",
+            "source": "REFERRAL",
             "target": "REFERRAL_NOTES",
             "joinKeys": [
               {
@@ -697,29 +640,7 @@
           },
           {
             "type": "has-child-table",
-            "source": "EPA_INFO",
-            "target": "REFERRAL_ORG_FILTER_SA",
-            "joinKeys": [
-              {
-                "source": "REFERRAL_ID",
-                "target": "REFERRAL_ID"
-              }
-            ]
-          },
-          {
-            "type": "has-child-table",
-            "source": "EPA_INFO",
-            "target": "REFERRAL_PX",
-            "joinKeys": [
-              {
-                "source": "REFERRAL_ID",
-                "target": "REFERRAL_ID"
-              }
-            ]
-          },
-          {
-            "type": "has-child-table",
-            "source": "EPA_INFO",
+            "source": "REFERRAL",
             "target": "REFERRAL_REASONS",
             "joinKeys": [
               {
@@ -730,7 +651,7 @@
           },
           {
             "type": "has-child-table",
-            "source": "EPA_INFO",
+            "source": "REFERRAL",
             "target": "RFL_REF_TO_REGIONS",
             "joinKeys": [
               {
@@ -738,26 +659,131 @@
                 "target": "REFERRAL_ID"
               }
             ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "REFERRAL",
+            "target": "REFERRAL_PX",
+            "joinKeys": [
+              {
+                "source": "REFERRAL_ID",
+                "target": "REFERRAL_ID"
+              }
+            ]
+          }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "REFERRAL",
+            "target": "PATIENT",
+            "joinKey": {
+              "source": "PAT_ID",
+              "target": "PAT_ID"
+            }
+          },
+          {
+            "source": "REFERRAL",
+            "target": "CLARITY_SER",
+            "joinKey": {
+              "source": "PCP_PROV_ID",
+              "target": "PROV_ID"
+            }
+          },
+          {
+            "source": "REFERRAL",
+            "target": "REFERRAL_SOURCE",
+            "joinKey": {
+              "source": "PCP_PROV_ID",
+              "target": "REFERRING_PROV_ID"
+            }
+          },
+          {
+            "source": "REFERRAL",
+            "target": "CLARITY_SER",
+            "joinKey": {
+              "source": "REFERRING_PROV_ID",
+              "target": "PROV_ID"
+            }
+          },
+          {
+            "source": "REFERRAL",
+            "target": "REFERRAL_SOURCE",
+            "joinKey": {
+              "source": "REFERRING_PROV_ID",
+              "target": "REFERRING_PROV_ID"
+            }
+          },
+          {
+            "source": "REFERRAL",
+            "target": "CLARITY_SA",
+            "joinKey": {
+              "source": "SERV_AREA_ID",
+              "target": "SERV_AREA_ID"
+            }
+          },
+          {
+            "source": "REFERRAL",
+            "target": "CLARITY_LOC",
+            "joinKey": {
+              "source": "SERV_AREA_ID",
+              "target": "LOC_ID"
+            }
+          },
+          {
+            "source": "REFERRAL",
+            "target": "COVERAGE",
+            "joinKey": {
+              "source": "COVERAGE_ID",
+              "target": "COVERAGE_ID"
+            }
+          },
+          {
+            "source": "REFERRAL",
+            "target": "CLARITY_EPM",
+            "joinKey": {
+              "source": "PAYOR_ID",
+              "target": "PAYOR_ID"
+            }
+          },
+          {
+            "source": "REFERRAL",
+            "target": "CLARITY_EPP",
+            "joinKey": {
+              "source": "PLAN_ID",
+              "target": "BENEFIT_PLAN_ID"
+            }
+          },
+          {
+            "source": "REFERRAL",
+            "target": "CLARITY_LOC",
+            "joinKey": {
+              "source": "REFD_BY_LOC_POS_ID",
+              "target": "LOC_ID"
+            }
+          },
+          {
+            "source": "REFERRAL",
+            "target": "CLARITY_LOC",
+            "joinKey": {
+              "source": "PRIM_LOC_ID",
+              "target": "LOC_ID"
+            }
+          },
+          {
+            "source": "REFERRAL",
+            "target": "CLARITY_DEP",
+            "joinKey": {
+              "source": "REFD_BY_DEPT_ID",
+              "target": "DEPARTMENT_ID"
+            }
           }
         ]
       }
     }
   },
-  "EPA_INFO": [
+  "REFERRAL": [
     {
       "REFERRAL_ID": 9463136,
-      "$meta": {
-        "type": "EPA_INFO",
-        "mergedFrom": [
-          "REFERRAL",
-          "EPA_INFO_2",
-          "REFERRAL_2",
-          "REFERRAL_3",
-          "REFERRAL_4",
-          "REFERRAL_5"
-        ]
-      },
-      "// mergedFrom REFERRAL": true,
       "EXTERNAL_ID_NUM": "9463136",
       "PAT_ID": "Z7004242",
       "PCP_PROV_ID": "802011",
@@ -792,7 +818,18 @@
       "SCHED_STATUS_C_NAME": "Do Not Schedule",
       "EXT_REF_DATE": "2020-01-09 00:00:00",
       "DECISION_DATE": "2021-01-09 00:00:00",
-      "// mergedFrom EPA_INFO_2": true,
+      "$meta": {
+        "type": "REFERRAL",
+        "mergedFrom": [
+          "EPA_INFO",
+          "REFERRAL_2",
+          "REFERRAL_3",
+          "REFERRAL_4",
+          "REFERRAL_5",
+          "EPA_INFO_2"
+        ]
+      },
+      "// mergedFrom EPA_INFO": true,
       "// mergedFrom REFERRAL_2": true,
       "CALC_SVC_LVL_CNTS": 1,
       "// mergedFrom REFERRAL_3": true,
@@ -809,22 +846,11 @@
       "REF_BY_EAF_CNTRCT_AT_AUTH_YN": "N",
       "REF_BY_CNTRCT_AT_DEC_YN": "N",
       "REF_BY_SER_CNTRCT_AT_DEC_YN": "Y",
-      "REF_BY_LOC_CNTRCT_AT_DEC_YN": "N"
+      "REF_BY_LOC_CNTRCT_AT_DEC_YN": "N",
+      "// mergedFrom EPA_INFO_2": true
     },
     {
       "REFERRAL_ID": 10321219,
-      "$meta": {
-        "type": "EPA_INFO",
-        "mergedFrom": [
-          "REFERRAL",
-          "EPA_INFO_2",
-          "REFERRAL_2",
-          "REFERRAL_3",
-          "REFERRAL_4",
-          "REFERRAL_5"
-        ]
-      },
-      "// mergedFrom REFERRAL": true,
       "EXTERNAL_ID_NUM": "10321219",
       "PAT_ID": "Z7004242",
       "PCP_PROV_ID": "802011",
@@ -862,7 +888,18 @@
       "EXT_REF_DATE": "2020-07-14 00:00:00",
       "DECISION_DATE": "2020-07-16 00:00:00",
       "RFL_STATCHG_RSN_C_NAME": "Canceled Order",
-      "// mergedFrom EPA_INFO_2": true,
+      "$meta": {
+        "type": "REFERRAL",
+        "mergedFrom": [
+          "EPA_INFO",
+          "REFERRAL_2",
+          "REFERRAL_3",
+          "REFERRAL_4",
+          "REFERRAL_5",
+          "EPA_INFO_2"
+        ]
+      },
+      "// mergedFrom EPA_INFO": true,
       "// mergedFrom REFERRAL_2": true,
       "CALC_SVC_LVL_CNTS": 1,
       "// mergedFrom REFERRAL_3": true,
@@ -872,22 +909,11 @@
       "REFD_TO_LINK_LOC_YN": "N",
       "IS_LEAKED_YN": "N",
       "// mergedFrom REFERRAL_5": true,
-      "INITIAL_REQUEST_TYPE_C_NAME": "Preservice"
+      "INITIAL_REQUEST_TYPE_C_NAME": "Preservice",
+      "// mergedFrom EPA_INFO_2": true
     },
     {
       "REFERRAL_ID": 10327483,
-      "$meta": {
-        "type": "EPA_INFO",
-        "mergedFrom": [
-          "REFERRAL",
-          "EPA_INFO_2",
-          "REFERRAL_2",
-          "REFERRAL_3",
-          "REFERRAL_4",
-          "REFERRAL_5"
-        ]
-      },
-      "// mergedFrom REFERRAL": true,
       "EXTERNAL_ID_NUM": "10327483",
       "PAT_ID": "Z7004242",
       "PCP_PROV_ID": "802011",
@@ -926,7 +952,18 @@
       "EXT_REF_DATE": "2020-07-15 00:00:00",
       "DECISION_DATE": "2020-08-14 00:00:00",
       "RFL_STATCHG_RSN_C_NAME": "Canceled Order",
-      "// mergedFrom EPA_INFO_2": true,
+      "$meta": {
+        "type": "REFERRAL",
+        "mergedFrom": [
+          "EPA_INFO",
+          "REFERRAL_2",
+          "REFERRAL_3",
+          "REFERRAL_4",
+          "REFERRAL_5",
+          "EPA_INFO_2"
+        ]
+      },
+      "// mergedFrom EPA_INFO": true,
       "// mergedFrom REFERRAL_2": true,
       "CALC_SVC_LVL_CNTS": 1,
       "// mergedFrom REFERRAL_3": true,
@@ -943,22 +980,11 @@
       "REF_BY_EAF_CNTRCT_AT_AUTH_YN": "N",
       "REF_BY_CNTRCT_AT_DEC_YN": "N",
       "REF_BY_SER_CNTRCT_AT_DEC_YN": "Y",
-      "REF_BY_LOC_CNTRCT_AT_DEC_YN": "N"
+      "REF_BY_LOC_CNTRCT_AT_DEC_YN": "N",
+      "// mergedFrom EPA_INFO_2": true
     },
     {
       "REFERRAL_ID": 10358290,
-      "$meta": {
-        "type": "EPA_INFO",
-        "mergedFrom": [
-          "REFERRAL",
-          "EPA_INFO_2",
-          "REFERRAL_2",
-          "REFERRAL_3",
-          "REFERRAL_4",
-          "REFERRAL_5"
-        ]
-      },
-      "// mergedFrom REFERRAL": true,
       "EXTERNAL_ID_NUM": "10358290",
       "PAT_ID": "Z7004242",
       "PCP_PROV_ID": "802011",
@@ -994,7 +1020,18 @@
       "PREAUTH_CHNGD_DTTM": "2020-07-21 12:38:00",
       "EXT_REF_DATE": "2020-07-21 00:00:00",
       "DECISION_DATE": "2021-07-22 00:00:00",
-      "// mergedFrom EPA_INFO_2": true,
+      "$meta": {
+        "type": "REFERRAL",
+        "mergedFrom": [
+          "EPA_INFO",
+          "REFERRAL_2",
+          "REFERRAL_3",
+          "REFERRAL_4",
+          "REFERRAL_5",
+          "EPA_INFO_2"
+        ]
+      },
+      "// mergedFrom EPA_INFO": true,
       "// mergedFrom REFERRAL_2": true,
       "// mergedFrom REFERRAL_3": true,
       "// mergedFrom REFERRAL_4": true,
@@ -1002,22 +1039,11 @@
       "REFD_TO_LINK_PROV_YN": "N",
       "REFD_TO_LINK_LOC_YN": "N",
       "IS_LEAKED_YN": "N",
-      "// mergedFrom REFERRAL_5": true
+      "// mergedFrom REFERRAL_5": true,
+      "// mergedFrom EPA_INFO_2": true
     },
     {
       "REFERRAL_ID": 13661714,
-      "$meta": {
-        "type": "EPA_INFO",
-        "mergedFrom": [
-          "REFERRAL",
-          "EPA_INFO_2",
-          "REFERRAL_2",
-          "REFERRAL_3",
-          "REFERRAL_4",
-          "REFERRAL_5"
-        ]
-      },
-      "// mergedFrom REFERRAL": true,
       "EXTERNAL_ID_NUM": "13661714",
       "PAT_ID": "Z7004242",
       "PCP_PROV_ID": "802011",
@@ -1059,7 +1085,18 @@
       "PREAUTH_CHNGD_DTTM": "2022-02-09 15:26:00",
       "EXT_REF_DATE": "2022-02-09 00:00:00",
       "DECISION_DATE": "2022-04-21 00:00:00",
-      "// mergedFrom EPA_INFO_2": true,
+      "$meta": {
+        "type": "REFERRAL",
+        "mergedFrom": [
+          "EPA_INFO",
+          "REFERRAL_2",
+          "REFERRAL_3",
+          "REFERRAL_4",
+          "REFERRAL_5",
+          "EPA_INFO_2"
+        ]
+      },
+      "// mergedFrom EPA_INFO": true,
       "// mergedFrom REFERRAL_2": true,
       "CALC_SVC_LVL_CNTS": 365,
       "// mergedFrom REFERRAL_3": true,
@@ -1069,22 +1106,11 @@
       "REFD_TO_LINK_LOC_YN": "N",
       "IS_LEAKED_YN": "N",
       "// mergedFrom REFERRAL_5": true,
-      "INITIAL_REQUEST_TYPE_C_NAME": "Preservice"
+      "INITIAL_REQUEST_TYPE_C_NAME": "Preservice",
+      "// mergedFrom EPA_INFO_2": true
     },
     {
       "REFERRAL_ID": 15963353,
-      "$meta": {
-        "type": "EPA_INFO",
-        "mergedFrom": [
-          "REFERRAL",
-          "EPA_INFO_2",
-          "REFERRAL_2",
-          "REFERRAL_3",
-          "REFERRAL_4",
-          "REFERRAL_5"
-        ]
-      },
-      "// mergedFrom REFERRAL": true,
       "EXTERNAL_ID_NUM": "15963353",
       "PAT_ID": "Z7004242",
       "PCP_PROV_ID": "144590",
@@ -1118,7 +1144,18 @@
       "SCHED_STATUS_C_NAME": "External - Ready to Schedule",
       "EXT_REF_DATE": "2022-12-01 00:00:00",
       "DECISION_DATE": "2022-12-01 00:00:00",
-      "// mergedFrom EPA_INFO_2": true,
+      "$meta": {
+        "type": "REFERRAL",
+        "mergedFrom": [
+          "EPA_INFO",
+          "REFERRAL_2",
+          "REFERRAL_3",
+          "REFERRAL_4",
+          "REFERRAL_5",
+          "EPA_INFO_2"
+        ]
+      },
+      "// mergedFrom EPA_INFO": true,
       "// mergedFrom REFERRAL_2": true,
       "// mergedFrom REFERRAL_3": true,
       "// mergedFrom REFERRAL_4": true,
@@ -1137,22 +1174,11 @@
       "REF_TO_CNTRCT_AT_DEC_YN": "N",
       "REF_BY_SER_CNTRCT_AT_DEC_YN": "Y",
       "REF_BY_LOC_CNTRCT_AT_DEC_YN": "N",
-      "REF_TO_LOC_CNTRCT_AT_DEC_YN": "N"
+      "REF_TO_LOC_CNTRCT_AT_DEC_YN": "N",
+      "// mergedFrom EPA_INFO_2": true
     },
     {
       "REFERRAL_ID": 16132994,
-      "$meta": {
-        "type": "EPA_INFO",
-        "mergedFrom": [
-          "REFERRAL",
-          "EPA_INFO_2",
-          "REFERRAL_2",
-          "REFERRAL_3",
-          "REFERRAL_4",
-          "REFERRAL_5"
-        ]
-      },
-      "// mergedFrom REFERRAL": true,
       "EXTERNAL_ID_NUM": "16132994",
       "PAT_ID": "Z7004242",
       "PCP_PROV_ID": "144590",
@@ -1184,7 +1210,18 @@
       "SCHED_STATUS_C_NAME": "External - Ready to Schedule",
       "EXT_REF_DATE": "2022-12-22 00:00:00",
       "DECISION_DATE": "2022-12-29 00:00:00",
-      "// mergedFrom EPA_INFO_2": true,
+      "$meta": {
+        "type": "REFERRAL",
+        "mergedFrom": [
+          "EPA_INFO",
+          "REFERRAL_2",
+          "REFERRAL_3",
+          "REFERRAL_4",
+          "REFERRAL_5",
+          "EPA_INFO_2"
+        ]
+      },
+      "// mergedFrom EPA_INFO": true,
       "// mergedFrom REFERRAL_2": true,
       "// mergedFrom REFERRAL_3": true,
       "// mergedFrom REFERRAL_4": true,
@@ -1199,22 +1236,11 @@
       "REF_BY_EAF_CNTRCT_AT_AUTH_YN": "N",
       "REF_BY_CNTRCT_AT_DEC_YN": "N",
       "REF_BY_SER_CNTRCT_AT_DEC_YN": "Y",
-      "REF_BY_LOC_CNTRCT_AT_DEC_YN": "N"
+      "REF_BY_LOC_CNTRCT_AT_DEC_YN": "N",
+      "// mergedFrom EPA_INFO_2": true
     },
     {
       "REFERRAL_ID": 16132995,
-      "$meta": {
-        "type": "EPA_INFO",
-        "mergedFrom": [
-          "REFERRAL",
-          "EPA_INFO_2",
-          "REFERRAL_2",
-          "REFERRAL_3",
-          "REFERRAL_4",
-          "REFERRAL_5"
-        ]
-      },
-      "// mergedFrom REFERRAL": true,
       "EXTERNAL_ID_NUM": "16132995",
       "PAT_ID": "Z7004242",
       "PCP_PROV_ID": "144590",
@@ -1246,7 +1272,18 @@
       "SCHED_STATUS_C_NAME": "External - Ready to Schedule",
       "EXT_REF_DATE": "2022-12-22 00:00:00",
       "DECISION_DATE": "2022-12-29 00:00:00",
-      "// mergedFrom EPA_INFO_2": true,
+      "$meta": {
+        "type": "REFERRAL",
+        "mergedFrom": [
+          "EPA_INFO",
+          "REFERRAL_2",
+          "REFERRAL_3",
+          "REFERRAL_4",
+          "REFERRAL_5",
+          "EPA_INFO_2"
+        ]
+      },
+      "// mergedFrom EPA_INFO": true,
       "// mergedFrom REFERRAL_2": true,
       "// mergedFrom REFERRAL_3": true,
       "// mergedFrom REFERRAL_4": true,
@@ -1261,7 +1298,8 @@
       "REF_BY_EAF_CNTRCT_AT_AUTH_YN": "N",
       "REF_BY_CNTRCT_AT_DEC_YN": "N",
       "REF_BY_SER_CNTRCT_AT_DEC_YN": "Y",
-      "REF_BY_LOC_CNTRCT_AT_DEC_YN": "N"
+      "REF_BY_LOC_CNTRCT_AT_DEC_YN": "N",
+      "// mergedFrom EPA_INFO_2": true
     }
   ]
 }

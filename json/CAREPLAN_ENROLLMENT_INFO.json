@@ -1,9 +1,9 @@
 {
   "$meta": {
     "schemas": {
-      "CAREPLAN_PT_TASK_INFO": {
-        "name": "CAREPLAN_PT_TASK_INFO",
-        "description": "This table contains information about patient-assigned tasks in the care plan.",
+      "CAREPLAN_ENROLLMENT_INFO": {
+        "name": "CAREPLAN_ENROLLMENT_INFO",
+        "description": "This table cotains the enrollment information for a care plan.",
         "primaryKey": [
           {
             "columnName": "CAREPLAN_ID",
@@ -21,14 +21,14 @@
         ],
         "merged": [
           {
-            "name": "CAREPLAN_ENROLLMENT_INFO",
-            "description": "This table cotains the enrollment information for a care plan."
+            "name": "CAREPLAN_PT_TASK_INFO",
+            "description": "This table contains information about patient-assigned tasks in the care plan."
           }
         ],
         "discoveredMappings": [
           {
             "type": "has-child-table",
-            "source": "CAREPLAN_PT_TASK_INFO",
+            "source": "CAREPLAN_ENROLLMENT_INFO",
             "target": "CARE_INTEGRATOR",
             "joinKeys": [
               {
@@ -39,7 +39,7 @@
           },
           {
             "type": "has-child-table",
-            "source": "CAREPLAN_PT_TASK_INFO",
+            "source": "CAREPLAN_ENROLLMENT_INFO",
             "target": "CAREPLAN_CNCT_INFO",
             "joinKeys": [
               {
@@ -48,50 +48,60 @@
               }
             ]
           }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "CAREPLAN_ENROLLMENT_INFO",
+            "target": "CAREPLAN_INFO",
+            "joinKey": {
+              "source": "CAREPLAN_ID",
+              "target": "CARE_INTG_ID"
+            }
+          }
         ]
       }
     }
   },
-  "CAREPLAN_PT_TASK_INFO": [
+  "CAREPLAN_ENROLLMENT_INFO": [
     {
       "CAREPLAN_ID": "7498035",
       "$meta": {
-        "type": "CAREPLAN_PT_TASK_INFO",
+        "type": "CAREPLAN_ENROLLMENT_INFO",
         "mergedFrom": [
-          "CAREPLAN_ENROLLMENT_INFO"
+          "CAREPLAN_PT_TASK_INFO"
         ]
       },
-      "// mergedFrom CAREPLAN_ENROLLMENT_INFO": true
+      "// mergedFrom CAREPLAN_PT_TASK_INFO": true
     },
     {
       "CAREPLAN_ID": "7498036",
       "$meta": {
-        "type": "CAREPLAN_PT_TASK_INFO",
+        "type": "CAREPLAN_ENROLLMENT_INFO",
         "mergedFrom": [
-          "CAREPLAN_ENROLLMENT_INFO"
+          "CAREPLAN_PT_TASK_INFO"
         ]
       },
-      "// mergedFrom CAREPLAN_ENROLLMENT_INFO": true
+      "// mergedFrom CAREPLAN_PT_TASK_INFO": true
     },
     {
       "CAREPLAN_ID": "7615790",
       "$meta": {
-        "type": "CAREPLAN_PT_TASK_INFO",
+        "type": "CAREPLAN_ENROLLMENT_INFO",
         "mergedFrom": [
-          "CAREPLAN_ENROLLMENT_INFO"
+          "CAREPLAN_PT_TASK_INFO"
         ]
       },
-      "// mergedFrom CAREPLAN_ENROLLMENT_INFO": true
+      "// mergedFrom CAREPLAN_PT_TASK_INFO": true
     },
     {
       "CAREPLAN_ID": "7615791",
       "$meta": {
-        "type": "CAREPLAN_PT_TASK_INFO",
+        "type": "CAREPLAN_ENROLLMENT_INFO",
         "mergedFrom": [
-          "CAREPLAN_ENROLLMENT_INFO"
+          "CAREPLAN_PT_TASK_INFO"
         ]
       },
-      "// mergedFrom CAREPLAN_ENROLLMENT_INFO": true
+      "// mergedFrom CAREPLAN_PT_TASK_INFO": true
     }
   ]
 }

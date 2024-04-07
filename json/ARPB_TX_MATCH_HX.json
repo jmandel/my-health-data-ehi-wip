@@ -168,13 +168,39 @@
           {
             "type": "has-parent-table",
             "source": "ARPB_TX_MATCH_HX",
-            "target": "ARPB_TX_MODERATE",
+            "target": "ARPB_TRANSACTIONS",
             "joinKeys": [
               {
                 "source": "TX_ID",
                 "target": "TX_ID"
               }
             ]
+          }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "ARPB_TX_MATCH_HX",
+            "target": "ARPB_TRANSACTIONS",
+            "joinKey": {
+              "source": "TX_ID",
+              "target": "TX_ID"
+            }
+          },
+          {
+            "source": "ARPB_TX_MATCH_HX",
+            "target": "ARPB_TRANSACTIONS",
+            "joinKey": {
+              "source": "MTCH_TX_HX_ID",
+              "target": "TX_ID"
+            }
+          },
+          {
+            "source": "ARPB_TX_MATCH_HX",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "MTCH_TX_HX_DSUSR_ID",
+              "target": "USER_ID"
+            }
           }
         ]
       }
