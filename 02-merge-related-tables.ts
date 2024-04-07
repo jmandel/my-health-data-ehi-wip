@@ -214,7 +214,7 @@ function findChildTableRelationships(
 
   for (const tableA of Object.keys(schemas)) {
     for (const tableB of Object.keys(schemas)) {
-      if (isValidPrefixRelationship(tables, schemas, tableA, tableB, fudgeFactor)) {
+      if ((nameSegmentPrefixes(tableA, tableB) || tables[tableB].length > 1) && isValidPrefixRelationship(tables, schemas, tableA, tableB, fudgeFactor)) {
         const joinKeys = schemas[tableA].primaryKey.map((pkA, i) => ({
           source: pkA.columnName,
           target: schemas[tableB].primaryKey[i].columnName,
@@ -230,6 +230,37 @@ function findChildTableRelationships(
   }
 
   return relationships;
+}
+
+const equivalentNames = {
+  "ACCT": /ACCOUNT/,
+  "TX": /TRANSACTIONS?/
+}
+function nameSegmentPrefixes(tableA: string, tableB: string): boolean {
+  const segmentsA = tableA.split("_");
+  const segmentsB = tableB.split("_");
+
+  if (segmentsA.length >= segmentsB.length) {
+    return false;
+  } 
+
+  for (let i = 0; i < segmentsA.length; i++) {
+    if (segmentsA[i] === segmentsB[i]) {
+      continue;
+    } else if (equivalentNames[segmentsA[i]] && equivalentNames[segmentsA[i]].test(segmentsB[i])) {
+      continue
+    } else if (equivalentNames[segmentsB[i]] && equivalentNames[segmentsB[i]].test(segmentsB[i])) {
+      continue
+    }
+    // check if B's letters occur in order in A (e.g., ACCOUNT and ACCT_ADDR work because ACCT occurs in ACCounT)
+    for (let j = 0; j < segmentsB[i].length; j++) {
+      if (!segmentsA[i].includes(segmentsB[i][j])) {
+        return false;
+      }
+    }
+  }
+
+  return true;
 }
 
 function isValidPrefixRelationship(
@@ -264,9 +295,12 @@ function isValidPrefixRelationship(
   );
 
   const concordance = [...valuesB].filter((v) => valuesA.has(v)).length / valuesB.size;
+  const aRequired = [...valuesA].filter((v, i) => valuesB.has(v)).length
+
   if (concordance < 1 - fudgeFactor) {
     return false;
   }
+
   if (concordance < 1) {
     console.warn(`Low concordance between ${tableA} and ${tableB}: ${concordance}`);
   }

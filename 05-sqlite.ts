@@ -51,6 +51,7 @@ interface Metadata {
 interface ChildTableInfo {
   name: string;
   joinKey: string;
+  percentWithChildren: number;
   minRows: number;
   maxRows: number;
 }
@@ -65,9 +66,8 @@ function generateSqliteSchema(metadata: Metadata, childTableInfo: Record<string,
     // Add comments about child tables and their row count ranges grouped by parent join key
     if (childTableInfo[schemaName]) {
       const childTableComments = childTableInfo[schemaName].map(
-        childTable => `-- Child table: ${childTable.name} (${childTable.minRows} to ${childTable.maxRows} rows) joined on ${childTable.joinKey}\n`
-      );
-      description += childTableComments.join('  ');
+        stat => `-- Child table: ${stat.name} with ${stat.percentWithChildren}% parent rows having >=1 child. Range: ${stat.minRows} - ${stat.maxRows}. Joined on ${stat.joinKey}`);
+      description += "\n  " + childTableComments.join('\n  ');
     }
 
     // Generate CREATE TABLE statement
@@ -124,7 +124,7 @@ function generateSqliteSchema(metadata: Metadata, childTableInfo: Record<string,
         const foreignKeyColumn = foreignKey.joinKey.source;
         const referencedTableName = foreignKey.target;
         const referencedColumn = foreignKey.joinKey.target;
-        const foreignKeyConstraint = `, FOREIGN KEY (${foreignKeyColumn}) REFERENCES ${referencedTableName} (${referencedColumn}) -- References ${referencedTableName} table\n`;
+        const foreignKeyConstraint = `, FOREIGN KEY (${foreignKeyColumn}) REFERENCES ${referencedTableName} (${referencedColumn})\n`;
         columnDefinitions.push(foreignKeyConstraint);
       }
     }
@@ -208,6 +208,54 @@ function createTablesAndInsertData(db: Database, metadata: Metadata, childTableI
   })();
 }
 
+// Gather statistics about child tables, including the percentage of parent rows with at least one child row, and the min/max number of child rows per parent join key
+function gatherChildTableStatistics(db, metadata) : Record<string,ChildTableInfo[]> {
+  const childTableInfo: Record<string, ChildTableInfo[]> = {};
+
+  for (const schemaName in metadata.schemas) {
+    const schema = metadata.schemas[schemaName];
+    if (schema.discoveredMappings) {
+      for (const mapping of schema.discoveredMappings) {
+        if (mapping.type === 'has-parent-table') {
+          const parentTable = mapping.target;
+          const childTable = mapping.source;
+          const joinKeys = mapping.joinKeys.map(jk => `p.${jk.target} = c.${jk.source}`).join(' AND ');
+
+          const statsQuery = `
+            SELECT
+              COUNT(DISTINCT p.${mapping.joinKeys[0].target}) AS totalParentRows,
+              COUNT(DISTINCT c.${mapping.joinKeys[0].source}) AS parentRowsWithChildren,
+              MIN(c.rowCount) AS minChildren,
+              MAX(c.rowCount) AS maxChildren
+            FROM ${parentTable} p
+            LEFT JOIN (
+              SELECT ${mapping.joinKeys.map(jk => jk.source).join(', ')}, COUNT(*) AS rowCount
+              FROM ${childTable}
+              GROUP BY ${mapping.joinKeys.map(jk => jk.source).join(', ')}
+            ) c ON ${joinKeys}`;
+
+          const statsResult = db.prepare(statsQuery).get();
+          const percentWithChildren = statsResult.totalParentRows > 0 ? Math.floor(statsResult.parentRowsWithChildren / statsResult.totalParentRows * 100) : 0;
+
+          if (!childTableInfo[parentTable]) {
+            childTableInfo[parentTable] = [];
+          }
+
+          childTableInfo[parentTable].push({
+            name: childTable,
+            joinKey: mapping.joinKeys.map(jk => jk.source).join(', '),
+            percentWithChildren: percentWithChildren,
+            minRows: statsResult.minChildren,
+            maxRows: statsResult.maxChildren
+          });
+        }
+      }
+    }
+  }
+
+  return childTableInfo;
+}
+
 async function main() {
   const argv = await yargs(hideBin(process.argv))
     .option('input', {
@@ -245,35 +293,7 @@ async function main() {
   createTablesAndInsertData(memDb, allSchemas, {}, jsonFiles, inputDir);
 
   // Gather statistics about child tables and their row count ranges grouped by parent join key
-  const childTableInfo: Record<string, ChildTableInfo[]> = {};
-  for (const schemaName in allSchemas.schemas) {
-    const schema = allSchemas.schemas[schemaName];
-    if (schema.discoveredMappings) {
-      for (const mapping of schema.discoveredMappings) {
-        if (mapping.type === 'has-parent-table') {
-          const parentTable = mapping.target;
-          const childTable = mapping.source;
-          const joinKey = mapping.joinKeys.map(jk => jk.source).join(', ');
-          const countQuery = `SELECT min(count) as minCount, MAX(count) as maxCount from (SELECT ${joinKey}, COUNT(*) AS count FROM ${childTable} GROUP BY ${joinKey})`;
-          const countResults = memDb.query(countQuery).all();
-          console.log(countQuery, countResults);
-
-          if (!childTableInfo[parentTable]) {
-            childTableInfo[parentTable] = [];
-          }
-          for (const result of countResults) {
-            childTableInfo[parentTable].push({
-              name: childTable,
-              joinKey: joinKey,
-              minRows: result.minCount,
-              maxRows: result.maxCount,
-            });
-          }
-        }
-      }
-    }
-  }
-
+  const childTableInfo: Record<string, ChildTableInfo[]> =  gatherChildTableStatistics(memDb, allSchemas);
   memDb.close();
 
   // Create the final on-disk SQLite database
