@@ -1,11 +1,12 @@
 # Unabridged Access to Your Electronic Health Information
 
-Health standards focus on "Summary" and "Core" content. They provide a high-level and interoperable overview -- but they leave out details, nuance, the full story.
+Health standards focus on "Summary" and "Core" content. They provide a high-level and interoperable overview -- but they leave out details.
+
 EHI is the unabridged book of your health.
 
 ## What is EHI?
 
-EHI is the digital record of your health history, including everything from test results and diagnoses to prescription history and doctor's notes. It's a comprehensive, unabridged account of your health story.
+EHI is the digital record of your health history, including everything from test results and diagnoses to prescription history and doctor's notes. It's a comprehensive, computable representation of your health record.
 
 ## Why is Accessing Your EHI Important?
 
