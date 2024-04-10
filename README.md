@@ -1,10 +1,10 @@
-# EHI Data Exploration
+# EHI Export: Data Exploration
 
-Welcome to the EHI Data Exploration repository! This project is an individual exploration by Josh Mandel, aimed at creating components that others can try and learn from in the context of electronic health information (EHI) data. It focused on processing EHI Export data from Epic, which users can request from their health care provider.
+Welcome to the EHI Data Exploration repository! This project is an individual exploration by Josh Mandel, aimed at creating components that others can try and learn from in the context of electronic health information (EHI) data. It focuses on processing EHI Export data from Epic, which users can request from their health care provider.
 
 ## Project Overview
 
-The goal of this project is to provide a starting point for exploring and working with EHI data. It includes various scripts and utilities to assist in tasks such as data redaction, JSON conversion, merging related tables, code generation, and SQLite database creation.
+The goal of this project is to provide a starting point for exploring and working with EHI Export data. It includes scripts and utilities to assist in tasks such as data redaction, JSON conversion, merging related tables, code generation, and SQLite database creation.
 
 Please note that this project is still in its early stages and is primarily intended for educational purposes and experimentation.
 
@@ -21,7 +21,7 @@ This repository contains the following files:
 
 ## Data Model Overview
 
-The EHI data model consists of various domains and key tables. Here's a high-level overview of the main concepts:
+Epic's EHI data model consists of various domains and key tables. The official documentation is at https://open.epic.com/EHITables/GetTable/_index.htm, and a partial snapshot of this content is included in your EHI Export zip file. Here's a high-level overview of the main concepts:
 
 - **Patient Demographics**: Core information about patients, including main demographics (`PATIENT`), insurance coverage (`COVERAGE`).
 - **Encounters**: Records of patient visits and interactions, with key tables such as `PAT_ENC` (main encounters), `APPT` (appointments), `HSP_ACCOUNT` (hospital accounts), and `COVERAGE_PAYOR_PLAN` (payer/plan for encounters).
