@@ -1,6 +1,6 @@
 # Unabridged Access to Your Electronic Health Information
 
-Health standards focus on "Summary" and "Core" content. They provide a high-level and Interoperable overview, but they leave out details, nuance, the full story.
+Health standards focus on "Summary" and "Core" content. They provide a high-level and interoperable overview -- but they leave out details, nuance, the full story.
 EHI is the unabridged book of your health.
 
 ## What is EHI?
