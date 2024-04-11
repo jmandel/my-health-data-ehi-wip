@@ -48,22 +48,21 @@
             "description": "The additional instructions included with the medication instructions."
           }
         ],
-        "discoveredForeignKeys": [
+        "discoveredMappings": [
           {
+            "type": "has-parent-table",
             "source": "ORDER_RPTD_SIG_INSTR",
-            "target": "ORDER_MED",
-            "joinKey": {
-              "source": "ORDER_ID",
-              "target": "ORDER_MED_ID"
-            }
-          },
-          {
-            "source": "ORDER_RPTD_SIG_INSTR",
-            "target": "ORD_PRFLST_TRK",
-            "joinKey": {
-              "source": "ORDER_ID",
-              "target": "ORDER_ID"
-            }
+            "target": "ORDER_RPTD_SIG_HX",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
           }
         ]
       }

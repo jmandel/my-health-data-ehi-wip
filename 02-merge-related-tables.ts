@@ -240,7 +240,11 @@ function nameSegmentPrefixes(tableA: string, tableB: string): boolean {
   const segmentsA = tableA.split("_");
   const segmentsB = tableB.split("_");
 
-  if (segmentsA.length >= segmentsB.length) {
+  if (segmentsA.slice(0, 3).join("_") === segmentsB.slice(0, 3).join("_")) {
+    return true;
+  }
+
+  if (segmentsA.length > segmentsB.length) {
     return false;
   } 
 
@@ -318,6 +322,10 @@ function findForeignKeyRelationships(
   for (const tableA of Object.keys(schemas)) {
     for (const columnA of schemas[tableA].columns) {
       if (columnA.name.match(/(_ID|_GUID|_PTR|_USER|_SOURCE|_LOC)$/)) {
+        if (schemas[tableA].discoveredMappings?.some((m) => m.type === "has-parent-table" && m.joinKeys.some((k) => k.source === columnA.name))) {
+          continue;
+        }
+
         for (const tableB of Object.keys(schemas)) {
           if (tableA === tableB) {
             continue;
@@ -341,10 +349,51 @@ function findForeignKeyRelationships(
     }
   }
 
-  return relationships;
+
+  let filteredRelationships = _(relationships).groupBy((r) => r.source + '.' + r.joinKey.source).map((rs, source) => {
+    return rs.reduce((best, current) => {
+      const sourceTable = source.split(".")[0];
+      const bestSegments = best.target.split("_").length;
+      const currentSegments = current.target.split("_").length;
+      return currentSegments < bestSegments ? current : 
+        commonPrefixLength(current.target, sourceTable) > commonPrefixLength(best.target, sourceTable) ? current : best;
+    })
+  }).value();
+
+  return filteredRelationships;
 }
 
+  function commonPrefixLength(a, b){
+    // compute common prefix with table for up to min table.length, s.length
+    let i = 0;
+    for (i = 0; i < Math.min(a.length, b.length); i++) {
+      if (a[i] !== b[i]) {
+        break;
+      }
+    }
+    return i
+  }
 
+
+function pickBestParent(table: string, parentRelationships: Relationship[], mergedSchemas: SchemasMap): Relationship | null {
+  const parentTables = parentRelationships
+    .filter((r) => r.target === table)
+    .map((r) => r.source);
+
+  if (parentTables.length < 1) {
+    return null;
+  }
+
+  const bestParent = parentTables.reduce((best, current) => {
+    const bestSegments = best.split("_").length;
+    const currentSegments = current.split("_").length;
+    return currentSegments < bestSegments ? current : 
+    commonPrefixLength(current, table) > commonPrefixLength(best, table) ? current : best;
+  });
+
+  console.error("BP", bestParent, table)
+  return parentRelationships.find((r) => r.source === bestParent && r.target === table) || null;
+}
 
 
 async function main() {
@@ -382,18 +431,24 @@ async function main() {
 
 
     const parentRelationships = findChildTableRelationships(mergedTables, mergedSchemas, fudgeFactor);
-    for (const p of parentRelationships) {
-      mergedSchemas[p.source].discoveredMappings = mergedSchemas[p.source].discoveredMappings || [];
-      mergedSchemas[p.source].discoveredMappings!.push(p);
 
-      mergedSchemas[p.target].discoveredMappings = mergedSchemas[p.target].discoveredMappings || [];
-      mergedSchemas[p.target].discoveredMappings!.push({
-        type: "has-parent-table",
-        source: p.target,
-        target: p.source,
-        joinKeys: p.joinKeys.map((k) => ({ source: k.target, target: k.source })),
-      });
+    for (const table of Object.keys(mergedSchemas)) {
+      const bestParent = pickBestParent(table, parentRelationships, mergedSchemas);
+
+      if (bestParent) {
+        mergedSchemas[bestParent.source].discoveredMappings = mergedSchemas[bestParent.source].discoveredMappings || [];
+        mergedSchemas[bestParent.source].discoveredMappings!.push(bestParent);
+
+        mergedSchemas[table].discoveredMappings = mergedSchemas[table].discoveredMappings || [];
+        mergedSchemas[table].discoveredMappings!.push({
+          type: "has-parent-table",
+          source: table,
+          target: bestParent.source,
+          joinKeys: bestParent.joinKeys.map((k) => ({ source: k.target, target: k.source })),
+        });
+      }
     }
+
 
     const foreignKeyRelationships = findForeignKeyRelationships(mergedTables, mergedSchemas, fudgeFactor);
     for (const fk of foreignKeyRelationships) {

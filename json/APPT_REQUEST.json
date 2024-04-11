@@ -19,75 +19,13 @@
             "description": "The unique identifier (.1 item) for the appointment request record. If the appointment request is also an order, this column can be joined to the ORDER_PROC_ID column in the ORDER_PROC tables."
           }
         ],
-        "discoveredMappings": [
-          {
-            "type": "has-child-table",
-            "source": "APPT_REQUEST",
-            "target": "ORDER_COMMENT",
-            "joinKeys": [
-              {
-                "source": "REQUEST_ID",
-                "target": "ORDER_ID"
-              }
-            ]
-          },
-          {
-            "type": "has-child-table",
-            "source": "APPT_REQUEST",
-            "target": "ORDER_INSTANTIATED",
-            "joinKeys": [
-              {
-                "source": "REQUEST_ID",
-                "target": "ORDER_ID"
-              }
-            ]
-          },
-          {
-            "type": "has-child-table",
-            "source": "APPT_REQUEST",
-            "target": "ORDER_SIGNED_PROC",
-            "joinKeys": [
-              {
-                "source": "REQUEST_ID",
-                "target": "ORDER_PROC_ID"
-              }
-            ]
-          },
-          {
-            "type": "has-child-table",
-            "source": "APPT_REQUEST",
-            "target": "ORD_PROC_INSTR",
-            "joinKeys": [
-              {
-                "source": "REQUEST_ID",
-                "target": "ORDER_ID"
-              }
-            ]
-          }
-        ],
         "discoveredForeignKeys": [
-          {
-            "source": "APPT_REQUEST",
-            "target": "ORDER_PARENT_INFO",
-            "joinKey": {
-              "source": "REQUEST_ID",
-              "target": "ORDER_ID"
-            }
-          },
           {
             "source": "APPT_REQUEST",
             "target": "ORDER_PROC",
             "joinKey": {
               "source": "REQUEST_ID",
               "target": "ORDER_PROC_ID"
-            }
-          },
-          {
-            "source": "APPT_REQUEST",
-            "target": "ORD_PRFLST_TRK",
-            "joinKey": {
-              "source": "REQUEST_ID",
-              "target": "ORDER_ID"
             }
           }
         ]

@@ -1,5 +1,6 @@
 import { OpenAI } from "openai";
 import { Anthropic } from "@anthropic-ai/sdk";
+import { sha } from "bun";
 export interface LLMWrapper {
   createChatCompletion(args: ChatCompletionCreateParams): Promise<ChatCompletionMessage>;
 }
@@ -7,7 +8,7 @@ export interface LLMWrapper {
 export interface ChatCompletionCreateParams {
   messages: ChatCompletionMessage[];
   temperature?: number;
-  model: string;
+  model?: string;
 }
 
 export interface ChatCompletionMessage {
@@ -25,6 +26,7 @@ interface ClaudeWrapperConfig {
   cachePrefix: string;
   seed?: string | null;
   maxTokens?: number;
+  defaultModel?: string;
 }
 
 
@@ -33,12 +35,14 @@ export class ClaudeWrapper implements LLMWrapper {
   private cachePrefix: string;
   private seed: string | null;
   private maxTokens: number;
+  private defaultModel: string;
 
   constructor(config: ClaudeWrapperConfig) {
     this.anthropic = new Anthropic({ apiKey: config.apiKey });
     this.cachePrefix = config.cachePrefix;
     this.seed = config.seed || null;
     this.maxTokens = config.maxTokens || 2000;
+    this.defaultModel = config.defaultModel || "claude-3-sonnet-20240229";
   }
 
   async createChatCompletion(args: ChatCompletionCreateParams): Promise<ChatCompletionMessage> {
@@ -57,7 +61,7 @@ export class ClaudeWrapper implements LLMWrapper {
     try {
       const response = await this.anthropic.messages.create({
         system: args.messages.filter(m => m.role === "system").map(m => m.content).at(0),
-        model: args.model,
+        model: args.model || this.defaultModel,
         messages: toNonSystemMessages(args.messages),
         temperature: args.temperature,
         max_tokens: this.maxTokens
@@ -67,6 +71,7 @@ export class ClaudeWrapper implements LLMWrapper {
         content: response.content.map(b => b.text).join("\n\n")
       };
       if (cacheKey) {
+        console.log("Set storag", cacheKey, "to", JSON.stringify(result).slice(0, 100));
         localStorage.setItem(cacheKey, JSON.stringify(result));
       }
       return result;
@@ -83,6 +88,16 @@ interface OpenAIWrapperConfig {
   maxTokens?: number;
   maxRetries?: number;
   maxConcurrentRequests?: number;
+  defaultModel?: string;
+  baseUrl?: string;
+}
+
+
+export async function hashWithSHA256(message: string) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(message);
+    const hash = await crypto.subtle.digest('SHA-256', data);
+    return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
 export class OpenAIWrapper implements LLMWrapper {
@@ -94,14 +109,13 @@ export class OpenAIWrapper implements LLMWrapper {
   private currentRequests: number;
   private requestQueue: Array<() => void>;
   private rateLimited: boolean;
+  private defaultModel: string;
 
 //   constructor(apiKey: string, cachePrefix: string, seed: string | null = null, maxConcurrentRequests: number = 5, maxRetries: number = 3) {
   constructor(config: OpenAIWrapperConfig) {
     this.openai = new OpenAI({
         apiKey: config.apiKey,
-        baseURL: "https://gcraoai3sw1.openai.azure.com/openai/deployments/gpt-4",
-        defaultQuery: { 'api-version': "2024-02-15-preview" },
-        defaultHeaders: { 'api-key': config.apiKey },
+        baseURL: config.baseUrl || "https://api.openai.com/v1",
         dangerouslyAllowBrowser: true
     });
 
@@ -112,6 +126,7 @@ export class OpenAIWrapper implements LLMWrapper {
     this.currentRequests = 0;
     this.requestQueue = [];
     this.rateLimited = false;
+    this.defaultModel = config.defaultModel || "gpt-4-turbo-v";
   }
 
   private async processQueue() {
@@ -124,9 +139,13 @@ export class OpenAIWrapper implements LLMWrapper {
     }
   }
 
+  
   async createChatCompletion(args: ChatCompletionCreateParams): Promise<ChatCompletionMessage> {
-    const cacheKey = this.seed ? `${this.cachePrefix}_${this.seed}_${JSON.stringify(args)}` : null;
-    if (cacheKey) {
+    const cacheKeyBase = this.seed ? `${this.cachePrefix}_${this.seed}_${JSON.stringify(args)}` : null;
+
+    // hash the messages to create a unique cache key. Use SHA-256.
+    const cacheKey  =  cacheKeyBase ? await hashWithSHA256(cacheKeyBase) : null;
+    if (cacheKey && typeof localStorage !== 'undefined') {
       const cachedResponse = localStorage.getItem(cacheKey);
       if (cachedResponse) {
         return JSON.parse(cachedResponse);
@@ -140,13 +159,13 @@ export class OpenAIWrapper implements LLMWrapper {
           try {
             console.log("API SEND");
             const response = await this.openai.chat.completions.create({
-              model: args.model,
+              model: args.model || this.defaultModel,
               messages: args.messages,
               temperature: args.temperature,
             });
             console.log("API RECEIVE", response);
             const result = response.choices[0].message;
-            if (cacheKey) {
+            if (cacheKey && result && typeof localStorage !== 'undefined') {
               localStorage.setItem(cacheKey, JSON.stringify(result));
             }
             resolve(result as ChatCompletionMessage);

@@ -1,42 +1,101 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import * as agent from "./agent.ts"
-console.log(agent)
+import React, { useState, useEffect } from 'react';
+import { transform } from '@babel/standalone';
+import { queryToRows, renderComponentInBackground } from './util';
+import * as agent from './agent';
+import _ from 'lodash';
+import { ErrorBoundary } from './util';
+// import { JSDOM } from 'jsdom';
 
-// import * as agent from "./agent"
-// console.log(agent.v)
 
-import EhiView from "./EhiView.jsx";
+const App = () => {
+  const [userQuestion, setUserQuestion] = useState("");
+  const [componentCode, setComponentCode] = useState(`
+    function EhiView({query}) {
+      return <div>Enter your component code here</div>;
+    }
+  `);
 
-function App() {
-  console.log("App mount")
-  const [count, setCount] = useState(0)
+  
+  async function begin(userQuestion: string){
+    if (!userQuestion) {
+      return;
+    }
+      // const userQuestion = "What are the patient's past and future vaccine administrations?";
+      const newComponent = await agent.answerQuestionWithComponent(userQuestion);
+      setComponentCode(newComponent);
+
+    return;
+  }
+
+  const [renderedComponent, setRenderedComponent] = useState<JSX.Element|null>(null);
+  const [error, setError] = useState(null);
+
+  const handleCodeChange = (event) => {
+    setComponentCode(event.target.value);
+  };
+
   useEffect(() => {
-    (async () => {
-      const result = await query("SELECT * FROM sqlite_master");
-      console.log("Result", result)
-    })()
-  }, [])
+    const renderComponent = async () => {
+      try {
+        try {
+          await renderComponentInBackground(componentCode)
+          console.log("OK IN BG");
+        } catch (err) {
+          console.log("ERRR IN BG", err);
+        } 
+
+        const transpiledCode = transform(componentCode, {
+          presets: ['react'],
+        }).code;
+
+        const evalComponent = new Function('React', "_", transpiledCode + " return EhiView;");
+        const NewComponent = evalComponent(React, _);
+        let renderedElement = React.createElement(NewComponent, {query: queryToRows});
+        console.log(renderedElement)
+        setRenderedComponent(renderedElement);
+        setError(null);
+
+        } catch(err){
+          console.log("ERRROR", err.toString());
+          setRenderedComponent(null);
+          setError(err);
+        }
+
+    };
+
+    renderComponent()
+  }, [componentCode]);
 
   return (
     <>
-      <h1>EHI Demo</h1>
-      
-      <div>
-        <a href="https://github.com/jmandel/ehi-exploration" target="_blank">github.com/jmandel/ehi-exploration </a>
+    <input type="text" value={userQuestion} onChange={(e) => setUserQuestion(e.target.value)} />
+    <button onClick={() => begin(userQuestion)}>Ask</button>
+    <div style={{ display: 'flex' }}>
+      <div style={{ flex: 1, padding: '20px' }}>
+        <h2>Component Code</h2>
+        <textarea
+          value={componentCode}
+          onChange={handleCodeChange}
+          style={{ width: '100%', height: '400px' }}
+        />
       </div>
-      <EhiView query={query}></EhiView>
-    </>
-  )
-}
+      <ErrorBoundary>
+<div style={{ flex: 1, padding: '20px' }}>
+        <h2>Rendered Component</h2>
+        {error ? (
+          <div style={{ color: 'red' }}>
+            Error: {error.message}
+          </div>
+        ) : (
+          renderedComponent
+        )}
+      </div>
+      </ErrorBoundary>
+      
+    </div>
+  </>
+  );
+};
 
-import {query as queryIter} from "./ehi.ts";
-async function query(sql: string, params:any = []): Promise<Record<string, any>[]>   {
-    console.log(`Executing SQL query: ${sql}`);
-    const ret =  (await Array.fromAsync(queryIter(sql, params)))
-    console.log("Query result", ret);
-    return ret;
-}
+export default App;
 
-
-export default App

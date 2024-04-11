@@ -915,21 +915,6 @@
         ],
         "discoveredMappings": [
           {
-            "type": "has-child-table",
-            "source": "ORDER_RPTD_SIG_HX",
-            "target": "ORDER_RPTD_SIG_TEXT",
-            "joinKeys": [
-              {
-                "source": "ORDER_ID",
-                "target": "ORDER_ID"
-              },
-              {
-                "source": "LINE",
-                "target": "GROUP_LINE"
-              }
-            ]
-          },
-          {
             "type": "has-parent-table",
             "source": "ORDER_RPTD_SIG_HX",
             "target": "ORDER_MED",
@@ -941,34 +926,22 @@
             ]
           },
           {
-            "type": "has-parent-table",
+            "type": "has-child-table",
             "source": "ORDER_RPTD_SIG_HX",
-            "target": "ORD_PRFLST_TRK",
+            "target": "ORDER_RPTD_SIG_INSTR",
             "joinKeys": [
               {
                 "source": "ORDER_ID",
                 "target": "ORDER_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
               }
             ]
           }
         ],
         "discoveredForeignKeys": [
-          {
-            "source": "ORDER_RPTD_SIG_HX",
-            "target": "ORDER_MED",
-            "joinKey": {
-              "source": "ORDER_ID",
-              "target": "ORDER_MED_ID"
-            }
-          },
-          {
-            "source": "ORDER_RPTD_SIG_HX",
-            "target": "ORD_PRFLST_TRK",
-            "joinKey": {
-              "source": "ORDER_ID",
-              "target": "ORDER_ID"
-            }
-          },
           {
             "source": "ORDER_RPTD_SIG_HX",
             "target": "PAT_ENC",

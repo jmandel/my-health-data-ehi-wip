@@ -55,37 +55,30 @@
             "description": "Hospital account associated with the liability bucket"
           }
         ],
-        "discoveredForeignKeys": [
+        "discoveredMappings": [
           {
+            "type": "has-parent-table",
             "source": "HSP_BKT_NAA_HX_HTR",
-            "target": "HSP_BKT_ADDTL_REC",
-            "joinKey": {
-              "source": "BUCKET_ID",
-              "target": "BUCKET_ID"
-            }
-          },
+            "target": "HSP_BKT_NAA_ADJ_HX",
+            "joinKeys": [
+              {
+                "source": "BUCKET_ID",
+                "target": "BUCKET_ID"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
+          }
+        ],
+        "discoveredForeignKeys": [
           {
             "source": "HSP_BKT_NAA_HX_HTR",
             "target": "HSP_TRANSACTIONS",
             "joinKey": {
               "source": "NAA_ADJ_HX_HTR_ID",
               "target": "TX_ID"
-            }
-          },
-          {
-            "source": "HSP_BKT_NAA_HX_HTR",
-            "target": "HAR_ALL",
-            "joinKey": {
-              "source": "HSP_ACCOUNT_ID",
-              "target": "ACCT_ID"
-            }
-          },
-          {
-            "source": "HSP_BKT_NAA_HX_HTR",
-            "target": "HSP_ACCT_CLAIM_HAR",
-            "joinKey": {
-              "source": "HSP_ACCOUNT_ID",
-              "target": "ACCT_ID"
             }
           },
           {
