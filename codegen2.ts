@@ -36,8 +36,8 @@ interface SchemaMeta {
 }
 
 // Function to generate TypeScript interfaces from schemas with documentation and relationship handling
-function generateInterfaces(schemas: { [key: string]: SchemaTable }): string {
-    let code = 'export {};\n\n'; // Ensure module context
+export function generateInterfaces(schemas: { [key: string]: SchemaTable }): string {
+    let code = ''; 
     for (const [tableName, schema] of Object.entries(schemas)) {
         // Table description (limited to the first sentence for clarity)
         const tableDescription = schema.description.split('. ')[0];
@@ -73,7 +73,7 @@ function generateInterfaces(schemas: { [key: string]: SchemaTable }): string {
         schema.discoveredMappings?.forEach((mapping) => {
             const referenceName = mapping.target;
             if (mapping.type === 'has-child-table') {
-                code += `    /**\n     * Collection of ${mapping.target} as children\n     */\n`;
+                code += `    /**\n     * Collection of ${mapping.target} as children joined on ${mapping.joinKeys.map(k => `${tableName}.${k.source}=${referenceName}.${k.target}`).join(", ")}\n     */\n`;
                 code += `    ${referenceName.toLowerCase()}?: ${mapping.target}[];\n`;
             } else if (mapping.type === 'has-parent-table') {
                 code += `    /**\n     * Reference to parent ${mapping.target}\n     */\n`;
@@ -87,6 +87,8 @@ function generateInterfaces(schemas: { [key: string]: SchemaTable }): string {
     return code;
 }
 
+
+if (import.meta.url === `file://${process.argv[1]}`) {
 // Runner script using yargs to handle command-line arguments
 yargs(hideBin(process.argv))
   .scriptName("generate-ts")
@@ -110,3 +112,4 @@ yargs(hideBin(process.argv))
     console.error('Failed to generate TypeScript interfaces:', error);
     process.exit(1);
   });
+}

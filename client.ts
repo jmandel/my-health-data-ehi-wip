@@ -87,11 +87,11 @@ function fetchData(entity: any, property: string, store: Store): any {
 }
 const fetchDataGlobal = fetchData;
 
-function createProxy<T extends object>(entity: T, fetchData: Function = fetchDataGlobal, store: Store = storeGlobal): T {
+export default function createProxy<T extends object>(entity: T, fetchData: Function = fetchDataGlobal, store: Store = storeGlobal): T {
     return new Proxy(entity, {
         get(target, property, receiver) {
             if (property === 'toLLMJSON') {
-                return () => {
+                return (store = storeGlobal) => {
                     return customJSON({store, target: receiver, forLLM: true});
                 };
             }
@@ -148,7 +148,7 @@ function customJSON({ target, store, seenObjects = new Set(), depth = 1, forLLM 
     schema.discoveredForeignKeys?.forEach(fk => {
         const refName = fk.joinKey.source.split('_').slice(0, -1).join('_').toLowerCase();
         const targetEntity = target[refName]
-        if (depth > 0 && targetEntity !== undefined) {
+        if (depth > 0 && targetEntity) {
             if (forLLM) {
                 result[refName] = Array.isArray(targetEntity) ? [`//note: ${targetEntity[0].$meta.type || ""} omitted for brevity; here in-memory`]:{"//note": `${targetEntity.$meta?.type || ""} omitted for brevity; here in-memory`};
             }
@@ -178,5 +178,5 @@ function customJSON({ target, store, seenObjects = new Set(), depth = 1, forLLM 
     return result;
 }
 
-const p: types.PAT_ENC[] = [1,2,3].map((_, i) => createProxy(store.PAT_ENC[i], fetchData, store));
-console.log(JSON.stringify(p, null, 2))
+// const p: types.PAT_ENC[] = [1,2,3].map((_, i) => createProxy(store.PAT_ENC[i], fetchData, store));
+// console.log(JSON.stringify(p, null, 2))

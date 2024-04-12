@@ -1,13 +1,18 @@
 import _ from 'lodash';
+import fs from 'fs';
 import ehiMerged from "./ehi-merged.json";
-const data = ehiMerged
+import { generateInterfaces } from "./codegen2";
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
+import client from "./client"
 
-export default function processTables(inputTables: string[]){
-  inputTables = inputTables.filter(t => data.$meta.schemas[t]);
-  // Read the JSON file
+
+export default function processTables(inputTables: string[], schema) {
+  inputTables = inputTables.filter(t => schema.$meta.schemas[t]);
 
   const MAX_COLS_BY_DEFAULT = 20;
   const generics = ["_ID", "_GUID", "_PTR", "_USER", "_SOURCE", "_LOC "];
+
   const simplifySchema = (schema, initialTables, expandedTables) => {
     const parts = [
       ...new Set(
@@ -16,6 +21,7 @@ export default function processTables(inputTables: string[]){
           .filter((t) => !generics.includes(t))
       ),
     ];
+
     const simplifiedColumns = schema.columns
       .filter(
         (c) =>
@@ -25,24 +31,33 @@ export default function processTables(inputTables: string[]){
           c.name.split("_").some((p) => parts.includes(p))
       )
       .map((column) => ({
-        name: column.name,
-        type: column.type,
+        ...column,
         description: column.description.split(".")[0].slice(0, 200),
       }));
 
     return {
-      name: schema.name,
+      ...schema,
       description: schema.description.split(".")[0].slice(0, 200),
-      primaryKey: schema.primaryKey.map((pk) => pk.columnName),
       columns: simplifiedColumns,
-      foreignKeys: [
-        ...(schema.discoveredMappings || []),
-        ...(schema.discoveredForeignKeys || []).map((fk) => ({
-          source: fk.source,
-          target: fk.target,
-          joinKeys: [fk.joinKey],
-        })),
-      ].filter((k) => k.joinKeys.length === 1 || expandedTables.includes(k.target)),
+      discoveredMappings: schema.discoveredMappings
+        ? schema.discoveredMappings.filter((k) =>
+            k.joinKeys.length === 1 || expandedTables.includes(k.target)
+          )
+        : undefined,
+      discoveredForeignKeys: schema.discoveredForeignKeys
+        ? schema.discoveredForeignKeys
+            .map((fk) => ({
+              ...fk,
+              joinKey: {
+                source: fk.joinKey.source,
+                target: fk.joinKey.target,
+              },
+            }))
+            .filter(
+              (k) =>
+                k.joinKey.source && k.joinKey.target && expandedTables.includes(k.target)
+            )
+        : undefined,
     };
   };
 
@@ -85,7 +100,7 @@ export default function processTables(inputTables: string[]){
             getJoinTargets(t, Object.values(data.$meta.schemas)).includes(
               target
             )
-          ).length >= 2
+          ).length >= inputTables.length / 2.0
         ) {
           expandedTables.push(target);
           schemasToCheck.push(target);
@@ -96,25 +111,12 @@ export default function processTables(inputTables: string[]){
     return expandedTables;
   };
 
+
   const filterSchemas = (data, initialTables, expandedTables) => {
     return Object.entries(data.$meta.schemas)
       .filter(([tableName]) => expandedTables.includes(tableName))
       .map(([tableName, schema]) => {
-        const simplifiedSchema = simplifySchema(
-          schema,
-          initialTables,
-          expandedTables
-        );
-
-        // // Filter discovered mappings and foreign keys
-        // const filteredMappings = simplifiedSchema.foreignKeys.filter(
-        //   (mapping) =>
-        //     expandedTables.includes(mapping.source) &&
-        //     expandedTables.includes(mapping.target)
-        // );
-
-
-        return simplifiedSchema;
+        return simplifySchema(schema, initialTables, expandedTables);
       });
   };
 
@@ -127,7 +129,7 @@ export default function processTables(inputTables: string[]){
       const schema = filteredSchemas.find(
         (schema) => schema.name === tableName
       );
-      const foreignKeys = schema.foreignKeys;
+      const foreignKeys = (schema.discoveredForeignKeys || []).map((fk) => ({...fk, joinKeys: [fk.joinKey]})).concat(schema.discoveredMappings || []);
 
       let selectedRows = [];
 
@@ -175,8 +177,10 @@ export default function processTables(inputTables: string[]){
     return sampledRows;
   };
 
+
   const simplifyData = (data, inputTables) => {
     const expandedTables = expandTableSet(data, inputTables);
+    console.log("Expanded ", inputTables, expandedTables)
     const filteredSchemas = filterSchemas(data, inputTables, expandedTables);
     const candidateRowSubset = sampleRows(
       expandedTables,
@@ -184,18 +188,67 @@ export default function processTables(inputTables: string[]){
       filteredSchemas
     );
 
-    return filteredSchemas.reduce(
-      (obj, schema) => ({
+    const tsInterfaces = generateInterfaces(
+      filteredSchemas.reduce(
+        (obj, schema) => ({ ...obj, [schema.name]: schema }),
+        {}
+      )
+    );
+
+    const serializedRows = Object.entries(candidateRowSubset).reduce(
+      (obj, [tableName, rows]) => ({
         ...obj,
-        [schema.name]: {
-          schema,
-          sampleRows: candidateRowSubset[schema.name] || "NONE",
-        },
+        [tableName]: rows,
       }),
       {}
     );
+
+    return {
+      surface: {$meta: {schemas: _(filteredSchemas).map(s => [s.name, s]).fromPairs().value()}},
+      tsInterfaces,
+      serializedRows,
+    };
   };
 
-  const output = simplifyData(data, inputTables);
+  const output = simplifyData(schema, inputTables);
   return output;
+}
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+// Runner script using yargs to handle command-line arguments
+yargs(hideBin(process.argv))
+  .scriptName("generate-ts")
+  .usage('$0 --schema <path>')
+  .option('schema', {
+    describe: 'Path to the JSON schema file',
+    type: 'string',
+    default: 'ehi-merged.json',
+    nargs: 1
+  })
+  .option('tables', {
+    describe: 'Tables to merge',
+    type: 'string',
+    default: '[]',
+    nargs: 1
+  })
+  .help()
+  .alias('help', 'h')
+  .parseAsync()
+  .then(args => {
+    const schemaPath = args.schema;
+    const schemaData = JSON.parse(fs.readFileSync(schemaPath, 'utf8'));
+    const output = processTables(JSON.parse(args.tables), schemaData);
+    console.log(output.tsInterfaces);
+    for (const [tableName, rows] of Object.entries(output.serializedRows)) {
+      console.log(`// Sampled ${tableName}s`);
+      for (const row of rows) {
+        console.log(JSON.stringify(client({$meta: { type: tableName }, ...row, }).toLLMJSON(output.surface)));
+      }
+
+    }
+  })
+  .catch(error => {
+    console.error('Failed to generate TypeScript interfaces:', error);
+    process.exit(1);
+  });
 }

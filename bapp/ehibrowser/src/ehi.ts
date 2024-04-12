@@ -1,3 +1,5 @@
+
+
 let sqliteResolve;
 let sqlite = new Promise((resolve, reject) => {
   sqliteResolve = resolve;
@@ -49,7 +51,6 @@ async function* query(sql, params = []) {
   stmt.finalize();
 }
 
-window.query = query;
 export { query };
 
 import sqlite3InitModule from '@sqlite.org/sqlite-wasm';
@@ -72,6 +73,7 @@ async function hashSqlDump(sqlDump) {
   return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
+if (typeof window !== 'undefined') {
 sqlite3InitModule({
   print: log,
   printErr: error,
@@ -82,3 +84,4 @@ sqlite3InitModule({
     error(err.name, err.message);
   }
 });
+}

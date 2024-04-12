@@ -2,30 +2,8 @@ import fs from 'fs';
 import yargs from 'yargs/yargs';
 import { hideBin } from 'yargs/helpers';
 
-// Parse command line arguments
-const argv = yargs(hideBin(process.argv))
-  .usage('Usage: $0 [options]')
-  .option('input', {
-    alias: 'i',
-    describe: 'Input JSON file',
-    default: 'ehi-merged.json',
-    type: 'string',
-  })
-  .option('count', {
-    alias: 'n',
-    describe: 'Number of times to sample table clusters',
-    default: 1,
-    type: 'number',
-  })
-  .help('help')
-  .alias('help', 'h')
-  .parseSync();
-
-// Read the input JSON file
-const jsonData = JSON.parse(fs.readFileSync(argv.input, 'utf-8'));
-
 // Function to sample a cluster of related tables
-export function sampleTables() {
+export function sampleTables(jsonData) {
   const schemas = jsonData.$meta.schemas;
   const tableNames = Object.keys(schemas);
 
@@ -85,8 +63,30 @@ export function sampleTables() {
 
 // If running from the command line, sample table clusters and print the result
 if (import.meta.url === `file://${process.argv[1]}`) {
+  // Parse command line arguments
+  const argv = yargs(hideBin(process.argv))
+    .usage('Usage: $0 [options]')
+    .option('input', {
+      alias: 'i',
+      describe: 'Input JSON file',
+      default: 'ehi-merged.json',
+      type: 'string',
+    })
+    .option('count', {
+      alias: 'n',
+      describe: 'Number of times to sample table clusters',
+      default: 1,
+      type: 'number',
+    })
+    .help('help')
+    .alias('help', 'h')
+    .parseSync();
+
+  // Read the input JSON file
+  const jsonData = JSON.parse(fs.readFileSync(argv.input, 'utf-8'));
+
   for (let i = 0; i < argv.count; i++) {
-    const sampledTableNames = sampleTables();
+    const sampledTableNames = sampleTables(jsonData);
     console.log(JSON.stringify(sampledTableNames, null, 2));
   }
 }
