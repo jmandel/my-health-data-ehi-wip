@@ -1,9 +1,9 @@
 {
   "$meta": {
     "schemas": {
-      "ORD_PRFLST_TRK": {
-        "name": "ORD_PRFLST_TRK",
-        "description": "Tracking info for orders coming from a preference list or order template.  For Beacon, the column ORDER_TEMPLATE_ID is used, which is the unique ID of the order template in the patient's treatment plan used to create the order.",
+      "ORD_DOSING_PARAMS": {
+        "name": "ORD_DOSING_PARAMS",
+        "description": "This table contains dosing parameters.",
         "primaryKey": [
           {
             "columnName": "ORDER_ID",
@@ -19,38 +19,18 @@
             "description": "The unique identifier for the order record."
           },
           {
-            "ordinalPosition": 3,
-            "name": "ORDER_TMPLTE_OTL_I",
-            "type": "VARCHAR",
-            "discontinued": false,
-            "description": "OTL ID (order template)"
-          },
-          {
-            "ordinalPosition": 4,
-            "name": "MOD_FROM_OTL_YN",
-            "type": "VARCHAR",
-            "discontinued": false,
-            "description": "Flag whether this order is modified from its order template.",
-            "entries": [
-              "No",
-              "Yes"
-            ]
-          },
-          {
             "ordinalPosition": 2,
             "name": "ORD_DOSING_WEIGHT",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "Weight used for dosing. Always stored in kilograms.",
-            "mergedFrom": "ORD_DOSING_PARAMS"
+            "description": "Weight used for dosing. Always stored in kilograms."
           },
           {
             "ordinalPosition": 3,
             "name": "ORD_DW_REC_DTTM",
             "type": "DATETIME (Local) ",
             "discontinued": false,
-            "description": "The instant at which the weight was recorded.",
-            "mergedFrom": "ORD_DOSING_PARAMS"
+            "description": "The instant at which the weight was recorded."
           },
           {
             "ordinalPosition": 4,
@@ -68,32 +48,28 @@
               "Lean body weight",
               "Dosing weight",
               "Other"
-            ],
-            "mergedFrom": "ORD_DOSING_PARAMS"
+            ]
           },
           {
             "ordinalPosition": 5,
             "name": "ORD_WT_COMMENTS",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "Generated comment for dosing weight.",
-            "mergedFrom": "ORD_DOSING_PARAMS"
+            "description": "Generated comment for dosing weight."
           },
           {
             "ordinalPosition": 6,
             "name": "ORD_DOSING_HEIGHT",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "This column contains the patient height used for dosing PCA medication. The value stored is in inches for all orders after weight-based dosing was turned on, or starting in Spring 2008, whichever came first. Values are stored in centimeters for treatment plan orders made prior to that.",
-            "mergedFrom": "ORD_DOSING_PARAMS"
+            "description": "This column contains the patient height used for dosing PCA medication. The value stored is in inches for all orders after weight-based dosing was turned on, or starting in Spring 2008, whichever came first. Values are stored in centimeters for treatment plan orders made prior to that."
           },
           {
             "ordinalPosition": 7,
             "name": "ORD_HT_REC_DTTM",
             "type": "DATETIME (Local) ",
             "discontinued": false,
-            "description": "The instant at which the height was recorded.",
-            "mergedFrom": "ORD_DOSING_PARAMS"
+            "description": "The instant at which the height was recorded."
           },
           {
             "ordinalPosition": 8,
@@ -107,24 +83,21 @@
               "Most current measured height (Actual)",
               "User Entry",
               "Other"
-            ],
-            "mergedFrom": "ORD_DOSING_PARAMS"
+            ]
           },
           {
             "ordinalPosition": 9,
             "name": "ORD_HT_COMMENTS",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "Generated comment for dosing height.",
-            "mergedFrom": "ORD_DOSING_PARAMS"
+            "description": "Generated comment for dosing height."
           },
           {
             "ordinalPosition": 10,
             "name": "ORD_DOSING_BSA",
             "type": "NUMERIC",
             "discontinued": false,
-            "description": "The body surface area used for dosing.",
-            "mergedFrom": "ORD_DOSING_PARAMS"
+            "description": "The body surface area used for dosing."
           },
           {
             "ordinalPosition": 11,
@@ -142,16 +115,34 @@
               "Based on dosing weight and current/past measured height",
               "Based on normalized BSA 1.7m2",
               "Other"
-            ],
-            "mergedFrom": "ORD_DOSING_PARAMS"
+            ]
           },
           {
             "ordinalPosition": 12,
             "name": "ORD_BSA_CALC_DTL",
             "type": "VARCHAR",
             "discontinued": false,
-            "description": "The dosing body surface area calculation details with weight, height and recorded instants.",
-            "mergedFrom": "ORD_DOSING_PARAMS"
+            "description": "The dosing body surface area calculation details with weight, height and recorded instants."
+          },
+          {
+            "ordinalPosition": 3,
+            "name": "ORDER_TMPLTE_OTL_I",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "OTL ID (order template)",
+            "mergedFrom": "ORD_PRFLST_TRK"
+          },
+          {
+            "ordinalPosition": 4,
+            "name": "MOD_FROM_OTL_YN",
+            "type": "VARCHAR",
+            "discontinued": false,
+            "description": "Flag whether this order is modified from its order template.",
+            "entries": [
+              "No",
+              "Yes"
+            ],
+            "mergedFrom": "ORD_PRFLST_TRK"
           },
           {
             "ordinalPosition": 2,
@@ -164,12 +155,12 @@
         ],
         "merged": [
           {
-            "name": "ORD_SECOND_SIGN",
-            "description": "This table stores the information about second sign for orders."
+            "name": "ORD_PRFLST_TRK",
+            "description": "Tracking info for orders coming from a preference list or order template.  For Beacon, the column ORDER_TEMPLATE_ID is used, which is the unique ID of the order template in the patient's treatment plan used to create the order."
           },
           {
-            "name": "ORD_DOSING_PARAMS",
-            "description": "This table contains dosing parameters."
+            "name": "ORD_SECOND_SIGN",
+            "description": "This table stores the information about second sign for orders."
           },
           {
             "name": "ORD_DOSING_PARAMS_2",
@@ -199,8 +190,8 @@
         "discoveredMappings": [
           {
             "type": "has-child-table",
-            "source": "ORD_PRFLST_TRK",
-            "target": "ORDER_PENDING",
+            "source": "ORD_DOSING_PARAMS",
+            "target": "MEDICATION_COST_ESTIMATES",
             "joinKeys": [
               {
                 "source": "ORDER_ID",
@@ -210,8 +201,19 @@
           },
           {
             "type": "has-child-table",
-            "source": "ORD_PRFLST_TRK",
-            "target": "ORDER_STATUS",
+            "source": "ORD_DOSING_PARAMS",
+            "target": "ORDER_DX_MED",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_MED_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORD_DOSING_PARAMS",
+            "target": "ORDER_IMAGE_AVAIL_INFO",
             "joinKeys": [
               {
                 "source": "ORDER_ID",
@@ -221,29 +223,92 @@
           },
           {
             "type": "has-child-table",
-            "source": "ORD_PRFLST_TRK",
-            "target": "ORDER_SUMMARY",
+            "source": "ORD_DOSING_PARAMS",
+            "target": "ORDER_RPTD_SIG_HX",
             "joinKeys": [
               {
                 "source": "ORDER_ID",
                 "target": "ORDER_ID"
               }
             ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORD_DOSING_PARAMS",
+            "target": "ORDER_RPTD_SIG_INSTR",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORD_DOSING_PARAMS",
+            "target": "ORD_MED_ADMININSTR",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_MED_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORD_DOSING_PARAMS",
+            "target": "ORD_MED_USER_ADMIN",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORD_DOSING_PARAMS",
+            "target": "PRESC_ID",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORD_DOSING_PARAMS",
+            "target": "ORDER_DISP_INFO",
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_MED_ID"
+              }
+            ]
+          }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "ORD_DOSING_PARAMS",
+            "target": "CL_OTL",
+            "joinKey": {
+              "source": "ORDER_TMPLTE_OTL_I",
+              "target": "OTL_ID"
+            }
           }
         ]
       }
     }
   },
-  "ORD_PRFLST_TRK": [
+  "ORD_DOSING_PARAMS": [
     {
       "ORDER_ID": 439060604,
-      "ORDER_TMPLTE_OTL_I": "3706739",
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -252,8 +317,10 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "ORDER_TMPLTE_OTL_I": "3706739",
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -263,13 +330,11 @@
     },
     {
       "ORDER_ID": 439060605,
-      "ORDER_TMPLTE_OTL_I": "3764982",
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -278,8 +343,10 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "ORDER_TMPLTE_OTL_I": "3764982",
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -289,12 +356,11 @@
     },
     {
       "ORDER_ID": 439060606,
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -303,8 +369,9 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -314,12 +381,11 @@
     },
     {
       "ORDER_ID": 439060607,
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -328,8 +394,9 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -339,13 +406,11 @@
     },
     {
       "ORDER_ID": 439060608,
-      "ORDER_TMPLTE_OTL_I": "7631735",
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -354,8 +419,10 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "ORDER_TMPLTE_OTL_I": "7631735",
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -365,13 +432,11 @@
     },
     {
       "ORDER_ID": 439060609,
-      "ORDER_TMPLTE_OTL_I": "6194368",
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -380,8 +445,10 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "ORDER_TMPLTE_OTL_I": "6194368",
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -391,13 +458,11 @@
     },
     {
       "ORDER_ID": 439060610,
-      "ORDER_TMPLTE_OTL_I": "6194011",
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -406,8 +471,10 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "ORDER_TMPLTE_OTL_I": "6194011",
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -417,13 +484,11 @@
     },
     {
       "ORDER_ID": 439060612,
-      "ORDER_TMPLTE_OTL_I": "6194368",
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -432,8 +497,10 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "ORDER_TMPLTE_OTL_I": "6194368",
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -443,12 +510,11 @@
     },
     {
       "ORDER_ID": 439060613,
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -457,8 +523,9 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -468,12 +535,11 @@
     },
     {
       "ORDER_ID": 439060614,
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -482,8 +548,9 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -493,13 +560,11 @@
     },
     {
       "ORDER_ID": 763403909,
-      "ORDER_TMPLTE_OTL_I": "7834271",
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -508,8 +573,10 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "ORDER_TMPLTE_OTL_I": "7834271",
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -519,12 +586,11 @@
     },
     {
       "ORDER_ID": 772179259,
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -533,8 +599,9 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -544,13 +611,11 @@
     },
     {
       "ORDER_ID": 772179260,
-      "ORDER_TMPLTE_OTL_I": "6755686",
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -559,8 +624,10 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "ORDER_TMPLTE_OTL_I": "6755686",
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -570,23 +637,6 @@
     },
     {
       "ORDER_ID": 772179261,
-      "ORDER_TMPLTE_OTL_I": "3709621",
-      "MOD_FROM_OTL_YN": "Y",
-      "$meta": {
-        "type": "ORD_PRFLST_TRK",
-        "mergedFrom": [
-          "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
-          "ORD_DOSING_PARAMS_2",
-          "ORDER_AUTH_INFO",
-          "EXTERNAL_ORDER_INFO",
-          "DUPMED_DISMISS_HH_INFO",
-          "RAD_THERAPY_ASSOC_COURSE",
-          "CL_ORD_FST_LST_SCH"
-        ]
-      },
-      "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "ORD_DOSING_WEIGHT": 80.9,
       "ORD_DW_REC_DTTM": "2022-08-29 13:34:00",
       "ORD_WT_SOURCE_C_NAME": "Most current measured weight (actual)",
@@ -598,6 +648,23 @@
       "ORD_DOSING_BSA": 2.01,
       "ORD_BSA_SRC_C_NAME": "Based on most recent measured weight and height (actual)",
       "ORD_BSA_CALC_DTL": "BSA based on [Weight: 80.9 kg as of 8/29/2022] [Height: 179.7 cm as of 8/29/2022]",
+      "$meta": {
+        "type": "ORD_DOSING_PARAMS",
+        "mergedFrom": [
+          "ORD_PRFLST_TRK",
+          "ORD_SECOND_SIGN",
+          "ORD_DOSING_PARAMS_2",
+          "ORDER_AUTH_INFO",
+          "EXTERNAL_ORDER_INFO",
+          "DUPMED_DISMISS_HH_INFO",
+          "RAD_THERAPY_ASSOC_COURSE",
+          "CL_ORD_FST_LST_SCH"
+        ]
+      },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "ORDER_TMPLTE_OTL_I": "3709621",
+      "MOD_FROM_OTL_YN": "Y",
+      "// mergedFrom ORD_SECOND_SIGN": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "ORD_DOSING_BSA_ORIG": 2.01,
       "// mergedFrom ORDER_AUTH_INFO": true,
@@ -608,12 +675,11 @@
     },
     {
       "ORDER_ID": 772179262,
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -622,8 +688,9 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -633,13 +700,11 @@
     },
     {
       "ORDER_ID": 772179263,
-      "ORDER_TMPLTE_OTL_I": "6755686",
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -648,8 +713,10 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "ORDER_TMPLTE_OTL_I": "6755686",
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -659,13 +726,11 @@
     },
     {
       "ORDER_ID": 772179264,
-      "ORDER_TMPLTE_OTL_I": "3706850",
-      "MOD_FROM_OTL_YN": "Y",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -674,8 +739,10 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "ORDER_TMPLTE_OTL_I": "3706850",
+      "MOD_FROM_OTL_YN": "Y",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -685,13 +752,11 @@
     },
     {
       "ORDER_ID": 772179265,
-      "ORDER_TMPLTE_OTL_I": "11300179",
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -700,8 +765,10 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "ORDER_TMPLTE_OTL_I": "11300179",
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -711,23 +778,6 @@
     },
     {
       "ORDER_ID": 772179266,
-      "ORDER_TMPLTE_OTL_I": "2367845",
-      "MOD_FROM_OTL_YN": "Y",
-      "$meta": {
-        "type": "ORD_PRFLST_TRK",
-        "mergedFrom": [
-          "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
-          "ORD_DOSING_PARAMS_2",
-          "ORDER_AUTH_INFO",
-          "EXTERNAL_ORDER_INFO",
-          "DUPMED_DISMISS_HH_INFO",
-          "RAD_THERAPY_ASSOC_COURSE",
-          "CL_ORD_FST_LST_SCH"
-        ]
-      },
-      "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "ORD_DOSING_WEIGHT": 82,
       "ORD_DW_REC_DTTM": "2022-12-01 09:36:00",
       "ORD_WT_SOURCE_C_NAME": "Most current measured weight (actual)",
@@ -739,6 +789,23 @@
       "ORD_DOSING_BSA": 2.02,
       "ORD_BSA_SRC_C_NAME": "Based on most recent measured weight and height (actual)",
       "ORD_BSA_CALC_DTL": "BSA based on [Weight: 82 kg as of 12/1/2022] [Height: 179.7 cm as of 8/29/2022]",
+      "$meta": {
+        "type": "ORD_DOSING_PARAMS",
+        "mergedFrom": [
+          "ORD_PRFLST_TRK",
+          "ORD_SECOND_SIGN",
+          "ORD_DOSING_PARAMS_2",
+          "ORDER_AUTH_INFO",
+          "EXTERNAL_ORDER_INFO",
+          "DUPMED_DISMISS_HH_INFO",
+          "RAD_THERAPY_ASSOC_COURSE",
+          "CL_ORD_FST_LST_SCH"
+        ]
+      },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "ORDER_TMPLTE_OTL_I": "2367845",
+      "MOD_FROM_OTL_YN": "Y",
+      "// mergedFrom ORD_SECOND_SIGN": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "ORD_DOSING_BSA_ORIG": 2.02,
       "// mergedFrom ORDER_AUTH_INFO": true,
@@ -749,13 +816,11 @@
     },
     {
       "ORDER_ID": 772179267,
-      "ORDER_TMPLTE_OTL_I": "3644292",
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -764,8 +829,10 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "ORDER_TMPLTE_OTL_I": "3644292",
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -775,13 +842,11 @@
     },
     {
       "ORDER_ID": 772179268,
-      "ORDER_TMPLTE_OTL_I": "3644292",
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -790,8 +855,10 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "ORDER_TMPLTE_OTL_I": "3644292",
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -801,22 +868,6 @@
     },
     {
       "ORDER_ID": 772179269,
-      "MOD_FROM_OTL_YN": "N",
-      "$meta": {
-        "type": "ORD_PRFLST_TRK",
-        "mergedFrom": [
-          "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
-          "ORD_DOSING_PARAMS_2",
-          "ORDER_AUTH_INFO",
-          "EXTERNAL_ORDER_INFO",
-          "DUPMED_DISMISS_HH_INFO",
-          "RAD_THERAPY_ASSOC_COURSE",
-          "CL_ORD_FST_LST_SCH"
-        ]
-      },
-      "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "ORD_DOSING_WEIGHT": 82,
       "ORD_DW_REC_DTTM": "2022-12-01 09:36:00",
       "ORD_WT_SOURCE_C_NAME": "Most current measured weight (actual)",
@@ -828,6 +879,22 @@
       "ORD_DOSING_BSA": 2.02,
       "ORD_BSA_SRC_C_NAME": "Based on most recent measured weight and height (actual)",
       "ORD_BSA_CALC_DTL": "BSA based on [Weight: 82 kg as of 12/1/2022] [Height: 179.7 cm as of 8/29/2022]",
+      "$meta": {
+        "type": "ORD_DOSING_PARAMS",
+        "mergedFrom": [
+          "ORD_PRFLST_TRK",
+          "ORD_SECOND_SIGN",
+          "ORD_DOSING_PARAMS_2",
+          "ORDER_AUTH_INFO",
+          "EXTERNAL_ORDER_INFO",
+          "DUPMED_DISMISS_HH_INFO",
+          "RAD_THERAPY_ASSOC_COURSE",
+          "CL_ORD_FST_LST_SCH"
+        ]
+      },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "MOD_FROM_OTL_YN": "N",
+      "// mergedFrom ORD_SECOND_SIGN": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "ORD_DOSING_BSA_ORIG": 2.02,
       "// mergedFrom ORDER_AUTH_INFO": true,
@@ -838,13 +905,11 @@
     },
     {
       "ORDER_ID": 945468367,
-      "ORDER_TMPLTE_OTL_I": "5890218",
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -853,8 +918,10 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "ORDER_TMPLTE_OTL_I": "5890218",
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -864,13 +931,11 @@
     },
     {
       "ORDER_ID": 945468368,
-      "ORDER_TMPLTE_OTL_I": "6755692",
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -879,8 +944,10 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "ORDER_TMPLTE_OTL_I": "6755692",
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -890,13 +957,11 @@
     },
     {
       "ORDER_ID": 945468369,
-      "ORDER_TMPLTE_OTL_I": "7396231",
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -905,8 +970,10 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "ORDER_TMPLTE_OTL_I": "7396231",
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -916,12 +983,11 @@
     },
     {
       "ORDER_ID": 945468370,
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -930,8 +996,9 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -941,12 +1008,11 @@
     },
     {
       "ORDER_ID": 945468371,
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -955,8 +1021,9 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -966,12 +1033,11 @@
     },
     {
       "ORDER_ID": 945468372,
-      "MOD_FROM_OTL_YN": "N",
       "$meta": {
-        "type": "ORD_PRFLST_TRK",
+        "type": "ORD_DOSING_PARAMS",
         "mergedFrom": [
+          "ORD_PRFLST_TRK",
           "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
           "ORD_DOSING_PARAMS_2",
           "ORDER_AUTH_INFO",
           "EXTERNAL_ORDER_INFO",
@@ -980,8 +1046,9 @@
           "CL_ORD_FST_LST_SCH"
         ]
       },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "MOD_FROM_OTL_YN": "N",
       "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "// mergedFrom ORDER_AUTH_INFO": true,
       "// mergedFrom EXTERNAL_ORDER_INFO": true,
@@ -991,22 +1058,6 @@
     },
     {
       "ORDER_ID": 945468373,
-      "MOD_FROM_OTL_YN": "N",
-      "$meta": {
-        "type": "ORD_PRFLST_TRK",
-        "mergedFrom": [
-          "ORD_SECOND_SIGN",
-          "ORD_DOSING_PARAMS",
-          "ORD_DOSING_PARAMS_2",
-          "ORDER_AUTH_INFO",
-          "EXTERNAL_ORDER_INFO",
-          "DUPMED_DISMISS_HH_INFO",
-          "RAD_THERAPY_ASSOC_COURSE",
-          "CL_ORD_FST_LST_SCH"
-        ]
-      },
-      "// mergedFrom ORD_SECOND_SIGN": true,
-      "// mergedFrom ORD_DOSING_PARAMS": true,
       "ORD_DOSING_WEIGHT": 81.6,
       "ORD_DW_REC_DTTM": "2023-09-28 09:41:00",
       "ORD_WT_SOURCE_C_NAME": "Most current measured weight (actual)",
@@ -1018,6 +1069,22 @@
       "ORD_DOSING_BSA": 2.03,
       "ORD_BSA_SRC_C_NAME": "Based on most recent measured weight and height (actual)",
       "ORD_BSA_CALC_DTL": "BSA based on [Weight: 81.6 kg as of 9/28/2023] [Height: 181 cm as of 9/28/2023]",
+      "$meta": {
+        "type": "ORD_DOSING_PARAMS",
+        "mergedFrom": [
+          "ORD_PRFLST_TRK",
+          "ORD_SECOND_SIGN",
+          "ORD_DOSING_PARAMS_2",
+          "ORDER_AUTH_INFO",
+          "EXTERNAL_ORDER_INFO",
+          "DUPMED_DISMISS_HH_INFO",
+          "RAD_THERAPY_ASSOC_COURSE",
+          "CL_ORD_FST_LST_SCH"
+        ]
+      },
+      "// mergedFrom ORD_PRFLST_TRK": true,
+      "MOD_FROM_OTL_YN": "N",
+      "// mergedFrom ORD_SECOND_SIGN": true,
       "// mergedFrom ORD_DOSING_PARAMS_2": true,
       "ORD_DOSING_BSA_ORIG": 2.03,
       "// mergedFrom ORDER_AUTH_INFO": true,
