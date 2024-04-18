@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useCallback, useRef, useMemo } from "react";
 
+
 import * as d3 from "d3";
 import ReactMarkdown from "react-markdown";
 import { ChatCompletionMessage, OpenAIWrapper } from "../models";
-import _ from "lodash";
+import _, { set } from "lodash";
 
 type MessageID = string;
 
@@ -13,6 +14,7 @@ interface Message extends ChatCompletionMessage {
   length: number; // Length of the message used for circle size
   completedAt: number; // Timestamp, used for vertical positioning
   parent?: MessageID;
+  llmName?: string;
 }
 
 interface MessageTree {
@@ -29,11 +31,13 @@ interface DendrogramProps {
 
 interface AIChatState {
   messages: MessageTree;
-  currentMessage: MessageID;
+  currentMessage: MessageID | null;
   lockedIn: MessageID | null;
   inputText: string;
   suggestedResponse: { label: string; content: string } | null;
   waiting: boolean;
+  chunks?: string;
+  llm: OpenAIWrapper;
 }
 
 const sampleTree: MessageTree = {
@@ -139,27 +143,44 @@ interface AIChatProps {
   autoRespondSuggester?: (message: Message) => Promise<{ label: string; content: string } | undefined>;
   systemPromptGenerator?: () => { label: string; content?: string };
   llm: OpenAIWrapper;
+  llms: Record<string, OpenAIWrapper>;
   defaultInputText?: string;
 }
 
-export const AIChat: React.FC<AIChatProps> = ({ autoRespondSuggester, llm, defaultInputText = "", systemPromptGenerator }) => {
+export const AIChat: React.FC<AIChatProps> = ({ autoRespondSuggester, llm: llmDefault, llms = {}, defaultInputText = "", systemPromptGenerator }) => {
   const [state, setState] = useState<AIChatState>({
     messages: {},
-    currentMessage: "",
+    currentMessage: null,
     lockedIn: null,
     inputText: defaultInputText || "",
     suggestedResponse: null,
     waiting: false,
+    llm: llmDefault
   });
 
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const sendCount = useRef(0);
+  const llmName = Object.keys(llms).find(k => llms[k] === state.llm) ?? "default";
 
+  const messagesEndRef = useRef<HTMLDivElement>(null);
   const systemPrompt = useMemo(() => (systemPromptGenerator ? systemPromptGenerator() : { label: "You are a helpful assistant" }), [systemPromptGenerator]);
 
   const send = async (messages: ChatCompletionMessage[]) => {
-    const res = await llm.createChatCompletion({
-      messages,
+    const messagesClamped = messages.map(m => ({role: m.role, content: m.content}));
+    console.log("Sending", messagesClamped)
+    const expectedSendCount = ++sendCount.current;
+    const res = await state.llm.createChatCompletion({
+      messages: messagesClamped
+    }, (chunk) => {
+      if (sendCount.current !== expectedSendCount) {
+        throw new Error("Chunk arrived on canceled feed")
+      }
+      setState(state => ({...state, chunks: (state.chunks || "") + chunk}))
     });
+
+    if (sendCount.current !== expectedSendCount) {
+      throw new Error("Chunk arrived on canceled feed")
+    }
+    setState(state => ({...state, chunks: ""}))
     return res;
   };
 
@@ -169,27 +190,32 @@ export const AIChat: React.FC<AIChatProps> = ({ autoRespondSuggester, llm, defau
       throw new Error("Can only replay a user message");
     }
 
-    const pathToNewMessage = pathToMessage(newMessageId);
-    let messageHx = pathToNewMessage.map(m => state.messages[m]).map(({role, content}) => ({role, content}));
-    const aiResponse = await send([...(systemPrompt ? [{ role: "system", content: systemPrompt.content ?? systemPrompt.label } as ChatCompletionMessage] : []), ...messageHx, newMessage]);
-    console.log("AI Response", aiResponse);
-    await addMessage(aiResponse.content, 'assistant', newMessageId);
+    setState(state => ({...state, waiting: true}))
+
     try {
+      const pathToNewMessage = pathToMessage(newMessage.parent);
+      let messageHx = pathToNewMessage.map(m => state.messages[m]).map(({role, content}) => ({role, content}));
+      const aiResponse = await send([...(systemPrompt ? [{ role: "system", content: systemPrompt.content ?? systemPrompt.label } as ChatCompletionMessage] : []), ...messageHx, newMessage]);
+      await addMessage(aiResponse.content, 'assistant', newMessageId);
       if (autoRespondSuggester) {
         const asChatRespose: Message = {
             ...aiResponse,
             completedAt: Date.now(),
             length: aiResponse.content.length,
             id: Date.now().toString(),
-            parent: newMessageId
+            parent: newMessageId,
+            llmName
         }
         const suggestedResponse = await autoRespondSuggester(asChatRespose);
-        console.log("SEtting suggestion", suggestedResponse)
         if (suggestedResponse) {
           setState(state => ({...state, suggestedResponse}));
         }
       }
-    } catch {
+    } catch (e ) {
+      if (e?.message?.includes("canceled")) {
+        return;
+      }
+
       console.log("Failed, resetting", state);
       setState(state)
     } finally {
@@ -208,8 +234,8 @@ export const AIChat: React.FC<AIChatProps> = ({ autoRespondSuggester, llm, defau
         parent: parentId,
         completedAt: Date.now(),
         length: content.length,
+        llmName: role === "assistant" ? llmName : undefined
       };
-
 
       setState((state) => ({
         ...state,
@@ -227,12 +253,12 @@ export const AIChat: React.FC<AIChatProps> = ({ autoRespondSuggester, llm, defau
         playUserMessage(newMessageId, newMessage)
       }
     },
-    [autoRespondSuggester, llm, state, systemPrompt]
+    [autoRespondSuggester, state.llm, state, systemPrompt]
   );
 
-  const pathToMessage = (messageId: MessageID, messages: MessageTree = state.messages): MessageID[] => {
+  const pathToMessage = (messageId?: MessageID | null, messages: MessageTree = state.messages): MessageID[] => {
     let path = [];
-    let currentMessage = messages[messageId];
+    let currentMessage = messageId ? messages[messageId] : null;
 
     while (currentMessage) {
       path.unshift(currentMessage.id);
@@ -275,7 +301,7 @@ export const AIChat: React.FC<AIChatProps> = ({ autoRespondSuggester, llm, defau
     e.preventDefault();
     const userMessage = state.inputText.trim();
     if (userMessage) {
-      await addMessage(userMessage, 'user', state.currentMessage);
+      await addMessage(userMessage, 'user', state.currentMessage ?? undefined);
     }
   };
 
@@ -297,8 +323,17 @@ export const AIChat: React.FC<AIChatProps> = ({ autoRespondSuggester, llm, defau
   };
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [state.messages]);
+    const bottomTarget = _([textAreaRef, messagesEndRef])
+      .dropWhile((ref) => !ref?.current)
+      .value()
+      .at(0);
+    if (bottomTarget?.current) {
+      const isAlreadyAtBottom = bottomTarget.current?.getBoundingClientRect().bottom <= window.innerHeight + 50;
+      if (isAlreadyAtBottom) {
+        bottomTarget.current.scrollIntoView({block: 'end', behavior: 'instant' });
+      }
+    }
+  }, [state.currentMessage, state.chunks]);
 
   let textAreaRef = useRef<HTMLTextAreaElement | null>(null);
 
@@ -306,28 +341,36 @@ export const AIChat: React.FC<AIChatProps> = ({ autoRespondSuggester, llm, defau
     textAreaRef.current = node;
   }, []);
 
-  useEffect(() => {
-    if (textAreaRef.current) {
-      textAreaRef.current.scrollIntoView({ behavior: 'instant' });
-    }
-  }, [state.currentMessage])
-
-  const {role: curreMessageRole, parent: currMessageParent} = state.messages[state.currentMessage] ?? {"role": "assistant"};
+  const {role: curreMessageRole, parent: currMessageParent} = state.currentMessage ? state.messages[state.currentMessage] ?? {} : {"role": "assistant", parent: null};
 
   return (
     <div style={{ display: "flex", height: "100%" }}>
       <div style={{ flexGrow: 1, flexShrink: 1, overflowY: 'scroll'}}>
         <div className="ai-chat-messages">
           <div className="ai-chat-message system">
+            <select value={llmName} onChange={(e) => {
+              const selectedLLM = e.target.value;
+              setState(state => ({
+                ...state, 
+                llm: llms[selectedLLM]
+              }));
+            }}>
+              {Object.keys(llms).map((key) => (
+                <option  value={key}>{key}</option>
+              ))}
+            </select>
+          </div>
+          <div className="ai-chat-message system">
             System: <ReactMarkdown>{systemPrompt.label}</ReactMarkdown>
           </div>
           {pathToMessage(state.currentMessage).map((messageId) => (
             <div key={messageId} className={`ai-chat-message ${state.messages[messageId].role}`}>
-              <ReactMarkdown >{state.messages[messageId].content}</ReactMarkdown>
+              {state.messages[messageId].llmName && <small>{state.messages[messageId].llmName}</small>}<ReactMarkdown >{state.messages[messageId].content}</ReactMarkdown>
             </div>
           ))}
-          <div ref={messagesEndRef} />
         </div>
+        {state.chunks && <div className="ai-chat-message assistant">
+            <small>{llmName}</small><ReactMarkdown>{state.chunks}</ReactMarkdown></div>}
         {curreMessageRole === "assistant" && 
         <form onSubmit={handleSubmit} className="ai-chat-input" style={{ width: '100%', display: "flex" }}>
           <textarea
@@ -339,8 +382,9 @@ export const AIChat: React.FC<AIChatProps> = ({ autoRespondSuggester, llm, defau
             placeholder="Type your message... (Ctrl+Enter to send)"
             rows={3}
           />
-
-          {currMessageParent && <button onClick={() => {
+          <button disabled={state.waiting} type="submit">Send</button>
+          {currMessageParent && <button disabled={state.waiting} onClick={() => {
+            setState(state => ({...state, currentMessage: currMessageParent!, lockedIn: currMessageParent!}))
             playUserMessage(currMessageParent)
 
           }}>Again</button>}
@@ -350,26 +394,32 @@ export const AIChat: React.FC<AIChatProps> = ({ autoRespondSuggester, llm, defau
               {state.suggestedResponse.label}
             </button>
           )}
-          <button disabled={state.waiting} type="submit">Send</button>
         </form>}
         {curreMessageRole === "user" && (<><button onClick={() => {
           setState(state => ({
             ...state,
-            inputText: state.messages[state.currentMessage]!.content!,
+            inputText: state.messages[state.currentMessage!].content!,
             currentMessage: currMessageParent!,
             lockedIn: currMessageParent!}))
         }}>Edit</button>
-        <button>Cancel</button></>)
+        {state.waiting && <button onClick={() => {
+          sendCount.current++
+          setState(state => ({
+            ...state,
+            waiting: false,
+            inputText: state.messages[state.currentMessage!].content!,
+            currentMessage: currMessageParent!,
+            lockedIn: currMessageParent!}))
+          }}> Cancel</button>}</>)
       }
-
-
+          <div ref={messagesEndRef} />
       </div>
-      <div style={{ flexBasis: "100px", flexGrow: 0, flexShrink: 0, paddingRight: "10px" }}>
+      <div style={{ flexBasis: "100px", flexGrow: 0, flexShrink: 0, overflow: "clip" }}>
         <ConversationDendrogramMemo
           messages={state.messages}
           onHover={handleDendrogramHover}
           onClick={handleDendrogramClick}
-          onLeave={() => selectCurrentMessage(state.currentMessage, false)}
+          onLeave={() => selectCurrentMessage(state.currentMessage!, false)}
           lockedIn={state.lockedIn}
         />
         {/* <button onClick={clearMessages}>Clear</button> */}
@@ -392,7 +442,6 @@ export const ConversationDendrogram: React.FC<DendrogramProps> = ({
 }) => {
   const [ref, setRefState] = useState(null);
   const [dimensions, setDimensions] = useState({ width: 300, height: 600 });
-  console.log("Dendro", lockedIn, messages, dimensions)
 
   const setRef = useCallback((node) => {
     if (node) {
@@ -403,6 +452,28 @@ export const ConversationDendrogram: React.FC<DendrogramProps> = ({
       });
     }
   }, []);
+
+  const resizeObserver = useMemo(() => {
+    const ro = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        const { width, height } = entry.contentRect;
+        setDimensions({ width, height });
+      }
+    })
+    return ro
+  }, [])
+
+  useEffect(() => {
+    if (!ref || !resizeObserver) {
+      return;
+    }
+
+    resizeObserver.observe(ref);
+    return () => {
+      resizeObserver.unobserve(ref);
+    };
+
+  }, [resizeObserver, ref])
 
   useEffect(() => {
     if (!ref) return;
@@ -429,7 +500,6 @@ export const ConversationDendrogram: React.FC<DendrogramProps> = ({
       children: [],
     };
     addChildren(rootNode, messages);
-    console.log("Root", rootNode)
 
     const root = d3.hierarchy(rootNode, (d) => d.children);
     const treeLayout = d3.tree().size([effectiveWidth, effectiveHeight]);

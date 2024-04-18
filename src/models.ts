@@ -1,7 +1,7 @@
 import { OpenAI } from "openai";
 import { sha } from "bun";
 export interface LLMWrapper {
-  createChatCompletion(args: ChatCompletionCreateParams): Promise<ChatCompletionMessage>;
+  createChatCompletion(args: ChatCompletionCreateParams, onChunk?: (chunk: string) => void): Promise<ChatCompletionMessage>;
 }
 
 export interface ChatCompletionCreateParams {
@@ -27,7 +27,7 @@ interface OpenAIWrapperConfig {
   cachePrefix: string;
   seed?: string | null;
   maxTokens?: number;
-  maxRetries?: number;
+  maxTries?: number;
   maxConcurrentRequests?: number;
   defaultModel?: string;
   baseUrl?: string;
@@ -46,7 +46,7 @@ export class OpenAIWrapper implements LLMWrapper {
   private cachePrefix: string;
   private seed: string | null;
   private maxConcurrentRequests: number;
-  private maxRetries: number;
+  private maxTries: number;
   private currentRequests: number;
   private requestQueue: Array<() => void>;
   private rateLimited: boolean;
@@ -63,7 +63,7 @@ export class OpenAIWrapper implements LLMWrapper {
     this.cachePrefix = config.cachePrefix;
     this.seed = config.seed || null;
     this.maxConcurrentRequests = config.maxConcurrentRequests || 1;
-    this.maxRetries = config.maxRetries || 3;
+    this.maxTries = config.maxTries || 1;
     this.currentRequests = 0;
     this.requestQueue = [];
     this.rateLimited = false;
@@ -84,7 +84,8 @@ export class OpenAIWrapper implements LLMWrapper {
   }
 
   async createChatCompletion(
-    args: ChatCompletionCreateParams
+    args: ChatCompletionCreateParams,
+    onChunk?: (chunk: string) => void
   ): Promise<ChatCompletionMessage> {
     const model = args.model || this.defaultModel;
     const cacheKeyBase = this.seed
@@ -103,28 +104,37 @@ export class OpenAIWrapper implements LLMWrapper {
 
     return new Promise((resolve, reject) => {
       const request = async () => {
-        let retries = 0;
-        while (retries < this.maxRetries) {
+        let tries = 0;
+        while (tries < this.maxTries) {
           try {
             console.log("API SEND");
-            const response = await this.openai.chat.completions.create({
+            const stream = await this.openai.chat.completions.create({
               model,
               messages: args.messages,
               temperature: args.temperature,
               stop: ["```\n"],
+              stream: true
             });
-            console.log("API RECEIVE", response);
-            const result = response.choices[0].message;
+            let message = "";
+            for await (const chunk of stream) {
+              const chunkString = chunk.choices[0]?.delta?.content || ''
+              // console.log("Chunk", chunkString)
+              chunkString && onChunk?.(chunkString)
+              message += chunkString
+            }
+
+            console.log("API RECEIVE", message);
             if (
-              Array.from(result.content?.matchAll(/```/g) || []).length % 2 !==
+              Array.from(message?.matchAll(/```/g) || []).length % 2 !==
               0
             ) {
-              result.content += "```\n";
+              message += "```\n";
             }
+            const result = { role: "assistant", content: message} as ChatCompletionMessage
             if (cacheKey && result && typeof localStorage !== "undefined") {
               localStorage.setItem(cacheKey, JSON.stringify(result));
             }
-            resolve(result as ChatCompletionMessage);
+            resolve(result);
             break;
           } catch (error: any) {
             console.error("API ERROR", error);
@@ -137,9 +147,9 @@ export class OpenAIWrapper implements LLMWrapper {
               args.messages.splice(1, args.messages.length - 2);
               console.log("NOW SLICED TO", args.messages.length, "messages");
             }
-            if (error.status === 429) {
+            if (error.status === 429 && tries < this.maxTries - 1) {
               this.rateLimited = true;
-              const backoffTime = 2 ** retries * 5000;
+              const backoffTime = 2 ** tries * 5000;
               console.warn(
                 `Rate limit exceeded. Retrying in ${backoffTime}ms...`
               );
@@ -148,12 +158,12 @@ export class OpenAIWrapper implements LLMWrapper {
               reject(error);
               break;
             }
-            if (retries === this.maxRetries - 1) {
+            if (tries === this.maxTries - 1) {
               reject(
                 new Error("Max retries exceeded. Please try again later.")
               );
             }
-            retries++;
+            tries++;
           }
         }
       };

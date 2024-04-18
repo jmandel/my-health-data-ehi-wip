@@ -8,6 +8,7 @@ export interface TableExtractionState {
     question: string;
     turns: number;
     tables?: string[];
+    failed?: boolean;
 }
 export const tableExtractionGuide: GuideInterface<TableExtractionState> = {
     async generateInitialPrompt(state: TableExtractionState): Promise<ChatCompletionMessage[]> {
@@ -33,15 +34,19 @@ export const tableExtractionGuide: GuideInterface<TableExtractionState> = {
         done: boolean;
     }> {
         console.log("table processing", incomingMessage, "state", state);
-        const codeBlock = getCodeBlocks(incomingMessage, "json")[0];
-        if (codeBlock) {
-            try {
-                const tables = jsonic(codeBlock);
-                state = { ...state, tables: (state.tables || []).concat(tables) };
-                return { messages, state, done: true };
-            } catch (e) { }
-        }
+        let codeBlock = getCodeBlocks(incomingMessage, "json")[0] ?? incomingMessage;
+        try {
+            const tables = jsonic(codeBlock);
+            state = { ...state, tables: (state.tables || []).concat(tables) };
+            return { messages, state, done: true };
+        } catch (e) { }
 
+        state.turns++
+        if (state.turns > 3) {
+            state.failed = true;
+            state.tables = []
+            return { messages, state, done: true };
+        }
         messages.push({
             role: "user",
             content: "You need to include a ```json block with your response. Containing an array of table names.",

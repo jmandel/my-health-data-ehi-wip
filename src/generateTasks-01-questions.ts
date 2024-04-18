@@ -6,7 +6,7 @@ const llmGpt4V = new OpenAIWrapper({
   cachePrefix: "cache_prefix",
   seed: "3",
   maxConcurrentRequests: 1,
-  maxRetries: 3,
+  maxTries: 3,
   defaultModel: "azure-gpt-4-turbo-v",
   baseUrl: "http://localhost:4000",
 });

@@ -45,7 +45,7 @@ export const store = storeUntyped as Store;
 const storeGlobal = store;
 
 export const fetchConfig = {
-  accumulateErrors: new Set<Error>(),
+  accumulateErrors: new Set<string>(),
   throwOnErrors: false,
 };
 
@@ -96,7 +96,7 @@ function fetchData(entity: any, property: string, store: Store): any {
       const propsTruncated = props.length > 15 ? props.join(",").slice(0, 200) + "..." : props.join(",");
 
       const error =  new Error(`Property '${property}' not found in entity of type '${entityType}'. Availble primitives include: ${propsTruncated}`);
-      fetchConfig.accumulateErrors.add(error);
+      fetchConfig.accumulateErrors.add(error.message);
       if (fetchConfig.throwOnErrors) {
         throw error
       }

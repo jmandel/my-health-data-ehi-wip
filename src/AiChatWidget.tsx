@@ -66,8 +66,8 @@ const AIChat: React.FC<AIChatProps> = ({ autoRespondSuggester, llm, defaultInput
         }
       }
 
-      } catch {
-        console.log("Failed, restting", messages);
+      } catch (e) {
+        console.log("Failed, restting", e, messages);
         setInputText(userMessage)
         setMessages(prevMessages => {
           console.log("Prev", prevMessages)

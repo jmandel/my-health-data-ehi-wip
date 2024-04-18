@@ -1,9 +1,10 @@
 
 
 import React, { useRef, useState, useContext, createContext, useEffect, useReducer, useCallback, useMemo } from 'react';
+import SplitPane from 'react-split-pane';
 import { store, storeIndex, db } from './client';
 import _ from "lodash"
-import { getTableList, llm } from './agent';
+import { getTableList, llm, llms } from './agent';
 import { expandTableSet, processTables, processTablesToString } from './sampleRows';
 import AIChat from './AiChatWidget';
 import {AIChat as  Chat2 } from './chat/chat'
@@ -175,7 +176,10 @@ const DataSelection: React.FC<{
   }
 
   return (
-    <div style={{ flexShrink: 0, width: expanded ? '750px' : '3in', marginRight: '.5em', maxHeight: '100vh', overflowY: 'scroll' }}>
+    <div 
+    // style={{ flexShrink: 0, width: expanded ? '750px' : '3in', marginRight: '.5em', maxHeight: '100vh', overflowY: 'scroll' }}
+    
+    >
       <h3>Data Tables</h3>
       <button onClick={toggleExpand}>{expanded ? '🪗' : '🪗'}</button>
       <button onClick={all}>∀</button>
@@ -235,7 +239,7 @@ const Table: React.FC<TableProps> = ({
   handleForeignKeyClick,
   handleChildTableClick,
 }) => {
-  console.log("Render table", tableName);
+  // console.log("Render table", tableName);
 
   if (!tableData || !tableSchema) return null;
   const childMaps = tableSchema.discoveredMappings?.filter((m) => m.type === 'has-child-table' && m.source === tableName) || [];
@@ -433,6 +437,7 @@ const EhiNavigator: React.FC = () => {
   }, [state]);
 
   const handleTableSelectionChange = (selectedTables: string[]) => {
+    console.log("New selection", selectedTables)
     dispatch({ type: 'SET_SELECTED_TABLES', payload: selectedTables });
   };
 
@@ -449,45 +454,56 @@ const EhiNavigator: React.FC = () => {
  
   const expandedTables = expandTableSet(store, state.selectedTables.filter(t => !!store.$meta.schemas[t]));
   console.log("ET", expandedTables)
+  const [useAi, setUseAi] = useState(false);
   return (
     <StoreContext.Provider value={store}>
       <DispatchContext.Provider value={dispatch}>
         <div style={{ display: 'flex', height: '100vh' , overflow: 'hidden', width: '100vw'}}>
+          {/* <button onClick={() => setUseAi(!useAi)} style={{zIndex: 10, right: '1em', top: '1em', position: 'absolute'}}>ai</button> */}
 
+
+        <SplitPane split="vertical" defaultSize={'3in'} minSize={100}>
           <DataSelection
             selectedTables={state.selectedTables}
-            onTableSelectionChange={handleTableSelectionChange}
-          />
-          {/* <div style={{flex: 2}} >
-            <Chat2 />
-          </div> */}
-          <div style={{ flex: 1, width: '20%', overflowY: 'hidden', overflowX: 'hidden' }}>
+            onTableSelectionChange={handleTableSelectionChange} />
+          <SplitPane split="vertical" defaultSize={'100%'}  minSize={100}>
             <DataViewer
               onEstablishNavPoint={onEstablishNavPoint}
               selectedTables={state.selectedTables}
               highlightedRows={state.highlightedRows}
             />
-          </div>
-          <div style={{flexBasis: '800px', maxWidth: '800px', flexGrow: 0, flexShrink: 0}}>
           <Chat2
           llm={llm}
+          llms={llms}
           defaultInputText={analyzePrompt}
           systemPromptGenerator={ systemPrompt }
           autoRespondSuggester={async (q) => {
             let blocks = getCodeBlocks(q.content || "", "js", "javascript");
             if (blocks.length) {
               const result = runCode(db, blocks[0])
-              const resultString = `${result.errors.size ? `#### Error\n\n${Array.from(result.errors).join("\n\n")}` : ''}\n${result.logs.length ? `#### Console output:\n\n${result.logs.join("\n\n")}` : ''}`.trim()
+              let resultString = `${result.errors.size ? `#### Error\n\n${Array.from(result.errors).join("\n\n")}` : ''}\n${result.logs.length ? `#### Console output:\n\n${result.logs.join("\n\n")}` : ''}`.trim()
               if (resultString) {
-                return {label: `${result.errors.size} errors, ${result.logs.length} log lines`, content: resultString}
+                return {label: `${result.errors.size} errors, ${result.logs.length} log lines`, content:  "I ran your code block in a clean session.\n" + resultString}
               } else  {
-                return {label: `No output`, content: `Your code generated no console output or errors. Please try again.`}
+                return {label: `No output`, content: `I tried to run your code but saw no output or errors. Please create a single \`\`\`js code block that performs the analysis so I can run it directly and show you the results.`}
               }
             }
           }}
           />
 
-        </div>
+
+          </SplitPane>
+        </SplitPane>
+
+          {/* <DataSelection
+            selectedTables={state.selectedTables}
+            onTableSelectionChange={handleTableSelectionChange}
+          />
+          
+          <div style={{ flex: 1, width: '20%', overflowY: 'hidden', overflowX: 'hidden' }}>
+          </div>
+          <div style={{flexBasis: '800px', maxWidth: useAi ? '800px' : '0px', flexGrow: 0, flexShrink: 0}}>
+        </div> */}
         </div>
         
       </DispatchContext.Provider>

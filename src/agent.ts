@@ -4,7 +4,6 @@ import tableExtractionGuide, {
 } from "./guides/TableExtraction.ts";
 import analyzeGuide, { AnalyzeState } from "./guides/DataAnalysis.ts";
 import { GuidedTask } from "./guides/GuidedTask.ts";
-import { chunk } from "./util";
 import developReactComponentGuide, {
   DevelopReactComponentState,
 } from "./guides/DevelopReactComponent.ts";
@@ -12,9 +11,9 @@ import developReactComponentGuide, {
 const llmGpt4V = new OpenAIWrapper({
   apiKey: "",
   cachePrefix: "cache_prefix",
-  seed: "3",
+  // seed: "3",
   maxConcurrentRequests: 1,
-  maxRetries: 3,
+  // maxRetries: 3,
   defaultModel: "azure-gpt-4-turbo-v",
   baseUrl: "http://localhost:4000",
 });
@@ -22,7 +21,7 @@ const llmGpt4V = new OpenAIWrapper({
 const llmSonnet = new OpenAIWrapper({
   apiKey: "",
   cachePrefix: "cache_prefix",
-  seed: "3",
+  // seed: "3",
   defaultModel: "claude-3-sonnet",
   baseUrl: "http://localhost:4000",
 });
@@ -30,22 +29,26 @@ const llmSonnet = new OpenAIWrapper({
 const llmHaiku = new OpenAIWrapper({
   apiKey: "",
   cachePrefix: "cache_prefix",
-  seed: "3",
+  // seed: null,
   defaultModel: "claude-3-haiku",
   baseUrl: "http://localhost:4000",
 });
 
 const llmMixtral22b = new OpenAIWrapper({
   cachePrefix: "cache_prefix",
-  seed: "3",
+  // seed: "4",
   defaultModel: "mixtral22b",
   baseUrl: "http://localhost:4000",
 });
 
 
-
-
 export const llm = llmSonnet;
+export const llms =  {
+  "gpt4v": llmGpt4V,
+  "sonnet": llmSonnet,
+  "haiku": llmHaiku,
+  "mixtral22b": llmMixtral22b,
+}
 
 export async function getTableList(userQuestion: string, llm: OpenAIWrapper) {
       const schemaExtractionTask = new GuidedTask<TableExtractionState>(

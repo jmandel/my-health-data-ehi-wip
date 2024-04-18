@@ -8,7 +8,6 @@ export function expandTableSet(store: Store, inputTables: string[]) {
       const pks = store.$meta.schemas[t].primaryKey.map((pk) => pk.columnName);
       for (const m of store.$meta.schemas[t].discoveredMappings || []) {
         if (m.type === "has-parent-table") {
-          console.log("Adding par", m, "to", t)
           expandedTables.push(m.target);
         }
       }
@@ -24,12 +23,12 @@ export function expandTableSet(store: Store, inputTables: string[]) {
       return [
         ...(schema.discoveredMappings || []),
         ...(schema.discoveredForeignKeys || []),
-      ].map((fk) => fk.target);
+      ].map((fk) => fk.target).filter(t => !expandedTables.includes(t));
     };
 
     let schemasToCheck = JSON.parse(JSON.stringify(expandedTables));
     while (schemasToCheck.length > 0) {
-      const currentTable = schemasToCheck.shift();
+      const currentTable = schemasToCheck.pop();
       const joinTargets = getJoinTargets(
         currentTable,
         Object.values(store.$meta.schemas)
@@ -51,6 +50,7 @@ export function expandTableSet(store: Store, inputTables: string[]) {
         }
       });
     }
+    // console.log("Expanded")
 
     return expandedTables;
   };
@@ -163,6 +163,7 @@ export function processTables(inputTables: string[], schema: Store, {sampleSize 
         ].slice(0, sampleSize);
       }
 
+      // console.log("SR", tableName, selectedRows.length)
       sampledRows[tableName] = selectedRows.map((o) =>
         _(o)
           .toPairs()
