@@ -37,15 +37,20 @@
             "description": "This column stores the inpatient data (INP) records on which the LDA has been documented."
           }
         ],
-        "discoveredForeignKeys": [
+        "discoveredMappings": [
           {
+            "type": "has-parent-table",
             "source": "IP_LDA_INPS_USED",
             "target": "IP_LDA_NOADDSINGLE",
-            "joinKey": {
-              "source": "IP_LDA_ID",
-              "target": "IP_LDA_ID"
-            }
-          },
+            "joinKeys": [
+              {
+                "source": "IP_LDA_ID",
+                "target": "IP_LDA_ID"
+              }
+            ]
+          }
+        ],
+        "discoveredForeignKeys": [
           {
             "source": "IP_LDA_INPS_USED",
             "target": "IP_DATA_STORE",

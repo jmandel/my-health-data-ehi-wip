@@ -1,0 +1,71 @@
+{
+  "$meta": {
+    "schemas": {
+      "CATARACT_PLANNING_INFO": {
+        "name": "CATARACT_PLANNING_INFO",
+        "description": "This table contains cataract surgery information about the status of the surgery.",
+        "primaryKey": [
+          {
+            "columnName": "SUMMARY_BLOCK_ID",
+            "ordinalPosition": 1
+          }
+        ],
+        "columns": [
+          {
+            "ordinalPosition": 1,
+            "name": "SUMMARY_BLOCK_ID",
+            "type": "NUMERIC",
+            "discontinued": false,
+            "description": "This column stores the unique identifier for the episode record."
+          }
+        ],
+        "merged": [
+          {
+            "name": "CATARACT_PLANNING_GOALS",
+            "description": "This table contains information about the goals for cataract surgery."
+          },
+          {
+            "name": "CARE_PATH",
+            "description": "Care Path information."
+          },
+          {
+            "name": "OCCURRENCE_CODES",
+            "description": "The EPISODE table contains high-level information on the episodes recorded in clinical system for your patients. When a provider sees a patient several times for an ongoing condition, such as prenatal care, these encounters can be linked to a single Episode of Care."
+          },
+          {
+            "name": "RAD_THERAPY_EPISODE_INFO",
+            "description": "This table stores information related to a radiation-therapy episode, such as the goal and treatment technique. This is a no-add table."
+          }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "CATARACT_PLANNING_INFO",
+            "target": "EPISODE",
+            "joinKey": {
+              "source": "SUMMARY_BLOCK_ID",
+              "target": "EPISODE_ID"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "CATARACT_PLANNING_INFO": [
+    {
+      "SUMMARY_BLOCK_ID": 200498750,
+      "$meta": {
+        "type": "CATARACT_PLANNING_INFO",
+        "mergedFrom": [
+          "CATARACT_PLANNING_GOALS",
+          "CARE_PATH",
+          "OCCURRENCE_CODES",
+          "RAD_THERAPY_EPISODE_INFO"
+        ]
+      },
+      "// mergedFrom CATARACT_PLANNING_GOALS": true,
+      "// mergedFrom CARE_PATH": true,
+      "// mergedFrom OCCURRENCE_CODES": true,
+      "// mergedFrom RAD_THERAPY_EPISODE_INFO": true
+    }
+  ]
+}

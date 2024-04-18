@@ -44,15 +44,20 @@
             "description": "This column stores the professional billing payment transactions posted onto this denial record."
           }
         ],
-        "discoveredForeignKeys": [
+        "discoveredMappings": [
           {
+            "type": "has-parent-table",
             "source": "HSP_BDC_RECV_TX",
             "target": "BDC_INFO",
-            "joinKey": {
-              "source": "BDC_ID",
-              "target": "BDC_ID"
-            }
-          },
+            "joinKeys": [
+              {
+                "source": "BDC_ID",
+                "target": "BDC_ID"
+              }
+            ]
+          }
+        ],
+        "discoveredForeignKeys": [
           {
             "source": "HSP_BDC_RECV_TX",
             "target": "ARPB_TRANSACTIONS",

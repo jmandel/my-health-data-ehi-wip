@@ -44,6 +44,19 @@
             "description": "Used for ABN checks.  A comma delimited list of  line numbers that associate this procedure to a diagnosis."
           }
         ],
+        "discoveredMappings": [
+          {
+            "type": "has-parent-table",
+            "source": "HSP_ADMIT_PROC",
+            "target": "PAT_ENC",
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ],
         "discoveredForeignKeys": [
           {
             "source": "HSP_ADMIT_PROC",
@@ -51,14 +64,6 @@
             "joinKey": {
               "source": "PROC_ID",
               "target": "PROC_ID"
-            }
-          },
-          {
-            "source": "HSP_ADMIT_PROC",
-            "target": "PAT_ENC",
-            "joinKey": {
-              "source": "PAT_ENC_CSN_ID",
-              "target": "PAT_ENC_CSN_ID"
             }
           }
         ]

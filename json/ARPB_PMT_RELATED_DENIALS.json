@@ -37,15 +37,20 @@
             "description": "Returns denial records associated with this payment for purposes of denial rate calculations. Denials with a 18-Duplicate Claim/Service remittance reason are not included in denial rate metrics. Only denials that have been converted to the Denial/Remark/Correspondence�framework are included here."
           }
         ],
-        "discoveredForeignKeys": [
+        "discoveredMappings": [
           {
+            "type": "has-parent-table",
             "source": "ARPB_PMT_RELATED_DENIALS",
             "target": "ARPB_TRANSACTIONS",
-            "joinKey": {
-              "source": "TX_ID",
-              "target": "TX_ID"
-            }
-          },
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              }
+            ]
+          }
+        ],
+        "discoveredForeignKeys": [
           {
             "source": "ARPB_PMT_RELATED_DENIALS",
             "target": "BDC_INFO",

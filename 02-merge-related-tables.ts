@@ -66,7 +66,8 @@ function buildMergeableSets(relationships: Relationship[]): { [key: string]: str
   }
 
   const ret = _.chain(mapping).values().uniq().map((set) => {
-    const members = _.sortBy(Array.from(set), [(m) => m.split("_").length, (m) => (""+m).length, identity]);
+    const memberToStartCount = _(Array.from(set)).groupBy((m) => m.split("_")[0]).flatMap((vs, _k) => vs.map(v => [v, vs.length])).fromPairs().value();
+    const members = _.sortBy(Array.from(set), [(m) => -memberToStartCount[m], (m) => m.split("_").length, (m) => (""+m).length, identity]);
     return [members[0], members.slice(1)];
   }).filter(([_k, v]) => v.length > 0).fromPairs().value();
 
@@ -214,7 +215,7 @@ function findChildTableRelationships(
 
   for (const tableA of Object.keys(schemas)) {
     for (const tableB of Object.keys(schemas)) {
-      if ((nameSegmentPrefixes(tableA, tableB) || tables[tableB].length > 1) && isValidPrefixRelationship(tables, schemas, tableA, tableB, fudgeFactor)) {
+      if ((true || nameSegmentPrefixes(tableA, tableB) || tables[tableB].length > 1) && isValidPrefixRelationship(tables, schemas, tableA, tableB, fudgeFactor)) {
         const joinKeys = schemas[tableA].primaryKey.map((pkA, i) => ({
           source: pkA.columnName,
           target: schemas[tableB].primaryKey[i].columnName,
@@ -277,6 +278,7 @@ function isValidPrefixRelationship(
   const pkA = schemas[tableA].primaryKey.map((pk) => pk.columnName);
   const pkB = schemas[tableB].primaryKey.map((pk) => pk.columnName);
 
+  // console.log("IPR", tableA, tableB, pkA, pkB)
   if (pkA.length >= pkB.length) {
     return false;
   }
@@ -321,7 +323,7 @@ function findForeignKeyRelationships(
 
   for (const tableA of Object.keys(schemas)) {
     for (const columnA of schemas[tableA].columns) {
-      if (columnA.name.match(/(_ID|_GUID|_PTR|_USER|_SOURCE|_LOC)$/)) {
+      if (columnA.name.match(/(_ID|_GUID|_PTR|_USER|_SOURCE|_LOC|HX)$/)) {
         if (schemas[tableA].discoveredMappings?.some((m) => m.type === "has-parent-table" && m.joinKeys.some((k) => k.source === columnA.name))) {
           continue;
         }
@@ -331,11 +333,15 @@ function findForeignKeyRelationships(
             continue;
           }
           if (schemas[tableB].primaryKey.length === 1) {
-            const pkB = schemas[tableB].primaryKey[0].columnName;
-            const valuesA = new Set(tables[tableA].map((row) => row[columnA.name]));
+           const pkB = schemas[tableB].primaryKey[0].columnName;
+            const valuesA = new Set(tables[tableA].map((row) => row[columnA.name]).filter(identity));
             const valuesB = new Set(tables[tableB].map((row) => row[pkB]));
 
             const concordance = [...valuesA].filter((v) => valuesB.has(v)).length / valuesA.size;
+            // if (tableA === "PROB_LIST_REV_HX" && columnA.name === "PROB_LIST_REV_CSNHX" && tableB === "PAT_ENC") {
+            //   console.log("problem list hx", concordance, [...valuesA].filter(identity))
+            // }
+ 
             if (concordance >= 1 - fudgeFactor) {
               relationships.push({
                 source: tableA,
@@ -376,22 +382,31 @@ function findForeignKeyRelationships(
 
 
 function pickBestParent(table: string, parentRelationships: Relationship[], mergedSchemas: SchemasMap): Relationship | null {
+
   const parentTables = parentRelationships
     .filter((r) => r.target === table)
     .map((r) => r.source);
+
+  // if (table === "HNO_PLAIN_TEXT")
+  // console.log("PPP table", table, "parentRelationships", parentTables)
 
   if (parentTables.length < 1) {
     return null;
   }
 
-  const bestParent = parentTables.reduce((best, current) => {
-    const bestSegments = best.split("_").length;
-    const currentSegments = current.split("_").length;
-    return currentSegments < bestSegments ? current : 
-    commonPrefixLength(current, table) > commonPrefixLength(best, table) ? current : best;
-  });
+  const preferredParents = ["ORDER_PROC"]
 
-  console.error("BP", bestParent, table)
+  const orderedParents = _(parentTables).sortBy(
+    t => preferredParents.includes(t) ? 0 : 1,
+    // prefer the parent to be one shorter, rather than 2+ shorter...
+    t => mergedSchemas[table].primaryKey.length - mergedSchemas[t].primaryKey.length,
+    t => t.split("_").length,
+    t => -1 * commonPrefixLength(t, table)
+  ).value();
+
+  const bestParent = orderedParents[0];
+  if (parentTables.length > 1)
+  console.error("Best Parent for ", table, " *by heuristic* is", bestParent, parentTables)
   return parentRelationships.find((r) => r.source === bestParent && r.target === table) || null;
 }
 
@@ -455,6 +470,11 @@ async function main() {
       mergedSchemas[fk.source].discoveredForeignKeys = mergedSchemas[fk.source].discoveredForeignKeys || [];
       mergedSchemas[fk.source].discoveredForeignKeys!.push(fk);
     }
+
+    Object.entries(mergedSchemas).forEach(([tableName, schema]) => {
+      mergedTables[tableName] = _.sortBy(mergedTables[tableName], ...schema.primaryKey.map((pk) => r => r[pk.columnName] ));
+      // console.log("T", tableName, mergedTables[tableName].length, mergedTables[tableName].slice(0, 3))
+    })
 
     console.log(JSON.stringify({
       $meta: { schemas: mergedSchemas },

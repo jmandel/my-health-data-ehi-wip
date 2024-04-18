@@ -986,6 +986,66 @@
         ],
         "discoveredMappings": [
           {
+            "type": "has-child-table",
+            "source": "MED_CVG_ESTIMATE_VALS",
+            "target": "MED_CVG_ALTERNATIVES",
+            "joinKeys": [
+              {
+                "source": "MED_ESTIMATE_ID",
+                "target": "MED_ESTIMATE_ID"
+              },
+              {
+                "source": "CONTACT_DATE_REAL",
+                "target": "CONTACT_DATE_REAL"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "MED_CVG_ESTIMATE_VALS",
+            "target": "MED_CVG_DETAILS",
+            "joinKeys": [
+              {
+                "source": "MED_ESTIMATE_ID",
+                "target": "MED_ESTIMATE_ID"
+              },
+              {
+                "source": "CONTACT_DATE_REAL",
+                "target": "CONTACT_DATE_REAL"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "MED_CVG_ESTIMATE_VALS",
+            "target": "MED_CVG_RESP_RSLT_DETAIL",
+            "joinKeys": [
+              {
+                "source": "MED_ESTIMATE_ID",
+                "target": "MED_ESTIMATE_ID"
+              },
+              {
+                "source": "CONTACT_DATE_REAL",
+                "target": "CONTACT_DATE_REAL"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "MED_CVG_ESTIMATE_VALS",
+            "target": "MED_CVG_USERACTION",
+            "joinKeys": [
+              {
+                "source": "MED_ESTIMATE_ID",
+                "target": "MED_ESTIMATE_ID"
+              },
+              {
+                "source": "CONTACT_DATE_REAL",
+                "target": "CONTACT_DATE_REAL"
+              }
+            ]
+          },
+          {
             "type": "has-parent-table",
             "source": "MED_CVG_ESTIMATE_VALS",
             "target": "MED_CVG_INFO",
@@ -995,6 +1055,32 @@
                 "target": "MED_ESTIMATE_ID"
               }
             ]
+          }
+        ],
+        "discoveredForeignKeys": [
+          {
+            "source": "MED_CVG_ESTIMATE_VALS",
+            "target": "CLARITY_MEDICATION",
+            "joinKey": {
+              "source": "EST_ERX_ID",
+              "target": "MEDICATION_ID"
+            }
+          },
+          {
+            "source": "MED_CVG_ESTIMATE_VALS",
+            "target": "CLARITY_SER",
+            "joinKey": {
+              "source": "EST_AUTH_PROV_ID",
+              "target": "PROV_ID"
+            }
+          },
+          {
+            "source": "MED_CVG_ESTIMATE_VALS",
+            "target": "RX_PHR",
+            "joinKey": {
+              "source": "EST_PHARM_ID",
+              "target": "PHARMACY_ID"
+            }
           }
         ]
       }

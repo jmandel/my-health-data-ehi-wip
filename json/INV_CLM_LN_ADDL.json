@@ -310,15 +310,69 @@
                 "target": "INVOICE_ID"
               }
             ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "INV_CLM_LN_ADDL",
+            "target": "INV_NUM_TX_PIECES",
+            "joinKeys": [
+              {
+                "source": "INVOICE_ID",
+                "target": "INV_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "LINE"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "INV_CLM_LN_ADDL",
+            "target": "INV_TX_PIECES",
+            "joinKeys": [
+              {
+                "source": "INVOICE_ID",
+                "target": "INV_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "LINE"
+              }
+            ]
           }
         ],
         "discoveredForeignKeys": [
+          {
+            "source": "INV_CLM_LN_ADDL",
+            "target": "CLARITY_RMC",
+            "joinKey": {
+              "source": "REMIT_CODE_ID",
+              "target": "REMIT_CODE_ID"
+            }
+          },
           {
             "source": "INV_CLM_LN_ADDL",
             "target": "CLARITY_EAP",
             "joinKey": {
               "source": "PROC_ID",
               "target": "PROC_ID"
+            }
+          },
+          {
+            "source": "INV_CLM_LN_ADDL",
+            "target": "CLARITY_RMC",
+            "joinKey": {
+              "source": "REMITTANCE_RMC1_ID",
+              "target": "REMIT_CODE_ID"
+            }
+          },
+          {
+            "source": "INV_CLM_LN_ADDL",
+            "target": "CLARITY_RMC",
+            "joinKey": {
+              "source": "REMITTANCE_RMC2_ID",
+              "target": "REMIT_CODE_ID"
             }
           }
         ]

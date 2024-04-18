@@ -51,15 +51,20 @@
             "description": "Unique number associated with each additional E/M code. The number is only unique within the contact."
           }
         ],
-        "discoveredForeignKeys": [
+        "discoveredMappings": [
           {
+            "type": "has-parent-table",
             "source": "ADDITIONAL_EM_CODE",
             "target": "PAT_ENC",
-            "joinKey": {
-              "source": "PAT_ENC_CSN_ID",
-              "target": "PAT_ENC_CSN_ID"
-            }
-          },
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ],
+        "discoveredForeignKeys": [
           {
             "source": "ADDITIONAL_EM_CODE",
             "target": "CLARITY_EAP",

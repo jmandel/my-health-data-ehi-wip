@@ -38,15 +38,20 @@
             "description": "This column stores the Line/Drain/Airway (LDA) IDs of all of the LDAs attached to this patient across all their encounters."
           }
         ],
-        "discoveredForeignKeys": [
+        "discoveredMappings": [
           {
+            "type": "has-parent-table",
             "source": "LINES_DRAINS_LIST",
             "target": "PATIENT",
-            "joinKey": {
-              "source": "PAT_ID",
-              "target": "PAT_ID"
-            }
-          },
+            "joinKeys": [
+              {
+                "source": "PAT_ID",
+                "target": "PAT_ID"
+              }
+            ]
+          }
+        ],
+        "discoveredForeignKeys": [
           {
             "source": "LINES_DRAINS_LIST",
             "target": "IP_LDA_NOADDSINGLE",

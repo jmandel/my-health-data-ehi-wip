@@ -51,15 +51,20 @@
             "description": "CAUTION: This item stores data that must be kept in sync with Order item 52269 - Finalizing Instant UTC, Bucketed. *This means you should never set this item without setting I ORD 52269 This item captures the date and time in the Universal Time Coordinated (UTC) format that the provider listed in the Finalizing Physician (I ORD 52265) item marked the study as Final."
           }
         ],
-        "discoveredForeignKeys": [
+        "discoveredMappings": [
           {
+            "type": "has-parent-table",
             "source": "FINALIZE_PHYSICIAN",
             "target": "ORDER_PROC",
-            "joinKey": {
-              "source": "ORDER_ID",
-              "target": "ORDER_PROC_ID"
-            }
-          },
+            "joinKeys": [
+              {
+                "source": "ORDER_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          }
+        ],
+        "discoveredForeignKeys": [
           {
             "source": "FINALIZE_PHYSICIAN",
             "target": "CLARITY_SER",

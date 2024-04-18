@@ -1283,6 +1283,17 @@
           {
             "type": "has-child-table",
             "source": "ARPB_TRANSACTIONS",
+            "target": "ARPB_PMT_RELATED_DENIALS",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ARPB_TRANSACTIONS",
             "target": "ARPB_TX_ACTIONS",
             "joinKeys": [
               {
@@ -1378,6 +1389,17 @@
                 "target": "TX_ID"
               }
             ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ARPB_TRANSACTIONS",
+            "target": "TX_NDC_INFORMATION",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              }
+            ]
           }
         ],
         "discoveredForeignKeys": [
@@ -1391,10 +1413,34 @@
           },
           {
             "source": "ARPB_TRANSACTIONS",
+            "target": "CLARITY_SER",
+            "joinKey": {
+              "source": "SERV_PROVIDER_ID",
+              "target": "PROV_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "CLARITY_SER",
+            "joinKey": {
+              "source": "BILLING_PROV_ID",
+              "target": "PROV_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
             "target": "CLARITY_DEP",
             "joinKey": {
               "source": "DEPARTMENT_ID",
               "target": "DEPARTMENT_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "CLARITY_LOC",
+            "joinKey": {
+              "source": "POS_ID",
+              "target": "LOC_ID"
             }
           },
           {
@@ -1415,10 +1461,82 @@
           },
           {
             "source": "ARPB_TRANSACTIONS",
+            "target": "CLARITY_EDG",
+            "joinKey": {
+              "source": "PRIMARY_DX_ID",
+              "target": "DX_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "CLARITY_EDG",
+            "joinKey": {
+              "source": "DX_TWO_ID",
+              "target": "DX_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "CLARITY_EDG",
+            "joinKey": {
+              "source": "DX_THREE_ID",
+              "target": "DX_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "CLARITY_EDG",
+            "joinKey": {
+              "source": "DX_FOUR_ID",
+              "target": "DX_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
             "target": "CLARITY_EAP",
             "joinKey": {
               "source": "PROC_ID",
               "target": "PROC_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "ARPB_TX_VOID",
+            "joinKey": {
+              "source": "REPOST_ETR_ID",
+              "target": "TX_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "CLARITY_EPM",
+            "joinKey": {
+              "source": "ORIGINAL_EPM_ID",
+              "target": "PAYOR_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "COVERAGE",
+            "joinKey": {
+              "source": "ORIGINAL_CVG_ID",
+              "target": "COVERAGE_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "CLARITY_EPM",
+            "joinKey": {
+              "source": "PAYOR_ID",
+              "target": "PAYOR_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "COVERAGE",
+            "joinKey": {
+              "source": "COVERAGE_ID",
+              "target": "COVERAGE_ID"
             }
           },
           {
@@ -1439,10 +1557,26 @@
           },
           {
             "source": "ARPB_TRANSACTIONS",
+            "target": "CLARITY_IMMUNZATN",
+            "joinKey": {
+              "source": "BILL_AREA_ID",
+              "target": "IMMUNZATN_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
             "target": "INVOICE",
             "joinKey": {
               "source": "IPP_INV_ID",
               "target": "INVOICE_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "CLARITY_EPP",
+            "joinKey": {
+              "source": "CVG_PLAN_ON_PMT_ID",
+              "target": "BENEFIT_PLAN_ID"
             }
           },
           {
@@ -1459,6 +1593,38 @@
             "joinKey": {
               "source": "HOSP_ACCT_ID",
               "target": "PB_VISIT_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "APPT_REQUEST",
+            "joinKey": {
+              "source": "ORDER_ID",
+              "target": "REQUEST_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "CLARITY_SER",
+            "joinKey": {
+              "source": "REFERRAL_PROV_ID",
+              "target": "PROV_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "CLARITY_EPP",
+            "joinKey": {
+              "source": "COVERAGE_PLAN_ID",
+              "target": "BENEFIT_PLAN_ID"
+            }
+          },
+          {
+            "source": "ARPB_TRANSACTIONS",
+            "target": "CLAIM_INFO",
+            "joinKey": {
+              "source": "CLAIM_ID",
+              "target": "CLAIM_ID"
             }
           }
         ]

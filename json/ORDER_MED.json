@@ -3074,6 +3074,39 @@
           {
             "type": "has-child-table",
             "source": "ORDER_MED",
+            "target": "ORD_MED_ADMININSTR",
+            "joinKeys": [
+              {
+                "source": "ORDER_MED_ID",
+                "target": "ORDER_MED_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_MED",
+            "target": "ORD_MED_USER_ADMIN",
+            "joinKeys": [
+              {
+                "source": "ORDER_MED_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_MED",
+            "target": "PRESC_ID",
+            "joinKeys": [
+              {
+                "source": "ORDER_MED_ID",
+                "target": "ORDER_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ORDER_MED",
             "target": "ORDER_DISP_INFO",
             "joinKeys": [
               {
@@ -3142,6 +3175,38 @@
           },
           {
             "source": "ORDER_MED",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "DISCON_USER_ID",
+              "target": "USER_ID"
+            }
+          },
+          {
+            "source": "ORDER_MED",
+            "target": "ORD_PRFLST_TRK",
+            "joinKey": {
+              "source": "CHNG_ORDER_MED_ID",
+              "target": "ORDER_ID"
+            }
+          },
+          {
+            "source": "ORDER_MED",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "PEND_APPR_USER_ID",
+              "target": "USER_ID"
+            }
+          },
+          {
+            "source": "ORDER_MED",
+            "target": "IP_FREQUENCY",
+            "joinKey": {
+              "source": "HV_DISCR_FREQ_ID",
+              "target": "FREQ_ID"
+            }
+          },
+          {
+            "source": "ORDER_MED",
             "target": "CLARITY_SER",
             "joinKey": {
               "source": "AUTHRZING_PROV_ID",
@@ -3158,10 +3223,26 @@
           },
           {
             "source": "ORDER_MED",
+            "target": "CLARITY_MEDICATION",
+            "joinKey": {
+              "source": "USER_SEL_MED_ID",
+              "target": "MEDICATION_ID"
+            }
+          },
+          {
+            "source": "ORDER_MED",
             "target": "MDL_MD_PRBLM_LIST",
             "joinKey": {
               "source": "MDL_ID",
               "target": "MED_PRBLM_LIST_ID"
+            }
+          },
+          {
+            "source": "ORDER_MED",
+            "target": "CLARITY_SER",
+            "joinKey": {
+              "source": "MED_REFILL_PROV_ID",
+              "target": "PROV_ID"
             }
           },
           {
@@ -3194,6 +3275,38 @@
             "joinKey": {
               "source": "ORDER_ID",
               "target": "ORDER_ID"
+            }
+          },
+          {
+            "source": "ORDER_MED",
+            "target": "CLARITY_MEDICATION",
+            "joinKey": {
+              "source": "ORIG_MED_ID",
+              "target": "MEDICATION_ID"
+            }
+          },
+          {
+            "source": "ORDER_MED",
+            "target": "CLARITY_SER",
+            "joinKey": {
+              "source": "ORIG_RX_PRE_PROV_ID",
+              "target": "PROV_ID"
+            }
+          },
+          {
+            "source": "ORDER_MED",
+            "target": "RX_PHR",
+            "joinKey": {
+              "source": "ORIG_RX_PHRM_ID",
+              "target": "PHARMACY_ID"
+            }
+          },
+          {
+            "source": "ORDER_MED",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "SIG_REVIEW_USER_ID",
+              "target": "USER_ID"
             }
           }
         ]

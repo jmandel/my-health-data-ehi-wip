@@ -44,15 +44,20 @@
             "description": "The unique identifier of the result (ORD) that was followed up on during this encounter."
           }
         ],
-        "discoveredForeignKeys": [
+        "discoveredMappings": [
           {
+            "type": "has-parent-table",
             "source": "RESULT_FOLLOW_UP",
             "target": "PAT_ENC",
-            "joinKey": {
-              "source": "PAT_ENC_CSN_ID",
-              "target": "PAT_ENC_CSN_ID"
-            }
-          },
+            "joinKeys": [
+              {
+                "source": "PAT_ENC_CSN_ID",
+                "target": "PAT_ENC_CSN_ID"
+              }
+            ]
+          }
+        ],
+        "discoveredForeignKeys": [
           {
             "source": "RESULT_FOLLOW_UP",
             "target": "ORDER_PROC",

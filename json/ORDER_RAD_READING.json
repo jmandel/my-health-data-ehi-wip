@@ -44,15 +44,20 @@
             "description": "The date and time in UTC format when the reading physician made a change to the study."
           }
         ],
-        "discoveredForeignKeys": [
+        "discoveredMappings": [
           {
+            "type": "has-parent-table",
             "source": "ORDER_RAD_READING",
             "target": "ORDER_PROC",
-            "joinKey": {
-              "source": "ORDER_PROC_ID",
-              "target": "ORDER_PROC_ID"
-            }
-          },
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          }
+        ],
+        "discoveredForeignKeys": [
           {
             "source": "ORDER_RAD_READING",
             "target": "CLARITY_SER",

@@ -44,15 +44,20 @@
             "description": "The date and time that an imaging order is signed by a physician/radiologist, and is stored in the Universal Time Coordinated (UTC) format."
           }
         ],
-        "discoveredForeignKeys": [
+        "discoveredMappings": [
           {
+            "type": "has-parent-table",
             "source": "RIS_SGND_INFO",
             "target": "ORDER_PROC",
-            "joinKey": {
-              "source": "ORDER_PROC_ID",
-              "target": "ORDER_PROC_ID"
-            }
-          },
+            "joinKeys": [
+              {
+                "source": "ORDER_PROC_ID",
+                "target": "ORDER_PROC_ID"
+              }
+            ]
+          }
+        ],
+        "discoveredForeignKeys": [
           {
             "source": "RIS_SGND_INFO",
             "target": "REFERRAL_SOURCE",

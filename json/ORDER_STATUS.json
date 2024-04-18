@@ -299,81 +299,6 @@
         ],
         "discoveredMappings": [
           {
-            "type": "has-child-table",
-            "source": "ORDER_STATUS",
-            "target": "OBS_MTHD_ID",
-            "joinKeys": [
-              {
-                "source": "ORDER_ID",
-                "target": "ORDER_ID"
-              },
-              {
-                "source": "ORD_DATE_REAL",
-                "target": "CONTACT_DATE_REAL"
-              }
-            ]
-          },
-          {
-            "type": "has-child-table",
-            "source": "ORDER_STATUS",
-            "target": "ORDER_IMPRESSION",
-            "joinKeys": [
-              {
-                "source": "ORDER_ID",
-                "target": "ORDER_PROC_ID"
-              },
-              {
-                "source": "ORD_DATE_REAL",
-                "target": "ORD_DATE_REAL"
-              }
-            ]
-          },
-          {
-            "type": "has-child-table",
-            "source": "ORDER_STATUS",
-            "target": "ORDER_NARRATIVE",
-            "joinKeys": [
-              {
-                "source": "ORDER_ID",
-                "target": "ORDER_PROC_ID"
-              },
-              {
-                "source": "ORD_DATE_REAL",
-                "target": "ORD_DATE_REAL"
-              }
-            ]
-          },
-          {
-            "type": "has-child-table",
-            "source": "ORDER_STATUS",
-            "target": "ORDER_READ_ACK",
-            "joinKeys": [
-              {
-                "source": "ORDER_ID",
-                "target": "ORDER_ID"
-              },
-              {
-                "source": "ORD_DATE_REAL",
-                "target": "CONTACT_DATE_REAL"
-              }
-            ]
-          },
-          {
-            "type": "has-child-table",
-            "source": "ORDER_STATUS",
-            "target": "ORDER_RESULTS",
-            "joinKeys": [
-              {
-                "source": "ORDER_ID",
-                "target": "ORDER_PROC_ID"
-              },
-              {
-                "source": "ORD_DATE_REAL",
-                "target": "ORD_DATE_REAL"
-              }
-            ]
-          },
-          {
             "type": "has-parent-table",
             "source": "ORDER_STATUS",
             "target": "ORD_PRFLST_TRK",
@@ -391,6 +316,30 @@
             "target": "CLARITY_EMP",
             "joinKey": {
               "source": "ORDER_CREATOR_ID",
+              "target": "USER_ID"
+            }
+          },
+          {
+            "source": "ORDER_STATUS",
+            "target": "CLARITY_LLB",
+            "joinKey": {
+              "source": "RESULTING_LAB_ID",
+              "target": "RESULTING_LAB_ID"
+            }
+          },
+          {
+            "source": "ORDER_STATUS",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "ROUTING_USER_ID",
+              "target": "USER_ID"
+            }
+          },
+          {
+            "source": "ORDER_STATUS",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "RSLT_CNCT_USER_ID",
               "target": "USER_ID"
             }
           }

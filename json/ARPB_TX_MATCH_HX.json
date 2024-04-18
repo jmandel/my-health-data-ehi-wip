@@ -160,6 +160,21 @@
                 "target": "TX_ID"
               }
             ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "ARPB_TX_MATCH_HX",
+            "target": "SVC_PMT_HISTORY",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              },
+              {
+                "source": "LINE",
+                "target": "GROUP_LINE"
+              }
+            ]
           }
         ],
         "discoveredForeignKeys": [
@@ -173,10 +188,34 @@
           },
           {
             "source": "ARPB_TX_MATCH_HX",
+            "target": "COVERAGE",
+            "joinKey": {
+              "source": "MTCH_TX_HX_D_CVG_ID",
+              "target": "COVERAGE_ID"
+            }
+          },
+          {
+            "source": "ARPB_TX_MATCH_HX",
             "target": "CLARITY_EMP",
             "joinKey": {
               "source": "MTCH_TX_HX_DSUSR_ID",
               "target": "USER_ID"
+            }
+          },
+          {
+            "source": "ARPB_TX_MATCH_HX",
+            "target": "CLARITY_EMP",
+            "joinKey": {
+              "source": "MTCH_TX_HX_UDUSR_ID",
+              "target": "USER_ID"
+            }
+          },
+          {
+            "source": "ARPB_TX_MATCH_HX",
+            "target": "COVERAGE",
+            "joinKey": {
+              "source": "MTCH_TX_HX_UN_CV_ID",
+              "target": "COVERAGE_ID"
             }
           }
         ]

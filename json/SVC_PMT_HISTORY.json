@@ -87,14 +87,21 @@
             ]
           }
         ],
-        "discoveredForeignKeys": [
+        "discoveredMappings": [
           {
+            "type": "has-parent-table",
             "source": "SVC_PMT_HISTORY",
-            "target": "ARPB_TRANSACTIONS",
-            "joinKey": {
-              "source": "TX_ID",
-              "target": "TX_ID"
-            }
+            "target": "ARPB_TX_MATCH_HX",
+            "joinKeys": [
+              {
+                "source": "TX_ID",
+                "target": "TX_ID"
+              },
+              {
+                "source": "GROUP_LINE",
+                "target": "LINE"
+              }
+            ]
           }
         ]
       }

@@ -298,55 +298,13 @@
         ],
         "discoveredMappings": [
           {
-            "type": "has-child-table",
-            "source": "ORDER_RESULTS",
-            "target": "ORDER_RES_COMMENT",
-            "joinKeys": [
-              {
-                "source": "ORDER_PROC_ID",
-                "target": "ORDER_ID"
-              },
-              {
-                "source": "ORD_DATE_REAL",
-                "target": "CONTACT_DATE_REAL"
-              },
-              {
-                "source": "LINE",
-                "target": "LINE"
-              }
-            ]
-          },
-          {
             "type": "has-parent-table",
             "source": "ORDER_RESULTS",
-            "target": "ORDER_STATUS",
+            "target": "ORDER_PROC",
             "joinKeys": [
               {
                 "source": "ORDER_PROC_ID",
-                "target": "ORDER_ID"
-              },
-              {
-                "source": "ORD_DATE_REAL",
-                "target": "ORD_DATE_REAL"
-              }
-            ]
-          },
-          {
-            "type": "has-child-table",
-            "source": "ORDER_RESULTS",
-            "target": "ORD_RSLT_COMPON_ID",
-            "joinKeys": [
-              {
-                "source": "ORDER_PROC_ID",
-                "target": "ORDER_ID"
-              },
-              {
-                "source": "ORD_DATE_REAL",
-                "target": "CONTACT_DATE_REAL"
-              },
-              {
-                "source": "LINE",
-                "target": "GROUP_LINE"
+                "target": "ORDER_PROC_ID"
               }
             ]
           }
@@ -366,6 +324,14 @@
             "joinKey": {
               "source": "PAT_ENC_CSN_ID",
               "target": "PAT_ENC_CSN_ID"
+            }
+          },
+          {
+            "source": "ORDER_RESULTS",
+            "target": "CLARITY_LLB",
+            "joinKey": {
+              "source": "RESULTING_LAB_ID",
+              "target": "RESULTING_LAB_ID"
             }
           },
           {

@@ -495,6 +495,17 @@
           {
             "type": "has-child-table",
             "source": "HSP_CLAIM_DETAIL1",
+            "target": "CLP_VALUE_DATA",
+            "joinKeys": [
+              {
+                "source": "CLAIM_PRINT_ID",
+                "target": "CLAIM_PRINT_ID"
+              }
+            ]
+          },
+          {
+            "type": "has-child-table",
+            "source": "HSP_CLAIM_DETAIL1",
             "target": "HSP_CLAIM_PRINT",
             "joinKeys": [
               {
@@ -506,29 +517,7 @@
           {
             "type": "has-child-table",
             "source": "HSP_CLAIM_DETAIL1",
-            "target": "HSP_CLP_CMS_TX_PIECES",
-            "joinKeys": [
-              {
-                "source": "CLAIM_PRINT_ID",
-                "target": "CLAIM_PRINT_ID"
-              }
-            ]
-          },
-          {
-            "type": "has-child-table",
-            "source": "HSP_CLAIM_DETAIL1",
             "target": "HSP_CLP_DIAGNOSIS",
-            "joinKeys": [
-              {
-                "source": "CLAIM_PRINT_ID",
-                "target": "CLAIM_PRINT_ID"
-              }
-            ]
-          },
-          {
-            "type": "has-child-table",
-            "source": "HSP_CLAIM_DETAIL1",
-            "target": "HSP_CLP_UB_TX_PIECES",
             "joinKeys": [
               {
                 "source": "CLAIM_PRINT_ID",
@@ -595,6 +584,14 @@
             "joinKey": {
               "source": "HOSPITAL_ACCT_ID",
               "target": "HSP_ACCOUNT_ID"
+            }
+          },
+          {
+            "source": "HSP_CLAIM_DETAIL1",
+            "target": "CLARITY_SER",
+            "joinKey": {
+              "source": "SG_PROV_ID",
+              "target": "PROV_ID"
             }
           },
           {
