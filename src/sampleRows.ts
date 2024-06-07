@@ -2,17 +2,22 @@ import _  from 'lodash';
 import { generateInterfaces } from "./codegen";
 import client, {Store} from './client';
 
-export function expandTableSet(store: Store, inputTables: string[]) {
+interface ExpandTablesPolicy {
+  parents: boolean, children: boolean, foreign: "pk" | "all", relatedTables: "heuristic" | "none"
+}
+export function expandTableSet(store: Store, inputTables: string[], expandTablesPolicy: ExpandTablesPolicy = {parents: true, children: false, foreign: "pk", relatedTables: "heuristic"},): string[] {
     let expandedTables = [...inputTables];
     for (const t of inputTables) {
       const pks = store.$meta.schemas[t].primaryKey.map((pk) => pk.columnName);
       for (const m of store.$meta.schemas[t].discoveredMappings || []) {
         if (m.type === "has-parent-table") {
-          expandedTables.push(m.target);
+          if (expandTablesPolicy?.parents) {
+            expandedTables.push(m.target);
+          }
         }
       }
       for (const f of store.$meta.schemas[t].discoveredForeignKeys || []) {
-        if (pks.includes(f.joinKey.source)) {
+        if (pks.includes(f.joinKey.source) && expandTablesPolicy?.foreign === "pk" || expandTablesPolicy?.foreign === "all") {
           expandedTables.push(f.target);
         }
       }
@@ -27,28 +32,31 @@ export function expandTableSet(store: Store, inputTables: string[]) {
     };
 
     let schemasToCheck = JSON.parse(JSON.stringify(expandedTables));
-    while (schemasToCheck.length > 0) {
-      const currentTable = schemasToCheck.pop();
-      const joinTargets = getJoinTargets(
-        currentTable,
-        Object.values(store.$meta.schemas)
-      );
-      joinTargets.forEach((target) => {
-      const numInputTablesUsing = inputTables.filter((t) =>
-            getJoinTargets(t, Object.values(store.$meta.schemas)).includes(
-              target
-            )
-          ).length;
 
-        if (
-          !expandedTables.includes(target) &&
-          numInputTablesUsing >= Math.max(inputTables.length / 2.0, 2)
-          || (numInputTablesUsing > 0 && store.$meta.schemas[target].columns.length < 5)
-        ) {
-          expandedTables.push(target);
-          schemasToCheck.push(target);
-        }
-      });
+    if (expandTablesPolicy.relatedTables === "heuristic") {
+      while (schemasToCheck.length > 0) {
+        const currentTable = schemasToCheck.pop();
+        const joinTargets = getJoinTargets(
+          currentTable,
+          Object.values(store.$meta.schemas)
+        );
+        joinTargets.forEach((target) => {
+        const numInputTablesUsing = inputTables.filter((t) =>
+              getJoinTargets(t, Object.values(store.$meta.schemas)).includes(
+                target
+              )
+            ).length;
+
+          if (
+            !expandedTables.includes(target) &&
+            numInputTablesUsing >= Math.max(inputTables.length / 2.0, 2)
+            || (numInputTablesUsing > 0 && store.$meta.schemas[target].columns.length < 5)
+          ) {
+            expandedTables.push(target);
+            schemasToCheck.push(target);
+          }
+        });
+      }
     }
     // console.log("Expanded")
 
@@ -56,7 +64,7 @@ export function expandTableSet(store: Store, inputTables: string[]) {
   };
 
 
-export function processTables(inputTables: string[], schema: Store, {sampleSize = 5, includeAllForeignKeys = false} = {}) {
+export function processTables(inputTables: string[], schema: Store, {sampleSize = 5, includeAllForeignKeys = false, expandTables = true, expandTablesPolicy = {parents: true, children: false, foreign: "heuristic"}} = {}) {
   inputTables = inputTables.filter(t => schema.$meta.schemas[t]);
 
   const MAX_COLS_BY_DEFAULT = 20;
@@ -90,21 +98,13 @@ export function processTables(inputTables: string[], schema: Store, {sampleSize 
       columns: simplifiedColumns,
       discoveredMappings: schema.discoveredMappings
         ? schema.discoveredMappings.filter((k) =>
-            k.joinKeys.length === 1 || expandedTables.includes(k.target)
+            includeAllForeignKeys || expandedTables.includes(k.target)
           )
         : undefined,
       discoveredForeignKeys: schema.discoveredForeignKeys
         ? schema.discoveredForeignKeys
-            .map((fk) => ({
-              ...fk,
-              joinKey: {
-                source: fk.joinKey.source,
-                target: fk.joinKey.target,
-              },
-            }))
             .filter(
-              (k) => includeAllForeignKeys ||
-                k.joinKey.source && k.joinKey.target && expandedTables.includes(k.target)
+              (k) => includeAllForeignKeys || expandedTables.includes(k.target)
             )
         : undefined,
     };
@@ -114,7 +114,7 @@ export function processTables(inputTables: string[], schema: Store, {sampleSize 
   const filterSchemas = (data, initialTables, expandedTables) => {
     return Object.entries(data.$meta.schemas)
       .filter(([tableName]) => expandedTables.includes(tableName))
-      .map(([tableName, schema]) => {
+      .map(([_tableName, schema]) => {
         return simplifySchema(schema, initialTables, expandedTables);
       });
   };
@@ -178,7 +178,7 @@ export function processTables(inputTables: string[], schema: Store, {sampleSize 
 
 
   const simplifyData = (data: Store, inputTables: string[]) => {
-    const expandedTables = expandTableSet(data, inputTables);
+    const expandedTables = expandTables || expandTablesPolicy ? expandTableSet(data, inputTables, expandTablesPolicy) : inputTables;
     // console.log("Input ", inputTables, expandedTables)
     // console.log("Expanded ", inputTables, expandedTables)
     const filteredSchemas = filterSchemas(data, inputTables, expandedTables);
@@ -216,15 +216,20 @@ export function processTables(inputTables: string[], schema: Store, {sampleSize 
 }
 
 
-
-export function processTablesToString(inputTables: string[], schema: Store, {sampleSize = 5, includeAllForeignKeys = false} = {}) {
-  const output = processTables(inputTables, schema, {sampleSize, includeAllForeignKeys});
+interface ProcessTablesConfig {
+  sampleSize?: number,
+  includeAllForeignKeys?: boolean,
+  expandTables?: boolean,
+  expandTablesPolicy?: ExpandTablesPolicy
+}
+export function processTablesToString(inputTables: string[], schema: Store, {sampleSize = 5, includeAllForeignKeys = false, expandTables = true, expandTablesPolicy = undefined}: ProcessTablesConfig = {}) {
+  const output = processTables(inputTables, schema, {sampleSize, includeAllForeignKeys, expandTables, expandTablesPolicy});
   let ret = "";
   ret += output.tsInterfaces;
   for (const [tableName, rows] of Object.entries(output.serializedRows)) {
     ret += `// Sampled ${tableName}s`;
     for (const row of rows as any) {
-      ret += "\n" + JSON.stringify(client({$meta: { type: tableName }, ...row, }).toLLMJSON(output.surface), null, "\n").replaceAll(/\n+/g, "\n");
+      ret += "\n" + JSON.stringify(client({$meta: { type: tableName }, ...row, }, undefined, output.surface).toLLMJSON(output.surface), null, "\n").replaceAll(/\n+/g, "\n");
     }
 
   }

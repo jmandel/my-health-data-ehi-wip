@@ -107,6 +107,7 @@ function fetchData(entity: any, property: string, store: Store): any {
 const fetchDataGlobal = fetchData;
 
 export default function createProxy<T extends object>(entity: T, fetchData: Function = fetchDataGlobal, store: Store = storeGlobal): T {
+  // console.log("CP", entity.$meta.type, fetchData, Object.keys(store.$meta.schemas).length)
     return new Proxy(entity, {
         get(target, property, receiver) {
             if (property === '__proxy'){
@@ -141,6 +142,7 @@ interface CustomJSONConfig {
 }
 
 function customJSON({ target, store, seenObjects = new Set(), depth = 0, forLLM = false }: CustomJSONConfig) {
+  // console.log("CJS", target)
     if (!target) {
         return target;
     }
@@ -185,16 +187,18 @@ function customJSON({ target, store, seenObjects = new Set(), depth = 0, forLLM 
         const propName = mapping.target.toLowerCase();
         if (target[propName] !== undefined) {
             let targetEntity = target[propName];
-            if (forLLM) {
-                result[propName] = Array.isArray(target[propName]) ? [`//note: embedded ${targetEntity?.$meta.type || ""} omitted for brevity; available in-memory`]:{"//note": `embedded ${targetEntity.$meta?.type || ""} omitted for brevity; available in-memory`};
-            }
-            else if (depth > 0) {
-                if (Array.isArray(targetEntity)){
-                    result[propName] = targetEntity.map(child => customJSON({ target: child, store, seenObjects, depth: depth - 1 }));
-                } else {
-                    result[propName] = customJSON({ target: targetEntity, store, seenObjects, depth: depth - 1 });
-                }
-            }
+            if (targetEntity) {
+              if (forLLM) {
+                  result[propName] = Array.isArray(target[propName]) ? [`//note: embedded ${targetEntity?.$meta.type || ""} omitted for brevity; available in-memory`]:{"//note": `embedded ${targetEntity.$meta?.type || ""} omitted for brevity; available in-memory`};
+              }
+              else if (depth > 0) {
+                  if (Array.isArray(targetEntity)){
+                      result[propName] = targetEntity.map(child => customJSON({ target: child, store, seenObjects, depth: depth - 1 }));
+                  } else {
+                      result[propName] = customJSON({ target: targetEntity, store, seenObjects, depth: depth - 1 });
+                  }
+              }
+          }
         }
     });
 

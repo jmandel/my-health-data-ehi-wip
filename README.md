@@ -57,3 +57,15 @@ Contributions to this project are welcome! If you have suggestions, improvements
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+---
+
+### Preparing table summaries
+
+```sh
+mkdir jsonout
+bun run 08-generate-short-descriptions.ts --input-dir json --output-dir jsonout
+cat jsonout/* | jq -s 'map(."$meta".schemas) | add | map_values(.description)'  > src/tables.json
+cat jsonout/* | jq -s 'map(."$meta".schemas) | add | map_values(del(.name) | ."columns" |= (map(if type == "object" then {key: .name, value: .description} else . end) | from_entries))'  > src/tables.json
+
+```

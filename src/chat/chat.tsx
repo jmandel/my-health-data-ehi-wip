@@ -322,18 +322,26 @@ export const AIChat: React.FC<AIChatProps> = ({ autoRespondSuggester, llm: llmDe
     }));
   };
 
-  useEffect(() => {
+  const scrollToBottom = useCallback((force: boolean) => {;
     const bottomTarget = _([textAreaRef, messagesEndRef])
       .dropWhile((ref) => !ref?.current)
       .value()
       .at(0);
     if (bottomTarget?.current) {
       const isAlreadyAtBottom = bottomTarget.current?.getBoundingClientRect().bottom <= window.innerHeight + 50;
-      if (isAlreadyAtBottom) {
+      if (force || isAlreadyAtBottom) {
         bottomTarget.current.scrollIntoView({block: 'end', behavior: 'instant' });
       }
     }
-  }, [state.currentMessage, state.chunks]);
+  }, [])
+
+  useEffect(() => {
+    scrollToBottom(true);
+  }, [state.currentMessage]);
+
+  useEffect(() => {
+    scrollToBottom(false)
+  }, [state.chunks]);
 
   let textAreaRef = useRef<HTMLTextAreaElement | null>(null);
 
@@ -347,19 +355,7 @@ export const AIChat: React.FC<AIChatProps> = ({ autoRespondSuggester, llm: llmDe
     <div style={{ display: "flex", height: "100%" }}>
       <div style={{ flexGrow: 1, flexShrink: 1, overflowY: 'scroll'}}>
         <div className="ai-chat-messages">
-          <div className="ai-chat-message system">
-            <select value={llmName} onChange={(e) => {
-              const selectedLLM = e.target.value;
-              setState(state => ({
-                ...state, 
-                llm: llms[selectedLLM]
-              }));
-            }}>
-              {Object.keys(llms).map((key) => (
-                <option  value={key}>{key}</option>
-              ))}
-            </select>
-          </div>
+          
           <div className="ai-chat-message system">
             System: <ReactMarkdown>{systemPrompt.label}</ReactMarkdown>
           </div>
@@ -407,11 +403,24 @@ export const AIChat: React.FC<AIChatProps> = ({ autoRespondSuggester, llm: llmDe
           setState(state => ({
             ...state,
             waiting: false,
+            chunks: "",
             inputText: state.messages[state.currentMessage!].content!,
             currentMessage: currMessageParent!,
             lockedIn: currMessageParent!}))
           }}> Cancel</button>}</>)
       }
+            <select value={llmName} style={{width: '100%'}} onChange={(e) => {
+              const selectedLLM = e.target.value;
+              
+              setState(state => ({
+                ...state, 
+                llm: llms[selectedLLM]
+              }));
+            }}>
+              {Object.keys(llms).map((key) => (
+                <option  value={key}>{key}</option>
+              ))}
+            </select>
           <div ref={messagesEndRef} />
       </div>
       <div style={{ flexBasis: "100px", flexGrow: 0, flexShrink: 0, overflow: "clip" }}>

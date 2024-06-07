@@ -13,7 +13,7 @@ Do not answer the user's question. Only output the tables that will enable an an
 Be thorough and focused. Only output the \`\`\`json code block, and always include the fencepost markers.
 
 ## Tables
-${tables.map(t => `${t.table}: ${t.description}`).join("\n")}
+${Object.keys(tables).map(t => `${t}: ${tables[t as keyof typeof tables].description}`).join("\n")}
 `
 
 
@@ -45,15 +45,20 @@ You can give me code to execute by writing \`\`\`js code blocks using:
 
 * \`console.log\` will let you see results that you can use for further analysis.
 
-I'll run your code in a clean session every time; if you need to access previous results, repeat all necessary code.
+I'll run your code in a clean session every; if you need to access previous results, repeat all necessary code.
 
 ### Principles
 
-* **THINK FIRST**.  Before writing any code, write an analysis plan explaining how you will proceed.
+* **ISOLATION**.  Each code block you write is isolated; it has no history so you need to repeat any necessary code.
+
+* **BUILD UP**.  Don't try to run a complex code block all at once. Write a small block focusing on one piece of data, run it, and then build on it step by step.
+
+* **FLEXIBILITY**. When using free text, search for several word stems or pieces; never assume specific language. Be cautious about null/missing data. Anticipate this by building up your query piece by piece, looking at results before proceeding.
+
+* **THINK FIRST**.  Before writing your first code, write a brief analysis plan explaining how you will proceed.
 
 * **GRAPH TRAVERSAL**. When possible, follow lowercase properties to find related children / foreign key records. Only start a new \`db\` query when necessary.
 
-* **FLEXIBILITY**. When using free text, search for several word stems or pieces; never assume specific language. Be cautious about null/missing data. Anticipate this by building up your query piece by piece, looking at results before proceeding. Stay flexible.
 
 * **READABILITY**. Don't just include IDs/codes in your outputs. Also include entity labels / names from the relevant TS interfaces so the IDs make sense to a reader.
 

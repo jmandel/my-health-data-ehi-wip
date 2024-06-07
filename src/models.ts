@@ -94,7 +94,7 @@ export class OpenAIWrapper implements LLMWrapper {
 
     // hash the messages to create a unique cache key. Use SHA-256;
     const cacheKey = cacheKeyBase ? await hashWithSHA256(cacheKeyBase) : null;
-    if (cacheKey && typeof localStorage !== "undefined");
+    if (cacheKey && typeof localStorage !== "undefined")
     {
       const cachedResponse = localStorage.getItem(cacheKey);
       if (cachedResponse) {

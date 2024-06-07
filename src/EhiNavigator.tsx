@@ -226,7 +226,7 @@ interface TableProps {
   tableData: any[];
   tableSchema: Schema[string];
   highlightedRows: string[] | null;
-  handleForeignKeyClick: (parentTableName: string,  rowId: string, tableName: string, foreignKey: string, value: any) => void;
+  handleForeignKeyClick: (parentTableName: string,  rowId: string, foreignKeys: {target: string, joinKey: {target: string}}[], value: any) => void;
   handleChildTableClick: (parentTableName: string, rowId: string, childTableName: string) => void;
 }
 
@@ -258,32 +258,32 @@ if (childMaps.length) {
   header.splice(tableSchema.primaryKey.length, 0, <th key="childmaps">Children</th>);
 }
 
-const foreignKeys =  useMemo(() => Object.fromEntries(tableSchema.columns.map((column) => ([column.name, tableSchema.discoveredForeignKeys?.find(
+const foreignKeys =  useMemo(() => Object.fromEntries(tableSchema.columns.map((column) => ([column.name, (tableSchema.discoveredForeignKeys ?? []).filter(
         (fk) => fk.joinKey.source === column.name
-      ) ||
-      tableSchema.discoveredMappings
-        ?.filter(
+      ).concat(
+      (tableSchema.discoveredMappings || [])
+      .filter(
           (m) => m.type === 'has-parent-table' && m.joinKeys.length === 1 && m.joinKeys[0].source === column.name
         )
         .map((f) => ({
+          source: f.source,
           target: f.target,
           joinKey: { source: f.joinKeys[0].source, target: f.joinKeys[0].target },
-        }))
-        .at(0)
+        })))
   ]))), []);
 
 
 function bodyRow(row: Record<string,any>, index: number){
   const ret = tableSchema.columns.map((column: Column) => {
     const value = row[column.name];
-    const foreignKey = foreignKeys[column.name]
+    const colForeignKeys = foreignKeys[column.name]
     return (
       <td key={column.name}>
-        {foreignKey ? (
+        {colForeignKeys.length ? (
           <a
             href="#"
             onClick={(e) => {
-              handleForeignKeyClick(tableName, row[tableSchema.primaryKey[0].columnName], foreignKey.target, foreignKey.joinKey.target, value);
+              handleForeignKeyClick(tableName, row[tableSchema.primaryKey[0].columnName], colForeignKeys, value);
               e.preventDefault();
             }}
           >
@@ -369,9 +369,18 @@ const DataViewer: React.FC<{
   const allTables = useMemo(() => Object.keys(store.$meta.schemas).sort(), []);
 
   const handleForeignKeyClick = useMemo(() => {
-    return (parentTableName: string, parentRowId: string, tableName: string, foreignKeyColumn: string, rowId: string) => {
+
+    return function(parentTableName: string,  parentRowId: string, foreignKeys: {target: string, joinKey: {target: string}}[], rowId: string){
       onEstablishNavPoint(parentTableName, parentRowId);
-      dispatch({ type: 'FOLLOW_REFERENCE', payload: { tableName, rowId } });
+      const firstForeignKey = foreignKeys.find(fk => {
+        const childTable = fk.target;
+        const childTableColumn = fk.joinKey.target;
+        const data = store[childTable].find(row => row[childTableColumn] === rowId);
+        return data
+      })
+      if (firstForeignKey) {
+        dispatch({ type: 'FOLLOW_REFERENCE', payload: { tableName: firstForeignKey.target, rowId } });
+      }
 }}, []);
 
   const handleChildTableClick = useMemo(() => (parentTableName: string, rowId: string, childTableName: string) => {
@@ -448,8 +457,8 @@ const EhiNavigator: React.FC = () => {
   }, []);
 
   const systemPrompt = () => ({
-    label: `TS Interfaces for: ${state.selectedTables.join(", ")} (expanded to add: ${expandTableSet(store, state.selectedTables).join(", ")})`,
-    content: `You are a helpful informatics assistant, aware of the following EHI Schema: \n` +  processTablesToString(state.selectedTables, store, {sampleSize: 2, includeAllForeignKeys: true})
+    label: `TS Interfaces for: ${state.selectedTables.join(", ")}`, // (expanded to add: ${expandTableSet(store, state.selectedTables).join(", ")})`,
+    content: `You are a helpful informatics assistant, aware of the following EHI Schema: \n` +  processTablesToString(state.selectedTables, store, {sampleSize: 2, includeAllForeignKeys: true, expandTables: false})
   });
  
   const expandedTables = expandTableSet(store, state.selectedTables.filter(t => !!store.$meta.schemas[t]));

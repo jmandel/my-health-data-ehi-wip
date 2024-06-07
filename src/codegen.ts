@@ -1,3 +1,4 @@
+import tables from './tables.json'
 
 // Define the schema interfaces
 interface SchemaColumn {
@@ -37,10 +38,22 @@ export function generateInterfaces(schemas: { [key: string]: SchemaTable }): str
     let code = ''; 
     for (const [tableName, schema] of Object.entries(schemas)) {
         // Table description (limited to the first sentence for clarity)
-        const tableDescription = schema.description.split('. ')[0];
+        const tableDescription = tables[tableName as keyof typeof tables]?.description ?? schema.description.split('. ')[0];
         const primaryKeyDescription = "pk: " + schema.primaryKey.map((pk) => pk.columnName).join(', ');
         code += `/**\n * ${tableDescription}\n * ${primaryKeyDescription}\n */\n`;
         code += `export interface ${tableName} {\n`;
+        // Handling parent and child table mappings
+        schema.discoveredMappings?.forEach((mapping) => {
+            const referenceName = mapping.target;
+            if (mapping.type === 'has-child-table') {
+                code += `    /**\n     * Collection of ${mapping.target} as children joined on ${mapping.joinKeys.map(k => `${tableName}.${k.source}=${referenceName}.${k.target}`).join(", ")}\n     */\n`;
+                code += `    ${referenceName.toLowerCase()}?: ${mapping.target}[];\n`;
+            } else if (mapping.type === 'has-parent-table') {
+                code += `    /**\n     * Reference to parent ${mapping.target}\n     */\n`;
+                code += `    ${referenceName.toLowerCase()}?: ${mapping.target};\n`;
+            }
+        });
+
 
         schema.columns.forEach((column) => {
             let tsType = 'string'; // Default type
@@ -53,7 +66,7 @@ export function generateInterfaces(schemas: { [key: string]: SchemaTable }): str
                 default: throw new Error(`Unrecognized data type '${column.type}' for column '${column.name}' in table '${tableName}'`);
             }
             // Column description (limited to the first sentence)
-            const columnDescription = column.description.split('. ')[0];
+            const columnDescription = tables[tableName as keyof typeof tables]?.columns[column.name as any] ?? column.description.split('. ')[0];
             code += `    /**\n     * ${columnDescription}\n     */\n`;
             code += `    ${column.name}: ${tsType};\n`;
 
@@ -64,18 +77,6 @@ export function generateInterfaces(schemas: { [key: string]: SchemaTable }): str
                 code += `    ${referenceName.toLowerCase()}?: ${fk.target};\n`;
             });
 
-        });
-
-        // Handling parent and child table mappings
-        schema.discoveredMappings?.forEach((mapping) => {
-            const referenceName = mapping.target;
-            if (mapping.type === 'has-child-table') {
-                code += `    /**\n     * Collection of ${mapping.target} as children joined on ${mapping.joinKeys.map(k => `${tableName}.${k.source}=${referenceName}.${k.target}`).join(", ")}\n     */\n`;
-                code += `    ${referenceName.toLowerCase()}?: ${mapping.target}[];\n`;
-            } else if (mapping.type === 'has-parent-table') {
-                code += `    /**\n     * Reference to parent ${mapping.target}\n     */\n`;
-                code += `    ${referenceName.toLowerCase()}?: ${mapping.target};\n`;
-            }
         });
 
 

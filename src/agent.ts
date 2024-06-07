@@ -8,6 +8,16 @@ import developReactComponentGuide, {
   DevelopReactComponentState,
 } from "./guides/DevelopReactComponent.ts";
 
+const llmGpt4O = new OpenAIWrapper({
+  apiKey: "",
+  cachePrefix: "cache_prefix",
+  // seed: "3",
+  maxConcurrentRequests: 1,
+  // maxRetries: 3,
+  defaultModel: "gpt-4o",
+  baseUrl: "http://localhost:4000",
+});
+
 const llmGpt4V = new OpenAIWrapper({
   apiKey: "",
   cachePrefix: "cache_prefix",
@@ -17,6 +27,15 @@ const llmGpt4V = new OpenAIWrapper({
   defaultModel: "azure-gpt-4-turbo-v",
   baseUrl: "http://localhost:4000",
 });
+
+const llmOpus = new OpenAIWrapper({
+  apiKey: "",
+  cachePrefix: "cache_prefix",
+  // seed: "3",
+  defaultModel: "claude-3-sonnet",
+  baseUrl: "http://localhost:4000",
+});
+
 
 const llmSonnet = new OpenAIWrapper({
   apiKey: "",
@@ -34,7 +53,7 @@ const llmHaiku = new OpenAIWrapper({
   baseUrl: "http://localhost:4000",
 });
 
-const llmMixtral22b = new OpenAIWrapper({
+const llmMixtral8x22b = new OpenAIWrapper({
   cachePrefix: "cache_prefix",
   // seed: "4",
   defaultModel: "mixtral22b",
@@ -42,12 +61,14 @@ const llmMixtral22b = new OpenAIWrapper({
 });
 
 
-export const llm = llmSonnet;
+export const llm = llmGpt4O;
 export const llms =  {
+  "gpt4o": llmGpt4O,
   "gpt4v": llmGpt4V,
+  "opus": llmOpus,
   "sonnet": llmSonnet,
   "haiku": llmHaiku,
-  "mixtral22b": llmMixtral22b,
+  "mixtral8x22b": llmMixtral8x22b,
 }
 
 export async function getTableList(userQuestion: string, llm: OpenAIWrapper) {
