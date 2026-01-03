@@ -54,10 +54,16 @@ export class OpenAIWrapper implements LLMWrapper {
 
   //   constructor(apiKey: string, cachePrefix: string, seed: string | null = null, maxConcurrentRequests: number = 5, maxRetries: number = 3) {
   constructor(config: OpenAIWrapperConfig) {
+    const isOpenRouter = config.baseUrl?.includes("openrouter.ai");
+    
     this.openai = new OpenAI({
       apiKey: config.apiKey || "",
       baseURL: config.baseUrl || "https://api.openai.com/v1",
       dangerouslyAllowBrowser: true,
+      defaultHeaders: isOpenRouter ? {
+        "HTTP-Referer": typeof window !== "undefined" ? window.location.href : "https://my-health-data-ehi.app",
+        "X-Title": "My Health Data EHI",
+      } : undefined,
     });
 
     this.cachePrefix = config.cachePrefix;
