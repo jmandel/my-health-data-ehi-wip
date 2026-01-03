@@ -22,11 +22,11 @@ function createLLMs() {
   const openRouterBaseUrl = "https://openrouter.ai/api/v1";
   
   return {
-    "claude-3.5-sonnet": new OpenAIWrapper({
+    "claude-sonnet-4.5": new OpenAIWrapper({
       apiKey,
       cachePrefix: "cache_prefix",
       maxConcurrentRequests: 1,
-      defaultModel: "anthropic/claude-3.5-sonnet",
+      defaultModel: "anthropic/claude-sonnet-4.5",
       baseUrl: openRouterBaseUrl,
     }),
     "deepseek-r1": new OpenAIWrapper({
@@ -36,18 +36,18 @@ function createLLMs() {
       defaultModel: "deepseek/deepseek-r1",
       baseUrl: openRouterBaseUrl,
     }),
-    "qwq-32b": new OpenAIWrapper({
+    "qwen-3-thinking-22a": new OpenAIWrapper({
       apiKey,
       cachePrefix: "cache_prefix",
       maxConcurrentRequests: 1,
-      defaultModel: "qwen/qwq-32b-preview",
+      defaultModel: "qwen/qwen-3-thinking-22a",
       baseUrl: openRouterBaseUrl,
     }),
   };
 }
 
 export const llms = createLLMs();
-export const llm = llms["claude-3.5-sonnet"];
+export const llm = llms["claude-sonnet-4.5"];
 
 // Function to refresh LLM instances when API key changes
 export function refreshLLMs() {
