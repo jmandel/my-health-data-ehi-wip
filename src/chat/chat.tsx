@@ -158,11 +158,32 @@ export const AIChat: React.FC<AIChatProps> = ({ autoRespondSuggester, llm: llmDe
     llm: llmDefault
   });
 
+  const [apiKey, setApiKey] = useState<string>(() => {
+    if (typeof localStorage !== "undefined") {
+      return localStorage.getItem("openrouter_api_key") || "";
+    }
+    return "";
+  });
+
+  const [showApiKeyInput, setShowApiKeyInput] = useState(false);
+
   const sendCount = useRef(0);
   const llmName = Object.keys(llms).find(k => llms[k] === state.llm) ?? "default";
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const systemPrompt = useMemo(() => (systemPromptGenerator ? systemPromptGenerator() : { label: "You are a helpful assistant" }), [systemPromptGenerator]);
+
+  const handleApiKeyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newKey = e.target.value;
+    setApiKey(newKey);
+    if (typeof localStorage !== "undefined") {
+      localStorage.setItem("openrouter_api_key", newKey);
+    }
+    // Refresh LLMs with new API key
+    if (typeof window !== "undefined" && (window as any).refreshLLMs) {
+      (window as any).refreshLLMs();
+    }
+  };
 
   const send = async (messages: ChatCompletionMessage[]) => {
     const messagesClamped = messages.map(m => ({role: m.role, content: m.content}));
@@ -418,9 +439,26 @@ export const AIChat: React.FC<AIChatProps> = ({ autoRespondSuggester, llm: llmDe
               }));
             }}>
               {Object.keys(llms).map((key) => (
-                <option  value={key}>{key}</option>
+                <option key={key} value={key}>{key}</option>
               ))}
             </select>
+            <div style={{width: '100%', marginTop: '0.5em'}}>
+              <button 
+                onClick={() => setShowApiKeyInput(!showApiKeyInput)}
+                style={{width: '100%', marginBottom: '0.5em'}}
+              >
+                {showApiKeyInput ? 'Hide' : 'Set'} OpenRouter API Key
+              </button>
+              {showApiKeyInput && (
+                <input
+                  type="password"
+                  value={apiKey}
+                  onChange={handleApiKeyChange}
+                  placeholder="Enter OpenRouter API Key"
+                  style={{width: '100%', padding: '0.5em', boxSizing: 'border-box'}}
+                />
+              )}
+            </div>
           <div ref={messagesEndRef} />
       </div>
       <div style={{ flexBasis: "100px", flexGrow: 0, flexShrink: 0, overflow: "clip" }}>

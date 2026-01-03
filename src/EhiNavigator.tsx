@@ -4,7 +4,7 @@ import React, { useRef, useState, useContext, createContext, useEffect, useReduc
 import SplitPane from 'react-split-pane';
 import { store, storeIndex, db } from './client';
 import _ from "lodash"
-import { getTableList, llm, llms } from './agent';
+import { getTableList, llm, llms, refreshLLMs } from './agent';
 import { expandTableSet, processTables, processTablesToString } from './sampleRows';
 import AIChat from './AiChatWidget';
 import {AIChat as  Chat2 } from './chat/chat'
@@ -13,6 +13,7 @@ import { analyzePrompt } from './prompts';
 
 window.db = db;
 window._ = _;
+window.refreshLLMs = refreshLLMs;
 
 const StoreContext = createContext<typeof store | undefined>(undefined);
 
