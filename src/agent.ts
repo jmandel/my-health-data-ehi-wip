@@ -8,67 +8,53 @@ import developReactComponentGuide, {
   DevelopReactComponentState,
 } from "./guides/DevelopReactComponent.ts";
 
-const llmGpt4O = new OpenAIWrapper({
-  apiKey: "",
-  cachePrefix: "cache_prefix",
-  // seed: "3",
-  maxConcurrentRequests: 1,
-  // maxRetries: 3,
-  defaultModel: "gpt-4o",
-  baseUrl: "http://localhost:4000",
-});
+// Get OpenRouter API key from localStorage
+function getOpenRouterApiKey(): string {
+  if (typeof localStorage !== "undefined") {
+    return localStorage.getItem("openrouter_api_key") || "";
+  }
+  return "";
+}
 
-const llmGpt4V = new OpenAIWrapper({
-  apiKey: "",
-  cachePrefix: "cache_prefix",
-  // seed: "3",
-  maxConcurrentRequests: 1,
-  // maxRetries: 3,
-  defaultModel: "azure-gpt-4-turbo-v",
-  baseUrl: "http://localhost:4000",
-});
+// Create LLM instances with OpenRouter
+function createLLMs() {
+  const apiKey = getOpenRouterApiKey();
+  const openRouterBaseUrl = "https://openrouter.ai/api/v1";
+  
+  return {
+    "claude-3.5-sonnet": new OpenAIWrapper({
+      apiKey,
+      cachePrefix: "cache_prefix",
+      maxConcurrentRequests: 1,
+      defaultModel: "anthropic/claude-3.5-sonnet",
+      baseUrl: openRouterBaseUrl,
+    }),
+    "deepseek-r1": new OpenAIWrapper({
+      apiKey,
+      cachePrefix: "cache_prefix",
+      maxConcurrentRequests: 1,
+      defaultModel: "deepseek/deepseek-r1",
+      baseUrl: openRouterBaseUrl,
+    }),
+    "qwq-32b": new OpenAIWrapper({
+      apiKey,
+      cachePrefix: "cache_prefix",
+      maxConcurrentRequests: 1,
+      defaultModel: "qwen/qwq-32b-preview",
+      baseUrl: openRouterBaseUrl,
+    }),
+  };
+}
 
-const llmOpus = new OpenAIWrapper({
-  apiKey: "",
-  cachePrefix: "cache_prefix",
-  // seed: "3",
-  defaultModel: "claude-3-sonnet",
-  baseUrl: "http://localhost:4000",
-});
+export const llms = createLLMs();
+export const llm = llms["claude-3.5-sonnet"];
 
-
-const llmSonnet = new OpenAIWrapper({
-  apiKey: "",
-  cachePrefix: "cache_prefix",
-  // seed: "3",
-  defaultModel: "claude-3-sonnet",
-  baseUrl: "http://localhost:4000",
-});
-
-const llmHaiku = new OpenAIWrapper({
-  apiKey: "",
-  cachePrefix: "cache_prefix",
-  // seed: null,
-  defaultModel: "claude-3-haiku",
-  baseUrl: "http://localhost:4000",
-});
-
-const llmMixtral8x22b = new OpenAIWrapper({
-  cachePrefix: "cache_prefix",
-  // seed: "4",
-  defaultModel: "mixtral22b",
-  baseUrl: "http://localhost:4000",
-});
-
-
-export const llm = llmGpt4O;
-export const llms =  {
-  "gpt4o": llmGpt4O,
-  "gpt4v": llmGpt4V,
-  "opus": llmOpus,
-  "sonnet": llmSonnet,
-  "haiku": llmHaiku,
-  "mixtral8x22b": llmMixtral8x22b,
+// Function to refresh LLM instances when API key changes
+export function refreshLLMs() {
+  const newLLMs = createLLMs();
+  Object.keys(newLLMs).forEach(key => {
+    llms[key] = newLLMs[key];
+  });
 }
 
 export async function getTableList(userQuestion: string, llm: OpenAIWrapper) {
@@ -88,11 +74,11 @@ export async function getTableList(userQuestion: string, llm: OpenAIWrapper) {
 export async function answerQuestionWithComponent(userQuestion: string) {
   async function runTasks() {
     // Step 1: Identify Key Tables
-    const tables = await getTableList(userQuestion);
+    const tables = await getTableList(userQuestion, llm);
     console.log("Table:", tables);
 
     // Step 2: Analyze Data
-    const relevantSchemaTasks = new GuidedTask<AnalyzeState>(llmGpt4V, analyzeGuide, {
+    const relevantSchemaTasks = new GuidedTask<AnalyzeState>(llm, analyzeGuide, {
         progress: "starting",
         question: userQuestion,
         turns: 0,
@@ -104,7 +90,7 @@ export async function answerQuestionWithComponent(userQuestion: string) {
     console.log(JSON.stringify(analysisStates, null, 2));
 
     const reactComponetTask = await new GuidedTask<DevelopReactComponentState>(
-      llmGpt4V,
+      llm,
       developReactComponentGuide,
       {
         question: userQuestion,
